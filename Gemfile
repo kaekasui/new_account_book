@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.2.3'
 
 gem 'rails', '4.2.3'
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.20'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'

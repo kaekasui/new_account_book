@@ -192,7 +192,7 @@ GEM
     minitest (5.8.2)
     multi_json (1.11.2)
     multi_xml (0.5.5)
-    mysql2 (0.4.1)
+    mysql2 (0.3.20)
     nenv (0.2.0)
     netrc (0.11.0)
     newrelic_rpm (3.14.0.305)
@@ -418,7 +418,7 @@ DEPENDENCIES
   letter_opener
   letter_opener_web
   lol_dba
-  mysql2
+  mysql2 (~> 0.3.20)
   newrelic_rpm
   pry-byebug
   pry-rails
