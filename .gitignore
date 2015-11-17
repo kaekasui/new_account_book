@@ -11,3 +11,12 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore the front app's plugin directories.
+/front/node_modules/
+/front/bower_components/
+/front/coverage/
+/front/.sass-cache/
+/front/.idea/
+/front/.tmp/
+/front/dist/
