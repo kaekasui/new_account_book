@@ -8,10 +8,14 @@ build:
     - script:
         name: Set up DB
         code: RAILS_ENV=test bundle exec rake db:schema:load
+    - script:
+        name: Check rubocop
+        code: RAILS_ENV=test bundle exec rubocop app spec lib
   after-steps:
     - hipchat-notify:
         token: $HIPCHAT_TOKEN
         room-id: $HIPCHAT_ROOM_ID
+
 deploy:
   steps:
     - heroku-deploy:
