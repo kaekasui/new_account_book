@@ -147,8 +147,15 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    haml (4.0.7)
+      tilt
     hashdiff (0.2.3)
     hitimes (1.2.3)
+    html2haml (2.0.0)
+      erubis (~> 2.7.0)
+      haml (~> 4.0.0)
+      nokogiri (~> 1.6.0)
+      ruby_parser (~> 3.5)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     httparty (0.13.7)
@@ -318,6 +325,8 @@ GEM
       ruby-progressbar (~> 1.7)
     ruby-graphviz (1.2.2)
     ruby-progressbar (1.7.5)
+    ruby_parser (3.7.2)
+      sexp_processor (~> 4.1)
     safe_yaml (1.0.4)
     sass (3.4.19)
     sass-rails (5.0.4)
@@ -330,6 +339,7 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     settingslogic (2.0.9)
+    sexp_processor (4.6.0)
     shellany (0.0.1)
     shoulda-matchers (3.0.1)
       activesupport (>= 4.0.0)
@@ -413,6 +423,7 @@ DEPENDENCIES
   faker
   gimei
   guard-rspec
+  html2haml
   jbuilder
   jquery-rails
   letter_opener

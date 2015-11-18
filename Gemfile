@@ -39,6 +39,7 @@ group :development, :test do
   gem 'faker', group: :developmen
   gem 'gimei'
   gem 'bullet'
+  gem 'html2haml'
 end
 
 group :development do
