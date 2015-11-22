@@ -1,22 +1,41 @@
-<nav class="navbar navbar-static-top navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
-        <span class="glyphicon glyphicon-home"></span> Gulp Angular
-      </a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
-      <ul class="nav navbar-nav">
-        <li class="active"><a ng-href="#">Home</a></li>
-        <li><a ng-href="#">About</a></li>
-        <li><a ng-href="#">Contact</a></li>
-        <li><a ui-sref='login'>Login</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right acme-navbar-text">
-        <li>Application was created {{ vm.relativeDate }}.</li>
-      </ul>
-    </div>
+<nav class='navbar navbar-default' role='navigation'>
+  <div class='navbar-header'>
+    <a class='navbar-brand' ui-sref='home'>
+      <img src='assets/images/pig.gif'>
+      <span class='brand-name'>
+        おこづかいちょうβ
+      </span>
+      <span class='glyphicon glyphicon-paperclip'></span>
+    </a>
+  </div>
+  <div class='collapse navbar-collapse'>
+    <ul class='nav navbar-nav'>
+      <li>
+        <a ui-sref='home'>
+          <span class='glyphicon glyphicon-home'></span>
+          HOME
+        </a>
+      </li>
+      <li>
+        <a ui-sref=''>
+          <span class='glyphicon glyphicon-stats'></span>
+          ダッシュボード
+        </a>
+      </li>
+    </ul>
+    <ul class='nav navbar-nav navbar-right'>
+      <li>
+        <a ui-sref=''>
+          <span class='glyphicon glyphicon-cog'></span>
+          各種設定
+        </a>
+      </li>
+      <li>
+        <a ui-sref='login'>
+          <span class='glyphicon glyphicon-leaf'></span>
+          ログイン
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>

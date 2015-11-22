@@ -63,7 +63,7 @@ module.exports = function(config) {
       dir : 'coverage/'
     },
 
-    reporters: ['progress']
+    reporters: ['progress', 'coverage']
   };
 
   // This is the default preprocessors configuration for a usage with Karma cli
