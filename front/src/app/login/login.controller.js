@@ -2,8 +2,7 @@
   (function() {
     'use strict';
     var LoginController;
-    LoginController = function() {
-    };
+    LoginController = function() {};
     return angular.module('accountBook').controller('LoginController', LoginController);
   })();
 

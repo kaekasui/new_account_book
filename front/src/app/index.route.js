@@ -19,6 +19,12 @@
         templateUrl: 'app/login/login.html',
         controller: 'LoginController',
         controllerAs: 'login'
+      })
+      .state('menu', {
+        url: '/menu',
+        templateUrl: 'app/components/menu/menu.html',
+        controller: 'MenuController',
+        controllerAs: 'menu'
       });
 
     $urlRouterProvider.otherwise('/');

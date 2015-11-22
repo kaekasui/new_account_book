@@ -1,1 +1,24 @@
-login
+.col-md-2
+  .menu-directive
+
+.col-md-6
+  .panel.panel-default
+    .panel-heading
+      %span.glyphicon.glyphicon-leaf
+      ログイン
+    .panel-body#with-background
+      %form
+        .form-group
+          %label{for: 'email'}
+            メールアドレス
+          %input.form-control#email{type: 'email', autofocus: true, required: true}
+        .form-group
+          %label{for: 'password'}
+            パスワード
+          %input.form-control#password{type: 'password', required: true}
+        .checkbox
+          %label
+            %input{type: 'checkbox'}
+            パスワードを記憶する
+        %button.btn.btn-default{type: 'submit'}
+          ログインする

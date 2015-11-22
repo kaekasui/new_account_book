@@ -52,7 +52,18 @@ $blockquote-border-color: #76891a;
 $blockquote-small-color: #76891a;
 
 body {
-  background-image: url('../assets/images/wood.png')
+  background-image: url('../assets/images/wood.png');
+
+  label {
+    font-family: 'Lucida Grande', Meiryo, sans-serif;
+    color: #515e12;
+    font-weight: normal;
+  }
+  .panel-body#with-background {
+    background-image: url('../assets/images/filter_pig.gif');
+    background-size: 120% auto;
+    background-repeat: no-repeat;
+  }
 }
 
 // bower:scss
