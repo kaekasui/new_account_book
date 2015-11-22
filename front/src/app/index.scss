@@ -1,14 +1,56 @@
-/**
- *  If you want to override some bootstrap variables, you have to change values here.
- *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
- */
-$navbar-inverse-link-color: #5AADBB;
 $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
-/**
- *  Do not remove the comments below. It's the markers used by wiredep to inject
- *  sass dependencies when defined in the bower.json of your dependencies
- */
+$link-color: #76891a;
+$hr-border: #76891a;
+$navbar-default-bg: rgba(#fff, 0);
+
+$navbar-default-link-color: #76891a;
+$navbar-default-link-hover-color: #515e12;
+
+$list-group-bg: rgba(#fff, 0.5);
+$list-group-border: #76891a;
+
+$panel-bg: rgba(#fff, 0.5);
+$panel-body-padding: 20px;
+$panel-default-border: #76891a;
+$panel-default-text: #515e12;
+$panel-default-heading-bg: rgba(#fff, 0.5);
+$panel-inner-border: #76891a;
+$panel-footer-bg: rgba(#fff, 0.5);
+
+$btn-default-color: #ffffff;
+$btn-default-bg: #ac5e9f;
+$btn-default-border: #ac5e9f;
+
+$btn-info-color: #ffffff;
+$btn-info-bg: #5E7535;
+$btn-info-boder: #6f9b1d;
+
+$table-border-color: #a8ae88;
+//$table-bg: rgba(#fff, 0.7);
+
+$state-danger-text: #ac5e9f;
+$state-danger-bg: rgba(#eedeef, 0.7);
+$state-danger-border: #d5aecf;
+$state-success-test: #76891a;
+$state-success-bg: rgba(#bac48c, 0.7);
+$close-color: #ac5e9f;
+
+$nav-tabs-border-color: #76891a;
+$nav-tabs-link-hover-border-color: #76891a;
+$nav-tabs-active-link-hover-bg: rgba(#fff, 0.5);
+$nav-tabs-active-link-hover-border-color: #76891a;
+$nav-tabs-active-link-hover-color: #76891a;
+
+$nav-pills-active-link-hover-bg: rgba(#fff, 0.5);
+$nav-pills-active-link-hover-color: #76891a;
+
+$tooltip-bg: #76891a;
+$tooltip-opacity: .7;
+
+$blockquote-border-color: #76891a;
+$blockquote-small-color: #76891a;
+
 // bower:scss
 // endbower
 
@@ -27,9 +69,6 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   }
 }
 
-/**
- *  Do not remove the comments below. It's the markers used by gulp-inject to inject
- *  all your sass files automatically
- */
 // injector
 // endinjector
+
