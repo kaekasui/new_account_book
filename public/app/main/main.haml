@@ -1,0 +1,21 @@
+.container
+  .jumbotron.text-center
+    %h1 'AAAllo, 'Allo!
+    %p.lead
+      %img{:alt => "I'm Yeoman", :src => "assets/images/yeoman.png"}/
+      %br/
+      Always a pleasure scaffolding your apps.
+    %p.animated.infinite{"ng-class" => "main.classAnimation"}
+      %button.btn.btn-lg.btn-success{"ng-click" => "main.showToastr()", :type => "button"} Splendid Toastr
+    %p
+      With ♥ thanks to the contributions of
+      %acme-malarkey{"extra-values" => "['Yeoman', 'Gulp', 'Angular']"}
+  .row
+    .col-sm-6.col-md-4{"ng-repeat" => "awesomeThing in main.awesomeThings | orderBy:'rank'"}
+      .thumbnail
+        %img.pull-right{:alt => "{{ awesomeThing.title }}", "ng-src" => "assets/images/{{ awesomeThing.logo }}"}/
+        .caption
+          %h3 {{ awesomeThing.title }}
+          %p {{ awesomeThing.description }}
+          %p
+            %a{"ng-href" => "{{awesomeThing.url}}"} {{ awesomeThing.url }}
