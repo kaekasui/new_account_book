@@ -1,7 +1,6 @@
 do ->
   'use strict'
 
-  LoginController = ($timeout, webDevTec, toastr) ->
-    vm = this
+  LoginController = () ->
 
   angular.module('accountBook').controller 'LoginController', LoginController
