@@ -56,13 +56,28 @@ body {
 
   label {
     font-family: 'Lucida Grande', Meiryo, sans-serif;
+    font-size: 12px;
     color: #515e12;
     font-weight: normal;
+  }
+  .panel-body {
+    font-size: 12px;
   }
   .panel-body#with-background {
     background-image: url('../assets/images/filter_pig.gif');
     background-size: 120% auto;
     background-repeat: no-repeat;
+  }
+  .list-group-item {
+    a { 
+      color: #ac5e9f;
+      font-size: 12px;
+    }
+    span {
+      font-size: 12px;
+      padding-right: 7px;
+      color: #AC5E9F;
+    }
   }
 }
 
