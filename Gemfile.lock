@@ -7,12 +7,6 @@ GIT
       dotenv (= 2.0.2)
       railties (~> 4.0)
 
-GIT
-  remote: https://bitbucket.org/pasonatquila/tokens.git
-  revision: da9a585fef47e2b1d8a7fae6afc6786a4a57faab
-  specs:
-    tokens (2.1.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -379,6 +373,7 @@ GEM
     timecop (0.8.0)
     timers (4.1.1)
       hitimes
+    tokens (2.1.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -460,7 +455,7 @@ DEPENDENCIES
   terminal-notifier-guard
   therubyracer
   timecop
-  tokens!
+  tokens
   uglifier
   validates_email_format_of
   vcr
