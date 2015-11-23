@@ -1,1 +1,5 @@
-menu
+%ul.list-group
+  %li.list-group-item{'ng-repeat': 'menu in menus'}
+    %a{'ui-sref': '{{menu.url}}'}
+      %span.glyphicon{'class': '{{menu.icon}}'}
+      {{menu.name}}
