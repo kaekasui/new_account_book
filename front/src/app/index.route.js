@@ -16,7 +16,7 @@
       })
       .state('login', {
         url: '/login',
-        templateUrl: 'app/login/login.html',
+        templateUrl: 'app/account/login.html',
         controller: 'LoginController',
         controllerAs: 'login'
       })
