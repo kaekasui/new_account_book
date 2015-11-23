@@ -16,10 +16,15 @@
           %span.glyphicon.glyphicon-stats
           ダッシュボード
     %ul.nav.navbar-nav.navbar-right
-      %li
-        %a
+      %li.dropdown
+        %a.dropdown-toggle{'data-toggle': 'dropdown', 'role': 'button', 'aria-haspopup': true, 'aria-expended': false, 'href': '#'}
           %span.glyphicon.glyphicon-cog
           各種設定
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            %span.glyphicon.glyphicon-tag
+            カテゴリ
       %li
         %a{'ui-sref': 'login'}
           %span.glyphicon.glyphicon-leaf
