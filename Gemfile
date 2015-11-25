@@ -47,6 +47,7 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'guard-rspec'
+  gem 'guard-rubocop'
   gem 'terminal-notifier-guard'
   gem 'rubocop', require: false
   gem 'letter_opener'
