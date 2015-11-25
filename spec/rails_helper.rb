@@ -25,8 +25,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.include FactoryGirl::Syntax::Methods
-  # TODO: 設定する
-  # config.include Rspec::JsonMatcher
+  config.include RSpec::JsonMatcher
   config.include ActiveJob::TestHelper
   # TODO: 設定する
   # config.include(RequestSpecHelper, type: :request)
