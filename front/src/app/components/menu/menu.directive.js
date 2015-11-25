@@ -14,10 +14,11 @@
 
     return directive;
 
-    function MenuController($scope) {
+    function MenuController($scope, $translate) {
+      var login = $translate.instant('TITLES.LOGIN');
       $scope.menus = [
-        { name: 'ログイン', icon: 'glyphicon-leaf', url: 'login' },
-        { name: '新規登録', icon: 'glyphicon-heart', url: 'sign_up' }
+        { name: $translate.instant('TITLES.LOGIN'), icon: 'glyphicon-leaf', url: 'login' },
+        { name: $translate.instant('TITLES.SIGN_UP'), icon: 'glyphicon-heart', url: 'sign_up' }
       ];
     }
   }
