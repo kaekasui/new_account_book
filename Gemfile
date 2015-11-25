@@ -18,7 +18,6 @@ gem 'settingslogic'
 gem 'active_decorator'
 gem 'therubyracer'
 gem 'rails-erd'
-gem 'tokens', git: 'https://bitbucket.org/pasonatquila/tokens.git'
 gem 'validates_email_format_of'
 gem 'slim-rails'
 gem 'doc_raptor'
@@ -26,6 +25,7 @@ gem 'pusher'
 gem 'rack-cors'
 gem 'sidekiq'
 gem 'rdefs'
+gem 'tokens'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -47,6 +47,7 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'guard-rspec'
+  gem 'guard-rubocop'
   gem 'terminal-notifier-guard'
   gem 'rubocop', require: false
   gem 'letter_opener'
