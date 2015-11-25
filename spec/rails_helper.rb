@@ -7,6 +7,7 @@ require 'shoulda-matchers'
 require 'rspec/json_matcher'
 require 'faker'
 require 'capybara/email/rspec'
+require 'simplecov'
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 include ActionDispatch::TestProcess
@@ -19,6 +20,7 @@ Shoulda::Matchers.configure do |config|
 end
 
 ActiveRecord::Migration.maintain_test_schema!
+SimpleCov.start 'rails'
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = true

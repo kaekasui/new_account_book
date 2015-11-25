@@ -68,6 +68,7 @@ group :test do
   gem 'vcr'
   gem 'rspec-power_assert'
   gem 'capybara-email'
+  gem 'simplecov'
 end
 
 group :production do
