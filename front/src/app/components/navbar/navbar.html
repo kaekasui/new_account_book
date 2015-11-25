@@ -3,7 +3,7 @@
     <a class='navbar-brand' ui-sref='home'>
       <img src='assets/images/pig.gif'>
       <span class='brand-name'>
-        おこづかいちょうβ
+        {{ 'BRAND_NAME' | translate }}
       </span>
       <span class='glyphicon glyphicon-paperclip'></span>
     </a>
@@ -13,13 +13,13 @@
       <li>
         <a ui-sref='home'>
           <span class='glyphicon glyphicon-home'></span>
-          HOME
+          {{ 'TITLES.HOME' | translate }}
         </a>
       </li>
       <li>
         <a>
           <span class='glyphicon glyphicon-stats'></span>
-          ダッシュボード
+          {{ 'TITLES.DASHBOARD' | translate }}
         </a>
       </li>
     </ul>
@@ -27,7 +27,7 @@
       <li class='dropdown'>
         <a aria-haspopup class='dropdown-toggle' data-toggle='dropdown' href='#' role='button'>
           <span class='glyphicon glyphicon-cog'></span>
-          各種設定
+          {{ 'TITLES.SETTINGS' | translate }}
           <span class='caret'></span>
         </a>
         <ul class='dropdown-menu'>
@@ -40,7 +40,7 @@
       <li>
         <a ui-sref='login'>
           <span class='glyphicon glyphicon-leaf'></span>
-          ログイン
+          {{ 'TITLES.LOGIN' | translate }}
         </a>
       </li>
     </ul>

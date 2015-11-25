@@ -5,17 +5,24 @@
     .module('accountBook')
     .config(config);
 
-  /** @ngInject */
-  function config($logProvider, toastrConfig) {
-    // Enable log
+  function config($translateProvider, $logProvider, toastrConfig) {
     $logProvider.debugEnabled(true);
 
-    // Set options third-party lib
     toastrConfig.allowHtml = true;
     toastrConfig.timeOut = 3000;
     toastrConfig.positionClass = 'toast-top-right';
     toastrConfig.preventDuplicates = true;
     toastrConfig.progressBar = true;
+
+    // 国際化対応
+    $translateProvider.useStaticFilesLoader({
+      prefix: 'assets/i18n/locale-',
+      suffix: '.json'
+    });
+    $translateProvider.preferredLanguage('ja');
+    $translateProvider.fallbackLanguage('en');
+    $translateProvider.useMissingTranslationHandlerLog();
+    $translateProvider.useLocalStorage();
   }
 
 })();

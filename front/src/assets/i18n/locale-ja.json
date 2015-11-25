@@ -1,0 +1,22 @@
+{
+  "BRAND_NAME": "おこづかいちょうβ",
+  "TITLES": {
+    "HOME": "HOME",
+    "DASHBOARD": "ダッシュボード",
+    "SETTINGS": "各種設定",
+    "LOGIN": "ログイン",
+    "SIGN_UP": "新規登録"
+  },
+  "BUTTONS": {
+    "LOGIN": "ログインする"
+  },
+  "LABELS": {
+    "EMAIL": "メールアドレス",
+    "PASSWORD": "パスワード",
+    "REMEMBER_ME": "パスワードを記録する"
+  },
+  "LINKS": {
+    "FORGOT_PASSWORD": "パスワードを忘れた場合",
+    "RESEND_EMAIL": "確認メールが見つからない場合"
+  }
+}
