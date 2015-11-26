@@ -5,10 +5,27 @@
   .panel.panel-default
     .panel-heading
       %span.glyphicon.glyphicon-leaf
-      新規登録
+      {{ 'TITLES.SIGN_UP' | translate }}
     .panel-body#with-background
       %form
         .form-group
           %label{for: 'email'}
-            メールアドレス
+            {{ 'LABELS.EMAIL' | translate }}
           %input.form-control#email{type: 'email', autofocus: true, required: true}
+        .form-group
+          %label{for: 'password'}
+            {{ 'LABELS.PASSWORD' | translate }}
+          %input.form-control#password{type: 'password', required: true}
+        .form-group
+          %label{for: 'password_confirmation'}
+            {{ 'LABELS.PASSWORD_CONFIRMATION' | translate }}
+          %input.form-control#password_confirmation{type: 'password', required: true}
+        %button.btn.btn-default{type: 'submit'}
+          {{ 'BUTTONS.SIGN_UP' | translate }}
+      %hr
+      %p
+        %a{'ui-sref': 'login'}
+          {{ 'LINKS.FORGOT_PASSWORD' | translate }}
+      %p
+        %a{'ui-sref': 'login'}
+          {{ 'LINKS.RESEND_EMAIL' | translate }}
