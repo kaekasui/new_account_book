@@ -1,0 +1,14 @@
+.col-md-2
+  .menu-directive
+
+.col-md-6
+  .panel.panel-default
+    .panel-heading
+      %span.glyphicon.glyphicon-leaf
+      新規登録
+    .panel-body#with-background
+      %form
+        .form-group
+          %label{for: 'email'}
+            メールアドレス
+          %input.form-control#email{type: 'email', autofocus: true, required: true}
