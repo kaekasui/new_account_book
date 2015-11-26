@@ -26,6 +26,18 @@
         controller: 'SignUpController',
         controllerAs: 'sign_up'
       })
+      .state('reset_password', {
+        url: '/reset_password',
+        templateUrl: 'app/account/reset_password.html',
+        controller: 'ResetPasswordController',
+        controllerAs: 'reset_password'
+      })
+      .state('resend_email', {
+        url: '/resend_email',
+        templateUrl: 'app/account/resend_email.html',
+        controller: 'ResendEmailController',
+        controllerAs: 'resend_email'
+      })
       .state('menu', {
         url: '/menu',
         templateUrl: 'app/components/menu/menu.html',

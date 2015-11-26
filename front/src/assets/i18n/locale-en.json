@@ -5,11 +5,14 @@
     "DASHBOARD": "Dashboard",
     "SETTINGS": "Settings",
     "LOGIN": "Log in",
-    "SIGN_UP": "Sign up"
+    "SIGN_UP": "Sign up",
+    "RESET_PASSWORD": "Reset Password",
+    "RESEND_EMAIL": "Resend Email"
   },
   "BUTTONS": {
     "LOGIN": "Log in",
-    "SIGN_UP": "Sign up"
+    "SIGN_UP": "Sign up",
+    "SEND": "Send Email"
   },
   "LABELS": {
     "EMAIL": "Email address"

@@ -1,0 +1,35 @@
+<div class='col-md-2'>
+  <div class='menu-directive'></div>
+</div>
+<div class='col-md-6'>
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      <span class='glyphicon glyphicon-leaf'></span>
+      {{ 'TITLES.RESEND_EMAIL' | translate }}
+    </div>
+    <div class='panel-body' id='with-background'>
+      <form>
+        <div class='form-group'>
+          <label for='email'>
+            {{ 'LABELS.EMAIL' | translate }}
+          </label>
+          <input autofocus class='form-control' id='email' required type='email'>
+        </div>
+        <button class='btn btn-default' type='submit'>
+          {{ 'BUTTONS.SEND' | translate }}
+        </button>
+      </form>
+      <hr>
+      <p>
+        <a ui-sref='login'>
+          {{ 'LINKS.FORGOT_PASSWORD' | translate }}
+        </a>
+      </p>
+      <p>
+        <a ui-sref='login'>
+          {{ 'LINKS.RESEND_EMAIL' | translate }}
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
