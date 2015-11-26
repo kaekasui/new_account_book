@@ -8,11 +8,13 @@
     "SIGN_UP": "Sign up"
   },
   "BUTTONS": {
-    "LOGIN": "Log in"
+    "LOGIN": "Log in",
+    "SIGN_UP": "Sign up"
   },
   "LABELS": {
     "EMAIL": "Email address"
     "PASSWORD": "Password",
+    "PASSWORD_CONFIRMATION": "Password confirmation",
     "REMEMBER_ME": "Remember me"
   },
   "LINKS": {

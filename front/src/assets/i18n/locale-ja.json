@@ -8,11 +8,13 @@
     "SIGN_UP": "新規登録"
   },
   "BUTTONS": {
-    "LOGIN": "ログインする"
+    "LOGIN": "ログインする",
+    "SIGN_UP": "登録する"
   },
   "LABELS": {
     "EMAIL": "メールアドレス",
     "PASSWORD": "パスワード",
+    "PASSWORD_CONFIRMATION": "パスワード（確認）",
     "REMEMBER_ME": "パスワードを記録する"
   },
   "LINKS": {

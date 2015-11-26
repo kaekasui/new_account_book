@@ -15,7 +15,6 @@
     return directive;
 
     function MenuController($scope, $translate) {
-      var login = $translate.instant('TITLES.LOGIN');
       $scope.menus = [
         { name: $translate.instant('TITLES.LOGIN'), icon: 'glyphicon-leaf', url: 'login' },
         { name: $translate.instant('TITLES.SIGN_UP'), icon: 'glyphicon-heart', url: 'sign_up' }
