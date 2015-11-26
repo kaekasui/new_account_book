@@ -20,6 +20,12 @@
         controller: 'LoginController',
         controllerAs: 'login'
       })
+      .state('sign_up', {
+        url: '/sign_up',
+        templateUrl: 'app/account/sign_up.html',
+        controller: 'SignUpController',
+        controllerAs: 'sign_up'
+      })
       .state('menu', {
         url: '/menu',
         templateUrl: 'app/components/menu/menu.html',
