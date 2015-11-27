@@ -49,6 +49,7 @@
     "karma-phantomjs-launcher": "~0.2.1",
     "lodash": "~3.10.1",
     "main-bower-files": "~2.9.0",
+    "ng-annotate": "^1.0.2",
     "phantomjs": "~1.9.18",
     "uglify-save-license": "~0.4.1",
     "wiredep": "~2.2.2",
