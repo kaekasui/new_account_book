@@ -9,13 +9,14 @@
     var directive = {
       restrict: 'C',
       templateUrl: 'app/components/menu/menu.html',
-      controller: MenuController
+      controller: MenuController,
+      controllerAs: 'menu'
     };
 
     return directive;
 
-    function MenuController($scope, $translate) {
-      $scope.menus = [
+    function MenuController($translate) {
+      this.menus = [
         { name: $translate.instant('TITLES.LOGIN'), icon: 'glyphicon-leaf', url: 'login' },
         { name: $translate.instant('TITLES.SIGN_UP'), icon: 'glyphicon-heart', url: 'sign_up' },
         { name: $translate.instant('TITLES.RESET_PASSWORD'), icon: 'glyphicon-leaf', url: 'reset_password' },
