@@ -15,7 +15,7 @@
     "SEND": "Send Email"
   },
   "LABELS": {
-    "EMAIL": "Email address"
+    "EMAIL": "Email address",
     "PASSWORD": "Password",
     "PASSWORD_CONFIRMATION": "Password confirmation",
     "REMEMBER_ME": "Remember me"
