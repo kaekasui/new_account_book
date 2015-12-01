@@ -23,6 +23,7 @@
     $translateProvider.fallbackLanguage('en');
     $translateProvider.useMissingTranslationHandlerLog();
     $translateProvider.useLocalStorage();
+    $translateProvider.useSanitizeValueStrategy('escapeParameters');
   }
 
 })();
