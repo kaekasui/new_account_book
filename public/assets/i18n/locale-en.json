@@ -1,0 +1,27 @@
+{
+  "BRAND_NAME": "Pocket Money Book β",
+  "TITLES": {
+    "HOME": "Home",
+    "DASHBOARD": "Dashboard",
+    "SETTINGS": "Settings",
+    "LOGIN": "Log in",
+    "SIGN_UP": "Sign up",
+    "RESET_PASSWORD": "Reset Password",
+    "RESEND_EMAIL": "Resend Email"
+  },
+  "BUTTONS": {
+    "LOGIN": "Log in",
+    "SIGN_UP": "Sign up",
+    "SEND": "Send Email"
+  },
+  "LABELS": {
+    "EMAIL": "Email address",
+    "PASSWORD": "Password",
+    "PASSWORD_CONFIRMATION": "Password confirmation",
+    "REMEMBER_ME": "Remember me"
+  },
+  "LINKS": {
+    "FORGOT_PASSWORD": "Forgot your password?",
+    "RESEND_EMAIL": "Not found your email?"
+  }
+}
