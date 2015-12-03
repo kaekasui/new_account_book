@@ -1,5 +1,7 @@
 %ul.list-group
-  %li.list-group-item{'ng-repeat': 'menu in ::menu.menus'}
-    %a{'ui-sref': '{{::menu.url}}'}
-      %span.glyphicon{'class': '{{::menu.icon}}'}
-      {{menu.name}}
+  %li.list-group-item{'ng-repeat': 'menu_name in ::menu.menu_names', 'ng-mouseenter': 'menu.mouseEnter($index)', 'ng-mouseleave': 'menu.mouseLeave($index)'}
+    %a{'ui-sref': '{{::menu_name.url}}'}
+      %span.glyphicon{'class': '{{::menu_name.icon}}'}
+      {{::menu_name.name}}
+    %span{'ng-show': 'menu.isSelected($index)'}
+      %img.pull-right{'ng-src': '{{menu.menu_image}}', 'ng-class': '{selected: menu.isSelected($index)}'}
