@@ -19,10 +19,7 @@
 
     return directive;
 
-    function NavbarController(moment) {
-      var vm = this;
-
-      vm.relativeDate = moment(vm.creationDate).fromNow();
+    function NavbarController() {
     }
   }
 
