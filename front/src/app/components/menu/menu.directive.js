@@ -15,8 +15,7 @@
 
     return directive;
 
-    function MenuController() {
-/*
+    function MenuController($translate) {
       this.menu_names = [
         { name: $translate.instant('TITLES.LOGIN'), icon: 'glyphicon-leaf', url: 'login' },
         { name: $translate.instant('TITLES.SIGN_UP'), icon: 'glyphicon-heart', url: 'sign_up' },
@@ -27,17 +26,14 @@
       this.isSelected = function(index) {
         return this.selected == index;
       };
-*/
  
       // Event
-/*
       this.mouseEnter = function(index) {
         this.selected = index;
       };
       this.mouseLeave = function() {
         this.selected = undefined;
       };
-*/
     }
   }
 })();
