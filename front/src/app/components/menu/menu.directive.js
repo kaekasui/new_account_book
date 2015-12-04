@@ -31,7 +31,7 @@
       this.mouseEnter = function(index) {
         this.selected = index;
       };
-      this.mouseLeave = function(index) {
+      this.mouseLeave = function() {
         this.selected = undefined;
       };
     }

@@ -1,5 +1,5 @@
 %ul.list-group
-  %li.list-group-item{'ng-repeat': 'menu_name in ::menu.menu_names', 'ng-mouseenter': 'menu.mouseEnter($index)', 'ng-mouseleave': 'menu.mouseLeave($index)'}
+  %li.list-group-item{'ng-repeat': 'menu_name in ::menu.menu_names', 'ng-mouseenter': 'menu.mouseEnter($index)', 'ng-mouseleave': 'menu.mouseLeave()'}
     %a{'ui-sref': '{{::menu_name.url}}'}
       %span.glyphicon{'class': '{{::menu_name.icon}}'}
       {{::menu_name.name}}
