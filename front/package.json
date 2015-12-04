@@ -8,6 +8,11 @@
     "test": "gulp test"
   },
   "devDependencies": {
+    "angular-translate": "^2.8.1",
+    "angular-translate-handler-log": "^2.8.1",
+    "angular-translate-loader-static-files": "^2.8.1",
+    "angular-translate-storage-cookie": "^2.8.1",
+    "angular-translate-storage-local": "^2.8.1",
     "browser-sync": "~2.9.11",
     "browser-sync-spa": "~1.0.3",
     "chalk": "~1.1.1",
