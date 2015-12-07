@@ -5,7 +5,10 @@
       .module('accountBook')
       .controller('LoginController', LoginController);
 
-    function LoginController() {
+    function LoginController(menuService) {
+      var vm = this;
+
+      vm.menus = menuService.getMenu();
     }
 
 })();
