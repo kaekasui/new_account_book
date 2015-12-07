@@ -1,5 +1,5 @@
 <div class='col-md-3'>
-  <div class='menu-directive'></div>
+  <div class='menu-directive' menu-data='sign_up.menus'></div>
 </div>
 <div class='col-md-9'>
   <div class='panel panel-default'>
@@ -32,13 +32,14 @@
         </button>
       </form>
       <hr>
+      <div ng-include='links'></div>
       <p>
-        <a ui-sref='login'>
+        <a ui-sref='reset_password'>
           {{ 'LINKS.FORGOT_PASSWORD' | translate }}
         </a>
       </p>
       <p>
-        <a ui-sref='login'>
+        <a ui-sref='resend_email'>
           {{ 'LINKS.RESEND_EMAIL' | translate }}
         </a>
       </p>
