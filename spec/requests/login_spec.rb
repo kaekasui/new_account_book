@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe 'POST /session?email=email&password=password', autodoc: true do
   let!(:user) do
-    create(:email_user, :registered, email: 'login@example.com', password: 'password')
+    create(:email_user, :registered,
+           email: 'login@example.com', password: 'password')
   end
   let!(:email) { 'login@example.com' }
   let!(:password) { 'password' }

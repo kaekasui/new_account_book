@@ -8,6 +8,10 @@ class EmailUser < User
   private
 
   def uniqueness_email
-    errors.add(:email, :uniqueness_email) if User.where(email: email).present?
+    if EmailUser.where(email: email).where.not(id: id).present?
+      errors.add(:email, :uniqueness)
+    else
+      true
+    end
   end
 end

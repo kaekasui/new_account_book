@@ -10,4 +10,4 @@ ja:
         user:
           attributes:
             email:
-              uniqueness_email: ですでに登録されています
+              uniqueness: ですでに登録されています
