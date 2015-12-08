@@ -21,6 +21,9 @@ describe 'POST /email_user/registrations?email=email\
 
       user = User.last
       expect(user.status).to eq 'inactive'
+
+      open_email(user.email)
+      expect(current_email.subject).to eq '【PIG BOOK β】アカウント登録のご案内'
     end
   end
 

@@ -3,7 +3,9 @@ class EmailUser::RegistrationsController < ApplicationController
     @user = EmailUser.new(sign_up_params)
     @user.status = :inactive
     if @user.save
-      # TODO: メールを送信する
+      origin = "#{request.protocol}#{request.host_with_port}"
+      UserMailer.registration(@user.email, @user.registration_url(origin))
+        .deliver_now
       head 201
     else
       render_error @user

@@ -5,6 +5,10 @@ class EmailUser < User
                     length: { maximum: Settings.user.email.maximum_length }
   validate :uniqueness_email, if: 'email.present?'
 
+  def registration_url(origin)
+    "#{origin}/email_user/registrations/#{id}"
+  end
+
   private
 
   def uniqueness_email
