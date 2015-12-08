@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              uniqueness_email: ですでに登録されています

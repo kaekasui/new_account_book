@@ -5,6 +5,12 @@ FactoryGirl.define do
     trait :twitter do
       type 'TwitterUser'
     end
-    last_sign_in_at { Time.zone.now }
+    trait :inactive do
+      status :inactive
+    end
+    trait :registered do
+      status :registered
+    end
+    last_sign_in_at { 2.days.ago }
   end
 end
