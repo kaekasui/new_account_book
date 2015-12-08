@@ -5,7 +5,10 @@
       .module('accountBook')
       .controller('ResetPasswordController', ResetPasswordController);
 
-    function ResetPasswordController() {
+    function ResetPasswordController(menuService) {
+      var vm = this;
+
+      vm.menus = menuService.getMenu();
     }
 
 })();

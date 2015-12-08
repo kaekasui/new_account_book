@@ -1,5 +1,5 @@
 <div class='col-md-3'>
-  <div class='menu-directive'></div>
+  <div class='menu-directive' menu-data='resend_email.menus'></div>
 </div>
 <div class='col-md-9'>
   <div class='panel panel-default'>
@@ -21,13 +21,8 @@
       </form>
       <hr>
       <p>
-        <a ui-sref='login'>
+        <a ui-sref='reset_password'>
           {{ 'LINKS.FORGOT_PASSWORD' | translate }}
-        </a>
-      </p>
-      <p>
-        <a ui-sref='login'>
-          {{ 'LINKS.RESEND_EMAIL' | translate }}
         </a>
       </p>
     </div>
