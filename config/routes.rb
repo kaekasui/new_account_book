@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resource :session, only: %i(create)
 
   namespace :email_user do
-    resources :registrations, only: %i(create)
+    resources :registrations, only: %i(create update)
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,4 +1,5 @@
 defaults: &defaults
+  mail_from: <%= ENV['PIG_BOOK_MAIL_FROM'] %>
   access_token:
     length: 32
     expire_after: <%= 90.days.to_i %>

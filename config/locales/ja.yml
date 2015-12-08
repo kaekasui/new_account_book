@@ -3,3 +3,6 @@ ja:
     messages:
       sessions:
         invalid_parameters: メールアドレスまたはパスワードが正しくありません
+  user_mailer:
+    registration:
+      subject: 【PIG BOOK β】アカウント登録のご案内
