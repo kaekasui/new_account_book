@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'POST /user/registrations?email=email\
+describe 'POST /email_user/registrations?email=email\
   &password=password&password_confirmation=password', autodoc: true do
   let!(:email) { 'login@example.com' }
   let!(:password) { 'password' }
@@ -15,7 +15,7 @@ describe 'POST /user/registrations?email=email\
 
   context '各値が正しい場合' do
     it '201が返ってくること' do
-      post '/user/registrations', params
+      post '/email_user/registrations', params
 
       expect(response.status).to eq 201
 
@@ -28,7 +28,7 @@ describe 'POST /user/registrations?email=email\
     let(:password) { '' }
 
     it '422とエラーメッセージが返ってくること' do
-      post '/user/registrations', params
+      post '/email_user/registrations', params
 
       expect(response.status).to eq 422
       json = {
@@ -42,7 +42,7 @@ describe 'POST /user/registrations?email=email\
     let(:password) { 'dummy_password' }
 
     it '422とエラーメッセージが返ってくること' do
-      post '/user/registrations', params
+      post '/email_user/registrations', params
 
       expect(response.status).to eq 422
       json = {

@@ -1,9 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe EmailUser, type: :model do
   describe 'バリデーション' do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_length_of(:email).is_at_most(72) }
+    it { is_expected.to validate_presence_of(:password) }
     it { is_expected.to validate_length_of(:password).is_at_most(72) }
   end
 
@@ -11,7 +12,7 @@ RSpec.describe User, type: :model do
     let!(:password) { 'password' }
     let!(:password_confirmation) { 'password' }
     subject do
-      build(:user, :registered,
+      build(:email_user, :registered,
             password: password, password_confirmation: password_confirmation)
     end
 
@@ -32,10 +33,12 @@ RSpec.describe User, type: :model do
   end
 
   describe '#uniqueness_email' do
-    let!(:registered_user) { create(:user, :registered) }
+    let!(:registered_user) { create(:email_user, :registered) }
 
     context 'すでに対象のメールアドレスで登録されていた場合' do
-      let!(:user) { build(:user, :registered, email: registered_user.email) }
+      let!(:user) do
+        build(:email_user, :registered, email: registered_user.email)
+      end
 
       it 'エラーが発生すること' do
         expect(user).to have(1).errors_on(:email)

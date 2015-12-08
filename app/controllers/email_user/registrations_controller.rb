@@ -1,6 +1,6 @@
-class User::RegistrationsController < ApplicationController
+class EmailUser::RegistrationsController < ApplicationController
   def create
-    @user = User.new(sign_up_params)
+    @user = EmailUser.new(sign_up_params)
     @user.status = :inactive
     if @user.save
       # TODO: メールを送信する
