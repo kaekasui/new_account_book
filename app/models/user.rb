@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
   tokenizable
-  has_secure_password
+
+  enum status: { registered: 2, inactive: 1 }
 
   def active?
-    true
+    registered? # TODO: 有効期限を確認する
   end
 
   def add_access_token

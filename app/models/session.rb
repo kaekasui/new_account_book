@@ -30,6 +30,6 @@ class Session
   end
 
   def find_user
-    User.find_by(email: @params[:email])
+    EmailUser.find_by(email: @params[:email])
   end
 end

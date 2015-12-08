@@ -2,6 +2,9 @@ defaults: &defaults
   access_token:
     length: 32
     expire_after: <%= 90.days.to_i %>
+  user:
+    email:
+      maximum_length: 72
 
 development:
   <<: *defaults

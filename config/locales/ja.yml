@@ -2,4 +2,4 @@ ja:
   errors:
     messages:
       sessions:
-        invalid_parameters: メールアドレスまたはパスワードが正しくありません。
+        invalid_parameters: メールアドレスまたはパスワードが正しくありません
