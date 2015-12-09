@@ -12,6 +12,10 @@ class EmailUser::RegistrationsController < ApplicationController
     end
   end
 
+  def update
+
+  end
+
   private
 
   def sign_up_params
