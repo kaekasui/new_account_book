@@ -7,23 +7,24 @@
       %span.glyphicon.glyphicon-leaf
       {{ 'TITLES.SIGN_UP' | translate }}
     .panel-body#with-background
-      %form
+      %form{novalidate: true, name: 'sign_up.signUpForm'}
         .form-group
           %label{for: 'email'}
             {{ 'LABELS.EMAIL' | translate }}
-          %input.form-control#email{type: 'email', autofocus: true, required: true}
+          %input.form-control#email{type: 'email', autofocus: true, 'ng-model': 'sign_up.signUpForm.email', required: true, 'ng-maxlength': '100'}
+          %p{'ng-show': 'sign_up.signUpForm.email.$error.required'}
+            入力必須です。
         .form-group
           %label{for: 'password'}
             {{ 'LABELS.PASSWORD' | translate }}
-          %input.form-control#password{type: 'password', required: true}
+          %input.form-control#password{type: 'password', 'ng-model': 'sign_up.signUpForm.password', required: true, 'ng-maxlength': '72'}
         .form-group
           %label{for: 'password_confirmation'}
             {{ 'LABELS.PASSWORD_CONFIRMATION' | translate }}
-          %input.form-control#password_confirmation{type: 'password', required: true}
+          %input.form-control#password_confirmation{type: 'password', 'ng-model': 'sign_up.signUpForm.password_confirmation', required: true, 'ng-maxlength': '72'}
         %button.btn.btn-default{type: 'submit'}
           {{ 'BUTTONS.SIGN_UP' | translate }}
       %hr
-      %div{'ng-include': 'links'}
       %p
         %a{'ui-sref': 'reset_password'}
           {{ 'LINKS.FORGOT_PASSWORD' | translate }}

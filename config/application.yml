@@ -11,7 +11,7 @@ defaults: &defaults
     expire_after: <%= 24.hours.to_i %>
   user:
     email:
-      maximum_length: 72
+      maximum_length: 100
     password:
       maximum_length: 72
 

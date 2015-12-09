@@ -8,31 +8,33 @@
       {{ 'TITLES.SIGN_UP' | translate }}
     </div>
     <div class='panel-body' id='with-background'>
-      <form>
+      <form name='sign_up.signUpForm' novalidate>
         <div class='form-group'>
           <label for='email'>
             {{ 'LABELS.EMAIL' | translate }}
           </label>
-          <input autofocus class='form-control' id='email' required type='email'>
+          <input autofocus class='form-control' id='email' ng-maxlength='100' ng-model='sign_up.signUpForm.email' required type='email'>
+          <p ng-show='sign_up.signUpForm.email.$error.required'>
+            入力必須です。
+          </p>
         </div>
         <div class='form-group'>
           <label for='password'>
             {{ 'LABELS.PASSWORD' | translate }}
           </label>
-          <input class='form-control' id='password' required type='password'>
+          <input class='form-control' id='password' ng-maxlength='72' ng-model='sign_up.signUpForm.password' required type='password'>
         </div>
         <div class='form-group'>
           <label for='password_confirmation'>
             {{ 'LABELS.PASSWORD_CONFIRMATION' | translate }}
           </label>
-          <input class='form-control' id='password_confirmation' required type='password'>
+          <input class='form-control' id='password_confirmation' ng-maxlength='72' ng-model='sign_up.signUpForm.password_confirmation' required type='password'>
         </div>
         <button class='btn btn-default' type='submit'>
           {{ 'BUTTONS.SIGN_UP' | translate }}
         </button>
       </form>
       <hr>
-      <div ng-include='links'></div>
       <p>
         <a ui-sref='reset_password'>
           {{ 'LINKS.FORGOT_PASSWORD' | translate }}
