@@ -13,7 +13,6 @@ class EmailUser::RegistrationsController < ApplicationController
   end
 
   def update
-
   end
 
   private
