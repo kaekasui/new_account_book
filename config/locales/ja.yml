@@ -8,3 +8,5 @@ ja:
   user_mailer:
     registration:
       subject: 【PIG BOOK β】アカウント登録のご案内
+    finished_registration:
+      subject: 【PIG BOOK β】アカウント登録完了のお知らせ

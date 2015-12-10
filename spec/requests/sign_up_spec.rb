@@ -15,6 +15,7 @@ describe 'POST /email_user/registrations?email=email\
 
   context '各値が正しい場合' do
     it '201が返ってくること' do
+      clear_emails
       post '/email_user/registrations', params
       expect(response.status).to eq 201
 
@@ -73,12 +74,17 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
   end
 
   context 'リンクが有効な場合' do
-    it 'ステータスがregisteredになっていること' do
+    it '200が返り、メールが送信されること' do
+      clear_emails
       patch "/email_user/registrations/#{@user_id}?token=#{@token}"
       expect(response.status).to eq 200
 
       user = User.last
       expect(user.status).to eq 'registered'
+
+      open_email(user.email)
+      expect(current_email.subject).to eq '【PIG BOOK β】アカウント登録完了のお知らせ'
+      expect(current_email).to have_content user.email
     end
 
     it 'ログインできるようになっていること' do
@@ -126,7 +132,7 @@ end
 
 describe 'POST /email_user/registrations/recreate?email=email', autodoc: true do
   let!(:email) { 'login@example.com' }
-  let!(:user) { create(:email_user, :inactive, email: email) }
+  let!(:user) { create(:email_user, :inactive, email: 'login@example.com') }
 
   context 'メールアドレスが正しい場合' do
     it '200が返り、メールが送信されること' do
@@ -154,6 +160,16 @@ describe 'POST /email_user/registrations/recreate?email=email', autodoc: true do
   context 'メールアドレスが登録されていない場合' do
     it '404が返ってくること' do
       patch "/email_user/registrations/recreate?email=dummy#{email}"
+      expect(response.status).to eq 404
+    end
+  end
+
+  context 'メールアドレスが空の場合' do
+    let(:email) { '' }
+
+    # TODO: 422が返ってくるようにする
+    it '404が返ってくること' do
+      patch "/email_user/registrations/recreate?email=#{email}"
       expect(response.status).to eq 404
     end
   end
