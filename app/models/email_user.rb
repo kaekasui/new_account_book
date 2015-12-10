@@ -11,7 +11,17 @@ class EmailUser < User
   end
 
   def registration_token
-    add_registration_token
+    @registration_token ||= add_registration_token
+  end
+
+  def registered_by(token)
+    token_user = User.find_by_valid_token(:registration, token)
+    if self == token_user
+      update(status: :registered) && remove_token(:registration)
+    else
+      errors[:base] << I18n.t('errors.messages.users.invalid_token')
+      false
+    end
   end
 
   private
