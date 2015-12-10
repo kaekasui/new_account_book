@@ -15,10 +15,21 @@ class EmailUser::RegistrationsController < ApplicationController
   def update
     @user = EmailUser.find(params[:id].to_i)
     if @user.registered_by(params[:token])
+      # TODO: 登録完了のメールを送信する
       head 200
     else
       render_error @user, 401
     end
+  end
+
+  def recreate
+    @user = EmailUser.inactive.find_by(email: params[:email])
+    fail ActiveRecord::RecordNotFound if @user.nil?
+    @user.remove_token(:registration)
+    origin = "#{request.protocol}#{request.host_with_port}"
+    UserMailer.registration(@user.email, @user.registration_url(origin))
+      .deliver_now
+    head 200
   end
 
   private
