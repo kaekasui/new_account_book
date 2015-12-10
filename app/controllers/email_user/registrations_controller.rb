@@ -12,6 +12,15 @@ class EmailUser::RegistrationsController < ApplicationController
     end
   end
 
+  def update
+    @user = EmailUser.find(params[:id].to_i)
+    if @user.registered_by(params[:token])
+      head 200
+    else
+      render_error @user, 401
+    end
+  end
+
   private
 
   def sign_up_params
