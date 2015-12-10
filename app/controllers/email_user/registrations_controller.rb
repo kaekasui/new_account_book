@@ -15,7 +15,7 @@ class EmailUser::RegistrationsController < ApplicationController
   def update
     @user = EmailUser.find(params[:id].to_i)
     if @user.registered_by(params[:token])
-      # TODO: 登録完了のメールを送信する
+      UserMailer.finished_registration(@user.email).deliver_now
       head 200
     else
       render_error @user, 401
