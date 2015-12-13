@@ -16,7 +16,7 @@ class EmailUser::PasswordsController < ApplicationController
     @user = EmailUser.find(params[:id])
     token_user = User.find_by_valid_token(:password, params[:token])
     fail ActiveRecord::RecordNotFound if @user != token_user
-    head 302
+    head 302 # TODO: 修正する
   end
 
   def update
