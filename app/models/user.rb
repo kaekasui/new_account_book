@@ -14,12 +14,4 @@ class User < ActiveRecord::Base
       expires_at: Settings.access_token.expire_after.seconds.from_now
     )
   end
-
-  def add_registration_token
-    add_token(
-      :registration,
-      size: Settings.registration_token.length,
-      expires_at: Settings.registration_token.expire_after.seconds.from_now
-    )
-  end
 end

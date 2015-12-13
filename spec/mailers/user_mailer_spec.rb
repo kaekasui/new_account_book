@@ -25,4 +25,29 @@ RSpec.describe UserMailer do
       expect(mail.body).to have_content(email)
     end
   end
+
+  describe '#password_reset' do
+    let!(:email) { 'email@example.com' }
+    let!(:password_reset_url) { 'https://example.com/password_reset' }
+    let(:mail) { UserMailer.password_reset(email, password_reset_url) }
+
+    it 'ヘッダが正しいこと' do
+      expect(mail.subject).to eq '【PIG BOOK β】パスワードリセットのご案内'
+      expect(mail.to).to eq [email]
+      expect(mail.from).to eq [Settings.mail_from]
+      expect(mail.body).to have_content(password_reset_url)
+    end
+  end
+
+  describe '#confirmation' do
+    let!(:email) { 'email@example.com' }
+    let(:mail) { UserMailer.confirmation(email) }
+
+    it 'ヘッダが正しいこと' do
+      expect(mail.subject).to eq '【PIG BOOK β】アカウントのご確認と登録のご案内'
+      expect(mail.to).to eq [email]
+      expect(mail.from).to eq [Settings.mail_from]
+      expect(mail.body).to have_content(email)
+    end
+  end
 end
