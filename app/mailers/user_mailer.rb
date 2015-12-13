@@ -18,7 +18,7 @@ class UserMailer < ApplicationMailer
     mail to: email
   end
 
-  # アカウントのご確認
+  # アカウントのご確認と登録のご案内
   def confirmation(email)
     @email = email
     mail to: email

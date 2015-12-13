@@ -33,9 +33,6 @@ class EmailUser < User
     @password_token ||= add_password_token
   end
 
-  def add_password_reset_token
-  end
-
   private
 
   def uniqueness_email

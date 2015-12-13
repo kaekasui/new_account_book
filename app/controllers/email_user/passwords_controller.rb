@@ -11,4 +11,10 @@ class EmailUser::PasswordsController < ApplicationController
     end
     head 200
   end
+
+  def edit
+  end
+
+  def update
+  end
 end
