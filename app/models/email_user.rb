@@ -26,7 +26,7 @@ class EmailUser < User
 
   def password_reset_url(origin)
     token = password_token.token
-    "#{origin}/email_user/passwords/#{id}?token=#{token}"
+    "#{origin}/email_user/passwords/#{id}/edit?token=#{token}"
   end
 
   def password_token
