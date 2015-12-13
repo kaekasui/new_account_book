@@ -10,3 +10,7 @@ ja:
       subject: 【PIG BOOK β】アカウント登録のご案内
     finished_registration:
       subject: 【PIG BOOK β】アカウント登録完了のお知らせ
+    password_reset:
+      subject: 【PIG BOOK β】パスワードリセットのご案内
+    confirmation:
+      subject: 【PIG BOOK β】アカウントのご確認と登録のご案内

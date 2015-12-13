@@ -24,6 +24,15 @@ class EmailUser < User
     end
   end
 
+  def password_reset_url(origin)
+    token = password_token.token
+    "#{origin}/email_user/passwords/#{id}?token=#{token}"
+  end
+
+  def password_token
+    @password_token ||= add_password_token
+  end
+
   private
 
   def uniqueness_email
@@ -32,5 +41,21 @@ class EmailUser < User
     else
       true
     end
+  end
+
+  def add_registration_token
+    add_token(
+      :registration,
+      size: Settings.registration_token.length,
+      expires_at: Settings.registration_token.expire_after.seconds.from_now
+    )
+  end
+
+  def add_password_token
+    add_token(
+      :password,
+      size: Settings.password_token.length,
+      expires_at: Settings.password_token.expire_after.seconds.from_now
+    )
   end
 end
