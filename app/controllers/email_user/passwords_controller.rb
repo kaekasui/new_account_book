@@ -13,6 +13,10 @@ class EmailUser::PasswordsController < ApplicationController
   end
 
   def edit
+    @user = EmailUser.find(params[:id])
+    token_user = User.find_by_valid_token(:password, params[:token])
+    fail ActiveRecord::RecordNotFound if @user != token_user
+    head 302
   end
 
   def update
