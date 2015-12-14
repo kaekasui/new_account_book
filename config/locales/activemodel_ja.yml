@@ -1,0 +1,5 @@
+ja:
+  activemodel:
+    attributes:
+      email_user/password:
+        current_password: 現在のパスワード
