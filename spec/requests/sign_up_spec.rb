@@ -88,7 +88,7 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
     end
 
     it 'ログインできるようになっていること' do
-      patch "/email_user/registrations/#{@user_id}?token=#{@token}"
+      patch "/email_user/registrations/#{@user_id}", token: @token
       expect(response.status).to eq 200
 
       post '/session', params
@@ -98,7 +98,7 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
 
   context 'ユーザーが見つからない場合' do
     it '404が返ってくること' do
-      patch "/email_user/registrations/1#{@user_id}?token=#{@token}"
+      patch '/email_user/registrations/1', params
       expect(response.status).to eq 404
     end
   end
@@ -106,7 +106,7 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
   context 'トークンの有効期限が切れていた場合' do
     it '401が返ってくること' do
       Timecop.travel(2.days.since)
-      patch "/email_user/registrations/#{@user_id}?token=#{@token}"
+      patch "/email_user/registrations/#{@user_id}", token: @token
       expect(response.status).to eq 401
       Timecop.return
     end
@@ -114,17 +114,17 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
 
   context 'トークンが不正だった場合' do
     it '401が返ってくること' do
-      patch "/email_user/registrations/#{@user_id}?token=invalid#{@token}"
+      patch "/email_user/registrations/#{@user_id}", token: "invalid#{@token}"
       expect(response.status).to eq 401
     end
   end
 
   context 'すでに登録が完了していた場合' do
     it '401が返ってくること' do
-      patch "/email_user/registrations/#{@user_id}?token=#{@token}"
+      patch "/email_user/registrations/#{@user_id}", token: @token
       expect(response.status).to eq 200
 
-      patch "/email_user/registrations/#{@user_id}?token=#{@token}"
+      patch "/email_user/registrations/#{@user_id}", token: @token
       expect(response.status).to eq 401
     end
   end
@@ -137,7 +137,7 @@ describe 'POST /email_user/registrations/recreate?email=email', autodoc: true do
   context 'メールアドレスが正しい場合' do
     it '200が返り、メールが送信されること' do
       clear_emails
-      patch "/email_user/registrations/recreate?email=#{email}"
+      patch '/email_user/registrations/recreate', email: email
       expect(response.status).to eq 200
 
       open_email(email)
@@ -152,14 +152,14 @@ describe 'POST /email_user/registrations/recreate?email=email', autodoc: true do
     end
 
     it '404が返ってくること' do
-      patch "/email_user/registrations/recreate?email=#{email}"
+      patch '/email_user/registrations/recreate', email: email
       expect(response.status).to eq 404
     end
   end
 
   context 'メールアドレスが登録されていない場合' do
     it '404が返ってくること' do
-      patch "/email_user/registrations/recreate?email=dummy#{email}"
+      patch '/email_user/registrations/recreate', email: "dummy#{email}"
       expect(response.status).to eq 404
     end
   end
@@ -167,10 +167,13 @@ describe 'POST /email_user/registrations/recreate?email=email', autodoc: true do
   context 'メールアドレスが空の場合' do
     let(:email) { '' }
 
-    # TODO: 422が返ってくるようにする
-    it '404が返ってくること' do
-      patch "/email_user/registrations/recreate?email=#{email}"
-      expect(response.status).to eq 404
+    it '422が返ってくること' do
+      patch '/email_user/registrations/recreate', email: email
+      expect(response.status).to eq 422
+      json = {
+        'error_messages': ['メールアドレスを入力してください']
+      }
+      expect(response.body).to be_json_as(json)
     end
   end
 end
