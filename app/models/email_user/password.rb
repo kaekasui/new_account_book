@@ -3,7 +3,9 @@ class EmailUser::Password
 
   attr_accessor :current_password
 
-  validates :current_password, presence: true
+  validates :current_password,
+            presence: true,
+            length: { maximum: Settings.user.password.maximum_length }
 
   def initialize(user, params)
     @user = user
