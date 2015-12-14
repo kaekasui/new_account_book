@@ -24,12 +24,14 @@ class EmailUser::RegistrationsController < ApplicationController
 
   def recreate
     @user = EmailUser.inactive.find_by(email: params[:email])
-    fail ActiveRecord::RecordNotFound if @user.nil?
-    @user.remove_token(:registration)
+    fail ActiveRecord::RecordNotFound if params[:email].present? && @user.nil?
+    @registration = EmailUser::RegistrationToken.new(@user, params[:email])
     origin = "#{request.protocol}#{request.host_with_port}"
-    UserMailer.registration(@user.email, @user.registration_url(origin))
-      .deliver_now
-    head 200
+    if @registration.recreate(origin)
+      head 200
+    else
+      render_error @registration
+    end
   end
 
   private

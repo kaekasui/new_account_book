@@ -137,7 +137,7 @@ describe 'POST /email_user/registrations/recreate?email=email', autodoc: true do
   context 'メールアドレスが正しい場合' do
     it '200が返り、メールが送信されること' do
       clear_emails
-      patch "/email_user/registrations/recreate?email=#{email}"
+      patch '/email_user/registrations/recreate', email: email
       expect(response.status).to eq 200
 
       open_email(email)
@@ -167,10 +167,13 @@ describe 'POST /email_user/registrations/recreate?email=email', autodoc: true do
   context 'メールアドレスが空の場合' do
     let(:email) { '' }
 
-    # TODO: 422が返ってくるようにする
-    it '404が返ってくること' do
-      patch "/email_user/registrations/recreate?email=#{email}"
-      expect(response.status).to eq 404
+    it '422が返ってくること' do
+      patch '/email_user/registrations/recreate', email: email
+      expect(response.status).to eq 422
+      json = {
+        'error_messages': ['メールアドレスを入力してください']
+      }
+      expect(response.body).to be_json_as(json)
     end
   end
 end

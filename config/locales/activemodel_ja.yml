@@ -3,3 +3,5 @@ ja:
     attributes:
       email_user/password:
         current_password: 現在のパスワード
+      email_user/registration_token:
+        email: メールアドレス
