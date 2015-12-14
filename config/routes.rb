@@ -10,4 +10,6 @@ Rails.application.routes.draw do
       post :send_mail, on: :collection
     end
   end
+
+  resources :users, only: %i(show)
 end
