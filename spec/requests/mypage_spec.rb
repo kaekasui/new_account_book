@@ -3,7 +3,14 @@ require 'rails_helper'
 describe 'GET /users/:id', autodoc: true do
   let!(:email) { 'login@example.com' }
 
-  context 'メールアドレスのユーザーの場合' do
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      get '/users/1'
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'メールアドレスのユーザーがログインしている場合' do
     let!(:user) { create(:email_user, :registered, email: email) }
 
     it '200とユーザー情報を返すこと' do
