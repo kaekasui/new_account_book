@@ -18,7 +18,9 @@ describe 'GET /users/:id', autodoc: true do
       expect(response.status).to eq 200
 
       json = {
-        id: user.id
+        id: user.id,
+        type: user.type,
+        email: user.email
       }
       expect(response.body).to be_json_as(json)
     end
