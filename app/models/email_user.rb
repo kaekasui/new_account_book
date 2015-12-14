@@ -33,6 +33,14 @@ class EmailUser < User
     @password_token ||= add_password_token
   end
 
+  def update_password(current_password, password, password_confirmation)
+    if authenticate(current_password)
+      update(password: password, password_confirmation: password_confirmation)
+    else
+      false
+    end
+  end
+
   private
 
   def uniqueness_email
