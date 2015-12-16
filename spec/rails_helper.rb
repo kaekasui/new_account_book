@@ -29,8 +29,7 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include RSpec::JsonMatcher
   config.include ActiveJob::TestHelper
-  # TODO: 設定する
-  # config.include(RequestSpecHelper, type: :request)
+  config.include(RequestSpecHelper, type: :request)
 
   config.before :suite do
     I18n.locale = :ja
