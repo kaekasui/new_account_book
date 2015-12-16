@@ -6,13 +6,17 @@
     .panel-heading
       %span.glyphicon.glyphicon-leaf
       {{ 'TITLES.SIGN_UP' | translate }}
-      {{ sign_up.title }}
     .panel-body#with-background
+      .alert.alert-danger{role: 'alert', 'ng-show': 'sign_up.errors'}
+        %button.close{'data-dismiss': 'alert', type: 'button'}×
+        %ul{'ng-repeat': 'error in sign_up.errors'}
+          %li
+            {{error}}
       %form{novalidate: true, name: 'signUpForm', 'ng-submit': 'sign_up.submit()'}
         .form-group
           %label{for: 'email'}
             {{ 'LABELS.EMAIL' | translate }}
-          %input.form-control#email{type: 'email', autofocus: true, name: 'email', 'ng-model': 'email', required: true, 'ng-maxlength': '100'}
+          %input.form-control#email{type: 'email', autofocus: true, name: 'email', 'ng-model': 'sign_up.email', required: true, 'ng-maxlength': '100'}
           %span.errors{'ng-messages': 'signUpForm.email.$error', 'ng-show': 'signUpForm.$submitted'}
             %div{'ng-message': 'required'}
               %span.glyphicon.glyphicon-alert
@@ -26,7 +30,7 @@
         .form-group
           %label{for: 'password'}
             {{ 'LABELS.PASSWORD' | translate }}
-          %input.form-control#password{type: 'password', name: 'password', 'ng-model': 'password', required: true, 'ng-maxlength': '72', 'ng-minlength': '4'}
+          %input.form-control#password{type: 'password', name: 'password', 'ng-model': 'sign_up.password', required: true, 'ng-maxlength': '72', 'ng-minlength': '4'}
           %span.errors{'ng-messages': 'signUpForm.password.$error', 'ng-show': 'signUpForm.$submitted'}
             %div{'ng-message': 'required'}
               %span.glyphicon.glyphicon-alert
@@ -40,7 +44,7 @@
         .form-group
           %label{for: 'password_confirmation'}
             {{ 'LABELS.PASSWORD_CONFIRMATION' | translate }}
-          %input.form-control#password_confirmation{type: 'password', name: 'password_confirmation', 'ng-model': 'password_confirmation', required: true, 'ng-maxlength': '72', 'ng-minlength': '4'}
+          %input.form-control#password_confirmation{type: 'password', name: 'password_confirmation', 'ng-model': 'sign_up.password_confirmation', required: true, 'ng-maxlength': '72', 'ng-minlength': '4'}
           %span.errors{'ng-messages': 'signUpForm.password_confirmation.$error', 'ng-show': 'signUpForm.$submitted'}
             %div{'ng-message': 'required'}
               %span.glyphicon.glyphicon-alert

@@ -5,21 +5,24 @@
       .module('accountBook')
       .controller('SignUpController', SignUpController);
 
-    function SignUpController($http, menuService) {
+    function SignUpController($http, $location, menuService) {
       var vm = this;
 
       vm.menus = menuService.getMenu();
       vm.submit = function() {
         var params = {
-          email: 'email@a.com',
-          password: 'password'
+          email: vm.email,
+          password: vm.password,
+          password_confirmation: vm.password_confirmation
         };
-        $http.post('/email_user/registrations', params)
+        $http.post('http://localhost:3001/email_user/registrations', params)
           .success(function(data, status, headers, config) {
-            vm.title = status;
+            $location.path('/');
           })
           .error(function(data, status, headers, config) {
-            vm.title = status;
+            if (typeof data != 'undefined') {
+              vm.errors = data.error_messages;
+            }
           })
         }
       }

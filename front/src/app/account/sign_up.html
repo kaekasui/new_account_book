@@ -6,15 +6,22 @@
     <div class='panel-heading'>
       <span class='glyphicon glyphicon-leaf'></span>
       {{ 'TITLES.SIGN_UP' | translate }}
-      {{ sign_up.title }}
     </div>
     <div class='panel-body' id='with-background'>
+      <div class='alert alert-danger' ng-show='sign_up.errors' role='alert'>
+        <button class='close' data-dismiss='alert' type='button'>×</button>
+        <ul ng-repeat='error in sign_up.errors'>
+          <li>
+            {{error}}
+          </li>
+        </ul>
+      </div>
       <form name='signUpForm' ng-submit='sign_up.submit()' novalidate>
         <div class='form-group'>
           <label for='email'>
             {{ 'LABELS.EMAIL' | translate }}
           </label>
-          <input autofocus class='form-control' id='email' name='email' ng-maxlength='100' ng-model='email' required type='email'>
+          <input autofocus class='form-control' id='email' name='email' ng-maxlength='100' ng-model='sign_up.email' required type='email'>
           <span class='errors' ng-messages='signUpForm.email.$error' ng-show='signUpForm.$submitted'>
             <div ng-message='required'>
               <span class='glyphicon glyphicon-alert'></span>
@@ -34,7 +41,7 @@
           <label for='password'>
             {{ 'LABELS.PASSWORD' | translate }}
           </label>
-          <input class='form-control' id='password' name='password' ng-maxlength='72' ng-minlength='4' ng-model='password' required type='password'>
+          <input class='form-control' id='password' name='password' ng-maxlength='72' ng-minlength='4' ng-model='sign_up.password' required type='password'>
           <span class='errors' ng-messages='signUpForm.password.$error' ng-show='signUpForm.$submitted'>
             <div ng-message='required'>
               <span class='glyphicon glyphicon-alert'></span>
@@ -54,7 +61,7 @@
           <label for='password_confirmation'>
             {{ 'LABELS.PASSWORD_CONFIRMATION' | translate }}
           </label>
-          <input class='form-control' id='password_confirmation' name='password_confirmation' ng-maxlength='72' ng-minlength='4' ng-model='password_confirmation' required type='password'>
+          <input class='form-control' id='password_confirmation' name='password_confirmation' ng-maxlength='72' ng-minlength='4' ng-model='sign_up.password_confirmation' required type='password'>
           <span class='errors' ng-messages='signUpForm.password_confirmation.$error' ng-show='signUpForm.$submitted'>
             <div ng-message='required'>
               <span class='glyphicon glyphicon-alert'></span>
