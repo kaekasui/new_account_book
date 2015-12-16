@@ -9,6 +9,9 @@ build:
         name: Set up DB
         code: RAILS_ENV=test bundle exec rake db:schema:load
     - script:
+        name: Rspec
+        code: RAILS_ENV=test bundle exec rspec
+    - script:
         name: Check rubocop
         code: RAILS_ENV=test bundle exec rubocop app spec lib
   after-steps:
