@@ -15,7 +15,7 @@
           password: vm.password,
           password_confirmation: vm.password_confirmation
         };
-        $http.post('http://localhost:3001/email_user/registrations', params)
+        $http.post('/email_user/registrations', params)
           .success(function(data, status, headers, config) {
             $location.path('/');
           })
