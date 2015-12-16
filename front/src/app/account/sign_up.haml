@@ -6,6 +6,7 @@
     .panel-heading
       %span.glyphicon.glyphicon-leaf
       {{ 'TITLES.SIGN_UP' | translate }}
+      {{ sign_up.title }}
     .panel-body#with-background
       %form{novalidate: true, name: 'signUpForm', 'ng-submit': 'sign_up.submit()'}
         .form-group
