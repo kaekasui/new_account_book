@@ -1,5 +1,5 @@
 .col-md-3
-  .menu-directive
+  .menu-directive{'menu-data': 'sign_up.menus'}
 
 .col-md-9
   .panel.panel-default
@@ -23,9 +23,10 @@
         %button.btn.btn-default{type: 'submit'}
           {{ 'BUTTONS.SIGN_UP' | translate }}
       %hr
+      %div{'ng-include': 'links'}
       %p
-        %a{'ui-sref': 'login'}
+        %a{'ui-sref': 'reset_password'}
           {{ 'LINKS.FORGOT_PASSWORD' | translate }}
       %p
-        %a{'ui-sref': 'login'}
+        %a{'ui-sref': 'resend_email'}
           {{ 'LINKS.RESEND_EMAIL' | translate }}
