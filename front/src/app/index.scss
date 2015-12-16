@@ -83,6 +83,16 @@ body {
       text-align: right;
     }
   }
+  span.errors {
+    font-family: 'Lucida Grande', Meiryo, sans-serif;
+    color: #ac5e9f;
+    div {
+      margin-left: 10px;
+    }
+  }
+  .close {
+    line-height: 0.8;
+  }
 }
 
 // bower:scss

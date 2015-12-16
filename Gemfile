@@ -22,7 +22,6 @@ gem 'validates_email_format_of'
 gem 'slim-rails'
 gem 'doc_raptor'
 gem 'pusher'
-gem 'rack-cors'
 gem 'sidekiq'
 gem 'rdefs'
 gem 'tokens'
@@ -40,6 +39,7 @@ group :development, :test do
   gem 'gimei'
   gem 'bullet'
   gem 'html2haml'
+  gem 'rack-cors'
 end
 
 group :development do

@@ -35,7 +35,8 @@ describe 'POST /email_user/registrations?email=email\
 
       expect(response.status).to eq 422
       json = {
-        'error_messages': ['パスワードを入力してください']
+        'error_messages': %w(パスワードを入力してください
+                             パスワードは4文字以上で入力してください)
       }
       expect(response.body).to be_json_as(json)
     end
