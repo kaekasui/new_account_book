@@ -4,7 +4,8 @@ class EmailUser < User
   validates :email, presence: true,
                     length: { maximum: Settings.user.email.maximum_length }
   validates :password,
-            length: { minimum: Settings.user.password.minimum_length }
+            length: { minimum: Settings.user.password.minimum_length },
+            on: :create
   validate :uniqueness_email, if: 'email.present?'
 
   def registration_url(origin)
