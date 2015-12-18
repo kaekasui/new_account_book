@@ -1,7 +1,7 @@
 class EmailUser < User
   has_secure_password
 
-  validates :email, presence: true,
+  validates :email, presence: true, email_format: true,
                     length: { maximum: Settings.user.email.maximum_length }
   validates :password,
             length: { minimum: Settings.user.password.minimum_length },
