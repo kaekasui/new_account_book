@@ -10,7 +10,7 @@ class EmailUser < User
 
   def registration_url(origin)
     token = registration_token.token
-    "#{origin}/email_user/registrations/#{id}?token=#{token}"
+    "#{origin}/email_user/registrations/#{id}/regist?token=#{token}"
   end
 
   def registration_token
