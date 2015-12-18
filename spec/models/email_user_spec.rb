@@ -7,6 +7,28 @@ RSpec.describe EmailUser, type: :model do
     it { is_expected.to validate_presence_of(:password) }
     it { is_expected.to validate_length_of(:password).is_at_most(72) }
     it { is_expected.to validate_length_of(:password).is_at_least(4) }
+
+    describe '#email' do
+      let!(:email) { 'email@example.com' }
+      subject do
+        build(:email_user, :registered, email: email)
+      end
+
+      context 'メールアドレスの形式でない場合' do
+        let(:email) { 'email' }
+
+        it 'エラーが発生すること' do
+          expect(subject).to have(1).errors_on(:email)
+          expect(subject.errors.full_messages).to eq ['メールアドレスの正しい形式で入力してください']
+        end
+      end
+
+      context 'メールアドレスの形式である場合' do
+        it 'エラーが発生しないこと' do
+          expect(subject).to have(0).errors_on(:email)
+        end
+      end
+    end
   end
 
   describe '#password_confirmation' do
