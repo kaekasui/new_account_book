@@ -69,16 +69,16 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
   before do
     post '/email_user/registrations', params
     open_email('login@example.com')
-    current_email.body =~ %r{\/registrations\/(\d*)\?token=(.*)\Z}
+    current_email.body =~ %r{\/registrations\/(\d*)\/regist\?token=(.*)\Z}
     @user_id = Regexp.last_match(1)
     @token = Regexp.last_match(2)
   end
 
   context 'リンクが有効な場合' do
-    it '200が返り、メールが送信されること' do
+    it '302が返り、メールが送信されること' do
       clear_emails
-      patch "/email_user/registrations/#{@user_id}?token=#{@token}"
-      expect(response.status).to eq 200
+      get "/email_user/registrations/#{@user_id}/regist", token: @token
+      expect(response.status).to eq 302
 
       user = User.last
       expect(user.status).to eq 'registered'
@@ -89,8 +89,8 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
     end
 
     it 'ログインできるようになっていること' do
-      patch "/email_user/registrations/#{@user_id}", token: @token
-      expect(response.status).to eq 200
+      get "/email_user/registrations/#{@user_id}/regist", token: @token
+      expect(response.status).to eq 302
 
       post '/session', params
       expect(response.status).to eq 200
@@ -99,7 +99,7 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
 
   context 'ユーザーが見つからない場合' do
     it '404が返ってくること' do
-      patch '/email_user/registrations/1', params
+      get '/email_user/registrations/1/regist', params
       expect(response.status).to eq 404
     end
   end
@@ -107,7 +107,7 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
   context 'トークンの有効期限が切れていた場合' do
     it '401が返ってくること' do
       Timecop.travel(2.days.since)
-      patch "/email_user/registrations/#{@user_id}", token: @token
+      get "/email_user/registrations/#{@user_id}/regist", token: @token
       expect(response.status).to eq 401
       Timecop.return
     end
@@ -115,17 +115,17 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
 
   context 'トークンが不正だった場合' do
     it '401が返ってくること' do
-      patch "/email_user/registrations/#{@user_id}", token: "invalid#{@token}"
+      get "/email_user/registrations/#{@user_id}/regist", token: "_#{@token}"
       expect(response.status).to eq 401
     end
   end
 
   context 'すでに登録が完了していた場合' do
     it '401が返ってくること' do
-      patch "/email_user/registrations/#{@user_id}", token: @token
-      expect(response.status).to eq 200
+      get "/email_user/registrations/#{@user_id}/regist", token: @token
+      expect(response.status).to eq 302
 
-      patch "/email_user/registrations/#{@user_id}", token: @token
+      get "/email_user/registrations/#{@user_id}/regist", token: @token
       expect(response.status).to eq 401
     end
   end

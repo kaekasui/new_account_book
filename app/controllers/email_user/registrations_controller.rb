@@ -12,11 +12,11 @@ class EmailUser::RegistrationsController < ApplicationController
     end
   end
 
-  def update
-    @user = EmailUser.find(params[:id].to_i)
+  def regist
+    @user = EmailUser.find(params[:registration_id].to_i)
     if @user.registered_by(params[:token])
       UserMailer.finished_registration(@user.email).deliver_now
-      head 200
+      redirect_to '/'
     else
       render_error @user, 401
     end
