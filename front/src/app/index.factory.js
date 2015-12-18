@@ -6,7 +6,8 @@
       .factory('IndexFactory', IndexFactory);
 
     function IndexFactory($http, $location, $q) {
-      var host = 'http://localhost:3001/';
+      //var host = 'http://localhost:3001/';
+      var host = '';
       var defer = $q.defer();
 
       return ({
