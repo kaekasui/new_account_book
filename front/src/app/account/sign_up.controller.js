@@ -5,7 +5,7 @@
       .module('accountBook')
       .controller('SignUpController', SignUpController);
 
-    function SignUpController($http, $location, menuService) {
+    function SignUpController($http, $location, menuService, IndexFactory) {
       var vm = this;
 
       vm.menus = menuService.getMenu();
@@ -15,15 +15,10 @@
           password: vm.password,
           password_confirmation: vm.password_confirmation
         };
-        $http.post('/email_user/registrations', params)
-          .success(function(data, status, headers, config) {
-            $location.path('/');
-          })
-          .error(function(data, status, headers, config) {
-            if (typeof data != 'undefined') {
-              vm.errors = data.error_messages;
-            }
-          })
-        }
+
+        IndexFactory.postEmailUserRegistrations(params).catch(function(res) {
+          vm.errors = res.error_messages;
+        });
       }
+    }
 })();
