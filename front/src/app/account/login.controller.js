@@ -8,7 +8,6 @@
     function LoginController(menuService, IndexFactory) {
       var vm = this;
 
-      //vm.errors = '';
       vm.menus = menuService.getMenu();
       vm.submit = function() {
         var params = {
