@@ -9,6 +9,9 @@
       var vm = this;
 
       vm.menus = menuService.getMenu();
+      vm.clearErrors = function() {
+        vm.errors = '';
+      }
       vm.submit = function() {
         var params = {
           email: vm.email,

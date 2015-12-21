@@ -8,14 +8,17 @@
     function IndexFactory($http, $location, $q, localStorageService) {
       var host = 'http://localhost:3001/';
       //var host = '';
-      var defer = $q.defer();
 
       return ({
+        clearErrors: function(obj) {
+          return obj.errors = '';
+        },
         currentUser: function() {
           var token = localStorageService.get('access_token');
           return typeof(token) != "undefined" && token != null;
         },
         postEmailUserRegistrations: function(params) { 
+          var defer = $q.defer();
           $http.post(host + 'email_user/registrations', params)
             .success(function(data, status, headers, config) {
               $location.path('/');
@@ -28,6 +31,7 @@
           return defer.promise;
         },
         postSession: function(params) {
+          var defer = $q.defer();
           $http.post(host + 'session', params)
             .success(function(data, status, headers, config) {
               defer.resolve(data);
@@ -35,9 +39,7 @@
               $location.path('/');
             })
             .error(function(data, status, headers, config) {
-              if (typeof data != 'undefined') {
-                defer.reject(data);
-              }
+              defer.reject(data);
             });
           return defer.promise;
         }
