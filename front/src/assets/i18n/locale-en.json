@@ -5,6 +5,7 @@
     "DASHBOARD": "Dashboard",
     "SETTINGS": "Settings",
     "LOGIN": "Log in",
+    "LOGOUT": "Logout",
     "SIGN_UP": "Sign up",
     "RESET_PASSWORD": "Reset Password",
     "RESEND_EMAIL": "Resend Email"
