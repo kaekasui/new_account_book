@@ -10,9 +10,6 @@
       //var host = '';
 
       return ({
-        clearErrors: function(obj) {
-          return obj.errors = '';
-        },
         currentUser: function() {
           var token = localStorageService.get('access_token');
           return typeof(token) != "undefined" && token != null;

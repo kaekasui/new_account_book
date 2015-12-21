@@ -19,7 +19,7 @@
 
     return directive;
 
-    function NavbarController(IndexFactory, localStorageService, $location, $scope) {
+    function NavbarController(IndexFactory, localStorageService, $location, $scope, toastr, $translate) {
       var vm = this;
       $scope.$watch(function() {
         return $location.path();
@@ -30,6 +30,7 @@
       vm.logout = function() {
         localStorageService.remove('access_token');
         vm.current_user = IndexFactory.currentUser();
+        toastr.success($translate.instant('MESSAGES.LOGOUT'));
         $location.path('/');
       };
     }
