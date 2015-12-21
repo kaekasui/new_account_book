@@ -9,7 +9,7 @@
     </div>
     <div class='panel-body' id='with-background'>
       <div class='alert alert-danger' ng-show='login.errors' role='alert'>
-        <button class='close' data-dismiss='alert' type='button'>×</button>
+        <button class='close' data-dismiss='alert' ng-click='login.clearErrors()' type='button'>×</button>
         <ul ng-repeat='error in login.errors'>
           <li>
             {{error}}

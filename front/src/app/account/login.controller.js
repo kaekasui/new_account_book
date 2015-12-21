@@ -8,6 +8,7 @@
     function LoginController(menuService, IndexFactory) {
       var vm = this;
 
+      //vm.errors = '';
       vm.menus = menuService.getMenu();
       vm.submit = function() {
         var params = {
@@ -15,10 +16,12 @@
           password: vm.password
         };
 
-        IndexFactory.postSession(params).then(function(res) {
-        }).catch(function(res) {
+        IndexFactory.postSession(params).catch(function(res) {
           vm.errors = res.error_messages;
         });
+      }
+      vm.clearErrors = function() {
+        vm.errors = '';
       }
     }
 
