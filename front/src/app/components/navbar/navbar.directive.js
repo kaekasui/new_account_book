@@ -19,13 +19,17 @@
 
     return directive;
 
-    function NavbarController(IndexFactory, localStorageService, $location) {
+    function NavbarController(IndexFactory, localStorageService, $location, $scope) {
       var vm = this;
+      $scope.$watch(function() {
+        return $location.path();
+      }, function() {
+        vm.current_user = IndexFactory.currentUser();
+      });
       vm.current_user = IndexFactory.currentUser();
-      //vm.$watch('current_user', function() {
-      //});
       vm.logout = function() {
         localStorageService.remove('access_token');
+        vm.current_user = IndexFactory.currentUser();
         $location.path('/');
       };
     }
