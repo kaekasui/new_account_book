@@ -5,7 +5,7 @@
       .module('accountBook')
       .controller('LoginController', LoginController);
 
-    function LoginController(menuService, IndexFactory) {
+    function LoginController(menuService, IndexFactory, toastr, $translate) {
       var vm = this;
 
       vm.menus = menuService.getMenu();
@@ -15,7 +15,9 @@
           password: vm.password
         };
 
-        IndexFactory.postSession(params).catch(function(res) {
+        IndexFactory.postSession(params).then(function(res) {
+          toastr.success($translate.instant('MESSAGES.LOGIN'));
+        }).catch(function(res) {
           vm.errors = res.error_messages;
         });
       }
