@@ -11,6 +11,10 @@
       var defer = $q.defer();
 
       return ({
+        currentUser: function() {
+          var token = localStorageService.get('access_token');
+          return typeof(token) != "undefined" && token != null;
+        },
         postEmailUserRegistrations: function(params) { 
           $http.post(host + 'email_user/registrations', params)
             .success(function(data, status, headers, config) {

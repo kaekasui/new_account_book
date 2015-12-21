@@ -5,6 +5,7 @@
     "DASHBOARD": "ダッシュボード",
     "SETTINGS": "各種設定",
     "LOGIN": "ログイン",
+    "LOGOUT": "ログアウト",
     "SIGN_UP": "新規登録",
     "RESET_PASSWORD": "パスワード再設定",
     "RESEND_EMAIL": "確認メール再送信"
