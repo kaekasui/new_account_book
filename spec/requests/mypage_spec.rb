@@ -20,7 +20,8 @@ describe 'GET /users/:id', autodoc: true do
       json = {
         id: user.id,
         type: user.type,
-        email: user.email
+        email: user.email,
+        admin: user.admin
       }
       expect(response.body).to be_json_as(json)
     end

@@ -37,13 +37,13 @@
           </li>
         </ul>
       </li>
-      <li ng-hide='vm.current_user'>
+      <li ng-hide='vm.login_status'>
         <a ui-sref='login'>
           <span class='glyphicon glyphicon-leaf'></span>
           {{ 'TITLES.LOGIN' | translate }}
         </a>
       </li>
-      <li ng-show='vm.current_user'>
+      <li ng-show='vm.login_status'>
         <a ng-click='vm.logout()' ui-sref='home'>
           <span class='glyphicon glyphicon-leaf'></span>
           {{ 'TITLES.LOGOUT' | translate }}
