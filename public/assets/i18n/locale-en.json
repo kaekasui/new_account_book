@@ -5,6 +5,7 @@
     "DASHBOARD": "Dashboard",
     "SETTINGS": "Settings",
     "LOGIN": "Log in",
+    "LOGOUT": "Logout",
     "SIGN_UP": "Sign up",
     "RESET_PASSWORD": "Reset Password",
     "RESEND_EMAIL": "Resend Email"
@@ -37,5 +38,9 @@
       "PASSWORD": "Enter your Password has a length of at least 4"
     },
     "EMAIL": "Enter your E-mail has a valid email format"
+  },
+  "MESSAGES": {
+    "LOGIN": "Logged in",
+    "LOGOUT": "Logged out"
   }
 }
