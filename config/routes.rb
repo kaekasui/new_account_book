@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: %i(show)
+  resource :user, only: %i(show)
 end
