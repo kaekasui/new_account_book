@@ -85,8 +85,9 @@ gulp.task 'clean', ->
   $.del [
     path.join(conf.paths.dist, '/')
     path.join(conf.paths.tmp, '/')
-  ]
+  ], { force: true }
 gulp.task 'build', [
+  'clean'
   'html'
   'fonts'
   'other'
