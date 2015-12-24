@@ -16,6 +16,10 @@
           %span.glyphicon.glyphicon-stats
           {{ 'TITLES.DASHBOARD' | translate }}
     %ul.nav.navbar-nav.navbar-right
+      %li{'ng-show': 'vm.login_status && vm.current_user.admin'}
+        %a{'ui-sref': 'admin'}
+          %span.glyphicon.glyphicon-king
+          {{ 'TITLES.ADMIN' | translate }}
       %li.dropdown
         %a.dropdown-toggle{'data-toggle': 'dropdown', 'role': 'button', 'aria-haspopup': true, 'aria-expended': false, 'href': '#'}
           %span.glyphicon.glyphicon-cog
