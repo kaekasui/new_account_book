@@ -16,6 +16,10 @@
           %span.glyphicon.glyphicon-stats
           {{ 'TITLES.DASHBOARD' | translate }}
     %ul.nav.navbar-nav.navbar-right
+      %li{'ng-show': 'vm.login_status && vm.current_user.admin'}
+        %a{'ui-sref': 'admin'}
+          %span.glyphicon.glyphicon-king
+          {{ 'TITLES.ADMIN' | translate }}
       %li.dropdown
         %a.dropdown-toggle{'data-toggle': 'dropdown', 'role': 'button', 'aria-haspopup': true, 'aria-expended': false, 'href': '#'}
           %span.glyphicon.glyphicon-cog
@@ -25,11 +29,15 @@
           %li
             %span.glyphicon.glyphicon-tag
             カテゴリ
-      %li{'ng-hide': 'vm.current_user'}
+      %li{'ng-hide': 'vm.login_status'}
         %a{'ui-sref': 'login'}
           %span.glyphicon.glyphicon-leaf
           {{ 'TITLES.LOGIN' | translate }}
-      %li{'ng-show': 'vm.current_user'}
+      %li{'ng-show': 'vm.login_status'}
+        %a{'ui-sref': 'mypage'}
+          %span.glyphicon.glyphicon-user
+          {{ vm.current_user.email }}
+      %li{'ng-show': 'vm.login_status'}
         %a{'ui-sref': 'home', 'ng-click': 'vm.logout()'}
           %span.glyphicon.glyphicon-leaf
           {{ 'TITLES.LOGOUT' | translate }}
