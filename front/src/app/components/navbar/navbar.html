@@ -44,6 +44,12 @@
         </a>
       </li>
       <li ng-show='vm.login_status'>
+        <a ui-sref='mypage'>
+          <span class='glyphicon glyphicon-user'></span>
+          {{ vm.current_user.email }}
+        </a>
+      </li>
+      <li ng-show='vm.login_status'>
         <a ng-click='vm.logout()' ui-sref='home'>
           <span class='glyphicon glyphicon-leaf'></span>
           {{ 'TITLES.LOGOUT' | translate }}

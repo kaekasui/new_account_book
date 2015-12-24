@@ -8,7 +8,8 @@
     "LOGOUT": "Logout",
     "SIGN_UP": "Sign up",
     "RESET_PASSWORD": "Reset Password",
-    "RESEND_EMAIL": "Resend Email"
+    "RESEND_EMAIL": "Resend Email",
+    "MYPAGE": "Mypage"
   },
   "BUTTONS": {
     "LOGIN": "Log in",

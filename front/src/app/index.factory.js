@@ -14,12 +14,19 @@
           var token = localStorageService.get('access_token');
           return typeof(token) != "undefined" && token != null;
         },
-        getCurrentUser: function(id, login_headers) {
+        getCurrentUser: function() {
           var defer = $q.defer();
-          $http.get(host + "users/#{id}", '', login_headers)
-            .success(function(data, status, headers, config) {
-              defer.resolve(data);
-            })
+          var token = localStorageService.get('access_token');
+          if (this.getLoginStatus()) {
+            var login_headers = { headers: { Authorization: "Token token=" + token }};
+            $http.get(host + 'user/', login_headers)
+              .success(function(data, status, headers, config) {
+                defer.resolve(data);
+              })
+              .error(function(data, status, headers, config) {
+                defer.reject(data);
+              });
+          }
           return defer.promise;
         },
         postEmailUserRegistrations: function(params) { 

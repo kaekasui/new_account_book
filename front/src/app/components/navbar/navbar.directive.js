@@ -24,6 +24,7 @@
 
   function NavbarController(IndexFactory, localStorageService, $location, $scope, toastr, $translate) {
     var vm = this;
+
     $scope.$watch(function() {
       return $location.path();
     }, function() {
@@ -36,6 +37,9 @@
       toastr.success($translate.instant('MESSAGES.LOGOUT'));
       $location.path('/');
     };
+    IndexFactory.getCurrentUser().then(function(res) {
+      vm.current_user = res;
+    })
   }
 
 })();

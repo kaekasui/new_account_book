@@ -43,6 +43,12 @@
         templateUrl: 'app/components/menu/menu.html',
         controller: 'MenuController',
         controllerAs: 'menu'
+      })
+      .state('mypage', {
+        url: '/mypage',
+        templateUrl: 'app/user/mypage.html',
+        controller: 'MypageController',
+        controllerAs: 'mypage'
       });
 
     $urlRouterProvider.otherwise('/');

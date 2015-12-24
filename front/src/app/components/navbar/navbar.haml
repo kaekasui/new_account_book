@@ -30,6 +30,10 @@
           %span.glyphicon.glyphicon-leaf
           {{ 'TITLES.LOGIN' | translate }}
       %li{'ng-show': 'vm.login_status'}
+        %a{'ui-sref': 'mypage'}
+          %span.glyphicon.glyphicon-user
+          {{ vm.current_user.email }}
+      %li{'ng-show': 'vm.login_status'}
         %a{'ui-sref': 'home', 'ng-click': 'vm.logout()'}
           %span.glyphicon.glyphicon-leaf
           {{ 'TITLES.LOGOUT' | translate }}
