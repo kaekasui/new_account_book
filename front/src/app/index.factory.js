@@ -10,9 +10,24 @@
       //var host = '';
 
       return ({
-        currentUser: function() {
+        getLoginStatus: function() {
           var token = localStorageService.get('access_token');
           return typeof(token) != "undefined" && token != null;
+        },
+        getCurrentUser: function() {
+          var defer = $q.defer();
+          var token = localStorageService.get('access_token');
+          if (this.getLoginStatus()) {
+            var login_headers = { headers: { Authorization: "Token token=" + token }};
+            $http.get(host + 'user/', login_headers)
+              .success(function(data, status, headers, config) {
+                defer.resolve(data);
+              })
+              .error(function(data, status, headers, config) {
+                defer.reject(data);
+              });
+          }
+          return defer.promise;
         },
         postEmailUserRegistrations: function(params) { 
           var defer = $q.defer();

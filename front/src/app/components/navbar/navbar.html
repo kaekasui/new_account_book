@@ -24,6 +24,12 @@
       </li>
     </ul>
     <ul class='nav navbar-nav navbar-right'>
+      <li ng-show='vm.login_status &amp;&amp; vm.current_user.admin'>
+        <a ui-sref='admin'>
+          <span class='glyphicon glyphicon-king'></span>
+          {{ 'TITLES.ADMIN' | translate }}
+        </a>
+      </li>
       <li class='dropdown'>
         <a aria-haspopup class='dropdown-toggle' data-toggle='dropdown' href='#' role='button'>
           <span class='glyphicon glyphicon-cog'></span>
@@ -37,13 +43,19 @@
           </li>
         </ul>
       </li>
-      <li ng-hide='vm.current_user'>
+      <li ng-hide='vm.login_status'>
         <a ui-sref='login'>
           <span class='glyphicon glyphicon-leaf'></span>
           {{ 'TITLES.LOGIN' | translate }}
         </a>
       </li>
-      <li ng-show='vm.current_user'>
+      <li ng-show='vm.login_status'>
+        <a ui-sref='mypage'>
+          <span class='glyphicon glyphicon-user'></span>
+          {{ vm.current_user.email }}
+        </a>
+      </li>
+      <li ng-show='vm.login_status'>
         <a ng-click='vm.logout()' ui-sref='home'>
           <span class='glyphicon glyphicon-leaf'></span>
           {{ 'TITLES.LOGOUT' | translate }}

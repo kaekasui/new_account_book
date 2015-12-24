@@ -1,6 +1,7 @@
 {
   "BRAND_NAME": "おこづかいちょうβ",
   "TITLES": {
+    "ADMIN": "管理",
     "HOME": "HOME",
     "DASHBOARD": "ダッシュボード",
     "SETTINGS": "各種設定",
@@ -8,7 +9,8 @@
     "LOGOUT": "ログアウト",
     "SIGN_UP": "新規登録",
     "RESET_PASSWORD": "パスワード再設定",
-    "RESEND_EMAIL": "確認メール再送信"
+    "RESEND_EMAIL": "確認メール再送信",
+    "MYPAGE": "マイページ"
   },
   "BUTTONS": {
     "LOGIN": "ログインする",

@@ -24,18 +24,22 @@
 
   function NavbarController(IndexFactory, localStorageService, $location, $scope, toastr, $translate) {
     var vm = this;
+
     $scope.$watch(function() {
       return $location.path();
     }, function() {
-      vm.current_user = IndexFactory.currentUser();
+      vm.login_status = IndexFactory.getLoginStatus();
     });
-    vm.current_user = IndexFactory.currentUser();
+    vm.login_status = IndexFactory.getLoginStatus();
     vm.logout = function() {
       localStorageService.remove('access_token');
-      vm.current_user = IndexFactory.currentUser();
+      vm.login_status = IndexFactory.getLoginStatus();
       toastr.success($translate.instant('MESSAGES.LOGOUT'));
       $location.path('/');
     };
+    IndexFactory.getCurrentUser().then(function(res) {
+      vm.current_user = res;
+    })
   }
 
 })();

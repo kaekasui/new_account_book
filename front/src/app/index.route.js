@@ -8,6 +8,12 @@
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
+      .state('admin', {
+        url: '/admin',
+        templateUrl: 'app/admin/admin.html',
+        controller: 'AdminController',
+        controllerAs: 'admin'
+      })
       .state('home', {
         url: '/',
         templateUrl: 'app/main/main.html',
@@ -43,6 +49,12 @@
         templateUrl: 'app/components/menu/menu.html',
         controller: 'MenuController',
         controllerAs: 'menu'
+      })
+      .state('mypage', {
+        url: '/mypage',
+        templateUrl: 'app/user/mypage.html',
+        controller: 'MypageController',
+        controllerAs: 'mypage'
       });
 
     $urlRouterProvider.otherwise('/');
