@@ -17,8 +17,7 @@
   }
 
   function MenuController(MenuFactory) {
-    this.menus = MenuFactory.getMenu();
-    this.set_menu = function() {
+    this.setMenu = function() {
       this.menus = MenuFactory.getMenu();
     };
     this.menu_image = 'assets/images/pig_footprints.gif';

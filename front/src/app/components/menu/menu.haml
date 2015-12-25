@@ -1,4 +1,4 @@
-%ul.list-group
+%ul.list-group{'ng-init': 'menu.setMenu()'}
   %li.list-group-item{'ng-repeat': 'menu_field in menu.menus', 'ng-mouseenter': 'menu.mouseEnter($index)', 'ng-mouseleave': 'menu.mouseLeave()'}
     %a{'ui-sref': '{{menu_field.url}}'}
       %span.glyphicon{'class': '{{menu_field.icon}}'}
