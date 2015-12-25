@@ -6,9 +6,7 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log, MenuFactory) {
-    MenuFactory.getMenu();
-
+  function runBlock($log) {
     $log.debug('runBlock end');
   }
 
