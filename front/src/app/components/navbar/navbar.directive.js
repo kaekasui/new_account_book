@@ -29,17 +29,16 @@
       return $location.path();
     }, function() {
       vm.login_status = IndexFactory.getLoginStatus();
+      IndexFactory.getCurrentUser().then(function(res) {
+        vm.current_user = res;
+      })
     });
-    vm.login_status = IndexFactory.getLoginStatus();
     vm.logout = function() {
       localStorageService.remove('access_token');
       vm.login_status = IndexFactory.getLoginStatus();
       toastr.success($translate.instant('MESSAGES.LOGOUT'));
       $location.path('/');
     };
-    IndexFactory.getCurrentUser().then(function(res) {
-      vm.current_user = res;
-    })
   }
 
 })();

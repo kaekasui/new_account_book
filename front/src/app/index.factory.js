@@ -5,7 +5,7 @@
       .module('accountBook')
       .factory('IndexFactory', IndexFactory);
 
-    function IndexFactory($http, $location, $q, localStorageService) {
+    function IndexFactory($http, $location, $q, localStorageService, $translate, toastr) {
       var host = 'http://localhost:3001/';
       //var host = '';
 
@@ -33,6 +33,8 @@
           var defer = $q.defer();
           $http.post(host + 'email_user/registrations', params)
             .success(function(data, status, headers, config) {
+              defer.resolve(data);
+              toastr.success($translate.instant('MESSAGES.SEND_MAIL'));
               $location.path('/');
             })
             .error(function(data, status, headers, config) {
@@ -48,6 +50,7 @@
             .success(function(data, status, headers, config) {
               defer.resolve(data);
               localStorageService.set('access_token', data.access_token);
+              toastr.success($translate.instant('MESSAGES.LOGIN'));
               $location.path('/');
             })
             .error(function(data, status, headers, config) {
