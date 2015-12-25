@@ -17,6 +17,8 @@
   }
 
   function MenuController(MenuFactory, $scope) {
+    $scope.$on('$viewContentLoaded', function() {
+    })
     this.setMenu = function() {
       this.menus = MenuFactory.getMenu();
     };
