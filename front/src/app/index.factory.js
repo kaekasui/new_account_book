@@ -6,8 +6,7 @@
       .factory('IndexFactory', IndexFactory);
 
     function IndexFactory($http, $location, $q, localStorageService, $translate, toastr) {
-      var host = 'http://localhost:3001/';
-      //var host = '';
+      var host = ($location.host() == 'localhost') ? 'http://localhost:3001/' : '';
 
       return ({
         getLoginStatus: function() {
