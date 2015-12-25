@@ -5,10 +5,9 @@
       .module('accountBook')
       .controller('LoginController', LoginController);
 
-    function LoginController(menuService, IndexFactory) {
+    function LoginController(IndexFactory) {
       var vm = this;
 
-      vm.menus = menuService.getMenu();
       vm.submit = function() {
         var params = {
           email: vm.email,

@@ -5,10 +5,8 @@
       .module('accountBook')
       .controller('ResendEmailController', ResendEmailController);
 
-    function ResendEmailController(menuService) {
+    function ResendEmailController() {
       var vm = this;
-
-      vm.menus = menuService.getMenu();
     }
 
 })();
