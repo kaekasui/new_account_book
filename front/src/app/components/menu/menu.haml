@@ -3,5 +3,6 @@
     %a{'ui-sref': '{{menu_field.url}}'}
       %span.glyphicon{'class': '{{menu_field.icon}}'}
       {{menu_field.name}}
+      %span{'ng-bind': 'menu_field.name'}
     %span{'ng-show': 'menu.isSelected($index)'}
       %img.pull-right{'ng-src': '{{menu.menu_image}}'}

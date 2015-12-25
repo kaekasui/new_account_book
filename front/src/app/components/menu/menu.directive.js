@@ -16,7 +16,7 @@
     return directive;
   }
 
-  function MenuController(MenuFactory) {
+  function MenuController(MenuFactory, $scope) {
     this.setMenu = function() {
       this.menus = MenuFactory.getMenu();
     };
