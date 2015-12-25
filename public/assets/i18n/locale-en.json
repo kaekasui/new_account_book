@@ -43,6 +43,7 @@
   },
   "MESSAGES": {
     "LOGIN": "Logged in",
-    "LOGOUT": "Logged out"
+    "LOGOUT": "Logged out",
+    "SEND_MAIL": "Send a mail"
   }
 }
