@@ -1,7 +1,7 @@
-%ul.list-group
-  %li.list-group-item{'ng-repeat': 'menu_field in ::menu.menus', 'ng-mouseenter': 'menu.mouseEnter($index)', 'ng-mouseleave': 'menu.mouseLeave()'}
-    %a{'ui-sref': '{{::menu_field.url}}'}
-      %span.glyphicon{'class': '{{::menu_field.icon}}'}
-      {{::menu_field.name}}
+%ul.list-group{'ng-init': 'menu.setMenu()'}
+  %li.list-group-item{'ng-repeat': 'menu_field in menu.menus', 'ng-mouseenter': 'menu.mouseEnter($index)', 'ng-mouseleave': 'menu.mouseLeave()'}
+    %a{'ui-sref': '{{menu_field.url}}'}
+      %span.glyphicon{'class': '{{menu_field.icon}}'}
+      {{menu_field.name}}
     %span{'ng-show': 'menu.isSelected($index)'}
       %img.pull-right{'ng-src': '{{menu.menu_image}}'}
