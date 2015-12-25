@@ -24,6 +24,12 @@
     this.isSelected = function(index) {
       return this.selected == index;
     };
+    $scope.$watch(
+        function() { return $filter('translate')('TITLES.LOGIN'); },
+        function() {
+          this.menus = MenuFactory.getMenu();
+        }
+    );
  
     // Event
     this.mouseEnter = function(index) {
