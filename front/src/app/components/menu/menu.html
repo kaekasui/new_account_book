@@ -1,8 +1,8 @@
 <ul class='list-group'>
-  <li class='list-group-item' ng-mouseenter='menu.mouseEnter($index)' ng-mouseleave='menu.mouseLeave()' ng-repeat='menu_field in ::menu.menus'>
-    <a ui-sref='{{::menu_field.url}}'>
-      <span class='glyphicon {{::menu_field.icon}}'></span>
-      {{::menu_field.name}}
+  <li class='list-group-item' ng-mouseenter='menu.mouseEnter($index)' ng-mouseleave='menu.mouseLeave()' ng-repeat='menu_field in menu.menus'>
+    <a ui-sref='{{menu_field.url}}'>
+      <span class='glyphicon {{menu_field.icon}}'></span>
+      {{menu_field.name}}
     </a>
     <span ng-show='menu.isSelected($index)'>
       <img class='pull-right' ng-src='{{menu.menu_image}}'>
