@@ -16,21 +16,12 @@
     return directive;
   }
 
-  function MenuController(MenuFactory, $scope, $filter) {
-    this.setMenu = function() {
-      this.menus = MenuFactory.getMenu();
-    };
+  function MenuController($scope, $filter) {
     this.menu_image = 'assets/images/pig_footprints.gif';
     this.isSelected = function(index) {
       return this.selected == index;
     };
-    $scope.$watch(
-        function() { return $filter('translate')('TITLES.LOGIN'); },
-        function() {
-          this.menus = MenuFactory.getMenu();
-        }
-    );
- 
+
     // Event
     this.mouseEnter = function(index) {
       this.selected = index;
