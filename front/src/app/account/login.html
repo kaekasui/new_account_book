@@ -63,7 +63,7 @@
             {{ 'LABELS.REMEMBER_ME' | translate }}
           </label>
         </div>
-        <button class='btn btn-default' type='submit'>
+        <button class='btn btn-default' ng-disabled='loginForm.$submitted &amp;&amp; loginForm.$invalid' type='submit'>
           {{ 'BUTTONS.LOGIN' | translate }}
         </button>
       </form>

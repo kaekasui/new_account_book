@@ -8,14 +8,14 @@
       {{ 'TITLES.RESEND_EMAIL' | translate }}
     </div>
     <div class='panel-body' id='with-background'>
-      <form>
+      <form name='resendEmailForm' ng-submit='resend_email.submit()' novalidate>
         <div class='form-group'>
           <label for='email'>
             {{ 'LABELS.EMAIL' | translate }}
           </label>
-          <input autofocus class='form-control' id='email' required type='email'>
+          <input autofocus class='form-control' id='email' name='email' ng-maxlength='100' ng-model='resend_email.email' required type='email'>
         </div>
-        <button class='btn btn-default' type='submit'>
+        <button class='btn btn-default' ng-disabled='resendEmailForm.$submitted &amp;&amp; resendEmailForm.$invalid' type='submit'>
           {{ 'BUTTONS.SEND' | translate }}
         </button>
       </form>

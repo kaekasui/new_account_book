@@ -55,7 +55,7 @@
             %div{'ng-message': 'minlength'}
               %span.glyphicon.glyphicon-alert
               {{ 'ERRORS.MINLENGTH.PASSWORD' | translate }}
-        %button.btn.btn-default{type: 'submit', 'ng-disabled': 'signUpForm.$invalid'}
+        %button.btn.btn-default{type: 'submit', 'ng-disabled': 'signUpForm.$submitted && signUpForm.$invalid'}
           {{ 'BUTTONS.SIGN_UP' | translate }}
       %hr
       %p
