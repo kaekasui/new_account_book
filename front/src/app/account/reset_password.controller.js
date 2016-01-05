@@ -5,7 +5,7 @@
       .module('accountBook')
       .controller('ResetPasswordController', ResetPasswordController);
 
-    function ResetPasswordController() {
+    function ResetPasswordController(IndexFactory) {
       var vm = this;
 
       vm.submit = function() {
@@ -13,10 +13,9 @@
           email: vm.email
         };
 
-    //    IndexFactory.postSession(params).catch(function(res) {
-    //      vm.errors = res.error_messages;
-    //    });
+        IndexFactory.postResetPassword(params).catch(function(res) {
+          vm.errors = res.error_messages;
+        });
       }
     }
-
 })();
