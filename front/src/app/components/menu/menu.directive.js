@@ -3,36 +3,33 @@
 
   angular
     .module('accountBook')
+    .controller('MenuController', MenuController)
     .directive('menuDirective', menuDirective);
 
   function menuDirective() {
     var directive = {
-      restrict: 'C',
-      scope: {
-        menuData: '='
-      },
       templateUrl: 'app/components/menu/menu.html',
-      controller: MenuController,
+      controller: 'MenuController',
       controllerAs: 'menu',
       bindToController: true
     };
-
     return directive;
-
-    function MenuController() {
-      this.menus = this.menuData;
-      this.menu_image = 'assets/images/pig_footprints.gif';
-      this.isSelected = function(index) {
-        return this.selected == index;
-      };
- 
-      // Event
-      this.mouseEnter = function(index) {
-        this.selected = index;
-      };
-      this.mouseLeave = function() {
-        this.selected = undefined;
-      };
-    }
   }
+
+  function MenuController() {
+    var vm = this;
+    vm.menu_image = 'assets/images/pig_footprints.gif';
+    vm.isSelected = function(index) {
+      return vm.selected == index;
+    };
+
+    // Event
+    vm.mouseEnter = function(index) {
+      vm.selected = index;
+    };
+    vm.mouseLeave = function() {
+      vm.selected = undefined;
+    };
+  }
+  
 })();

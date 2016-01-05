@@ -5,10 +5,9 @@
       .module('accountBook')
       .controller('SignUpController', SignUpController);
 
-    function SignUpController($http, $location, menuService, IndexFactory) {
+    function SignUpController($http, $location, IndexFactory) {
       var vm = this;
 
-      vm.menus = menuService.getMenu();
       vm.clearErrors = function() {
         vm.errors = '';
       }

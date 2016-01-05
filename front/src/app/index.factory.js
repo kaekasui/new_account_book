@@ -19,10 +19,10 @@
           if (this.getLoginStatus()) {
             var login_headers = { headers: { Authorization: "Token token=" + token }};
             $http.get(host + 'user/', login_headers)
-              .success(function(data, status, headers, config) {
+              .success(function(data) {
                 defer.resolve(data);
               })
-              .error(function(data, status, headers, config) {
+              .error(function(data) {
                 defer.reject(data);
               });
           }
@@ -31,12 +31,12 @@
         postEmailUserRegistrations: function(params) { 
           var defer = $q.defer();
           $http.post(host + 'email_user/registrations', params)
-            .success(function(data, status, headers, config) {
+            .success(function(data) {
               defer.resolve(data);
               toastr.success($translate.instant('MESSAGES.SEND_MAIL'));
               $location.path('/');
             })
-            .error(function(data, status, headers, config) {
+            .error(function(data) {
               if (typeof data != 'undefined') {
                 defer.reject(data);
               }
@@ -46,13 +46,13 @@
         postSession: function(params) {
           var defer = $q.defer();
           $http.post(host + 'session', params)
-            .success(function(data, status, headers, config) {
+            .success(function(data) {
               defer.resolve(data);
               localStorageService.set('access_token', data.access_token);
               toastr.success($translate.instant('MESSAGES.LOGIN'));
               $location.path('/');
             })
-            .error(function(data, status, headers, config) {
+            .error(function(data) {
               defer.reject(data);
             });
           return defer.promise;

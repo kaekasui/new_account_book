@@ -6,7 +6,6 @@
       .controller('MypageController', MypageController);
 
     function MypageController() {
-      var vm = this;
     }
 
 })();
