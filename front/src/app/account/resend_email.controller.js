@@ -6,7 +6,6 @@
       .controller('ResendEmailController', ResendEmailController);
 
     function ResendEmailController() {
-      var vm = this;
     }
 
 })();

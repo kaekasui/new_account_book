@@ -16,18 +16,19 @@
     return directive;
   }
 
-  function MenuController($scope, $filter) {
-    this.menu_image = 'assets/images/pig_footprints.gif';
-    this.isSelected = function(index) {
-      return this.selected == index;
+  function MenuController() {
+    var vm = this;
+    vm.menu_image = 'assets/images/pig_footprints.gif';
+    vm.isSelected = function(index) {
+      return vm.selected == index;
     };
 
     // Event
-    this.mouseEnter = function(index) {
-      this.selected = index;
+    vm.mouseEnter = function(index) {
+      vm.selected = index;
     };
-    this.mouseLeave = function() {
-      this.selected = undefined;
+    vm.mouseLeave = function() {
+      vm.selected = undefined;
     };
   }
   

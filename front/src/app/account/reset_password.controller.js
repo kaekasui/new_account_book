@@ -6,7 +6,6 @@
       .controller('ResetPasswordController', ResetPasswordController);
 
     function ResetPasswordController() {
-      var vm = this;
     }
 
 })();
