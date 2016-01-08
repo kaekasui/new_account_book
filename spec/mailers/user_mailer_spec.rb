@@ -41,7 +41,7 @@ RSpec.describe UserMailer do
 
   describe '#confirmation' do
     let!(:email) { 'email@example.com' }
-    let(:mail) { UserMailer.confirmation(email) }
+    let(:mail) { UserMailer.confirmation(email, 'https://example.com/') }
 
     it 'ヘッダが正しいこと' do
       expect(mail.subject).to eq '【PIG BOOK β】アカウントのご確認と登録のご案内'

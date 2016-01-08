@@ -9,7 +9,7 @@ class EmailUser::PasswordsController < ApplicationController
     if @user
       @user.send_to_reset_password(origin)
     else
-      UserMailer.confirmation(email).deliver_later
+      UserMailer.confirmation(email, origin).deliver_later
     end
     head 200
   end

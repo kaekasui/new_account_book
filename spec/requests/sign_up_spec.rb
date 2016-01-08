@@ -69,7 +69,7 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
   before do
     post '/email_user/registrations', params
     open_email('login@example.com')
-    current_email.body =~ %r{\/registrations\/(\d*)\/regist\?token=(.*)\Z}
+    current_email.body =~ %r{\/registrations\/(\d*)\/regist\?token=(.*)}
     @user_id = Regexp.last_match(1)
     @token = Regexp.last_match(2)
   end
