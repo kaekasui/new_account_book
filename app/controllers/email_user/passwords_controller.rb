@@ -7,7 +7,7 @@ class EmailUser::PasswordsController < ApplicationController
     return render_error EmailUser.new, 422 if email.blank?
     @user = EmailUser.find_by(email: email)
     if @user
-      @user.reset_password(origin)
+      @user.send_to_reset_password(origin)
     else
       UserMailer.confirmation(email).deliver_later
     end
