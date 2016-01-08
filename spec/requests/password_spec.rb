@@ -4,6 +4,15 @@ describe 'POST /email_user/passwords/send_mail?email=email', autodoc: true do
   let!(:email) { 'login@example.com' }
   let!(:email_param) { { email: email } }
 
+  context 'メールアドレスが空の場合' do
+    let(:email) { '' }
+
+    it '422が返ってくること' do
+      post '/email_user/passwords/send_mail', email_param
+      expect(response.status).to eq 422
+    end
+  end
+
   context 'ユーザーが見つからない場合' do
     it '200が返り、メールが送信されること' do
       post '/email_user/passwords/send_mail', email_param

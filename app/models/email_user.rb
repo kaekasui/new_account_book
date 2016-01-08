@@ -36,6 +36,10 @@ class EmailUser < User
     @password_token ||= add_password_token
   end
 
+  def send_to_reset_password(origin)
+    UserMailer.password_reset(email, password_reset_url(origin)).deliver_later
+  end
+
   def update_password(current_password, password, password_confirmation)
     if authenticate(current_password)
       update(password: password, password_confirmation: password_confirmation)
