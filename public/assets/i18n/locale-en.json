@@ -44,6 +44,8 @@
   "MESSAGES": {
     "LOGIN": "Logged in",
     "LOGOUT": "Logged out",
-    "SEND_MAIL": "Send a mail"
+    "SEND_MAIL": "Send a mail",
+    "NOT_FOUND_EMAIL": "Email already registered or Not yet signed up for registration",
+    "REGISTED": "Account has been registered"
   }
 }
