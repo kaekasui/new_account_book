@@ -16,7 +16,8 @@ class EmailUser::RegistrationsController < ApplicationController
     @user = EmailUser.find(params[:registration_id].to_i)
     if @user.registered_by(params[:token])
       UserMailer.finished_registration(@user.email).deliver_now
-      redirect_to 'http://localhost:3000/#/?registed=ok'
+      host = Rails.env.production? ? '' : 'http://localhost:3000'
+      redirect_to "#{host}/#/?registed=ok"
     else
       render_error @user, 401
     end
