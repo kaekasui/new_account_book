@@ -56,6 +56,32 @@
               defer.reject(data);
             });
           return defer.promise;
+        },
+        postResendEmail: function(params) {
+          var defer = $q.defer();
+          $http.patch(host + 'email_user/registrations/recreate', params)
+            .success(function(data) {
+              defer.resolve(data);
+              toastr.success($translate.instant('MESSAGES.SEND_MAIL'));
+              $location.path('/');
+            })
+            .error(function(data) {
+              defer.reject(data);
+            });
+          return defer.promise;
+        },
+        postResetPassword: function(params) {
+          var defer = $q.defer();
+          $http.post(host + 'email_user/passwords/send_mail', params)
+            .success(function(data) {
+              defer.resolve(data);
+              toastr.success($translate.instant('MESSAGES.SEND_MAIL'));
+              $location.path('/');
+            })
+            .error(function(data) {
+              defer.reject(data);
+            });
+          return defer.promise;
         }
       });
     }
