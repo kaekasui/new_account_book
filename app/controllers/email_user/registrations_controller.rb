@@ -16,7 +16,7 @@ class EmailUser::RegistrationsController < ApplicationController
     @user = EmailUser.find(params[:registration_id].to_i)
     if @user.registered_by(params[:token])
       UserMailer.finished_registration(@user.email).deliver_now
-      redirect_to '/'
+      redirect_to '/?registed=ok'
     else
       render_error @user, 401
     end
