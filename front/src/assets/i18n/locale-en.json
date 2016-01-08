@@ -44,6 +44,7 @@
   "MESSAGES": {
     "LOGIN": "Logged in",
     "LOGOUT": "Logged out",
-    "SEND_MAIL": "Send a mail"
+    "SEND_MAIL": "Send a mail",
+    "NOT_FOUND_EMAIL": "Not Found the Email"
   }
 }
