@@ -84,7 +84,7 @@ describe 'GET /email_user/passwords/:id/edit?email=email', autodoc: true do
       expect(response.status).to eq 200
 
       open_email(user.email)
-      current_email.body =~ %r{\/passwords\/(\d*)\/edit\?token=(.*)\Z}
+      current_email.body =~ %r{\/passwords\/(\d*)\/edit\?token=(.*)}
       user_id = Regexp.last_match(1)
       token = Regexp.last_match(2)
 
@@ -125,7 +125,7 @@ describe 'PATCH /email_user/passwords/:id\
       expect(response.status).to eq 200
 
       open_email(user.email)
-      current_email.body =~ %r{\/passwords\/(\d*)\/edit\?token=(.*)\Z}
+      current_email.body =~ %r{\/passwords\/(\d*)\/edit\?token=(.*)}
       user_id = Regexp.last_match(1)
       token = Regexp.last_match(2)
 
@@ -147,7 +147,7 @@ describe 'PATCH /email_user/passwords/:id\
       expect(response.status).to eq 200
 
       open_email(user.email)
-      current_email.body =~ %r{\/passwords\/(\d*)\/edit\?token=(.*)\Z}
+      current_email.body =~ %r{\/passwords\/(\d*)\/edit\?token=(.*)}
       user_id = Regexp.last_match(1)
       token = Regexp.last_match(2)
 
@@ -166,7 +166,7 @@ describe 'PATCH /email_user/passwords/:id\
       expect(response.status).to eq 200
 
       open_email(user.email)
-      current_email.body =~ %r{\/passwords\/(\d*)\/edit\?token=(.*)\Z}
+      current_email.body =~ %r{\/passwords\/(\d*)\/edit\?token=(.*)}
       user_id = Regexp.last_match(1)
       token = Regexp.last_match(2)
 
@@ -194,7 +194,7 @@ describe 'PATCH /email_user/passwords/:id\
       expect(response.status).to eq 200
 
       open_email(user.email)
-      current_email.body =~ %r{\/passwords\/(\d*)\/edit\?token=(.*)\Z}
+      current_email.body =~ %r{\/passwords\/(\d*)\/edit\?token=(.*)}
       user_id = Regexp.last_match(1)
       token = Regexp.last_match(2)
 
