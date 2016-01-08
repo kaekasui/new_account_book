@@ -5,6 +5,13 @@ ja:
         invalid_parameters: メールアドレスまたはパスワードが正しくありません
       users:
         invalid_token: すでに登録が完了しているか有効期限が切れたURLに接続しました。
+  labels:
+    status:
+      inactive: 仮登録
+      registered: 登録済み
+    type:
+      email_user: メール登録
+      twitter_user: Twitter経由
   user_mailer:
     registration:
       subject: 【PIG BOOK β】アカウント登録のご案内

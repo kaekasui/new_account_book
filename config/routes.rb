@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resource :session, only: %i(create)
 
+  namespace :admin do
+    resources :users, only: %i(index)
+  end
+
   namespace :email_user do
     resources :registrations, only: %i(create) do
       get :regist
