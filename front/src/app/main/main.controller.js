@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr, $location) {
+  function MainController($timeout, webDevTec, toastr, $location, $translate) {
     var vm = this;
 
     vm.awesomeThings = [];
@@ -14,7 +14,7 @@
     vm.creationDate = 1447644390420;
     vm.showToastr = showToastr;
     if ($location.search()['registed'] == 'ok') {
-      toastr.success($translate.instant('MESSAGES.REGISTERED'));
+      toastr.success($translate.instant('MESSAGES.REGISTED'));
     }
 
     activate();
