@@ -43,6 +43,11 @@ class ApplicationController < ActionController::Base
     render :error401, status: 401
   end
 
+  def admin_authenticate
+    return if current_user.admin?
+    render :error401, status: 401
+  end
+
   def current_user
     @current_user ||= authenticate_with_http_token do |token, _options|
       User.find_by_token(:access, token)

@@ -17,5 +17,9 @@ FactoryGirl.define do
     factory :twitter_user, class: TwitterUser do
       type 'TwitterUser'
     end
+
+    trait :admin_user do
+      admin true
+    end
   end
 end
