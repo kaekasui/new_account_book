@@ -3,6 +3,6 @@ class Admin::UsersController < ApplicationController
   before_action :admin_authenticate
 
   def index
-    @users = User.all
+    @users = User::Fetcher.all(params: params)
   end
 end
