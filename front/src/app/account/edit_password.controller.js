@@ -5,8 +5,10 @@
       .module('accountBook')
       .controller('EditPasswordController', EditPasswordController);
 
-    function EditPasswordController(IndexFactory) {
+    function EditPasswordController(IndexFactory, $location) {
       var vm = this;
+
+      vm.email = $location.search()['email'];
 
       vm.submit = function() {
       }

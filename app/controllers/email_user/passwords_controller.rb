@@ -16,7 +16,9 @@ class EmailUser::PasswordsController < ApplicationController
 
   def edit
     fail ActiveRecord::RecordNotFound if @user != @token_user
-    head 302 # TODO: 修正する
+    host = Rails.env.production? ? '' : 'http://localhost:3000'
+    token = params[:token]
+    redirect_to "#{host}/#/edit_password?email=#{@user.email}&token=#{token}"
   end
 
   def update
