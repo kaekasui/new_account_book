@@ -10,3 +10,5 @@ json.users do
     json.last_sign_in_at user.last_login_time
   end
 end
+
+json.total_count @total_count

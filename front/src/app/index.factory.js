@@ -83,12 +83,12 @@
             });
           return defer.promise;
         },
-        getUsers: function() {
+        getUsers: function(offset) {
           var defer = $q.defer();
           var token = localStorageService.get('access_token');
           if (this.getLoginStatus()) {
             var login_headers = { headers: { Authorization: "Token token=" + token }};
-            $http.get(host + 'admin/users', login_headers)
+            $http.get(host + "admin/users?offset=" + offset, login_headers)
               .success(function(data) {
                 defer.resolve(data);
               })

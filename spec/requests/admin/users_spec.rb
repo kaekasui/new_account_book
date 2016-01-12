@@ -48,7 +48,8 @@ describe 'POST /session?email=email&password=password', autodoc: true do
               email: user.email,
               last_sign_in_at: I18n.l(user.last_sign_in_at)
             }
-          ]
+          ],
+          total_count: 2
         }
         expect(response.body).to be_json_as(json)
       end
@@ -71,7 +72,8 @@ describe 'POST /session?email=email&password=password', autodoc: true do
               email: user.email,
               last_sign_in_at: I18n.l(user.last_sign_in_at)
             }
-          ]
+          ],
+          total_count: 2
         }
         expect(response.body).to be_json_as(json)
       end
