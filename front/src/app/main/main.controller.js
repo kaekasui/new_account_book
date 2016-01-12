@@ -14,9 +14,9 @@
     vm.creationDate = 1447644390420;
     vm.showToastr = showToastr;
     if ($location.search()['registed'] == 'ok') {
+      $location.url('/login');
       toastr.success($translate.instant('MESSAGES.REGISTED'));
     }
-
     activate();
 
     function activate() {
