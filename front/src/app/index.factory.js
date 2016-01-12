@@ -89,7 +89,7 @@
             .success(function(data) {
               defer.resolve(data);
               toastr.success($translate.instant('MESSAGES.UPDATE_PASSWORD'));
-              $location.path('/');
+              $location.path('/login');
             })
             .error(function(data) {
               defer.reject(data);
