@@ -5,7 +5,7 @@
       .module('accountBook')
       .controller('SignUpController', SignUpController);
 
-    function SignUpController($http, $location, IndexFactory) {
+    function SignUpController($http, IndexFactory) {
       var vm = this;
 
       vm.clearErrors = function() {
