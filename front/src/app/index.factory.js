@@ -82,6 +82,21 @@
               defer.reject(data);
             });
           return defer.promise;
+        },
+        getUsers: function() {
+          var defer = $q.defer();
+          var token = localStorageService.get('access_token');
+          if (this.getLoginStatus()) {
+            var login_headers = { headers: { Authorization: "Token token=" + token }};
+            $http.get(host + 'admin/users', login_headers)
+              .success(function(data) {
+                defer.resolve(data);
+              })
+              .error(function(data) {
+                defer.reject(data);
+              });
+          }
+          return defer.promise;
         }
       });
     }

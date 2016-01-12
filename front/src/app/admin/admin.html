@@ -1,12 +1,48 @@
-<div class='col-md-3'>
-  <div class='menu-directive' menu-data='mypage.menus'></div>
-</div>
-<div class='col-md-9'>
-  <div class='panel panel-default'>
-    <div class='panel-heading'>
-      <span class='glyphicon glyphicon-leaf'></span>
-      {{ 'TITLES.ADMIN' | translate }}
-    </div>
-    <div class='panel-body' id='with-background'></div>
+<div class='panel panel-default'>
+  <div class='panel-heading'>
+    <span class='glyphicon glyphicon-leaf'></span>
+    {{ 'TITLES.ADMIN' | translate }}
+  </div>
+  <div class='panel-body' id='with-background'>
+    <table class='table'>
+      <tr>
+        <th></th>
+        <th>
+          ID
+        </th>
+        <th></th>
+        <th></th>
+        <th>
+          {{ 'COLUMNS.EMAIL' | translate }}
+        </th>
+        <th>
+          {{ 'COLUMNS.LAST_LOGIN_TIME' | translate }}
+        </th>
+      </tr>
+      <tr ng-repeat='user in admin.users'>
+        <td>
+          <span class='red glyphicon glyphicon-king' ng-show='user.admin'></span>
+        </td>
+        <td>
+          {{ user.id }}
+        </td>
+        <td>
+          <span class='label' ng-class='user.status_label_name'>
+            {{ user.status }}
+          </span>
+        </td>
+        <td>
+          <span class='label' ng-class='user.type_label_name'>
+            {{ user.type }}
+          </span>
+        </td>
+        <td>
+          {{ user.email }}
+        </td>
+        <td>
+          {{ user.last_sign_in_at }}
+        </td>
+      </tr>
+    </table>
   </div>
 </div>
