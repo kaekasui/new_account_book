@@ -8,10 +8,8 @@ class User::Fetcher
   end
 
   def all
-    users = User.order(id: :desc)
-    if @params[:offset].present?
-      users.offset!(@params[:offset]).limit(Settings.users.per)
-    end
+    users = User.order(id: :desc).limit(Settings.users.per)
+    users.offset!(@params[:offset]) if @params[:offset].present?
     users
   end
 end

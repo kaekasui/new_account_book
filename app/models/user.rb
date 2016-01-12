@@ -15,11 +15,29 @@ class User < ActiveRecord::Base
     )
   end
 
+  def status_label_name
+    case status
+    when 'inactive' then 'label-default'
+    when 'registered' then 'label-success'
+    end
+  end
+
+  def type_label_name
+    case type
+    when 'EmailUser' then 'label-warning'
+    when 'TwitterUser' then 'label-info'
+    end
+  end
+
   def _status
     I18n.t("labels.status.#{status}")
   end
 
   def _type
     I18n.t("labels.type.#{type.underscore}")
+  end
+
+  def last_login_time
+    I18n.l(last_sign_in_at) if last_sign_in_at
   end
 end

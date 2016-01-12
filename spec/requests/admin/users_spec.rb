@@ -31,16 +31,22 @@ describe 'POST /session?email=email&password=password', autodoc: true do
             {
               id: admin_user.id,
               admin: admin_user.admin?,
-              status: admin_user._status,
+              type_label_name: admin_user.type_label_name,
               type: admin_user._type,
-              email: admin_user.email
+              status_label_name: admin_user.status_label_name,
+              status: admin_user._status,
+              email: admin_user.email,
+              last_sign_in_at: I18n.l(Time.zone.now)
             },
             {
               id: user.id,
               admin: user.admin?,
-              status: user._status,
+              type_label_name: user.type_label_name,
               type: user._type,
-              email: user.email
+              status_label_name: user.status_label_name,
+              status: user._status,
+              email: user.email,
+              last_sign_in_at: I18n.l(user.last_sign_in_at)
             }
           ]
         }
@@ -58,9 +64,12 @@ describe 'POST /session?email=email&password=password', autodoc: true do
             {
               id: user.id,
               admin: user.admin?,
-              status: user._status,
+              type_label_name: user.type_label_name,
               type: user._type,
-              email: user.email
+              status_label_name: user.status_label_name,
+              status: user._status,
+              email: user.email,
+              last_sign_in_at: I18n.l(user.last_sign_in_at)
             }
           ]
         }
