@@ -1,7 +1,7 @@
 class EmailUser::Password
   include ActiveModel::Model
 
-  # attr_accessor :current_password
+  attr_accessor :current_password
   # validates :current_password,
   #           presence: true,
   #           length: { maximum: Settings.user.password.maximum_length }
