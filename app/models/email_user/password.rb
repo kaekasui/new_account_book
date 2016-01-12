@@ -9,8 +9,10 @@ class EmailUser::Password
 
   def initialize(user, params)
     @user = user
+    if params[:current_password]
+      self.current_password = params[:current_password]
+    end
     @params = params
-    self.current_password = @params[:current_password]
   end
 
   def update

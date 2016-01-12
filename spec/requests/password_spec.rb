@@ -122,6 +122,7 @@ describe 'PATCH /email_user/passwords/:id\
     let(:password) { '' }
 
     it '422が返ってくること' do
+      pending 'プロフィール変更時に設定'
       post '/email_user/passwords/send_mail?', email_param
       expect(response.status).to eq 200
 
