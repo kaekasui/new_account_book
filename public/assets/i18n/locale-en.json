@@ -47,5 +47,9 @@
     "SEND_MAIL": "Send a mail",
     "NOT_FOUND_EMAIL": "Email already registered or Not yet signed up for registration",
     "REGISTED": "Account has been registered"
+  },
+  "COLUMNS": {
+    "EMAIL": "Email",
+    "LAST_LOGIN_TIME": "Last Login Time"
   }
 }
