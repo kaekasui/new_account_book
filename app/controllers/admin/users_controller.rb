@@ -4,5 +4,6 @@ class Admin::UsersController < ApplicationController
 
   def index
     @users = User::Fetcher.all(params: params)
+    @total_count = User.count
   end
 end

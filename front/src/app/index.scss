@@ -26,7 +26,7 @@ $btn-info-color: #ffffff;
 $btn-info-bg: #5E7535;
 $btn-info-boder: #6f9b1d;
 
-$table-border-color: #a8ae88;
+$table-border-color: #bac48c;
 //$table-bg: rgba(#fff, 0.7);
 
 $state-danger-text: #ac5e9f;
@@ -50,6 +50,10 @@ $tooltip-opacity: .7;
 
 $blockquote-border-color: #76891a;
 $blockquote-small-color: #76891a;
+
+$pagination-border: #c8cfa3;
+$pagination-hover-bg: #e3e7d1;
+$pagination-hover-border: #c8cfa3;
 
 body {
   background-image: url('../assets/images/wood.png');
