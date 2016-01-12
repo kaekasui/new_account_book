@@ -38,6 +38,12 @@
         controller: 'ResetPasswordController',
         controllerAs: 'reset_password'
       })
+      .state('edit_password', {
+        url: '/edit_password',
+        templateUrl: 'app/account/edit_password.html',
+        controller: 'EditPasswordController',
+        controllerAs: 'edit_password'
+      })
       .state('resend_email', {
         url: '/resend_email',
         templateUrl: 'app/account/resend_email.html',

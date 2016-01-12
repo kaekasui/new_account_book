@@ -9,19 +9,24 @@
     "LOGOUT": "Logout",
     "SIGN_UP": "Sign up",
     "RESET_PASSWORD": "Reset Password",
+    "EDIT_PASSWORD": "Edit Password",
     "RESEND_EMAIL": "Resend Email",
     "MYPAGE": "Mypage"
   },
   "BUTTONS": {
     "LOGIN": "Log in",
     "SIGN_UP": "Sign up",
-    "SEND": "Send Email"
+    "SEND": "Send Email",
+    "UPDATE": "Update"
   },
   "LABELS": {
     "EMAIL": "Email address",
     "PASSWORD": "Password",
     "PASSWORD_CONFIRMATION": "Password confirmation",
-    "REMEMBER_ME": "Remember me"
+    "REMEMBER_ME": "Remember me",
+    "CURRENT_PASSWORD": "Current Password",
+    "NEW_PASSWORD": "New Password",
+    "NEW_PASSWORD_CONFIRMATION": "New Password Confirmation"
   },
   "LINKS": {
     "FORGOT_PASSWORD": "Forgot your password?",
@@ -30,7 +35,10 @@
   "ERRORS": {
     "REQUIRED": {
       "EMAIL": "Enter your E-mail",
-      "PASSWORD": "Enter your Password"
+      "PASSWORD": "Enter your Password",
+      "CURRENT_PASSWORD": "Enter your current Password",
+      "NEW_PASSWORD": "Enter your new Password",
+      "NEW_PASSWORD_CONFIRMATION": "Enter your new Password confirmation"
     },
     "MAXLENGTH": {
       "EMAIL": "Enter your E-mail has a length of at most 100",
