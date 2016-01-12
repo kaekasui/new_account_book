@@ -9,19 +9,24 @@
     "LOGOUT": "ログアウト",
     "SIGN_UP": "新規登録",
     "RESET_PASSWORD": "パスワード再設定",
+    "EDIT_PASSWORD": "パスワードの変更",
     "RESEND_EMAIL": "確認メール再送信",
     "MYPAGE": "マイページ"
   },
   "BUTTONS": {
     "LOGIN": "ログインする",
     "SIGN_UP": "登録する",
-    "SEND": "送信する"
+    "SEND": "送信する",
+    "UPDATE": "変更する"
   },
   "LABELS": {
     "EMAIL": "メールアドレス",
     "PASSWORD": "パスワード",
     "PASSWORD_CONFIRMATION": "パスワード（確認）",
-    "REMEMBER_ME": "パスワードを記録する"
+    "REMEMBER_ME": "パスワードを記録する",
+    "CURRENT_PASSWORD": "現在のパスワード",
+    "NEW_PASSWORD": "新しいパスワード",
+    "NEW_PASSWORD_CONFIRMATION": "新しいパスワード（確認）"
   },
   "LINKS": {
     "FORGOT_PASSWORD": "パスワードを忘れた場合",
@@ -30,7 +35,10 @@
   "ERRORS": {
     "REQUIRED": {
       "EMAIL": "メールアドレスを入力してください",
-      "PASSWORD": "パスワードを入力してください"
+      "PASSWORD": "パスワードを入力してください",
+      "CURRENT_PASSWORD": "現在のパスワードを入力してください",
+      "NEW_PASSWORD": "新しいパスワードを入力してください",
+      "NEW_PASSWORD_CONFIRMATION": "新しいパスワード（確認）を入力してください"
     },
     "MAXLENGTH": {
       "EMAIL": "メールアドレスは100文字以内で入力してください",

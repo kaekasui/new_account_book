@@ -6,7 +6,7 @@
   <div class='panel-body' id='with-background'>
     <nav>
       <ul class='pagination'>
-        <li ng-class='{active: number == admin.offset}' ng-click='admin.clickPaginate(number)' ng-repeat='number in admin.offset_numbers'>
+        <li ng-click='admin.clickPaginate(number)' ng-repeat='number in admin.offset_numbers'>
           <a>
             {{$index + 1}}
           </a>
