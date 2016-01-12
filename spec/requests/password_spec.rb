@@ -97,8 +97,8 @@ describe 'GET /email_user/passwords/:id/edit?email=email&token=token',
 end
 
 describe 'PATCH /email_user/passwords/:id\
-  ?current_password=current_password&password=password&\
-  password_confirmation=password_confirmation&token=token', autodoc: true do
+  ?password=password&\password_confirmation=password_confirmation\
+  &token=token', autodoc: true do
   let!(:user) { create(:email_user, :registered, email: email) }
   let!(:email) { 'login@example.com' }
   let!(:email_param) { { email: email } }
@@ -106,7 +106,6 @@ describe 'PATCH /email_user/passwords/:id\
   let!(:new_password) { 'newpassword' }
   let!(:params) do
     {
-      current_password: password,
       password: new_password,
       password_confirmation: new_password
     }
@@ -140,25 +139,6 @@ describe 'PATCH /email_user/passwords/:id\
         'error_messages': ['現在のパスワードを入力してください']
       }
       expect(response.body).to be_json_as(json)
-    end
-  end
-
-  context '現在のパスワードが一致しない場合' do
-    it '401が返ってくること' do
-      post '/email_user/passwords/send_mail?', email_param
-      expect(response.status).to eq 200
-
-      open_email(user.email)
-      current_email.body =~ %r{\/passwords\/(\d*)\/edit\?token=(.*)}
-      user_id = Regexp.last_match(1)
-      token = Regexp.last_match(2)
-
-      get "/email_user/passwords/#{user_id}/edit", token: token
-      expect(response.status).to eq 302
-      params[:current_password] = 'invalid_password'
-
-      patch "/email_user/passwords/#{user.id}", params.merge(token: token)
-      expect(response.status).to eq 401
     end
   end
 
