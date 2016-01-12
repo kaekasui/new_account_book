@@ -18,7 +18,8 @@ class EmailUser::Password
   def update
     return false if invalid?
     if @user.update(password: @params[:password],
-                    password_confirmation: @params[:password_confirmation])
+                    password_confirmation: @params[:password_confirmation]) &&
+       @user.remove_token(:password)
       true
     else
       errors[:base] << @user.errors.full_messages.join(',')
