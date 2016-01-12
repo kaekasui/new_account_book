@@ -24,7 +24,7 @@ describe 'POST /session?email=email&password=password', autodoc: true do
     context '1ページ以内のユーザー数の場合' do
       it '200が返り、ユーザー一覧が返ってくること' do
         get '/admin/users/', '', login_headers(admin_user)
-  
+
         expect(response.status).to eq 200
         json = {
           users: [
@@ -36,7 +36,7 @@ describe 'POST /session?email=email&password=password', autodoc: true do
               status_label_name: admin_user.status_label_name,
               status: admin_user._status,
               email: admin_user.email,
-              last_sign_in_at: admin_user.last_sign_in_at.to_s
+              last_sign_in_at: I18n.l(Time.zone.now)
             },
             {
               id: user.id,
@@ -46,7 +46,7 @@ describe 'POST /session?email=email&password=password', autodoc: true do
               status_label_name: user.status_label_name,
               status: user._status,
               email: user.email,
-              last_sign_in_at: user.last_sign_in_at.to_s
+              last_sign_in_at: I18n.l(user.last_sign_in_at)
             }
           ]
         }
@@ -69,7 +69,7 @@ describe 'POST /session?email=email&password=password', autodoc: true do
               status_label_name: user.status_label_name,
               status: user._status,
               email: user.email,
-              last_sign_in_at: user.last_sign_in_at.to_s
+              last_sign_in_at: I18n.l(user.last_sign_in_at)
             }
           ]
         }
