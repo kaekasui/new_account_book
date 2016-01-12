@@ -29,7 +29,6 @@ class EmailUser::PasswordsController < ApplicationController
     fail ActiveRecord::RecordNotFound if @user != @token_user
     password_form = EmailUser::Password.new(@user, password_reset_params)
     return render_error password_form if password_form.invalid?
-    return render_error password_form, 401 unless password_form.authenticate
     return render_error password_form unless password_form.update
     head 200
   end

@@ -14,7 +14,6 @@
 
       vm.submit = function() {
         var params = {
-          current_password: vm.current_password,
           password: vm.password,
           password_confirmation: vm.password_confirmation,
           token: vm.token,

@@ -97,8 +97,8 @@ describe 'GET /email_user/passwords/:id/edit?email=email&token=token',
 end
 
 describe 'PATCH /email_user/passwords/:id\
-  ?current_password=current_password&password=password&\
-  password_confirmation=password_confirmation&token=token', autodoc: true do
+  ?password=password&\password_confirmation=password_confirmation\
+  &token=token', autodoc: true do
   let!(:user) { create(:email_user, :registered, email: email) }
   let!(:email) { 'login@example.com' }
   let!(:email_param) { { email: email } }
@@ -106,7 +106,6 @@ describe 'PATCH /email_user/passwords/:id\
   let!(:new_password) { 'newpassword' }
   let!(:params) do
     {
-      current_password: password,
       password: new_password,
       password_confirmation: new_password
     }
@@ -123,6 +122,7 @@ describe 'PATCH /email_user/passwords/:id\
     let(:password) { '' }
 
     it '422が返ってくること' do
+      pending 'プロフィール変更時に設定'
       post '/email_user/passwords/send_mail?', email_param
       expect(response.status).to eq 200
 
@@ -145,6 +145,7 @@ describe 'PATCH /email_user/passwords/:id\
 
   context '現在のパスワードが一致しない場合' do
     it '401が返ってくること' do
+      pending 'プロフィール変更時に設定'
       post '/email_user/passwords/send_mail?', email_param
       expect(response.status).to eq 200
 
