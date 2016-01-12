@@ -9,7 +9,6 @@
       var vm = this;
 
       vm.submit = function() {
-        vm.errors = {'error_messages': 'aaaa'};
       }
       vm.clearErrors = function() {
         vm.errors = '';
