@@ -6,6 +6,7 @@ ja:
       users:
         invalid_token: すでに登録が完了しているか有効期限が切れたURLに接続しました。
   labels:
+    administrator: 管理者
     status:
       inactive: 仮登録
       registered: 登録済み

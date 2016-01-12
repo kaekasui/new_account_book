@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-    return if current_user
+    return current_user.update(last_sign_in_at: Time.zone.now) if current_user
     render :error401, status: 401
   end
 
