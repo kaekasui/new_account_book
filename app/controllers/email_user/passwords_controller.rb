@@ -17,8 +17,12 @@ class EmailUser::PasswordsController < ApplicationController
   def edit
     fail ActiveRecord::RecordNotFound if @user != @token_user
     host = Rails.env.production? ? '' : 'http://localhost:3000'
-    token = params[:token]
-    redirect_to "#{host}/#/edit_password?email=#{@user.email}&token=#{token}"
+    form_params = {
+      user_id: params[:id],
+      email: @user.email,
+      token: params[:token]
+    }
+    redirect_to "#{host}/#/edit_password?#{URI.encode_www_form(form_params)}"
   end
 
   def update

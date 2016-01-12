@@ -83,6 +83,19 @@
             });
           return defer.promise;
         },
+        patchNewPassword: function(user_id, params) {
+          var defer = $q.defer();
+          $http.patch(host + 'email_user/passwords/' + user_id, params)
+            .success(function(data) {
+              defer.resolve(data);
+              toastr.success($translate.instant('MESSAGES.UPDATE_PASSWORD'));
+              $location.path('/');
+            })
+            .error(function(data) {
+              defer.reject(data);
+            });
+          return defer.promise;
+        },
         getUsers: function(offset) {
           var defer = $q.defer();
           var token = localStorageService.get('access_token');

@@ -51,15 +51,16 @@ describe 'POST /email_user/passwords/send_mail?email=email', autodoc: true do
   end
 end
 
-describe 'GET /email_user/passwords/:id/edit?email=email', autodoc: true do
+describe 'GET /email_user/passwords/:id/edit?email=email&token=token',
+         autodoc: true do
   let!(:email) { 'login@example.com' }
   let!(:token) { 'dummy_token' }
   let!(:email_param) { { email: email } }
-  let!(:token_param) { { token: token } }
+  let!(:params) { { email: email, token: token } }
 
   context 'ユーザーが見つからない場合' do
     it '404が返ってくること' do
-      get '/email_user/passwords/1/edit', token_param
+      get '/email_user/passwords/1/edit', params
       expect(response.status).to eq 404
     end
   end
@@ -71,7 +72,7 @@ describe 'GET /email_user/passwords/:id/edit?email=email', autodoc: true do
       post '/email_user/passwords/send_mail', email_param
       expect(response.status).to eq 200
 
-      get "/email_user/passwords/#{user.id}/edit", token_param
+      get "/email_user/passwords/#{user.id}/edit", params
       expect(response.status).to eq 404
     end
   end
@@ -88,7 +89,8 @@ describe 'GET /email_user/passwords/:id/edit?email=email', autodoc: true do
       user_id = Regexp.last_match(1)
       token = Regexp.last_match(2)
 
-      get "/email_user/passwords/#{user_id}/edit", token: token
+      params = { email: user.email, token: token }
+      get "/email_user/passwords/#{user_id}/edit", params
       expect(response.status).to eq 302
     end
   end
@@ -96,7 +98,7 @@ end
 
 describe 'PATCH /email_user/passwords/:id\
   ?current_password=current_password&password=password&\
-  password_confirmation=password_confirmation', autodoc: true do
+  password_confirmation=password_confirmation&token=token', autodoc: true do
   let!(:user) { create(:email_user, :registered, email: email) }
   let!(:email) { 'login@example.com' }
   let!(:email_param) { { email: email } }
