@@ -7,6 +7,22 @@
       <span class='glyphicon glyphicon-leaf'></span>
       {{ 'TITLES.MYPAGE' | translate }}
     </div>
-    <div class='panel-body' id='with-background'></div>
+    <div class='panel-body' id='with-background'>
+      <blockquote ng-show="mypage.current_user.type == 'EmailUser'">
+        <footer>
+          {{ 'LABELS.EMAIL_LOGIN' | translate }}
+        </footer>
+      </blockquote>
+      <div class='form form-horizontal'>
+        <div class='form-group' ng-show='mypage.current_user.email'>
+          <div class='col-sm-2'>
+            {{ 'LABELS.EMAIL' | translate }}
+          </div>
+          <div class='col-sm-10'>
+            {{ mypage.current_user.email }}
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
