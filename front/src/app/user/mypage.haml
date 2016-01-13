@@ -7,3 +7,12 @@
       %span.glyphicon.glyphicon-leaf
       {{ 'TITLES.MYPAGE' | translate }}
     .panel-body#with-background
+      %blockquote{'ng-show': "mypage.current_user.type == 'EmailUser'"}
+        %footer
+          {{ 'LABELS.EMAIL_LOGIN' | translate }}
+      .form.form-horizontal
+        .form-group{'ng-show': 'mypage.current_user.email'}
+          .col-sm-2
+            {{ 'LABELS.EMAIL' | translate }}
+          .col-sm-10
+            {{ mypage.current_user.email }}

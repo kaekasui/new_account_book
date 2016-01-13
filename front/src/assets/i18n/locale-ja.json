@@ -26,7 +26,8 @@
     "REMEMBER_ME": "パスワードを記録する",
     "CURRENT_PASSWORD": "現在のパスワード",
     "NEW_PASSWORD": "新しいパスワード",
-    "NEW_PASSWORD_CONFIRMATION": "新しいパスワード（確認）"
+    "NEW_PASSWORD_CONFIRMATION": "新しいパスワード（確認）",
+    "EMAIL_LOGIN": "メールアドレスでログイン"
   },
   "LINKS": {
     "FORGOT_PASSWORD": "パスワードを忘れた場合",

@@ -26,7 +26,8 @@
     "REMEMBER_ME": "Remember me",
     "CURRENT_PASSWORD": "Current Password",
     "NEW_PASSWORD": "New Password",
-    "NEW_PASSWORD_CONFIRMATION": "New Password Confirmation"
+    "NEW_PASSWORD_CONFIRMATION": "New Password Confirmation",
+    "EMAIL_LOGIN": "Login via Email"
   },
   "LINKS": {
     "FORGOT_PASSWORD": "Forgot your password?",
