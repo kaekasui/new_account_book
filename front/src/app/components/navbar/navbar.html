@@ -23,7 +23,7 @@
         </a>
       </li>
       <li>
-        <a ng-click='vm.feedback()'>
+        <a href='' ng-click='vm.feedback()'>
           <span class='glyphicon glyphicon-comment'></span>
           {{ 'TITLES.FEEDBACK' | translate }}
         </a>
@@ -71,15 +71,15 @@
   </div>
 </nav>
 <script id='feedback' type='text/ng-template'>
-  <form name='feedbackForm' ng-submit='submit()' novalidate>
+  <form name='feedbackForm' ng-submit='feedback.submit()' novalidate>
     <div class='modal-body'>
       <div class='pull-right'>
         <button class='btn btn-default' ng-disabled='feedbackForm.$submitted &amp;&amp; feedbackForm.$invalid' type='submit'>
           {{ 'BUTTONS.SEND' | translate }}
         </button>
-        <button class='btn btn-info' ng-click='feedback.cancel()'>
+        <a class='btn btn-info' ng-click='feedback.cancel()'>
           {{ 'BUTTONS.CLOSE' | translate }}
-        </button>
+        </a>
       </div>
       <br>
       <div class='form-group' ng-if='!feedback.login_status'>

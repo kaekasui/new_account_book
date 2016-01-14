@@ -16,7 +16,7 @@
           %span.glyphicon.glyphicon-stats
           {{ 'TITLES.DASHBOARD' | translate }}
       %li
-        %a{'ng-click': 'vm.feedback()'}
+        %a{'ng-click': 'vm.feedback()', href: ''}
           %span.glyphicon.glyphicon-comment
           {{ 'TITLES.FEEDBACK' | translate }}
     %ul.nav.navbar-nav.navbar-right
@@ -47,12 +47,12 @@
           {{ 'TITLES.LOGOUT' | translate }}
 
 %script#feedback{type: 'text/ng-template'}
-  %form{novalidate: true, name: 'feedbackForm', 'ng-submit': 'submit()'}
+  %form{novalidate: true, name: 'feedbackForm', 'ng-submit': 'feedback.submit()'}
     .modal-body
       .pull-right
         %button.btn.btn-default{type: 'submit', 'ng-disabled': 'feedbackForm.$submitted && feedbackForm.$invalid'}
           {{ 'BUTTONS.SEND' | translate }}
-        %button.btn.btn-info{'ng-click': 'feedback.cancel()'}
+        %a.btn.btn-info{'ng-click': 'feedback.cancel()'}
           {{ 'BUTTONS.CLOSE' | translate }}
       %br
       .form-group{'ng-if': '!feedback.login_status'}
