@@ -5,6 +5,9 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認）
+      feedback:
+        email: メールアドレス
+        content: 内容
     errors:
       models:
         user:

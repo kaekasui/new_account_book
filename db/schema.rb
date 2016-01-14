@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125073439) do
+ActiveRecord::Schema.define(version: 20160114011932) do
 
   create_table "breakdowns", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20151125073439) do
   create_table "feedbacks", force: :cascade do |t|
     t.text     "content",    limit: 65535
     t.integer  "user_id",    limit: 4
+    t.string   "email",      limit: 255
     t.boolean  "checked"
     t.datetime "deleted_at"
     t.datetime "created_at"

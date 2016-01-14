@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   tokenizable
+  has_many :feedbacks
 
   enum status: { registered: 2, inactive: 1 }
 
