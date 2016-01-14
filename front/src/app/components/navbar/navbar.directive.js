@@ -63,7 +63,6 @@
     })
  
     vm.submit = function() {
-      vm.send = true;
       var params;
       if (vm.login_status) {
         params = {
@@ -86,7 +85,6 @@
     };
 
     vm.cancel = function() {
-      vm.send = false;
       $modalInstance.close();
     };
   }

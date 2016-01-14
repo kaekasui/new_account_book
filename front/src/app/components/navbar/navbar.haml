@@ -47,10 +47,10 @@
           {{ 'TITLES.LOGOUT' | translate }}
 
 %script#feedback{type: 'text/ng-template'}
-  %form{novalidate: true, name: 'feedbackForm'}
+  %form{novalidate: true, name: 'feedbackForm', 'ng-submit': 'submit()'}
     .modal-body
       .pull-right
-        %button.btn.btn-default{type: 'submit', 'ng-disabled': 'feedbackForm.$submitted && feedbackForm.$invalid', 'ng-click': 'feedback.submit()'}
+        %button.btn.btn-default{type: 'submit', 'ng-disabled': 'feedbackForm.$submitted && feedbackForm.$invalid'}
           {{ 'BUTTONS.SEND' | translate }}
         %button.btn.btn-info{'ng-click': 'feedback.cancel()'}
           {{ 'BUTTONS.CLOSE' | translate }}
@@ -59,7 +59,7 @@
         %label{for: 'email'}
           {{ 'LABELS.FEEDBACK_EMAIL' | translate }}
         %input.form-control#email{type: 'email', name: 'email', 'ng-model': 'feedback.email', required: true, 'ng-maxlength': '100'}
-        %span.errors{'ng-messages': 'feedbackForm.email.$error', 'ng-show': 'feedbackForm.$submitted && feedback.send'}
+        %span.errors{'ng-messages': 'feedbackForm.email.$error', 'ng-show': 'feedbackForm.$submitted'}
           %div{'ng-message': 'required'}
             %span.glyphicon.glyphicon-alert
             {{ 'ERRORS.REQUIRED.EMAIL' | translate }}
@@ -72,7 +72,7 @@
 
       .form-group
         %textarea.form-control{rows: '5', name: 'content', 'ng-model': 'feedback.content', required: true, 'ng-maxlength': '1000'}
-        %span.errors{'ng-messages': 'feedbackForm.content.$error', 'ng-show': 'feedbackForm.$submitted && feedback.send'}
+        %span.errors{'ng-messages': 'feedbackForm.content.$error', 'ng-show': 'feedbackForm.$submitted'}
           %div{'ng-message': 'required'}
             %span.glyphicon.glyphicon-alert
             {{ 'ERRORS.REQUIRED.CONTENT' | translate }}
