@@ -72,16 +72,15 @@
 </nav>
 <script id='feedback' type='text/ng-template'>
   <form name='feedbackForm' ng-submit='feedback.submit()' novalidate>
+    <div class='modal-header'>
+      <button class='btn btn-primary' ng-disabled='feedbackForm.$submitted &amp;&amp; feedbackForm.$invalid' type='submit'>
+        {{ 'BUTTONS.SEND' | translate }}
+      </button>
+      <a class='btn btn-default' ng-click='feedback.cancel()'>
+        {{ 'BUTTONS.CLOSE' | translate }}
+      </a>
+    </div>
     <div class='modal-body'>
-      <div class='pull-right'>
-        <button class='btn btn-primary' ng-disabled='feedbackForm.$submitted &amp;&amp; feedbackForm.$invalid' type='submit'>
-          {{ 'BUTTONS.SEND' | translate }}
-        </button>
-        <a class='btn btn-default' ng-click='feedback.cancel()'>
-          {{ 'BUTTONS.CLOSE' | translate }}
-        </a>
-      </div>
-      <br>
       <div class='form-group' ng-if='!feedback.login_status'>
         <label for='email'>
           {{ 'LABELS.FEEDBACK_EMAIL' | translate }}
@@ -103,7 +102,7 @@
         </span>
       </div>
       <div class='form-group'>
-        <textarea class='form-control' name='content' ng-maxlength='1000' ng-model='feedback.content' required rows='5'></textarea>
+        <textarea class='form-control' name='content' ng-maxlength='1000' ng-model='feedback.content' placeholder='{{feedback.placeholder}}' required rows='5'></textarea>
         <span class='errors' ng-messages='feedbackForm.content.$error' ng-show='feedbackForm.$submitted'>
           <div ng-message='required'>
             <span class='glyphicon glyphicon-alert'></span>

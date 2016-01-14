@@ -48,13 +48,12 @@
 
 %script#feedback{type: 'text/ng-template'}
   %form{novalidate: true, name: 'feedbackForm', 'ng-submit': 'feedback.submit()'}
+    .modal-header
+      %button.btn.btn-primary{type: 'submit', 'ng-disabled': 'feedbackForm.$submitted && feedbackForm.$invalid'}
+        {{ 'BUTTONS.SEND' | translate }}
+      %a.btn.btn-default{'ng-click': 'feedback.cancel()'}
+        {{ 'BUTTONS.CLOSE' | translate }}
     .modal-body
-      .pull-right
-        %button.btn.btn-primary{type: 'submit', 'ng-disabled': 'feedbackForm.$submitted && feedbackForm.$invalid'}
-          {{ 'BUTTONS.SEND' | translate }}
-        %a.btn.btn-default{'ng-click': 'feedback.cancel()'}
-          {{ 'BUTTONS.CLOSE' | translate }}
-      %br
       .form-group{'ng-if': '!feedback.login_status'}
         %label{for: 'email'}
           {{ 'LABELS.FEEDBACK_EMAIL' | translate }}
@@ -71,7 +70,7 @@
             {{ 'ERRORS.MAXLENGTH.EMAIL' | translate }}
 
       .form-group
-        %textarea.form-control{rows: '5', name: 'content', 'ng-model': 'feedback.content', required: true, 'ng-maxlength': '1000'}
+        %textarea.form-control{'placeholder': "{{feedback.placeholder}}", rows: '5', name: 'content', 'ng-model': 'feedback.content', required: true, 'ng-maxlength': '1000'}
         %span.errors{'ng-messages': 'feedbackForm.content.$error', 'ng-show': 'feedbackForm.$submitted'}
           %div{'ng-message': 'required'}
             %span.glyphicon.glyphicon-alert

@@ -61,6 +61,7 @@
     IndexFactory.getCurrentUser().then(function(res) {
       vm.current_user = res;
     })
+    vm.placeholder = $translate.instant('MESSAGES.FEEDBACK');
  
     vm.submit = function() {
       var params;

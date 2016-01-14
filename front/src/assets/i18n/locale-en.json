@@ -62,7 +62,8 @@
     "UPDATE_PASSWORD": "Your Password has been changed",
     "NOT_FOUND_EMAIL": "Email already registered or Not yet signed up for registration",
     "REGISTED": "Account has been registered",
-    "SEND_MESSAGE": "Send your message"
+    "SEND_MESSAGE": "Send your message",
+    "FEEDBACK": "Please feel free to ask me any questions!:)"
   },
   "COLUMNS": {
     "EMAIL": "Email",
