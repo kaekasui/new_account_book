@@ -4,6 +4,7 @@
     "ADMIN": "管理",
     "HOME": "HOME",
     "DASHBOARD": "ダッシュボード",
+    "FEEDBACK": "フィードバック",
     "SETTINGS": "各種設定",
     "LOGIN": "ログイン",
     "LOGOUT": "ログアウト",
@@ -20,6 +21,7 @@
     "UPDATE": "変更する"
   },
   "LABELS": {
+    "FEEDBACK_EMAIL": "連絡先メールアドレス",
     "EMAIL": "メールアドレス",
     "PASSWORD": "パスワード",
     "PASSWORD_CONFIRMATION": "パスワード（確認）",
@@ -39,11 +41,13 @@
       "PASSWORD": "パスワードを入力してください",
       "CURRENT_PASSWORD": "現在のパスワードを入力してください",
       "NEW_PASSWORD": "新しいパスワードを入力してください",
-      "NEW_PASSWORD_CONFIRMATION": "新しいパスワード（確認）を入力してください"
+      "NEW_PASSWORD_CONFIRMATION": "新しいパスワード（確認）を入力してください",
+      "CONTENT": "内容を入力してください"
     },
     "MAXLENGTH": {
       "EMAIL": "メールアドレスは100文字以内で入力してください",
-      "PASSWORD": "パスワードは72文字以内で入力してください"
+      "PASSWORD": "パスワードは72文字以内で入力してください",
+      "CONTENT": "内容は1000文字以内で入力してください"
     },
     "MINLENGTH": {
       "PASSWORD": "パスワードは4文字以上で入力してください"
@@ -56,7 +60,8 @@
     "SEND_MAIL": "メールを送信しました",
     "UPDATE_PASSWORD": "パスワードを変更しました",
     "NOT_FOUND_EMAIL": "メールアドレスがすでに本登録されているか、登録されていないメールアドレスです",
-    "REGISTED": "アカウント登録が完了しました"
+    "REGISTED": "アカウント登録が完了しました",
+    "SEND_MESSAGE": "メッセージを送信しました"
   },
   "COLUMNS": {
     "EMAIL": "メールアドレス",

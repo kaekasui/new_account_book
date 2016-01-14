@@ -5,7 +5,7 @@
       .module('accountBook')
       .controller('EditPasswordController', EditPasswordController);
 
-    function EditPasswordController(IndexFactory, $location) {
+    function EditPasswordController(IndexFactory, $location, $translate) {
       var vm = this;
 
       vm.user_id = $location.search()['user_id'];
@@ -16,7 +16,7 @@
         var params = {
           password: vm.password,
           password_confirmation: vm.password_confirmation,
-          token: vm.token,
+          token: vm.token
         };
 
         IndexFactory.patchNewPassword(vm.user_id, params).catch(function(res) {

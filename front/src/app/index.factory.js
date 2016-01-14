@@ -110,6 +110,17 @@
               });
           }
           return defer.promise;
+        },
+        postFeedback: function(params) {
+          var defer = $q.defer();
+          $http.post(host + 'feedback', params)
+            .success(function(data) {
+              defer.resolve(data);
+            })
+            .error(function(data) {
+              defer.reject(data);
+            });
+          return defer.promise;
         }
       });
     }
