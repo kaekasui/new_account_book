@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   end
 
   resource :user, only: %i(show)
+  resource :feedback, only: %i(create)
 end
