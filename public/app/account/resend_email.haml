@@ -27,7 +27,7 @@
             %div{'ng-message': 'maxlength'}
               %span.glyphicon.glyphicon-alert
               {{ 'ERRORS.MAXLENGTH.EMAIL' | translate }} 
-        %button.btn.btn-default{type: 'submit', 'ng-disabled': 'resendEmailForm.$submitted && resendEmailForm.$invalid'}
+        %button.btn.btn-primary{type: 'submit', 'ng-disabled': 'resendEmailForm.$submitted && resendEmailForm.$invalid'}
           {{ 'BUTTONS.SEND' | translate }}
       %hr
       %p
