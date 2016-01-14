@@ -18,7 +18,8 @@
     "LOGIN": "ログインする",
     "SIGN_UP": "登録する",
     "SEND": "送信する",
-    "UPDATE": "変更する"
+    "UPDATE": "変更する",
+    "CLOSE": "閉じる"
   },
   "LABELS": {
     "FEEDBACK_EMAIL": "連絡先メールアドレス",
@@ -61,7 +62,7 @@
     "UPDATE_PASSWORD": "パスワードを変更しました",
     "NOT_FOUND_EMAIL": "メールアドレスがすでに本登録されているか、登録されていないメールアドレスです",
     "REGISTED": "アカウント登録が完了しました",
-    "SEND_MESSAGE": "メッセージを送信しました"
+    "SEND_MESSAGE": "管理者にメッセージを送信しました"
   },
   "COLUMNS": {
     "EMAIL": "メールアドレス",

@@ -18,7 +18,8 @@
     "LOGIN": "Log in",
     "SIGN_UP": "Sign up",
     "SEND": "Send Email",
-    "UPDATE": "Update"
+    "UPDATE": "Update",
+    "CLOSE": "Close"
   },
   "LABELS": {
     "FEEDBACK_EMAIL": "your Email address",

@@ -51,12 +51,11 @@
       });
 
       modalInstance.result.then(function () {
-        toastr.success($translate.instant('MESSAGES.SEND_MESSAGE'));
       });
     };
   }
 
-  function FeedbackController(IndexFactory, $modalInstance) {
+  function FeedbackController(IndexFactory, $modalInstance, toastr, $translate) {
     var vm = this;
     vm.login_status = IndexFactory.getLoginStatus();
     IndexFactory.getCurrentUser().then(function(res) {
@@ -64,6 +63,7 @@
     })
  
     vm.submit = function() {
+      vm.send = true;
       var params;
       if (vm.login_status) {
         params = {
@@ -77,11 +77,17 @@
         }
       }
  
-      IndexFactory.postFeedback(params).then(function(res){
+      IndexFactory.postFeedback(params).then(function(){
         $modalInstance.close();
+        toastr.success($translate.instant('MESSAGES.SEND_MESSAGE'));
       }).catch(function(res) {
         vm.errors = res.error_messages;
       });
+    };
+
+    vm.cancel = function() {
+      vm.send = false;
+      $modalInstance.close();
     };
   }
 })();
