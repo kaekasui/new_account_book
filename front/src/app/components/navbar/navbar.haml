@@ -50,9 +50,9 @@
   %form{novalidate: true, name: 'feedbackForm', 'ng-submit': 'feedback.submit()'}
     .modal-body
       .pull-right
-        %button.btn.btn-default{type: 'submit', 'ng-disabled': 'feedbackForm.$submitted && feedbackForm.$invalid'}
+        %button.btn.btn-primary{type: 'submit', 'ng-disabled': 'feedbackForm.$submitted && feedbackForm.$invalid'}
           {{ 'BUTTONS.SEND' | translate }}
-        %a.btn.btn-info{'ng-click': 'feedback.cancel()'}
+        %a.btn.btn-default{'ng-click': 'feedback.cancel()'}
           {{ 'BUTTONS.CLOSE' | translate }}
       %br
       .form-group{'ng-if': '!feedback.login_status'}

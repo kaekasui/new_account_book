@@ -74,10 +74,10 @@
   <form name='feedbackForm' ng-submit='feedback.submit()' novalidate>
     <div class='modal-body'>
       <div class='pull-right'>
-        <button class='btn btn-default' ng-disabled='feedbackForm.$submitted &amp;&amp; feedbackForm.$invalid' type='submit'>
+        <button class='btn btn-primary' ng-disabled='feedbackForm.$submitted &amp;&amp; feedbackForm.$invalid' type='submit'>
           {{ 'BUTTONS.SEND' | translate }}
         </button>
-        <a class='btn btn-info' ng-click='feedback.cancel()'>
+        <a class='btn btn-default' ng-click='feedback.cancel()'>
           {{ 'BUTTONS.CLOSE' | translate }}
         </a>
       </div>
