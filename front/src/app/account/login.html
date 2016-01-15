@@ -19,7 +19,7 @@
       <form name='loginForm' ng-submit='login.submit()' novalidate>
         <div class='form-group'>
           <label for='email'>
-            {{ 'LABELS.EMAIL' | translate }}
+            {{ 'LABELS.EMAIL' | translate }} *
           </label>
           <input autofocus class='form-control' id='email' name='email' ng-maxlength='100' ng-model='login.email' required type='email'>
           <span class='errors' ng-messages='loginForm.email.$error' ng-show='loginForm.$submitted'>
@@ -39,7 +39,7 @@
         </div>
         <div class='form-group'>
           <label for='password'>
-            {{ 'LABELS.PASSWORD' | translate }}
+            {{ 'LABELS.PASSWORD' | translate }} *
           </label>
           <input class='form-control' id='password' name='password' ng-maxlength='72' ng-minlength='4' ng-model='login.password' required type='password'>
           <span class='errors' ng-messages='loginForm.password.$error' ng-show='loginForm.$submitted'>

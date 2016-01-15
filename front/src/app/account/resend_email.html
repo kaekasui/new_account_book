@@ -19,7 +19,7 @@
       <form name='resendEmailForm' ng-submit='resend_email.submit()' novalidate>
         <div class='form-group'>
           <label for='email'>
-            {{ 'LABELS.EMAIL' | translate }}
+            {{ 'LABELS.EMAIL' | translate }} *
           </label>
           <input autofocus class='form-control' id='email' name='email' ng-maxlength='100' ng-model='resend_email.email' required type='email'>
           <span class='errors' ng-messages='resendEmailForm.email.$error' ng-show='resendEmailForm.$submitted'>

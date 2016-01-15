@@ -83,7 +83,7 @@
     <div class='modal-body'>
       <div class='form-group' ng-if='!feedback.login_status'>
         <label for='email'>
-          {{ 'LABELS.FEEDBACK_EMAIL' | translate }}
+          {{ 'LABELS.FEEDBACK_EMAIL' | translate }} *
         </label>
         <input class='form-control' id='email' name='email' ng-maxlength='100' ng-model='feedback.email' required type='email'>
         <span class='errors' ng-messages='feedbackForm.email.$error' ng-show='feedbackForm.$submitted'>
@@ -102,6 +102,9 @@
         </span>
       </div>
       <div class='form-group'>
+        <label for='content'>
+          {{ 'LABELS.MESSAGE' | translate }} *
+        </label>
         <textarea class='form-control' name='content' ng-maxlength='1000' ng-model='feedback.content' placeholder='{{feedback.placeholder}}' required rows='5'></textarea>
         <span class='errors' ng-messages='feedbackForm.content.$error' ng-show='feedbackForm.$submitted'>
           <div ng-message='required'>
