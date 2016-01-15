@@ -22,6 +22,12 @@
           {{ 'TITLES.DASHBOARD' | translate }}
         </a>
       </li>
+      <li>
+        <a href='' ng-click='vm.feedback()'>
+          <span class='glyphicon glyphicon-comment'></span>
+          {{ 'TITLES.FEEDBACK' | translate }}
+        </a>
+      </li>
     </ul>
     <ul class='nav navbar-nav navbar-right'>
       <li ng-show='vm.login_status &amp;&amp; vm.current_user.admin'>
@@ -64,3 +70,50 @@
     </ul>
   </div>
 </nav>
+<script id='feedback' type='text/ng-template'>
+  <form name='feedbackForm' ng-submit='feedback.submit()' novalidate>
+    <div class='modal-header'>
+      <button class='btn btn-primary' ng-disabled='feedbackForm.$submitted &amp;&amp; feedbackForm.$invalid' type='submit'>
+        {{ 'BUTTONS.SEND' | translate }}
+      </button>
+      <a class='btn btn-default' ng-click='feedback.cancel()'>
+        {{ 'BUTTONS.CLOSE' | translate }}
+      </a>
+    </div>
+    <div class='modal-body'>
+      <div class='form-group' ng-if='!feedback.login_status'>
+        <label for='email'>
+          {{ 'LABELS.FEEDBACK_EMAIL' | translate }}
+        </label>
+        <input class='form-control' id='email' name='email' ng-maxlength='100' ng-model='feedback.email' required type='email'>
+        <span class='errors' ng-messages='feedbackForm.email.$error' ng-show='feedbackForm.$submitted'>
+          <div ng-message='required'>
+            <span class='glyphicon glyphicon-alert'></span>
+            {{ 'ERRORS.REQUIRED.EMAIL' | translate }}
+          </div>
+          <div ng-message='email'>
+            <span class='glyphicon glyphicon-alert'></span>
+            {{ 'ERRORS.EMAIL' | translate }}
+          </div>
+          <div ng-message='maxlength'>
+            <span class='glyphicon glyphicon-alert'></span>
+            {{ 'ERRORS.MAXLENGTH.EMAIL' | translate }}
+          </div>
+        </span>
+      </div>
+      <div class='form-group'>
+        <textarea class='form-control' name='content' ng-maxlength='1000' ng-model='feedback.content' placeholder='{{feedback.placeholder}}' required rows='5'></textarea>
+        <span class='errors' ng-messages='feedbackForm.content.$error' ng-show='feedbackForm.$submitted'>
+          <div ng-message='required'>
+            <span class='glyphicon glyphicon-alert'></span>
+            {{ 'ERRORS.REQUIRED.CONTENT' | translate }}
+          </div>
+          <div ng-message='maxlength'>
+            <span class='glyphicon glyphicon-alert'></span>
+            {{ 'ERRORS.MAXLENGTH.CONTENT' | translate }}
+          </div>
+        </span>
+      </div>
+    </div>
+  </form>
+</script>

@@ -15,6 +15,11 @@ defaults: &defaults
     password:
       maximum_length: 72
       minimum_length: 4
+  feedback:
+    content:
+      maximum_length: 1000
+    email:
+      maximum_length: 100
   users:
     per: 20
 

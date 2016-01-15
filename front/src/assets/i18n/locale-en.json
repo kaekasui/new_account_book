@@ -4,6 +4,7 @@
     "ADMIN": "Admin",
     "HOME": "Home",
     "DASHBOARD": "Dashboard",
+    "FEEDBACK": "Feedback",
     "SETTINGS": "Settings",
     "LOGIN": "Log in",
     "LOGOUT": "Logout",
@@ -17,9 +18,11 @@
     "LOGIN": "Log in",
     "SIGN_UP": "Sign up",
     "SEND": "Send Email",
-    "UPDATE": "Update"
+    "UPDATE": "Update",
+    "CLOSE": "Close"
   },
   "LABELS": {
+    "FEEDBACK_EMAIL": "your Email address",
     "EMAIL": "Email address",
     "PASSWORD": "Password",
     "PASSWORD_CONFIRMATION": "Password confirmation",
@@ -39,11 +42,13 @@
       "PASSWORD": "Enter your Password",
       "CURRENT_PASSWORD": "Enter your current Password",
       "NEW_PASSWORD": "Enter your new Password",
-      "NEW_PASSWORD_CONFIRMATION": "Enter your new Password confirmation"
+      "NEW_PASSWORD_CONFIRMATION": "Enter your new Password confirmation",
+      "CONTENT": "Enter your Comment"
     },
     "MAXLENGTH": {
       "EMAIL": "Enter your E-mail has a length of at most 100",
-      "PASSWORD": "Enter your Password has a length of at most 72"
+      "PASSWORD": "Enter your Password has a length of at most 72",
+      "CONTENT": "Enter your Comment has a length of at most 1000"
     },
     "MINLENGTH": {
       "PASSWORD": "Enter your Password has a length of at least 4"
@@ -56,7 +61,9 @@
     "SEND_MAIL": "Send a mail",
     "UPDATE_PASSWORD": "Your Password has been changed",
     "NOT_FOUND_EMAIL": "Email already registered or Not yet signed up for registration",
-    "REGISTED": "Account has been registered"
+    "REGISTED": "Account has been registered",
+    "SEND_MESSAGE": "Send your message",
+    "FEEDBACK": "Please feel free to ask me any questions!:)"
   },
   "COLUMNS": {
     "EMAIL": "Email",

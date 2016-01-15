@@ -15,6 +15,10 @@
         %a
           %span.glyphicon.glyphicon-stats
           {{ 'TITLES.DASHBOARD' | translate }}
+      %li
+        %a{'ng-click': 'vm.feedback()', href: ''}
+          %span.glyphicon.glyphicon-comment
+          {{ 'TITLES.FEEDBACK' | translate }}
     %ul.nav.navbar-nav.navbar-right
       %li{'ng-show': 'vm.login_status && vm.current_user.admin'}
         %a{'ui-sref': 'admin'}
@@ -41,3 +45,36 @@
         %a{'ui-sref': 'home', 'ng-click': 'vm.logout()'}
           %span.glyphicon.glyphicon-leaf
           {{ 'TITLES.LOGOUT' | translate }}
+
+%script#feedback{type: 'text/ng-template'}
+  %form{novalidate: true, name: 'feedbackForm', 'ng-submit': 'feedback.submit()'}
+    .modal-header
+      %button.btn.btn-primary{type: 'submit', 'ng-disabled': 'feedbackForm.$submitted && feedbackForm.$invalid'}
+        {{ 'BUTTONS.SEND' | translate }}
+      %a.btn.btn-default{'ng-click': 'feedback.cancel()'}
+        {{ 'BUTTONS.CLOSE' | translate }}
+    .modal-body
+      .form-group{'ng-if': '!feedback.login_status'}
+        %label{for: 'email'}
+          {{ 'LABELS.FEEDBACK_EMAIL' | translate }}
+        %input.form-control#email{type: 'email', name: 'email', 'ng-model': 'feedback.email', required: true, 'ng-maxlength': '100'}
+        %span.errors{'ng-messages': 'feedbackForm.email.$error', 'ng-show': 'feedbackForm.$submitted'}
+          %div{'ng-message': 'required'}
+            %span.glyphicon.glyphicon-alert
+            {{ 'ERRORS.REQUIRED.EMAIL' | translate }}
+          %div{'ng-message': 'email'}
+            %span.glyphicon.glyphicon-alert
+            {{ 'ERRORS.EMAIL' | translate }}
+          %div{'ng-message': 'maxlength'}
+            %span.glyphicon.glyphicon-alert
+            {{ 'ERRORS.MAXLENGTH.EMAIL' | translate }}
+
+      .form-group
+        %textarea.form-control{'placeholder': "{{feedback.placeholder}}", rows: '5', name: 'content', 'ng-model': 'feedback.content', required: true, 'ng-maxlength': '1000'}
+        %span.errors{'ng-messages': 'feedbackForm.content.$error', 'ng-show': 'feedbackForm.$submitted'}
+          %div{'ng-message': 'required'}
+            %span.glyphicon.glyphicon-alert
+            {{ 'ERRORS.REQUIRED.CONTENT' | translate }}
+          %div{'ng-message': 'maxlength'}
+            %span.glyphicon.glyphicon-alert
+            {{ 'ERRORS.MAXLENGTH.CONTENT' | translate }}
