@@ -22,6 +22,8 @@ defaults: &defaults
       maximum_length: 100
   users:
     per: 20
+  feedbacks:
+    per: 20
 
 development:
   <<: *defaults
