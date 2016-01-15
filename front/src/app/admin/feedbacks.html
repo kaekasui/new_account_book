@@ -1,3 +1,4 @@
+<admin-menu-directive></admin-menu-directive>
 <div class='panel panel-default'>
   <div class='panel-heading'>
     <span class='glyphicon glyphicon-leaf'></span>
@@ -16,8 +17,12 @@
     <table class='table'>
       <tr>
         <th></th>
-        <th></th>
-        <th></th>
+        <th>
+          {{ 'COLUMNS.EMAIL' | translate }}
+        </th>
+        <th>
+          {{ 'COLUMNS.USER' | translate }}
+        </th>
         <th>
           {{ 'COLUMNS.MESSAGE' | translate }}
         </th>
@@ -27,15 +32,14 @@
       </tr>
       <tr ng-repeat='feedback in admin.feedbacks'>
         <td>
-          <span class='red glyphicon glyphicon-king' ng-show='feedback.checked'></span>
-        </td>
-        <td>
+          <span class='red glyphicon glyphicon-check' ng-show='feedback.checked'></span>
           {{ feedback.checked }}
         </td>
         <td>
           {{ feedback.email }}
         </td>
         <td>
+          <span class='red glyphicon glyphicon-user' ng-show='feedback.user_id'></span>
           {{ feedback.user_id }}
         </td>
         <td>

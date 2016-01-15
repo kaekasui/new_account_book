@@ -14,7 +14,8 @@
     "EDIT_PASSWORD": "パスワードの変更",
     "RESEND_EMAIL": "確認メール再送信",
     "MYPAGE": "マイページ",
-    "TERMS": "ご利用規約"
+    "TERMS": "ご利用規約",
+    "USER": "ユーザー"
   },
   "BUTTONS": {
     "LOGIN": "ログインする",
@@ -72,7 +73,8 @@
     "CREATED_AT": "作成日時",
     "EMAIL": "メールアドレス",
     "MESSAGE": "メッセージ",
-    "LAST_LOGIN_TIME": "最終ログイン時間"
+    "LAST_LOGIN_TIME": "最終ログイン時間",
+    "USER": "ユーザー"
   },
   "TERMS": {
     "DIRECTION": "運営",

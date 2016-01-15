@@ -1,3 +1,5 @@
+%admin-menu-directive
+
 .panel.panel-default
   .panel-heading
     %span.glyphicon.glyphicon-leaf
@@ -12,19 +14,21 @@
       %tr
         %th
         %th
+          {{ 'COLUMNS.EMAIL' | translate }}
         %th
+          {{ 'COLUMNS.USER' | translate }}
         %th
           {{ 'COLUMNS.MESSAGE' | translate }}
         %th
           {{ 'COLUMNS.CREATED_AT' | translate }}
       %tr{'ng-repeat': 'feedback in admin.feedbacks'}
         %td
-          %span.red.glyphicon.glyphicon-king{'ng-show': 'feedback.checked'}
-        %td
+          %span.red.glyphicon.glyphicon-check{'ng-show': 'feedback.checked'}
           {{ feedback.checked }}
         %td
           {{ feedback.email }}
         %td
+          %span.red.glyphicon.glyphicon-user{'ng-show': 'feedback.user_id'}
           {{ feedback.user_id }}
         %td
           {{ feedback.content }}
