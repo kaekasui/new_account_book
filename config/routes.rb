@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resource :session, only: %i(create)
 
   namespace :admin do
-    resources :users, only: %i(index)
+    resources :users, only: %i(index show)
     resources :feedbacks, only: %i(index)
   end
 
