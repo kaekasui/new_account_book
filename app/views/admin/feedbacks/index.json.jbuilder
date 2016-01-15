@@ -7,3 +7,5 @@ json.feedbacks do
     json.created_at I18n.l(feedback.created_at)
   end
 end
+
+json.total_count @total_count

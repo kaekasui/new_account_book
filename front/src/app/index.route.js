@@ -14,6 +14,12 @@
         controller: 'AdminController',
         controllerAs: 'admin'
       })
+      .state('feedbacks', {
+        url: '/admin/feedbacks',
+        templateUrl: 'app/admin/feedbacks.html',
+        controller: 'FeedbacksController',
+        controllerAs: 'admin'
+      })
       .state('home', {
         url: '/',
         templateUrl: 'app/main/main.html',

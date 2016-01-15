@@ -1,0 +1,32 @@
+.panel.panel-default
+  .panel-heading
+    %span.glyphicon.glyphicon-leaf
+    {{ 'TITLES.FEEDBACKS' | translate }}
+  .panel-body#with-background
+    %nav
+      %ul.pagination
+        %li{'ng-click': 'admin.clickPaginate(number)', 'ng-repeat': 'number in admin.offset_numbers', 'ng-class': '{active: number == admin.offset}'}
+          %a
+            {{$index + 1}}
+    %table.table
+      %tr
+        %th
+        %th
+        %th
+        %th
+          {{ 'COLUMNS.MESSAGE' | translate }}
+        %th
+          {{ 'COLUMNS.CREATED_AT' | translate }}
+      %tr{'ng-repeat': 'feedback in admin.feedbacks'}
+        %td
+          %span.red.glyphicon.glyphicon-king{'ng-show': 'feedback.checked'}
+        %td
+          {{ feedback.checked }}
+        %td
+          {{ feedback.email }}
+        %td
+          {{ feedback.user_id }}
+        %td
+          {{ feedback.content }}
+        %td
+          {{ feedback.created_at }}

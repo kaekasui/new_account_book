@@ -1,10 +1,7 @@
-<a ui-sref='feedbacks'>
-  フィードバック
-</a>
 <div class='panel panel-default'>
   <div class='panel-heading'>
     <span class='glyphicon glyphicon-leaf'></span>
-    {{ 'TITLES.ADMIN' | translate }}
+    {{ 'TITLES.FEEDBACKS' | translate }}
   </div>
   <div class='panel-body' id='with-background'>
     <nav>
@@ -19,40 +16,33 @@
     <table class='table'>
       <tr>
         <th></th>
-        <th>
-          ID
-        </th>
         <th></th>
         <th></th>
         <th>
-          {{ 'COLUMNS.EMAIL' | translate }}
+          {{ 'COLUMNS.MESSAGE' | translate }}
         </th>
         <th>
-          {{ 'COLUMNS.LAST_LOGIN_TIME' | translate }}
+          {{ 'COLUMNS.CREATED_AT' | translate }}
         </th>
       </tr>
-      <tr ng-repeat='user in admin.users'>
+      <tr ng-repeat='feedback in admin.feedbacks'>
         <td>
-          <span class='red glyphicon glyphicon-king' ng-show='user.admin'></span>
+          <span class='red glyphicon glyphicon-king' ng-show='feedback.checked'></span>
         </td>
         <td>
-          {{ user.id }}
+          {{ feedback.checked }}
         </td>
         <td>
-          <span class='label' ng-class='user.status_label_name'>
-            {{ user.status }}
-          </span>
+          {{ feedback.email }}
         </td>
         <td>
-          <span class='label' ng-class='user.type_label_name'>
-            {{ user.type }}
-          </span>
+          {{ feedback.user_id }}
         </td>
         <td>
-          {{ user.email }}
+          {{ feedback.content }}
         </td>
         <td>
-          {{ user.last_sign_in_at }}
+          {{ feedback.created_at }}
         </td>
       </tr>
     </table>

@@ -5,6 +5,7 @@
     "HOME": "HOME",
     "DASHBOARD": "ダッシュボード",
     "FEEDBACK": "フィードバック",
+    "FEEDBACKS": "フィードバックの管理",
     "SETTINGS": "各種設定",
     "LOGIN": "ログイン",
     "LOGOUT": "ログアウト",
@@ -68,7 +69,9 @@
     "FEEDBACK": "いいね！使いやすくして！なんか変！など、メッセージお待ちしてます(✿╹◡╹)"
   },
   "COLUMNS": {
+    "CREATED_AT": "作成日時",
     "EMAIL": "メールアドレス",
+    "MESSAGE": "メッセージ",
     "LAST_LOGIN_TIME": "最終ログイン時間"
   },
   "TERMS": {

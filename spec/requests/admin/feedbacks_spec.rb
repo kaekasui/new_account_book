@@ -44,7 +44,8 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
               content: feedback.content,
               created_at: I18n.l(feedback.created_at)
             }
-          ]
+          ],
+          total_count: 2
         }
         expect(response.body).to be_json_as(json)
       end
@@ -64,7 +65,8 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
               content: feedback.content,
               created_at: I18n.l(feedback.created_at)
             }
-          ]
+          ],
+          total_count: 2
         }
         expect(response.body).to be_json_as(json)
       end
