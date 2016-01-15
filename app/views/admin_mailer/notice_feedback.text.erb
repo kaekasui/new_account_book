@@ -1,0 +1,8 @@
+管理者へのお知らせです。
+
+<%= @feedback.email || @feedback.user.email %> 様より、フィードバックが届いています。
+<%- # Twitter名を設定 %>
+
+---
+<%= @feedback.content %>
+---

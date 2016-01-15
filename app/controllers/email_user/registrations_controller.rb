@@ -5,7 +5,7 @@ class EmailUser::RegistrationsController < ApplicationController
     if @user.save
       origin = "#{request.protocol}#{request.host_with_port}"
       UserMailer.registration(@user.email, @user.registration_url(origin))
-        .deliver_now
+        .deliver_later
       head 201
     else
       render_error @user
@@ -15,7 +15,7 @@ class EmailUser::RegistrationsController < ApplicationController
   def regist
     @user = EmailUser.find(params[:registration_id].to_i)
     if @user.registered_by(params[:token])
-      UserMailer.finished_registration(@user.email).deliver_now
+      UserMailer.finished_registration(@user.email).deliver_later
       host = Rails.env.production? ? '' : 'http://localhost:3000'
       redirect_to "#{host}/#/?registed=ok"
     else
