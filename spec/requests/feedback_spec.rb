@@ -12,6 +12,9 @@ describe 'POST /feedback?user_id=user_id&email=email&content=content',
       it '201が返ってくること' do
         post '/feedback', params
         expect(response.status).to eq 201
+
+        open_email(Settings.mail_from)
+        expect(current_email.subject).to eq 'フィードバックが届きました'
       end
     end
 
@@ -38,6 +41,9 @@ describe 'POST /feedback?user_id=user_id&email=email&content=content',
         post '/feedback', params
         expect(response.status).to eq 201
         expect(Feedback.last.content).to eq content
+
+        open_email(Settings.mail_from)
+        expect(current_email.subject).to eq 'フィードバックが届きました'
       end
     end
 
