@@ -69,5 +69,14 @@
   "COLUMNS": {
     "EMAIL": "Email",
     "LAST_LOGIN_TIME": "Last Login Time"
-  }
+  },
+  "TERMS": {
+    "DIRECTION": "DIRECTION",
+    "NOTE": "NOTE",
+    "PRIVACY": "PRIVACY",
+    "IMMUNITY": "IMMUNITY",
+    "COPYRIGHT": "COPYRIGHT",
+    "ENVIRONMENT": "ENVIRONMENT",
+    "LINKS": "LINKS",
+    "PROPER_LAW": "PROPER LAW"
 }
