@@ -12,7 +12,8 @@
     "RESET_PASSWORD": "パスワード再設定",
     "EDIT_PASSWORD": "パスワードの変更",
     "RESEND_EMAIL": "確認メール再送信",
-    "MYPAGE": "マイページ"
+    "MYPAGE": "マイページ",
+    "TERMS": "ご利用規約"
   },
   "BUTTONS": {
     "LOGIN": "ログインする",
@@ -68,5 +69,15 @@
   "COLUMNS": {
     "EMAIL": "メールアドレス",
     "LAST_LOGIN_TIME": "最終ログイン時間"
+  },
+  "TERMS": {
+    "DIRECTION": "運営",
+    "NOTE": "注意事項",
+    "PRIVACY": "個人情報について",
+    "IMMUNITY": "免責事項",
+    "COPYRIGHT": "著作権等",
+    "ENVIRONMENT": "推奨環境について",
+    "LINKS": "本サイトへのリンクについて",
+    "PROPER_LAW": "準拠法"
   }
 }
