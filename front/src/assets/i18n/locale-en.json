@@ -12,7 +12,8 @@
     "RESET_PASSWORD": "Reset Password",
     "EDIT_PASSWORD": "Edit Password",
     "RESEND_EMAIL": "Resend Email",
-    "MYPAGE": "Mypage"
+    "MYPAGE": "Mypage",
+    "TERMS": "Terms"
   },
   "BUTTONS": {
     "LOGIN": "Log in",

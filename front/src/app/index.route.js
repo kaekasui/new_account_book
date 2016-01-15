@@ -61,6 +61,12 @@
         templateUrl: 'app/user/mypage.html',
         controller: 'MypageController',
         controllerAs: 'mypage'
+      })
+      .state('terms', {
+        url: '/terms',
+        templateUrl: 'app/components/footer/terms.html',
+        controller: 'TermsController',
+        controllerAs: 'terms'
       });
 
     $urlRouterProvider.otherwise('/');
