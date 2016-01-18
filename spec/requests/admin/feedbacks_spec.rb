@@ -25,6 +25,7 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
   context '管理ユーザーとしてログインしている場合' do
     context '1ページ以内のフィードバック数の場合' do
       it '200が返り、フィードバック一覧が返ってくること' do
+        # TODO: Twitterユーザーのフィードバックを表示する
         get '/admin/feedbacks/', '', login_headers(admin_user)
 
         expect(response.status).to eq 200
@@ -33,14 +34,14 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
             {
               checked: user_feedback.checked,
               email: user_feedback.email,
-              user_id: user_feedback.user_id,
+              user_name: nil,
               content: user_feedback.content,
               created_at: I18n.l(user_feedback.created_at)
             },
             {
               checked: feedback.checked,
               email: feedback.email,
-              user_id: feedback.user_id,
+              user_name: nil,
               content: feedback.content,
               created_at: I18n.l(feedback.created_at)
             }
@@ -61,7 +62,7 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
             {
               checked: feedback.checked,
               email: feedback.email,
-              user_id: feedback.user_id,
+              user_name: nil,
               content: feedback.content,
               created_at: I18n.l(feedback.created_at)
             }

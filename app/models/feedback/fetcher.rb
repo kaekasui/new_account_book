@@ -8,7 +8,9 @@ class Feedback::Fetcher
   end
 
   def all
-    feedbacks = Feedback.order(id: :desc).limit(Settings.feedbacks.per)
+    feedbacks = Feedback.order(id: :desc)
+                .includes(:user)
+                .limit(Settings.feedbacks.per)
     feedbacks.offset!(@params[:offset]) if @params[:offset].present?
     feedbacks
   end
