@@ -9,6 +9,9 @@ defaults: &defaults
   password_token:
     length: 32
     expire_after: <%= 24.hours.to_i %>
+  category:
+    name:
+      maximum_length: 100
   user:
     email:
       maximum_length: 100
