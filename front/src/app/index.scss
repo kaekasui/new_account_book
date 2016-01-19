@@ -62,7 +62,12 @@ $pagination-active-border: #acb875;
 $breadcrumb-bg: rgba(#fff, 0.5);
 $breadcrumb-separator: '|';
 
+$dropdown-link-color: $link-color;
+
 body {
+  .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: $link-color;
+  }
   background-image: url('../assets/images/wood.png');
 
   label {
