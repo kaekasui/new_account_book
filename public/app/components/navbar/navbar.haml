@@ -56,7 +56,7 @@
     .modal-body
       .form-group{'ng-if': '!feedback.login_status'}
         %label{for: 'email'}
-          {{ 'LABELS.FEEDBACK_EMAIL' | translate }}
+          {{ 'LABELS.FEEDBACK_EMAIL' | translate }} *
         %input.form-control#email{type: 'email', name: 'email', 'ng-model': 'feedback.email', required: true, 'ng-maxlength': '100'}
         %span.errors{'ng-messages': 'feedbackForm.email.$error', 'ng-show': 'feedbackForm.$submitted'}
           %div{'ng-message': 'required'}
@@ -70,6 +70,8 @@
             {{ 'ERRORS.MAXLENGTH.EMAIL' | translate }}
 
       .form-group
+        %label{for: 'content'}
+          {{ 'LABELS.MESSAGE' | translate }} *
         %textarea.form-control{'placeholder': "{{feedback.placeholder}}", rows: '5', name: 'content', 'ng-model': 'feedback.content', required: true, 'ng-maxlength': '1000'}
         %span.errors{'ng-messages': 'feedbackForm.content.$error', 'ng-show': 'feedbackForm.$submitted'}
           %div{'ng-message': 'required'}

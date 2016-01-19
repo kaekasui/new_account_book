@@ -15,7 +15,7 @@
       %form{novalidate: true, name: 'loginForm', 'ng-submit': 'login.submit()'}
         .form-group
           %label{for: 'email'}
-            {{ 'LABELS.EMAIL' | translate }}
+            {{ 'LABELS.EMAIL' | translate }} *
           %input.form-control#email{type: 'email', autofocus: true, name: 'email', 'ng-model': 'login.email', required: true, 'ng-maxlength': '100'}
           %span.errors{'ng-messages': 'loginForm.email.$error', 'ng-show': 'loginForm.$submitted'}
             %div{'ng-message': 'required'}
@@ -29,7 +29,7 @@
               {{ 'ERRORS.MAXLENGTH.EMAIL' | translate }}
         .form-group
           %label{for: 'password'}
-            {{ 'LABELS.PASSWORD' | translate }}
+            {{ 'LABELS.PASSWORD' | translate }} *
           %input.form-control#password{type: 'password', name: 'password', 'ng-model': 'login.password', required: true, 'ng-maxlength': '72', 'ng-minlength': '4'}
           %span.errors{'ng-messages': 'loginForm.password.$error', 'ng-show': 'loginForm.$submitted'}
             %div{'ng-message': 'required'}

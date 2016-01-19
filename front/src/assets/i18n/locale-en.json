@@ -5,6 +5,7 @@
     "HOME": "Home",
     "DASHBOARD": "Dashboard",
     "FEEDBACK": "Feedback",
+    "FEEDBACKS": "Feedbacks",
     "SETTINGS": "Settings",
     "LOGIN": "Log in",
     "LOGOUT": "Logout",
@@ -13,7 +14,8 @@
     "EDIT_PASSWORD": "Edit Password",
     "RESEND_EMAIL": "Resend Email",
     "MYPAGE": "Mypage",
-    "TERMS": "Terms"
+    "TERMS": "Terms",
+    "USER": "User"
   },
   "BUTTONS": {
     "LOGIN": "Log in",
@@ -68,8 +70,11 @@
     "FEEDBACK": "Please feel free to ask me any questions!:)"
   },
   "COLUMNS": {
+    "CREATED_AT": "Creation Time",
     "EMAIL": "Email",
-    "LAST_LOGIN_TIME": "Last Login Time"
+    "MESSAGE": "Message",
+    "LAST_LOGIN_TIME": "Last Login Time",
+    "USER": "User"
   },
   "TERMS": {
     "DIRECTION": "DIRECTION",
@@ -80,4 +85,5 @@
     "ENVIRONMENT": "ENVIRONMENT",
     "LINKS": "LINKS",
     "PROPER_LAW": "PROPER LAW"
+  }
 }

@@ -4,5 +4,6 @@ class Admin::FeedbacksController < ApplicationController
 
   def index
     @feedbacks = Feedback::Fetcher.all(params: params)
+    @total_count = Feedback.count
   end
 end

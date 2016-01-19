@@ -111,6 +111,36 @@
           }
           return defer.promise;
         },
+        getUser: function(user_id) {
+          var defer = $q.defer();
+          var token = localStorageService.get('access_token');
+          if (this.getLoginStatus()) {
+            var login_headers = { headers: { Authorization: "Token token=" + token }};
+            $http.get(host + "admin/users/" + user_id, login_headers)
+              .success(function(data) {
+                defer.resolve(data);
+              })
+              .error(function(data) {
+                defer.reject(data);
+              });
+          }
+          return defer.promise;
+        },
+        getFeedbacks: function(offset) {
+          var defer = $q.defer();
+          var token = localStorageService.get('access_token');
+          if (this.getLoginStatus()) {
+            var login_headers = { headers: { Authorization: "Token token=" + token }};
+            $http.get(host + "admin/feedbacks?offset=" + offset, login_headers)
+              .success(function(data) {
+                defer.resolve(data);
+              })
+              .error(function(data) {
+                defer.reject(data);
+              });
+          }
+          return defer.promise;
+        },
         postFeedback: function(params) {
           var defer = $q.defer();
           $http.post(host + 'feedback', params)

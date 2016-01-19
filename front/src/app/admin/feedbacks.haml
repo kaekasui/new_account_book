@@ -1,0 +1,58 @@
+%admin-menu-directive
+
+.panel.panel-default
+  .panel-heading
+    %span.glyphicon.glyphicon-leaf
+    {{ 'TITLES.FEEDBACKS' | translate }}
+  .panel-body#with-background
+    %nav
+      %ul.pagination
+        %li{'ng-click': 'admin.clickPaginate(number)', 'ng-repeat': 'number in admin.offset_numbers', 'ng-class': '{active: number == admin.offset}'}
+          %a
+            {{$index + 1}}
+    %table.table
+      %tr
+        %th
+        %th
+          {{ 'COLUMNS.EMAIL' | translate }}
+        %th
+          {{ 'COLUMNS.USER' | translate }}
+        %th
+          {{ 'COLUMNS.MESSAGE' | translate }}
+        %th
+          {{ 'COLUMNS.CREATED_AT' | translate }}
+      %tr{'ng-repeat': 'feedback in admin.feedbacks'}
+        %td
+          %span.red.glyphicon.glyphicon-check{'ng-show': 'feedback.checked'}
+          {{ feedback.checked }}
+        %td
+          {{ feedback.email }}
+        %td
+          %a{'ng-click': 'admin.user(feedback.user_id)', href: ''}
+            %span.red.glyphicon.glyphicon-user{'ng-show': 'feedback.user_id'}
+            {{ feedback.user_name }}
+        %td
+          {{ feedback.content }}
+        %td
+          {{ feedback.created_at }}
+
+%script#user{type: 'text/ng-template'}
+  .modal-body
+    %form.form-horizontal
+      .form-group
+        .col-sm-2
+          %span.label{'ng-class': 'user.user.type_label_name'}
+            {{ user.user.type }}
+        .col-sm-2
+          %span.label{'ng-class': 'user.user.status_label_name'}
+            {{ user.user.status }}
+      .form-group
+        .col-sm-3
+          {{ 'COLUMNS.EMAIL' | translate }}
+        .col-sm-9
+          {{ user.user.email }}
+      .form-group
+        .col-sm-3
+          {{ 'COLUMNS.LAST_LOGIN_TIME' | translate }}
+        .col-sm-9
+          {{ user.user.last_sign_in_at }}

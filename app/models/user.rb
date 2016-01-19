@@ -41,4 +41,8 @@ class User < ActiveRecord::Base
   def last_login_time
     I18n.l(last_sign_in_at) if last_sign_in_at
   end
+
+  def _name
+    name || nickname || email
+  end
 end
