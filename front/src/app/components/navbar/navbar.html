@@ -36,16 +36,17 @@
           {{ 'TITLES.ADMIN' | translate }}
         </a>
       </li>
-      <li class='dropdown'>
-        <a aria-haspopup class='dropdown-toggle' data-toggle='dropdown' href='#' role='button'>
+      <li class='dropdown open' ng-click='isCollapsed = !isCollapsed' ng-init='isCollapsed = true' role='presentation'>
+        <a aria-expanded='false' aria-haspopup='true' class='dropdown-toggle' data-toggle='dropdown' href='' role='button'>
           <span class='glyphicon glyphicon-cog'></span>
           {{ 'TITLES.SETTINGS' | translate }}
           <span class='caret'></span>
         </a>
-        <ul class='dropdown-menu'>
+        <ul class='dropdown-menu' ng-hide='isCollapsed'>
           <li>
-            <span class='glyphicon glyphicon-tag'></span>
-            カテゴリ
+            <a>
+              {{ 'TITLES.CATEGORY' | translate }}
+            </a>
           </li>
         </ul>
       </li>
