@@ -20,7 +20,7 @@ ja:
       subject: 【PIG BOOK β】アカウント登録完了のお知らせ
     password_reset:
       subject: 【PIG BOOK β】パスワードリセットのご案内
-    confirmation:
+    confirmation_account:
       subject: 【PIG BOOK β】アカウントのご確認と登録のご案内
   admin_mailer:
     notice_feedback:
