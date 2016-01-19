@@ -1,0 +1,8 @@
+.panel.panel-default
+  .panel-heading
+    %span.glyphicon.glyphicon-leaf
+    {{ 'TITLES.CATEGORIES' | translate }}
+  .panel-body#with-background
+    %ul{'ng-repeat': 'category in categories.categories'}
+      %li
+        {{ category.name }}

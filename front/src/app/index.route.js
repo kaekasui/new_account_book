@@ -68,6 +68,12 @@
         controller: 'MypageController',
         controllerAs: 'mypage'
       })
+      .state('categories', {
+        url: '/categories',
+        templateUrl: 'app/settings/categories.html',
+        controller: 'CategoriesController',
+        controllerAs: 'categories'
+      })
       .state('terms', {
         url: '/terms',
         templateUrl: 'app/components/footer/terms.html',

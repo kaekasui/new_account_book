@@ -1,0 +1,13 @@
+<div class='panel panel-default'>
+  <div class='panel-heading'>
+    <span class='glyphicon glyphicon-leaf'></span>
+    {{ 'TITLES.CATEGORIES' | translate }}
+  </div>
+  <div class='panel-body' id='with-background'>
+    <ul ng-repeat='category in categories.categories'>
+      <li>
+        {{ category.name }}
+      </li>
+    </ul>
+  </div>
+</div>
