@@ -37,7 +37,11 @@ class EmailUser < User
   end
 
   def send_to_reset_password(origin)
-    UserMailer.password_reset(email, password_reset_url(origin)).deliver_later
+    if inactive?
+      UserMailer.confirm_registration(email, origin).deliver_later
+    elsif registered?
+      UserMailer.password_reset(email, password_reset_url(origin)).deliver_later
+    end
   end
 
   def update_password(current_password, password, password_confirmation)

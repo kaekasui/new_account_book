@@ -22,7 +22,14 @@ class UserMailer < ApplicationMailer
   end
 
   # アカウントのご確認と登録のご案内
-  def confirmation(email, origin)
+  def confirm_account(email, origin)
+    @email = email
+    @origin = origin
+    mail to: email
+  end
+
+  # アカウント登録状況のご確認と登録のご案内
+  def confirm_registration(email, origin)
     @email = email
     @origin = origin
     mail to: email
