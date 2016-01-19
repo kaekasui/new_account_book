@@ -36,7 +36,7 @@
           {{ 'TITLES.ADMIN' | translate }}
         </a>
       </li>
-      <li class='dropdown open' ng-click='isCollapsed = !isCollapsed' ng-init='isCollapsed = true' role='presentation'>
+      <li class='dropdown open' ng-click='isCollapsed = !isCollapsed' ng-init='isCollapsed = true' ng-show='vm.login_status' role='presentation'>
         <a aria-expanded='false' aria-haspopup='true' class='dropdown-toggle' data-toggle='dropdown' href='' role='button'>
           <span class='glyphicon glyphicon-cog'></span>
           {{ 'TITLES.SETTINGS' | translate }}
