@@ -34,14 +34,16 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
             {
               checked: user_feedback.checked,
               email: user_feedback.email,
-              user_name: nil,
+              user_id: user_feedback.user_id,
+              user_name: user_feedback.user.try(:_name),
               content: user_feedback.content,
               created_at: I18n.l(user_feedback.created_at)
             },
             {
               checked: feedback.checked,
               email: feedback.email,
-              user_name: nil,
+              user_id: feedback.user_id,
+              user_name: feedback.user.try(:_name),
               content: feedback.content,
               created_at: I18n.l(feedback.created_at)
             }
@@ -62,7 +64,8 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
             {
               checked: feedback.checked,
               email: feedback.email,
-              user_name: nil,
+              user_id: feedback.user_id,
+              user_name: feedback.user.try(:_name),
               content: feedback.content,
               created_at: I18n.l(feedback.created_at)
             }
