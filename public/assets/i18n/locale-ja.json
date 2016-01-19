@@ -5,6 +5,7 @@
     "HOME": "HOME",
     "DASHBOARD": "ダッシュボード",
     "FEEDBACK": "フィードバック",
+    "FEEDBACKS": "フィードバックの管理",
     "SETTINGS": "各種設定",
     "LOGIN": "ログイン",
     "LOGOUT": "ログアウト",
@@ -13,7 +14,8 @@
     "EDIT_PASSWORD": "パスワードの変更",
     "RESEND_EMAIL": "確認メール再送信",
     "MYPAGE": "マイページ",
-    "TERMS": "ご利用規約"
+    "TERMS": "ご利用規約",
+    "USER": "ユーザー"
   },
   "BUTTONS": {
     "LOGIN": "ログインする",
@@ -29,6 +31,7 @@
     "PASSWORD_CONFIRMATION": "パスワード（確認）",
     "REMEMBER_ME": "パスワードを記録する",
     "CURRENT_PASSWORD": "現在のパスワード",
+    "MESSAGE": "メッセージ",
     "NEW_PASSWORD": "新しいパスワード",
     "NEW_PASSWORD_CONFIRMATION": "新しいパスワード（確認）",
     "EMAIL_LOGIN": "メールアドレスでログイン"
@@ -67,8 +70,11 @@
     "FEEDBACK": "いいね！使いやすくして！なんか変！など、メッセージお待ちしてます(✿╹◡╹)"
   },
   "COLUMNS": {
+    "CREATED_AT": "作成日時",
     "EMAIL": "メールアドレス",
-    "LAST_LOGIN_TIME": "最終ログイン時間"
+    "MESSAGE": "メッセージ",
+    "LAST_LOGIN_TIME": "最終ログイン時間",
+    "USER": "ユーザー"
   },
   "TERMS": {
     "DIRECTION": "運営",
