@@ -28,9 +28,31 @@
         %td
           {{ feedback.email }}
         %td
-          %span.red.glyphicon.glyphicon-user{'ng-show': 'feedback.user_id'}
-          {{ feedback.user_id }}
+          %a{'ng-click': 'admin.user(feedback.user_id)', href: ''}
+            %span.red.glyphicon.glyphicon-user{'ng-show': 'feedback.user_id'}
+            {{ feedback.user_name }}
         %td
           {{ feedback.content }}
         %td
           {{ feedback.created_at }}
+
+%script#user{type: 'text/ng-template'}
+  .modal-body
+    %form.form-horizontal
+      .form-group
+        .col-sm-2
+          %span.label{'ng-class': 'user.user.type_label_name'}
+            {{ user.user.type }}
+        .col-sm-2
+          %span.label{'ng-class': 'user.user.status_label_name'}
+            {{ user.user.status }}
+      .form-group
+        .col-sm-3
+          {{ 'COLUMNS.EMAIL' | translate }}
+        .col-sm-9
+          {{ user.user.email }}
+      .form-group
+        .col-sm-3
+          {{ 'COLUMNS.LAST_LOGIN_TIME' | translate }}
+        .col-sm-9
+          {{ user.user.last_sign_in_at }}

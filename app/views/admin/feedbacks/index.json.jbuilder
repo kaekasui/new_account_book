@@ -2,7 +2,8 @@ json.feedbacks do
   json.array! @feedbacks do |feedback|
     json.checked feedback.checked
     json.email feedback.email
-    json.user_name feedback.user_name
+    json.user_id feedback.user_id
+    json.user_name feedback.user.try(:_name)
     json.content feedback.content
     json.created_at I18n.l(feedback.created_at)
   end

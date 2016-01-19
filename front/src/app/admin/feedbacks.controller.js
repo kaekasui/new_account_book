@@ -3,9 +3,10 @@
 
     angular
       .module('accountBook')
+      .controller('UserController', UserController)
       .controller('FeedbacksController', FeedbacksController);
 
-    function FeedbacksController(IndexFactory) {
+    function FeedbacksController(IndexFactory, $modal) {
       var vm = this;
 
       vm.offset = 0;
@@ -31,6 +32,26 @@
           }
           vm.offset_numbers = total_array.filter(function(x) { return x % 20 === 0; });
       });
+
+      vm.user = function(user_id) {
+        var modalInstance = $modal.open({
+          templateUrl: 'user',
+          controller: 'UserController',
+          controllerAs: 'user',
+          resolve: { user_id: user_id }
+        });
+
+        modalInstance.result.then(function () {
+        });
+      };
     }
 
+    function UserController(IndexFactory, user_id) {
+      var vm = this;
+
+      IndexFactory.getUser(user_id).then(function(res) {
+        vm.user = res;
+      })
+  }
+ 
 })();
