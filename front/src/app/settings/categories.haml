@@ -3,6 +3,7 @@
     %span.glyphicon.glyphicon-leaf
     {{ 'TITLES.CATEGORIES' | translate }}
   .panel-body#with-background
-    %ul{'ng-repeat': 'category in categories.categories'}
-      %li
-        {{ category.name }}
+    .col-sm-3{'ng-repeat': 'category in categories.categories', 'data-drag': 'true', 'ng-model': 'categories.categories[$index]', 'jqyoui-draggable': "{index: {{$index}}, animate: true, placeholder: 'keep'}", 'data-jqyoui-options': "{revert: 'invalid', helper: 'clone'}"}
+      .panel.col-sm-11
+        %b
+          {{ category.name }}
