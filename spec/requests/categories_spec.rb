@@ -20,12 +20,12 @@ describe 'GET /categories', autodoc: true do
       json = {
         categories: [
           {
-            id: category2.id,
-            name: category2.name
-          },
-          {
             id: category.id,
             name: category.name
+          },
+          {
+            id: category2.id,
+            name: category2.name
           }
         ]
       }
@@ -49,14 +49,14 @@ describe 'POST /categories/sort', autodoc: true do
     let!(:category3) { create(:category, user: user) }
     let!(:category4) { create(:category, user: user) }
     let!(:params) do
-      {
-        sequence: [category3.id, category2.id, category4.id, category1.id]
-      }
+      { sequence: [category3.id, category2.id, category4.id, category1.id] }
     end
 
     it '200を返し、データが正しいこと' do
-      post '/categories/sort', '', login_headers(user)
-      # expect(response.status).to eq 200
+      post '/categories/sort', params, login_headers(user)
+      expect(response.status).to eq 200
+
+      expect(user.categories.order(:position).map(&:id)).to eq params[:sequence]
     end
   end
 end
