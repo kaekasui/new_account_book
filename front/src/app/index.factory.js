@@ -158,13 +158,17 @@
         },
         postCategoryRange: function(params) {
           var defer = $q.defer();
-          $http.post(host + 'categories/sort', params)
-            .success(function(data) {
-              defer.resolve(data);
-            })
-            .error(function(data) {
-              defer.reject(data);
-            });
+          var token = localStorageService.get('access_token');
+          if (this.getLoginStatus()) {
+            var login_headers = { headers: { Authorization: "Token token=" + token }};
+            $http.post(host + 'categories/sort', params, login_headers)
+              .success(function(data) {
+                defer.resolve(data);
+              })
+              .error(function(data) {
+                defer.reject(data);
+              });
+          }
           return defer.promise;
         },
         postFeedback: function(params) {

@@ -1,4 +1,6 @@
 class Category::List
+  include ActiveModel::Model
+
   def initialize(user, sequence)
     @user = user
     @sequence = sequence
@@ -6,8 +8,7 @@ class Category::List
 
   def sort
     @user.categories.each do |item|
-      position = @sequence.index(item.id.to_s)
-      item.update!(position: position)
+      item.update!(position: @sequence.index(item.id))
     end
     true
   rescue

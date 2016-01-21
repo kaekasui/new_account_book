@@ -19,7 +19,7 @@
           for (key in vm.categories) {
             vm.category_range.push(vm.categories[key].id);
           }
-          IndexFactory.postCategoryRange(vm.category_range).then(function() {
+          IndexFactory.postCategoryRange({sequence: vm.category_range}).then(function() {
           });
         },
         axis: ''
