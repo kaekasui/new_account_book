@@ -24,14 +24,14 @@
         %a{'ui-sref': 'admin'}
           %span.glyphicon.glyphicon-king
           {{ 'TITLES.ADMIN' | translate }}
-      %li.dropdown.open{'ng-init': 'isCollapsed = true', 'ng-click': 'isCollapsed = !isCollapsed', role: 'presentation'}
+      %li.dropdown.open{'ng-init': 'isCollapsed = true', 'ng-click': 'isCollapsed = !isCollapsed', role: 'presentation', 'ng-show': 'vm.login_status'}
         %a.dropdown-toggle{'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false', role: 'button', href: ''}
           %span.glyphicon.glyphicon-cog
           {{ 'TITLES.SETTINGS' | translate }}
           %span.caret
         %ul.dropdown-menu{'ng-hide': 'isCollapsed'}
           %li
-            %a
+            %a{'ui-sref': 'categories'}
               {{ 'TITLES.CATEGORY' | translate }}
       %li{'ng-hide': 'vm.login_status'}
         %a{'ui-sref': 'login'}

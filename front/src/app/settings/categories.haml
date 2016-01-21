@@ -1,0 +1,10 @@
+.panel.panel-default
+  .panel-heading
+    %span.glyphicon.glyphicon-leaf
+    {{ 'TITLES.CATEGORIES' | translate }}
+  .panel-body#with-background
+    .row{'ng-model': 'categories.categories', 'ui-sortable': 'categories.sortable'}
+      .col-sm-3{'ng-repeat': 'category in categories.categories', id: "{{category.id}}"}
+        .panel.col-sm-11
+          %b
+            {{ category.name }}

@@ -23,7 +23,9 @@
     "angular-translate-storage-local": "~2.8.1",
     "angular-translate-loader-static-files": "~2.8.1",
     "angular-translate-handler-log": "~2.8.1",
-    "angular-local-storage": "~0.2.3"
+    "angular-local-storage": "~0.2.3",
+    "angular-dragdrop": "~1.0.13",
+    "angular-ui-sortable": "~0.13.4"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.2"

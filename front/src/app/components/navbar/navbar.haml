@@ -31,7 +31,7 @@
           %span.caret
         %ul.dropdown-menu{'ng-hide': 'isCollapsed'}
           %li
-            %a
+            %a{'ui-sref': 'categories'}
               {{ 'TITLES.CATEGORY' | translate }}
       %li{'ng-hide': 'vm.login_status'}
         %a{'ui-sref': 'login'}
