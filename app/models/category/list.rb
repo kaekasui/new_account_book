@@ -8,7 +8,7 @@ class Category::List
 
   def sort
     @user.categories.each do |item|
-      item.update!(position: @sequence.index(item.id))
+      item.update!(position: @sequence.map(&:to_i).index(item.id))
     end
     true
   rescue
