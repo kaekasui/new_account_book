@@ -140,7 +140,7 @@ describe 'PATCH /email_user/passwords/:id\
       patch "/email_user/passwords/#{user.id}", params.merge(token: token)
       expect(response.status).to eq 422
       json = {
-        'error_messages': ['現在のパスワードを入力してください']
+        error_messages: ['現在のパスワードを入力してください']
       }
       expect(response.body).to be_json_as(json)
     end
@@ -184,7 +184,7 @@ describe 'PATCH /email_user/passwords/:id\
       expect(response.status).to eq 422
 
       json = {
-        'error_messages': ['パスワード（確認）とパスワードの入力が一致しません']
+        error_messages: ['パスワード（確認）とパスワードの入力が一致しません']
       }
       expect(response.body).to be_json_as(json)
     end
