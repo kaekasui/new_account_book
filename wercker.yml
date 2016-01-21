@@ -1,6 +1,6 @@
 box: wercker/rvm
 services:
-  - wercker/mysql
+  - wercker/postgresql
 build:
   steps:
     - bundle-install

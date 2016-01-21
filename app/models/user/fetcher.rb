@@ -1,9 +1,9 @@
 class User::Fetcher
-  def initialize(params:)
+  def initialize(params: nil)
     @params = params
   end
 
-  def self.all(params:)
+  def self.all(params: nil)
     new(params: params).all
   end
 

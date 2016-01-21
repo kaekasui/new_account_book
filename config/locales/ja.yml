@@ -5,6 +5,8 @@ ja:
         invalid_parameters: メールアドレスまたはパスワードが正しくありません
       users:
         invalid_token: すでに登録が完了しているか有効期限が切れたURLに接続しました。
+      categories:
+        failed_to_sort: 並び替えに失敗しました。
   labels:
     administrator: 管理者
     status:

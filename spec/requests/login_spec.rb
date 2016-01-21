@@ -28,7 +28,7 @@ describe 'POST /session?email=email&password=password', autodoc: true do
 
       expect(response.status).to eq 401
       json = {
-        'error_messages': ['メールアドレスまたはパスワードが正しくありません']
+        error_messages: ['メールアドレスまたはパスワードが正しくありません']
       }
       expect(response.body).to be_json_as(json)
     end
@@ -42,7 +42,7 @@ describe 'POST /session?email=email&password=password', autodoc: true do
 
       expect(response.status).to eq 401
       json = {
-        'error_messages': ['メールアドレスまたはパスワードが正しくありません']
+        error_messages: ['メールアドレスまたはパスワードが正しくありません']
       }
       expect(response.body).to be_json_as(json)
     end
@@ -56,7 +56,7 @@ describe 'POST /session?email=email&password=password', autodoc: true do
 
       expect(response.status).to eq 401
       json = {
-        'error_messages': ['メールアドレスまたはパスワードが正しくありません']
+        error_messages: ['メールアドレスまたはパスワードが正しくありません']
       }
       expect(response.body).to be_json_as(json)
     end

@@ -5,7 +5,7 @@ class EmailUser::RegistrationsController < ApplicationController
     if @user.save
       origin = "#{request.protocol}#{request.host_with_port}"
       UserMailer.registration(@user.email, @user.registration_url(origin))
-        .deliver_later
+                .deliver_later
       head 201
     else
       render_error @user
