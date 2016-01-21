@@ -34,10 +34,31 @@ describe 'GET /categories', autodoc: true do
   end
 end
 
+describe 'POST /categories', autodoc: true do
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      post '/categories'
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'メールアドレスのユーザーがログインしている場合' do
+    let!(:user) { create(:email_user, :registered) }
+    let!(:params) { { name: '名前' } }
+
+    it '201を返し、カテゴリが登録できること' do
+      post '/categories', params, login_headers(user)
+      expect(response.status).to eq 201
+
+      expect(user.categories.count).to eq 1
+    end
+  end
+end
+
 describe 'POST /categories/sort', autodoc: true do
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      get '/categories'
+      post '/categories/sort'
       expect(response.status).to eq 401
     end
   end

@@ -5,6 +5,15 @@ class CategoriesController < ApplicationController
     @categories = current_user.categories.order(:position)
   end
 
+  def create
+    @category = current_user.categories.new(name: params[:name])
+    if @category.save
+      head 201
+    else
+      render_error @category
+    end
+  end
+
   def sort
     @list = Category::List.new(current_user, params[:sequence])
     if @list.sort
