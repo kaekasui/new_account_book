@@ -25,7 +25,7 @@ describe 'POST /feedback?user_id=user_id&email=email&content=content',
         post '/feedback', params
         expect(response.status).to eq 422
         json = {
-          'error_messages': ['内容を入力してください']
+          error_messages: ['内容を入力してください']
         }
         expect(response.body).to be_json_as(json)
       end
@@ -54,7 +54,7 @@ describe 'POST /feedback?user_id=user_id&email=email&content=content',
         post '/feedback', params
         expect(response.status).to eq 422
         json = {
-          'error_messages': ['メールアドレスを入力してください']
+          error_messages: ['メールアドレスを入力してください']
         }
         expect(response.body).to be_json_as(json)
       end
@@ -67,7 +67,7 @@ describe 'POST /feedback?user_id=user_id&email=email&content=content',
         post '/feedback', params
         expect(response.status).to eq 422
         json = {
-          'error_messages': ['内容を入力してください']
+          error_messages: ['内容を入力してください']
         }
         expect(response.body).to be_json_as(json)
       end

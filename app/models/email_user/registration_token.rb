@@ -13,6 +13,6 @@ class EmailUser::RegistrationToken
     return false if invalid?
     @user.remove_token(:registration)
     UserMailer.registration(@user.email, @user.registration_url(origin))
-      .deliver_now
+              .deliver_now
   end
 end
