@@ -4,11 +4,13 @@
     {{ 'TITLES.CATEGORIES' | translate }}
   </div>
   <div class='panel-body' id='with-background'>
-    <div class='col-sm-3' data-drag='true' data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" jqyoui-draggable="{index: {{$index}}, animate: true, placeholder: 'keep'}" ng-model='categories.categories[$index]' ng-repeat='category in categories.categories'>
-      <div class='panel col-sm-11'>
-        <b>
-          {{ category.name }}
-        </b>
+    <div class='row' ng-model='categories.categories' ui-sortable='categories.sortable'>
+      <div class='col-sm-3' id='{{category.id}}' ng-repeat='category in categories.categories'>
+        <div class='panel col-sm-11'>
+          <b>
+            {{ category.name }}
+          </b>
+        </div>
       </div>
     </div>
   </div>

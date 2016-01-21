@@ -156,6 +156,17 @@
           }
           return defer.promise;
         },
+        postCategoryRange: function(params) {
+          var defer = $q.defer();
+          $http.post(host + 'categories/sort', params)
+            .success(function(data) {
+              defer.resolve(data);
+            })
+            .error(function(data) {
+              defer.reject(data);
+            });
+          return defer.promise;
+        },
         postFeedback: function(params) {
           var defer = $q.defer();
           $http.post(host + 'feedback', params)

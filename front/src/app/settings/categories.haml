@@ -3,7 +3,8 @@
     %span.glyphicon.glyphicon-leaf
     {{ 'TITLES.CATEGORIES' | translate }}
   .panel-body#with-background
-    .col-sm-3{'ng-repeat': 'category in categories.categories', 'data-drag': 'true', 'ng-model': 'categories.categories[$index]', 'jqyoui-draggable': "{index: {{$index}}, animate: true, placeholder: 'keep'}", 'data-jqyoui-options': "{revert: 'invalid', helper: 'clone'}"}
-      .panel.col-sm-11
-        %b
-          {{ category.name }}
+    .row{'ng-model': 'categories.categories', 'ui-sortable': 'categories.sortable'}
+      .col-sm-3{'ng-repeat': 'category in categories.categories', id: "{{category.id}}"}
+        .panel.col-sm-11
+          %b
+            {{ category.name }}
