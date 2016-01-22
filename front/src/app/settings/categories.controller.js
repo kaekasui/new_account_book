@@ -9,7 +9,6 @@
       var vm = this;
 
       vm.add_field = false;
-      vm.edit_field = [];
 
       IndexFactory.getCategories().then(function(res) {
         vm.categories = res.categories;
