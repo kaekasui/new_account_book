@@ -6,20 +6,26 @@
   <div class='panel-body' id='with-background'>
     <div class='row' ng-model='categories.categories' ui-sortable='categories.sortable'>
       <div class='col-sm-3' id='{{category.id}}' ng-repeat='category in categories.categories'>
-        <div class='panel panel-body col-sm-11'>
+        <div class='panel panel-body col-sm-11' id='category' ng-show='!category.edit_field'>
           <div ng-mouseenter="cursor_type = 'move'" ng-style="{'cursor': cursor_type}">
-            <span class='category-name'>
+            <span class='category-name' ng-click='categories.editCategory($index)' ng-style="{'cursor': 'pointer'}">
               {{ category.name }}
             </span>
+            <a>
+              <span class='glyphicon glyphicon-edit pull-right' ng-click='categories.editCategory($index)'></span>
+            </a>
           </div>
+        </div>
+        <div class='panel panel-body col-sm-11' id='category' ng-if='category.edit_field' ng-keydown='categories.updateCategory($event, $index)'>
+          <input auto-focus class='category-form' ng-model='category.edit_name' ng-value='category.name' type='text'>
         </div>
       </div>
       <div class='col-sm-3'>
-        <div class='panel panel-body col-sm-11 category-plus' ng-class="{'panel-background': adding}" ng-click='categories.addNewPanel()' ng-mouseenter='adding = true' ng-mouseleave='adding = false' ng-show='!categories.add_field'>
+        <div class='panel panel-body col-sm-11 category-plus' id='category' ng-class="{'panel-background': adding}" ng-click='categories.addNewPanel()' ng-mouseenter='adding = true' ng-mouseleave='adding = false' ng-show='!categories.add_field'>
           <span class='glyphicon glyphicon-plus'></span>
         </div>
-        <div class='panel panel-body col-sm-11' ng-if='categories.add_field' ng-keydown='categories.createCategory($event)'>
-          <input auto-focus class='category-form' id='focus-me' ng-model='categories.new_category_name' type='text'>
+        <div class='panel panel-body col-sm-11' id='category' ng-if='categories.add_field' ng-keydown='categories.createCategory($event)'>
+          <input auto-focus class='category-form' ng-model='categories.new_category_name' type='text'>
         </div>
       </div>
     </div>

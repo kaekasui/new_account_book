@@ -78,6 +78,9 @@ body {
   }
   .panel-body {
     font-size: 12px;
+    #category {
+      min-height: 100px;
+    }
   }
   .panel-body#with-background {
     background-image: url('../assets/images/filter_pig.gif');
