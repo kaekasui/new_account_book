@@ -18,8 +18,8 @@
         <div class='panel panel-body col-sm-11 category-plus' ng-class="{'panel-background': adding}" ng-click='categories.addNewPanel()' ng-mouseenter='adding = true' ng-mouseleave='adding = false' ng-show='!categories.add_field'>
           <span class='glyphicon glyphicon-plus'></span>
         </div>
-        <div class='panel panel-body col-sm-11' ng-keydown='categories.createCategory($event)' ng-show='categories.add_field'>
-          <input class='category-form' ng-model='categories.new_category_name'>
+        <div class='panel panel-body col-sm-11' ng-if='categories.add_field' ng-keydown='categories.createCategory($event)'>
+          <input auto-focus class='category-form' id='focus-me' ng-model='categories.new_category_name' type='text'>
         </div>
       </div>
     </div>
