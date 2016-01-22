@@ -156,6 +156,21 @@
           }
           return defer.promise;
         },
+        postCategory: function(params) {
+          var defer = $q.defer();
+          var token = localStorageService.get('access_token');
+          if (this.getLoginStatus()) {
+            var login_headers = { headers: { Authorization: "Token token=" + token }};
+            $http.post(host + 'categories', params, login_headers)
+              .success(function(data) {
+                defer.resolve(data);
+              })
+              .error(function(data) {
+                defer.reject(data);
+              });
+          }
+          return defer.promise;
+        },
         postCategoryRange: function(params) {
           var defer = $q.defer();
           var token = localStorageService.get('access_token');
