@@ -171,6 +171,21 @@
           }
           return defer.promise;
         },
+        patchCategory: function(params, category_id) {
+          var defer = $q.defer();
+          var token = localStorageService.get('access_token');
+          if (this.getLoginStatus()) {
+            var login_headers = { headers: { Authorization: "Token token=" + token }};
+            $http.patch(host + 'categories/' + category_id, params, login_headers)
+              .success(function(data) {
+                defer.resolve(data);
+              })
+              .error(function(data) {
+                defer.reject(data);
+              });
+          }
+          return defer.promise;
+        },
         postCategoryRange: function(params) {
           var defer = $q.defer();
           var token = localStorageService.get('access_token');
