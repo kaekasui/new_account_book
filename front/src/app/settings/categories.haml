@@ -5,6 +5,12 @@
   .panel-body#with-background
     .row{'ng-model': 'categories.categories', 'ui-sortable': 'categories.sortable'}
       .col-sm-3{'ng-repeat': 'category in categories.categories', id: "{{category.id}}"}
-        .panel.col-sm-11
-          %b
-            {{ category.name }}
+        .panel.panel-body.col-sm-11
+          %div{'ng-style': "{'cursor': cursor_type}", 'ng-mouseenter': "cursor_type = 'move'"}
+            %span.category-name
+              {{ category.name }}
+      .col-sm-3
+        .panel.panel-body.col-sm-11.category-plus{'ng-click': 'categories.addNewPanel()', 'ng-class': "{'panel-background': adding}", 'ng-mouseenter': "adding = true", 'ng-mouseleave': "adding = false", 'ng-show': "!categories.add_field"}
+          %span.glyphicon.glyphicon-plus
+        .panel.panel-body.col-sm-11{'ng-show': 'categories.add_field', 'ng-keydown': 'categories.createCategory($event)'}
+          %input.category-form{'ng-model': 'categories.new_category_name'}

@@ -6,10 +6,20 @@
   <div class='panel-body' id='with-background'>
     <div class='row' ng-model='categories.categories' ui-sortable='categories.sortable'>
       <div class='col-sm-3' id='{{category.id}}' ng-repeat='category in categories.categories'>
-        <div class='panel col-sm-11'>
-          <b>
-            {{ category.name }}
-          </b>
+        <div class='panel panel-body col-sm-11'>
+          <div ng-mouseenter="cursor_type = 'move'" ng-style="{'cursor': cursor_type}">
+            <span class='category-name'>
+              {{ category.name }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class='col-sm-3'>
+        <div class='panel panel-body col-sm-11 category-plus' ng-class="{'panel-background': adding}" ng-click='categories.addNewPanel()' ng-mouseenter='adding = true' ng-mouseleave='adding = false' ng-show='!categories.add_field'>
+          <span class='glyphicon glyphicon-plus'></span>
+        </div>
+        <div class='panel panel-body col-sm-11' ng-keydown='categories.createCategory($event)' ng-show='categories.add_field'>
+          <input class='category-form' ng-model='categories.new_category_name'>
         </div>
       </div>
     </div>
