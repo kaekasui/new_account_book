@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only: %i(index create) do
+  resources :categories, only: %i(index create update) do
     post :sort, on: :collection
   end
   resource :user, only: %i(show)
