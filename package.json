@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "dependencies": {},
   "scripts": {
+    "postinstall": "node_modules/.bin/bower install && node_modules/.bin/gulp build",
     "test": "gulp test"
   },
   "devDependencies": {
@@ -55,5 +56,9 @@
   },
   "engines": {
     "node": ">=0.10.0"
-  }
+  },
+  "cacheDirectories": [
+    "bower_components",
+    "node_modules"
+  ]
 }
