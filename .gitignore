@@ -21,3 +21,11 @@
 /front/.idea/
 /front/.tmp/
 /front/dist/
+
+node_modules/
+bower_components/
+coverage/
+.sass-cache/
+.idea/
+.tmp/
+dist/
