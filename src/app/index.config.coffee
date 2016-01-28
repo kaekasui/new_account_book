@@ -9,6 +9,7 @@ angular.module 'newAccountBook'
     toastrConfig.positionClass = 'toast-top-right'
     toastrConfig.preventDuplicates = true
     toastrConfig.progressBar = true
+
     # Internationalization
     $translateProvider.useStaticFilesLoader
       prefix: 'assets/i18n/locale-',
@@ -17,3 +18,4 @@ angular.module 'newAccountBook'
     $translateProvider.fallbackLanguage('en')
     $translateProvider.useMissingTranslationHandlerLog()
     $translateProvider.useLocalStorage()
+    $translateProvider.useSanitizeValueStrategy('escaped')
