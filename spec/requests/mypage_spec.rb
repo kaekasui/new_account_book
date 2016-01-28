@@ -41,11 +41,11 @@ describe 'PATCH /user', autodoc: true do
 
     context 'ニックネームが空でない場合' do
       let!(:params) { { nickname: 'ニックネーム' } }
-  
+
       it '200とユーザー情報を返すこと' do
         patch '/user', params, login_headers(user)
         expect(response.status).to eq 200
-  
+
         user.reload
         expect(user.nickname).to eq 'ニックネーム'
       end
