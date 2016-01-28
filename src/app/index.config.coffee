@@ -1,5 +1,5 @@
 angular.module 'newAccountBook'
-  .config ($logProvider, toastrConfig) ->
+  .config ($logProvider, toastrConfig, $translateProvider) ->
     'ngInject'
     # Enable log
     $logProvider.debugEnabled true
@@ -9,3 +9,11 @@ angular.module 'newAccountBook'
     toastrConfig.positionClass = 'toast-top-right'
     toastrConfig.preventDuplicates = true
     toastrConfig.progressBar = true
+    # Internationalization
+    $translateProvider.useStaticFilesLoader
+      prefix: 'assets/i18n/locale-',
+      suffix: '.json'
+    $translateProvider.preferredLanguage('ja')
+    $translateProvider.fallbackLanguage('en')
+    $translateProvider.useMissingTranslationHandlerLog()
+    $translateProvider.useLocalStorage()
