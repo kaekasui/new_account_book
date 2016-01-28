@@ -23,5 +23,6 @@ deploy:
   steps:
     - heroku-deploy:
         key-name: HEROKU_SSH_KEY
+        install-toolbelt: true
         run: |-
           rake db:migrate --app account-book-pig-test
