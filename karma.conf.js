@@ -1,7 +1,7 @@
 'use strict';
 
 var path = require('path');
-var conf = require('./config/gulp/conf');
+var conf = require('./gulp/conf');
 
 var _ = require('lodash');
 var wiredep = require('wiredep');
