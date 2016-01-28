@@ -5,7 +5,11 @@ angular.module 'newAccountBook'
       .state 'home',
         url: '/'
         templateUrl: 'app/main/main.html'
-        controller: 'MainController'
         controllerAs: 'main'
+        controller: 'MainController'
+      .state 'login',
+        url: '/login'
+        templateUrl: 'app/account/login.html'
+        controller: 'LoginController'
 
     $urlRouterProvider.otherwise '/'
