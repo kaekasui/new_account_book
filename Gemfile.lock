@@ -97,6 +97,9 @@ GEM
     domain_name (0.5.25)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
+    exception_notification (4.1.4)
+      actionmailer (~> 4.0)
+      activesupport (~> 4.0)
     execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -393,6 +396,7 @@ DEPENDENCIES
   doc_raptor
   dotenv!
   dotenv-rails!
+  exception_notification
   factory_girl_rails
   faker
   gimei

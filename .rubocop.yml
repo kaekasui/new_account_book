@@ -2,6 +2,8 @@ AllCops:
   Include:
     - '**/config.ru'
   Exclude:
+    - 'node_modules/**/*'
+    - 'bower_components/**/*'
     - 'front/**/*'
     - 'test/**/*'
     - 'bin/**/*'
