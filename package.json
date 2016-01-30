@@ -4,7 +4,7 @@
   "dependencies": {},
   "scripts": {
     "postinstall": "node_modules/.bin/bower install && node_modules/.bin/gulp build",
-    "test": "gulp test",
+    "test": "node_modules/.bin/gulp test",
     "start": "NODE_ENV=production node gulp/server.js"
   },
   "devDependencies": {
