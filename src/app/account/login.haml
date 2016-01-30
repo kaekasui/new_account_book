@@ -41,10 +41,6 @@
             %div{'ng-message': 'minlength'}
               %span.glyphicon.glyphicon-alert
               %span{translate: 'ERRORS.MINLENGTH.PASSWORD'}
-        .checkbox
-          %label
-            %input{type: 'checkbox'}
-            %span{translate: 'LABELS.REMEMBER_ME'}
         %button.btn.btn-primary{type: 'submit', 'ng-disabled': 'loginForm.$submitted && loginForm.$invalid'}
           %span{translate: 'BUTTONS.LOGIN'}
       %hr

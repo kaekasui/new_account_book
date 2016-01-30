@@ -31,7 +31,6 @@
     "EMAIL": "メールアドレス",
     "PASSWORD": "パスワード",
     "PASSWORD_CONFIRMATION": "パスワード（確認）",
-    "REMEMBER_ME": "パスワードを記録する",
     "CURRENT_PASSWORD": "現在のパスワード",
     "MESSAGE": "メッセージ",
     "NEW_PASSWORD": "新しいパスワード",
