@@ -10,6 +10,7 @@ angular.module 'newAccountBook'
       .state 'login',
         url: '/login'
         templateUrl: 'app/account/login.html'
+        controllerAs: 'login'
         controller: 'LoginController'
 
     $urlRouterProvider.otherwise '/'
