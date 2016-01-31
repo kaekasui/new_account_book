@@ -1,14 +1,164 @@
-/**
- *  If you want to override some bootstrap variables, you have to change values here.
- *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
- */
-$navbar-inverse-link-color: #5AADBB;
 $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
-/**
- *  Do not remove the comments below. It's the markers used by wiredep to inject
- *  sass dependencies when defined in the bower.json of your dependencies
- */
+$link-color: #76891a;
+$hr-border: #76891a;
+$navbar-default-bg: rgba(#fff, 0);
+
+$navbar-default-link-color: #76891a;
+$navbar-default-link-hover-color: #515e12;
+
+$list-group-bg: rgba(#fff, 0.5);
+$list-group-border: #76891a;
+
+$panel-bg: rgba(#fff, 0.5);
+$panel-body-padding: 20px;
+$panel-default-border: #76891a;
+$panel-default-text: #515e12;
+$panel-default-heading-bg: rgba(#fff, 0.5);
+$panel-inner-border: #76891a;
+$panel-footer-bg: rgba(#fff, 0.5);
+
+$modal-body-bg: #f7f8f3;
+
+$btn-primary-color: #ffffff;
+$btn-primary-bg: #ac5e9f;
+$btn-primary-border: #ac5e9f;
+
+$btn-info-color: #ffffff;
+$btn-info-bg: #5E7535;
+$btn-info-boder: #6f9b1d;
+
+$table-border-color: #bac48c;
+//$table-bg: rgba(#fff, 0.7);
+
+$state-danger-text: #ac5e9f;
+$state-danger-bg: rgba(#eedeef, 0.7);
+$state-danger-border: #d5aecf;
+$state-success-test: #76891a;
+$state-success-bg: rgba(#bac48c, 0.7);
+$close-color: #67385f;
+
+$nav-tabs-border-color: #76891a;
+$nav-tabs-link-hover-border-color: #76891a;
+$nav-tabs-active-link-hover-bg: rgba(#fff, 0.5);
+$nav-tabs-active-link-hover-border-color: #76891a;
+$nav-tabs-active-link-hover-color: #76891a;
+
+$nav-pills-active-link-hover-bg: rgba(#fff, 0.5);
+$nav-pills-active-link-hover-color: #76891a;
+
+$tooltip-bg: #76891a;
+$tooltip-opacity: .7;
+
+$blockquote-border-color: #76891a;
+$blockquote-small-color: #76891a;
+
+$pagination-border: #c8cfa3;
+$pagination-hover-bg: #e3e7d1;
+$pagination-hover-border: #c8cfa3;
+$pagination-active-bg: #acb875;
+$pagination-active-border: #acb875;
+
+$breadcrumb-bg: rgba(#fff, 0.5);
+$breadcrumb-separator: '|';
+
+$dropdown-link-color: $link-color;
+
+body {
+  .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: $link-color;
+  }
+  background-image: url('../assets/images/wood.png');
+
+  label {
+    font-family: 'Lucida Grande', Meiryo, sans-serif;
+    font-size: 12px;
+    color: #515e12;
+    font-weight: normal;
+  }
+  .panel-body {
+    font-size: 12px;
+    #category {
+      min-height: 100px;
+    }
+  }
+  .panel-body#with-background {
+    background-image: url('../assets/images/filter_pig.gif');
+    background-size: 120% auto;
+    background-repeat: no-repeat;
+  }
+  .list-group-item {
+    a { 
+      color: #ac5e9f;
+      font-size: 12px;
+    }
+    span {
+      font-size: 12px;
+      padding-right: 7px;
+      color: #AC5E9F;
+    }
+    img {
+      width: 24px;
+      text-align: right;
+    }
+  }
+  span.red {
+    color: #ac5e9f;
+  }
+  span.errors {
+    font-family: 'Lucida Grande', Meiryo, sans-serif;
+    color: #ac5e9f;
+    div {
+      margin-left: 10px;
+    }
+  }
+  .close {
+    line-height: 0.8;
+  }
+  .footer {
+    color: #9fac5e;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 15px;
+  }
+
+  span.category-name {
+    font-weight: bold;
+    color: #2f360a;
+  }
+  .category-plus {
+    color: rgba($link-color, 0.4);
+    font-size: 18px;
+    background-color: rgba($link-color, 0.1);
+  }
+ 
+  .category-form {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #555555;
+    background-color: rgba(#fff, 0.1);
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  }
+
+  .panel-background {
+    background-color: rgba($link-color, 0.2);
+  }
+}
+
+// toastr, set on bower_components
+//.toast-success {
+//  background-color: rgba(118,137,26, 0.6);
+//}
+
 // bower:scss
 // endbower
 
@@ -27,9 +177,6 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   }
 }
 
-/**
- *  Do not remove the comments below. It's the markers used by gulp-inject to inject
- *  all your sass files automatically
- */
 // injector
 // endinjector
+

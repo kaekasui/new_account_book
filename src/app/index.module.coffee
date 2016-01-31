@@ -9,5 +9,6 @@ angular.module(
                      'ui.router',
                      'ui.bootstrap',
                      'pascalprecht.translate',
+                     'LocalStorageModule'
                      'toastr']
 )
