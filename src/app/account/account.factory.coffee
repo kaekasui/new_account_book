@@ -7,13 +7,27 @@ AccountFactory = ($location, $q, $http, localStorageService, toastr, $translate)
       defer = $q.defer()
       $http.post(host + 'session', params)
         .success((data) ->
-          defer.resolve data
           localStorageService.set 'access_token', data.access_token
           toastr.success $translate.instant('MESSAGES.LOGIN')
           $location.path '/'
+          defer.resolve data
           return
         ).error (data) ->
           defer.reject data
+          return
+      return defer.promise
+
+    postEmailUserRegistration: (params) ->
+      defer = $q.defer()
+      $http.post(host + 'email_user/registrations', params)
+        .success((data) ->
+          toastr.success $translate.instant('MESSAGES.SEND_MAIL')
+          $location.path '/'
+          defer.resolve data
+          return
+        ).error (data) ->
+          if (typeof data != 'undefined')
+            defer.reject data
           return
       return defer.promise
   }
