@@ -22,5 +22,10 @@ angular.module 'newAccountBook'
         templateUrl: 'app/account/resend_email.html'
         controllerAs: 'resend_email'
         controller: 'ResendEmailController'
+      .state 'reset_password',
+        url: '/reset_password'
+        templateUrl: 'app/account/reset_password.html'
+        controllerAs: 'reset_password'
+        controller: 'ResetPasswordController'
 
     $urlRouterProvider.otherwise '/'

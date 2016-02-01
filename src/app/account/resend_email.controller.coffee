@@ -9,7 +9,7 @@ ResendEmailController = (AccountFactory, $translate) ->
     params = {
       email: vm.email
     }
-    AccountFactory.postResendEmail(params).catch (res) ->
+    AccountFactory.patchResendEmail(params).catch (res) ->
       console.log res.error_messages
       if res.error_messages[0] == 'Not Found'
         vm.errors = [$translate.instant('MESSAGES.NOT_FOUND_EMAIL')]

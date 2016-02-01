@@ -31,7 +31,7 @@ AccountFactory = ($location, $q, $http, localStorageService, toastr, $translate)
           return
       return defer.promise
 
-    postResendEmail: (params) ->
+    patchResendEmail: (params) ->
       defer = $q.defer()
       $http.patch(host + 'email_user/registrations/recreate', params)
         .success((data) ->
@@ -43,6 +43,20 @@ AccountFactory = ($location, $q, $http, localStorageService, toastr, $translate)
           defer.reject data
           return
       return defer.promise
+
+    postResetPassword: (params) ->
+      defer = $q.defer()
+      $http.post(host + 'email_user/passwords/send_mail', params)
+        .success((data) ->
+          toastr.success $translate.instant('MESSAGES.SEND_MAIL')
+          $location.path '/'
+          defer.resolve data
+          return
+        ).error (data) ->
+          defer.reject data
+          return
+      return defer.promise
+
   }
 
 angular.module 'newAccountBook'
