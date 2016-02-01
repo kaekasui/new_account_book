@@ -30,6 +30,19 @@ AccountFactory = ($location, $q, $http, localStorageService, toastr, $translate)
             defer.reject data
           return
       return defer.promise
+
+    postResendEmail: (params) ->
+      defer = $q.defer()
+      $http.patch(host + 'email_user/registrations/recreate', params)
+        .success((data) ->
+          toastr.success $translate.instant('MESSAGES.SEND_MAIL')
+          $location.path '/'
+          defer.resolve data
+          return
+        ).error (data) ->
+          defer.reject data
+          return
+      return defer.promise
   }
 
 angular.module 'newAccountBook'

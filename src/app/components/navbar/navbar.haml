@@ -13,7 +13,7 @@
         %a
           %span.glyphicon.glyphicon-stats{translate: 'TITLES.DASHBOARD'}
       %li
-        %a{'ng-click': 'navbar.feedback()', href: ''}
+        %a{'ng-click': 'navbar.feedback()', href: '#'}
           %span.glyphicon.glyphicon-comment{translate: 'TITLES.FEEDBACK'}
     %ul.nav.navbar-nav.navbar-right
       %li{'ng-show': 'navbar.login_status && navbar.current_user.admin'}
@@ -59,7 +59,7 @@
         %label{for: 'content'}
           %span{translate: 'LABELS.MESSAGE'}
           %span *
-        %textarea.form-control{placeholder: '', rows: '5', name: 'content', 'ng-model': 'feedback.content', required: true, 'ng-maxlength': '1000'}
+        %textarea.form-control{rows: '5', name: 'content', 'ng-model': 'feedback.content', required: true, 'ng-maxlength': '1000'}
         %span.errors{'ng-messages': 'feedbackForm.content.$error', 'ng-show': 'feedbackForm.$submitted'}
           %div{'ng-message': 'required'}
             %span.glyphicon.glyphicon-alert{translate: 'ERRORS.REQUIRED.CONTENT'}
