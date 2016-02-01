@@ -65,17 +65,14 @@
  
     vm.submit = function() {
       var params;
-      if (vm.login_status) {
-        params = {
+      if vm.login_status
+        params =
           user_id: vm.current_user.id,
           content: vm.content
-        }
-      } else {
-        params = {
-          email: (vm.email == undefined) ? '' : vm.email,
+      else
+        params =
+          email: if vm.email == undefined then '' else vm.email,
           content: vm.content
-        }
-      }
  
       IndexFactory.postFeedback(params).then(function(){
         $modalInstance.close();
