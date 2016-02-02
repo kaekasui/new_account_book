@@ -10,7 +10,7 @@ var browserSync = require('browser-sync');
 
 var $ = require('gulp-load-plugins')();
 
-gulp.task('markups', function() {
+gulp.task('markups', ['clean'], function() {
   function renameToHtml(path) {
     path.extname = '.html';
   }
