@@ -17,5 +17,15 @@ angular.module 'newAccountBook'
         templateUrl: 'app/account/sign_up.html'
         controllerAs: 'sign_up'
         controller: 'SignUpController'
+      .state 'resend_email',
+        url: '/resend_email'
+        templateUrl: 'app/account/resend_email.html'
+        controllerAs: 'resend_email'
+        controller: 'ResendEmailController'
+      .state 'reset_password',
+        url: '/reset_password'
+        templateUrl: 'app/account/reset_password.html'
+        controllerAs: 'reset_password'
+        controller: 'ResetPasswordController'
 
     $urlRouterProvider.otherwise '/'
