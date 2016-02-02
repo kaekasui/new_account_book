@@ -9,7 +9,6 @@ ResetPasswordController = (AccountFactory, $translate) ->
     params = {
       email: vm.email
     }
-
     AccountFactory.postResetPassword(params).catch (res) ->
       vm.errors = res.error_messages
 
