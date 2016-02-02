@@ -38,6 +38,7 @@ group :development, :test do
   gem 'faker', group: :developmen
   gem 'gimei'
   gem 'bullet'
+  gem 'haml'
   gem 'html2haml'
   gem 'rack-cors'
 end

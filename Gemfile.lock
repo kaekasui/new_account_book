@@ -402,6 +402,7 @@ DEPENDENCIES
   gimei
   guard-rspec
   guard-rubocop
+  haml
   html2haml
   jbuilder
   jquery-rails
