@@ -27,5 +27,10 @@ angular.module 'newAccountBook'
         templateUrl: 'app/account/reset_password.html'
         controllerAs: 'reset_password'
         controller: 'ResetPasswordController'
+      .state 'terms',
+        url: '/terms'
+        templateUrl: 'app/components/footer/terms.html'
+        controllerAs: 'terms'
+        controller: 'TermsController'
 
     $urlRouterProvider.otherwise '/'
