@@ -14,6 +14,6 @@ gulp.task('markups', function() {
   return gulp.src(path.join(conf.paths.src, '/app/**/*.haml'))
     .pipe(cache('linting'))
     .pipe(haml())
-    .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
     .pipe(browserSync.stream());
 });
