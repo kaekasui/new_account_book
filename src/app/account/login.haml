@@ -14,6 +14,7 @@
       %form{novalidate: true, name: 'loginForm', 'ng-submit': 'login.submit()'}
         .form-group
           %label{for: 'email'}
+          %span{'ng-style': '{{aaaa}}'}
           %span{translate: 'LABELS.EMAIL'}
           %span *
           %input.form-control#email{type: 'email', autofocus: true, name: 'email', 'ng-model': 'login.email', required: true, 'ng-maxlength': '100'}
