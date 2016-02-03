@@ -1,0 +1,76 @@
+<div class='col-md-3'>
+  <account-menu-directive></account-menu-directive>
+</div>
+<div class='col-md-9'>
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      <span class='glyphicon glyphicon-leaf'></span>
+      <span translate='TITLES.LOGIN'></span>
+    </div>
+    <div class='panel-body' id='with-background'>
+      <div class='alert alert-danger' ng-show='login.errors' role='alert'>
+        <button class='close' data-dismiss='alert' ng-click='login.clearErrors()' type='button'>×</button>
+        <ul ng-repeat='error in login.errors'>
+          <li>{{error}}</li>
+        </ul>
+      </div>
+      <form name='loginForm' ng-submit='login.submit()' novalidate>
+        <div class='form-group'>
+          <label for='email'></label>
+          <span translate='LABELS.EMAIL'></span>
+          <span>*</span>
+          <input autofocus class='form-control' id='email' name='email' ng-maxlength='100' ng-model='login.email' required type='email'>
+          <span class='errors' ng-messages='loginForm.email.$error' ng-show='loginForm.$submitted'>
+            <div ng-message='required'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.REQUIRED.EMAIL'></span>
+            </div>
+            <div ng-message='email'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.EMAIL'></span>
+            </div>
+            <div ng-message='maxlength'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.MAXLENGTH.EMAIL'></span>
+            </div>
+          </span>
+        </div>
+        <div class='form-group'>
+          <label for='password'>
+            <span translate='LABELS.PASSWORD'></span>
+            <span>*</span>
+          </label>
+          <input class='form-control' id='password' name='password' ng-maxlength='72' ng-minlength='4' ng-model='login.password' required type='password'>
+          <span class='errors' ng-messages='loginForm.password.$error' ng-show='loginForm.$submitted'>
+            <div ng-message='required'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.REQUIRED.PASSWORD'></span>
+            </div>
+            <div ng-message='maxlength'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.MAXLENGTH.PASSWORD'></span>
+            </div>
+            <div ng-message='minlength'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.MINLENGTH.PASSWORD'></span>
+            </div>
+          </span>
+        </div>
+        <button class='btn btn-primary' ng-disabled='loginForm.$submitted &amp;&amp; loginForm.$invalid' type='submit'>
+          <span translate='BUTTONS.LOGIN'></span>
+        </button>
+      </form>
+      <hr>
+      <p>
+        <a ui-sref='reset_password'>
+          <span translate='LINKS.FORGOT_PASSWORD'></span>
+        </a>
+      </p>
+      <p>
+        <a ui-sref='resend_email'>
+          <span translate='LINKS.RESEND_EMAIL'></span>
+        </a>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class='col-md-3'>
+  <account-menu-directive></account-menu-directive>
+</div>
+<div class='col-md-9'>
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      <span class='glyphicon glyphicon-leaf'></span>
+      <span translate='TITLES.RESEND_EMAIL'></span>
+    </div>
+    <div class='panel-body' id='with-background'>
+      <div class='alert alert-danger' ng-show='resend_email.errors' role='alert'>
+        <button class='close' data-dismiss='alert' ng-click='resend_email.clearErrors()' type='button'>×</button>
+        <ul ng-repeat='error in resend_email.errors'>
+          <li>{{error}}</li>
+        </ul>
+      </div>
+      <form name='resendEmailForm' ng-submit='resend_email.submit()' novalidate>
+        <div class='form-group'>
+          <label for='email'></label>
+          <span translate='LABELS.EMAIL'></span>
+          <span>*</span>
+          <input autofocus class='form-control' id='email' name='email' ng-maxlength='100' ng-model='resend_email.email' required type='email'>
+          <span class='errors' ng-messages='resendEmailForm.email.$error' ng-show='resendEmailForm.$submitted'>
+            <div ng-message='required'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.REQUIRED.EMAIL'></span>
+            </div>
+            <div ng-message='email'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.EMAIL'></span>
+            </div>
+            <div ng-message='maxlength'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.MAXLENGTH.EMAIL'></span>
+            </div>
+          </span>
+        </div>
+        <button class='btn btn-primary' ng-disabled='resendEmailForm.$submitted &amp;&amp; resendEmailForm.$invalid' type='submit'>
+          <span translate='BUTTONS.SEND'></span>
+        </button>
+      </form>
+      <hr>
+      <p>
+        <a ui-sref='reset_password'>
+          <span translate='LINKS.FORGOT_PASSWORD'></span>
+        </a>
+      </p>
+    </div>
+  </div>
+</div>

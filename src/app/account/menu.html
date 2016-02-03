@@ -1,0 +1,38 @@
+<ul class='list-group'>
+  <li class='list-group-item' ng-mouseenter='menu.mouseEnter(1)' ng-mouseleave='menu.mouseLeave()'>
+    <a ui-sref='login'>
+      <span class='glyphicon glyphicon-leaf'></span>
+      <span translate='TITLES.LOGIN'></span>
+    </a>
+    <span ng-show='menu.isSelected(1)'>
+      <img class='pull-right' ng-src='{{menu.menu_image}}'>
+    </span>
+  </li>
+  <li class='list-group-item' ng-mouseenter='menu.mouseEnter(2)' ng-mouseleave='menu.mouseLeave()'>
+    <a ui-sref='sign_up'>
+      <span class='glyphicon glyphicon-heart'></span>
+      <span translate='TITLES.SIGN_UP'></span>
+    </a>
+    <span ng-show='menu.isSelected(2)'>
+      <img class='pull-right' ng-src='{{menu.menu_image}}'>
+    </span>
+  </li>
+  <li class='list-group-item' ng-mouseenter='menu.mouseEnter(3)' ng-mouseleave='menu.mouseLeave()'>
+    <a ui-sref='reset_password'>
+      <span class='glyphicon glyphicon-leaf'></span>
+      <span translate='TITLES.RESET_PASSWORD'></span>
+    </a>
+    <span ng-show='menu.isSelected(3)'>
+      <img class='pull-right' ng-src='{{menu.menu_image}}'>
+    </span>
+  </li>
+  <li class='list-group-item' ng-mouseenter='menu.mouseEnter(4)' ng-mouseleave='menu.mouseLeave()'>
+    <a ui-sref='resend_email'>
+      <span class='glyphicon glyphicon-heart'></span>
+      <span translate='TITLES.RESEND_EMAIL'></span>
+    </a>
+    <span ng-show='menu.isSelected(4)'>
+      <img class='pull-right' ng-src='{{menu.menu_image}}'>
+    </span>
+  </li>
+</ul>

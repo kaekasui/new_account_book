@@ -1,0 +1,98 @@
+<div class='col-md-3'>
+  <account-menu-directive></account-menu-directive>
+</div>
+<div class='col-md-9'>
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      <span class='glyphicon glyphicon-leaf'></span>
+      <span translate='TITLES.SIGN_UP'></span>
+    </div>
+    <div class='panel-body' id='with-background'>
+      <div class='alert alert-danger' ng-show='sign_up.errors' role='alert'>
+        <button class='close' data-dismiss='alert' ng-click='sign_up.clearErrors()' type='button'>×</button>
+        <ul ng-repeat='error in sign_up.errors'>
+          <li>{{error}}</li>
+        </ul>
+      </div>
+      <form name='signUpForm' ng-submit='sign_up.submit()' novalidate>
+        <div class='form-group'>
+          <label for='email'>
+            <span translate='LABELS.EMAIL'></span>
+            <span>*</span>
+          </label>
+          <input autofocus class='form-control' id='email' name='email' ng-maxlength='100' ng-model='sign_up.email' required type='email'>
+          <span class='errors' ng-messages='signUpForm.email.$error' ng-show='signUpForm.$submitted'>
+            <div ng-message='required'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.REQUIRED.EMAIL'></span>
+            </div>
+            <div ng-message='email'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.EMAIL'></span>
+            </div>
+            <div ng-message='maxlength'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.MAXLENGTH.EMAIL'></span>
+            </div>
+          </span>
+        </div>
+        <div class='form-group'>
+          <label for='password'>
+            <span translate='LABELS.PASSWORD'></span>
+            <span>*</span>
+          </label>
+          <input class='form-control' id='password' name='password' ng-maxlength='72' ng-minlength='4' ng-model='sign_up.password' required type='password'>
+          <span class='errors' ng-messages='signUpForm.password.$error' ng-show='signUpForm.$submitted'>
+            <div ng-message='required'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.REQUIRED.PASSWORD'></span>
+            </div>
+            <div ng-message='maxlength'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.MAXLENGTH.PASSWORD'></span>
+            </div>
+            <div ng-message='minlength'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.MINLENGTH.PASSWORD'></span>
+            </div>
+          </span>
+        </div>
+        <div class='form-group'>
+          <label for='password_confirmation'>
+            <span translate='LABELS.PASSWORD_CONFIRMATION'></span>
+            <span>*</span>
+          </label>
+          <input class='form-control' id='password_confirmation' name='password_confirmation' ng-maxlength='72' ng-minlength='4' ng-model='sign_up.password_confirmation' required type='password'>
+          <span class='errors' ng-messages='signUpForm.password_confirmation.$error' ng-show='signUpForm.$submitted'>
+            <div ng-message='required'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.REQUIRED.PASSWORD'></span>
+            </div>
+            <div ng-message='maxlength'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.MAXLENGTH.PASSWORD'></span>
+            </div>
+            <div ng-message='minlength'>
+              <span class='glyphicon glyphicon-alert'></span>
+              <span translate='ERRORS.MINLENGTH.PASSWORD'></span>
+            </div>
+          </span>
+        </div>
+        <button class='btn btn-primary' ng-disabled='signUpForm.$submitted &amp;&amp; signUpForm.$invalid' type='submit'>
+          <span translate='BUTTONS.SIGN_UP'></span>
+        </button>
+      </form>
+      <hr>
+      <p>
+        <a ui-sref='reset_password'>
+          <span translate='LINKS.FORGOT_PASSWORD'></span>
+        </a>
+      </p>
+      <p>
+        <a ui-sref='resend_email'>
+          <span translate='LINKS.RESEND_EMAIL'></span>
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
