@@ -22,14 +22,14 @@ gulp.task('markups', function() {
   //  .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
   //  .pipe(browserSync.stream());
 
-  //return gulp.src(path.join(conf.paths.src, '/app/**/*.haml'))
-  //  .pipe($.consolidate('haml')).on('error', conf.errorHandler('Haml'))
-  //  .pipe($.rename(renameToHtml))
-  //  .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
-  //  .pipe(browserSync.stream());
-
-  return gulp.src(path.join(conf.paths.src, '/app/**/*.slim'))
-    .pipe(slim())
+  return gulp.src(path.join(conf.paths.src, '/app/**/*.haml'))
+    .pipe($.consolidate('haml')).on('error', conf.errorHandler('Haml'))
+    .pipe($.rename(renameToHtml))
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
     .pipe(browserSync.stream());
+
+  //return gulp.src(path.join(conf.paths.src, '/app/**/*.slim'))
+  //  .pipe(slim())
+  //  .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
+  //  .pipe(browserSync.stream());
 });
