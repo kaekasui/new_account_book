@@ -1,0 +1,25 @@
+ul.list-group
+  li.list-group-item ng-mouseenter='menu.mouseEnter(1)' ng-mouseleave='menu.mouseLeave()'
+    a ui-sref='login'
+      span.glyphicon class='glyphicon-leaf'
+      span translate='TITLES.LOGIN'
+    span ng-show='menu.isSelected(1)'
+      img.pull-right ng-src='{{menu.menu_image}}'
+  li.list-group-item
+    a
+      span.glyphicon
+      span
+    span
+      img.pull-right/
+  li.list-group-item
+    a
+      span.glyphicon
+      span
+    span
+      img.pull-right/
+  li.list-group-item
+    a
+      span.glyphicon
+      span
+    span
+      img.pull-right/

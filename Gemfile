@@ -26,6 +26,7 @@ gem 'rdefs'
 gem 'tokens'
 gem 'exception_notification'
 gem 'haml'
+gem 'slim'
 
 group :development, :test do
   gem 'rspec-rails'

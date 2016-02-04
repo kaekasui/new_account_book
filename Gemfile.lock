@@ -434,6 +434,7 @@ DEPENDENCIES
   shoulda-matchers (~> 3.0)
   sidekiq
   simplecov
+  slim
   slim-rails
   spring
   spring-commands-rspec
