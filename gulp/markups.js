@@ -3,8 +3,6 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
-var haml = require('gulp-ruby-haml');
-var cache = require('gulp-cached');
 
 var browserSync = require('browser-sync');
 
@@ -15,9 +13,8 @@ gulp.task('markups', function() {
     path.extname = '.html';
   }
 
-  return gulp.src(path.join(conf.paths.src, '/app/**/*.haml'))
-    .pipe(cache('linting'))
-    .pipe(haml())
+  return gulp.src(path.join(conf.paths.src, '/app/**/*.jade'))
+    .pipe($.consolidate('jade', { basedir: conf.paths.src, doctype: 'html', pretty: '  ' })).on('error', conf.errorHandler('Jade'))
     .pipe($.rename(renameToHtml))
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
     .pipe(browserSync.stream());

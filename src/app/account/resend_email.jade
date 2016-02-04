@@ -1,0 +1,35 @@
+.col-md-3
+  account-menu-directive
+
+.col-md-9
+  .panel.panel-default
+    .panel-heading
+      span.glyphicon.glyphicon-leaf
+      span(translate='TITLES.RESEND_EMAIL')
+    .panel-body#with-background
+      .alert.alert-danger(role='alert' ng-show='resend_email.errors')
+        button.close(data-dismiss='alert' type='button' ng-click='resend_email.clearErrors()') ×
+        ul(ng-repeat='error in resend_email.errors')
+          li {{error}}
+      form(novalidate=true name='resendEmailForm' ng-submit='resend_email.submit()')
+        .form-group
+          label(for='email')
+          span(translate='LABELS.EMAIL')
+          span *
+          input.form-control#email(type='email' autofocus=true name='email' ng-model='resend_email.email' required=true ng-maxlength='100')
+          span.errors(ng-messages='resendEmailForm.email.$error' ng-show='resendEmailForm.$submitted')
+            div(ng-message='required')
+              span.glyphicon.glyphicon-alert
+              span(translate='ERRORS.REQUIRED.EMAIL')
+            div(ng-message='email')
+              span.glyphicon.glyphicon-alert
+              span(translate='ERRORS.EMAIL')
+            div(ng-message='maxlength')
+              span.glyphicon.glyphicon-alert
+              span(translate='ERRORS.MAXLENGTH.EMAIL')
+        button.btn.btn-primary(type='submit' ng-disabled='resendEmailForm.$submitted && resendEmailForm.$invalid')
+          span(translate='BUTTONS.SEND')
+      hr
+      p
+        a(ui-sref='reset_password')
+          span(translate='LINKS.FORGOT_PASSWORD')
