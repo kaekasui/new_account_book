@@ -25,6 +25,7 @@ gem 'sidekiq'
 gem 'rdefs'
 gem 'tokens'
 gem 'exception_notification'
+gem 'haml'
 
 group :development, :test do
   gem 'rspec-rails'
