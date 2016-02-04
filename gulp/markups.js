@@ -5,7 +5,7 @@ var gulp = require('gulp');
 var conf = require('./conf');
 var cache = require('gulp-cached');
 var slim = require('gulp-slim');
-var haml = require('gulp-ruby-haml');
+//var haml = require('gulp-ruby-haml');
 
 var browserSync = require('browser-sync');
 
@@ -16,11 +16,11 @@ gulp.task('markups', function() {
     path.extname = '.html';
   }
 
-  return gulp.src(path.join(conf.paths.src, '/app/**/*.haml'))
-    .pipe(cache('linting'))
-    .pipe(haml())
-    .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
-    .pipe(browserSync.stream());
+  //return gulp.src(path.join(conf.paths.src, '/app/**/*.haml'))
+  //  .pipe(cache('linting'))
+  //  .pipe(haml())
+  //  .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
+  //  .pipe(browserSync.stream());
 
   //return gulp.src(path.join(conf.paths.src, '/app/**/*.haml'))
   //  .pipe($.consolidate('haml')).on('error', conf.errorHandler('Haml'))
@@ -28,8 +28,8 @@ gulp.task('markups', function() {
   //  .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
   //  .pipe(browserSync.stream());
 
-  //return gulp.src(path.join(conf.paths.src, '/app/**/*.slim'))
-  //  .pipe(slim())
-  //  .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
-  //  .pipe(browserSync.stream());
+  return gulp.src(path.join(conf.paths.src, '/app/**/*.slim'))
+    .pipe(slim())
+    .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
+    .pipe(browserSync.stream());
 });
