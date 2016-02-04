@@ -3,7 +3,6 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
-var haml = require('gulp-haml');
 var cache = require('gulp-cached');
 var slim = require('gulp-slim');
 
