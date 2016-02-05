@@ -1,0 +1,14 @@
+.col-md-3
+  .menu-directive(menu-data='profile.menus')
+
+.col-md-9
+  .panel.panel-default
+    .panel-heading
+      span.glyphicon.glyphicon-leaf(translate='TITLES.PROFILE')
+    .panel-body#with-background
+      blockquote(ng-show="profile.current_user.type == 'EmailUser'")
+        footer(translate='LABELS.EMAIL_LOGIN')
+      .form.form-horizontal
+        .form-group(ng-show='profile.current_user.email')
+          .col-sm-2(translate='LABELS.EMAIL')
+          .col-sm-10 {{ profile.current_user.email }}
