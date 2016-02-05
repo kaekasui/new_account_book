@@ -59,7 +59,7 @@ script#feedback(type='text/ng-template')
         label(for='content')
           span(translate='LABELS.MESSAGE')
           span *
-        textarea.form-control(rows='5' name='content' ng-model='feedback.content' required=true ng-maxlength='1000')
+        textarea.form-control(rows='5' name='content' ng-model='feedback.content' required=true ng-maxlength='1000' placeholder='{{feedback.placeholder}}')
         span.errors(ng-messages='feedbackForm.content.$error' ng-show='feedbackForm.$submitted')
           div(ng-message='required')
             span.glyphicon.glyphicon-alert(translate='ERRORS.REQUIRED.CONTENT')
