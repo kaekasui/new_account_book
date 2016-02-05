@@ -22,7 +22,7 @@ AccountFactory = ($location, $q, $http, localStorageService, toastr, $translate)
       $http.post(host + 'email_user/registrations', params)
         .success((data) ->
           toastr.success $translate.instant('MESSAGES.SEND_MAIL')
-          $location.path '/'
+          $location.path 'login'
           defer.resolve data
           return
         ).error (data) ->
@@ -36,7 +36,7 @@ AccountFactory = ($location, $q, $http, localStorageService, toastr, $translate)
       $http.patch(host + 'email_user/registrations/recreate', params)
         .success((data) ->
           toastr.success $translate.instant('MESSAGES.SEND_MAIL')
-          $location.path '/'
+          $location.path 'login'
           defer.resolve data
           return
         ).error (data) ->
@@ -49,7 +49,7 @@ AccountFactory = ($location, $q, $http, localStorageService, toastr, $translate)
       $http.post(host + 'email_user/passwords/send_mail', params)
         .success((data) ->
           toastr.success $translate.instant('MESSAGES.SEND_MAIL')
-          $location.path '/'
+          $location.path 'login'
           defer.resolve data
           return
         ).error (data) ->
