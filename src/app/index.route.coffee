@@ -37,5 +37,10 @@ angular.module 'newAccountBook'
         templateUrl: 'app/components/footer/terms.html'
         controllerAs: 'terms'
         controller: 'TermsController'
+      .state 'admin_users',
+        url: '/admin/users'
+        templateUrl: 'app/admin/users.html'
+        controllerAs: 'admin_users'
+        controller: 'UsersController'
 
     $urlRouterProvider.otherwise '/'
