@@ -1,0 +1,28 @@
+admin-menu-directive
+
+.panel.panel-default
+  .panel-heading
+    span.glyphicon.glyphicon-leaf(translate='TITLES.USERS')
+  .panel-body#with-background
+    nav
+      ul.pagination
+        li(ng-click='admin_users.clickPaginate(number)' ng-repeat='number in admin_users.offset_numbers' ng-class='{active: number == admin_users.offset}')
+          a {{$index + 1}}
+    table.table
+      tr
+        th
+        th ID
+        th
+        th
+        th(translate='COLUMNS.EMAIL')
+        th(translate='COLUMNS.LAST_LOGIN_TIME')
+      tr(ng-repeat='user in admin_users.users')
+        td
+          span.red.glyphicon.glyphicon-king(ng-show='user.admin')
+        td {{ user.id }}
+        td
+          span.label(ng-class='user.status_label_name') {{ user.status }}
+        td
+          span.label(ng-class='user.type_label_name') {{ user.type }}
+        td {{ user.email }}
+        td {{ user.last_sign_in_at }}

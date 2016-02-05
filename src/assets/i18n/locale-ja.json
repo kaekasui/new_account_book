@@ -17,7 +17,8 @@
     "RESEND_EMAIL": "確認メール再送信",
     "PROFILE": "プロフィール",
     "TERMS": "ご利用規約",
-    "USER": "ユーザー"
+    "USER": "ユーザー",
+    "USERS": "ユーザの管理"
   },
   "BUTTONS": {
     "LOGIN": "ログインする",

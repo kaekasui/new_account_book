@@ -16,7 +16,8 @@
     "RESEND_EMAIL": "Resend Email",
     "PROFILE": "Profile",
     "TERMS": "Terms",
-    "USER": "User"
+    "USER": "User",
+    "USERS": "Users"
   },
   "BUTTONS": {
     "LOGIN": "Log in",

@@ -17,7 +17,7 @@ nav.navbar.navbar-default(role='navigation')
           span.glyphicon.glyphicon-comment(translate='TITLES.FEEDBACK')
     ul.nav.navbar-nav.navbar-right
       li(ng-show='navbar.login_status && navbar.current_user.admin')
-        a(ui-sref='admin')
+        a(ui-sref='admin_users')
           span.glyphicon.glyphicon-king(translate='TITLES.ADMIN')
       li.dropdown.open(ng-init='isCollapsed = true' ng-click='isCollapsed = !isCollapsed' role='presentation' ng-show='navbar.login_status')
         a.dropdown-toggle(data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' role: 'button' href='')
