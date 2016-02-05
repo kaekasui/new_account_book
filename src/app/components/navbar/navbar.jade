@@ -30,7 +30,7 @@ nav.navbar.navbar-default(role='navigation')
         a(ui-sref='login')
           span.glyphicon.glyphicon-leaf(translate='TITLES.LOGIN')
       li(ng-show='navbar.login_status')
-        a(ui-sref='mypage')
+        a(ui-sref='profile')
           span.glyphicon.glyphicon-user {{ navbar.current_user.email }}
       li(ng-show='navbar.login_status')
         a(ui-sref='home' ng-click='navbar.logout()')
