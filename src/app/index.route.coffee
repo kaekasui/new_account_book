@@ -29,7 +29,7 @@ angular.module 'newAccountBook'
         controller: 'ResetPasswordController'
       .state 'profile',
         url: '/profile'
-        templateUrl: 'app/account/profile.html'
+        templateUrl: 'app/user/profile.html'
         controllerAs: 'profile'
         controller: 'ProfileController'
       .state 'terms',
