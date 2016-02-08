@@ -27,6 +27,11 @@ angular.module 'newAccountBook'
         templateUrl: 'app/account/reset_password.html'
         controllerAs: 'reset_password'
         controller: 'ResetPasswordController'
+      .state 'edit_password',
+        url: '/edit_password'
+        templateUrl: 'app/account/edit_password.html'
+        controllerAs: 'edit_password'
+        controller: 'EditPasswordController'
       .state 'profile',
         url: '/profile'
         templateUrl: 'app/user/profile.html'

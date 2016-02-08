@@ -57,6 +57,18 @@ AccountFactory = ($location, $q, $http, localStorageService, toastr, $translate)
           return
       return defer.promise
 
+    patchNewPassword: (user_id, params) ->
+      defer = $q.defer()
+      $http.patch(host + 'email_user/passwords/' + user_id, params)
+        .success((data) ->
+          toastr.success $translate.instant('MESSAGES.UPDATE_PASSWORD')
+          $location.path 'login'
+          defer.resolve data
+          return
+        ).error (data) ->
+          defer.reject data
+          return
+      return defer.promise
   }
 
 angular.module 'newAccountBook'

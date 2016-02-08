@@ -1,4 +1,4 @@
-EditPasswordController = (AccountFactory) ->
+EditPasswordController = (AccountFactory, $location, $translate) ->
   'ngInject'
   vm = this
 
