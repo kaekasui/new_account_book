@@ -1,13 +1,3 @@
-UserController = (AdminFactory, user_id) ->
-  vm = this
-  console.log '1'
-
-  AdminFactory.getUser(user_id).then (res) ->
-    console.log '2'
-    vm.user = res
-    console.log '3'
-  vm.user = undefined
-
 FeedbacksController = (AdminFactory, $modal) ->
   'ngInject'
   vm = this
@@ -33,8 +23,7 @@ FeedbacksController = (AdminFactory, $modal) ->
     vm.offset_numbers = total_array.filter (x) ->
       return x % 20 == 0
 
-  vm.user_modal = (user_id) ->
-    console.log '4'
+  vm.user = (user_id) ->
     modalInstance = $modal.open(
       templateUrl: 'user'
       controller: 'UserController'
@@ -44,6 +33,14 @@ FeedbacksController = (AdminFactory, $modal) ->
     )
     modalInstance.result.then () ->
       return
+
+  return
+
+UserController = (AdminFactory, user_id) ->
+  vm = this
+
+  AdminFactory.getUser(user_id).then (res) ->
+    vm.user = res
 
   return
 
