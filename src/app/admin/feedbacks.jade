@@ -22,7 +22,7 @@ admin-menu-directive
         td
           a(ng-click='admin_feedbacks.user(feedback.user_id)' href='')
             span.red.glyphicon.glyphicon-user(ng-show='feedback.user_id') {{ feedback.user_name }}
-        td {{ feedback.content }}
+        td(ng-bind-html='feedback.content')
         td {{ feedback.created_at }}
 
 script#user(type='text/ng-template')
