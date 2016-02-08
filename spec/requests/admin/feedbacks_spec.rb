@@ -25,9 +25,6 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
   end
 
   context '管理ユーザーとしてログインしている場合' do
-    before do
-    end
-
     context '1ページ以内のフィードバック数の場合' do
       it '200が返り、フィードバック一覧が返ってくること' do
         # TODO: Twitterユーザーのフィードバックを表示する
