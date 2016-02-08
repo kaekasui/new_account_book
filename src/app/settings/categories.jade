@@ -1,0 +1,20 @@
+.panel.panel-default
+  .panel-heading
+    span.glyphicon.glyphicon-leaf
+    span(translate='TITLES.CATEGORIES')
+  .panel-body#with-background
+    .row(ng-model='categories.categories' ui-sortable='categories.sortable')
+      .col-sm-3(ng-repeat='category in categories.categories' id='{{category.id}}')
+        .panel.panel-body.col-sm-11#category(ng-show='!category.edit_field')
+          div(ng-style="{'cursor': cursor_type}" ng-mouseenter="cursor_type = 'move'")
+            span.category-name(ng-style="{'cursor': 'pointer'}" ng-click='categories.editCategory($index)')
+              span {{ category.name }}
+            a
+              span.glyphicon.glyphicon-edit.pull-right(ng-click='categories.editCategory($index)')
+        .panel.panel-body.col-sm-11#category(ng-if="category.edit_field" ng-keydown='categories.updateCategory($event, $index)')
+          input.category-form(ng-value='category.name' ng-model='category.edit_name' auto-focus=true type='text')
+      .col-sm-3
+        .panel.panel-body.col-sm-11.category-plus#category(ng-click='categories.addNewPanel()' ng-class="{'panel-background': 'adding'}" ng-mouseenter="adding = true" ng-mouseleave="adding = false" ng-show="!categories.add_field")
+          span.glyphicon.glyphicon-plus
+        .panel.panel-body.col-sm-11#category(ng-if='categories.add_field' ng-keydown='categories.createCategory($event)')
+          input.category-form(ng-model='categories.new_category_name' auto-focus=true type='text')
