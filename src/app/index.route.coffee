@@ -29,7 +29,7 @@ angular.module 'newAccountBook'
         controller: 'ResetPasswordController'
       .state 'profile',
         url: '/profile'
-        templateUrl: 'app/account/profile.html'
+        templateUrl: 'app/user/profile.html'
         controllerAs: 'profile'
         controller: 'ProfileController'
       .state 'terms',
@@ -42,5 +42,10 @@ angular.module 'newAccountBook'
         templateUrl: 'app/admin/users.html'
         controllerAs: 'admin_users'
         controller: 'UsersController'
+      .state 'admin_feedbacks',
+        url: '/admin/feedbacks'
+        templateUrl: 'app/admin/feedbacks.html'
+        controllerAs: 'admin_feedbacks'
+        controller: 'FeedbacksController'
 
     $urlRouterProvider.otherwise '/'

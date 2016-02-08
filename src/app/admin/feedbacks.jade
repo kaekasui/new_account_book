@@ -1,0 +1,41 @@
+admin-menu-directive
+
+.panel.panel-default
+  .panel-heading
+    span.glyphicon.glyphicon-leaf(translate='TITLES.FEEDBACKS')
+  .panel-body#with-background
+    nav
+      ul.pagination
+        li(ng-click='admin_feedbacks.clickPaginate(number)' ng-repeat='number in admin_feedbacks.offset_numbers' ng-class='{active: number == admin_feedbacks.offset}')
+          a {{$index + 1}}
+    table.table
+      tr
+        th
+        th(translate='COLUMNS.EMAIL')
+        th(translate='COLUMNS.USER')
+        th(translate='COLUMNS.MESSAGE')
+        th(translate='COLUMNS.CREATED_AT')
+      tr(ng-repeat='feedback in admin_feedbacks.feedbacks')
+        td
+          span.red.glyphicon.glyphicon-check(ng-show='feedback.checked') {{ feedback.checked }}
+        td {{ feedback.email }}
+        td
+          a(ng-click='admin_feedbacks.user(feedback.user_id)' href='')
+            span.red.glyphicon.glyphicon-user(ng-show='feedback.user_id') {{ feedback.user_name }}
+        td {{ feedback.content }}
+        td {{ feedback.created_at }}
+
+script#user(type='text/ng-template')
+  .modal-body
+    form.form-horizontal
+      .form-group
+        .col-sm-2
+          span.label(ng-class='user.user.type_label_name') {{ user.user.type }}
+        .col-sm-2
+          span.label(ng-class='user.user.status_label_name') {{ user.user.status }}
+      .form-group
+        .col-sm-3(translate='COLUMNS.EMAIL')
+        .col-sm-9 {{ user.user.email }}
+      .form-group
+        .col-sm-3(translate='COLUMNS.LAST_LOGIN_TIME')
+        .col-sm-9 {{ user.user.last_sign_in_at }}
