@@ -42,6 +42,11 @@ angular.module 'newAccountBook'
         templateUrl: 'app/components/footer/terms.html'
         controllerAs: 'terms'
         controller: 'TermsController'
+      .state 'categories',
+        url: '/categories'
+        templateUrl: 'app/settings/categories.html'
+        controllerAs: 'categories'
+        controller: 'CategoriesController'
       .state 'admin_users',
         url: '/admin/users'
         templateUrl: 'app/admin/users.html'

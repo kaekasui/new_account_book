@@ -8,6 +8,7 @@ angular.module(
                      'ngResource',
                      'ui.router',
                      'ui.bootstrap',
+                     'ui.sortable',
                      'pascalprecht.translate',
                      'LocalStorageModule'
                      'toastr']
