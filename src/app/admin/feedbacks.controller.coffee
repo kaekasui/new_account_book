@@ -29,7 +29,6 @@ FeedbacksController = (AdminFactory, $modal) ->
       controller: 'UserController'
       controllerAs: 'user'
       resolve: { user_id: user_id }
-      bindToController: true
     )
     modalInstance.result.then () ->
       return
@@ -37,6 +36,7 @@ FeedbacksController = (AdminFactory, $modal) ->
   return
 
 UserController = (AdminFactory, user_id) ->
+  'ngInject'
   vm = this
 
   AdminFactory.getUser(user_id).then (res) ->
