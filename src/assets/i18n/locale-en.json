@@ -23,6 +23,7 @@
     "LOGIN": "Log in",
     "SIGN_UP": "Sign up",
     "SEND": "Send Email",
+    "EDIT": "Edit",
     "UPDATE": "Update",
     "CLOSE": "Close"
   },
@@ -35,6 +36,8 @@
     "MESSAGE": "Message",
     "NEW_PASSWORD": "New Password",
     "NEW_PASSWORD_CONFIRMATION": "New Password Confirmation",
+    "NICKNAME": "Nickname",
+    "NO_SETTINGS": "(No Settings)",
     "EMAIL_LOGIN": "Login via Email"
   },
   "LINKS": {

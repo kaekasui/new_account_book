@@ -3,6 +3,8 @@ class EmailUser < User
 
   validates :email, presence: true, email_format: true,
                     length: { maximum: Settings.user.email.maximum_length }
+  validates :nickname,
+            length: { maximum: Settings.user.nickname.maximum_length }
   validates :password,
             length: { minimum: Settings.user.password.minimum_length },
             on: :create
