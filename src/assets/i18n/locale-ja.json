@@ -24,6 +24,7 @@
     "LOGIN": "ログインする",
     "SIGN_UP": "登録する",
     "SEND": "送信する",
+    "EDIT": "変更",
     "UPDATE": "変更する",
     "CLOSE": "閉じる"
   },
@@ -36,6 +37,8 @@
     "MESSAGE": "メッセージ",
     "NEW_PASSWORD": "新しいパスワード",
     "NEW_PASSWORD_CONFIRMATION": "新しいパスワード（確認）",
+    "NICKNAME": "ニックネーム",
+    "NO_SETTINGS": "（未設定）",
     "EMAIL_LOGIN": "メールアドレスでログイン"
   },
   "LINKS": {

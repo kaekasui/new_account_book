@@ -12,3 +12,20 @@
         .form-group(ng-show='profile.current_user.email')
           .col-sm-2(translate='LABELS.EMAIL')
           .col-sm-10 {{ profile.current_user.email }}
+        .form-group
+          .col-sm-2(translate='LABELS.NICKNAME')
+          .col-sm-10
+            form(novalidate=true name='nicknameForm')
+              input.form-control#new_nickname(ng-if='profile.nickname_edit_field' ng-value='profile.current_user.nickname' ng-model='profile.new_nickname' auto-focus=true type='text' ng-keydown='profile.updateNickname($event)' name='new_nickname' ng-maxlength='100')
+              span.errors(ng-show='nicknameForm.new_nickname.$error.maxlength')
+                span.glyphicon.glyphicon-alert
+                span(translate='ERRORS.MAXLENGTH.EMAIL')
+            span(ng-show='!profile.nickname_edit_field') {{ profile.current_user.nickname || ('LABELS.NO_SETTINGS' | translate) }}
+            button.btn.btn-default(translate='BUTTONS.EDIT' ng-show='!profile.nickname_edit_field' ng-click='profile.nickname_edit_field = true')
+
+script#nickname(type='text/ng-template')
+  form.form-inline.text-center(novalidate=true name='nicknameForm' ng-submit='nickname.submit()')
+    .modal-body
+      .form-group
+        input.form-control#nickname(type='text' name='nickname' ng-model='nickname.nickname')
+        button.btn.btn-primary(type='submit' translate='BUTTONS.SEND')

@@ -21,6 +21,7 @@ describe 'GET /user', autodoc: true do
         id: user.id,
         type: user.type,
         email: user.email,
+        nickname: user.nickname,
         admin: user.admin
       }
       expect(response.body).to be_json_as(json)
@@ -39,10 +40,10 @@ describe 'PATCH /user', autodoc: true do
   context 'メールアドレスのユーザーがログインしている場合' do
     let!(:user) { create(:email_user, :registered) }
 
-    context 'ニックネームが空でない場合' do
+    context 'ニックネームを設定した場合' do
       let!(:params) { { nickname: 'ニックネーム' } }
 
-      it '200とユーザー情報を返すこと' do
+      it '200が返りデータが更新されること' do
         patch '/user', params, login_headers(user)
         expect(response.status).to eq 200
 

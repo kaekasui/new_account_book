@@ -46,7 +46,7 @@ script#feedback(type='text/ng-template')
         label(for='email')
           span(translate='LABELS.FEEDBACK_EMAIL')
           span *
-        input.form-control#email(type='email' name: 'email' ng-model='feedback.email' required=true ng-maxlength='100')
+        input.form-control#email(type='email' name='email' ng-model='feedback.email' required=true ng-maxlength='100')
         span.errors(ng-messages='feedbackForm.email.$error' ng-show='feedbackForm.$submitted')
           div(ng-message='required')
             span.glyphicon.glyphicon-alert(translate='ERRORS.REQUIRED.EMAIL')
