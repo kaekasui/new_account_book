@@ -154,14 +154,12 @@ body {
   }
 }
 
-// toastr stylesheets, set on bower_components
-// angular-toastr/dist/angular-toastr
-// .toast-success {
-//   background-color: rgba(118,137,26, 0.6);
-// }
-// .toast-top-center {
-//   top: 60px;
-// }
+.toast-success {
+  background-color: rgba(118,137,26, 0.6);
+}
+.toast-top-center {
+  top: 60px;
+}
 
 // bower:scss
 // endbower
