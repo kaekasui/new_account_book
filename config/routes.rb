@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only: %i(index create update) do
+  resources :categories, except: %i(show new edit) do
     post :sort, on: :collection
   end
   resource :user, only: %i(show update)

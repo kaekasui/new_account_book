@@ -78,6 +78,29 @@ describe 'PATCH /categories/:id', autodoc: true do
   end
 end
 
+describe 'DELETE /categories/:id', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:category) { create(:category, user: user) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      delete "/categories/#{category.id}"
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'メールアドレスのユーザーがログインしている場合' do
+    let!(:params) { { name: '名前' } }
+
+    it '200を返し、カテゴリが登録できること' do
+      delete "/categories/#{category.id}", params, login_headers(user)
+      expect(response.status).to eq 200
+
+      expect(Category.count).to eq 0
+    end
+  end
+end
+
 describe 'POST /categories/sort', autodoc: true do
   context 'ログインしていない場合' do
     it '401が返ってくること' do

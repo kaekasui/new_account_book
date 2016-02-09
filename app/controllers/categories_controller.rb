@@ -23,6 +23,15 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def destroy
+    @category = Category.find(params[:id])
+    if @category.destroy
+      head 200
+    else
+      render_error @category
+    end
+  end
+
   def sort
     @list = Category::List.new(current_user, params[:sequence])
     if @list.sort
