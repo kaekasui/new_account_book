@@ -22,10 +22,3 @@
                 span(translate='ERRORS.MAXLENGTH.EMAIL')
             span(ng-show='!profile.nickname_edit_field') {{ profile.current_user.nickname || ('LABELS.NO_SETTINGS' | translate) }}
             button.btn.btn-default(translate='BUTTONS.EDIT' ng-show='!profile.nickname_edit_field' ng-click='profile.nickname_edit_field = true')
-
-script#nickname(type='text/ng-template')
-  form.form-inline.text-center(novalidate=true name='nicknameForm' ng-submit='nickname.submit()')
-    .modal-body
-      .form-group
-        input.form-control#nickname(type='text' name='nickname' ng-model='nickname.nickname')
-        button.btn.btn-primary(type='submit' translate='BUTTONS.SEND')
