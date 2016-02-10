@@ -5,12 +5,11 @@
   .panel-body#with-background
     .row(ng-model='categories.categories' ui-sortable='categories.sortable')
       .col-sm-3(ng-repeat='category in categories.categories' id='{{category.id}}')
-        .panel.panel-body.col-sm-11#category(ng-show='!category.edit_field')
-          div(ng-style="{'cursor': cursor_type}" ng-mouseenter="cursor_type = 'move'")
-            span.category-name(ng-style="{'cursor': 'pointer'}" ng-click='categories.editCategory($index)')
-              span {{ category.name }}
-            a
-              span.glyphicon.glyphicon-edit.pull-right(ng-click='categories.editCategory($index)')
+        .panel.panel-body.col-sm-11(ng-show='!category.edit_field' ng-style="{'cursor': cursor_type}" ng-mouseenter="cursor_type = 'move'")
+          a.pull-right
+            span.glyphicon.glyphicon-trash#right-icon(ng-click='categories.showCategory($index)' ng-hide='category.breakdowns_count == 0')
+          div.category-name(ng-style="{'cursor': 'pointer'}" ng-click='categories.editCategory($index)')
+            span {{ category.name }}
         .panel.panel-body.col-sm-11#category(ng-if="category.edit_field" ng-keydown='categories.updateCategory($event, $index)')
           input.category-form(ng-value='category.name' ng-model='category.edit_name' auto-focus=true type='text')
       .col-sm-3

@@ -122,7 +122,7 @@ body {
     margin-bottom: 15px;
   }
 
-  span.category-name {
+  .category-name {
     font-weight: bold;
     color: #2f360a;
   }
@@ -177,6 +177,14 @@ body {
   img.pull-right {
     width: 50px;
   }
+}
+
+#right-icon {
+  padding-left: 10px;
+}
+
+#left-icon {
+  padding-right: 10px;
 }
 
 // injector

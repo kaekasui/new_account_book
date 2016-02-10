@@ -27,6 +27,9 @@ CategoriesController = (SettingsFactory) ->
         category.name = category.edit_name
         category.edit_field = false
 
+  vm.destroyCategory = (index) ->
+    category = vm.categories[index]
+
   vm.sortable =
     update: (e, ui) ->
       if (!ui.item.sortable.model)
