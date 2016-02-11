@@ -9,6 +9,8 @@
           a.pull-right
             span.glyphicon.glyphicon-trash#right-icon(ng-click='categories.destroyCategory($index)' ng-show='category.breakdowns_count == 0')
           div.category-name(ng-style="{'cursor': 'pointer'}" ng-click='categories.editCategory($index)')
+            span.glyphicon.glyphicon-plus-sign.green#left-icon(ng-show='category.barance_of_payments')
+            span.glyphicon.glyphicon-minus-sign.red#left-icon(ng-hide='category.barance_of_payments')
             span {{ category.name }}
           hr
           a
@@ -21,6 +23,14 @@
         .panel.panel-body.col-sm-11.category-plus#category(ng-click='categories.addNewPanel()' ng-class="{'panel-background': 'adding'}" ng-mouseenter="adding = true" ng-mouseleave="adding = false" ng-show="!categories.add_field")
           span.glyphicon.glyphicon-plus
         .panel.panel-body.col-sm-11#category(ng-if='categories.add_field' ng-keydown='categories.createCategory($event)')
+          .input-group
+            .input-group-btn
+              button.btn.btn-default(ng-class="{'btn-primary': !categories.new_payments}" type='button' ng-click='categories.new_payments = false')
+                span.glyphicon.glyphicon-minus-sign#left-icon
+                span(translate='BUTTONS.OUTGO')
+              button.btn.btn-default(ng-class="{'btn-info': categories.new_payments}" type='button' ng-click='categories.new_payments = true')
+                span.glyphicon.glyphicon-plus-sign#left-icon
+                span(translate='BUTTONS.INCOME')
           input.category-form(ng-model='categories.new_category_name' auto-focus=true type='text')
           .btn.btn-default(translate='BUTTONS.CANCEL' ng-click='categories.add_field = false')
 
