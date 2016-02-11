@@ -7,7 +7,7 @@
       .col-sm-3(ng-repeat='category in categories.categories' id='{{category.id}}')
         .panel.panel-body.col-sm-11(ng-show='!category.edit_field' ng-style="{'cursor': cursor_type}" ng-mouseenter="cursor_type = 'move'")
           a.pull-right
-            span.glyphicon.glyphicon-trash#right-icon(ng-click='categories.showCategory($index)' ng-hide='category.breakdowns_count == 0')
+            span.glyphicon.glyphicon-trash#right-icon(ng-click='categories.destroyCategory($index)' ng-hide='category.breakdowns_count == 0')
           div.category-name(ng-style="{'cursor': 'pointer'}" ng-click='categories.editCategory($index)')
             span {{ category.name }}
         .panel.panel-body.col-sm-11#category(ng-if="category.edit_field" ng-keydown='categories.updateCategory($event, $index)')
