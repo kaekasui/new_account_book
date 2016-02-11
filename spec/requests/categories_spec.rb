@@ -21,11 +21,13 @@ describe 'GET /categories', autodoc: true do
         categories: [
           {
             id: category.id,
-            name: category.name
+            name: category.name,
+            breakdowns_count: category.breakdowns.count
           },
           {
             id: category2.id,
-            name: category2.name
+            name: category2.name,
+            breakdowns_count: category2.breakdowns.count
           }
         ]
       }
