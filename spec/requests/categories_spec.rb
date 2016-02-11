@@ -78,6 +78,42 @@ describe 'PATCH /categories/:id', autodoc: true do
   end
 end
 
+describe 'DELETE /categories/:id', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:category) { create(:category, user: user) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      delete "/categories/#{category.id}"
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'メールアドレスのユーザーがログインしている場合' do
+    it '200を返し、カテゴリが削除できること' do
+      delete "/categories/#{category.id}", '', login_headers(user)
+      expect(response.status).to eq 200
+
+      expect(Category.count).to eq 0
+    end
+  end
+
+  context '削除対象のカテゴリが複数の内訳を登録していた場合' do
+    before do
+      create(:breakdown, category: category)
+    end
+
+    it '422とエラーメッセージが返ってくること' do
+      delete "/categories/#{category.id}", '', login_headers(user)
+      expect(response.status).to eq 422
+      json = {
+        error_messages: ['登録した内訳を削除してから削除してください']
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+end
+
 describe 'POST /categories/sort', autodoc: true do
   context 'ログインしていない場合' do
     it '401が返ってくること' do

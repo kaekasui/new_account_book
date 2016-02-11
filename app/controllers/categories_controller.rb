@@ -15,8 +15,17 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    @category = Category.find(params[:id])
+    @category = current_user.categories.find(params[:id])
     if @category.update(name: params[:name])
+      head 200
+    else
+      render_error @category
+    end
+  end
+
+  def destroy
+    @category = current_user.categories.find(params[:id])
+    if @category.destroy
       head 200
     else
       render_error @category
