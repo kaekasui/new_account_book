@@ -25,6 +25,8 @@
     "SEND": "Send Email",
     "EDIT": "Edit",
     "YES": "Yes",
+    "OUTGO": "Outgo",
+    "INCOME": "Income",
     "UPDATE": "Update",
     "CANCEL": "Cancel",
     "CLOSE": "Close"
