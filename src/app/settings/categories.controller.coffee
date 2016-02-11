@@ -1,4 +1,4 @@
-CategoriesController = (SettingsFactory) ->
+CategoriesController = (SettingsFactory, $modal) ->
   'ngInject'
   vm = this
   vm.add_field = false
@@ -27,11 +27,11 @@ CategoriesController = (SettingsFactory) ->
         category.name = category.edit_name
         category.edit_field = false
 
-  vm.destroyCategory = (index) ->
-    category = vm.categories[index]
-    SettingsFactory.deleteCategory(category.id).then ->
-      SettingsFactory.getCategories().then (res) ->
-        vm.categories = res.categories
+  # vm.destroyCategory = (index) ->
+  #   category = vm.categories[index]
+  #   SettingsFactory.deleteCategory(category.id).then ->
+  #     SettingsFactory.getCategories().then (res) ->
+  #       vm.categories = res.categories
 
   vm.sortable =
     update: (e, ui) ->
@@ -45,7 +45,34 @@ CategoriesController = (SettingsFactory) ->
       return
     axis: ''
 
+  vm.destroyCategory = (index) ->
+    category = vm.categories[index]
+    modalInstance = $modal.open(
+      templateUrl: 'confirm-destroy'
+      controller: 'ConfirmDestroyController'
+      controllerAs: 'confirm_destroy'
+      resolve: { category_id: category.id }
+    )
+    modalInstance.result.then () ->
+      SettingsFactory.getCategories().then (res) ->
+        vm.categories = res.categories
+      return
+
+  return
+
+ConfirmDestroyController = (SettingsFactory, category_id, $modalInstance) ->
+  'ngInject'
+  vm = this
+
+  vm.ok = () ->
+    SettingsFactory.deleteCategory(category_id).then ->
+      $modalInstance.close()
+
+  vm.cancel = () ->
+    $modalInstance.dismiss()
+
   return
 
 angular.module 'newAccountBook'
-  .controller 'CategoriesController', CategoriesController
+  .controller('ConfirmDestroyController', ConfirmDestroyController)
+  .controller('CategoriesController', CategoriesController)
