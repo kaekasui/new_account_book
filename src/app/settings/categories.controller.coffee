@@ -27,12 +27,6 @@ CategoriesController = (SettingsFactory, $modal) ->
         category.name = category.edit_name
         category.edit_field = false
 
-  # vm.destroyCategory = (index) ->
-  #   category = vm.categories[index]
-  #   SettingsFactory.deleteCategory(category.id).then ->
-  #     SettingsFactory.getCategories().then (res) ->
-  #       vm.categories = res.categories
-
   vm.sortable =
     update: (e, ui) ->
       if (!ui.item.sortable.model)

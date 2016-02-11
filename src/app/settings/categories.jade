@@ -19,8 +19,7 @@
           input.category-form(ng-model='categories.new_category_name' auto-focus=true type='text')
 
 script#confirm-destroy(type='text/ng-template')
-  .modal-header
+  .modal-body
+    p(translate='MESSAGES.DELETE')
     button.btn.btn-primary(type='submit' translate='BUTTONS.YES' ng-click='confirm_destroy.ok()')
     a.btn.btn-default(ng-click='confirm_destroy.cancel()' translate='BUTTONS.CLOSE')
-  .modal-body
-    | 削除してもいいですか
