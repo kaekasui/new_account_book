@@ -91,7 +91,7 @@ describe 'DELETE /categories/:id', autodoc: true do
 
   context 'メールアドレスのユーザーがログインしている場合' do
     it '200を返し、カテゴリが削除できること' do
-      delete "/categories/#{category.id}", login_headers(user)
+      delete "/categories/#{category.id}", '', login_headers(user)
       expect(response.status).to eq 200
 
       expect(Category.count).to eq 0
