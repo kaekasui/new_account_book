@@ -11,7 +11,7 @@
           div.category-name(ng-style="{'cursor': 'pointer'}" ng-click='categories.editCategory($index)')
             span.glyphicon.glyphicon-plus-sign.green#left-icon(ng-show='category.barance_of_payments')
             span.glyphicon.glyphicon-minus-sign.red#left-icon(ng-hide='category.barance_of_payments')
-            span {{ category.name }}
+            span {{ category.name | truncate:true:12 }}
           hr
           a
             span.glyphicon.glyphicon-th-list#left-icon
