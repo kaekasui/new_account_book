@@ -133,6 +133,7 @@ body {
     color: rgba($link-color, 0.4);
     font-size: 18px;
     background-color: rgba($link-color, 0.1);
+    height: 150px;
   }
  
   .category-form {
@@ -154,6 +155,10 @@ body {
 
   .panel-background {
     background-color: rgba($link-color, 0.2);
+  }
+
+  .panel.category-card {
+    height: 150px;
   }
 }
 
