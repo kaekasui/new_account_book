@@ -14,6 +14,7 @@ admin-menu-directive
         th ID
         th
         th
+        th(translate='COLUMNS.NICKNAME')
         th(translate='COLUMNS.EMAIL')
         th(translate='COLUMNS.LAST_LOGIN_TIME')
       tr(ng-repeat='user in admin_users.users')
@@ -24,5 +25,7 @@ admin-menu-directive
           span.label(ng-class='user.status_label_name') {{ user.status }}
         td
           span.label(ng-class='user.type_label_name') {{ user.type }}
+        td
+          span {{ user.nickname }}
         td {{ user.email }}
         td {{ user.last_sign_in_at }}

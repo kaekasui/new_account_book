@@ -82,7 +82,8 @@
     "EMAIL": "Email",
     "MESSAGE": "Message",
     "LAST_LOGIN_TIME": "Last Login Time",
-    "USER": "User"
+    "USER": "User",
+    "NICKNAME": "Nickname"
   },
   "TERMS": {
     "DIRECTION": "DIRECTION",
