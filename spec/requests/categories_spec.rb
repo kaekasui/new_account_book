@@ -22,11 +22,13 @@ describe 'GET /categories', autodoc: true do
           {
             id: category.id,
             name: category.name,
+            barance_of_payments: category.barance_of_payments,
             breakdowns_count: category.breakdowns.count
           },
           {
             id: category2.id,
             name: category2.name,
+            barance_of_payments: category2.barance_of_payments,
             breakdowns_count: category2.breakdowns.count
           }
         ]
@@ -46,13 +48,16 @@ describe 'POST /categories', autodoc: true do
 
   context 'メールアドレスのユーザーがログインしている場合' do
     let!(:user) { create(:email_user, :registered) }
-    let!(:params) { { name: '名前' } }
+    let!(:params) { { name: '名前', barance_of_payments: true } }
 
     it '201を返し、カテゴリが登録できること' do
       post '/categories', params, login_headers(user)
       expect(response.status).to eq 201
 
       expect(user.categories.count).to eq 1
+      category = Category.last
+      expect(category.name).to eq '名前'
+      expect(category.barance_of_payments).to be_truthy
     end
   end
 end

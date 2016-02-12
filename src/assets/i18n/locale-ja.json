@@ -26,6 +26,8 @@
     "SEND": "送信する",
     "EDIT": "変更",
     "YES": "はい",
+    "OUTGO": "支出",
+    "INCOME": "収入",
     "UPDATE": "変更する",
     "CANCEL": "キャンセル",
     "CLOSE": "閉じる"

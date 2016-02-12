@@ -2,6 +2,7 @@ CategoriesController = (SettingsFactory, $modal) ->
   'ngInject'
   vm = this
   vm.add_field = false
+  vm.new_payments = false
 
   SettingsFactory.getCategories().then (res) ->
     vm.categories = res.categories
@@ -14,7 +15,10 @@ CategoriesController = (SettingsFactory, $modal) ->
 
   vm.createCategory = (e) ->
     if e.which == 13
-      SettingsFactory.postCategory({name: vm.new_category_name}).then () ->
+      params =
+        name: vm.new_category_name
+        barance_of_payments: vm.new_payments
+      SettingsFactory.postCategory(params).then () ->
         SettingsFactory.getCategories().then (res) ->
           vm.categories = res.categories
         vm.new_category_name = ''

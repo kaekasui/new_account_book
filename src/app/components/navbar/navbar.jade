@@ -8,33 +8,41 @@ nav.navbar.navbar-default(role='navigation')
     ul.nav.navbar-nav
       li
         a(ui-sref='home')
-          span.glyphicon.glyphicon-home(translate='TITLES.HOME')
+          span.glyphicon.glyphicon-home#left-icon
+          span(translate='TITLES.HOME')
       li
         a
-          span.glyphicon.glyphicon-stats(translate='TITLES.DASHBOARD')
+          span.glyphicon.glyphicon-stats#left-icon
+          span(translate='TITLES.DASHBOARD')
       li
         a(ng-click='navbar.feedback()', href='')
-          span.glyphicon.glyphicon-comment(translate='TITLES.FEEDBACK')
+          span.glyphicon.glyphicon-comment#left-icon
+          span(translate='TITLES.FEEDBACK')
     ul.nav.navbar-nav.navbar-right
       li(ng-show='navbar.login_status && navbar.current_user.admin')
         a(ui-sref='admin_users')
-          span.glyphicon.glyphicon-king(translate='TITLES.ADMIN')
+          span.glyphicon.glyphicon-king#left-icon
+          span(translate='TITLES.ADMIN')
       li.dropdown.open(ng-init='isCollapsed = true' ng-click='isCollapsed = !isCollapsed' role='presentation' ng-show='navbar.login_status')
         a.dropdown-toggle(data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' role: 'button' href='')
-          span.glyphicon.glyphicon-cog(translate='TITLES.SETTINGS')
+          span.glyphicon.glyphicon-cog#left-icon
+          span#left-icon(translate='TITLES.SETTINGS')
           span.caret
         ul.dropdown-menu(ng-hide='isCollapsed')
           li
             a(ui-sref='categories' translate='TITLES.CATEGORY')
       li(ng-hide='navbar.login_status')
         a(ui-sref='login')
-          span.glyphicon.glyphicon-leaf(translate='TITLES.LOGIN')
+          span.glyphicon.glyphicon-leaf#left-icon
+          span(translate='TITLES.LOGIN')
       li(ng-show='navbar.login_status')
         a(ui-sref='profile')
-          span.glyphicon.glyphicon-user {{ navbar.current_user.email }}
+          span.glyphicon.glyphicon-user#left-icon
+          span {{ navbar.current_user.email }}
       li(ng-show='navbar.login_status')
         a(ui-sref='home' ng-click='navbar.logout()')
-          span.glyphicon.glyphicon-leaf(translate='TITLES.LOGOUT')
+          span.glyphicon.glyphicon-leaf#left-icon
+          span(translate='TITLES.LOGOUT')
 
 script#feedback(type='text/ng-template')
   form(novalidate=true name='feedbackForm' ng-submit='feedback.submit()')
@@ -49,11 +57,14 @@ script#feedback(type='text/ng-template')
         input.form-control#email(type='email' name='email' ng-model='feedback.email' required=true ng-maxlength='100')
         span.errors(ng-messages='feedbackForm.email.$error' ng-show='feedbackForm.$submitted')
           div(ng-message='required')
-            span.glyphicon.glyphicon-alert(translate='ERRORS.REQUIRED.EMAIL')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.REQUIRED.EMAIL')
           div(ng-message='email')
-            span.glyphicon.glyphicon-alert(translate='ERRORS.EMAIL')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.EMAIL')
           div(ng-message='maxlength')
-            span.glyphicon.glyphicon-alert(translate='ERRORS.MAXLENGTH.EMAIL')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.MAXLENGTH.EMAIL')
 
       .form-group
         label(for='content')
@@ -62,6 +73,8 @@ script#feedback(type='text/ng-template')
         textarea.form-control(rows='5' name='content' ng-model='feedback.content' required=true ng-maxlength='1000' placeholder='{{feedback.placeholder}}')
         span.errors(ng-messages='feedbackForm.content.$error' ng-show='feedbackForm.$submitted')
           div(ng-message='required')
-            span.glyphicon.glyphicon-alert(translate='ERRORS.REQUIRED.CONTENT')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.REQUIRED.CONTENT')
           div(ng-message='maxlength')
-            span.glyphicon.glyphicon-alert(translate='ERRORS.MAXLENGTH.CONTENT')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.MAXLENGTH.CONTENT')

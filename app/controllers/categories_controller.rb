@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = current_user.categories.new(name: params[:name])
+    @category = current_user.categories.new(new_category_params)
     if @category.save
       head 201
     else
@@ -39,5 +39,11 @@ class CategoriesController < ApplicationController
     else
       render_error @list
     end
+  end
+
+  private
+
+  def new_category_params
+    params.permit(:name, :barance_of_payments)
   end
 end
