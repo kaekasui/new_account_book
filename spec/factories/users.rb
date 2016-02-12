@@ -6,6 +6,7 @@ FactoryGirl.define do
     trait :registered do
       status :registered
     end
+    sequence(:nickname) { |n| "ニックネーム#{n}" }
     last_sign_in_at { 2.days.ago }
 
     factory :email_user, class: EmailUser do

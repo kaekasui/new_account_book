@@ -84,7 +84,8 @@
     "EMAIL": "メールアドレス",
     "MESSAGE": "メッセージ",
     "LAST_LOGIN_TIME": "最終ログイン時間",
-    "USER": "ユーザー"
+    "USER": "ユーザー",
+    "NICKNAME": "ニックネーム"
   },
   "TERMS": {
     "DIRECTION": "運営",
