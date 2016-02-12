@@ -19,13 +19,13 @@
           input.form-control#email(type='email' autofocus=true name='email' ng-model='login.email' required=true ng-maxlength='100')
           span.errors(ng-messages='loginForm.email.$error' ng-show='loginForm.$submitted')
             div(ng-message='required')
-              span.glyphicon.glyphicon-alert
+              span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.REQUIRED.EMAIL')
             div(ng-message='email')
-              span.glyphicon.glyphicon-alert
+              span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.EMAIL')
             div(ng-message='maxlength')
-              span.glyphicon.glyphicon-alert
+              span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.MAXLENGTH.EMAIL')
         .form-group
           label(for='password')
@@ -34,13 +34,13 @@
           input.form-control#password(type='password' name='password' ng-model='login.password' required=true ng-maxlength='72' ng-minlength='4')
           span.errors(ng-messages='loginForm.password.$error' ng-show='loginForm.$submitted')
             div(ng-message='required')
-              span.glyphicon.glyphicon-alert
+              span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.REQUIRED.PASSWORD')
             div(ng-message='maxlength')
-              span.glyphicon.glyphicon-alert
+              span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.MAXLENGTH.PASSWORD')
             div(ng-message='minlength')
-              span.glyphicon.glyphicon-alert
+              span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.MINLENGTH.PASSWORD')
         button.btn.btn-primary(type='submit' ng-disabled='loginForm.$submitted && loginForm.$invalid')
           span(translate='BUTTONS.LOGIN')
