@@ -19,13 +19,13 @@
           input.form-control#email(type='email' autofocus=true name='email' ng-model='sign_up.email' required=true ng-maxlength='100')
           span.errors(ng-messages='signUpForm.email.$error' ng-show='signUpForm.$submitted')
             div(ng-message='required')
-              span.glyphicon.glyphicon-alert
+              span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.REQUIRED.EMAIL')
             div(ng-message='email')
-              span.glyphicon.glyphicon-alert
+              span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.EMAIL')
             div(ng-message='maxlength')
-              span.glyphicon.glyphicon-alert
+              span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.MAXLENGTH.EMAIL')
         .form-group
           label(for='password')
@@ -34,13 +34,13 @@
           input.form-control#password(type='password' name='password' ng-model='sign_up.password' required=true ng-maxlength='72' ng-minlength='4')
           span.errors(ng-messages='signUpForm.password.$error' ng-show='signUpForm.$submitted')
             div(ng-message='required')
-              span.glyphicon.glyphicon-alert
+              span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.REQUIRED.PASSWORD')
             div(ng-message='maxlength')
-              span.glyphicon.glyphicon-alert
+              span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.MAXLENGTH.PASSWORD')
             div(ng-message='minlength')
-              span.glyphicon.glyphicon-alert
+              span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.MINLENGTH.PASSWORD')
         .form-group
           label(for='password_confirmation')

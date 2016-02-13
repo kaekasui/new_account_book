@@ -5,24 +5,24 @@
   .panel-body#with-background
     .row(ng-model='categories.categories' ui-sortable='categories.sortable')
       .col-sm-3(ng-repeat='category in categories.categories' id='{{category.id}}')
-        .panel.panel-body.col-sm-11(ng-show='!category.edit_field' ng-style="{'cursor': cursor_type}" ng-mouseenter="cursor_type = 'move'")
+        .panel.panel-body.col-sm-11.category-card(ng-show='!category.edit_field' ng-style="{'cursor': cursor_type}" ng-mouseenter="cursor_type = 'move'")
           a.pull-right
             span.glyphicon.glyphicon-trash#right-icon(ng-click='categories.destroyCategory($index)' ng-show='category.breakdowns_count == 0')
           div.category-name(ng-style="{'cursor': 'pointer'}" ng-click='categories.editCategory($index)')
             span.glyphicon.glyphicon-plus-sign.green#left-icon(ng-show='category.barance_of_payments')
             span.glyphicon.glyphicon-minus-sign.red#left-icon(ng-hide='category.barance_of_payments')
-            span {{ category.name }}
+            span {{ category.name | truncate:true:12 }}
           hr
           a
             span.glyphicon.glyphicon-th-list#left-icon
             span {{ category.breakdowns_count }}
-        .panel.panel-body.col-sm-11#category(ng-if="category.edit_field" ng-keydown='categories.updateCategory($event, $index)')
+        .panel.panel-body.col-sm-11.category-card#category(ng-if="category.edit_field" ng-keydown='categories.updateCategory($event, $index)')
           input.category-form(ng-value='category.name' ng-model='category.edit_name' auto-focus=true type='text')
           .btn.btn-default(translate='BUTTONS.CANCEL' ng-click='category.edit_field = false')
       .col-sm-3
         .panel.panel-body.col-sm-11.category-plus#category(ng-click='categories.addNewPanel()' ng-class="{'panel-background': 'adding'}" ng-mouseenter="adding = true" ng-mouseleave="adding = false" ng-show="!categories.add_field")
           span.glyphicon.glyphicon-plus
-        .panel.panel-body.col-sm-11#category(ng-if='categories.add_field' ng-keydown='categories.createCategory($event)')
+        .panel.panel-body.col-sm-11.category-card#category(ng-if='categories.add_field' ng-keydown='categories.createCategory($event)')
           .input-group
             .input-group-btn
               button.btn.btn-default(ng-class="{'btn-primary': !categories.new_payments}" type='button' ng-click='categories.new_payments = false')
