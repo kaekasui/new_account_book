@@ -24,12 +24,18 @@ CategoriesController = (SettingsFactory, $modal) ->
         vm.new_category_name = ''
         vm.add_field = false
 
-  vm.updateCategory = (e, index) ->
+  vm.updateCategoryEvent = (e, index) ->
     category = vm.categories[index]
     if (e.which == 13 && category.edit_name)
       SettingsFactory.patchCategory(category.id, {name: category.edit_name}).then () ->
         category.name = category.edit_name
         category.edit_field = false
+
+  vm.updateCategory = (index) ->
+    category = vm.categories[index]
+    SettingsFactory.patchCategory(category.id, {name: category.edit_name}).then () ->
+      category.name = category.edit_name
+      category.edit_field = false
 
   vm.sortable =
     update: (e, ui) ->
