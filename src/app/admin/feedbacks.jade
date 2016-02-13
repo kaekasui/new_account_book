@@ -33,6 +33,9 @@ script#user(type='text/ng-template')
           span.label(ng-class='user.user.type_label_name') {{ user.user.type }}
         .col-sm-2
           span.label(ng-class='user.user.status_label_name') {{ user.user.status }}
+      .form-group(ng-show='user.user.nickname')
+        .col-sm-3(translate='COLUMNS.NICKNAME')
+        .col-sm-9 {{ user.user.nickname }}
       .form-group
         .col-sm-3(translate='COLUMNS.EMAIL')
         .col-sm-9 {{ user.user.email }}
