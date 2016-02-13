@@ -13,8 +13,8 @@ CategoriesController = (SettingsFactory, $modal) ->
   vm.editCategory = (index) ->
     vm.categories[index].edit_field = true
 
-  vm.createCategory = (e) ->
-    if e.which == 13
+  vm.createCategory = (e = undefined) ->
+    if e == undefined || e.which == 13
       params =
         name: vm.new_category_name
         barance_of_payments: vm.new_payments
@@ -24,18 +24,12 @@ CategoriesController = (SettingsFactory, $modal) ->
         vm.new_category_name = ''
         vm.add_field = false
 
-  vm.updateCategoryEvent = (e, index) ->
+  vm.updateCategory = (index, e = undefined) ->
     category = vm.categories[index]
-    if (e.which == 13 && category.edit_name)
+    if e == undefined || (e.which == 13 && category.edit_name)
       SettingsFactory.patchCategory(category.id, {name: category.edit_name}).then () ->
         category.name = category.edit_name
         category.edit_field = false
-
-  vm.updateCategory = (index) ->
-    category = vm.categories[index]
-    SettingsFactory.patchCategory(category.id, {name: category.edit_name}).then () ->
-      category.name = category.edit_name
-      category.edit_field = false
 
   vm.sortable =
     update: (e, ui) ->

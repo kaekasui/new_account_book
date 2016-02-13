@@ -16,7 +16,7 @@
           a
             span.glyphicon.glyphicon-th-list#left-icon
             span {{ category.breakdowns_count }}
-        .panel.panel-body.col-sm-11.category-card#category(ng-if="category.edit_field" ng-keydown='categories.updateCategoryEvent($event, $index)')
+        .panel.panel-body.col-sm-11.category-card#category(ng-if="category.edit_field" ng-keydown='categories.updateCategory($index, $event)')
           input.category-form(ng-value='category.name' ng-model='category.edit_name' auto-focus=true type='text')
           .btn.btn-primary(translate='BUTTONS.EDIT' ng-click='categories.updateCategory($index)')
           .btn.btn-default(translate='BUTTONS.CANCEL' ng-click='category.edit_field = false')
@@ -33,6 +33,7 @@
                 span.glyphicon.glyphicon-plus-sign#left-icon
                 span(translate='BUTTONS.INCOME')
           input.category-form(ng-model='categories.new_category_name' auto-focus=true type='text')
+          .btn.btn-primary(translate='BUTTONS.EDIT' ng-click='categories.createCategory()')
           .btn.btn-default(translate='BUTTONS.CANCEL' ng-click='categories.add_field = false')
 
 script#confirm-destroy(type='text/ng-template')
