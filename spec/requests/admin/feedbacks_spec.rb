@@ -82,3 +82,40 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
     end
   end
 end
+
+describe 'PATCH /admin/feedbacks/:feedback_id/check', autodoc: true do
+  let!(:admin_user) { create(:email_user, :admin_user, :registered) }
+  let!(:feedback) { create(:feedback) }
+  let!(:user_feedback) { create(:feedback, :login_user) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      patch "/admin/feedbacks/#{feedback.id}/check", ''
+
+      expect(response.status).to eq 401
+    end
+  end
+
+  context '管理ユーザーとしてログインしている場合' do
+    context '管理ユーザーで対応済みにする場合' do
+      it '200とチェックのフラグが返ってくること' do
+        patch "/admin/feedbacks/#{feedback.id}/check",
+              '', login_headers(admin_user)
+        expect(response.status).to eq 200
+        json = { checked: true }
+        expect(response.body).to be_json_as(json)
+      end
+    end
+
+    context '管理ユーザーで未対応にする場合' do
+      it '200とチェックのフラグが返ってくること' do
+        feedback.update(checked: true)
+        patch "/admin/feedbacks/#{feedback.id}/check",
+              '', login_headers(admin_user)
+        expect(response.status).to eq 200
+        json = { checked: false }
+        expect(response.body).to be_json_as(json)
+      end
+    end
+  end
+end
