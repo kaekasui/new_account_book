@@ -18,7 +18,9 @@
     "PROFILE": "プロフィール",
     "TERMS": "ご利用規約",
     "USER": "ユーザー",
-    "USERS": "ユーザの管理"
+    "USERS": "ユーザの管理",
+    "NOTICE": "お知らせ",
+    "NOTICES": "お知らせの管理"
   },
   "BUTTONS": {
     "LOGIN": "ログインする",
@@ -82,10 +84,13 @@
     "DELETE": "削除します"
   },
   "COLUMNS": {
+    "CONTENT": "内容",
     "CREATED_AT": "作成日時",
     "EMAIL": "メールアドレス",
     "MESSAGE": "メッセージ",
     "LAST_LOGIN_TIME": "最終ログイン時間",
+    "POST_AT": "投稿日時",
+    "TITLE": "タイトル",
     "USER": "ユーザー",
     "NICKNAME": "ニックネーム"
   },
