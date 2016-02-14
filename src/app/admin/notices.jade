@@ -4,6 +4,7 @@ admin-menu-directive
   .panel-heading
     span.glyphicon.glyphicon-leaf(translate='TITLES.NOTICES')
   .panel-body#with-background
+    .btn.btn-info(translate='BUTTONS.ADD')
     nav
       ul.pagination
         li(ng-click='admin_notices.clickPaginate(number)' ng-repeat='number in admin_notices.offset_numbers' ng-class='{active: number == admin_notices.offset}')

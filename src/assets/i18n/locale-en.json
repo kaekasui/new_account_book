@@ -22,6 +22,7 @@
     "NOTICES": "Notices"
   },
   "BUTTONS": {
+    "ADD": "Add",
     "LOGIN": "Log in",
     "SIGN_UP": "Sign up",
     "SEND": "Send Email",
