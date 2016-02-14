@@ -29,6 +29,8 @@ defaults: &defaults
     per: 20
   feedbacks:
     per: 20
+  notices:
+    per: 20
 
 development:
   <<: *defaults
