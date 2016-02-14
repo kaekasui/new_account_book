@@ -1,5 +1,6 @@
 json.feedbacks do
   json.array! @feedbacks do |feedback|
+    json.id feedback.id
     json.checked feedback.checked
     json.email feedback.email
     json.user_id feedback.user_id

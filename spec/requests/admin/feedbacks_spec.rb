@@ -34,6 +34,7 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
         json = {
           feedbacks: [
             {
+              id: user_feedback.id,
               checked: user_feedback.checked,
               email: user_feedback.email,
               user_id: user_feedback.user_id,
@@ -42,6 +43,7 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
               created_at: I18n.l(user_feedback.created_at)
             },
             {
+              id: feedback.id,
               checked: feedback.checked,
               email: feedback.email,
               user_id: feedback.user_id,
@@ -64,6 +66,7 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
         json = {
           feedbacks: [
             {
+              id: feedback.id,
               checked: feedback.checked,
               email: feedback.email,
               user_id: feedback.user_id,

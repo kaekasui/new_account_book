@@ -17,7 +17,12 @@ admin-menu-directive
         th(translate='COLUMNS.CREATED_AT')
       tr(ng-repeat='feedback in admin_feedbacks.feedbacks')
         td
-          span.red.glyphicon.glyphicon-check(ng-show='feedback.checked') {{ feedback.checked }}
+          button.btn.btn-default(type='button' ng-click='admin_feedbacks.check($index)' ng-hide='feedback.checked')
+            span.glyphicon.glyphicon-remove.red#left-icon
+            span(translate='BUTTONS.YET')
+          button.btn.btn-default(type='button' ng-click='admin_feedbacks.check($index)' ng-show='feedback.checked')
+            span.glyphicon.glyphicon-ok.green#left-icon
+            span(translate='BUTTONS.FINISHED')
         td {{ feedback.email }}
         td
           a(ng-click='admin_feedbacks.user(feedback.user_id)' href='')
