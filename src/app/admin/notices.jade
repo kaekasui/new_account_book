@@ -1,0 +1,23 @@
+admin-menu-directive
+
+.panel.panel-default
+  .panel-heading
+    span.glyphicon.glyphicon-leaf(translate='TITLES.NOTICES')
+  .panel-body#with-background
+    nav
+      ul.pagination
+        li(ng-click='admin_notices.clickPaginate(number)' ng-repeat='number in admin_notices.offset_numbers' ng-class='{active: number == admin_notices.offset}')
+          a {{$index + 1}}
+    table.table
+      tr
+        th
+        th
+        th(translate='COLUMNS.TITLE')
+        th(translate='COLUMNS.CONTENT')
+        th(translate='COLUMNS.POST_AT')
+      tr(ng-repeat='notice in admin_notices.notices')
+        td
+        td
+        td {{ notice.title }}
+        td {{ notice.content }}
+        td {{ notice.post_at }}

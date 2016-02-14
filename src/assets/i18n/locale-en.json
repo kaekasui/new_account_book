@@ -17,7 +17,9 @@
     "PROFILE": "Profile",
     "TERMS": "Terms",
     "USER": "User",
-    "USERS": "Users"
+    "USERS": "Users",
+    "NOTICE": "Notice",
+    "NOTICES": "Notices"
   },
   "BUTTONS": {
     "LOGIN": "Log in",
@@ -80,10 +82,13 @@
     "FEEDBACK": "Please feel free to ask me any questions!:)"
   },
   "COLUMNS": {
+    "CONTENT": "Content",
     "CREATED_AT": "Creation Time",
     "EMAIL": "Email",
     "MESSAGE": "Message",
     "LAST_LOGIN_TIME": "Last Login Time",
+    "POST_AT": "post time",
+    "TITLE": "Title",
     "USER": "User",
     "NICKNAME": "Nickname"
   },
