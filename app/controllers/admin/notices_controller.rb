@@ -6,4 +6,19 @@ class Admin::NoticesController < ApplicationController
     @notices = Notice::Fetcher.all(params: params)
     @total_count = Notice.count
   end
+
+  def create
+    @notice = Notice.new(notice_params)
+    if @notice.save
+      head 201
+    else
+      render_error @notice
+    end
+  end
+
+  private
+
+  def notice_params
+    params.permit(:title, :content)
+  end
 end

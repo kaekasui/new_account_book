@@ -8,6 +8,8 @@ ja:
       feedback:
         email: メールアドレス
         content: 内容
+      notice:
+        title: お知らせのタイトル
     errors:
       models:
         user:
