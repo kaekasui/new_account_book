@@ -27,7 +27,7 @@ defaults: &defaults
       maximum_length: 100
   notice:
     title:
-      maximum_length: 1000
+      maximum_length: 100
   users:
     per: 20
   feedbacks:
