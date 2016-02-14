@@ -70,3 +70,39 @@ describe 'GET /admin/notices?offset=offset', autodoc: true do
     end
   end
 end
+
+describe 'POST /admin/notices', autodoc: true do
+  let!(:admin_user) { create(:email_user, :admin_user, :registered) }
+  let!(:title) { 'タイトル' }
+  let!(:params) { { title: title, content: 'お知らせ内容' } }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      post '/admin/notices/', ''
+
+      expect(response.status).to eq 401
+    end
+  end
+
+  context '正しい値が登録された場合' do
+    it '201が返ってくること' do
+      post '/admin/notices/', params, login_headers(admin_user)
+
+      expect(response.status).to eq 201
+    end
+  end
+
+  context '値が空の場合' do
+    let(:title) { '' }
+
+    it '422とエラーメッセージが返ってくること' do
+      post '/admin/notices/', params, login_headers(admin_user)
+
+      expect(response.status).to eq 422
+      json = {
+        error_messages: ['お知らせのタイトルを入力してください']
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+end

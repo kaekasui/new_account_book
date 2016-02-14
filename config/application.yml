@@ -25,6 +25,9 @@ defaults: &defaults
       maximum_length: 1000
     email:
       maximum_length: 100
+  notice:
+    title:
+      maximum_length: 1000
   users:
     per: 20
   feedbacks:
