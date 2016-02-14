@@ -33,6 +33,11 @@ FeedbacksController = (AdminFactory, $modal) ->
     modalInstance.result.then () ->
       return
 
+  vm.check = (index) ->
+    feedback = vm.feedbacks[index]
+    AdminFactory.patchFeedbackCheck(feedback.id).then (res) ->
+      vm.feedbacks[index].checked = res.checked
+
   return
 
 UserController = (AdminFactory, user_id) ->

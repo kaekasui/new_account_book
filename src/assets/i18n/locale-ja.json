@@ -30,7 +30,9 @@
     "INCOME": "収入",
     "UPDATE": "変更する",
     "CANCEL": "キャンセル",
-    "CLOSE": "閉じる"
+    "CLOSE": "閉じる",
+    "YET": "未対応",
+    "FINISHED": "対応済"
   },
   "LABELS": {
     "FEEDBACK_EMAIL": "連絡先メールアドレス",

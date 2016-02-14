@@ -29,7 +29,9 @@
     "INCOME": "Income",
     "UPDATE": "Update",
     "CANCEL": "Cancel",
-    "CLOSE": "Close"
+    "CLOSE": "Close",
+    "YET": "Not Yet",
+    "FINISHED": "Finished"
   },
   "LABELS": {
     "FEEDBACK_EMAIL": "your Email address",
