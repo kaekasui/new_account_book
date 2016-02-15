@@ -13,7 +13,7 @@
             span.glyphicon.glyphicon-minus-sign.red#left-icon(ng-hide='category.barance_of_payments')
             span {{ category.name | truncate:true:12 }}
           hr
-          a
+          a(ng-click='categories.showBreakdowns($index)')
             span.glyphicon.glyphicon-th-list#left-icon
             span {{ category.breakdowns_count }}
         .panel.panel-body.col-sm-11.category-card#category(ng-if="category.edit_field" ng-keydown='categories.updateCategory($index, $event)')
@@ -41,3 +41,8 @@ script#confirm-destroy(type='text/ng-template')
     p(translate='MESSAGES.DELETE')
     button.btn.btn-primary(type='submit' translate='BUTTONS.YES' ng-click='confirm_destroy.ok()')
     a.btn.btn-default(ng-click='confirm_destroy.cancel()' translate='BUTTONS.CLOSE')
+
+script#breakdowns(type='text/ng-template')
+  .modal-body
+    ul(ng-repeat='breakdown in breakdowns.breakdowns')
+      li(id='breakdown.id') {{ breakdown.name }}
