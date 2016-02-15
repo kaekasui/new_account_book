@@ -30,10 +30,15 @@ script#new-notice(type='text/ng-template')
       a.btn.btn-default(ng-click='new_notice.cancel()' translate='BUTTONS.CLOSE')
     .modal-body
       .form-group
+        label(for='post_at')
+          span(translate='COLUMNS.POST_AT')
+          span *
+        input.btn.btn-default(type='date' name='post_at' ng-model='new_notice.post_at' datepicker-popup=true ng-click="new_notice.toggleDatePicker($event)" is-open=true)
+      .form-group
         label(for='title')
           span(translate='COLUMNS.TITLE')
           span *
-        input.form-control#email(type='title' name='title' ng-model='new_notice.title' required=true ng-maxlength='100')
+        input.form-control#email(type='text' name='title' ng-model='new_notice.title' required=true ng-maxlength='100')
         span.errors(ng-messages='noticeForm.email.$error' ng-show='noticeForm.$submitted')
           div(ng-message='required')
             span.glyphicon.glyphicon-alert#left-icon

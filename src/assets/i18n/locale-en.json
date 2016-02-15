@@ -76,6 +76,7 @@
     "EMAIL": "Enter your E-mail has a valid email format"
   },
   "MESSAGES": {
+    "CREATE_NOTICE": "Created a notice",
     "LOGIN": "Logged in",
     "LOGOUT": "Logged out",
     "SEND_MAIL": "Send a mail",

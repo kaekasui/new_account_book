@@ -1,4 +1,4 @@
-AdminFactory = ($location, $q, localStorageService, $http, toastr, $translate) ->
+AdminFactory = ($location, $q, localStorageService, $http, $translate) ->
   'ngInject'
   host = if $location.host() == 'localhost' then 'http://localhost:3001/' else ''
 
