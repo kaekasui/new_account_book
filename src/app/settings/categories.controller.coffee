@@ -43,6 +43,17 @@ CategoriesController = (SettingsFactory, $modal) ->
       return
     axis: ''
 
+  vm.showBreakdowns = (index) ->
+    category = vm.categories[index]
+    modalInstance = $modal.open(
+      templateUrl: 'breakdowns'
+      controller: 'BreakdownsController'
+      controllerAs: 'breakdowns'
+      resolve: { category_id: category.id }
+    )
+    modalInstance.result.then () ->
+      return
+
   vm.destroyCategory = (index) ->
     category = vm.categories[index]
     modalInstance = $modal.open(
@@ -55,6 +66,15 @@ CategoriesController = (SettingsFactory, $modal) ->
       SettingsFactory.getCategories().then (res) ->
         vm.categories = res.categories
       return
+
+  return
+
+BreakdownsController = (SettingsFactory, category_id, $modalInstance) ->
+  'ngInject'
+  vm = this
+
+  SettingsFactory.getBreakdowns(category_id).then (res) ->
+    vm.breakdowns = res.breakdowns
 
   return
 
@@ -72,5 +92,6 @@ ConfirmDestroyController = (SettingsFactory, category_id, $modalInstance) ->
   return
 
 angular.module 'newAccountBook'
+  .controller('BreakdownsController', BreakdownsController)
   .controller('ConfirmDestroyController', ConfirmDestroyController)
   .controller('CategoriesController', CategoriesController)
