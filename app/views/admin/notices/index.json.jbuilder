@@ -3,7 +3,7 @@ json.notices do
     json.id notice.id
     json.title notice.title
     json.content notice.content
-    json.post_at I18n.l(notice.post_at)
+    json.post_at notice.post_at
   end
 end
 

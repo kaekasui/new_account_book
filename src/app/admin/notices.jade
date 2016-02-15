@@ -4,6 +4,7 @@ admin-menu-directive
   .panel-heading
     span.glyphicon.glyphicon-leaf(translate='TITLES.NOTICES')
   .panel-body#with-background
+    .btn.btn-info(translate='BUTTONS.ADD' ng-click='admin_notices.newNotice()')
     nav
       ul.pagination
         li(ng-click='admin_notices.clickPaginate(number)' ng-repeat='number in admin_notices.offset_numbers' ng-class='{active: number == admin_notices.offset}')
@@ -21,3 +22,31 @@ admin-menu-directive
         td {{ notice.title }}
         td {{ notice.content }}
         td {{ notice.post_at }}
+
+script#new-notice(type='text/ng-template')
+  form(novalidate=true name='noticeForm' ng-submit='new_notice.submit()')
+    .modal-header
+      button.btn.btn-primary(type='submit' ng-disabled='noticeForm.$submitted && noticeForm.$invalid' translate='BUTTONS.CREATE')
+      a.btn.btn-default(ng-click='new_notice.cancel()' translate='BUTTONS.CLOSE')
+    .modal-body
+      .form-group
+        label(for='post_at')
+          span(translate='COLUMNS.POST_AT')
+          span *
+        input.btn.btn-default(type='date' name='post_at' ng-model='new_notice.post_at' datepicker-popup=true ng-click="new_notice.toggleDatePicker($event)" is-open=true)
+      .form-group
+        label(for='title')
+          span(translate='COLUMNS.TITLE')
+          span *
+        input.form-control#email(type='text' name='title' ng-model='new_notice.title' required=true ng-maxlength='100')
+        span.errors(ng-messages='noticeForm.email.$error' ng-show='noticeForm.$submitted')
+          div(ng-message='required')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.REQUIRED.TITLE')
+          div(ng-message='maxlength')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.MAXLENGTH.TITLE')
+      .form-group
+        label(for='content')
+          span(translate='COLUMNS.CONTENT')
+        textarea.form-control(rows='5' name='content' ng-model='new_notice.content' ng-maxlength='1000')

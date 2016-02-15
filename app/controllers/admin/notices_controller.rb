@@ -19,6 +19,6 @@ class Admin::NoticesController < ApplicationController
   private
 
   def notice_params
-    params.permit(:title, :content)
+    params.permit(:post_at, :title, :content)
   end
 end

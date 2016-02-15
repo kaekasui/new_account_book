@@ -34,13 +34,13 @@ describe 'GET /admin/notices?offset=offset', autodoc: true do
               id: notice2.id,
               title: notice2.title,
               content: notice2.content,
-              post_at: I18n.l(notice2.post_at)
+              post_at: notice2.post_at.strftime('%Y-%m-%d')
             },
             {
               id: notice1.id,
               title: notice1.title,
               content: notice1.content,
-              post_at: I18n.l(notice1.post_at)
+              post_at: notice1.post_at.strftime('%Y-%m-%d')
             }
           ],
           total_count: 2
@@ -60,7 +60,7 @@ describe 'GET /admin/notices?offset=offset', autodoc: true do
               id: notice1.id,
               title: notice1.title,
               content: notice1.content,
-              post_at: I18n.l(notice1.post_at)
+              post_at: notice1.post_at.strftime('%Y-%m-%d')
             }
           ],
           total_count: 2
