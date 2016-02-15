@@ -1,4 +1,4 @@
-NoticesController = (AdminFactory) ->
+NoticesController = (AdminFactory, $modal) ->
   'ngInject'
   vm = this
 
@@ -23,7 +23,35 @@ NoticesController = (AdminFactory) ->
     vm.offset_numbers = total_array.filter (x) ->
       return x % 20 == 0
 
+  vm.newNotice = () ->
+    modalInstance = $modal.open(
+      templateUrl: 'new-notice'
+      controller: 'NoticeController'
+      controllerAs: 'new_notice'
+      backdrop: 'static'
+    )
+    modalInstance.result.then () ->
+      return
+    return
+
+  return
+
+NoticeController = ($modalInstance, AdminFactory) ->
+  'ngInject'
+  vm = this
+
+  vm.cancel = () ->
+    $modalInstance.dismiss()
+
+  vm.submit = () ->
+    params =
+      title: vm.title
+      content: vm.content
+    AdminFactory.postNotice(params).then (res) ->
+      console.log 'success'
+
   return
 
 angular.module 'newAccountBook'
+  .controller('NoticeController', NoticeController)
   .controller('NoticesController', NoticesController)

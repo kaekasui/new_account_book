@@ -23,6 +23,7 @@
   },
   "BUTTONS": {
     "ADD": "Add",
+    "CREATE": "Create",
     "LOGIN": "Log in",
     "SIGN_UP": "Sign up",
     "SEND": "Send Email",
@@ -60,11 +61,13 @@
       "CURRENT_PASSWORD": "Enter your current Password",
       "NEW_PASSWORD": "Enter your new Password",
       "NEW_PASSWORD_CONFIRMATION": "Enter your new Password confirmation",
+      "TITLE": "Enter your Title",
       "CONTENT": "Enter your Comment"
     },
     "MAXLENGTH": {
       "EMAIL": "Enter your E-mail has a length of at most 100",
       "PASSWORD": "Enter your Password has a length of at most 72",
+      "TITLE": "Enter your Title has a length of at most 100",
       "CONTENT": "Enter your Comment has a length of at most 1000"
     },
     "MINLENGTH": {
