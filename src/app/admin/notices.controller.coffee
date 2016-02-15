@@ -62,10 +62,6 @@ NoticeController = ($modalInstance, AdminFactory) ->
     AdminFactory.postNotice(params).then (res) ->
       $modalInstance.close()
 
-  vm.toggleDatePicker = (e) ->
-    e.stopPropagation()
-    vm.date_picker_open = !vm.date_picker_open
-
   return
 
 angular.module 'newAccountBook'
