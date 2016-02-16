@@ -8,6 +8,7 @@
     "start": "NODE_ENV=production node gulp/server.js"
   },
   "devDependencies": {
+    "angular-auto-focus": "^1.0.4",
     "bower": "^1.7.2",
     "browser-sync": "~2.9.11",
     "browser-sync-spa": "~1.0.3",
