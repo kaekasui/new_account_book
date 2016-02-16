@@ -25,6 +25,8 @@ gem 'sidekiq'
 gem 'rdefs'
 gem 'tokens'
 gem 'exception_notification'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'rspec-rails'
