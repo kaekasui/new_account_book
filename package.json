@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "dependencies": {},
   "scripts": {
-    "postinstall": "node_modules/.bin/bower install && node_modules/.bin/gulp build",
+    "postinstall": "node_modules/.bin/bower install && node_modules/.bin/bower install angular-auto-focus && node_modules/.bin/gulp build",
     "test": "node_modules/.bin/gulp test",
     "start": "NODE_ENV=production node gulp/server.js"
   },
