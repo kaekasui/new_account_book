@@ -45,5 +45,10 @@
   "resolutions": {
     "jquery": "~2.1.4",
     "angular": "~1.4.2"
-  }
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
 }
