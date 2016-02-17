@@ -46,9 +46,10 @@
           span(translate='BUTTONS.LOGIN')
       hr
       p
-        .btn.btn-primary(ng-click='login.twitterLogin')
-          img('twitter-icon.png')
-          | Twitterでログイン
+        .btn.btn-primary(ng-click='login.twitterLogin()')
+          span#left-icon
+            img(src='assets/images/twitter-icon.png' width='20px' height='20px')
+          span(translate='BUTTONS.TWITTER_LOGIN')
       p
         a(ui-sref='reset_password')
           span(translate='LINKS.FORGOT_PASSWORD')

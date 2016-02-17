@@ -14,6 +14,10 @@ LoginController = (AccountFactory) ->
       vm.errors = res.error_messages
       return
 
+  vm.twitterLogin = () ->
+    AccountFactory.getTwitterCallback().catch (res) ->
+      console.log 'success'
+
   return
 
 angular.module 'newAccountBook'
