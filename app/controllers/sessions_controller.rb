@@ -5,6 +5,10 @@ class SessionsController < ApplicationController
     @session
   end
 
+  def callback
+    redirect_to root_path
+  end
+
   private
 
   def login_params

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   tokenizable
+  has_one :auth
   has_many :feedbacks
   has_many :categories
 
@@ -45,5 +46,8 @@ class User < ActiveRecord::Base
 
   def _name
     name || nickname || email
+  end
+
+  def self.create_with_omniauth(_auth)
   end
 end
