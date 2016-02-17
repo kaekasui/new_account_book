@@ -18,7 +18,7 @@
             span {{ category.breakdowns_count }}
         .panel.panel-body.col-sm-11.category-card#category(ng-if="category.edit_field" ng-keydown='categories.updateCategory($index, $event)')
           input.category-form(ng-value='category.name' ng-model='category.edit_name' auto-focus=true type='text')
-          .btn.btn-primary(translate='BUTTONS.EDIT' ng-click='categories.updateCategory($index)')
+          .btn.btn-success(translate='BUTTONS.EDIT' ng-click='categories.updateCategory($index)')
           .btn.btn-default(translate='BUTTONS.CANCEL' ng-click='category.edit_field = false')
       .col-sm-3
         .panel.panel-body.col-sm-11.category-plus#category(ng-click='categories.addNewPanel()' ng-class="{'panel-background': 'adding'}" ng-mouseenter="adding = true" ng-mouseleave="adding = false" ng-show="!categories.add_field")
@@ -26,20 +26,20 @@
         .panel.panel-body.col-sm-11.category-card#category(ng-if='categories.add_field' ng-keydown='categories.createCategory($event)')
           .input-group
             .input-group-btn
-              button.btn.btn-default(ng-class="{'btn-primary': !categories.new_payments}" type='button' ng-click='categories.new_payments = false')
+              button.btn.btn-default(ng-class="{'btn-success': !categories.new_payments}" type='button' ng-click='categories.new_payments = false')
                 span.glyphicon.glyphicon-minus-sign#left-icon
                 span(translate='BUTTONS.OUTGO')
               button.btn.btn-default(ng-class="{'btn-info': categories.new_payments}" type='button' ng-click='categories.new_payments = true')
                 span.glyphicon.glyphicon-plus-sign#left-icon
                 span(translate='BUTTONS.INCOME')
           input.category-form(ng-model='categories.new_category_name' auto-focus=true type='text')
-          .btn.btn-primary(translate='BUTTONS.EDIT' ng-click='categories.createCategory()')
+          .btn.btn-success(translate='BUTTONS.EDIT' ng-click='categories.createCategory()')
           .btn.btn-default(translate='BUTTONS.CANCEL' ng-click='categories.add_field = false')
 
 script#confirm-destroy(type='text/ng-template')
   .modal-body
     p(translate='MESSAGES.DELETE')
-    button.btn.btn-primary(type='submit' translate='BUTTONS.YES' ng-click='confirm_destroy.ok()')
+    button.btn.btn-success(type='submit' translate='BUTTONS.YES' ng-click='confirm_destroy.ok()')
     a.btn.btn-default(ng-click='confirm_destroy.cancel()' translate='BUTTONS.CLOSE')
 
 script#breakdowns(type='text/ng-template')

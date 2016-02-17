@@ -47,7 +47,7 @@ nav.navbar.navbar-default(role='navigation')
 script#feedback(type='text/ng-template')
   form(novalidate=true name='feedbackForm' ng-submit='feedback.submit()')
     .modal-header
-      button.btn.btn-primary(type='submit' ng-disabled='feedbackForm.$submitted && feedbackForm.$invalid' translate='BUTTONS.SEND')
+      button.btn.btn-success(type='submit' ng-disabled='feedbackForm.$submitted && feedbackForm.$invalid' translate='BUTTONS.SEND')
       a.btn.btn-default(ng-click='feedback.cancel()' translate='BUTTONS.CLOSE')
     .modal-body
       .form-group(ng-if='!feedback.login_status')

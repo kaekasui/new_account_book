@@ -42,9 +42,13 @@
             div(ng-message='minlength')
               span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.MINLENGTH.PASSWORD')
-        button.btn.btn-primary(type='submit' ng-disabled='loginForm.$submitted && loginForm.$invalid')
+        button.btn.btn-success(type='submit' ng-disabled='loginForm.$submitted && loginForm.$invalid')
           span(translate='BUTTONS.LOGIN')
       hr
+      p
+        .btn.btn-primary(ng-click='login.twitterLogin')
+          img('twitter-icon.png')
+          | Twitterでログイン
       p
         a(ui-sref='reset_password')
           span(translate='LINKS.FORGOT_PASSWORD')
