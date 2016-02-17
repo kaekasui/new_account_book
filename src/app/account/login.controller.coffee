@@ -1,6 +1,8 @@
 LoginController = (AccountFactory) ->
   'ngInject'
   vm = this
+  host = if $location.host() == 'localhost' then 'http://localhost:3001/' else ''
+  vm.twitter_link = host + 'auth/twitter'
 
   vm.clearErrors = () ->
     vm.errors = ''
@@ -13,10 +15,6 @@ LoginController = (AccountFactory) ->
     AccountFactory.postSession(params).catch (res) ->
       vm.errors = res.error_messages
       return
-
-  vm.twitterLogin = () ->
-    AccountFactory.getTwitterCallback().catch (res) ->
-      console.log 'success'
 
   return
 

@@ -46,7 +46,7 @@
           span(translate='BUTTONS.LOGIN')
       hr
       p
-        .btn.btn-primary(ng-click='login.twitterLogin()')
+        a.btn.btn-primary(ng-href='{{login.twitter_link}}')
           span#left-icon
             img(src='assets/images/twitter-icon.png' width='20px' height='20px')
           span(translate='BUTTONS.TWITTER_LOGIN')

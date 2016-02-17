@@ -69,20 +69,6 @@ AccountFactory = ($location, $q, $http, localStorageService, toastr, $translate)
           defer.reject data
           return
       return defer.promise
-
-    getTwitterCallback: () ->
-      defer = $q.defer()
-      $http.get(host + 'auth/twitter')
-        .success((data) ->
-          toastr.success $translate.instant('MESSAGES.UPDATE_PASSWORD')
-          $location.path 'login'
-          defer.resolve data
-          return
-        ).error (data) ->
-          defer.reject data
-          return
-      return defer.promise
-
   }
 
 angular.module 'newAccountBook'
