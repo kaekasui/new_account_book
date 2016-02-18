@@ -3,6 +3,7 @@ class CreateAuths < ActiveRecord::Migration
     create_table :auths do |t|
       t.references :user
       t.string :provider
+      t.string :uid
       t.string :screen_name
       t.string :name
 

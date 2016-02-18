@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160216050434) do
   create_table "auths", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "provider"
+    t.string   "uid"
     t.string   "screen_name"
     t.string   "name"
     t.datetime "created_at",  null: false
