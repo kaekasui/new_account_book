@@ -44,9 +44,12 @@ class User < ActiveRecord::Base
   end
 
   def _name
-    name || nickname || email
+    nickname || auth.try(:name) || email
   end
 
-  def self.create_with_omniauth(_auth)
+  def self.find_or_create(auth)
+    klass = (auth['provider'].capitalize + 'User').constantize
+    klass.joins(:auth).find_by_uid(auth['uid']) ||
+      klass.create_with(auth)
   end
 end

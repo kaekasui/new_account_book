@@ -6,6 +6,7 @@ IndexFactory = ($location, $q, localStorageService, $http, toastr, $translate) -
     getCurrentUser: () ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
+      console.log token
       if typeof(token) != "undefined" && token != null
         login_headers = {
           headers: { Authorization: 'Token token=' + token }

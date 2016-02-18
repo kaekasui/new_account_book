@@ -1,4 +1,4 @@
-LoginController = (AccountFactory) ->
+LoginController = (AccountFactory, $location) ->
   'ngInject'
   vm = this
   host = if $location.host() == 'localhost' then 'http://localhost:3001/' else ''
