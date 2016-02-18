@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   tokenizable
-  has_one :auth
   has_many :feedbacks
   has_many :categories
 
