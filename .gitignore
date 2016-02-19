@@ -12,6 +12,9 @@
 !/log/.keep
 /tmp
 /coverage/*
+.env.development
+.env.production
+.env.test
 
 # Ignore the front app's plugin directories.
 /front/node_modules/

@@ -44,6 +44,16 @@ class User < ActiveRecord::Base
   end
 
   def _name
-    name || nickname || email
+    if type == 'EmailUser'
+      nickname || email
+    else
+      nickname || auth.try(:name) || auth.try(:screen_name)
+    end
+  end
+
+  def self.find_or_create(auth)
+    klass = (auth['provider'].capitalize + 'User').constantize
+    klass.joins(:auth).find_by_uid(auth['uid']) ||
+      klass.create_with(auth)
   end
 end

@@ -22,6 +22,7 @@ describe 'GET /user', autodoc: true do
         type: user.type,
         email: user.email,
         nickname: user.nickname,
+        user_name: user._name,
         admin: user.admin
       }
       expect(response.body).to be_json_as(json)

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resource :session, only: %i(create)
+  get '/auth/:provider/callback', to: 'sessions#callback'
 
   namespace :admin do
     resources :users, only: %i(index show)

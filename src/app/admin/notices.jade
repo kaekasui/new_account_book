@@ -26,7 +26,7 @@ admin-menu-directive
 script#new-notice(type='text/ng-template')
   form(novalidate=true name='noticeForm' ng-submit='new_notice.submit()')
     .modal-header
-      button.btn.btn-primary(type='submit' ng-disabled='noticeForm.$submitted && noticeForm.$invalid' translate='BUTTONS.CREATE')
+      button.btn.btn-success(type='submit' ng-disabled='noticeForm.$submitted && noticeForm.$invalid' translate='BUTTONS.CREATE')
       a.btn.btn-default(ng-click='new_notice.cancel()' translate='BUTTONS.CLOSE')
     .modal-body
       .form-group
