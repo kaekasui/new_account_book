@@ -1,4 +1,4 @@
-LoginController = (AccountFactory, $location) ->
+LoginController = (AccountFactory, IndexFactory, IndexService, $location, toastr, $translate) ->
   'ngInject'
   vm = this
   host = if $location.host() == 'localhost' then 'http://localhost:3001/' else ''
@@ -12,7 +12,11 @@ LoginController = (AccountFactory, $location) ->
       email: vm.email
       password: vm.password
     }
-    AccountFactory.postSession(params).catch (res) ->
+    AccountFactory.postSession(params).then((res) ->
+      IndexFactory.getCurrentUser().then (res) ->
+        IndexService.current_user = res
+        return
+    ).catch (res) ->
       vm.errors = res.error_messages
       return
 

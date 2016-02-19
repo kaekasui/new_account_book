@@ -44,7 +44,11 @@ class User < ActiveRecord::Base
   end
 
   def _name
-    nickname || auth.try(:name) || email
+    if type == 'EmailUser'
+      nickname || email
+    else
+      nickname || auth.try(:name) || auth.try(:screen_name)
+    end
   end
 
   def self.find_or_create(auth)
