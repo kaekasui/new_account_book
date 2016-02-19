@@ -1,22 +1,21 @@
-NavbarController = (IndexFactory, $location, $scope, $translate, toastr, localStorageService, $modal) ->
+NavbarController = (IndexFactory, $location, $scope, $translate, toastr, localStorageService, $modal, IndexService) ->
   'ngInject'
   vm = this
 
   $scope.$watch ( ->
-    $location.path()
+    IndexService.current_user
   ), ->
     IndexFactory.getCurrentUser().then((res) ->
-      vm.login_status = true
       vm.current_user = res
       return
     ).catch (res) ->
-      vm.login_status = false
       return
     return
 
   vm.logout = () ->
     localStorageService.remove('access_token')
-    vm.login_status = false
+    IndexService.current_user = undefined
+    vm.current_user = IndexService.current_user
     toastr.success($translate.instant('MESSAGES.LOGOUT'))
     $location.path '/'
 
@@ -38,16 +37,14 @@ FeedbackController = (IndexFactory, $translate, $modalInstance, toastr) ->
   vm.placeholder = $translate.instant('MESSAGES.FEEDBACK')
 
   IndexFactory.getCurrentUser().then((res) ->
-    vm.login_status = true
     vm.current_user = res
     return
   ).catch (res) ->
-    vm.login_status = false
     return
 
   vm.submit = () ->
     params = {}
-    if vm.login_status
+    if vm.current_user != undefined
       params =
         user_id: vm.current_user.id,
         content: vm.content

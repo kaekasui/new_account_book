@@ -1,4 +1,4 @@
-MainController = ($timeout, webDevTec, toastr, $location, $translate, localStorageService, IndexFactory) ->
+MainController = ($timeout, webDevTec, toastr, $location, $translate, localStorageService, IndexFactory, IndexService) ->
   'ngInject'
   vm = this
 
@@ -34,10 +34,10 @@ MainController = ($timeout, webDevTec, toastr, $location, $translate, localStora
 
   if $location.search()['token']
     localStorageService.set 'access_token', $location.search()['token']
-    console.log $location.search()['token']
     IndexFactory.getCurrentUser().then (res) ->
+      IndexService.current_user = res
       toastr.success $translate.instant('MESSAGES.LOGIN')
-      $location.url('/')
+      $location.path('/')
       return
 
   return

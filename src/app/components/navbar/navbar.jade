@@ -19,11 +19,11 @@ nav.navbar.navbar-default(role='navigation')
           span.glyphicon.glyphicon-comment#left-icon
           span(translate='TITLES.FEEDBACK')
     ul.nav.navbar-nav.navbar-right
-      li(ng-show='navbar.login_status && navbar.current_user.admin')
+      li(ng-show='navbar.current_user != undefined && navbar.current_user.admin')
         a(ui-sref='admin_users')
           span.glyphicon.glyphicon-king#left-icon
           span(translate='TITLES.ADMIN')
-      li.dropdown.open(ng-init='isCollapsed = true' ng-click='isCollapsed = !isCollapsed' role='presentation' ng-show='navbar.login_status')
+      li.dropdown.open(ng-init='isCollapsed = true' ng-click='isCollapsed = !isCollapsed' role='presentation' ng-show='navbar.current_user != undefined')
         a.dropdown-toggle(data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' role: 'button' href='')
           span.glyphicon.glyphicon-cog#left-icon
           span#left-icon(translate='TITLES.SETTINGS')
@@ -31,15 +31,15 @@ nav.navbar.navbar-default(role='navigation')
         ul.dropdown-menu(ng-hide='isCollapsed')
           li
             a(ui-sref='categories' translate='TITLES.CATEGORY')
-      li(ng-hide='navbar.login_status')
+      li(ng-hide='navbar.current_user != undefined')
         a(ui-sref='login')
           span.glyphicon.glyphicon-leaf#left-icon
           span(translate='TITLES.LOGIN')
-      li(ng-show='navbar.login_status')
+      li(ng-show='navbar.current_user != undefined')
         a(ui-sref='profile')
           span.glyphicon.glyphicon-user#left-icon
           span {{ navbar.current_user.user_name }}
-      li(ng-show='navbar.login_status')
+      li(ng-show='navbar.current_user != undefined')
         a(ui-sref='home' ng-click='navbar.logout()')
           span.glyphicon.glyphicon-leaf#left-icon
           span(translate='TITLES.LOGOUT')
@@ -50,7 +50,7 @@ script#feedback(type='text/ng-template')
       button.btn.btn-success(type='submit' ng-disabled='feedbackForm.$submitted && feedbackForm.$invalid' translate='BUTTONS.SEND')
       a.btn.btn-default(ng-click='feedback.cancel()' translate='BUTTONS.CLOSE')
     .modal-body
-      .form-group(ng-if='!feedback.login_status')
+      .form-group(ng-if='feedback.current_user == undefined')
         label(for='email')
           span(translate='LABELS.FEEDBACK_EMAIL')
           span *
