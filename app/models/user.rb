@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
 
   def self.find_or_create(auth)
     klass = (auth['provider'].capitalize + 'User').constantize
-    klass.joins(:auth).find_by_uid(auth['uid']) ||
+    Auth.find_by_uid(auth['uid']).try(auth['provider'] + '_user') ||
       klass.create_with(auth)
   end
 end
