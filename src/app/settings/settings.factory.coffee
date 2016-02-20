@@ -98,6 +98,23 @@ SettingsFactory = ($location, $q, $http, localStorageService, toastr, $translate
             defer.reject data
             return
       return defer.promise
+
+    postBreakdown: (category_id, params) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      if typeof(token) != "undefined" && token != null
+        login_headers = {
+          headers: { Authorization: 'Token token=' + token }
+        }
+        $http.post host + 'categories/' + category_id + '/breakdowns', params, login_headers
+          .success((data) ->
+            defer.resolve data
+            return
+          ).error (data) ->
+            defer.reject data
+            return
+      return defer.promise
+
   }
 
 angular.module 'newAccountBook'

@@ -76,6 +76,17 @@ BreakdownsController = (SettingsFactory, category_id, $modalInstance) ->
   SettingsFactory.getBreakdowns(category_id).then (res) ->
     vm.breakdowns = res.breakdowns
 
+  vm.createBreakdown = (e) ->
+    if e == undefined || e.which == 13
+      params =
+        name: vm.new_breakdown
+      SettingsFactory.postBreakdown(category_id, params).then (res) ->
+        vm.new_breakdown_field = false
+        vm.new_breakdown = ''
+        SettingsFactory.getBreakdowns(category_id).then (res) ->
+          vm.breakdowns = res.breakdowns
+    return
+
   return
 
 ConfirmDestroyController = (SettingsFactory, category_id, $modalInstance) ->
