@@ -30,3 +30,24 @@ describe 'GET /categories/:category_id/breakdowns', autodoc: true do
     end
   end
 end
+
+describe 'POST /categories/:category_id/breakdowns', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:category) { create(:category, user: user) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      post "/categories/#{category.id}/breakdowns"
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'ログインしてる場合' do
+    let!(:params) { { category_id: category.id, name: '名前' } }
+
+    it '201が返ってくること' do
+      post "/categories/#{category.id}/breakdowns", params, login_headers(user)
+      expect(response.status).to eq 201
+    end
+  end
+end
