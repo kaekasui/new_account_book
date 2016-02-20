@@ -51,7 +51,9 @@ CategoriesController = (SettingsFactory, $modal) ->
       controllerAs: 'breakdowns'
       resolve: { category_id: category.id }
     )
-    modalInstance.result.then () ->
+    modalInstance.result.finally () ->
+      SettingsFactory.getCategories().then (res) ->
+        vm.categories = res.categories
       return
 
   vm.destroyCategory = (index) ->
