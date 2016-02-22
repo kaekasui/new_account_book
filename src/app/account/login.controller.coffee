@@ -15,7 +15,7 @@ LoginController = (AccountFactory, IndexFactory, IndexService, $location, toastr
     AccountFactory.postSession(params).then((res) ->
       IndexFactory.getCurrentUser().then (res) ->
         IndexService.current_user = res
-        $location.path '/'
+        $location.path '/mypage'
         return
     ).catch (res) ->
       vm.errors = res.error_messages
