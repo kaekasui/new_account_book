@@ -1,1 +1,16 @@
-mypage
+.col-md-3
+  .menu-directive(menu-data='profile.menus')
+
+.col-md-9
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        span.glyphicon.glyphicon-leaf#left-icon
+        span(translate='TITLES.NOTICE_LIST')
+      .panel-body
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        span.glyphicon.glyphicon-leaf#left-icon
+        span(translate='TITLES.MESSAGE_LIST')
+      .panel-body
