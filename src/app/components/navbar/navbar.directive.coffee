@@ -17,7 +17,7 @@ NavbarController = (IndexFactory, $location, $scope, $translate, toastr, localSt
     IndexService.current_user = undefined
     vm.current_user = IndexService.current_user
     toastr.success($translate.instant('MESSAGES.LOGOUT'))
-    $location.path '/'
+    $location.path('/login')
 
   vm.feedback = () ->
     modalInstance = $modal.open(
