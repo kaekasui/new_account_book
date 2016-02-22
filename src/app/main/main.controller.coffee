@@ -2,6 +2,11 @@ MainController = ($timeout, toastr, $location, $translate, localStorageService, 
   'ngInject'
   vm = this
 
+  vm.slides = [
+    { id: 1, image: 'assets/images/plant.jpg'},
+    { id: 2, image: 'assets/images/plant.jpg'}
+  ]
+
   if $location.search()['registed'] == 'ok'
     $location.url('/login')
     toastr.success $translate.instant('MESSAGES.REGISTED')
