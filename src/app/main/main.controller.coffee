@@ -1,4 +1,4 @@
-MainController = ($timeout, webDevTec, toastr, $location, $translate, localStorageService, IndexFactory, IndexService) ->
+MainController = ($timeout, toastr, $location, $translate, localStorageService, IndexFactory, IndexService) ->
   'ngInject'
   vm = this
 
