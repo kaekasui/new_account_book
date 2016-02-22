@@ -32,14 +32,14 @@ CategoriesController = (SettingsFactory, $modal) ->
         category.edit_field = false
 
   vm.sortable =
-    update: (e, ui) ->
+    stop: (e, ui) ->
       if (!ui.item.sortable.model)
         ui.item.sortable.cancel()
       else
         vm.category_range = []
         for key in vm.categories
           vm.category_range.push(key.id)
-          SettingsFactory.postCategoryRange({sequence: vm.category_range})
+        SettingsFactory.postCategoryRange({sequence: vm.category_range})
       return
     axis: ''
 
