@@ -11,6 +11,7 @@ angular.module(
                      'ui.bootstrap',
                      'ui.sortable',
                      'pascalprecht.translate',
-                     'LocalStorageModule'
+                     'LocalStorageModule',
+                     'angular-flexslider',
                      'toastr']
 )

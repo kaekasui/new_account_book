@@ -9,7 +9,6 @@ AccountFactory = ($location, $q, $http, localStorageService, toastr, $translate)
         .success((data) ->
           localStorageService.set 'access_token', data.access_token
           toastr.success $translate.instant('MESSAGES.LOGIN')
-          $location.path '/'
           defer.resolve data
           return
         ).error (data) ->
