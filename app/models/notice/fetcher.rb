@@ -8,7 +8,7 @@ class Notice::Fetcher
   end
 
   def all
-    notices = Notice.order(id: :desc).limit(Settings.notices.per)
+    notices = Notice.order(post_at: :desc).limit(Settings.notices.per)
     notices.offset!(@params[:offset]) if @params[:offset].present?
     notices
   end
