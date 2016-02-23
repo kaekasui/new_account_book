@@ -65,8 +65,9 @@ describe 'GET /notices', autodoc: true do
 
   context 'ユーザーにお知らせがある場合' do
     let!(:user) { create(:email_user, :registered) }
-    let!(:notice1) { create(:notice) }
+    let!(:notice1) { create(:notice, post_at: Time.zone.today) }
     let!(:notice2) { create(:notice, post_at: Time.zone.yesterday) }
+    let!(:notice3) { create(:notice, post_at: Time.zone.tomorrow) }
 
     it '200とお知らせ情報を返すこと' do
       get '/notices', '', login_headers(user)
