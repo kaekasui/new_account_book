@@ -106,3 +106,57 @@ describe 'POST /admin/notices', autodoc: true do
     end
   end
 end
+
+describe 'PATCH /admin/notices/:id', autodoc: true do
+  let!(:admin_user) { create(:email_user, :admin_user, :registered) }
+  let!(:notice) { create(:notice) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      patch "/admin/notices/#{notice.id}", ''
+
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'タイトルが変更された場合' do
+    let!(:params) { { title: 'タイトル' } }
+
+    it '200が返ってくること' do
+      patch "/admin/notices/#{notice.id}", params, login_headers(admin_user)
+      expect(response.status).to eq 200
+    end
+  end
+
+  context 'タイトルの値が空の場合' do
+    let!(:params) { { title: '' } }
+
+    it '422とエラーメッセージが返ってくること' do
+      patch "/admin/notices/#{notice.id}", params, login_headers(admin_user)
+
+      expect(response.status).to eq 422
+      json = {
+        error_messages: ['お知らせのタイトルを入力してください']
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+
+  context 'お知らせ内容が変更された場合' do
+    let!(:params) { { content: '内容' } }
+
+    it '200が返ってくること' do
+      patch "/admin/notices/#{notice.id}", params, login_headers(admin_user)
+      expect(response.status).to eq 200
+    end
+  end
+
+  context '投稿日が変更された場合' do
+    let!(:params) { { post_at: Time.zone.yesterday } }
+
+    it '200が返ってくること' do
+      patch "/admin/notices/#{notice.id}", params, login_headers(admin_user)
+      expect(response.status).to eq 200
+    end
+  end
+end
