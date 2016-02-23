@@ -13,5 +13,6 @@ angular.module(
                      'pascalprecht.translate',
                      'LocalStorageModule',
                      'angular-flexslider',
+                     'hc.marked',
                      'toastr']
 )
