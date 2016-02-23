@@ -43,6 +43,17 @@ NoticesController = (AdminFactory, $modal, $translate, toastr) ->
 
     return
 
+  vm.showNotice = (index) ->
+    notice = vm.notices[index]
+    modalInstance = $modal.open(
+      templateUrl: 'notice'
+      controller: 'AdminNewNoticeController'
+      controllerAs: 'notice'
+      resolve: { notice: notice }
+    )
+    modalInstance.result.then () ->
+      return
+
   return
 
 AdminNoticeController = ($modalInstance, AdminFactory) ->
@@ -64,6 +75,13 @@ AdminNoticeController = ($modalInstance, AdminFactory) ->
 
   return
 
+AdminNewNoticeController = (notice) ->
+  'ngInject'
+  vm = this
+  vm.notice = notice
+  return
+
 angular.module 'newAccountBook'
   .controller('AdminNoticeController', AdminNoticeController)
+  .controller('AdminNewNoticeController', AdminNewNoticeController)
   .controller('NoticesController', NoticesController)

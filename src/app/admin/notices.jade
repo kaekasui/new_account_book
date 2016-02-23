@@ -19,7 +19,8 @@ admin-menu-directive
       tr(ng-repeat='notice in admin_notices.notices')
         td
         td
-        td {{ notice.title }}
+        td
+          a(ng-click='admin_notices.showNotice($index)') {{ notice.title }}
         td {{ notice.content }}
         td {{ notice.post_at }}
 
@@ -50,3 +51,9 @@ script#new-notice(type='text/ng-template')
         label(for='content')
           span(translate='COLUMNS.CONTENT')
         textarea.form-control(rows='5' name='content' ng-model='new_notice.content' ng-maxlength='1000')
+
+script#notice(type='text/ng-template')
+  .modal-header
+    | {{ notice.notice.title }}
+  .modal-body
+    div(marked='notice.notice.content')
