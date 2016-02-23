@@ -1,5 +1,5 @@
 angular.module 'newAccountBook'
-  .config ($logProvider, toastrConfig, $translateProvider) ->
+  .config ($logProvider, toastrConfig, $translateProvider, markedProvider) ->
     'ngInject'
     # Enable log
     $logProvider.debugEnabled true
@@ -19,3 +19,5 @@ angular.module 'newAccountBook'
     $translateProvider.useMissingTranslationHandlerLog()
     $translateProvider.useLocalStorage()
     $translateProvider.useSanitizeValueStrategy('escaped')
+
+    markedProvider.setOptions { gfm: true }

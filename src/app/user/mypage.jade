@@ -20,5 +20,7 @@
       .panel-body
 
 script#notice(type='text/ng-template')
+  .modal-header
+    | {{ notice.notice.title }}
   .modal-body
-    | {{ notice.notice.content }}
+    div(marked='notice.notice.content')
