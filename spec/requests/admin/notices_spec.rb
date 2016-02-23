@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'GET /admin/notices?offset=offset', autodoc: true do
   let!(:user) { create(:email_user, :registered) }
   let!(:admin_user) { create(:email_user, :admin_user, :registered) }
-  let!(:notice1) { create(:notice) }
+  let!(:notice1) { create(:notice, post_at: Time.zone.yesterday) }
   let!(:notice2) { create(:notice) }
 
   context 'ログインしていない場合' do

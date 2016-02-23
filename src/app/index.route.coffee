@@ -32,6 +32,11 @@ angular.module 'newAccountBook'
         templateUrl: 'app/account/edit_password.html'
         controllerAs: 'edit_password'
         controller: 'EditPasswordController'
+      .state 'mypage',
+        url: '/mypage'
+        templateUrl: 'app/user/mypage.html'
+        controllerAs: 'mypage'
+        controller: 'MypageController'
       .state 'profile',
         url: '/profile'
         templateUrl: 'app/user/profile.html'

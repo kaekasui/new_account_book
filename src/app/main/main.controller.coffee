@@ -8,7 +8,7 @@ MainController = ($timeout, toastr, $location, $translate, localStorageService, 
   ]
 
   if $location.search()['registed'] == 'ok'
-    $location.url('/login')
+    $location.url '/login'
     toastr.success $translate.instant('MESSAGES.REGISTED')
 
   if $location.search()['token']
@@ -16,7 +16,8 @@ MainController = ($timeout, toastr, $location, $translate, localStorageService, 
     IndexFactory.getCurrentUser().then (res) ->
       IndexService.current_user = res
       toastr.success $translate.instant('MESSAGES.LOGIN')
-      $location.path('/')
+      delete $location.search()['token']
+      $location.path '/mypage'
       return
 
   return

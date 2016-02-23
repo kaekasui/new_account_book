@@ -1,10 +1,11 @@
 .col-md-3
-  .menu-directive(menu-data='profile.menus')
+  user-menu-directive
 
 .col-md-9
   .panel.panel-default
     .panel-heading
-      span.glyphicon.glyphicon-leaf(translate='TITLES.PROFILE')
+      span.glyphicon.glyphicon-leaf#left-icon
+      span(translate='TITLES.PROFILE')
     .panel-body#with-background
       blockquote(ng-show="profile.current_user.type == 'EmailUser'")
         footer(translate='LABELS.EMAIL_LOGIN')
