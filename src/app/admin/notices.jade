@@ -54,6 +54,10 @@ script#new-notice(type='text/ng-template')
 
 script#notice(type='text/ng-template')
   .modal-header
-    | {{ notice.notice.title }}
+    span(ng-click='notice.title_text_field = true' ng-if='!notice.title_text_field') {{ notice.notice.title }}
+    input.form-control(ng-show='notice.title_text_field' type='text' name='title' ng-model='notice.title')
   .modal-body
+    span(ng-show='notice.post_at_date_field') {{ notice.notice.post_at }}
+    input.btn.btn-default(type='date' name='post_at' ng-model='notice.post_at')
+    .btn.btn-info.pull-right(translate='BUTTONS.UPDATE' ng-click='notice.content_text_field = true && notice.post_at_date_field = true')
     div(marked='notice.notice.content')
