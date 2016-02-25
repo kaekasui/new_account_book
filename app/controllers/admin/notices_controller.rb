@@ -16,6 +16,17 @@ class Admin::NoticesController < ApplicationController
     end
   end
 
+  def update
+    @notice = Notice.find(params[:id])
+    if @notice.update(post_at: notice_params[:post_at],
+                      title: notice_params[:title],
+                      content: notice_params[:content])
+      head 200
+    else
+      render_error @notice
+    end
+  end
+
   private
 
   def notice_params

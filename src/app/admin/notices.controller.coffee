@@ -47,12 +47,22 @@ NoticesController = (AdminFactory, $modal, $translate, toastr) ->
     notice = vm.notices[index]
     modalInstance = $modal.open(
       templateUrl: 'notice'
-      controller: 'AdminNewNoticeController'
+      controller: 'AdminShowNoticeController'
       controllerAs: 'notice'
-      resolve: { notice: notice }
+      resolve: { notice: notice },
+      backdrop: 'static'
     )
     modalInstance.result.then () ->
-      return
+      toastr.success $translate.instant('MESSAGES.UPDATE_NOTICE')
+      AdminFactory.getNotices(vm.offset).then (res) ->
+        vm.notices = res.notices
+        vm.total_count = res.total_count
+        total_array = []
+        for i in [0..vm.total_count]
+          total_array.push(i)
+        vm.offset_numbers = total_array.filter (x) ->
+          return x % 20 == 0
+    return
 
   return
 
@@ -75,13 +85,30 @@ AdminNoticeController = ($modalInstance, AdminFactory) ->
 
   return
 
-AdminNewNoticeController = (notice) ->
+AdminShowNoticeController = ($modalInstance, AdminFactory, notice) ->
   'ngInject'
   vm = this
   vm.notice = notice
+  vm.edit_field = false
+
+  vm.post_at = new Date(notice.post_at)
+  vm.title = notice.title
+  vm.content = notice.content
+
+  vm.cancel = () ->
+    $modalInstance.dismiss()
+
+  vm.submit = () ->
+    params =
+      post_at: vm.post_at
+      title: vm.title
+      content: vm.content
+    AdminFactory.patchNotice(vm.notice.id, params).then (res) ->
+      $modalInstance.close()
+
   return
 
 angular.module 'newAccountBook'
   .controller('AdminNoticeController', AdminNoticeController)
-  .controller('AdminNewNoticeController', AdminNewNoticeController)
+  .controller('AdminShowNoticeController', AdminShowNoticeController)
   .controller('NoticesController', NoticesController)

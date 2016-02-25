@@ -99,6 +99,21 @@ AdminFactory = ($location, $q, localStorageService, $http, $translate) ->
             return
       return defer.promise
 
+    patchNotice: (notice_id, params) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      if typeof(token) != "undefined" && token != null
+        login_headers = {
+          headers: { Authorization: 'Token token=' + token }
+        }
+        $http.patch host + 'admin/notices/' + notice_id, params, login_headers
+          .success((data) ->
+            defer.resolve data
+            return
+          ).error (data) ->
+            defer.reject data
+            return
+      return defer.promise
   }
 
 angular.module 'newAccountBook'

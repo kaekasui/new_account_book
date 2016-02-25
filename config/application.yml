@@ -22,12 +22,14 @@ defaults: &defaults
       minimum_length: 4
   feedback:
     content:
-      maximum_length: 1000
+      maximum_length: 10000
     email:
       maximum_length: 100
   notice:
     title:
       maximum_length: 100
+    content:
+      maximum_length: 10000
   users:
     per: 20
   feedbacks:
