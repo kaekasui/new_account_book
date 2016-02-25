@@ -25,7 +25,7 @@ admin-menu-directive
         td {{ notice.content }}
         td {{ notice.post_at }}
         td
-          a(ng-click='admin_notices.destroyNotice($index)' translate='LINKS.DELETE')
+          a(href='' ng-click='admin_notices.destroyNotice($index)' translate='LINKS.DELETE')
 
 script#new-notice(type='text/ng-template')
   form(novalidate=true name='noticeForm' ng-submit='new_notice.submit()')
