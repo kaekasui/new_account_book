@@ -54,7 +54,8 @@ script#new-notice(type='text/ng-template')
 
 script#notice(type='text/ng-template')
   .modal-header(ng-show='!notice.edit_field')
-    .btn.btn-info.pull-right(translate='BUTTONS.EDIT' ng-click='notice.edit_field = true')
+    .btn.btn-info(translate='BUTTONS.UPDATE' ng-click='notice.edit_field = true')
+    a.btn.btn-default(ng-click='notice.cancel()' translate='BUTTONS.CLOSE')
   .modal-body(ng-show='!notice.edit_field')
     p {{ notice.notice.post_at }} {{ notice.notice.title }}
     div(marked='notice.notice.content')
