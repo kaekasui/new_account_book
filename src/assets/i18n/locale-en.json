@@ -72,7 +72,7 @@
       "EMAIL": "Enter your E-mail has a length of at most 100",
       "PASSWORD": "Enter your Password has a length of at most 72",
       "TITLE": "Enter your Title has a length of at most 100",
-      "CONTENT": "Enter your Comment has a length of at most 1000"
+      "CONTENT": "Enter your Comment has a length of at most 10000"
     },
     "MINLENGTH": {
       "PASSWORD": "Enter your Password has a length of at least 4"
@@ -81,6 +81,7 @@
   },
   "MESSAGES": {
     "CREATE_NOTICE": "Created a notice",
+    "UPDATE_NOTICE": "Updated the notice",
     "LOGIN": "Logged in",
     "LOGOUT": "Logged out",
     "SEND_MAIL": "Send a mail",
