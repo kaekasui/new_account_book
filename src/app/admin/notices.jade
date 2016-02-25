@@ -54,13 +54,13 @@ script#new-notice(type='text/ng-template')
 
 script#notice(type='text/ng-template')
   .modal-header(ng-show='!notice.edit_field')
-    .btn.btn-info.pull-right(translate='BUTTONS.UPDATE' ng-click='notice.edit_field = true')
+    .btn.btn-info.pull-right(translate='BUTTONS.EDIT' ng-click='notice.edit_field = true')
   .modal-body(ng-show='!notice.edit_field')
     p {{ notice.notice.post_at }} {{ notice.notice.title }}
     div(marked='notice.notice.content')
   form(novalidate=true name='noticeForm' ng-submit='notice.submit()' ng-show='notice.edit_field')
     .modal-header
-      button.btn.btn-success(type='submit' ng-disabled='noticeForm.$submitted && noticeForm.$invalid' translate='BUTTONS.CREATE')
+      button.btn.btn-success(type='submit' ng-disabled='noticeForm.$submitted && noticeForm.$invalid' translate='BUTTONS.UPDATE')
       a.btn.btn-default(ng-click='notice.cancel()' translate='BUTTONS.CLOSE')
     .modal-body
       .form-group
