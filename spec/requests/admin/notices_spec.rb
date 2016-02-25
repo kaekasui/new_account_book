@@ -147,3 +147,23 @@ describe 'PATCH /admin/notices/:id', autodoc: true do
     end
   end
 end
+
+describe 'DELETE /admin/notices/:id', autodoc: true do
+  let!(:admin_user) { create(:email_user, :admin_user, :registered) }
+  let!(:notice) { create(:notice) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      delete "/admin/notices/#{notice.id}"
+
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'ログインしている場合' do
+    it '200が返ってくること' do
+      delete "/admin/notices/#{notice.id}", '', login_headers(admin_user)
+      expect(response.status).to eq 200
+    end
+  end
+end

@@ -27,6 +27,12 @@ class Admin::NoticesController < ApplicationController
     end
   end
 
+  def destroy
+    @notice = Notice.find(params[:id])
+    @notice.destroy
+    head @notice.destroyed? ? :ok : :forbidden
+  end
+
   private
 
   def notice_params
