@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :feedbacks, only: %i(index) do
       patch :check
     end
-    resources :notices, only: %i(index create update)
+    resources :notices, only: %i(index create update destroy)
   end
 
   namespace :email_user do

@@ -56,7 +56,8 @@
   },
   "LINKS": {
     "FORGOT_PASSWORD": "Forgot your password?",
-    "RESEND_EMAIL": "Not found your email?"
+    "RESEND_EMAIL": "Not found your email?",
+    "DELETE": "Delte"
   },
   "ERRORS": {
     "REQUIRED": {
