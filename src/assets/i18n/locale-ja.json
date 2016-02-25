@@ -57,7 +57,8 @@
   },
   "LINKS": {
     "FORGOT_PASSWORD": "パスワードを忘れた場合",
-    "RESEND_EMAIL": "確認メールが見つからない場合"
+    "RESEND_EMAIL": "確認メールが見つからない場合",
+    "DELETE": "削除する"
   },
   "ERRORS": {
     "REQUIRED": {
