@@ -103,8 +103,6 @@ AdminShowNoticeController = ($modalInstance, AdminFactory, notice) ->
       post_at: vm.post_at
       title: vm.title
       content: vm.content
-    console.log vm.title
-    console.log params
     AdminFactory.patchNotice(vm.notice.id, params).then (res) ->
       $modalInstance.close()
 
