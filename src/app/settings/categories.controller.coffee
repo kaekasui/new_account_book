@@ -27,8 +27,12 @@ CategoriesController = (SettingsFactory, $modal) ->
   vm.updateCategory = (index, e = undefined) ->
     category = vm.categories[index]
     if e == undefined || (e.which == 13 && category.edit_name)
-      SettingsFactory.patchCategory(category.id, {name: category.edit_name}).then () ->
+      params =
+        name: category.edit_name
+        barance_of_payments: category.edit_payments
+      SettingsFactory.patchCategory(category.id, params).then () ->
         category.name = category.edit_name
+        category.barance_of_payments = category.edit_payments
         category.edit_field = false
 
   vm.sortable =

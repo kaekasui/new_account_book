@@ -17,6 +17,14 @@
             span.glyphicon.glyphicon-th-list#left-icon
             span {{ category.breakdowns_count }}
         .panel.panel-body.col-sm-11.category-card#category(ng-if="category.edit_field" ng-keydown='categories.updateCategory($index, $event)')
+          .input-group
+            .input-group-btn
+              button.btn.btn-default(ng-class="{'btn-success': !category.edit_payments}" type='button' ng-click='category.edit_payments = false')
+                span.glyphicon.glyphicon-minus-sign#left-icon
+                span(translate='BUTTONS.OUTGO')
+              button.btn.btn-default(ng-class="{'btn-info': category.edit_payments}" type='button' ng-click='category.edit_payments = true')
+                span.glyphicon.glyphicon-plus-sign#left-icon
+                span(translate='BUTTONS.INCOME')
           input.category-form(ng-value='category.name' ng-model='category.edit_name' auto-focus=true type='text')
           .btn.btn-success(translate='BUTTONS.EDIT' ng-click='categories.updateCategory($index)')
           .btn.btn-default(translate='BUTTONS.CANCEL' ng-click='category.edit_field = false')

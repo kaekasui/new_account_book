@@ -74,13 +74,31 @@ describe 'PATCH /categories/:id', autodoc: true do
   end
 
   context 'メールアドレスのユーザーがログインしている場合' do
-    let!(:params) { { name: '名前' } }
+    context 'カテゴリ名の値が正しい場合' do
+      let!(:params) { { name: '名前', barance_of_payments: true } }
 
-    it '201を返し、カテゴリが登録できること' do
-      patch "/categories/#{category.id}", params, login_headers(user)
-      expect(response.status).to eq 200
+      it '201を返し、カテゴリが登録できること' do
+        patch "/categories/#{category.id}", params, login_headers(user)
+        expect(response.status).to eq 200
 
-      expect(category.reload.name).to eq params[:name]
+        category.reload
+        expect(category.name).to eq params[:name]
+        expect(category.barance_of_payments).to eq params[:barance_of_payments]
+      end
+    end
+
+    context 'カテゴリ名の値が空の場合' do
+      let!(:params) { { name: '', barance_of_payments: true } }
+
+      it '201を返し、カテゴリが登録できること' do
+        patch "/categories/#{category.id}", params, login_headers(user)
+        expect(response.status).to eq 422
+
+        json = {
+          error_messages: ['カテゴリ名を入力してください']
+        }
+        expect(response.body).to be_json_as(json)
+      end
     end
   end
 end

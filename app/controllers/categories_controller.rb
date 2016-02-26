@@ -16,7 +16,8 @@ class CategoriesController < ApplicationController
 
   def update
     @category = current_user.categories.find(params[:id])
-    if @category.update(name: params[:name])
+    if @category.update(name: params[:name],
+                        barance_of_payments: params[:barance_of_payments])
       head 200
     else
       render_error @category
