@@ -24,6 +24,12 @@ class BreakdownsController < ApplicationController
     end
   end
 
+  def destroy
+    @breakdown = @category.breakdowns.find(params[:id])
+    @breakdown.destroy
+    head @breakdown.destroyed? ? :ok : :forbidden
+  end
+
   private
 
   def set_category
