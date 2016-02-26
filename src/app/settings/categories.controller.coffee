@@ -89,6 +89,14 @@ BreakdownsController = (SettingsFactory, category_id, $modalInstance) ->
           vm.breakdowns = res.breakdowns
     return
 
+  vm.updateBreakdown = (index, e = undefined) ->
+    breakdown = vm.breakdowns[index]
+    if e == undefined || (e.which == 13 && breakdown.edit_name)
+      SettingsFactory.patchBreakdown(category_id, breakdown.id, {name: breakdown.edit_name}).then () ->
+        breakdown.name = breakdown.edit_name
+        breakdown.edit_field = false
+    return
+
   return
 
 ConfirmDestroyController = (SettingsFactory, category_id, $modalInstance) ->

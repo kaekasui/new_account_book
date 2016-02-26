@@ -15,6 +15,15 @@ class BreakdownsController < ApplicationController
     end
   end
 
+  def update
+    @breakdown = @category.breakdowns.find(params[:id])
+    if @breakdown.update(name: params[:name])
+      head 200
+    else
+      render_error @breakdown
+    end
+  end
+
   private
 
   def set_category
