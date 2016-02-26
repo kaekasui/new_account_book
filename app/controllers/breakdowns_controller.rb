@@ -3,13 +3,22 @@ class BreakdownsController < ApplicationController
   before_action :set_category
 
   def index
-    @breakdowns = @category.breakdowns
+    @breakdowns = @category.breakdowns.order(:id)
   end
 
   def create
     @breakdown = @category.breakdowns.new(new_breakdown_params)
     if @breakdown.save
       head 201
+    else
+      render_error @breakdown
+    end
+  end
+
+  def update
+    @breakdown = @category.breakdowns.find(params[:id])
+    if @breakdown.update(name: params[:name])
+      head 200
     else
       render_error @breakdown
     end

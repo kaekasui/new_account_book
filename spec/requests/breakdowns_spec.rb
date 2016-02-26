@@ -51,3 +51,40 @@ describe 'POST /categories/:category_id/breakdowns', autodoc: true do
     end
   end
 end
+
+describe 'PATCH /categories/:category_id/breakdowns/:id', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:category) { create(:category, user: user) }
+  let!(:breakdown) { create(:breakdown, category: category) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      patch "/categories/#{category.id}/breakdowns/#{breakdown.id}"
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'ログインしている場合' do
+    context '内訳の値が正しい場合' do
+      it '200が返ってくること' do
+        patch "/categories/#{category.id}/breakdowns/#{breakdown.id}",
+              { name: '内訳' }, login_headers(user)
+        expect(response.status).to eq 200
+        breakdown.reload
+        expect(breakdown.name).to eq '内訳'
+      end
+    end
+
+    context '内訳の値が空の場合' do
+      it '200が返ってくること' do
+        patch "/categories/#{category.id}/breakdowns/#{breakdown.id}",
+              { name: '' }, login_headers(user)
+        expect(response.status).to eq 422
+        json = {
+          error_messages: ['内訳を入力してください']
+        }
+        expect(response.body).to be_json_as(json)
+      end
+    end
+  end
+end

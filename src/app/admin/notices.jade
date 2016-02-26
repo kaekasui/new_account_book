@@ -8,7 +8,7 @@ admin-menu-directive
     nav
       ul.pagination
         li(ng-click='admin_notices.clickPaginate(number)' ng-repeat='number in admin_notices.offset_numbers' ng-class='{active: number == admin_notices.offset}')
-          a {{$index + 1}}
+          a(href='') {{$index + 1}}
     table.table
       tr
         th
@@ -21,7 +21,7 @@ admin-menu-directive
         td
         td
         td
-          a(ng-click='admin_notices.showNotice($index)') {{ notice.title }}
+          a(href='' ng-click='admin_notices.showNotice($index)') {{ notice.title }}
         td {{ notice.content }}
         td {{ notice.post_at }}
         td
