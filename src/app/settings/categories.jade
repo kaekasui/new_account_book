@@ -58,6 +58,7 @@ script#breakdowns(type='text/ng-template')
         input.form-control(type='text' ng-model='breakdown.edit_name' ng-value='breakdown.name' auto-focus=true ng-keydown='breakdowns.updateBreakdown($index, $event)')
         button.btn.btn-success(translate='BUTTONS.EDIT' ng-click='breakdowns.updateBreakdown($index)')
         button.btn.btn-default(translate='BUTTONS.CANCEL' ng-click='breakdown.edit_field = false')
+        button.btn.btn-info.pull-right(href='' translate='LINKS.DELETE' ng-click='breakdowns.destroyBreakdown($index)')
     a(href='' ng-click='breakdowns.new_breakdown_field = true' translate='BUTTONS.ADD' ng-show='!breakdowns.new_breakdown_field')
     form(novalidate=true name='newBreakdownForm' ng-submit='breakdowns.submit()' ng-show='breakdowns.new_breakdown_field')
       .form-group

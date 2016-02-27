@@ -130,6 +130,22 @@ SettingsFactory = ($location, $q, $http, localStorageService, toastr, $translate
             defer.reject data
             return
       return defer.promise
+
+    deleteBreakdown: (category_id, breakdown_id) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      if typeof(token) != "undefined" && token != null
+        login_headers = {
+          headers: { Authorization: 'Token token=' + token }
+        }
+        $http.delete "#{host}categories/#{category_id}/breakdowns/#{breakdown_id}", login_headers
+          .success((data) ->
+            defer.resolve data
+            return
+          ).error (data) ->
+            defer.reject data
+            return
+      return defer.promise
   }
 
 angular.module 'newAccountBook'

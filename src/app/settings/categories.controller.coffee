@@ -75,7 +75,7 @@ CategoriesController = (SettingsFactory, $modal) ->
 
   return
 
-BreakdownsController = (SettingsFactory, category_id, $modalInstance) ->
+BreakdownsController = (SettingsFactory, category_id, $modalInstance, $modal) ->
   'ngInject'
   vm = this
 
@@ -101,6 +101,21 @@ BreakdownsController = (SettingsFactory, category_id, $modalInstance) ->
         breakdown.edit_field = false
     return
 
+  vm.destroyBreakdown = (index) ->
+    breakdown = vm.breakdowns[index]
+    modalInstance = $modal.open(
+      templateUrl: 'confirm-destroy'
+      controller: 'ConfirmDestroyBreakdownController'
+      controllerAs: 'confirm_destroy'
+      resolve:
+        category_id: category_id
+        breakdown_id: breakdown.id
+    )
+    modalInstance.result.then () ->
+      SettingsFactory.getBreakdowns(category_id).then (res) ->
+        vm.breakdowns = res.breakdowns
+      return
+
   return
 
 ConfirmDestroyController = (SettingsFactory, category_id, $modalInstance) ->
@@ -116,7 +131,21 @@ ConfirmDestroyController = (SettingsFactory, category_id, $modalInstance) ->
 
   return
 
+ConfirmDestroyBreakdownController = (SettingsFactory, $modalInstance, category_id, breakdown_id) ->
+  'ngInject'
+  vm = this
+
+  vm.ok = () ->
+    SettingsFactory.deleteBreakdown(category_id, breakdown_id).then ->
+      $modalInstance.close()
+
+  vm.cancel = () ->
+    $modalInstance.dismiss()
+
+  return
+
 angular.module 'newAccountBook'
   .controller('BreakdownsController', BreakdownsController)
   .controller('ConfirmDestroyController', ConfirmDestroyController)
+  .controller('ConfirmDestroyBreakdownController', ConfirmDestroyBreakdownController)
   .controller('CategoriesController', CategoriesController)
