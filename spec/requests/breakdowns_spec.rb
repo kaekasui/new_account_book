@@ -88,3 +88,24 @@ describe 'PATCH /categories/:category_id/breakdowns/:id', autodoc: true do
     end
   end
 end
+
+describe 'DELETE /categories/:category_id/breakdowns/:id', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:category) { create(:category, user: user) }
+  let!(:breakdown) { create(:breakdown, category: category) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      delete "/categories/#{category.id}/breakdowns/#{breakdown.id}"
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'ログインしている場合' do
+    it '200が返ってくること' do
+      delete "/categories/#{category.id}/breakdowns/#{breakdown.id}",
+             '', login_headers(user)
+      expect(response.status).to eq 200
+    end
+  end
+end
