@@ -11,6 +11,7 @@ CategoriesController = (SettingsFactory, $modal) ->
     vm.add_field = true
 
   vm.editCategory = (index) ->
+    vm.categories[index].edit_payments = vm.categories[index].barance_of_payments
     vm.categories[index].edit_field = true
 
   vm.createCategory = (e = undefined) ->
