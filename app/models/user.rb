@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
     case type
     when 'EmailUser' then 'label-warning'
     when 'TwitterUser' then 'label-info'
+    when 'FacebookUser' then 'label-primary'
     end
   end
 

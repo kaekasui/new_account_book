@@ -27,6 +27,7 @@
   "BUTTONS": {
     "ADD": "Add",
     "CREATE": "Create",
+    "FACEBOOK_LOGIN": "Login via Facebook",
     "LOGIN": "Log in",
     "SIGN_UP": "Sign up",
     "SEND": "Send Email",
