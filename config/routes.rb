@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     post :sort, on: :collection
     resources :breakdowns, only: %i(index create update destroy)
   end
-  resources :notices, only: %i(index)
+  resources :notices, only: %i(index show)
   resource :user, only: %i(show update)
   resource :feedback, only: %i(create)
 end

@@ -5,22 +5,16 @@
   .col-md-6
     .panel.panel-default
       .panel-heading
-        span.glyphicon.glyphicon-leaf#left-icon
+        span.glyphicon.glyphicon-film#left-icon
         span(translate='TITLES.NOTICE_LIST')
       .panel-body
         ul.list
           li(ng-repeat='notice in mypage.notices | limitTo:5')
             span#post_at {{ notice.post_at }}
-            a(href='' ng-click='mypage.showNotice($index)') {{ notice.title }}
+            a(ui-sref='notice({id: notice.id})') {{ notice.title }}
   .col-md-6
     .panel.panel-default
       .panel-heading
-        span.glyphicon.glyphicon-leaf#left-icon
+        span.glyphicon.glyphicon-envelope#left-icon
         span(translate='TITLES.MESSAGE_LIST')
       .panel-body
-
-script#notice(type='text/ng-template')
-  .modal-header
-    | {{ notice.notice.title }}
-  .modal-body
-    div(marked='notice.notice.content')

@@ -1,0 +1,11 @@
+.col-md-3
+  user-menu-directive
+
+.col-md-9
+  .panel.panel-default
+    .panel-heading
+      span.glyphicon.glyphicon-film#left-icon
+      span {{ notice.notice.title }}
+      span.pull-right {{ notice.notice.post_at }}
+    .panel-body
+      div(marked='notice.notice.content')
