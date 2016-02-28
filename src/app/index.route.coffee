@@ -37,6 +37,11 @@ angular.module 'newAccountBook'
         templateUrl: 'app/user/mypage.html'
         controllerAs: 'mypage'
         controller: 'MypageController'
+      .state 'notice',
+        url: '/notices/:id',
+        templateUrl: 'app/user/notice.html'
+        controllerAs: 'notice'
+        controller: 'NoticeController'
       .state 'profile',
         url: '/profile'
         templateUrl: 'app/user/profile.html'
