@@ -48,8 +48,13 @@
       p
         a.btn.btn-primary(ng-href='{{login.twitter_link}}')
           span#left-icon
-            img(src='assets/images/twitter-icon.png' width='20px' height='20px')
+            img(src='assets/images/twitter-icon.png' width='18px' height='18px')
           span(translate='BUTTONS.TWITTER_LOGIN')
+      p
+        a.btn.btn-primary(ng-href='{{login.facebook_link}}' ng-style="{'background-color': '#3b5998'}")
+          span#left-icon
+            img(src='assets/images/facebook-icon.png' width='18px' height='18px')
+          span(translate='BUTTONS.FACEBOOK_LOGIN')
       p
         a(ui-sref='reset_password')
           span(translate='LINKS.FORGOT_PASSWORD')
