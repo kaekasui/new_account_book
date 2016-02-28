@@ -3,6 +3,7 @@ LoginController = (AccountFactory, IndexFactory, IndexService, $location, toastr
   vm = this
   host = if $location.host() == 'localhost' then 'http://localhost:3001/' else ''
   vm.twitter_link = host + 'auth/twitter'
+  vm.facebook_link = host + 'auth/facebook'
 
   vm.clearErrors = () ->
     vm.errors = ''
