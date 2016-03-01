@@ -1,0 +1,8 @@
+.panel.panel-default
+  .panel-heading
+    span.glyphicon.glyphicon-map-marker#left-icon
+    span(translate='TITLES.PLACE')
+  .panel-body#with-background
+    ul
+      li(ng-repeat='place in places.places')
+        span {{ place.name }}
