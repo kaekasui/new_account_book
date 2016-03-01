@@ -31,6 +31,8 @@ nav.navbar.navbar-default(role='navigation')
         ul.dropdown-menu(ng-hide='isCollapsed')
           li
             a(ui-sref='categories' translate='TITLES.CATEGORY')
+          li
+            a(ui-sref='places' translate='TITLES.PLACE')
       li(ng-hide='navbar.current_user != undefined')
         a(ui-sref='login')
           span.glyphicon.glyphicon-leaf#left-icon
