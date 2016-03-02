@@ -9,6 +9,7 @@ LoginController = (AccountFactory, IndexFactory, IndexService, $location, toastr
     vm.errors = ''
 
   vm.submit = () ->
+    vm.sending = true
     params = {
       email: vm.email
       password: vm.password
@@ -17,9 +18,11 @@ LoginController = (AccountFactory, IndexFactory, IndexService, $location, toastr
       IndexFactory.getCurrentUser().then (res) ->
         IndexService.current_user = res
         $location.path '/mypage'
+        vm.sending = false
         return
     ).catch (res) ->
       vm.errors = res.error_messages
+      vm.sending = false
       return
 
   return
