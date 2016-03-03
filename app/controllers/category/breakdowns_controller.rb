@@ -1,4 +1,4 @@
-class BreakdownsController < ApplicationController
+class Category::BreakdownsController < ApplicationController
   before_action :authenticate
   before_action :set_category
 

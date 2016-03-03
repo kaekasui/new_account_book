@@ -45,6 +45,7 @@
     "FINISHED": "対応済"
   },
   "LABELS": {
+    "BREAKDOWNS": "内訳",
     "FEEDBACK_EMAIL": "連絡先メールアドレス",
     "EMAIL": "メールアドレス",
     "PASSWORD": "パスワード",

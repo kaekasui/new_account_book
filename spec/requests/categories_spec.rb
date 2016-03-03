@@ -12,8 +12,12 @@ describe 'GET /categories', autodoc: true do
     let!(:user) { create(:email_user, :registered) }
     let!(:category) { create(:category, user: user) }
     let!(:category2) { create(:category, user: user) }
+    let!(:place) { create(:place, user: user) }
 
     it '200とカテゴリ一覧を返すこと' do
+      category.places << place
+      category.save
+
       get '/categories', '', login_headers(user)
       expect(response.status).to eq 200
 
@@ -23,13 +27,15 @@ describe 'GET /categories', autodoc: true do
             id: category.id,
             name: category.name,
             barance_of_payments: category.barance_of_payments,
-            breakdowns_count: category.breakdowns.count
+            breakdowns_count: category.breakdowns.count,
+            places_count: 1
           },
           {
             id: category2.id,
             name: category2.name,
             barance_of_payments: category2.barance_of_payments,
-            breakdowns_count: category2.breakdowns.count
+            breakdowns_count: category2.breakdowns.count,
+            places_count: 0
           }
         ]
       }
