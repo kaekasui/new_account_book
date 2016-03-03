@@ -23,7 +23,8 @@ Rails.application.routes.draw do
 
   resources :categories, except: %i(show new edit) do
     post :sort, on: :collection
-    resources :breakdowns, only: %i(index create update destroy)
+    resources :breakdowns, only: %i(index create update destroy), module: :category
+    resources :places, only: %i(index), module: :category
   end
   resources :notices, only: %i(index show)
   resources :places, only: %i(index create)
