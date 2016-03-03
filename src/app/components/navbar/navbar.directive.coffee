@@ -43,6 +43,7 @@ FeedbackController = (IndexFactory, $translate, $modalInstance, toastr) ->
     return
 
   vm.submit = () ->
+    vm.sending = true
     params = {}
     if vm.current_user != undefined
       params =
@@ -55,9 +56,11 @@ FeedbackController = (IndexFactory, $translate, $modalInstance, toastr) ->
 
     IndexFactory.postFeedback(params).then( ->
       $modalInstance.close()
+      vm.sending = false
       return
     ).catch (res) ->
       vm.errors = res.error_messages
+      vm.sending = false
       return
 
   vm.cancel = () ->
