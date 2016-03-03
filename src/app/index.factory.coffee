@@ -1,9 +1,10 @@
-IndexFactory = ($location, $q, localStorageService, $http, toastr, $translate) ->
+IndexFactory = ($location, $q, localStorageService, $http, toastr, $translate, IndexService) ->
   'ngInject'
   host = if $location.host() == 'localhost' then 'http://localhost:3001/' else ''
 
   return {
     getCurrentUser: () ->
+      IndexService.loading = true
       defer = $q.defer()
       token = localStorageService.get('access_token')
       if typeof(token) != "undefined" && token != null
@@ -13,9 +14,11 @@ IndexFactory = ($location, $q, localStorageService, $http, toastr, $translate) -
         $http.get host + 'user', login_headers
           .success((data) ->
             defer.resolve data
+            IndexService.loading = false
             return
           ).error (data) ->
             defer.reject data
+            IndexService.loading = false
             return
       return defer.promise
 

@@ -1,4 +1,4 @@
-AdminFactory = ($location, $q, localStorageService, $http, $translate) ->
+AdminFactory = ($location, $q, localStorageService, $http, $translate, IndexService) ->
   'ngInject'
   host = if $location.host() == 'localhost' then 'http://localhost:3001/' else ''
 
@@ -20,6 +20,7 @@ AdminFactory = ($location, $q, localStorageService, $http, $translate) ->
       return defer.promise
 
     getUsers: (offset) ->
+      IndexService.loading = true
       defer = $q.defer()
       token = localStorageService.get('access_token')
       if typeof(token) != "undefined" && token != null
@@ -29,13 +30,16 @@ AdminFactory = ($location, $q, localStorageService, $http, $translate) ->
         $http.get host + 'admin/users?offset=' + offset, login_headers
           .success((data) ->
             defer.resolve data
+            IndexService.loading = false
             return
           ).error (data) ->
             defer.reject data
+            IndexService.loading = false
             return
       return defer.promise
 
     getFeedbacks: (offset) ->
+      IndexService.loading = true
       defer = $q.defer()
       token = localStorageService.get('access_token')
       if typeof(token) != "undefined" && token != null
@@ -45,9 +49,11 @@ AdminFactory = ($location, $q, localStorageService, $http, $translate) ->
         $http.get host + 'admin/feedbacks?offset=' + offset, login_headers
           .success((data) ->
             defer.resolve data
+            IndexService.loading = false
             return
           ).error (data) ->
             defer.reject data
+            IndexService.loading = false
             return
       return defer.promise
 
@@ -68,6 +74,7 @@ AdminFactory = ($location, $q, localStorageService, $http, $translate) ->
       return defer.promise
 
     getNotices: (offset) ->
+      IndexService.loading = true
       defer = $q.defer()
       token = localStorageService.get('access_token')
       if typeof(token) != "undefined" && token != null
@@ -77,9 +84,11 @@ AdminFactory = ($location, $q, localStorageService, $http, $translate) ->
         $http.get host + 'admin/notices?offset=' + offset, login_headers
           .success((data) ->
             defer.resolve data
+            IndexService.loading = false
             return
           ).error (data) ->
             defer.reject data
+            IndexService.loading = false
             return
       return defer.promise
 

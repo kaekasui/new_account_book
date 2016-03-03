@@ -4,11 +4,12 @@ admin-menu-directive
   .panel-heading
     span.glyphicon.glyphicon-leaf(translate='TITLES.USERS')
   .panel-body#with-background
+    loading-directive
     nav
       ul.pagination
         li(ng-click='admin_users.clickPaginate(number)' ng-repeat='number in admin_users.offset_numbers' ng-class='{active: number == admin_users.offset}')
           a {{$index + 1}}
-    table.table
+    table.table(ng-show='admin_users.users')
       tr
         th
         th ID
