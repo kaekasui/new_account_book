@@ -11,6 +11,5 @@
           span.glyphicon.glyphicon-alert#left-icon
           span(translate='ERRORS.REQUIRED.PLACE_NAME')
     hr
-    ul
-      li(ng-repeat='place in places.places')
-        span {{ place.name }}
+    .panel.panel-body.place-card(ng-repeat='place in places.places')
+      span {{ place.name }}
