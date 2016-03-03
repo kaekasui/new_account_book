@@ -2,13 +2,7 @@ class PlacesController < ApplicationController
   before_action :authenticate
 
   def index
-    @places =
-      if params[:category_id]
-        category = current_user.categories.find(params[:category_id])
-        category.places
-      else
-        current_user.places
-      end
+    @places = current_user.places
   end
 
   def create
