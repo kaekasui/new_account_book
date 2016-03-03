@@ -13,9 +13,13 @@
             span.glyphicon.glyphicon-minus-sign.red#left-icon(ng-hide='category.barance_of_payments')
             span {{ category.name | truncate:true:12 }}
           hr
-          a(href='' ng-click='categories.showBreakdowns($index)')
+          a.label.label-info.label-list(href='' ng-click='categories.showBreakdowns($index)')
             span.glyphicon.glyphicon-th-list#left-icon
             span {{ category.breakdowns_count }}
+
+          a.label.label-info.label-list(href='' ng-click='categories.showPlaces($index)')
+            span.glyphicon.glyphicon-map-marker#left-icon
+            span {{ category.places_count }}
         .panel.panel-body.col-sm-11.category-card#category(ng-if="category.edit_field" ng-keydown='categories.updateCategory($index, $event)')
           .input-group
             .input-group-btn

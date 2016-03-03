@@ -61,6 +61,9 @@ CategoriesController = (SettingsFactory, $modal) ->
         vm.categories = res.categories
       return
 
+  vm.showPlaces = (index) ->
+    category = vm.categories[index]
+
   vm.destroyCategory = (index) ->
     category = vm.categories[index]
     modalInstance = $modal.open(

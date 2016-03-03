@@ -64,6 +64,8 @@ $breadcrumb-separator: '|';
 
 $dropdown-link-color: $link-color;
 
+$label-info-bg: #61abbb;
+
 body {
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     color: $link-color;
@@ -107,6 +109,9 @@ body {
   }
   span.green {
     color: #5E7535;
+  }
+  a.label-list {
+    margin-right: 30px;
   }
   span.errors {
     font-family: 'Lucida Grande', Meiryo, sans-serif;
