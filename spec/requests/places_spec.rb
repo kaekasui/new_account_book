@@ -12,8 +12,12 @@ describe 'GET /places', autodoc: true do
     let!(:user) { create(:email_user, :registered) }
     let!(:place) { create(:place, user: user) }
     let!(:place2) { create(:place, user: user) }
+    let!(:category) { create(:category, user: user) }
 
     it '200と場所一覧を返すこと' do
+      place.categories << category
+      place.save
+
       get '/places', '', login_headers(user)
       expect(response.status).to eq 200
 
@@ -21,11 +25,15 @@ describe 'GET /places', autodoc: true do
         places: [
           {
             id: place.id,
-            name: place.name
+            name: place.name,
+            categories: [
+              name: category.name
+            ]
           },
           {
             id: place2.id,
-            name: place2.name
+            name: place2.name,
+            categories: []
           }
         ]
       }
