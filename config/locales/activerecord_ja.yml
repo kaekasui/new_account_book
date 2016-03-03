@@ -7,6 +7,8 @@ ja:
         password_confirmation: パスワード（確認）
       category:
         name: カテゴリ名
+      place:
+        name: お店・施設名
       feedback:
         email: メールアドレス
         content: 内容

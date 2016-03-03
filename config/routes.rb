@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :breakdowns, only: %i(index create update destroy)
   end
   resources :notices, only: %i(index show)
-  resources :places, only: %i(index)
+  resources :places, only: %i(index create)
   resource :user, only: %i(show update)
   resource :feedback, only: %i(create)
 end

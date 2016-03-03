@@ -12,6 +12,9 @@ defaults: &defaults
   category:
     name:
       maximum_length: 100
+  place:
+    name:
+      maximum_length: 100
   user:
     nickname:
       maximum_length: 100
