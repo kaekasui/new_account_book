@@ -9,7 +9,7 @@ PlacesController = (SettingsFactory, $scope) ->
       SettingsFactory.getPlaces().then (res) ->
         vm.places = res.places
       vm.new_name = ''
-      vm.newPlaceForm.$setPristine()
+      $scope.newPlaceForm.$setPristine()
       vm.sending = false
     ).catch (res) ->
       vm.errors = res.error_messages
