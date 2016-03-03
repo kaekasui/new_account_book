@@ -136,8 +136,8 @@ ModalPlacesController = (SettingsFactory, category_id, $modal) ->
   'ngInject'
   vm = this
 
-  SettingsFactory.getPlaces(category_id).then (res) ->
-    vm.breakdowns = res.breakdowns
+  SettingsFactory.getCategoryPlaces(category_id).then (res) ->
+    vm.places = res.places
 
   return
 

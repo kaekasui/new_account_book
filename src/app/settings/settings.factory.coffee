@@ -163,6 +163,22 @@ SettingsFactory = ($location, $q, $http, localStorageService, toastr, $translate
             return
       return defer.promise
 
+    getCategoryPlaces: (category_id) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      if typeof(token) != "undefined" && token != null
+        login_headers = {
+          headers: { Authorization: 'Token token=' + token }
+        }
+        $http.get host + 'categories/' + category_id + '/places', login_headers
+          .success((data) ->
+            defer.resolve data
+            return
+          ).error (data) ->
+            defer.reject data
+            return
+      return defer.promise
+
     postPlace: (params) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
