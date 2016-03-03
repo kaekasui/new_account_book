@@ -3,6 +3,10 @@
     span.glyphicon.glyphicon-map-marker#left-icon
     span(translate='TITLES.PLACE')
   .panel-body#with-background
+    form.form-inline(novalidate=true name='newPlaceForm' ng-submit='places.submit()')
+      input.form-control(ng-model='places.new_name' auto-focus=true type='text')
+      button.btn.btn-success(translate='BUTTONS.ADD')
+    hr
     ul
       li(ng-repeat='place in places.places')
         span {{ place.name }}
