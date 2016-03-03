@@ -1,6 +1,8 @@
 class Category < ActiveRecord::Base
-  has_many :breakdowns
   belongs_to :user
+  has_many :breakdowns
+  has_many :categorize_places
+  has_many :places, through: :categorize_places
 
   validates :name,
             presence: true,
