@@ -2,16 +2,23 @@
   .panel-heading
     span.glyphicon.glyphicon-map-marker#left-icon
     span(translate='TITLES.PLACE')
+
   .panel-body#with-background
-    form.form-inline(novalidate=true name='newPlaceForm' ng-submit='places.submit()')
-      input.form-control(name='name' ng-model='places.new_name' auto-focus=true type='text' required=true)
-      button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='places.sending')
-      span.errors(ng-messages='newPlaceForm.name.$error' ng-show='newPlaceForm.$submitted')
-        div(ng-message='required')
-          span.glyphicon.glyphicon-alert#left-icon
-          span(translate='ERRORS.REQUIRED.PLACE_NAME')
-    hr
-    .panel.panel-body.place-card(ng-repeat='place in places.places')
+    //- 追加パネル
+    .panel.panel-body.place-plus(ng-click='places.newPlace()' ng-class="{'panel-background': 'adding'}" ng-mouseenter="adding = true" ng-mouseleave="adding = false" ng-show="!places.add_field")
+      span.glyphicon.glyphicon-plus
+
+    .panel.panel-body.place-card(ng-if='places.add_field')
+      form.form-inline(novalidate=true name='newPlaceForm' ng-submit='places.submit()')
+        input.form-control(name='name' ng-model='places.new_name' auto-focus=true type='text' required=true)
+        button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='places.sending')
+        span.errors(ng-messages='newPlaceForm.name.$error' ng-show='newPlaceForm.$submitted')
+          div(ng-message='required')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.REQUIRED.PLACE_NAME')
+
+    //- 一覧パネル
+    .panel.panel-body.place-card(ng-repeat='place in places.places' ng-show='places.places')
       .row
         .col-sm-4
           span {{ place.name }}
