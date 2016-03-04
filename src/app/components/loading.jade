@@ -1,1 +1,2 @@
-img(ng-src='assets/images/loader.gif' width='60px' ng-show='loading.loading')
+img(ng-src='assets/images/loader.gif' width='60px' ng-show='loading.loading' alt='loading.target' ng-if='loading.target == undefined')
+img(ng-src='assets/images/loader.gif' width='60px' ng-show='loading.modal_loading' alt='loading.target' ng-if="loading.target == 'modal'")

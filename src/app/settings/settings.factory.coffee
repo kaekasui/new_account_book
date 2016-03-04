@@ -164,6 +164,7 @@ SettingsFactory = ($location, $q, $http, localStorageService, toastr, $translate
       return defer.promise
 
     getCategoryPlaces: (category_id) ->
+      IndexService.modal_loading = true
       defer = $q.defer()
       token = localStorageService.get('access_token')
       if typeof(token) != "undefined" && token != null
@@ -173,9 +174,11 @@ SettingsFactory = ($location, $q, $http, localStorageService, toastr, $translate
         $http.get host + 'categories/' + category_id + '/places', login_headers
           .success((data) ->
             defer.resolve data
+            IndexService.modal_loading = false
             return
           ).error (data) ->
             defer.reject data
+            IndexService.modal_loading = false
             return
       return defer.promise
 
