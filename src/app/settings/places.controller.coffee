@@ -1,10 +1,25 @@
-PlacesController = (SettingsFactory, $scope, IndexService) ->
+PlacesController = (SettingsFactory, $scope, IndexService, $modal) ->
   'ngInject'
   vm = this
   vm.add_field = false
 
   vm.newPlace = () ->
     vm.add_field = true
+
+  vm.destroyPlace = (index) ->
+    place = vm.places[index]
+    modalInstance = $modal.open(
+      templateUrl: 'confirm-destroy'
+      controller: 'ConfirmDestroyPlaceController'
+      controllerAs: 'confirm_destroy'
+      resolve: { place_id: place.id }
+    )
+    modalInstance.result.then () ->
+      SettingsFactory.getPlaces().then (res) ->
+        vm.places = res.places
+      return
+
+    return
 
   vm.submit = () ->
     vm.sending = true
@@ -29,5 +44,19 @@ PlacesController = (SettingsFactory, $scope, IndexService) ->
 
   return
 
+ConfirmDestroyPlaceController = (SettingsFactory, place_id, $modalInstance) ->
+  'ngInject'
+  vm = this
+
+  vm.ok = () ->
+    SettingsFactory.deletePlace(place_id).then (res) ->
+      $modalInstance.close()
+
+  vm.cancel = () ->
+    $modalInstance.dismiss()
+
+  return
+
 angular.module 'newAccountBook'
+  .controller('ConfirmDestroyPlaceController', ConfirmDestroyPlaceController)
   .controller('PlacesController', PlacesController)
