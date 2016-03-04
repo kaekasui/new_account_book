@@ -24,16 +24,16 @@ describe 'GET /places', autodoc: true do
       json = {
         places: [
           {
+            id: place2.id,
+            name: place2.name,
+            categories: []
+          },
+          {
             id: place.id,
             name: place.name,
             categories: [
               name: category.name
             ]
-          },
-          {
-            id: place2.id,
-            name: place2.name,
-            categories: []
           }
         ]
       }
