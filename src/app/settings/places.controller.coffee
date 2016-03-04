@@ -1,6 +1,10 @@
-PlacesController = (SettingsFactory, $scope) ->
+PlacesController = (SettingsFactory, $scope, IndexService) ->
   'ngInject'
   vm = this
+  vm.add_field = false
+
+  vm.newPlace = () ->
+    vm.add_field = true
 
   vm.submit = () ->
     vm.sending = true
@@ -9,15 +13,19 @@ PlacesController = (SettingsFactory, $scope) ->
       SettingsFactory.getPlaces().then (res) ->
         vm.places = res.places
       vm.new_name = ''
-      $scope.newPlaceForm.$setPristine()
+      vm.add_field = false
       vm.sending = false
     ).catch (res) ->
       vm.errors = res.error_messages
       vm.sending = false
     return
 
-  SettingsFactory.getPlaces().then (res) ->
+  IndexService.loading = true
+  SettingsFactory.getPlaces().then((res) ->
     vm.places = res.places
+    IndexService.loading = false
+  ).catch (res) ->
+    IndexService.loading = false
 
   return
 

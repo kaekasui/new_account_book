@@ -140,7 +140,7 @@ body {
     background-color: rgba($link-color, 0.1);
     height: 150px;
   }
- 
+
   .category-form {
     display: block;
     width: 100%;
@@ -169,6 +169,11 @@ body {
   .panel.place-card {
     padding: 15px;
     margin-bottom: 5px;
+  }
+  .place-plus {
+    color: rgba($link-color, 0.4);
+    font-size: 18px;
+    background-color: rgba($link-color, 0.1);
   }
 
   ul.list {
