@@ -1,4 +1,4 @@
-PlacesController = (SettingsFactory, $scope) ->
+PlacesController = (SettingsFactory, $scope, IndexService) ->
   'ngInject'
   vm = this
   vm.add_field = false
@@ -20,8 +20,12 @@ PlacesController = (SettingsFactory, $scope) ->
       vm.sending = false
     return
 
-  SettingsFactory.getPlaces().then (res) ->
+  IndexService.loading = true
+  SettingsFactory.getPlaces().then((res) ->
     vm.places = res.places
+    IndexService.loading = false
+  ).catch (res) ->
+    IndexService.loading = false
 
   return
 
