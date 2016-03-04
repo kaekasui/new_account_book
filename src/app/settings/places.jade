@@ -12,6 +12,7 @@
       form.form-inline(novalidate=true name='newPlaceForm' ng-submit='places.submit()')
         input.form-control(name='name' ng-model='places.new_name' auto-focus=true type='text' required=true)
         button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='places.sending')
+        a.btn.btn-default(translate='BUTTONS.CANCEL' ng-click='places.add_field = false')
         span.errors(ng-messages='newPlaceForm.name.$error' ng-show='newPlaceForm.$submitted')
           div(ng-message='required')
             span.glyphicon.glyphicon-alert#left-icon
