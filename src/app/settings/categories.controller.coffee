@@ -1,11 +1,15 @@
-CategoriesController = (SettingsFactory, $modal) ->
+CategoriesController = (SettingsFactory, $modal, IndexService) ->
   'ngInject'
   vm = this
   vm.add_field = false
   vm.new_payments = false
 
-  SettingsFactory.getCategories().then (res) ->
+  IndexService.loading = true
+  SettingsFactory.getCategories().then((res) ->
     vm.categories = res.categories
+    IndexService.loading = false
+  ).catch (res) ->
+    IndexService.loading = false
 
   vm.addNewPanel = () ->
     vm.add_field = true
