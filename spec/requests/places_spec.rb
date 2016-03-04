@@ -79,3 +79,43 @@ describe 'POST /places?name=name', autodoc: true do
     end
   end
 end
+
+describe 'DELETE /places/:id', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:category) { create(:category, user: user) }
+  let!(:place) { create(:place, user: user) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      delete "/places/#{place.id}"
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'メールアドレスのユーザーがログインしている場合' do
+    it '200を返し、お店・施設が削除できること' do
+      delete "/places/#{place.id}", '', login_headers(user)
+      expect(response.status).to eq 200
+
+      expect(Place.count).to eq 0
+    end
+  end
+
+  context '削除対象のカテゴリが複数の内訳を登録していた場合' do
+    before do
+      place.categories << category
+      place.save
+    end
+
+    it '200を返し、お店・施設が削除できること' do
+      expect(category.places).to eq [place]
+
+      delete "/places/#{place.id}", '', login_headers(user)
+      expect(response.status).to eq 200
+
+      category.reload
+      expect(Place.count).to eq 0
+      expect(category.places).to eq []
+    end
+  end
+end
