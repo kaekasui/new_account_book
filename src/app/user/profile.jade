@@ -7,9 +7,10 @@
       span.glyphicon.glyphicon-leaf#left-icon
       span(translate='TITLES.PROFILE')
     .panel-body#with-background
+      loading-directive
       blockquote(ng-show="profile.current_user.type == 'EmailUser'")
         footer(translate='LABELS.EMAIL_LOGIN')
-      .form.form-horizontal
+      .form.form-horizontal(ng-show='profile.current_user')
         .form-group(ng-show='profile.current_user.email')
           .col-sm-2(translate='LABELS.EMAIL')
           .col-sm-10 {{ profile.current_user.email }}

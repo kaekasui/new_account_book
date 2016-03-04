@@ -4,12 +4,13 @@ admin-menu-directive
   .panel-heading
     span.glyphicon.glyphicon-leaf(translate='TITLES.NOTICES')
   .panel-body#with-background
-    .btn.btn-info(translate='BUTTONS.ADD' ng-click='admin_notices.newNotice()')
+    loading-directive
+    .btn.btn-info(translate='BUTTONS.ADD' ng-click='admin_notices.newNotice()' ng-show='admin_notices.notices')
     nav
       ul.pagination
         li(ng-click='admin_notices.clickPaginate(number)' ng-repeat='number in admin_notices.offset_numbers' ng-class='{active: number == admin_notices.offset}')
           a(href='') {{$index + 1}}
-    table.table
+    table.table(ng-show='admin_notices.notices')
       tr
         th
         th

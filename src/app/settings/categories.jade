@@ -3,6 +3,7 @@
     span.glyphicon.glyphicon-tags#left-icon
     span(translate='TITLES.CATEGORIES')
   .panel-body#with-background
+    loading-directive
     .row(ng-model='categories.categories' ui-sortable='categories.sortable')
       .col-sm-3(ng-repeat='category in categories.categories' id='{{category.id}}')
         .panel.panel-body.col-sm-11.category-card(ng-show='!category.edit_field' ng-style="{'cursor': cursor_type}" ng-mouseenter="cursor_type = 'move'")
@@ -32,7 +33,7 @@
           input.category-form(ng-value='category.name' ng-model='category.edit_name' auto-focus=true type='text')
           .btn.btn-success(translate='BUTTONS.EDIT' ng-click='categories.updateCategory($index)')
           .btn.btn-default(translate='BUTTONS.CANCEL' ng-click='category.edit_field = false')
-      .col-sm-3
+      .col-sm-3(ng-show='categories.categories')
         .panel.panel-body.col-sm-11.category-plus#category(ng-click='categories.addNewPanel()' ng-class="{'panel-background': 'adding'}" ng-mouseenter="adding = true" ng-mouseleave="adding = false" ng-show="!categories.add_field")
           span.glyphicon.glyphicon-plus
         .panel.panel-body.col-sm-11.category-card#category(ng-if='categories.add_field' ng-keydown='categories.createCategory($event)')

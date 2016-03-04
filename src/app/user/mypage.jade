@@ -8,6 +8,7 @@
         span.glyphicon.glyphicon-film#left-icon
         span(translate='TITLES.NOTICE_LIST')
       .panel-body
+        loading-directive
         ul.list
           li(ng-repeat='notice in mypage.notices | limitTo:5')
             span#post_at {{ notice.post_at }}
@@ -18,3 +19,4 @@
         span.glyphicon.glyphicon-envelope#left-icon
         span(translate='TITLES.MESSAGE_LIST')
       .panel-body
+        loading-directive

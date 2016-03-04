@@ -4,11 +4,12 @@ admin-menu-directive
   .panel-heading
     span.glyphicon.glyphicon-leaf(translate='TITLES.FEEDBACKS')
   .panel-body#with-background
+    loading-directive
     nav
       ul.pagination
         li(ng-click='admin_feedbacks.clickPaginate(number)' ng-repeat='number in admin_feedbacks.offset_numbers' ng-class='{active: number == admin_feedbacks.offset}')
           a {{$index + 1}}
-    table.table
+    table.table(ng-show='admin_feedbacks.feedbacks')
       tr
         th
         th(translate='COLUMNS.EMAIL')
