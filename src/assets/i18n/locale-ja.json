@@ -58,6 +58,11 @@
     "NO_SETTINGS": "（未設定）",
     "EMAIL_LOGIN": "メールアドレスでログイン"
   },
+  "TOOLTIPS": {
+    "SET_CATEGORY": "カテゴリを設定",
+    "BREAKDOWNS": "内訳",
+    "PLACES": "お店・施設"
+  },
   "LINKS": {
     "FORGOT_PASSWORD": "パスワードを忘れた場合",
     "RESEND_EMAIL": "確認メールが見つからない場合",

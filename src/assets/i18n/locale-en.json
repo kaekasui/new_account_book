@@ -13,7 +13,7 @@
     "MESSAGE_LIST": "Message List",
     "MYPAGE": "Mypage",
     "NOTICE_LIST": "Notice List",
-    "PLACE": "Shop & Location",
+    "PLACE": "Shops & Location",
     "SIGN_UP": "Sign up",
     "RESET_PASSWORD": "Reset Password",
     "EDIT_PASSWORD": "Edit Password",
@@ -56,6 +56,11 @@
     "NICKNAME": "Nickname",
     "NO_SETTINGS": "(No Settings)",
     "EMAIL_LOGIN": "Login via Email"
+  },
+  "TOOLTIPS": {
+    "SET_CATEGORY": "Add a Category to the Shop",
+    "BREAKDOWNS": "Breakdowns",
+    "PLACES": "Shops & Locations"
   },
   "LINKS": {
     "FORGOT_PASSWORD": "Forgot your password?",

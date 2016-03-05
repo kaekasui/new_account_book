@@ -37,7 +37,7 @@
 
         //- カテゴリ
         .col-sm-8
-          .label.label-info
+          .label.label-info(tooltip="{{ 'TOOLTIPS.SET_CATEGORY' | translate }}")
             .glyphicon.glyphicon-plus
           .label.label-default(ng-repeat='category in place.categories')
             span {{ category.name }}
