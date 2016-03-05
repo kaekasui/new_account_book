@@ -6,6 +6,13 @@ PlacesController = (SettingsFactory, $scope, IndexService, $modal) ->
   vm.newPlace = () ->
     vm.add_field = true
 
+  vm.updatePlace = (index) ->
+    place = vm.places[index]
+    SettingsFactory.patchPlace(place.id, { name: place.edit_name }).then () ->
+      SettingsFactory.getPlaces().then (res) ->
+        vm.places = res.places
+      place.edit_field = false
+
   vm.destroyPlace = (index) ->
     place = vm.places[index]
     modalInstance = $modal.open(

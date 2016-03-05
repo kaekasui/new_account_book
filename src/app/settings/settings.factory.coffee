@@ -201,6 +201,22 @@ SettingsFactory = ($location, $q, $http, localStorageService, toastr, $translate
             return
       return defer.promise
 
+    patchPlace: (place_id, params) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      if typeof(token) != "undefined" && token != null
+        login_headers = {
+          headers: { Authorization: 'Token token=' + token }
+        }
+        $http.patch host + 'places/' + place_id, params, login_headers
+          .success((data) ->
+            defer.resolve data
+            return
+          ).error (data) ->
+            defer.reject data
+            return
+      return defer.promise
+
     deletePlace: (place_id) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
