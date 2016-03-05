@@ -1,4 +1,4 @@
-ProfileController = (IndexFactory, UserFactory) ->
+ProfileController = (IndexFactory, UserFactory, IndexService) ->
   'ngInject'
   vm = this
   vm.nickname_edit_field = false
@@ -12,6 +12,7 @@ ProfileController = (IndexFactory, UserFactory) ->
       UserFactory.patchNickname({ nickname: vm.new_nickname }).then ->
         vm.current_user.nickname = vm.new_nickname
         vm.nickname_edit_field = false
+        IndexService.current_user = vm.current_user
     return
 
   return
