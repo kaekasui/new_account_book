@@ -47,4 +47,14 @@ Rails.application.configure do
       resource '*', headers: :any, methods: [:get, :post, :patch, :delete]
     end
   end
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+    Bullet.raise = true
+    Bullet.n_plus_one_query_enable = false
+  end
 end
