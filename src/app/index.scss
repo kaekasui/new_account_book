@@ -47,8 +47,7 @@ $nav-tabs-active-link-hover-color: #76891a;
 $nav-pills-active-link-hover-bg: rgba(#fff, 0.5);
 $nav-pills-active-link-hover-color: #76891a;
 
-$tooltip-bg: #76891a;
-$tooltip-opacity: .7;
+$tooltip-bg: #61abbb;
 
 $blockquote-border-color: #76891a;
 $blockquote-small-color: #76891a;
@@ -67,6 +66,10 @@ $dropdown-link-color: $link-color;
 $label-info-bg: #61abbb;
 
 body {
+  span {
+    outline: none;
+  }
+
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     color: $link-color;
   }
