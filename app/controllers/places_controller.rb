@@ -14,6 +14,15 @@ class PlacesController < ApplicationController
     end
   end
 
+  def update
+    @place = current_user.places.find(params[:id])
+    if @place.update(name: params[:name])
+      head 200
+    else
+      render_error @place
+    end
+  end
+
   def destroy
     @place = current_user.places.find(params[:id])
     if @place.destroy

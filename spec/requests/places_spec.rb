@@ -80,6 +80,46 @@ describe 'POST /places?name=name', autodoc: true do
   end
 end
 
+describe 'PATCH /places/:id', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:place) { create(:place, user: user) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      patch "/places/#{place.id}"
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'メールアドレスのユーザーがログインしている場合' do
+    context '場所・施設名の値が正しい場合' do
+      let!(:params) { { name: '名前' } }
+
+      it '200を返し、お店・施設が登録できること' do
+        patch "/places/#{place.id}", params, login_headers(user)
+        expect(response.status).to eq 200
+
+        place.reload
+        expect(place.name).to eq params[:name]
+      end
+    end
+
+    context '場所・施設名の値が空の場合' do
+      let!(:params) { { name: '' } }
+
+      it '422を返し、お店・施設が登録できないこと' do
+        patch "/places/#{place.id}", params, login_headers(user)
+        expect(response.status).to eq 422
+
+        json = {
+          error_messages: ['お店・施設名を入力してください']
+        }
+        expect(response.body).to be_json_as(json)
+      end
+    end
+  end
+end
+
 describe 'DELETE /places/:id', autodoc: true do
   let!(:user) { create(:email_user, :registered) }
   let!(:category) { create(:category, user: user) }
