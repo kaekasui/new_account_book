@@ -22,6 +22,7 @@
     loading-directive
     .panel.panel-body.place-card(ng-repeat='place in places.places' ng-show='places.places')
       .row
+        //- お店・施設名
         .col-sm-4
           div(ng-show='!place.edit_field' ng-style="{'cursor': 'pointer', outline: 'none'}" ng-click='place.edit_field = true') {{ place.name }}
           //- 編集パネル
@@ -34,8 +35,10 @@
                 span.glyphicon.glyphicon-alert#left-icon
                 span(translate='ERRORS.REQUIRED.PLACE_NAME')
 
-
+        //- カテゴリ
         .col-sm-8
+          .label.label-info
+            .glyphicon.glyphicon-plus
           .label.label-default(ng-repeat='category in place.categories')
             span {{ category.name }}
           a.pull-right
