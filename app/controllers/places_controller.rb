@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
   before_action :authenticate
+  before_action :set_place, only: [:update, :destroy]
 
   def index
     @places = current_user.places.includes(:categories).order(created_at: :desc)
@@ -15,7 +16,6 @@ class PlacesController < ApplicationController
   end
 
   def update
-    @place = current_user.places.find(params[:id])
     if @place.update(name: params[:name])
       head 200
     else
@@ -24,7 +24,6 @@ class PlacesController < ApplicationController
   end
 
   def destroy
-    @place = current_user.places.find(params[:id])
     if @place.destroy
       head 200
     else
@@ -36,5 +35,9 @@ class PlacesController < ApplicationController
 
   def place_params
     params.permit(:name)
+  end
+
+  def set_place
+    @place = current_user.places.find(params[:id])
   end
 end
