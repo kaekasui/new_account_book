@@ -16,6 +16,8 @@ ja:
         title: お知らせのタイトル
       breakdown:
         name: 内訳
+      categorize_place:
+        category_id: カテゴリ
     errors:
       models:
         user:
