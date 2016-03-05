@@ -23,7 +23,18 @@
     .panel.panel-body.place-card(ng-repeat='place in places.places' ng-show='places.places')
       .row
         .col-sm-4
-          span {{ place.name }}
+          div(ng-show='!place.edit_field' ng-style="{'cursor': 'pointer', outline: 'none'}" ng-click='place.edit_field = true') {{ place.name }}
+          //- 編集パネル
+          form.form-inline(novalidate=true name='editPlaceForm' ng-if='place.edit_field')
+            input.form-control(name='name' ng-value='place.name' ng-init='place.edit_name = place.name' ng-model='place.edit_name' auto-focus=true type='text' required=true)
+            button.btn.btn-success(translate='BUTTONS.EDIT' ng-click='places.updatePlace($index)')
+            a.btn.btn-default(translate='BUTTONS.CANCEL' ng-click='place.edit_field = false')
+            span.errors(ng-messages='editPlaceForm.name.$error' ng-show='editPlaceForm.$submitted')
+              div(ng-message='required')
+                span.glyphicon.glyphicon-alert#left-icon
+                span(translate='ERRORS.REQUIRED.PLACE_NAME')
+
+
         .col-sm-8
           .label.label-default(ng-repeat='category in place.categories')
             span {{ category.name }}

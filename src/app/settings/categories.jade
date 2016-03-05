@@ -30,7 +30,7 @@
               button.btn.btn-default(ng-class="{'btn-info': category.edit_payments}" type='button' ng-click='category.edit_payments = true')
                 span.glyphicon.glyphicon-plus-sign#left-icon
                 span(translate='BUTTONS.INCOME')
-          input.category-form(ng-value='category.name' ng-model='category.edit_name' auto-focus=true type='text')
+          input.category-form(ng-value='category.name' ng-init='category.edit_name = category.name' ng-model='category.edit_name' auto-focus=true type='text')
           .btn.btn-success(translate='BUTTONS.EDIT' ng-click='categories.updateCategory($index)')
           .btn.btn-default(translate='BUTTONS.CANCEL' ng-click='category.edit_field = false')
       .col-sm-3(ng-show='categories.categories')
