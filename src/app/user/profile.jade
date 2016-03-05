@@ -18,7 +18,7 @@
           .col-sm-2(translate='LABELS.NICKNAME')
           .col-sm-10
             form(novalidate=true name='nicknameForm')
-              input.form-control#new_nickname(ng-if='profile.nickname_edit_field' ng-value='profile.current_user.nickname' ng-model='profile.new_nickname' auto-focus=true type='text' ng-keydown='profile.updateNickname($event)' name='new_nickname' ng-maxlength='100')
+              input.form-control#new_nickname(ng-if='profile.nickname_edit_field' ng-value='profile.current_user.nickname' ng-init='profile.new_nickname = profile.current_user.nickname' ng-model='profile.new_nickname' auto-focus=true type='text' ng-keydown='profile.updateNickname($event)' name='new_nickname' ng-maxlength='100')
               span.errors(ng-show='nicknameForm.new_nickname.$error.maxlength')
                 span.glyphicon.glyphicon-alert
                 span(translate='ERRORS.MAXLENGTH.EMAIL')
