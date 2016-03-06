@@ -143,6 +143,9 @@ body {
     background-color: rgba($link-color, 0.1);
     height: 150px;
   }
+  label#category-list {
+    margin-right: 10px;
+  }
 
   .category-form {
     display: block;

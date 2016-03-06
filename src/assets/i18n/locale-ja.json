@@ -48,6 +48,8 @@
     "BREAKDOWNS": "内訳",
     "FEEDBACK_EMAIL": "連絡先メールアドレス",
     "EMAIL": "メールアドレス",
+    "INCOME": "収入",
+    "OUTGO": "支出",
     "PASSWORD": "パスワード",
     "PASSWORD_CONFIRMATION": "パスワード（確認）",
     "CURRENT_PASSWORD": "現在のパスワード",
@@ -56,7 +58,8 @@
     "NEW_PASSWORD_CONFIRMATION": "新しいパスワード（確認）",
     "NICKNAME": "ニックネーム",
     "NO_SETTINGS": "（未設定）",
-    "EMAIL_LOGIN": "メールアドレスでログイン"
+    "EMAIL_LOGIN": "メールアドレスでログイン",
+    "SELECTED": "登録済"
   },
   "TOOLTIPS": {
     "SET_CATEGORY": "カテゴリを設定",

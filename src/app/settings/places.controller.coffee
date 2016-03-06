@@ -28,6 +28,17 @@ PlacesController = (SettingsFactory, $scope, IndexService, $modal) ->
 
     return
 
+  vm.addCategory = (index) ->
+    place = vm.places[index]
+    modalInstance = $modal.open(
+      templateUrl: 'adding-category'
+      controller: 'AddCategoryController'
+      controllerAs: 'adding_category'
+      resolve: { place_id: place.id }
+    )
+    modalInstance.result.then () ->
+      return
+
   vm.submit = () ->
     vm.sending = true
     params = { name: vm.new_name }
@@ -64,6 +75,33 @@ ConfirmDestroyPlaceController = (SettingsFactory, place_id, $modalInstance) ->
 
   return
 
+AddCategoryController = ($modalInstance, SettingsFactory, place_id) ->
+  'ngInject'
+  vm = this
+
+  SettingsFactory.getPlaceCategories(place_id).then (res) ->
+    vm.income_categories = res.income_categories
+    vm.outgo_categories = res.outgo_categories
+
+  vm.cancel = () ->
+    $modalInstance.dismiss()
+
+  vm.submit = () ->
+    vm.sending = true
+    SettingsFactory.postPlace(params).then((res) ->
+      SettingsFactory.getPlaces().then (res) ->
+        vm.places = res.places
+      vm.new_name = ''
+      vm.add_field = false
+      vm.sending = false
+    ).catch (res) ->
+      vm.errors = res.error_messages
+      vm.sending = false
+    return
+
+  return
+
 angular.module 'newAccountBook'
   .controller('ConfirmDestroyPlaceController', ConfirmDestroyPlaceController)
+  .controller('AddCategoryController', AddCategoryController)
   .controller('PlacesController', PlacesController)
