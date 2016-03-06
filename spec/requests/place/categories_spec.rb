@@ -12,8 +12,10 @@ describe 'GET /places/:place_id/categories', autodoc: true do
   end
 
   context 'メールアドレスのユーザーがログインしている場合' do
-    let!(:category) { create(:category, user: user) }
-    let!(:category2) { create(:category, user: user) }
+    let!(:category) { create(:category, :income, user: user) }
+    let!(:category2) { create(:category, :income, user: user) }
+    let!(:category3) { create(:category, :outgo, user: user) }
+    let!(:category4) { create(:category, :outgo, user: user) }
 
     it '200とカテゴリ一覧を返すこと' do
       place.categories << category
@@ -22,17 +24,27 @@ describe 'GET /places/:place_id/categories', autodoc: true do
       expect(response.status).to eq 200
 
       json = {
-        categories: [
+        income_categories: [
           {
             id: category.id,
             name: category.name,
-            barance_of_payments: category.barance_of_payments,
             selected_place: true
           },
           {
             id: category2.id,
             name: category2.name,
-            barance_of_payments: category2.barance_of_payments,
+            selected_place: false
+          }
+        ],
+        outgo_categories: [
+          {
+            id: category3.id,
+            name: category3.name,
+            selected_place: false
+          },
+          {
+            id: category4.id,
+            name: category4.name,
             selected_place: false
           }
         ]

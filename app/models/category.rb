@@ -11,6 +11,9 @@ class Category < ActiveRecord::Base
   before_create :set_position
   before_destroy :confirm_breakdowns
 
+  scope :income, -> { where(barance_of_payments: true) }
+  scope :outgo, -> { where(barance_of_payments: false) }
+
   def set_position
     self.position = user.categories.count
   end
