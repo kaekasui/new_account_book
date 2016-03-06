@@ -1,5 +1,59 @@
 require 'rails_helper'
 
+describe 'GET /places/:place_id/categories', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:place) { create(:place, user: user) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      get "/places/#{place.id}/categories"
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'メールアドレスのユーザーがログインしている場合' do
+    let!(:category) { create(:category, :income, user: user) }
+    let!(:category2) { create(:category, :income, user: user) }
+    let!(:category3) { create(:category, :outgo, user: user) }
+    let!(:category4) { create(:category, :outgo, user: user) }
+
+    it '200とカテゴリ一覧を返すこと' do
+      place.categories << category
+
+      get "/places/#{place.id}/categories", '', login_headers(user)
+      expect(response.status).to eq 200
+
+      json = {
+        income_categories: [
+          {
+            id: category.id,
+            name: category.name,
+            selected_place: true
+          },
+          {
+            id: category2.id,
+            name: category2.name,
+            selected_place: false
+          }
+        ],
+        outgo_categories: [
+          {
+            id: category3.id,
+            name: category3.name,
+            selected_place: false
+          },
+          {
+            id: category4.id,
+            name: category4.name,
+            selected_place: false
+          }
+        ]
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+end
+
 describe 'POST /places/:place_id/categories', autodoc: true do
   let!(:user) { create(:email_user, :registered) }
   let!(:place) { create(:place, user: user) }

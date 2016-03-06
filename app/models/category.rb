@@ -11,6 +11,9 @@ class Category < ActiveRecord::Base
   before_create :set_position
   before_destroy :confirm_breakdowns
 
+  scope :income, -> { where(barance_of_payments: true) }
+  scope :outgo, -> { where(barance_of_payments: false) }
+
   def set_position
     self.position = user.categories.count
   end
@@ -20,5 +23,9 @@ class Category < ActiveRecord::Base
       errors[:base] << I18n.t('errors.messages.categories.failed_destroy')
       return false
     end
+  end
+
+  def selected_place?(place_id)
+    places.map(&:id).include?(place_id)
   end
 end
