@@ -26,7 +26,14 @@ describe 'GET /places/:place_id/categories', autodoc: true do
           {
             id: category.id,
             name: category.name,
-            barance_of_payments: category.barance_of_payments
+            barance_of_payments: category.barance_of_payments,
+            selected_place: true
+          },
+          {
+            id: category2.id,
+            name: category2.name,
+            barance_of_payments: category2.barance_of_payments,
+            selected_place: false
           }
         ]
       }

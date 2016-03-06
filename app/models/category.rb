@@ -21,4 +21,8 @@ class Category < ActiveRecord::Base
       return false
     end
   end
+
+  def selected_place?(place_id)
+    places.map(&:id).include?(place_id)
+  end
 end

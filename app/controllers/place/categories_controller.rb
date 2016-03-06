@@ -3,7 +3,7 @@ class Place::CategoriesController < ApplicationController
   before_action :set_place, only: [:index, :update]
 
   def index
-    @categories = @place.categories
+    @categories = current_user.categories
   end
 
   def update
