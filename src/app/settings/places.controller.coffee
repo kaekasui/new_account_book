@@ -37,6 +37,9 @@ PlacesController = (SettingsFactory, $scope, IndexService, $modal) ->
       resolve: { place_id: place.id }
     )
     modalInstance.result.then () ->
+      SettingsFactory.getPlaceCategories(place.id).then (res) ->
+        vm.places[index].categories = res.categories.filter (value, index, array) ->
+          return value.selected_place
       return
 
   vm.submit = () ->
@@ -80,22 +83,17 @@ AddCategoryController = ($modalInstance, SettingsFactory, place_id) ->
   vm = this
 
   SettingsFactory.getPlaceCategories(place_id).then (res) ->
-    vm.income_categories = res.income_categories
-    vm.outgo_categories = res.outgo_categories
+    vm.categories = res.categories
 
   vm.cancel = () ->
     $modalInstance.dismiss()
 
   vm.submit = () ->
     vm.sending = true
-    SettingsFactory.postPlace(params).then((res) ->
-      SettingsFactory.getPlaces().then (res) ->
-        vm.places = res.places
-      vm.new_name = ''
-      vm.add_field = false
+    SettingsFactory.patchPlaceCategory(place_id, vm.category_id).then((res) ->
       vm.sending = false
+      $modalInstance.close()
     ).catch (res) ->
-      vm.errors = res.error_messages
       vm.sending = false
     return
 

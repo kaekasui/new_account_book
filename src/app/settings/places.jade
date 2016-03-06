@@ -56,10 +56,10 @@ script#adding-category(type='text/ng-template')
       button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='adding_category.sending')
       a.btn.btn-default(type='submit' translate='BUTTONS.CANCEL' ng-click='adding_category.cancel()')
   .modal-body
-    select.form-control
+    select.form-control(ng-model='adding_category.category_id')
       optgroup(label="{{ 'LABELS.INCOME' | translate }}")
-        option(ng-repeat='category in adding_category.income_categories | filter: { selected_place:false }')
+        option(ng-value='category.id' ng-repeat='category in adding_category.categories | filter: { selected_place:false, barance_of_payments:true }')
           | {{ category.name }}
       optgroup(label="{{ 'LABELS.OUTGO' | translate }}")
-        option(ng-repeat='category in adding_category.outgo_categories | filter: { selected_place:false }')
+        option(ng-value='category.id' ng-repeat='category in adding_category.categories | filter: { selected_place:false, barance_of_payments:false }')
           | {{ category.name }}

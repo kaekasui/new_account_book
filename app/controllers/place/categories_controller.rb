@@ -3,8 +3,7 @@ class Place::CategoriesController < ApplicationController
   before_action :set_place, only: [:index, :update]
 
   def index
-    @income_categories = current_user.categories.income.order(:position)
-    @outgo_categories = current_user.categories.outgo.order(:position)
+    @categories = current_user.categories.order(:position)
   end
 
   def update
