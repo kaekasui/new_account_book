@@ -3,9 +3,12 @@ ProfileController = (IndexFactory, UserFactory, IndexService) ->
   vm = this
   vm.nickname_edit_field = false
 
-  IndexFactory.getCurrentUser().then (res) ->
+  IndexService.loading = true
+  IndexFactory.getCurrentUser().then((res) ->
     vm.current_user = res
-    return
+    IndexService.loading = false
+  ).catch (res) ->
+    IndexService.loading = false
 
   vm.updateNickname = (e) ->
     if e.which == 13 && vm.new_nickname != undefined
