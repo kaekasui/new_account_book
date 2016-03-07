@@ -39,7 +39,7 @@
         .col-sm-8
           label.label.label-info#category-list(tooltip="{{ 'TOOLTIPS.SET_CATEGORY' | translate }}" ng-click='places.addCategory($index)')
             .glyphicon.glyphicon-plus
-          label.label.label-default#category-list(ng-repeat='category in place.categories')
+          label.label#category-list(ng-class="{'label-success': category.barance_of_payments, 'label-danger': !category.barance_of_payments}" ng-repeat='category in place.categories')
             span {{ category.name }}
           a.pull-right
             span.glyphicon.glyphicon-trash#right-icon(ng-click='places.destroyPlace($index)' ng-show='place.categories.length == 0')
