@@ -56,7 +56,8 @@ script#adding-category(type='text/ng-template')
       button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='adding_category.sending')
       a.btn.btn-default(type='submit' translate='BUTTONS.CANCEL' ng-click='adding_category.cancel()')
   .modal-body
-    select.form-control(ng-model='adding_category.category_id')
+    loading-directive(target='modal')
+    select.form-control(ng-model='adding_category.category_id' ng-show='adding_category.categories')
       optgroup(label="{{ 'LABELS.INCOME' | translate }}")
         option(ng-value='category.id' ng-repeat='category in adding_category.categories | filter: { selected_place:false, barance_of_payments:true }')
           | {{ category.name }}
