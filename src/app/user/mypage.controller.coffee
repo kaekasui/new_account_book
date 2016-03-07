@@ -1,10 +1,14 @@
-MypageController = (UserFactory, $modal) ->
+MypageController = (UserFactory, $modal, IndexService) ->
   'ngInject'
   vm = this
   vm.offset = 0
 
-  UserFactory.getNotices(vm.offset).then (res) ->
+  IndexService.loading = true
+  UserFactory.getNotices(vm.offset).then((res) ->
     vm.notices = res.notices
+    IndexService.loading = false
+  ).catch (res) ->
+    IndexService.loading = false
 
   return
 

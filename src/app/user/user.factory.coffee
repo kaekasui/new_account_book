@@ -20,7 +20,6 @@ UserFactory = ($location, $q, $http, localStorageService, toastr, $translate, In
       return defer.promise
 
     getNotices: (offset) ->
-      IndexService.loading = true
       defer = $q.defer()
       token = localStorageService.get('access_token')
       if typeof(token) != "undefined" && token != null
@@ -30,11 +29,9 @@ UserFactory = ($location, $q, $http, localStorageService, toastr, $translate, In
         $http.get host + 'notices?offset=' + offset, login_headers
           .success((data) ->
             defer.resolve data
-            IndexService.loading = false
             return
           ).error (data) ->
             defer.reject data
-            IndexService.loading = false
             return
       return defer.promise
 
