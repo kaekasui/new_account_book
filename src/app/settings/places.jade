@@ -37,9 +37,9 @@
 
         //- カテゴリ
         .col-sm-8
-          .label.label-info(tooltip="{{ 'TOOLTIPS.SET_CATEGORY' | translate }}")
+          label.label.label-info#category-list(tooltip="{{ 'TOOLTIPS.SET_CATEGORY' | translate }}" ng-click='places.addCategory($index)')
             .glyphicon.glyphicon-plus
-          .label.label-default(ng-repeat='category in place.categories')
+          label.label.label-default#category-list(ng-repeat='category in place.categories')
             span {{ category.name }}
           a.pull-right
             span.glyphicon.glyphicon-trash#right-icon(ng-click='places.destroyPlace($index)' ng-show='place.categories.length == 0')
@@ -49,3 +49,17 @@ script#confirm-destroy(type='text/ng-template')
     p(translate='MESSAGES.DELETE')
     button.btn.btn-success(type='submit' translate='BUTTONS.YES' ng-click='confirm_destroy.ok()')
     a.btn.btn-default(ng-click='confirm_destroy.cancel()' translate='BUTTONS.CLOSE')
+
+script#adding-category(type='text/ng-template')
+  .modal-header
+    form.form-inline(novalidate=true name='addCategoryForm' ng-submit='adding_category.submit()')
+      button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='adding_category.sending')
+      a.btn.btn-default(type='submit' translate='BUTTONS.CANCEL' ng-click='adding_category.cancel()')
+  .modal-body
+    select.form-control(ng-model='adding_category.category_id')
+      optgroup(label="{{ 'LABELS.INCOME' | translate }}")
+        option(ng-value='category.id' ng-repeat='category in adding_category.categories | filter: { selected_place:false, barance_of_payments:true }')
+          | {{ category.name }}
+      optgroup(label="{{ 'LABELS.OUTGO' | translate }}")
+        option(ng-value='category.id' ng-repeat='category in adding_category.categories | filter: { selected_place:false, barance_of_payments:false }')
+          | {{ category.name }}

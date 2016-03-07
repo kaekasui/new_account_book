@@ -47,6 +47,8 @@
     "BREAKDOWNS": "Breakdowns",
     "FEEDBACK_EMAIL": "your Email address",
     "EMAIL": "Email address",
+    "INCOME": "Income",
+    "OUTGO": "Outgo",
     "PASSWORD": "Password",
     "PASSWORD_CONFIRMATION": "Password confirmation",
     "CURRENT_PASSWORD": "Current Password",
@@ -55,7 +57,8 @@
     "NEW_PASSWORD_CONFIRMATION": "New Password Confirmation",
     "NICKNAME": "Nickname",
     "NO_SETTINGS": "(No Settings)",
-    "EMAIL_LOGIN": "Login via Email"
+    "EMAIL_LOGIN": "Login via Email",
+    "SELECTED": "Selected"
   },
   "TOOLTIPS": {
     "SET_CATEGORY": "Add a Category to the Shop",

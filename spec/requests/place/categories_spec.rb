@@ -24,27 +24,29 @@ describe 'GET /places/:place_id/categories', autodoc: true do
       expect(response.status).to eq 200
 
       json = {
-        income_categories: [
+        categories: [
           {
             id: category.id,
             name: category.name,
+            barance_of_payments: category.barance_of_payments,
             selected_place: true
           },
           {
             id: category2.id,
             name: category2.name,
+            barance_of_payments: category2.barance_of_payments,
             selected_place: false
-          }
-        ],
-        outgo_categories: [
+          },
           {
             id: category3.id,
             name: category3.name,
+            barance_of_payments: category3.barance_of_payments,
             selected_place: false
           },
           {
             id: category4.id,
             name: category4.name,
+            barance_of_payments: category4.barance_of_payments,
             selected_place: false
           }
         ]
@@ -54,7 +56,7 @@ describe 'GET /places/:place_id/categories', autodoc: true do
   end
 end
 
-describe 'POST /places/:place_id/categories', autodoc: true do
+describe 'PATCH /places/:place_id/categories/:id', autodoc: true do
   let!(:user) { create(:email_user, :registered) }
   let!(:place) { create(:place, user: user) }
   let!(:category) { create(:category, user: user) }
