@@ -3,6 +3,13 @@ PlacesController = (SettingsFactory, $scope, IndexService, $modal) ->
   vm = this
   vm.add_field = false
 
+  IndexService.loading = true
+  SettingsFactory.getPlaces().then((res) ->
+    vm.places = res.places
+    IndexService.loading = false
+  ).catch (res) ->
+    IndexService.loading = false
+
   vm.newPlace = () ->
     vm.add_field = true
 
@@ -55,13 +62,6 @@ PlacesController = (SettingsFactory, $scope, IndexService, $modal) ->
       vm.errors = res.error_messages
       vm.sending = false
     return
-
-  IndexService.loading = true
-  SettingsFactory.getPlaces().then((res) ->
-    vm.places = res.places
-    IndexService.loading = false
-  ).catch (res) ->
-    IndexService.loading = false
 
   return
 

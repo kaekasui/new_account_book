@@ -5,6 +5,7 @@ json.places do
     json.categories do
       json.array! place.categories do |category|
         json.name category.name
+        json.barance_of_payments category.barance_of_payments
       end
     end
   end
