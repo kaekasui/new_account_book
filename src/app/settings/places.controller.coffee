@@ -78,12 +78,16 @@ ConfirmDestroyPlaceController = (SettingsFactory, place_id, $modalInstance) ->
 
   return
 
-AddCategoryController = ($modalInstance, SettingsFactory, place_id) ->
+AddCategoryController = ($modalInstance, SettingsFactory, place_id, IndexService) ->
   'ngInject'
   vm = this
 
-  SettingsFactory.getPlaceCategories(place_id).then (res) ->
+  IndexService.modal_loading = true
+  SettingsFactory.getPlaceCategories(place_id).then((res) ->
     vm.categories = res.categories
+    IndexService.modal_loading = false
+  ).catch (res) ->
+    IndexService.modal_loading = false
 
   vm.cancel = () ->
     $modalInstance.dismiss()
