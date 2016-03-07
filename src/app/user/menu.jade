@@ -2,7 +2,7 @@ ul.list-group
   li.list-group-item(ng-mouseenter='menu.mouseEnter(1)' ng-mouseleave='menu.mouseLeave()')
     a(ui-sref='mypage')
       span.glyphicon(class='glyphicon-piggy-bank')
-      span(translate='TITLES.MYPAGE')
+      span(translate='TITLES.MYPAGE_TOP')
     span(ng-show='menu.isSelected(1)')
       img.pull-right(ng-src='{{menu.menu_image}}')
   li.list-group-item(ng-mouseenter='menu.mouseEnter(2)' ng-mouseleave='menu.mouseLeave()')
