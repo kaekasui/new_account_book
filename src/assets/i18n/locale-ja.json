@@ -105,7 +105,8 @@
     "REGISTED": "アカウント登録が完了しました",
     "SEND_MESSAGE": "管理者にメッセージを送信しました",
     "FEEDBACK": "いいね！使いやすくして！なんか変！など、メッセージお待ちしてます(✿╹◡╹)",
-    "DELETE": "削除します"
+    "DELETE": "削除します",
+    "REMOVE_CATEGORY": "「{{place_name}}」から「{{category_name}}」をはずしました"
   },
   "COLUMNS": {
     "CONTENT": "内容",

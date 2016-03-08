@@ -1,4 +1,4 @@
-PlacesController = (SettingsFactory, $scope, IndexService, $modal) ->
+PlacesController = (SettingsFactory, $scope, IndexService, $modal, toastr, $translate) ->
   'ngInject'
   vm = this
   vm.add_field = false
@@ -48,10 +48,17 @@ PlacesController = (SettingsFactory, $scope, IndexService, $modal) ->
           return value.selected_place
       return
 
-  vm.removeCategory = (place_id) ->
-    place = vm.places[place_id]
-    console.log place_id
-
+  vm.removeCategory = (place_index, category_index) ->
+    place = vm.places[place_index]
+    category = vm.places[place_index].categories[category_index]
+    SettingsFactory.deletePlaceCategory(place.id, category.id).then (res) ->
+      console.log place.name
+      console.log category.name
+      SettingsFactory.getPlaceCategories(place.id).then (res) ->
+        vm.places[place_index].categories = res.categories.filter (value, index, array) ->
+          value.selected_place
+        toastr.success($translate.instant('MESSAGES.REMOVE_CATEGORY', { place_name: place.name, category_name: category.name }))
+    return
 
   vm.submit = () ->
     vm.sending = true

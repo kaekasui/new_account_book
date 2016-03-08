@@ -15,7 +15,7 @@ class Place::CategoriesController < ApplicationController
   end
 
   def destroy
-    categorize = @place.categorize_places.find_by_category_id!(params[:id])
+    categorize = @place.categorize_places.find_by!(category_id: params[:id])
     categorize.destroy
     head categorize.destroyed? ? :ok : :forbidden
   end
