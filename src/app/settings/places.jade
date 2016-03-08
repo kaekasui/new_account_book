@@ -63,10 +63,11 @@ script#adding-category(type='text/ng-template')
       a.btn.btn-default(type='submit' translate='BUTTONS.CANCEL' ng-click='adding_category.cancel()')
   .modal-body
     loading-directive(target='modal')
+    {{ filtered_categories.length }}
     select.form-control(ng-model='adding_category.category_id' ng-show='adding_category.categories')
-      optgroup(label="{{ 'LABELS.INCOME' | translate }}")
-        option(ng-value='category.id' ng-repeat='category in adding_category.categories | filter: { selected_place:false, barance_of_payments:true }')
+      optgroup(label="{{ 'LABELS.INCOME' | translate }}" ng-show='income_categories.length != 0')
+        option(ng-value='category.id' ng-repeat='category in income_categories = (adding_category.categories | filter: { selected_place:false, barance_of_payments:true })')
           | {{ category.name }}
-      optgroup(label="{{ 'LABELS.OUTGO' | translate }}")
-        option(ng-value='category.id' ng-repeat='category in adding_category.categories | filter: { selected_place:false, barance_of_payments:false }')
+      optgroup(label="{{ 'LABELS.OUTGO' | translate }}" ng-show='outgo_categories.length != 0')
+        option(ng-value='category.id' ng-repeat='category in outgo_categories = (adding_category.categories | filter: { selected_place:false, barance_of_payments:false })')
           | {{ category.name }}
