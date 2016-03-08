@@ -143,6 +143,21 @@ describe 'DELETE /categories/:id', autodoc: true do
       expect(response.body).to be_json_as(json)
     end
   end
+
+  context '削除対象のカテゴリが複数の場所を登録していた場合' do
+    let!(:place) { create(:place, user: user) }
+    before do
+      category.places << place
+    end
+
+    it '200を返し、カテゴリと関連が削除できること' do
+      delete "/categories/#{category.id}", '', login_headers(user)
+      expect(response.status).to eq 200
+
+      expect(Category.count).to eq 0
+      expect(category.categorize_places.count).to eq 0
+    end
+  end
 end
 
 describe 'POST /categories/sort', autodoc: true do
