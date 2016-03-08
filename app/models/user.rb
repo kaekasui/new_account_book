@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 
   enum status: { registered: 2, inactive: 1 }
 
+  validates :categories,
+            length: { maximum: Settings.user.categories.maximum_length }
+
   def active?
     registered? # TODO: 有効期限を確認する
   end
