@@ -32,7 +32,6 @@ PlacesController = (SettingsFactory, $scope, IndexService, $modal) ->
       SettingsFactory.getPlaces().then (res) ->
         vm.places = res.places
       return
-
     return
 
   vm.addCategory = (index) ->
@@ -48,6 +47,11 @@ PlacesController = (SettingsFactory, $scope, IndexService, $modal) ->
         vm.places[index].categories = res.categories.filter (value, index, array) ->
           return value.selected_place
       return
+
+  vm.removeCategory = (place_id) ->
+    place = vm.places[place_id]
+    console.log place_id
+
 
   vm.submit = () ->
     vm.sending = true

@@ -99,3 +99,38 @@ describe 'PATCH /places/:place_id/categories/:id', autodoc: true do
     end
   end
 end
+
+describe 'DELETE /places/:place_id/categories/:id', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:place) { create(:place, user: user) }
+  let!(:category) { create(:category, user: user) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      delete "/places/#{place.id}/categories/#{category.id}"
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'メールアドレスのユーザーがログインしている場合' do
+    context 'すでに設定されてるカテゴリの場合' do
+      before do
+        place.categories << category
+      end
+
+      it '200が返ってくること' do
+        delete "/places/#{place.id}/categories/#{category.id}",
+               '', login_headers(user)
+        expect(response.status).to eq 200
+      end
+    end
+
+    context 'まだ設定されていないカテゴリの場合' do
+      it '404が返ってくること' do
+        delete "/places/#{place.id}/categories/#{category.id}",
+               '', login_headers(user)
+        expect(response.status).to eq 404
+      end
+    end
+  end
+end
