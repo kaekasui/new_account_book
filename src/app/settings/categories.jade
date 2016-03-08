@@ -8,7 +8,7 @@
       .col-sm-3(ng-repeat='category in categories.categories' id='{{category.id}}')
         .panel.panel-body.col-sm-11.category-card(ng-show='!category.edit_field' ng-style="{'cursor': cursor_type}" ng-mouseenter="cursor_type = 'move'")
           a.pull-right
-            span.glyphicon.glyphicon-trash#right-icon(ng-click='categories.destroyCategory($index)' ng-show='category.breakdowns_count == 0')
+            span.glyphicon.glyphicon-trash#right-icon(ng-click='categories.destroyCategory($index)' ng-show='category.breakdowns_count + category.places_count == 0')
           div.category-name(ng-style="{'cursor': 'pointer'}" ng-click='categories.editCategory($index)')
             span.glyphicon.glyphicon-plus-sign.green#left-icon(ng-show='category.barance_of_payments')
             span.glyphicon.glyphicon-minus-sign.red#left-icon(ng-hide='category.barance_of_payments')
