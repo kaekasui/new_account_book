@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
   resources :notices, only: %i(index show)
   resources :places, only: %i(index create update destroy) do
-    resources :categories, only: %i(index update), module: :place
+    resources :categories, only: %i(index update destroy), module: :place
   end
   resource :user, only: %i(show update)
   resource :feedback, only: %i(create)

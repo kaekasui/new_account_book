@@ -1,6 +1,6 @@
 class Place::CategoriesController < ApplicationController
   before_action :authenticate
-  before_action :set_place, only: [:index, :update]
+  before_action :set_place, only: [:index, :update, :destroy]
 
   def index
     @categories = current_user.categories.order(:position)
@@ -12,6 +12,12 @@ class Place::CategoriesController < ApplicationController
     head 201
   rescue ActiveRecord::RecordInvalid => ex
     render_error ex.record
+  end
+
+  def destroy
+    categorize = @place.categorize_places.find_by!(category_id: params[:id])
+    categorize.destroy
+    head categorize.destroyed? ? :ok : :forbidden
   end
 
   private

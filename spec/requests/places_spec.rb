@@ -32,6 +32,7 @@ describe 'GET /places', autodoc: true do
             id: place.id,
             name: place.name,
             categories: [
+              id: category.id,
               name: category.name,
               barance_of_payments: category.barance_of_payments
             ]

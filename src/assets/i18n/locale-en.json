@@ -103,7 +103,8 @@
     "NOT_FOUND_EMAIL": "Email already registered or Not yet signed up for registration",
     "REGISTED": "Account has been registered",
     "SEND_MESSAGE": "Send your message",
-    "FEEDBACK": "Please feel free to ask me any questions!:)"
+    "FEEDBACK": "Please feel free to ask me any questions!:)",
+    "REMOVE_CATEGORY": "Remove '{{category_name}}' from the Place '{{place_name}}'"
   },
   "COLUMNS": {
     "CONTENT": "Content",

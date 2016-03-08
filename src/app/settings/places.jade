@@ -37,19 +37,25 @@
 
         //- カテゴリ
         .col-sm-8
-          label.label.label-info#category-list(tooltip="{{ 'TOOLTIPS.SET_CATEGORY' | translate }}" ng-click='places.addCategory($index)')
-            .glyphicon.glyphicon-plus
-          label.label#category-list(ng-class="{'label-success': category.barance_of_payments, 'label-danger': !category.barance_of_payments}" ng-repeat='category in place.categories')
-            span {{ category.name }}
-          a.pull-right
-            span.glyphicon.glyphicon-trash#right-icon(ng-click='places.destroyPlace($index)' ng-show='place.categories.length == 0')
+          ul.nav.nav-pills#category-list
+            li(tooltip="{{ 'TOOLTIPS.SET_CATEGORY' | translate }}")
+              span.label.label-info#category-list(ng-click='places.addCategory($index)')
+                .glyphicon.glyphicon-plus
+            li(ng-repeat='category in place.categories')
+              span.label#category-list(ng-class="{'label-success': category.barance_of_payments, 'label-danger': !category.barance_of_payments}")
+                span {{ category.name }}
+                span.glyphicon.glyphicon-remove#right-icon(ng-style="{'cursor': 'pointer'}" ng-click='places.removeCategory($parent.$index, $index)')
+            a.pull-right
+              span.glyphicon.glyphicon-trash#right-icon(ng-click='places.destroyPlace($index)' ng-show='place.categories.length == 0')
 
+// お店・施設の削除確認モーダル
 script#confirm-destroy(type='text/ng-template')
   .modal-body
     p(translate='MESSAGES.DELETE')
     button.btn.btn-success(type='submit' translate='BUTTONS.YES' ng-click='confirm_destroy.ok()')
     a.btn.btn-default(ng-click='confirm_destroy.cancel()' translate='BUTTONS.CLOSE')
 
+// カテゴリの追加モーダル
 script#adding-category(type='text/ng-template')
   .modal-header
     form.form-inline(novalidate=true name='addCategoryForm' ng-submit='adding_category.submit()')

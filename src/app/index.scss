@@ -145,7 +145,10 @@ body {
     background-color: rgba($link-color, 0.1);
     height: 150px;
   }
-  label#category-list {
+  span#category-list {
+    span {
+      padding-bottom: 10px;
+    }
     margin-right: 10px;
   }
 
