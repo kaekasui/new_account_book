@@ -8,7 +8,6 @@ ja:
       categories:
         failed_to_sort: 並び替えに失敗しました。
         destroy_breakdowns: 登録した内訳を削除してから削除してください
-        destroy_places: 登録したお店・施設を削除してから削除してください
   labels:
     administrator: 管理者
     status:

@@ -150,13 +150,12 @@ describe 'DELETE /categories/:id', autodoc: true do
       category.places << place
     end
 
-    it '422とエラーメッセージが返ってくること' do
+    it '200を返し、カテゴリと関連が削除できること' do
       delete "/categories/#{category.id}", '', login_headers(user)
-      expect(response.status).to eq 422
-      json = {
-        error_messages: ['登録したお店・施設を削除してから削除してください']
-      }
-      expect(response.body).to be_json_as(json)
+      expect(response.status).to eq 200
+
+      expect(Category.count).to eq 0
+      expect(category.categorize_places.count).to eq 0
     end
   end
 end
