@@ -5,6 +5,7 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認）
+        categories: カテゴリ
       category:
         name: カテゴリ名
       place:

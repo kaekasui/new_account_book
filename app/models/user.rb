@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   enum status: { registered: 2, inactive: 1 }
 
   validates :categories,
-            length: { maximum: Settings.user.categories.maximum_length }
+            length: { maximum: Settings.user.categories.maximum_length,
+                      too_long: 'の作成上限は%{count}個までです' }
 
   def active?
     registered? # TODO: 有効期限を確認する

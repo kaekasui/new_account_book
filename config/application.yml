@@ -47,6 +47,16 @@ development:
 
 test:
   <<: *defaults
+  user:
+    categories:
+      maximum_length: 3
+    nickname:
+      maximum_length: 100
+    email:
+      maximum_length: 100
+    password:
+      maximum_length: 72
+      minimum_length: 4
 
 production:
   <<: *defaults

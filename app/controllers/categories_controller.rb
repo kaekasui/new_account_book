@@ -7,10 +7,10 @@ class CategoriesController < ApplicationController
 
   def create
     @category = current_user.categories.new(new_category_params)
-    if @category.save
+    if current_user.save
       head 201
     else
-      render_error @category
+      render_error current_user
     end
   end
 
