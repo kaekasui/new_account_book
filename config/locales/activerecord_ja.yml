@@ -8,6 +8,7 @@ ja:
         categories: カテゴリ
       category:
         name: カテゴリ名
+        breakdowns: 内訳
       place:
         name: お店・施設名
       feedback:

@@ -10,6 +10,8 @@ defaults: &defaults
     length: 32
     expire_after: <%= 24.hours.to_i %>
   category:
+    breakdowns:
+      maximum_length: 20
     name:
       maximum_length: 100
   place:
@@ -47,6 +49,11 @@ development:
 
 test:
   <<: *defaults
+  category:
+    breakdowns:
+      maximum_length: 3
+    name:
+      maximum_length: 100
   user:
     categories:
       maximum_length: 3

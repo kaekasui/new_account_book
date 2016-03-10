@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   validates :categories,
             length: { maximum: Settings.user.categories.maximum_length,
-                      too_long: 'の作成上限は%{count}個までです' }
+                      too_long: I18n.t('errors.messages.too_long') }
 
   def active?
     registered? # TODO: 有効期限を確認する

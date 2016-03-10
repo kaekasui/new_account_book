@@ -34,6 +34,8 @@ end
 describe 'POST /categories/:category_id/breakdowns', autodoc: true do
   let!(:user) { create(:email_user, :registered) }
   let!(:category) { create(:category, user: user) }
+  let!(:name) { '内訳名' }
+  let!(:params) { { category_id: category.id, name: name } }
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
@@ -43,11 +45,37 @@ describe 'POST /categories/:category_id/breakdowns', autodoc: true do
   end
 
   context 'ログインしてる場合' do
-    let!(:params) { { category_id: category.id, name: '名前' } }
-
     it '201が返ってくること' do
       post "/categories/#{category.id}/breakdowns", params, login_headers(user)
       expect(response.status).to eq 201
+    end
+  end
+
+  context '内訳が作成上限に達した場合' do
+    it '422とエラーメッセージが返ってくること' do
+      3.times { create(:breakdown, category: category) }
+
+      post "/categories/#{category.id}/breakdowns", params, login_headers(user)
+      expect(response.status).to eq 422
+
+      json = {
+        error_messages: ['内訳の作成上限は3個までです']
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+
+  context '内訳名が空の場合' do
+    let(:name) { '' }
+
+    it '422とエラーメッセージが返ってくること' do
+      post "/categories/#{category.id}/breakdowns", params, login_headers(user)
+      expect(response.status).to eq 422
+
+      json = {
+        error_messages: ['内訳は不正な値です']
+      }
+      expect(response.body).to be_json_as(json)
     end
   end
 end

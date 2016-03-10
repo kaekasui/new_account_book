@@ -8,10 +8,10 @@ class Category::BreakdownsController < ApplicationController
 
   def create
     @breakdown = @category.breakdowns.new(new_breakdown_params)
-    if @breakdown.save
+    if @category.save
       head 201
     else
-      render_error @breakdown
+      render_error @category
     end
   end
 
