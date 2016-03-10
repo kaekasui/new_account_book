@@ -20,6 +20,8 @@ defaults: &defaults
   user:
     categories:
       maximum_length: 20
+    places:
+      maximum_length: 100
     nickname:
       maximum_length: 100
     email:
@@ -56,6 +58,8 @@ test:
       maximum_length: 100
   user:
     categories:
+      maximum_length: 3
+    places:
       maximum_length: 3
     nickname:
       maximum_length: 100

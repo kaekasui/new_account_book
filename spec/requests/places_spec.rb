@@ -74,7 +74,20 @@ describe 'POST /places?name=name', autodoc: true do
         post '/places', params, login_headers(user)
         expect(response.status).to eq 422
         json = {
-          error_messages: ['お店・施設名を入力してください']
+          error_messages: ['お店・施設は不正な値です']
+        }
+        expect(response.body).to be_json_as(json)
+      end
+    end
+
+    context 'お店・施設が作成上限に達した場合' do
+      it '422とエラーメッセージが返ってくること' do
+        3.times { create(:place, user: user) }
+
+        post '/places', params, login_headers(user)
+        expect(response.status).to eq 422
+        json = {
+          error_messages: ['お店・施設の作成上限は3件です']
         }
         expect(response.body).to be_json_as(json)
       end

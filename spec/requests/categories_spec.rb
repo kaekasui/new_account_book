@@ -76,7 +76,7 @@ describe 'POST /categories', autodoc: true do
       expect(response.status).to eq 422
 
       json = {
-        error_messages: ['カテゴリの作成上限は3個までです']
+        error_messages: ['カテゴリの作成上限は3件です']
       }
       expect(response.body).to be_json_as(json)
     end
