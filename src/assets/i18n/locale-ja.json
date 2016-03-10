@@ -81,7 +81,8 @@
       "NEW_PASSWORD_CONFIRMATION": "新しいパスワード（確認）を入力してください",
       "TITLE": "タイトルを入力してください",
       "CONTENT": "内容を入力してください",
-      "PLACE_NAME": "店名、施設名を入力してください"
+      "PLACE_NAME": "店名、施設名を入力してください",
+      "CATEGORY_NAME": "カテゴリ名を入力してください"
     },
     "MAXLENGTH": {
       "EMAIL": "メールアドレスは100文字以内で入力してください",
