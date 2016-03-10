@@ -7,6 +7,9 @@ class Category < ActiveRecord::Base
   validates :name,
             presence: true,
             length: { maximum: Settings.category.name.maximum_length }
+  validates :breakdowns,
+            length: { maximum: Settings.category.breakdowns.maximum_length,
+                      too_long: I18n.t('errors.messages.too_long') }
 
   before_create :set_position
   before_destroy :confirm_contents

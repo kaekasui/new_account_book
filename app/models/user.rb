@@ -6,6 +6,13 @@ class User < ActiveRecord::Base
 
   enum status: { registered: 2, inactive: 1 }
 
+  validates :categories,
+            length: { maximum: Settings.user.categories.maximum_length,
+                      too_long: I18n.t('errors.messages.too_long') }
+  validates :places,
+            length: { maximum: Settings.user.places.maximum_length,
+                      too_long: I18n.t('errors.messages.too_long') }
+
   def active?
     registered? # TODO: 有効期限を確認する
   end

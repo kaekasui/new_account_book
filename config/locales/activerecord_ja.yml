@@ -5,8 +5,11 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認）
+        categories: カテゴリ
+        places: お店・施設
       category:
         name: カテゴリ名
+        breakdowns: 内訳
       place:
         name: お店・施設名
       feedback:

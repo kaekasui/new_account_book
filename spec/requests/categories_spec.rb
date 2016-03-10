@@ -45,6 +45,10 @@ describe 'GET /categories', autodoc: true do
 end
 
 describe 'POST /categories', autodoc: true do
+  let!(:name) { '名前' }
+  let!(:user) { create(:email_user, :registered) }
+  let!(:params) { { name: name, barance_of_payments: true } }
+
   context 'ログインしていない場合' do
     it '401が返ってくること' do
       post '/categories'
@@ -53,9 +57,6 @@ describe 'POST /categories', autodoc: true do
   end
 
   context 'メールアドレスのユーザーがログインしている場合' do
-    let!(:user) { create(:email_user, :registered) }
-    let!(:params) { { name: '名前', barance_of_payments: true } }
-
     it '201を返し、カテゴリが登録できること' do
       post '/categories', params, login_headers(user)
       expect(response.status).to eq 201
@@ -64,6 +65,34 @@ describe 'POST /categories', autodoc: true do
       category = Category.last
       expect(category.name).to eq '名前'
       expect(category.barance_of_payments).to be_truthy
+    end
+  end
+
+  context 'カテゴリが作成上限に達した場合' do
+    it '422とエラーメッセージが返ってくること' do
+      3.times { create(:category, user: user) }
+
+      post '/categories', params, login_headers(user)
+      expect(response.status).to eq 422
+
+      json = {
+        error_messages: ['カテゴリの作成上限は3件です']
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+
+  context 'カテゴリ名が空の場合' do
+    let(:name) { '' }
+
+    it '422とエラーメッセージが返ってくること' do
+      post '/categories', params, login_headers(user)
+      expect(response.status).to eq 422
+
+      json = {
+        error_messages: ['カテゴリは不正な値です']
+      }
+      expect(response.body).to be_json_as(json)
     end
   end
 end
