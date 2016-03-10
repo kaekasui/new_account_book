@@ -80,7 +80,8 @@
       "NEW_PASSWORD_CONFIRMATION": "Enter your new Password confirmation",
       "TITLE": "Enter your Title",
       "CONTENT": "Enter your Comment",
-      "PLACE_NAME": "Input new Shop Name"
+      "PLACE_NAME": "Input new Shop Name",
+      "CATEGORY_NAME": "Input a Category Name"
     },
     "MAXLENGTH": {
       "EMAIL": "Enter your E-mail has a length of at most 100",

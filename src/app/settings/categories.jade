@@ -31,9 +31,15 @@
               button.btn.btn-default(ng-class="{'btn-info': category.edit_payments}" type='button' ng-click='category.edit_payments = true')
                 span.glyphicon.glyphicon-plus-sign#left-icon
                 span(translate='BUTTONS.INCOME')
-          input.category-form(ng-value='category.name' ng-init='category.edit_name = category.name' ng-model='category.edit_name' auto-focus=true type='text')
-          .btn.btn-success(translate='BUTTONS.EDIT' ng-click='categories.updateCategory($index)')
-          .btn.btn-default(translate='BUTTONS.CANCEL' ng-click='category.edit_field = false')
+          form.form-inline(novalidate=true name='editCategoryForm' ng-submit='categories.updateCategory($index)')
+            input.category-form(name='name' ng-value='category.name' ng-init='category.edit_name = category.name' ng-model='category.edit_name' auto-focus=true type='text' required=true)
+            button.btn.btn-success(translate='BUTTONS.EDIT' ng-disabled='editCategoryForm.$dirty && editCategoryForm.$invalid')
+            a.btn.btn-default(translate='BUTTONS.CANCEL' ng-click='category.edit_field = false')
+            span.errors(ng-messages='editCategoryForm.name.$error' ng-show='editCategoryForm.$dirty')
+              div(ng-message='required')
+                span.glyphicon.glyphicon-alert#left-icon
+                span(translate='ERRORS.REQUIRED.CATEGORY_NAME')
+
       .col-sm-3(ng-show='categories.categories')
         .panel.panel-body.col-sm-11.category-plus#category(ng-click='categories.addNewPanel()' ng-class="{'panel-background': 'adding'}" ng-mouseenter="adding = true" ng-mouseleave="adding = false" ng-show="!categories.add_field")
           span.glyphicon.glyphicon-plus
@@ -46,9 +52,14 @@
               button.btn.btn-default(ng-class="{'btn-info': categories.new_payments}" type='button' ng-click='categories.new_payments = true')
                 span.glyphicon.glyphicon-plus-sign#left-icon
                 span(translate='BUTTONS.INCOME')
-          input.category-form(ng-model='categories.new_category_name' auto-focus=true type='text')
-          .btn.btn-success(translate='BUTTONS.EDIT' ng-click='categories.createCategory()')
-          .btn.btn-default(translate='BUTTONS.CANCEL' ng-click='categories.add_field = false')
+          form.form-inline(novalidate=true name='newCategoryForm' ng-submit='categories.createCategory()')
+            input.category-form(name='name' ng-model='categories.new_category_name' auto-focus=true type='text' required=true)
+            button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='newCategoryForm.$dirty && newCategoryForm.$invalid')
+            a.btn.btn-default(translate='BUTTONS.CANCEL' ng-click='categories.add_field = false')
+            span.errors(ng-messages='newCategoryForm.name.$error' ng-show='newCategoryForm.$dirty || newCategoryForm.$submitted')
+              div(ng-message='required')
+                span.glyphicon.glyphicon-alert#left-icon
+                span(translate='ERRORS.REQUIRED.CATEGORY_NAME')
 
 script#confirm-destroy(type='text/ng-template')
   .modal-body

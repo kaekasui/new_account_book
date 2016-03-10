@@ -11,9 +11,9 @@
     .panel.panel-body.place-card(ng-if='places.add_field')
       form.form-inline(novalidate=true name='newPlaceForm' ng-submit='places.submit()')
         input.form-control(name='name' ng-model='places.new_name' auto-focus=true type='text' required=true)
-        button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='places.sending')
+        button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='places.sending || (newPlaceForm.$invalid && (newPlaceForm.$dirty || newPlaceForm.$submitted))')
         a.btn.btn-default(translate='BUTTONS.CANCEL' ng-click='places.add_field = false')
-        span.errors(ng-messages='newPlaceForm.name.$error' ng-show='newPlaceForm.$submitted')
+        span.errors(ng-messages='newPlaceForm.name.$error' ng-show='newPlaceForm.$dirty || newPlaceForm.$submitted')
           div(ng-message='required')
             span.glyphicon.glyphicon-alert#left-icon
             span(translate='ERRORS.REQUIRED.PLACE_NAME')
@@ -28,9 +28,9 @@
           //- 編集パネル
           form.form-inline(novalidate=true name='editPlaceForm' ng-if='place.edit_field')
             input.form-control(name='name' ng-value='place.name' ng-init='place.edit_name = place.name' ng-model='place.edit_name' auto-focus=true type='text' required=true)
-            button.btn.btn-success(translate='BUTTONS.EDIT' ng-click='places.updatePlace($index)')
+            button.btn.btn-success(translate='BUTTONS.EDIT' ng-click='places.updatePlace($index)' ng-disabled='editPlaceForm.$invalid && (editPlaceForm.$submitted || editPlaceForm.$dirty)')
             a.btn.btn-default(translate='BUTTONS.CANCEL' ng-click='place.edit_field = false')
-            span.errors(ng-messages='editPlaceForm.name.$error' ng-show='editPlaceForm.$submitted')
+            span.errors(ng-messages='editPlaceForm.name.$error' ng-show='editPlaceForm.$submitted || editPlaceForm.$dirty')
               div(ng-message='required')
                 span.glyphicon.glyphicon-alert#left-icon
                 span(translate='ERRORS.REQUIRED.PLACE_NAME')
