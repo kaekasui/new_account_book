@@ -39,6 +39,9 @@ defaults: &defaults
       maximum_length: 100
     content:
       maximum_length: 10000
+  message:
+    content:
+      maximum_length: 10000
   users:
     per: 20
   feedbacks:

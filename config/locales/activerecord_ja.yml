@@ -17,6 +17,9 @@ ja:
         content: 内容
       notice:
         title: お知らせのタイトル
+      message:
+        content: メッセージの内容
+        user: ユーザー
       breakdown:
         name: 内訳
       categorize_place:
