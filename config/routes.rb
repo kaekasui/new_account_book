@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: %i(index show) do
-      resources :messages, only: %i(create)
+      resources :messages, only: %i(create), module: :user
+      resources :feedbacks, only: %i(index), module: :user
     end
     resources :feedbacks, only: %i(index) do
       patch :check
