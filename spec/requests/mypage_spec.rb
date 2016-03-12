@@ -102,7 +102,7 @@ describe 'GET /messages', autodoc: true do
     end
   end
 
-  context 'ユーザーにお知らせがある場合' do
+  context 'ユーザーにメッセージがある場合' do
     let!(:user) { create(:email_user, :registered) }
     let!(:user2) { create(:email_user, :registered) }
     let!(:message1) { create(:message, user: user) }
