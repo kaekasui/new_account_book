@@ -17,15 +17,8 @@ admin-menu-directive
         th
       tr(ng-repeat='message in admin_messages.messages')
         td {{ message.user_name }}
-        td
         td {{ message.feedback_content | truncate:true:10 }}
         td
           a(href='' ng-click='admin_messages.showMessage($index)') {{ message.content | truncate:true:20 }}
         td
           a(href='' ng-click='admin_messages.destroyMessage($index)' translate='LINKS.DELETE')
-
-script#confirm-destroy(type='text/ng-template')
-  .modal-body
-    p(translate='MESSAGES.DELETE')
-    button.btn.btn-success(type='submit' translate='BUTTONS.YES' ng-click='confirm_destroy.ok()')
-    a.btn.btn-default(ng-click='confirm_destroy.cancel()' translate='BUTTONS.CLOSE')
