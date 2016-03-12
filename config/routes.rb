@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       patch :check
     end
     resources :notices, only: %i(index create update destroy)
+    resources :messages, only: %i(index)
   end
 
   namespace :email_user do

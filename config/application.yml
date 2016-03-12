@@ -48,6 +48,8 @@ defaults: &defaults
     per: 20
   notices:
     per: 20
+  messages:
+    per: 20
 
 development:
   <<: *defaults
