@@ -57,6 +57,22 @@ AdminFactory = ($location, $q, localStorageService, $http, $translate, IndexServ
             return
       return defer.promise
 
+    getUserFeedbacks: (user_id) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      if typeof(token) != "undefined" && token != null
+        login_headers = {
+          headers: { Authorization: 'Token token=' + token }
+        }
+        $http.get host + 'admin/users/' + user_id + '/feedbacks', login_headers
+          .success((data) ->
+            defer.resolve data
+            return
+          ).error (data) ->
+            defer.reject data
+            return
+      return defer.promise
+
     patchFeedbackCheck: (feedback_id) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')

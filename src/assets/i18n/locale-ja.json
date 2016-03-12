@@ -12,6 +12,7 @@
     "LOGIN": "ログイン",
     "LOGOUT": "ログアウト",
     "MESSAGE_LIST": "メッセージ一覧",
+    "MESSAGE": "メッセージ",
     "MYPAGE": "マイページ",
     "MYPAGE_TOP": "マイページトップ",
     "NOTICE_LIST": "お知らせ一覧",
@@ -47,7 +48,9 @@
   },
   "LABELS": {
     "BREAKDOWNS": "内訳",
+    "FEEDBACK": "フィードバック",
     "FEEDBACK_EMAIL": "連絡先メールアドレス",
+    "FINISHED": "対応済",
     "EMAIL": "メールアドレス",
     "INCOME": "収入",
     "OUTGO": "支出",
