@@ -154,3 +154,25 @@ describe 'PATCH /admin/messages/:id', autodoc: true do
     end
   end
 end
+
+describe 'DELETE /admin/messages/:id', autodoc: true do
+  let!(:admin_user) { create(:email_user, :admin_user, :registered) }
+  let!(:user) { create(:email_user, :registered) }
+  let!(:message) { create(:message, user: user) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      delete "/admin/messages/#{message.id}"
+
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'ログインしている場合' do
+    it '200が返ってくること' do
+      delete "/admin/messages/#{message.id}", '', login_headers(admin_user)
+      expect(response.status).to eq 200
+      expect(Message.count).to eq 0
+    end
+  end
+end

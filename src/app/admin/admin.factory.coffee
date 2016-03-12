@@ -176,6 +176,22 @@ AdminFactory = ($location, $q, localStorageService, $http, $translate, IndexServ
             return
       return defer.promise
 
+    deleteMessage: (message_id) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      if typeof(token) != "undefined" && token != null
+        login_headers = {
+          headers: { Authorization: 'Token token=' + token }
+        }
+        $http.delete host + 'admin/messages/' + message_id, login_headers
+          .success((data) ->
+            defer.resolve data
+            return
+          ).error (data) ->
+            defer.reject data
+            return
+      return defer.promise
+
     patchNotice: (notice_id, params) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')

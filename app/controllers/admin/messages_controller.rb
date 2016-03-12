@@ -15,4 +15,10 @@ class Admin::MessagesController < ApplicationController
       render_error message
     end
   end
+
+  def destroy
+    message = Message.find(params[:id])
+    message.destroy
+    head message.destroyed? ? :ok : :forbidden
+  end
 end
