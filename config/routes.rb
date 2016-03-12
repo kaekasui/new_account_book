@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#callback'
 
   namespace :admin do
-    resources :users, only: %i(index show)
+    resources :users, only: %i(index show) do
+      resources :messages, only: %i(create), module: :user
+      resources :feedbacks, only: %i(index), module: :user
+    end
     resources :feedbacks, only: %i(index) do
       patch :check
     end

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :feedbacks
   has_many :categories
   has_many :places
+  has_many :messages
 
   enum status: { registered: 2, inactive: 1 }
 
