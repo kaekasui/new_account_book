@@ -23,7 +23,7 @@ IndexFactory = ($location, $q, localStorageService, $http, toastr, $translate, I
       defer = $q.defer()
       $http.post host + 'feedback', params
         .success((data) ->
-          toastr.success $translate.instant('MESSAGES.SEND_MESSAGE')
+          toastr.success $translate.instant('MESSAGES.SEND_MESSAGE_TO_ADMIN')
           defer.resolve data
           return
         ).error (data) ->

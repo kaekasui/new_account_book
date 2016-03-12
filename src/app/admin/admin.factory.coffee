@@ -1,4 +1,4 @@
-AdminFactory = ($location, $q, localStorageService, $http, $translate, IndexService) ->
+AdminFactory = ($location, $q, localStorageService, $http, $translate, IndexService, toastr) ->
   'ngInject'
   host = if $location.host() == 'localhost' then 'http://localhost:3001/' else ''
 
@@ -118,6 +118,23 @@ AdminFactory = ($location, $q, localStorageService, $http, $translate, IndexServ
         $http.post host + 'admin/notices', params, login_headers
           .success((data) ->
             defer.resolve data
+            return
+          ).error (data) ->
+            defer.reject data
+            return
+      return defer.promise
+
+    postMessage: (user_id, params) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      if typeof(token) != "undefined" && token != null
+        login_headers = {
+          headers: { Authorization: 'Token token=' + token }
+        }
+        $http.post host + 'admin/users/' + user_id + '/messages', params, login_headers
+          .success((data) ->
+            defer.resolve data
+            toastr.success $translate.instant('MESSAGES.SEND_MESSAGE')
             return
           ).error (data) ->
             defer.reject data

@@ -25,7 +25,8 @@ describe 'GET /admin/users/:user_id/feedbacks', autodoc: true do
             content: feedback.content,
             checked: feedback.checked
           }
-        ]
+        ],
+        user_name: user._name
       }
       expect(response.body).to be_json_as(json)
     end

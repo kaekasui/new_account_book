@@ -5,3 +5,5 @@ json.feedbacks do
     json.checked feedback.checked
   end
 end
+
+json.user_name @user._name
