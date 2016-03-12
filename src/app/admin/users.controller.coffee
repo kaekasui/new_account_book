@@ -25,7 +25,7 @@ UsersController = (AdminFactory, $modal) ->
 
   vm.message = (user_id) ->
     modalInstance = $modal.open(
-      templateUrl: 'app/admin/modals/message.html'
+      templateUrl: 'app/admin/modals/new_message.html'
       controller: 'NewMessageController'
       controllerAs: 'message'
       resolve: { user_id: user_id }
