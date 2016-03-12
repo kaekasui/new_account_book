@@ -20,8 +20,8 @@ form(novalidate=true name='messageForm' ng-submit='message.submit()')
       label(for='content')
         span(translate='LABELS.MESSAGE')
         span *
-      textarea.form-control(rows='10' name='content' ng-model='admin_message.content' ng-maxlength='10000' required=true)
-      span.errors(ng-messages='messageForm.content.$error' ng-show='messageForm.$submitted && messageForm.content.$dirty')
+      textarea.form-control(rows='10' name='content' ng-model='message.content' ng-maxlength='10000' required=true)
+      span.errors(ng-messages='messageForm.content.$error' ng-show='messageForm.$submitted || messageForm.content.$dirty')
         div(ng-message='required')
           span.glyphicon.glyphicon-alert#left-icon
           span(translate='ERRORS.REQUIRED.CONTENT')

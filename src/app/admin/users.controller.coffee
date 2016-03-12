@@ -51,7 +51,16 @@ NewMessageController = (IndexService, AdminFactory, $modalInstance, user_id) ->
   ).catch (res) ->
     IndexService.modal_loading = false
 
-    return
+  vm.submit = () ->
+    if vm.feedback_index_id
+      vm.feedback_id = vm.feedbacks[vm.feedback_index_id].id
+    params =
+      feedback_id: vm.feedback_id
+      content: vm.content
+    AdminFactory.postMessage(user_id, params).then (res) ->
+      $modalInstance.close()
+
+
   return
 
 angular.module 'newAccountBook'
