@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 describe 'GET /admin/users/:user_id/feedbacks', autodoc: true do
-  include ActionView::Helpers::TextHelper
-
   let!(:admin_user) { create(:email_user, :admin_user, :registered) }
   let!(:user) { create(:email_user, :registered) }
   let!(:feedback) { create(:feedback, user: user) }
@@ -24,7 +22,8 @@ describe 'GET /admin/users/:user_id/feedbacks', autodoc: true do
         feedbacks: [
           {
             id: feedback.id,
-            content: simple_format(feedback.content)
+            content: feedback.content,
+            checked: feedback.checked
           }
         ]
       }
