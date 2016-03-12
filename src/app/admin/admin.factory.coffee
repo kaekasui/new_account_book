@@ -1,4 +1,4 @@
-AdminFactory = ($location, $q, localStorageService, $http, $translate, IndexService) ->
+AdminFactory = ($location, $q, localStorageService, $http, $translate, IndexService, toastr) ->
   'ngInject'
   host = if $location.host() == 'localhost' then 'http://localhost:3001/' else ''
 
@@ -134,6 +134,7 @@ AdminFactory = ($location, $q, localStorageService, $http, $translate, IndexServ
         $http.post host + 'admin/users/' + user_id + '/messages', params, login_headers
           .success((data) ->
             defer.resolve data
+            toastr.success $translate.instant('MESSAGES.SEND_MESSAGE')
             return
           ).error (data) ->
             defer.reject data

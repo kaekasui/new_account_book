@@ -60,7 +60,6 @@ NewMessageController = (IndexService, AdminFactory, $modalInstance, user_id) ->
     AdminFactory.postMessage(user_id, params).then (res) ->
       $modalInstance.close()
 
-
   return
 
 angular.module 'newAccountBook'
