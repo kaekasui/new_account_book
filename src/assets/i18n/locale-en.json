@@ -25,7 +25,8 @@
     "USER": "User",
     "USERS": "Users",
     "NOTICE": "Notice",
-    "NOTICES": "Notices"
+    "NOTICES": "Notices",
+    "MESSAGES": "Messages"
   },
   "BUTTONS": {
     "ADD": "Add",

@@ -26,7 +26,8 @@
     "USER": "ユーザー",
     "USERS": "ユーザの管理",
     "NOTICE": "お知らせ",
-    "NOTICES": "お知らせの管理"
+    "NOTICES": "お知らせの管理",
+    "MESSAGES": "メッセージの管理"
   },
   "BUTTONS": {
     "ADD": "追加する",

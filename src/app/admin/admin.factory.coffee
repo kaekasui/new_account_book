@@ -124,6 +124,25 @@ AdminFactory = ($location, $q, localStorageService, $http, $translate, IndexServ
             return
       return defer.promise
 
+    getMessages: (offset) ->
+      IndexService.loading = true
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      if typeof(token) != "undefined" && token != null
+        login_headers = {
+          headers: { Authorization: 'Token token=' + token }
+        }
+        $http.get host + 'admin/messages?offset=' + offset, login_headers
+          .success((data) ->
+            defer.resolve data
+            IndexService.loading = false
+            return
+          ).error (data) ->
+            defer.reject data
+            IndexService.loading = false
+            return
+      return defer.promise
+
     postMessage: (user_id, params) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')

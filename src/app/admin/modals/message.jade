@@ -1,30 +1,13 @@
-form(novalidate=true name='messageForm' ng-submit='message.submit()')
-  .modal-header
-    button.btn.btn-success(type='submit' ng-disabled='messageForm.$submitted && messageForm.$invalid' translate='BUTTONS.SEND')
-    a.btn.btn-default(ng-click='message.cancel()' translate='BUTTONS.CLOSE')
-  .modal-body
-    loading-directive(target='modal')
-    pre(ng-show='message.feedbacks[message.feedback_index_id]')
-      | {{ message.feedbacks[message.feedback_index_id].content }}
-    .form-group.form-inline
-      label(for='name' translate='COLUMNS.USER')
-      p.form-control-static {{ message.user_name }}
-    .form-group.form-inline(ng-hide='message.feedbacks.length == 0')
-      label(for='feedback.id' translate='LABELS.FEEDBACK')
-      select.form-control(ng-model='message.feedback_index_id')
-        option(ng-value='')
-        option(ng-value='$index' name='feedback.id' ng-repeat='feedback in message.feedbacks')
-          | {{ feedback.content | truncate:true:10 }}
-      label.label.label-info(ng-show='message.feedbacks[message.feedback_index_id].checked' translate='LABELS.FINISHED')
-    .form-group
-      label(for='content')
-        span(translate='LABELS.MESSAGE')
-        span *
-      textarea.form-control(rows='10' name='content' ng-model='message.content' ng-maxlength='10000' required=true)
-      span.errors(ng-messages='messageForm.content.$error' ng-show='messageForm.$submitted || messageForm.content.$dirty')
-        div(ng-message='required')
-          span.glyphicon.glyphicon-alert#left-icon
-          span(translate='ERRORS.REQUIRED.CONTENT')
-        div(ng-message='maxlength')
-          span.glyphicon.glyphicon-alert#left-icon
-          span(translate='ERRORS.MAXLENGTH.CONTENT')
+.modal-body
+  loading-directive(target='modal')
+  .form-group.form-inline
+    label(for='name' translate='COLUMNS.USER')
+    p.form-control-static {{ message.message.user_name }}
+  .form-group.form-inline(ng-show='message.message.feedback_content')
+    label(for='feedback.id' translate='LABELS.FEEDBACK')
+    pre
+      | {{ message.message.feedback_content }}
+  .form-group
+    label(for='content')
+      span(translate='LABELS.MESSAGE')
+    div(marked='message.message.content')

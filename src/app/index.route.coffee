@@ -77,5 +77,10 @@ angular.module 'newAccountBook'
         templateUrl: 'app/admin/notices.html'
         controllerAs: 'admin_notices'
         controller: 'NoticesController'
+      .state 'admin_messages',
+        url: '/admin/messages'
+        templateUrl: 'app/admin/messages.html'
+        controllerAs: 'admin_messages'
+        controller: 'MessagesController'
 
     $urlRouterProvider.otherwise '/'

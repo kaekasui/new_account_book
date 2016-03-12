@@ -1,0 +1,24 @@
+admin-menu-directive
+
+.panel.panel-default
+  .panel-heading
+    span.glyphicon.glyphicon-leaf(translate='TITLES.MESSAGES')
+  .panel-body#with-background
+    loading-directive
+    nav
+      ul.pagination
+        li(ng-click='admin_messages.clickPaginate(number)' ng-repeat='number in admin_messages.offset_numbers' ng-class='{active: number == admin_messages.offset}')
+          a(href='') {{$index + 1}}
+    table.table(ng-show='admin_messages.messages')
+      tr
+        th(translate='COLUMNS.USER')
+        th(translate='LABELS.FEEDBACK')
+        th(translate='COLUMNS.CONTENT')
+        th
+      tr(ng-repeat='message in admin_messages.messages')
+        td {{ message.user_name }}
+        td {{ message.feedback_content | truncate:true:10 }}
+        td
+          a(href='' ng-click='admin_messages.showMessage($index)') {{ message.content | truncate:true:20 }}
+        td
+          a(href='' ng-click='admin_messages.destroyMessage($index)' translate='LINKS.DELETE')
