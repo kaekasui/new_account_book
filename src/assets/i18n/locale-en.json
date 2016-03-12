@@ -11,6 +11,7 @@
     "LOGIN": "Log in",
     "LOGOUT": "Logout",
     "MESSAGE_LIST": "Message List",
+    "MESSAGE": "Message",
     "MYPAGE": "Mypage",
     "MYPAGE_TOP": "Mypage TOP",
     "NOTICE_LIST": "Notice List",
@@ -46,7 +47,9 @@
   },
   "LABELS": {
     "BREAKDOWNS": "Breakdowns",
+    "FEEDBACK": "Feedback",
     "FEEDBACK_EMAIL": "your Email address",
+    "FINISHED": "Finished",
     "EMAIL": "Email address",
     "INCOME": "Income",
     "OUTGO": "Outgo",
