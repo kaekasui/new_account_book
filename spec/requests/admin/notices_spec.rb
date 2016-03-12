@@ -23,8 +23,8 @@ describe 'GET /admin/notices?offset=offset', autodoc: true do
   end
 
   context '管理ユーザーとしてログインしている場合' do
-    context '1ページ以内のフィードバック数の場合' do
-      it '200が返り、フィードバック一覧が返ってくること' do
+    context '1ページ以内のお知らせ数の場合' do
+      it '200が返り、お知らせ一覧が返ってくること' do
         get '/admin/notices/', '', login_headers(admin_user)
 
         expect(response.status).to eq 200
@@ -49,8 +49,8 @@ describe 'GET /admin/notices?offset=offset', autodoc: true do
       end
     end
 
-    context '2ページ以上のフィードバック数の場合' do
-      it '200が返り、フィードバック一覧が返ってくること' do
+    context '2ページ以上のお知らせ数の場合' do
+      it '200が返り、お知らせ一覧が返ってくること' do
         get '/admin/notices/', { offset: 1 }, login_headers(admin_user)
 
         expect(response.status).to eq 200
