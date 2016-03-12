@@ -33,10 +33,14 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
           messages: [
             {
               id: message2.id,
+              user_name: message2.user._name,
+              feedback_content: message2.feedback.try(:content),
               content: message2.content
             },
             {
               id: message1.id,
+              user_name: message1.user._name,
+              feedback_content: message1.feedback.try(:content),
               content: message1.content
             }
           ],
@@ -55,6 +59,8 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
           messages: [
             {
               id: message1.id,
+              user_name: message1.user._name,
+              feedback_content: message1.feedback.try(:content),
               content: message1.content
             }
           ],
