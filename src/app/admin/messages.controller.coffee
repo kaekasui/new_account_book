@@ -44,6 +44,7 @@ MessagesController = (AdminFactory, $modal, $translate, toastr) ->
       controller: 'AdminShowMessageController'
       controllerAs: 'message'
       resolve: { message: message }
+      backdrop: 'static'
     )
     modalInstance.result.then () ->
       AdminFactory.getMessages(vm.offset).then (res) ->
@@ -60,6 +61,18 @@ AdminShowMessageController = ($modalInstance, AdminFactory, message, IndexServic
   'ngInject'
   vm = this
   vm.message = message
+  vm.edit_field = false
+  vm.content = message.content
+
+  vm.cancel = () ->
+    $modalInstance.dismiss()
+
+  vm.submit = () ->
+    params =
+      content: vm.content
+    AdminFactory.patchMessage(message.id, params).then ->
+      vm.message.content = vm.content
+      vm.edit_field = false
 
   return
 

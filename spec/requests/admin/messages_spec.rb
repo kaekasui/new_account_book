@@ -116,3 +116,63 @@ describe 'POST /admin/users/:user_id/messages', autodoc: true do
     end
   end
 end
+
+describe 'PATCH /admin/messages/:id', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:admin_user) { create(:email_user, :admin_user, :registered) }
+  let!(:message) { create(:message, user: user) }
+  let!(:content) { 'メッセージ内容' }
+  let!(:params) { { content: content } }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      patch "/admin/messages/#{message.id}", ''
+
+      expect(response.status).to eq 401
+    end
+  end
+
+  context '内容が変更された場合' do
+    it '200が返ってくること' do
+      patch "/admin/messages/#{message.id}", params, login_headers(admin_user)
+      expect(response.status).to eq 200
+      expect(Message.last.content).to eq 'メッセージ内容'
+    end
+  end
+
+  context 'メッセージの内容の値が空の場合' do
+    let(:content) { '' }
+
+    it '422とエラーメッセージが返ってくること' do
+      patch "/admin/messages/#{message.id}", params, login_headers(admin_user)
+
+      expect(response.status).to eq 422
+      json = {
+        error_messages: ['メッセージの内容を入力してください']
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+end
+
+describe 'DELETE /admin/messages/:id', autodoc: true do
+  let!(:admin_user) { create(:email_user, :admin_user, :registered) }
+  let!(:user) { create(:email_user, :registered) }
+  let!(:message) { create(:message, user: user) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      delete "/admin/messages/#{message.id}"
+
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'ログインしている場合' do
+    it '200が返ってくること' do
+      delete "/admin/messages/#{message.id}", '', login_headers(admin_user)
+      expect(response.status).to eq 200
+      expect(Message.count).to eq 0
+    end
+  end
+end
