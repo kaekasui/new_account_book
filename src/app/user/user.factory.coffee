@@ -69,7 +69,27 @@ UserFactory = ($location, $q, $http, localStorageService, toastr, $translate, In
             IndexService.loading = false
             return
       return defer.promise
+
+    getMessage: (message_id) ->
+      IndexService.loading = true
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      if typeof(token) != "undefined" && token != null
+        login_headers = {
+          headers: { Authorization: 'Token token=' + token }
+        }
+        $http.get host + 'messages/' + message_id, login_headers
+          .success((data) ->
+            defer.resolve data
+            IndexService.loading = false
+            return
+          ).error (data) ->
+            defer.reject data
+            IndexService.loading = false
+            return
+      return defer.promise
   }
+
 
 angular.module 'newAccountBook'
   .factory 'UserFactory', UserFactory

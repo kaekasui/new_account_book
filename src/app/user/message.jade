@@ -1,0 +1,11 @@
+.col-md-3
+  user-menu-directive
+
+.col-md-9
+  .panel.panel-default
+    .panel-heading
+      span.glyphicon.glyphicon-envelope#left-icon
+      span.pull-right {{ message.message.created_at }}
+    .panel-body
+      loading-directive
+      div(marked='message.message.content')
