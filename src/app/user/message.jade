@@ -5,7 +5,7 @@
   .panel.panel-default
     .panel-heading
       span.glyphicon.glyphicon-envelope#left-icon
-      span.pull-right {{ message.message.created_at }}
+      span.pull-right {{ message.message.created_at | date:'yyyy-MM-dd HH:mm:ss' }}
     .panel-body
       loading-directive
       div(marked='message.message.content')

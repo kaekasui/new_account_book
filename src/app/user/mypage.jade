@@ -25,4 +25,5 @@
         ul.list
           li(ng-show='mypage.messages')
           li(ng-repeat='message in mypage.messages | limitTo:5')
-            a(ui-sref='message({id: message.id})') {{ message.content }}
+            span#post_at {{ message.created_at | date:'yyyy-MM-dd' }}
+            a(ui-sref='message({id: message.id})') {{ message.content | truncate:true:20 }}
