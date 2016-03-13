@@ -3,13 +3,20 @@ MypageController = (UserFactory, $modal, IndexService) ->
   vm = this
   vm.offset = 0
 
-  IndexService.loading = true
+  IndexService.notice_loading = true
   UserFactory.getNotices(vm.offset).then((res) ->
     vm.notices = res.notices
-    IndexService.loading = false
+    IndexService.notice_loading = false
   ).catch (res) ->
-    IndexService.loading = false
+    IndexService.notice_loading = false
 
+  IndexService.message_loading = true
+  UserFactory.getMessages(vm.offset).then((res) ->
+    vm.messages = res.messages
+    IndexService.message_loading = false
+  ).catch (res) ->
+    IndexService.message_loading = false
+ 
   return
 
 angular.module 'newAccountBook'

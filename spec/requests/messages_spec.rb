@@ -21,7 +21,8 @@ describe 'GET /messages/:id', autodoc: true do
 
       json = {
         id: message.id,
-        content: message.content
+        content: message.content,
+        created_at: I18n.l(message.created_at)
       }
       expect(response.body).to be_json_as(json)
     end

@@ -117,11 +117,13 @@ describe 'GET /messages', autodoc: true do
         messages: [
           {
             id: message3.id,
-            content: message3.content
+            content: message3.content,
+            created_at: I18n.l(message3.created_at)
           },
           {
             id: message1.id,
-            content: message1.content
+            content: message1.content,
+            created_at: I18n.l(message1.created_at)
           }
         ]
       }
