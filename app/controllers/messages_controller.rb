@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :authenticate
 
   def index
-    @messages = current_user.messages.limit(5).order(created_at: :desc)
+    @messages = Message::Fetcher.all(params: params, user: current_user)
   end
 
   def show
