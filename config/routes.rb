@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :breakdowns, only: %i(index create update destroy), module: :category
     resources :places, only: %i(index), module: :category
   end
+  resources :messages, only: %i(index show)
   resources :notices, only: %i(index show)
   resources :places, only: %i(index create update destroy) do
     resources :categories, only: %i(index update destroy), module: :place

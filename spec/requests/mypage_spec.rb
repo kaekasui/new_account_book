@@ -93,3 +93,39 @@ describe 'GET /notices', autodoc: true do
     end
   end
 end
+
+describe 'GET /messages', autodoc: true do
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      get '/user'
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'ユーザーにメッセージがある場合' do
+    let!(:user) { create(:email_user, :registered) }
+    let!(:user2) { create(:email_user, :registered) }
+    let!(:message1) { create(:message, user: user) }
+    let!(:message2) { create(:message, user: user2) }
+    let!(:message3) { create(:message, user: user) }
+
+    it '200とメッセージ情報を返すこと' do
+      get '/messages', '', login_headers(user)
+      expect(response.status).to eq 200
+
+      json = {
+        messages: [
+          {
+            id: message3.id,
+            content: message3.content
+          },
+          {
+            id: message1.id,
+            content: message1.content
+          }
+        ]
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+end
