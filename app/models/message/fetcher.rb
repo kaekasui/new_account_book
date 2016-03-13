@@ -10,8 +10,7 @@ class Message::Fetcher
 
   def all
     messages = (@user ? @user.messages : Message.all)
-    messages = messages.includes(:user, :feedback)
-                       .order(created_at: :desc)
+    messages = messages.order(created_at: :desc)
                        .limit(Settings.messages.per)
     messages.offset!(@params[:offset]) if @params[:offset].present?
     messages

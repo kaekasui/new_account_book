@@ -12,6 +12,16 @@ LoadingController = (IndexService, $scope) ->
   ), ->
     vm.modal_loading = IndexService.modal_loading
 
+  $scope.$watch ( ->
+    IndexService.message_loading
+  ), ->
+    vm.message_loading = IndexService.message_loading
+
+  $scope.$watch ( ->
+    IndexService.notice_loading
+  ), ->
+    vm.notice_loading = IndexService.notice_loading
+
   return
 
 loadingDirective = () ->
