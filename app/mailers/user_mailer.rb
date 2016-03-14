@@ -34,4 +34,11 @@ class UserMailer < ApplicationMailer
     @origin = origin
     mail to: email
   end
+
+  # 新しいメッセージが届いています
+  def confirm_message(email, origin)
+    @email = email
+    @origin = origin
+    mail to: email
+  end
 end
