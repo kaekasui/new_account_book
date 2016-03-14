@@ -5,5 +5,6 @@ FactoryGirl.define do
       feedback
     end
     sequence(:content) { |n| "メッセージ内容#{n}" }
+    read false
   end
 end
