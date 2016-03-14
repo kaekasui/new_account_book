@@ -6,4 +6,8 @@ class Message < ActiveRecord::Base
             presence: true,
             length: { maximum: Settings.message.content.maximum_length }
   validates :user, presence: true
+
+  def to_read
+    update(read: true)
+  end
 end

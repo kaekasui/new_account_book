@@ -105,7 +105,7 @@ describe 'GET /messages', autodoc: true do
   context 'ユーザーにメッセージがある場合' do
     let!(:user) { create(:email_user, :registered) }
     let!(:user2) { create(:email_user, :registered) }
-    let!(:message1) { create(:message, user: user) }
+    let!(:message1) { create(:message, user: user, read: true) }
     let!(:message2) { create(:message, user: user2) }
     let!(:message3) { create(:message, user: user) }
 
@@ -118,11 +118,13 @@ describe 'GET /messages', autodoc: true do
           {
             id: message3.id,
             content: message3.content,
+            read: false,
             created_at: I18n.l(message3.created_at)
           },
           {
             id: message1.id,
             content: message1.content,
+            read: true,
             created_at: I18n.l(message1.created_at)
           }
         ]

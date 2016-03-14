@@ -33,15 +33,19 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
           messages: [
             {
               id: message2.id,
+              read: false,
               user_name: message2.user._name,
               feedback_content: message2.feedback.try(:content),
-              content: message2.content
+              content: message2.content,
+              created_at: I18n.l(message2.created_at)
             },
             {
               id: message1.id,
+              read: false,
               user_name: message1.user._name,
               feedback_content: message1.feedback.try(:content),
-              content: message1.content
+              content: message1.content,
+              created_at: I18n.l(message1.created_at)
             }
           ],
           total_count: 2
@@ -59,9 +63,11 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
           messages: [
             {
               id: message1.id,
+              read: false,
               user_name: message1.user._name,
               feedback_content: message1.feedback.try(:content),
-              content: message1.content
+              content: message1.content,
+              created_at: I18n.l(message1.created_at)
             }
           ],
           total_count: 2

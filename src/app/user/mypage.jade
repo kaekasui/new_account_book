@@ -27,4 +27,4 @@
             span#post_at メッセージはありません
           li(ng-repeat='message in mypage.messages | limitTo:5')
             span#post_at {{ message.created_at | date:'yyyy-MM-dd' }}
-            a(ui-sref='message({id: message.id})') {{ message.content | truncate:true:20 }}
+            a(ui-sref='message({id: message.id})' ng-style="{'font-weight': message.read ? 'normal' : 'bold'}") {{ message.content | truncate:true:20 }}
