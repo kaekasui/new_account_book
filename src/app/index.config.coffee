@@ -1,5 +1,5 @@
 angular.module 'newAccountBook'
-  .config ($logProvider, toastrConfig, $translateProvider, markedProvider) ->
+  .config ($logProvider, toastrConfig, $translateProvider, markedProvider, $httpProvider) ->
     'ngInject'
     # Enable log
     $logProvider.debugEnabled true
@@ -21,3 +21,5 @@ angular.module 'newAccountBook'
     $translateProvider.useSanitizeValueStrategy('escaped')
 
     markedProvider.setOptions { gfm: true }
+
+    $httpProvider.interceptors.push('AuthInterceptor')
