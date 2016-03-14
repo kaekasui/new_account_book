@@ -16,6 +16,8 @@ describe 'GET /messages/:id', autodoc: true do
     let!(:message) { create(:message, user: user) }
 
     it '200とメッセージを返すこと' do
+      expect(message.read).to be_falsey
+
       get "/messages/#{message.id}", '', login_headers(user)
       expect(response.status).to eq 200
 
@@ -25,6 +27,8 @@ describe 'GET /messages/:id', autodoc: true do
         created_at: I18n.l(message.created_at)
       }
       expect(response.body).to be_json_as(json)
+      message.reload
+      expect(message.read).to be_truthy
     end
   end
 
