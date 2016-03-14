@@ -21,4 +21,15 @@ class Admin::MessagesController < ApplicationController
     message.destroy
     head message.destroyed? ? :ok : :forbidden
   end
+
+  def send_mail
+    message = Message.find(params[:message_id])
+    origin = "#{request.protocol}#{request.host_with_port}"
+    if message.user.try(:email).blank?
+      render :error404, status: 404, formats: :json
+    else
+      UserMailer.confirm_message(message.user.try(:email), origin).deliver_later
+      head 200
+    end
+  end
 end

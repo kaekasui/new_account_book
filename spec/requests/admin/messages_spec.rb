@@ -81,7 +81,7 @@ end
 describe 'POST /admin/users/:user_id/messages', autodoc: true do
   let!(:admin_user) { create(:email_user, :admin_user, :registered) }
   let!(:user) { create(:email_user, :registered) }
-  let!(:content) { 'お知らせ内容' }
+  let!(:content) { 'メッセージ内容' }
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
@@ -179,6 +179,60 @@ describe 'DELETE /admin/messages/:id', autodoc: true do
       delete "/admin/messages/#{message.id}", '', login_headers(admin_user)
       expect(response.status).to eq 200
       expect(Message.count).to eq 0
+    end
+  end
+end
+
+describe 'POST /admin/messages/:message_id/send_mail', autodoc: true do
+  let!(:admin_user) { create(:email_user, :admin_user, :registered) }
+  let!(:user) { create(:email_user, :registered) }
+  let!(:message) { create(:message, user: user) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      post "/admin/messages/#{message.id}/send_mail"
+
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'ログインしている場合' do
+    context 'Emailユーザーへのメッセージの場合' do
+      it '200が返ってくること' do
+        post "/admin/messages/#{message.id}/send_mail",
+             '', login_headers(admin_user)
+        expect(response.status).to eq 200
+
+        open_email(user.email)
+        expect(current_email.subject).to eq '【PIG BOOK β】新しいメッセージが届いています'
+      end
+    end
+
+    context 'メールアドレスを持つTwitterユーザーへのメッセージの場合' do
+      let!(:twitter_user) do
+        create(:twitter_user, :registered, email: 'email@example.com')
+      end
+      let!(:message2) { create(:message, user: twitter_user) }
+
+      it '200が返ってくること' do
+        post "/admin/messages/#{message2.id}/send_mail",
+             '', login_headers(admin_user)
+        expect(response.status).to eq 200
+
+        open_email(twitter_user.email)
+        expect(current_email.subject).to eq '【PIG BOOK β】新しいメッセージが届いています'
+      end
+      context 'メールアドレスを削除した場合' do
+        before do
+          twitter_user.update(email: '')
+        end
+
+        it '404が返ってくること' do
+          post "/admin/messages/#{message2.id}/send_mail",
+               '', login_headers(admin_user)
+          expect(response.status).to eq 404
+        end
+      end
     end
   end
 end
