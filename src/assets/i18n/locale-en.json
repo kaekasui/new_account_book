@@ -63,7 +63,8 @@
     "NICKNAME": "Nickname",
     "NO_SETTINGS": "(No Settings)",
     "EMAIL_LOGIN": "Login via Email",
-    "SELECTED": "Selected"
+    "SELECTED": "Selected",
+    "UNREAD": "Unread"
   },
   "TOOLTIPS": {
     "SET_CATEGORY": "Add a Category to the Shop",

@@ -13,12 +13,17 @@ admin-menu-directive
       tr
         th(translate='COLUMNS.USER')
         th(translate='LABELS.FEEDBACK')
+        th
         th(translate='COLUMNS.CONTENT')
+        th(translate='COLUMNS.CREATED_AT')
         th
       tr(ng-repeat='message in admin_messages.messages')
         td {{ message.user_name }}
         td {{ message.feedback_content | truncate:true:10 }}
         td
+          label.label.label-warning(translate='LABELS.UNREAD' ng-show='!message.read')
+        td
           a(href='' ng-click='admin_messages.showMessage($index)') {{ message.content | truncate:true:20 }}
+        td {{ message.created_at }}
         td
           a(href='' ng-click='admin_messages.destroyMessage($index)' translate='LINKS.DELETE')

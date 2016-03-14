@@ -64,7 +64,8 @@
     "NICKNAME": "ニックネーム",
     "NO_SETTINGS": "（未設定）",
     "EMAIL_LOGIN": "メールアドレスでログイン",
-    "SELECTED": "登録済"
+    "SELECTED": "登録済",
+    "UNREAD": "未読"
   },
   "TOOLTIPS": {
     "SET_CATEGORY": "カテゴリを設定",
