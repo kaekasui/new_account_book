@@ -6,16 +6,17 @@ IndexFactory = ($location, $q, localStorageService, $http, toastr, $translate, I
     getCurrentUser: () ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
-      login_headers = {
-        headers: { Authorization: 'Token token=' + token }
-      }
-      $http.get host + 'user', login_headers
-        .success((data) ->
-          defer.resolve data
-          return
-        ).error (data) ->
-          defer.reject data
-          return
+      if token != null
+        login_headers = {
+          headers: { Authorization: 'Token token=' + token }
+        }
+        $http.get host + 'user', login_headers
+          .success((data) ->
+            defer.resolve data
+            return
+          ).error (data) ->
+            defer.reject data
+            return
       return defer.promise
 
     postFeedback: (params) ->
