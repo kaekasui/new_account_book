@@ -26,7 +26,7 @@ MessagesController = (AdminFactory, $modal, $translate, toastr) ->
   vm.destroyMessage = (index) ->
     message = vm.messages[index]
     modalInstance = $modal.open(
-      templateUrl: 'app/admin/modals/destroy.html'
+      templateUrl: 'app/components/modals/destroy.html'
       controller: 'ConfirmDestroyMessageController'
       controllerAs: 'confirm_destroy'
       resolve: { message_id: message.id }

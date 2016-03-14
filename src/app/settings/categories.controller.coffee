@@ -18,27 +18,25 @@ CategoriesController = (SettingsFactory, $modal, IndexService) ->
     vm.categories[index].edit_payments = vm.categories[index].barance_of_payments
     vm.categories[index].edit_field = true
 
-  vm.createCategory = (e = undefined) ->
-    if e == undefined || e.which == 13
-      params =
-        name: vm.new_category_name
-        barance_of_payments: vm.new_payments
-      SettingsFactory.postCategory(params).then () ->
-        SettingsFactory.getCategories().then (res) ->
-          vm.categories = res.categories
-        vm.new_category_name = ''
-        vm.add_field = false
+  vm.createCategory = () ->
+    params =
+      name: vm.new_category_name
+      barance_of_payments: vm.new_payments
+    SettingsFactory.postCategory(params).then () ->
+      SettingsFactory.getCategories().then (res) ->
+        vm.categories = res.categories
+      vm.new_category_name = ''
+      vm.add_field = false
 
-  vm.updateCategory = (index, e = undefined) ->
+  vm.updateCategory = (index) ->
     category = vm.categories[index]
-    if e == undefined || (e.which == 13 && category.edit_name)
-      params =
-        name: category.edit_name
-        barance_of_payments: category.edit_payments
-      SettingsFactory.patchCategory(category.id, params).then () ->
-        category.name = category.edit_name
-        category.barance_of_payments = category.edit_payments
-        category.edit_field = false
+    params =
+      name: category.edit_name
+      barance_of_payments: category.edit_payments
+    SettingsFactory.patchCategory(category.id, params).then () ->
+      category.name = category.edit_name
+      category.barance_of_payments = category.edit_payments
+      category.edit_field = false
 
   vm.sortable =
     stop: (e, ui) ->
@@ -81,7 +79,7 @@ CategoriesController = (SettingsFactory, $modal, IndexService) ->
   vm.destroyCategory = (index) ->
     category = vm.categories[index]
     modalInstance = $modal.open(
-      templateUrl: 'confirm-destroy'
+      templateUrl: 'app/components/modals/destroy.html'
       controller: 'ConfirmDestroyController'
       controllerAs: 'confirm_destroy'
       resolve: { category_id: category.id }
@@ -122,7 +120,7 @@ BreakdownsController = (SettingsFactory, category_id, $modalInstance, $modal) ->
   vm.destroyBreakdown = (index) ->
     breakdown = vm.breakdowns[index]
     modalInstance = $modal.open(
-      templateUrl: 'confirm-destroy'
+      templateUrl: 'app/components/modals/destroy.html'
       controller: 'ConfirmDestroyBreakdownController'
       controllerAs: 'confirm_destroy'
       resolve:

@@ -92,7 +92,8 @@
       "EMAIL": "Enter your E-mail has a length of at most 100",
       "PASSWORD": "Enter your Password has a length of at most 72",
       "TITLE": "Enter your Title has a length of at most 100",
-      "CONTENT": "Enter your Comment has a length of at most 10000"
+      "CONTENT": "Enter your Comment has a length of at most 10000",
+      "CATEGORY_NAME": "Enter your Category Name has a length of at most 100"
     },
     "MINLENGTH": {
       "PASSWORD": "Enter your Password has a length of at least 4"

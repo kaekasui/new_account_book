@@ -5,6 +5,7 @@
   .panel-body#with-background
     loading-directive
     .row(ng-model='categories.categories' ui-sortable='categories.sortable')
+      // カテゴリの一覧
       .col-sm-3(ng-repeat='category in categories.categories' id='{{category.id}}')
         .panel.panel-body.col-sm-11.category-card(ng-show='!category.edit_field' ng-style="{'cursor': cursor_type}" ng-mouseenter="cursor_type = 'move'")
           a.pull-right
@@ -22,7 +23,7 @@
 
             span.glyphicon.glyphicon-map-marker#left-icon
             span {{ category.places_count }}
-        .panel.panel-body.col-sm-11.category-card#category(ng-if="category.edit_field" ng-keydown='categories.updateCategory($index, $event)')
+        .panel.panel-body.col-sm-11.category-card#category(ng-if="category.edit_field")
           .input-group
             .input-group-btn
               button.btn.btn-default(ng-class="{'btn-success': !category.edit_payments}" type='button' ng-click='category.edit_payments = false')
@@ -39,11 +40,16 @@
               div(ng-message='required')
                 span.glyphicon.glyphicon-alert#left-icon
                 span(translate='ERRORS.REQUIRED.CATEGORY_NAME')
+              div(ng-message='maxlength')
+                span.glyphicon.glyphicon-alert#left-icon
+                span(translate='ERRORS.MAXLENGTH.CATEGORY_NAME')
 
-      .col-sm-3(ng-show='categories.categories')
+      // カテゴリの追加フィールド
+      .col-sm-3(ng-show='categories.categories && categories.categories.length < 20')
         .panel.panel-body.col-sm-11.category-plus#category(ng-click='categories.addNewPanel()' ng-class="{'panel-background': 'adding'}" ng-mouseenter="adding = true" ng-mouseleave="adding = false" ng-show="!categories.add_field")
           span.glyphicon.glyphicon-plus
-        .panel.panel-body.col-sm-11.category-card#category(ng-if='categories.add_field' ng-keydown='categories.createCategory($event)')
+        .panel.panel-body.col-sm-11.category-card#category(ng-if='categories.add_field')
+          // 収入・支出
           .input-group
             .input-group-btn
               button.btn.btn-default(ng-class="{'btn-success': !categories.new_payments}" type='button' ng-click='categories.new_payments = false')
@@ -52,21 +58,19 @@
               button.btn.btn-default(ng-class="{'btn-info': categories.new_payments}" type='button' ng-click='categories.new_payments = true')
                 span.glyphicon.glyphicon-plus-sign#left-icon
                 span(translate='BUTTONS.INCOME')
+          // 入力フォーム
           form.form-inline(novalidate=true name='newCategoryForm' ng-submit='categories.createCategory()')
-            input.category-form(name='name' ng-model='categories.new_category_name' auto-focus=true type='text' required=true)
+            input.category-form(name='name' ng-model='categories.new_category_name' auto-focus=true type='text' required=true ng-maxlength='100')
             button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='newCategoryForm.$dirty && newCategoryForm.$invalid')
             a.btn.btn-default(translate='BUTTONS.CANCEL' ng-click='categories.add_field = false')
             span.errors(ng-messages='newCategoryForm.name.$error' ng-show='newCategoryForm.$dirty || newCategoryForm.$submitted')
               div(ng-message='required')
                 span.glyphicon.glyphicon-alert#left-icon
                 span(translate='ERRORS.REQUIRED.CATEGORY_NAME')
-
-script#confirm-destroy(type='text/ng-template')
-  .modal-body
-    p(translate='MESSAGES.DELETE')
-    button.btn.btn-success(type='submit' translate='BUTTONS.YES' ng-click='confirm_destroy.ok()')
-    a.btn.btn-default(ng-click='confirm_destroy.cancel()' translate='BUTTONS.CLOSE')
-
+              div(ng-message='maxlength')
+                span.glyphicon.glyphicon-alert#left-icon
+                span(translate='ERRORS.MAXLENGTH.CATEGORY_NAME')
+ 
 script#breakdowns(type='text/ng-template')
   .modal-body
     loading-directive(target='modal')
