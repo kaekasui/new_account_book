@@ -6,87 +6,82 @@ UserFactory = ($location, $q, $http, localStorageService, toastr, $translate, In
     patchNickname: (params) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
-      if typeof(token) != "undefined" && token != null
-        login_headers = {
-          headers: { Authorization: 'Token token=' + token }
-        }
-        $http.patch host + 'user', params, login_headers
-          .success((data) ->
-            defer.resolve data
-            return
-          ).error (data) ->
-            defer.reject data
-            return
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.patch host + 'user', params, login_headers
+        .success((data) ->
+          defer.resolve data
+          return
+        ).error (data) ->
+          defer.reject data
+          return
       return defer.promise
 
     getNotices: (offset) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
-      if typeof(token) != "undefined" && token != null
-        login_headers = {
-          headers: { Authorization: 'Token token=' + token }
-        }
-        $http.get host + 'notices?offset=' + offset, login_headers
-          .success((data) ->
-            defer.resolve data
-            return
-          ).error (data) ->
-            defer.reject data
-            return
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.get host + 'notices?offset=' + offset, login_headers
+        .success((data) ->
+          defer.resolve data
+          return
+        ).error (data) ->
+          defer.reject data
+          return
       return defer.promise
 
     getMessages: (offset) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
-      if typeof(token) != "undefined" && token != null
-        login_headers = {
-          headers: { Authorization: 'Token token=' + token }
-        }
-        $http.get host + 'messages?offset=' + offset, login_headers
-          .success((data) ->
-            defer.resolve data
-            return
-          ).error (data) ->
-            defer.reject data
-            return
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.get host + 'messages?offset=' + offset, login_headers
+        .success((data) ->
+          defer.resolve data
+          return
+        ).error (data) ->
+          defer.reject data
+          return
       return defer.promise
 
     getNotice: (notice_id) ->
       IndexService.loading = true
       defer = $q.defer()
       token = localStorageService.get('access_token')
-      if typeof(token) != "undefined" && token != null
-        login_headers = {
-          headers: { Authorization: 'Token token=' + token }
-        }
-        $http.get host + 'notices/' + notice_id, login_headers
-          .success((data) ->
-            defer.resolve data
-            IndexService.loading = false
-            return
-          ).error (data) ->
-            defer.reject data
-            IndexService.loading = false
-            return
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.get host + 'notices/' + notice_id, login_headers
+        .success((data) ->
+          defer.resolve data
+          IndexService.loading = false
+          return
+        ).error (data) ->
+          defer.reject data
+          IndexService.loading = false
+          return
       return defer.promise
 
     getMessage: (message_id) ->
       IndexService.loading = true
       defer = $q.defer()
       token = localStorageService.get('access_token')
-      if typeof(token) != "undefined" && token != null
-        login_headers = {
-          headers: { Authorization: 'Token token=' + token }
-        }
-        $http.get host + 'messages/' + message_id, login_headers
-          .success((data) ->
-            defer.resolve data
-            IndexService.loading = false
-            return
-          ).error (data) ->
-            defer.reject data
-            IndexService.loading = false
-            return
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.get host + 'messages/' + message_id, login_headers
+        .success((data) ->
+          defer.resolve data
+          IndexService.loading = false
+          return
+        ).error (data) ->
+          defer.reject data
+          IndexService.loading = false
+          return
       return defer.promise
   }
 
