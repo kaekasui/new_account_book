@@ -4,9 +4,16 @@ describe 'GET /notices/:id', autodoc: true do
   context 'ログインしていない場合' do
     let!(:notice) { create(:notice) }
 
-    it '401が返ってくること' do
+    it '200が返ってくること' do
       get "/notices/#{notice.id}"
-      expect(response.status).to eq 401
+      expect(response.status).to eq 200
+
+      json = {
+        title: notice.title,
+        content: notice.content,
+        post_at: notice.post_at.strftime('%Y-%m-%d')
+      }
+      expect(response.body).to be_json_as(json)
     end
   end
 
