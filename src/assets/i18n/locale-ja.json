@@ -103,6 +103,7 @@
   },
   "MESSAGES": {
     "CREATE_NOTICE": "お知らせを投稿しました",
+    "CONFIRM_TO_SEND_MAIL": "メールを送信しますか？",
     "UPDATE_NOTICE": "お知らせを編集しました",
     "LOGIN": "ログインしました",
     "LOGOUT": "ログアウトしました",

@@ -151,6 +151,22 @@ AdminFactory = ($location, $q, localStorageService, $http, $translate, IndexServ
           return
       return defer.promise
 
+    postMessageSendMail: (message_id) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.post host + 'admin/messages/' + message_id + '/send_mail', '', login_headers
+        .success((data) ->
+          defer.resolve data
+          toastr.success $translate.instant('MESSAGES.SEND_MESSAGE')
+          return
+        ).error (data) ->
+          defer.reject data
+          return
+      return defer.promise
+
     patchMessage: (message_id, params) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
