@@ -16,7 +16,7 @@ build:
         code: RAILS_ENV=test bundle exec rubocop app spec lib
   after-steps:
     - sherzberg/slack-notify:
-        subdomain: players-kojiharu
+        subdomain: summer-snowflake
         token: $SLACK_TOKEN
         username: wercker
         channel: "#notify"
