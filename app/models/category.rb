@@ -3,6 +3,7 @@ class Category < ActiveRecord::Base
   has_many :breakdowns
   has_many :categorize_places, dependent: :destroy
   has_many :places, through: :categorize_places
+  has_many :records
 
   validates :name,
             presence: true,

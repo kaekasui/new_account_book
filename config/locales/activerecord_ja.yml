@@ -24,6 +24,8 @@ ja:
         name: 内訳
       categorize_place:
         category_id: カテゴリ
+      record:
+        charge: 金額
     errors:
       models:
         user:

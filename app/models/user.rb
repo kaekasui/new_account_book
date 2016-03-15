@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :categories
   has_many :places
   has_many :messages
+  has_many :records
 
   enum status: { registered: 2, inactive: 1 }
 
