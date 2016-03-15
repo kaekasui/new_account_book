@@ -4,7 +4,7 @@
 .col-md-9
   .panel.panel-default
     .panel-heading
-      span.glyphicon.glyphicon-leaf
+      span.glyphicon.glyphicon-leaf#left-icon
       span(translate='TITLES.LOGIN')
     .panel-body#with-background
       .alert.alert-danger(role='alert' ng-show='login.errors')
@@ -14,8 +14,8 @@
       form(novalidate=true name='loginForm' ng-submit='login.submit()')
         .form-group
           label(for='email')
-          span(translate='LABELS.EMAIL')
-          span *
+            span(translate='LABELS.EMAIL')
+            span *
           input.form-control#email(type='email' autofocus=true name='email' ng-model='login.email' required=true ng-maxlength='100')
           span.errors(ng-messages='loginForm.email.$error' ng-show='loginForm.email.$dirty || loginForm.$submitted')
             div(ng-message='required')
