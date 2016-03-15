@@ -1,7 +1,7 @@
-.col-md-3
+.col-md-3(ng-show='notice.current_user')
   user-menu-directive
 
-.col-md-9
+div(ng-class="{'col-md-9': notice.current_user, 'col-md-12': !notice.current_user}")
   .panel.panel-default
     .panel-heading
       span.glyphicon.glyphicon-film#left-icon
