@@ -4,5 +4,5 @@ class Record < ActiveRecord::Base
   belongs_to :breakdown
   belongs_to :place
 
-  validates :charge, presence: true
+  validates :published_at, :charge, presence: true
 end
