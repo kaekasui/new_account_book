@@ -22,6 +22,8 @@ class ApplicationController < ActionController::Base
   def error500(e)
     logger.error e.inspect
     logger.error [e, *e.backtrace].join("\n")
+    ExceptionNotifier.notify_exception(e, env: request.env,
+                                          data: { message: '500 Error!!!' })
     render :error500, status: 500, formats: :json
   end
 
