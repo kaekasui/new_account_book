@@ -66,4 +66,18 @@ RSpec.describe UserMailer do
       expect(mail.body).to have_content(email)
     end
   end
+
+  describe '#confirm_message' do
+    let!(:email) { 'email@example.com' }
+    let(:mail) do
+      UserMailer.confirm_message(email, 'https://example.com/')
+    end
+
+    it 'ヘッダが正しいこと' do
+      expect(mail.subject).to eq '【PIG BOOK β】新しいメッセージが届いています'
+      expect(mail.to).to eq [email]
+      expect(mail.from).to eq [Settings.mail_from]
+      expect(mail.body).to have_content(email)
+    end
+  end
 end

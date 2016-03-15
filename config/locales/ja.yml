@@ -29,6 +29,8 @@ ja:
       subject: 【PIG BOOK β】アカウントのご確認と登録のご案内
     confirm_registration:
       subject: 【PIG BOOK β】アカウント登録状況のご確認と登録のご案内
+    confirm_message:
+      subject: 【PIG BOOK β】新しいメッセージが届いています
   admin_mailer:
     notice_feedback:
       subject: フィードバックが届きました

@@ -102,6 +102,7 @@
   },
   "MESSAGES": {
     "CREATE_NOTICE": "Created a notice",
+    "CONFIRM_TO_SEND_MAIL": "Do You Send a Mail?",
     "UPDATE_NOTICE": "Updated the notice",
     "LOGIN": "Logged in",
     "LOGOUT": "Logged out",

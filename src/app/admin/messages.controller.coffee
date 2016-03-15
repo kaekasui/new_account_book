@@ -37,6 +37,16 @@ MessagesController = (AdminFactory, $modal, $translate, toastr) ->
       return
     return
 
+  vm.send_mail = (message_id) ->
+    modalInstance = $modal.open(
+      templateUrl: 'app/components/modals/send_mail.html'
+      controller: 'ConfirmSendMailController'
+      controllerAs: 'send_mail'
+      resolve: { message_id: message_id }
+    )
+    modalInstance.result.then () ->
+    return
+
   vm.showMessage = (index) ->
     message = vm.messages[index]
     modalInstance = $modal.open(
@@ -89,7 +99,21 @@ ConfirmDestroyMessageController = (message_id, AdminFactory, $modalInstance) ->
 
   return
 
+ConfirmSendMailController = (message_id, AdminFactory, $modalInstance) ->
+  'ngInject'
+  vm = this
+
+  vm.ok = () ->
+    AdminFactory.postMessageSendMail(message_id).then ->
+      $modalInstance.close()
+
+  vm.cancel = () ->
+    $modalInstance.dismiss()
+
+  return
+
 angular.module 'newAccountBook'
   .controller('AdminShowMessageController', AdminShowMessageController)
   .controller('ConfirmDestroyMessageController', ConfirmDestroyMessageController)
+  .controller('ConfirmSendMailController', ConfirmSendMailController)
   .controller('MessagesController', MessagesController)
