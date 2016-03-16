@@ -11,6 +11,7 @@ IndexService = () ->
   return
 
 AuthInterceptor = ($q, $location) ->
+  'ngInject'
   vm = this
 
   vm.responseError = (res) ->
