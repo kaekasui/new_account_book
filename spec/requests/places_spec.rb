@@ -15,7 +15,6 @@ describe 'GET /places', autodoc: true do
     let!(:category) { create(:category, user: user) }
 
     it '200と場所一覧を返すこと' do
-      pending
       place.categories << category
       place.save
 
