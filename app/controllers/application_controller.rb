@@ -20,10 +20,10 @@ class ApplicationController < ActionController::Base
   end
 
   def error500(e)
+    ExceptionNotifier.notify_exception(
+      e, env: request.env, data: { user_id: current_user.try(:id) })
     logger.error e.inspect
     logger.error [e, *e.backtrace].join("\n")
-    ExceptionNotifier.notify_exception(e, env: request.env,
-                                          data: { message: '500 Error!!!' })
     render :error500, status: 500, formats: :json
   end
 
