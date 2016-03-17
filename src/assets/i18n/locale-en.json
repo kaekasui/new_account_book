@@ -87,7 +87,9 @@
       "TITLE": "Enter your Title",
       "CONTENT": "Enter your Comment",
       "PLACE_NAME": "Input new Shop Name",
-      "CATEGORY_NAME": "Input a Category Name"
+      "CATEGORY_NAME": "Input a Category Name",
+      "CHARGE": "Input a charge",
+      "PUBLISHED_AT": "Input Date"
     },
     "MAXLENGTH": {
       "EMAIL": "Enter your E-mail has a length of at most 100",
@@ -99,7 +101,8 @@
     "MINLENGTH": {
       "PASSWORD": "Enter your Password has a length of at least 4"
     },
-    "EMAIL": "Enter your E-mail has a valid email format"
+    "EMAIL": "Enter your E-mail has a valid email format",
+    "DATE": "Enter your Date has a valid date format"
   },
   "MESSAGES": {
     "CREATE_NOTICE": "Created a notice",
@@ -119,10 +122,13 @@
   "COLUMNS": {
     "CONTENT": "Content",
     "CREATED_AT": "Creation Time",
+    "CATEGORY": "Category",
+    "CHARGE": "Charge",
     "EMAIL": "Email",
     "MESSAGE": "Message",
     "LAST_LOGIN_TIME": "Last Login Time",
     "POST_AT": "post time",
+    "PUBLISHED_AT": "Date",
     "TITLE": "Title",
     "USER": "User",
     "NICKNAME": "Nickname"

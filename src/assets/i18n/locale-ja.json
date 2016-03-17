@@ -88,7 +88,9 @@
       "TITLE": "タイトルを入力してください",
       "CONTENT": "内容を入力してください",
       "PLACE_NAME": "店名、施設名を入力してください",
-      "CATEGORY_NAME": "カテゴリ名を入力してください"
+      "CATEGORY_NAME": "カテゴリ名を入力してください",
+      "CHARGE": "金額を入力してください",
+      "PUBLISHED_AT": "日付を入力してください"
     },
     "MAXLENGTH": {
       "EMAIL": "メールアドレスは100文字以内で入力してください",
@@ -100,7 +102,8 @@
     "MINLENGTH": {
       "PASSWORD": "パスワードは4文字以上で入力してください"
     },
-    "EMAIL": "メールアドレスの正しい形式で入力してください"
+    "EMAIL": "メールアドレスの正しい形式で入力してください",
+    "DATE": "日付を正しい形式で入力してください"
   },
   "MESSAGES": {
     "CREATE_NOTICE": "お知らせを投稿しました",
@@ -121,10 +124,13 @@
   "COLUMNS": {
     "CONTENT": "内容",
     "CREATED_AT": "作成日時",
+    "CATEGORY": "カテゴリ",
+    "CHARGE": "金額",
     "EMAIL": "メールアドレス",
     "MESSAGE": "メッセージ",
     "LAST_LOGIN_TIME": "最終ログイン時間",
     "POST_AT": "投稿日時",
+    "PUBLISHED_AT": "日付",
     "TITLE": "タイトル",
     "USER": "ユーザー",
     "NICKNAME": "ニックネーム"
