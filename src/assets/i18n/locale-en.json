@@ -1,6 +1,7 @@
 {
   "BRAND_NAME": "PIG BOOK β",
   "TITLES": {
+    "NEW_RECORD": "New DATA",
     "ADMIN": "Admin",
     "HOME": "Home",
     "CATEGORY": "Category",

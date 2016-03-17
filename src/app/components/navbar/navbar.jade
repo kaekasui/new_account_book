@@ -5,19 +5,25 @@ nav.navbar.navbar-default(role='navigation')
       span.brand-name(translate='BRAND_NAME')
       span.glyphicon.glyphicon-paperclip
   .collapse.navbar-collapse
+    // 左側メニュー
     ul.nav.navbar-nav
       li
         a(ui-sref='home')
           span.glyphicon.glyphicon-home#left-icon
           span(translate='TITLES.HOME')
-      li
+      li(ng-show='navbar.current_user')
         a
           span.glyphicon.glyphicon-stats#left-icon
           span(translate='TITLES.DASHBOARD')
+      li(ng-show='navbar.current_user')
+        a(ui-sref='new_record')
+          span.red.glyphicon.glyphicon-piggy-bank#left-icon
+          span.red(translate='TITLES.NEW_RECORD')
       li
         a(ng-click='navbar.feedback()', href='')
           span.glyphicon.glyphicon-comment#left-icon
           span(translate='TITLES.FEEDBACK')
+    // 右側メニュー
     ul.nav.navbar-nav.navbar-right
       li(ng-show='navbar.current_user != undefined && navbar.current_user.admin')
         a(ui-sref='admin_users')

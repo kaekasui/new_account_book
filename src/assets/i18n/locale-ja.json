@@ -1,6 +1,7 @@
 {
   "BRAND_NAME": "おこづかいちょうβ",
   "TITLES": {
+    "NEW_RECORD": "入力する",
     "ADMIN": "管理",
     "HOME": "HOME",
     "CATEGORY": "カテゴリ",
