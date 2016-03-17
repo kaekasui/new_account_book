@@ -18,7 +18,7 @@ nav.navbar.navbar-default(role='navigation')
       li(ng-show='navbar.current_user')
         a(ui-sref='new_record')
           span.red.glyphicon.glyphicon-piggy-bank#left-icon
-          span.red(translate='TITLES.NEW_RECORD')
+          span.red.dotted(translate='TITLES.NEW_RECORD')
       li
         a(ng-click='navbar.feedback()', href='')
           span.glyphicon.glyphicon-comment#left-icon
