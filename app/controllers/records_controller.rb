@@ -1,6 +1,10 @@
 class RecordsController < ApplicationController
   before_action :authenticate
 
+  def new
+    @categories = current_user.categories.order(:position)
+  end
+
   def create
     @record = current_user.records.new(record_params)
     if @record.save
