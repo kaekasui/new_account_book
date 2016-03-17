@@ -55,8 +55,6 @@ ActiveRecord::Schema.define(version: 20160314020907) do
     t.datetime "deleted_at"
     t.integer  "user_id"
     t.integer  "position"
-    t.integer  "places_count"
-    t.integer  "breakdowns_count"
   end
 
   add_index "categories", ["user_id"], name: "index_categories_on_user_id", using: :btree

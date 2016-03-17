@@ -67,6 +67,11 @@ angular.module 'newAccountBook'
         templateUrl: 'app/settings/places.html'
         controllerAs: 'places'
         controller: 'PlacesController'
+      .state 'new_record',
+        url: '/records/new'
+        templateUrl: 'app/records/new.html'
+        controllerAs: 'new_record'
+        controller: 'NewRecordController'
       .state 'admin_users',
         url: '/admin/users'
         templateUrl: 'app/admin/users.html'
