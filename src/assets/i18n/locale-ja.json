@@ -88,6 +88,7 @@
       "TITLE": "タイトルを入力してください",
       "CONTENT": "内容を入力してください",
       "PLACE_NAME": "店名、施設名を入力してください",
+      "CATEGORY": "カテゴリを選択してください",
       "CATEGORY_NAME": "カテゴリ名を入力してください",
       "CHARGE": "金額を入力してください",
       "PUBLISHED_AT": "日付を入力してください"
@@ -107,6 +108,7 @@
   },
   "MESSAGES": {
     "CREATE_NOTICE": "お知らせを投稿しました",
+    "CREATE_RECORD": "登録しました",
     "CONFIRM_TO_SEND_MAIL": "メールを送信しますか？",
     "UPDATE_NOTICE": "お知らせを編集しました",
     "LOGIN": "ログインしました",

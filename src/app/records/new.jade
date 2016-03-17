@@ -1,1 +1,60 @@
-| new
+.panel.panel-default
+  .panel-heading
+    span.glyphicon.glyphicon-piggy-bank#left-icon
+    span(translate='TITLES.NEW_RECORD')
+  .panel-body
+    .col-sm-8
+      loading-directive
+      form.form-horizontal(novalidate=true name='newRecordForm' ng-submit='new_record.submit()')
+        // 日付
+        .form-group
+          label.control-label.col-sm-2(for='published_at')
+            span(translate='COLUMNS.PUBLISHED_AT')
+            span *
+          .col-sm-10
+            input.btn.btn-default(type='date' name='published_at' ng-model='new_record.published_at' datepicker-popup=true required='true')
+            span.errors(ng-messages='newRecordForm.published_at.$error' ng-show='newRecordForm.$submitted && newRecordForm.published_at.$error')
+              div(ng-message='required')
+                span.glyphicon.glyphicon-alert#left-icon
+                span(translate='ERRORS.REQUIRED.PUBLISHED_AT')
+              div(ng-message='date')
+                span.glyphicon.glyphicon-alert#left-icon
+                span(translate='ERRORS.DATE')
+        // カテゴリ
+        .form-group
+          label.control-label.col-sm-2(for='category')
+            span(translate='COLUMNS.CATEGORY')
+          .col-sm-10
+            select.form-control(ng-model='new_record.category_id' name='category_id' required='true')
+              optgroup(label="{{ 'LABELS.INCOME' | translate }}" ng-show='income_categories.length != 0')
+                option(ng-value='category.id' ng-repeat='category in income_categories = (new_record.categories | filter: { barance_of_payments:true })')
+                  | {{ category.name }}
+              optgroup(label="{{ 'LABELS.OUTGO' | translate }}" ng-show='outgo_categories.length != 0')
+                option(ng-value='category.id' ng-repeat='category in outgo_categories = (new_record.categories | filter: { barance_of_payments:false })')
+                  | {{ category.name }}
+            span.errors(ng-messages='newRecordForm.category_id.$error' ng-show='newRecordForm.$submitted && newRecordForm.category_id.$error')
+              div(ng-message='required')
+                span.glyphicon.glyphicon-alert#left-icon
+                span(translate='ERRORS.REQUIRED.CATEGORY')
+        // 金額
+        .form-group
+          label.control-label.col-sm-2(for='charge')
+            span(translate='COLUMNS.CHARGE')
+            span *
+          .col-sm-10
+            input.form-control(type='number' name='charge' ng-model='new_record.charge' required='true' ng-maxlength='10000000')
+            span.errors(ng-messages='newRecordForm.charge.$error' ng-show='newRecordForm.$submitted && newRecordForm.charge.$error')
+              div(ng-message='required')
+                span.glyphicon.glyphicon-alert#left-icon
+                span(translate='ERRORS.REQUIRED.CHARGE')
+              div(ng-message='maxlength')
+                span.glyphicon.glyphicon-alert#left-icon
+                span(translate='ERRORS.MAXLENGTH.CHARGE')
+        // ボタン
+        .form-group
+          .control-label.col-sm-2
+            button.btn.btn-success(type='submit' ng-disabled='(newRecordForm.$submitted && newRecordForm.$invalid) || new_record.sending' translate='BUTTONS.CREATE')
+    .col-sm-4
+      .panel.panel-default
+        .panel-body
+          | {{ new_record.published_at | date:'yyyy年MM月dd日' }} の登録

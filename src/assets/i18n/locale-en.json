@@ -87,6 +87,7 @@
       "TITLE": "Enter your Title",
       "CONTENT": "Enter your Comment",
       "PLACE_NAME": "Input new Shop Name",
+      "CATEGORY": "Select a Category",
       "CATEGORY_NAME": "Input a Category Name",
       "CHARGE": "Input a charge",
       "PUBLISHED_AT": "Input Date"
@@ -106,6 +107,7 @@
   },
   "MESSAGES": {
     "CREATE_NOTICE": "Created a notice",
+    "CREATE_RECORD": "Created a record",
     "CONFIRM_TO_SEND_MAIL": "Do You Send a Mail?",
     "UPDATE_NOTICE": "Updated the notice",
     "LOGIN": "Logged in",
