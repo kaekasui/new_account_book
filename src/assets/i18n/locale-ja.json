@@ -124,6 +124,7 @@
     "REMOVE_CATEGORY": "「{{place_name}}」から「{{category_name}}」をはずしました"
   },
   "COLUMNS": {
+    "BREAKDOWN": "内訳",
     "CONTENT": "内容",
     "CREATED_AT": "作成日時",
     "CATEGORY": "カテゴリ",
@@ -131,6 +132,7 @@
     "EMAIL": "メールアドレス",
     "MESSAGE": "メッセージ",
     "LAST_LOGIN_TIME": "最終ログイン時間",
+    "PLACE": "お店・施設",
     "POST_AT": "投稿日時",
     "PUBLISHED_AT": "日付",
     "TITLE": "タイトル",
