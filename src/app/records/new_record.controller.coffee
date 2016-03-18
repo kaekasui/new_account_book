@@ -19,6 +19,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
       breakdown_id: vm.breakdown_id
       place_id: vm.place_id
       charge: vm.charge
+      memo: vm.memo
     RecordsFactory.postRecord(params).then (res) ->
       vm.published_at = new Date()
       vm.category_id = ''

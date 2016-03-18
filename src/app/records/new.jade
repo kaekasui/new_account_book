@@ -10,7 +10,7 @@
         .form-group
           label.control-label.col-sm-2(for='published_at')
             span(translate='COLUMNS.PUBLISHED_AT')
-            span *
+            span.red *
           .col-sm-10
             input.btn.btn-default(type='date' name='published_at' ng-model='new_record.published_at' datepicker-popup=true required='true')
             span.errors(ng-messages='newRecordForm.published_at.$error' ng-show='newRecordForm.$submitted && newRecordForm.published_at.$error')
@@ -24,7 +24,7 @@
         .form-group
           label.control-label.col-sm-2(for='category')
             span(translate='COLUMNS.CATEGORY')
-            span *
+            span.red *
           .col-sm-10
             select.form-control(ng-model='new_record.category_index_id' name='category_id' required='true' ng-change='new_record.selectCategory(new_record.category_index_id)')
               optgroup(label="{{ 'LABELS.INCOME' | translate }}" ng-show='income_categories.length != 0')
@@ -57,7 +57,7 @@
         .form-group
           label.control-label.col-sm-2(for='charge')
             span(translate='COLUMNS.CHARGE')
-            span *
+            span.red *
           .col-sm-10
             input.form-control(type='number' name='charge' ng-model='new_record.charge' required='true' ng-maxlength='10000000')
             span.errors(ng-messages='newRecordForm.charge.$error' ng-show='newRecordForm.$submitted && newRecordForm.charge.$error')
@@ -67,6 +67,16 @@
               div(ng-message='maxlength')
                 span.glyphicon.glyphicon-alert#left-icon
                 span(translate='ERRORS.MAXLENGTH.CHARGE')
+        // 備考
+        .form-group
+          label.control-label.col-sm-2(for='memo')
+            span(translate='COLUMNS.MEMO')
+          .col-sm-10
+            textarea(name='memo' ng-model='new_record.memo' ng-maxlength='10000')
+            span.errors(ng-messages='newRecordForm.memo.$error' ng-show='newRecordForm.$submitted && newRecordForm.memo.$error')
+              div(ng-message='maxlength')
+                span.glyphicon.glyphicon-alert#left-icon
+                span(translate='ERRORS.MAXLENGTH.MEMO')
         // ボタン
         .form-group
           .control-label.col-sm-2
