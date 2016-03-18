@@ -13,7 +13,7 @@ class Record::Fetcher
                    .limit(Settings.records.per)
     records.offset!(@params[:offset]) if @params[:offset].present?
     if @params[:date].present?
-      records = records.where(published_at: @params[:date])
+      records = records.where(published_at: @params[:date].to_date)
     end
     records
   end

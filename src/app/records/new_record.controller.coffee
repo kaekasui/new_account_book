@@ -5,6 +5,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
   vm.published_at = new Date()
   vm.settings = false
 
+  IndexService.records_loading = true
   IndexService.loading = true
   RecordsFactory.getNewRecord().then((res) ->
     vm.categories = res.categories
@@ -18,12 +19,20 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
   ).catch (res) ->
     IndexService.loading = false
 
+  params =
+    published_at: vm.published_at
+  RecordsFactory.getRecords(params).then((res) ->
+    vm.day_records = res.records
+    IndexService.records_loading = false
+  ).catch (res) ->
+    IndexService.records_loading = false
+
   vm.submit = () ->
     category = vm.categories[vm.category_index_id]
     if category
       vm.category_id = category.id
     params =
-      published_at: vm.published_at
+      published_at: String(vm.published_at)
       category_id: vm.category_id
       breakdown_id: vm.breakdown_id
       place_id: vm.place_id
