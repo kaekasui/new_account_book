@@ -1,5 +1,41 @@
 require 'rails_helper'
 
+describe 'GET /records', autodoc: true do
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      get '/records'
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'メールアドレスのユーザーがログインしている場合' do
+    let!(:user) { create(:email_user, :registered) }
+    let!(:record1) { create(:record, user: user) }
+    let!(:record2) { create(:record, user: user) }
+    let!(:record3) do
+      create(:record, user: user, published_at: Time.zone.yesterday)
+    end
+    let!(:params) { { date: Time.zone.today } }
+
+    it '200と当日の収支一覧を返すこと' do
+      get '/records', params, login_headers(user)
+      expect(response.status).to eq 200
+
+      json = {
+        records: [
+          {
+            id: record2.id
+          },
+          {
+            id: record1.id
+          }
+        ]
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+end
+
 describe 'GET /records/new', autodoc: true do
   context 'ログインしていない場合' do
     it '401が返ってくること' do
