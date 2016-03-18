@@ -22,8 +22,11 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
       memo: vm.memo
     RecordsFactory.postRecord(params).then (res) ->
       vm.published_at = new Date()
-      vm.category_id = ''
+      vm.category_index_id = ''
+      vm.breakdown_id = ''
+      vm.place_id = ''
       vm.charge = ''
+      vm.memo = ''
       $scope.newRecordForm.$setPristine()
       # TODO: コピーのリンクと編集のリンクを表示する
     return
