@@ -122,6 +122,7 @@
     "REMOVE_CATEGORY": "Remove '{{category_name}}' from the Place '{{place_name}}'"
   },
   "COLUMNS": {
+    "BREAKDOWN": "Breakdown",
     "CONTENT": "Content",
     "CREATED_AT": "Creation Time",
     "CATEGORY": "Category",
@@ -129,6 +130,7 @@
     "EMAIL": "Email",
     "MESSAGE": "Message",
     "LAST_LOGIN_TIME": "Last Login Time",
+    "PLACE": "Place",
     "POST_AT": "post time",
     "PUBLISHED_AT": "Date",
     "TITLE": "Title",
