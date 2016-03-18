@@ -73,6 +73,7 @@
     "PLACES": "Shops & Locations"
   },
   "LINKS": {
+    "DISPLAY_SETTING": ">>> Display Settings",
     "FORGOT_PASSWORD": "Forgot your password?",
     "RESEND_EMAIL": "Not found your email?",
     "DELETE": "Delte"
@@ -109,6 +110,7 @@
   "MESSAGES": {
     "CREATE_NOTICE": "Created a notice",
     "CREATE_RECORD": "Created a record",
+    "DISPLAY_ITEMS": "Check your checkboxes if you want to display them",
     "CONFIRM_TO_SEND_MAIL": "Do You Send a Mail?",
     "UPDATE_NOTICE": "Updated the notice",
     "LOGIN": "Logged in",

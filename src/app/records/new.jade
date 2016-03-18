@@ -5,6 +5,22 @@
   .panel-body
     .col-sm-8
       loading-directive
+      // 表示設定のリンク
+      .text-right
+        a(href='' translate='LINKS.DISPLAY_SETTING' ng-click='new_record.settings = !new_record.settings')
+      .checkbox(ng-show='new_record.settings')
+        p(translate='MESSAGES.DISPLAY_ITEMS')
+        label.checkbox-inline
+          input(type='checkbox' ng-model='new_record.breakdown_field' ng-change='new_record.checkSetting()')
+          span {{ 'COLUMNS.BREAKDOWN' | translate }}
+        label.checkbox-inline
+          input(type='checkbox' ng-model='new_record.place_field' ng-change='new_record.checkSetting()')
+          span {{ 'COLUMNS.PLACE' | translate }}
+        label.checkbox-inline
+          input(type='checkbox' ng-model='new_record.memo_field' ng-change='new_record.checkSetting()')
+          span {{ 'COLUMNS.MEMO' | translate }}
+      hr(ng-show='new_record.settings')
+      // フォーム
       form.form-horizontal(novalidate=true name='newRecordForm' ng-submit='new_record.submit()')
         // 日付
         .form-group
@@ -38,7 +54,7 @@
                 span.glyphicon.glyphicon-alert#left-icon
                 span(translate='ERRORS.REQUIRED.CATEGORY')
         // 内訳
-        .form-group
+        .form-group(ng-show='new_record.form_group_breakdown')
           label.control-label.col-sm-2(for='breakdown')
             span(translate='COLUMNS.BREAKDOWN')
           .col-sm-10
@@ -46,7 +62,7 @@
               option(ng-value='breakdown.id' ng-repeat='breakdown in new_record.breakdowns')
                 | {{ breakdown.name }}
         // お店・施設
-        .form-group
+        .form-group(ng-show='new_record.form_group_place')
           label.control-label.col-sm-2(for='place')
             span(translate='COLUMNS.PLACE')
           .col-sm-10
@@ -68,7 +84,7 @@
                 span.glyphicon.glyphicon-alert#left-icon
                 span(translate='ERRORS.MAXLENGTH.CHARGE')
         // 備考
-        .form-group
+        .form-group(ng-show='new_record.form_group_memo')
           label.control-label.col-sm-2(for='memo')
             span(translate='COLUMNS.MEMO')
           .col-sm-10
@@ -81,6 +97,7 @@
         .form-group
           .control-label.col-sm-2
             button.btn.btn-success(type='submit' ng-disabled='(newRecordForm.$submitted && newRecordForm.$invalid) || new_record.sending' translate='BUTTONS.CREATE')
+    // 日付の登録一覧
     .col-sm-4
       .panel.panel-default
         .panel-body

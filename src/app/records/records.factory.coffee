@@ -33,6 +33,20 @@ RecordsFactory = ($location, $q, $http, localStorageService, toastr, $translate)
           defer.reject data
           return
       return defer.promise
+    patchSettings: (params) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.patch host + 'user/set_display', params, login_headers
+        .success((data) ->
+          defer.resolve data
+          return
+        ).error (data) ->
+          defer.reject data
+          return
+      return defer.promise
   }
 
 angular.module 'newAccountBook'
