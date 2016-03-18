@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   end
   resources :records, only: %i(new create)
 
-  resource :user, only: %i(show update)
+  resource :user, only: %i(show update) do
+    patch :set_display
+  end
   resource :feedback, only: %i(create)
 end
