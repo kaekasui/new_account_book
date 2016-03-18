@@ -17,3 +17,9 @@ json.categories do
     end
   end
 end
+
+json.user do
+  json.breakdown_field @user.breakdown_field
+  json.place_field @user.place_field
+  json.memo_field @user.memo_field
+end

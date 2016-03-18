@@ -74,6 +74,7 @@
     "PLACES": "お店・施設"
   },
   "LINKS": {
+    "DISPLAY_SETTING": ">>> 各項目の表示設定",
     "FORGOT_PASSWORD": "パスワードを忘れた場合",
     "RESEND_EMAIL": "確認メールが見つからない場合",
     "DELETE": "削除する"
@@ -111,6 +112,7 @@
     "CREATE_NOTICE": "お知らせを投稿しました",
     "CREATE_RECORD": "登録しました",
     "CONFIRM_TO_SEND_MAIL": "メールを送信しますか？",
+    "DISPLAY_ITEMS": "収支の登録で表示する項目にチェックを入れてください",
     "UPDATE_NOTICE": "お知らせを編集しました",
     "LOGIN": "ログインしました",
     "LOGOUT": "ログアウトしました",

@@ -44,7 +44,12 @@ describe 'GET /records/new', autodoc: true do
             breakdowns: [],
             places: []
           }
-        ]
+        ],
+        user: {
+          breakdown_field: true,
+          place_field: true,
+          memo_field: true
+        }
       }
       expect(response.body).to be_json_as(json)
     end

@@ -2,6 +2,7 @@ class RecordsController < ApplicationController
   before_action :authenticate
 
   def new
+    @user = current_user
     @categories = current_user.categories.order(:position)
   end
 
