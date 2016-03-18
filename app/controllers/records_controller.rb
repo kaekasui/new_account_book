@@ -1,9 +1,15 @@
 class RecordsController < ApplicationController
   before_action :authenticate
 
+  def index
+    @records = Record::Fetcher.all(user: current_user, params: params)
+  end
+
   def new
     @user = current_user
-    @categories = current_user.categories.order(:position)
+    @categories = current_user.categories
+                              .order(:position)
+    # TODO: N+1を解消する
   end
 
   def create

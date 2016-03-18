@@ -50,6 +50,8 @@ defaults: &defaults
     per: 20
   messages:
     per: 20
+  records:
+    per: 20
 
 development:
   <<: *defaults

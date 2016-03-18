@@ -22,6 +22,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
     category = vm.categories[vm.category_index_id]
     if category
       vm.category_id = category.id
+    console.log vm.published_at
     params =
       published_at: vm.published_at
       category_id: vm.category_id
