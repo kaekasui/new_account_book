@@ -24,10 +24,20 @@ describe 'GET /records', autodoc: true do
       json = {
         records: [
           {
-            id: record2.id
+            id: record2.id,
+            charge: record2.charge,
+            category_name: record2.category.name,
+            breakdown_name: record2.breakdown.try(:name),
+            place_name: record2.place.try(:name),
+            memo: record2.memo
           },
           {
-            id: record1.id
+            id: record1.id,
+            charge: record1.charge,
+            category_name: record1.category.name,
+            breakdown_name: record1.breakdown.try(:name),
+            place_name: record1.place.try(:name),
+            memo: record1.memo
           }
         ]
       }

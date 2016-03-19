@@ -49,6 +49,7 @@
     "FINISHED": "対応済"
   },
   "LABELS": {
+    "ADD_20": "の登録（20件まで）",
     "BREAKDOWNS": "内訳",
     "FEEDBACK": "フィードバック",
     "FEEDBACK_EMAIL": "連絡先メールアドレス",
