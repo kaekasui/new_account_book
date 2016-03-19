@@ -22,6 +22,11 @@ LoadingController = (IndexService, $scope) ->
   ), ->
     vm.notice_loading = IndexService.notice_loading
 
+  $scope.$watch ( ->
+    IndexService.records_loading
+  ), ->
+    vm.records_loading = IndexService.records_loading
+
   return
 
 loadingDirective = () ->

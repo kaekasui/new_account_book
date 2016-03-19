@@ -3,7 +3,7 @@
     span.glyphicon.glyphicon-piggy-bank#left-icon
     span(translate='TITLES.NEW_RECORD')
   .panel-body
-    .col-sm-8
+    .col-sm-6
       loading-directive
       // 表示設定のリンク
       .text-right
@@ -28,7 +28,7 @@
             span(translate='COLUMNS.PUBLISHED_AT')
             span.red *
           .col-sm-10
-            input.btn.btn-default(type='date' name='published_at' ng-model='new_record.published_at' datepicker-popup=true required='true')
+            input.btn.btn-default(type='date' name='published_at' ng-model='new_record.published_at' datepicker-popup=true required='true' ng-change='new_record.changeDate()')
             span.errors(ng-messages='newRecordForm.published_at.$error' ng-show='newRecordForm.$submitted && newRecordForm.published_at.$error')
               div(ng-message='required')
                 span.glyphicon.glyphicon-alert#left-icon
@@ -98,7 +98,24 @@
           .control-label.col-sm-2
             button.btn.btn-success(type='submit' ng-disabled='(newRecordForm.$submitted && newRecordForm.$invalid) || new_record.sending' translate='BUTTONS.CREATE')
     // 日付の登録一覧
-    .col-sm-4
-      .panel.panel-default
+    .col-sm-6
+      loading-directive(target='records')
+      .panel.panel-default(ng-show='new_record.day_records')
         .panel-body
-          | {{ new_record.published_at | date:'yyyy年MM月dd日' }} の登録
+          | {{ new_record.published_at | date:'yyyy年MM月dd日' }}
+          span(translate='LABELS.ADD_20')
+          table.table.table-condensed
+            tr(ng-repeat='record in new_record.day_records')
+              td
+                a(href='')
+                  span.glyphicon.glyphicon-arrow-left
+              td
+                label.label.label-warning {{ record.category_name }}
+              td
+                label.label.label-info {{ record.breakdown_name }}
+              td
+                label.label.label-primary {{ record.place_name }}
+              td ¥ {{ record.charge }}
+              td
+                a(href='')
+                  span.glyphicon.glyphicon-info-sign

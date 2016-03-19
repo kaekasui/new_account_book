@@ -7,6 +7,7 @@ IndexService = () ->
   vm.modal_loading = false
   vm.notice_loading = false
   vm.message_loading = false
+  vm.records_loading = false
 
   return
 

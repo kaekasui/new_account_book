@@ -48,6 +48,7 @@
     "FINISHED": "Finished"
   },
   "LABELS": {
+    "ADD_20": "(maximum: 20)",
     "BREAKDOWNS": "Breakdowns",
     "FEEDBACK": "Feedback",
     "FEEDBACK_EMAIL": "your Email address",

@@ -5,6 +5,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
   vm.published_at = new Date()
   vm.settings = false
 
+  IndexService.records_loading = true
   IndexService.loading = true
   RecordsFactory.getNewRecord().then((res) ->
     vm.categories = res.categories
@@ -18,19 +19,26 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
   ).catch (res) ->
     IndexService.loading = false
 
+  params =
+    published_at: vm.published_at
+  RecordsFactory.getRecords(params).then((res) ->
+    vm.day_records = res.records
+    IndexService.records_loading = false
+  ).catch (res) ->
+    IndexService.records_loading = false
+
   vm.submit = () ->
     category = vm.categories[vm.category_index_id]
     if category
       vm.category_id = category.id
     params =
-      published_at: vm.published_at
+      published_at: String(vm.published_at)
       category_id: vm.category_id
       breakdown_id: vm.breakdown_id
       place_id: vm.place_id
       charge: vm.charge
       memo: vm.memo
     RecordsFactory.postRecord(params).then (res) ->
-      vm.published_at = new Date()
       vm.category_index_id = ''
       vm.breakdown_id = ''
       vm.place_id = ''
@@ -38,6 +46,14 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
       vm.memo = ''
       $scope.newRecordForm.$setPristine()
       # TODO: コピーのリンクと編集のリンクを表示する
+      params =
+        published_at: vm.published_at
+      RecordsFactory.getRecords(params).then((res) ->
+        vm.day_records = res.records
+        IndexService.records_loading = false
+      ).catch (res) ->
+        IndexService.records_loading = false
+
     return
 
   vm.selectCategory = (category_index_id) ->
@@ -46,7 +62,6 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
     return
 
   vm.checkSetting = () ->
-    console.log vm.breakdown_field
     params =
       breakdown_field: vm.breakdown_field
       place_field: vm.place_field
@@ -55,6 +70,16 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
       vm.form_group_breakdown = vm.breakdown_field
       vm.form_group_place = vm.place_field
       vm.form_group_memo = vm.memo_field
+    return
+
+  vm.changeDate = () ->
+    params =
+      published_at: vm.published_at
+    RecordsFactory.getRecords(params).then((res) ->
+      vm.day_records = res.records
+      IndexService.records_loading = false
+    ).catch (res) ->
+      IndexService.records_loading = false
     return
 
   return
