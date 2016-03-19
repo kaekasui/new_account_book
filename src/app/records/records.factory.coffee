@@ -34,7 +34,6 @@ RecordsFactory = ($location, $q, $http, localStorageService, toastr, $translate)
       return defer.promise
 
     postRecord: (params) ->
-      console.log params.published_at
       defer = $q.defer()
       token = localStorageService.get('access_token')
       login_headers = {
