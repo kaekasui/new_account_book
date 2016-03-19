@@ -16,6 +16,10 @@ nav.navbar.navbar-default(role='navigation')
           span.glyphicon.glyphicon-stats#left-icon
           span(translate='TITLES.DASHBOARD')
       li(ng-show='navbar.current_user')
+        a(ui-sref='list')
+          span.glyphicon.glyphicon-list#left-icon
+          span(translate='TITLES.LIST')
+      li(ng-show='navbar.current_user')
         a(ui-sref='new_record')
           span.red.glyphicon.glyphicon-piggy-bank#left-icon
           span.red.dotted(translate='TITLES.NEW_RECORD')
