@@ -1,0 +1,40 @@
+form.form.form-inline
+  // 年、月、日
+  ol.breadcrumb.inline-block
+    li
+      a(translate='TITLES.YEAR' href='' ng-hide="list.selected_list == 'year'" ng-click='list.selectYearList()')
+      b(translate='TITLES.YEAR' ng-show="list.selected_list == 'year'")
+    li
+      a(translate='TITLES.MONTH' href='' ng-hide="list.selected_list == 'month'" ng-click='list.selectMonthList()')
+      b(translate='TITLES.MONTH' ng-show="list.selected_list == 'month'")
+    li
+      a(translate='TITLES.DAY' href='' ng-hide="list.selected_list == 'day'" ng-click='list.selectDayList()')
+      b(translate='TITLES.DAY' ng-show="list.selected_list == 'day'")
+
+  // 年
+  select.form-control(ng-model='list.year' ng-show="list.selected_list == 'year'" ng-options="year as year + ' 年' for year in list.years" ng-value="list.year")
+
+  // 月
+  select.form-control(ng-model='list.year' ng-show="list.selected_list == 'month'" ng-options="year as year + ' 年' for year in list.years" ng-value='list.year')
+  ol.breadcrumb.inline-block(ng-show="list.selected_list == 'month'")
+    li(ng-repeat='month in list.months')
+      a(href='' ng-click='list.selectMonth(month)' ng-style="{'font-weight': list.month == month ? 'bold' : 'normal'}") {{ month }} 月
+
+  // 日
+  input.btn.btn-default(type='date' ng-model='list.day' datepicker-popup=true required='true' ng-change='list.changeDate()' ng-show="list.selected_list == 'day'")
+
+// リスト
+.panel.panel-default
+  .panel-heading
+    span.glyphicon.glyphicon-list#left-icon
+    span(ng-show="list.selected_list == 'day'") {{ list.day | date:'yyyy年MM月dd日' }}
+    span(ng-show="list.selected_list == 'month'") {{ list.year }}年{{list.month}}月
+    span(ng-show="list.selected_list == 'year'") {{ list.year }}年
+    span(translate='LABELS.ADD_RECORDS')
+  .panel-body#with-background
+    loading-directive
+    nav
+      ul.pagination
+        li(ng-click='list.clickPaginate(number)' ng-repeat='number in list.offset_numbers' ng-class='{active: number == list.offset}')
+          a {{$index + 1}}
+    table.table(ng-show='list.records')
