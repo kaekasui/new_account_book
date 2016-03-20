@@ -2,6 +2,7 @@ RecordsController = ($filter) ->
   'ngInject'
   vm = this
   # TODO: 年、月、日の設定を取得
+  vm.offset = 0
   vm.year_list = false
   vm.month_list = false
   vm.day_list = true
@@ -31,6 +32,8 @@ RecordsController = ($filter) ->
   vm.changeList = () ->
     console.log 'change'
     
+  vm.clickPaginate = (offset) ->
+    console.log 'offset'
 
   return
  

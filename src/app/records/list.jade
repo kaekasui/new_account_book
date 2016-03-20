@@ -35,6 +35,6 @@ form.form.form-inline
     loading-directive
     nav
       ul.pagination
-        li(ng-click='admin_users.clickPaginate(number)' ng-repeat='number in admin_users.offset_numbers' ng-class='{active: number == admin_users.offset}')
+        li(ng-click='list.clickPaginate(number)' ng-repeat='number in list.offset_numbers' ng-class='{active: number == list.offset}')
           a {{$index + 1}}
-    table.table(ng-show='admin_users.users')
+    table.table(ng-show='list.records')
