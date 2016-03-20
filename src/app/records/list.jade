@@ -38,3 +38,14 @@ form.form.form-inline
         li(ng-click='list.clickPaginate(number)' ng-repeat='number in list.offset_numbers' ng-class='{active: number == list.offset}')
           a {{$index + 1}}
     table.table(ng-show='list.records')
+      tr(ng-repeat='record in list.records')
+        td
+          label.label.label-warning {{ record.category_name }}
+        td
+          label.label.label-info {{ record.breakdown_name }}
+        td
+          label.label.label-primary {{ record.place_name }}
+        td ¥ {{ record.charge }}
+        td
+          a(href='')
+            span.glyphicon.glyphicon-info-sign
