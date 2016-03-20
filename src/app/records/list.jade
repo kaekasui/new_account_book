@@ -1,0 +1,40 @@
+form.form.form-inline
+  // 年、月、日
+  ol.breadcrumb.inline-block
+    li
+      a(translate='TITLES.YEAR' ng-hide='list.year_list' ng-click='list.selectYearList()')
+      b(translate='TITLES.YEAR' ng-show='list.year_list')
+    li
+      a(translate='TITLES.MONTH' ng-hide='list.month_list' ng-click='list.selectMonthList()')
+      b(translate='TITLES.MONTH' ng-show='list.month_list')
+    li
+      a(translate='TITLES.DAY' ng-hide='list.day_list' ng-click='list.selectDayList()')
+      b(translate='TITLES.DAY' ng-show='list.day_list')
+
+  // 年
+  select.form-control(ng-model='list.year' ng-show='list.year_list' ng-options="year as year + ' 年' for year in list.years" ng-value='list.year')
+
+  // 月
+  select.form-control(ng-model='list.year' ng-show='list.month_list' ng-options="year as year + ' 年' for year in list.years" ng-value='list.year')
+  ol.breadcrumb.inline-block(ng-show='list.month_list')
+    li(ng-repeat='month in list.months')
+      a(ng-style="{'font-weight': list.month == month ? 'bold' : 'normal'}") {{ month }} 月
+
+  // 日
+  input.btn.btn-default(type='date' ng-model='list.day' datepicker-popup=true required='true' ng-change='list.changeDate()' ng-show='list.day_list')
+
+// リスト
+.panel.panel-default
+  .panel-heading
+    span.glyphicon.glyphicon-list#left-icon
+    span(ng-show='list.day_list') {{ list.day | date:'yyyy年MM月dd日' }}
+    span(ng-show='list.month_list') {{ list.year }}年{{list.month}}月
+    span(ng-show='list.year_list') {{ list.year }}年
+    span(translate='LABELS.ADD_RECORDS')
+  .panel-body#with-background
+    loading-directive
+    nav
+      ul.pagination
+        li(ng-click='admin_users.clickPaginate(number)' ng-repeat='number in admin_users.offset_numbers' ng-class='{active: number == admin_users.offset}')
+          a {{$index + 1}}
+    table.table(ng-show='admin_users.users')

@@ -6,6 +6,7 @@
     "HOME": "Home",
     "CATEGORY": "Category",
     "DASHBOARD": "Dashboard",
+    "DAY": "Day",
     "FEEDBACK": "Feedback",
     "FEEDBACKS": "Feedbacks",
     "SETTINGS": "Settings",
@@ -14,6 +15,7 @@
     "LOGOUT": "Logout",
     "MESSAGE_LIST": "Message List",
     "MESSAGE": "Message",
+    "MONTH": "Month",
     "MYPAGE": "Mypage",
     "MYPAGE_TOP": "Mypage TOP",
     "NOTICE_LIST": "Notice List",
@@ -28,7 +30,8 @@
     "USERS": "Users",
     "NOTICE": "Notice",
     "NOTICES": "Notices",
-    "MESSAGES": "Messages"
+    "MESSAGES": "Messages",
+    "YEAR": "Year"
   },
   "BUTTONS": {
     "ADD": "Add",
@@ -50,6 +53,7 @@
   },
   "LABELS": {
     "ADD_20": "(maximum: 20)",
+    "ADD_RECORDS": "Records",
     "BREAKDOWNS": "Breakdowns",
     "FEEDBACK": "Feedback",
     "FEEDBACK_EMAIL": "your Email address",

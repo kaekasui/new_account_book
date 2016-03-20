@@ -7,6 +7,7 @@
     "CATEGORY": "カテゴリ",
     "CATEGORIES": "カテゴリの管理",
     "DASHBOARD": "ダッシュボード",
+    "DAY": "日",
     "FEEDBACK": "フィードバック",
     "FEEDBACKS": "フィードバックの管理",
     "SETTINGS": "各種設定",
@@ -15,6 +16,7 @@
     "LOGOUT": "ログアウト",
     "MESSAGE_LIST": "メッセージ一覧",
     "MESSAGE": "メッセージ",
+    "MONTH": "月",
     "MYPAGE": "マイページ",
     "MYPAGE_TOP": "マイページトップ",
     "NOTICE_LIST": "お知らせ一覧",
@@ -29,7 +31,8 @@
     "USERS": "ユーザの管理",
     "NOTICE": "お知らせ",
     "NOTICES": "お知らせの管理",
-    "MESSAGES": "メッセージの管理"
+    "MESSAGES": "メッセージの管理",
+    "YEAR": "年"
   },
   "BUTTONS": {
     "ADD": "追加する",
@@ -51,6 +54,7 @@
   },
   "LABELS": {
     "ADD_20": "の登録（20件まで）",
+    "ADD_RECORDS": "の登録",
     "BREAKDOWNS": "内訳",
     "FEEDBACK": "フィードバック",
     "FEEDBACK_EMAIL": "連絡先メールアドレス",
