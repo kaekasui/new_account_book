@@ -27,6 +27,7 @@ describe 'GET /records', autodoc: true do
           records: [
             {
               id: record2.id,
+              published_at: record2.published_at.strftime('%Y-%m-%d'),
               charge: record2.charge,
               category_name: record2.category.name,
               breakdown_name: record2.breakdown.try(:name),
@@ -35,6 +36,7 @@ describe 'GET /records', autodoc: true do
             },
             {
               id: record1.id,
+              published_at: record1.published_at.strftime('%Y-%m-%d'),
               charge: record1.charge,
               category_name: record1.category.name,
               breakdown_name: record1.breakdown.try(:name),
@@ -59,6 +61,7 @@ describe 'GET /records', autodoc: true do
           records: [
             {
               id: record3.id,
+              published_at: record3.published_at.strftime('%Y-%m-%d'),
               charge: record3.charge,
               category_name: record3.category.name,
               breakdown_name: record3.breakdown.try(:name),
@@ -83,6 +86,7 @@ describe 'GET /records', autodoc: true do
           records: [
             {
               id: record2.id,
+              published_at: record2.published_at.strftime('%Y-%m-%d'),
               charge: record2.charge,
               category_name: record2.category.name,
               breakdown_name: record2.breakdown.try(:name),
@@ -91,6 +95,7 @@ describe 'GET /records', autodoc: true do
             },
             {
               id: record1.id,
+              published_at: record1.published_at.strftime('%Y-%m-%d'),
               charge: record1.charge,
               category_name: record1.category.name,
               breakdown_name: record1.breakdown.try(:name),
@@ -99,6 +104,7 @@ describe 'GET /records', autodoc: true do
             },
             {
               id: record3.id,
+              published_at: record3.published_at.strftime('%Y-%m-%d'),
               charge: record3.charge,
               category_name: record3.category.name,
               breakdown_name: record3.breakdown.try(:name),

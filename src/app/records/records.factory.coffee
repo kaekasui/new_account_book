@@ -21,16 +21,17 @@ RecordsFactory = ($location, $q, $http, localStorageService, toastr, $translate)
     getRecords: (params) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
-      login_headers = {
+      $http(
+        method: 'GET'
+        url: host + 'records'
+        params: params
         headers: { Authorization: 'Token token=' + token }
-      }
-      $http.get host + 'records?date=' + params.published_at + '&offset=' + params.offset, login_headers
-        .success((data) ->
-          defer.resolve data
-          return
-        ).error (data) ->
-          defer.reject data
-          return
+      ).success((data) ->
+        defer.resolve data
+        return
+      ).error (data) ->
+        defer.reject data
+        return
       return defer.promise
 
     postRecord: (params) ->
