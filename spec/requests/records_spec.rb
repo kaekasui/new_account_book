@@ -13,36 +13,103 @@ describe 'GET /records', autodoc: true do
     let!(:record1) { create(:record, user: user) }
     let!(:record2) { create(:record, user: user) }
     let!(:record3) do
-      create(:record, user: user, published_at: Time.zone.yesterday)
+      create(:record, user: user, published_at: 1.month.ago)
     end
-    let!(:params) { { date: Time.zone.today } }
 
-    it '200と当日の収支一覧を返すこと' do
-      get '/records', params, login_headers(user)
-      expect(response.status).to eq 200
+    context '日付のパラメータがある場合' do
+      let!(:params) { { date: Time.zone.today } }
 
-      json = {
-        records: [
-          {
-            id: record2.id,
-            charge: record2.charge,
-            category_name: record2.category.name,
-            breakdown_name: record2.breakdown.try(:name),
-            place_name: record2.place.try(:name),
-            memo: record2.memo
-          },
-          {
-            id: record1.id,
-            charge: record1.charge,
-            category_name: record1.category.name,
-            breakdown_name: record1.breakdown.try(:name),
-            place_name: record1.place.try(:name),
-            memo: record1.memo
-          }
-        ],
-        total_count: 2
-      }
-      expect(response.body).to be_json_as(json)
+      it '200と当日の収支一覧を返すこと' do
+        get '/records', params, login_headers(user)
+        expect(response.status).to eq 200
+
+        json = {
+          records: [
+            {
+              id: record2.id,
+              charge: record2.charge,
+              category_name: record2.category.name,
+              breakdown_name: record2.breakdown.try(:name),
+              place_name: record2.place.try(:name),
+              memo: record2.memo
+            },
+            {
+              id: record1.id,
+              charge: record1.charge,
+              category_name: record1.category.name,
+              breakdown_name: record1.breakdown.try(:name),
+              place_name: record1.place.try(:name),
+              memo: record1.memo
+            }
+          ],
+          total_count: 2
+        }
+        expect(response.body).to be_json_as(json)
+      end
+    end
+
+    context '年、月のパラメータがある場合' do
+      let!(:params) { { year: 2016, month: 1.month.ago.month } }
+
+      it '200とその年の収支一覧を返すこと' do
+        get '/records', params, login_headers(user)
+        expect(response.status).to eq 200
+
+        json = {
+          records: [
+            {
+              id: record3.id,
+              charge: record3.charge,
+              category_name: record3.category.name,
+              breakdown_name: record3.breakdown.try(:name),
+              place_name: record3.place.try(:name),
+              memo: record3.memo
+            }
+          ],
+          total_count: 1
+        }
+        expect(response.body).to be_json_as(json)
+      end
+    end
+
+    context '年のパラメータがある場合' do
+      let!(:params) { { year: 2016 } }
+
+      it '200とその年の収支一覧を返すこと' do
+        get '/records', params, login_headers(user)
+        expect(response.status).to eq 200
+
+        json = {
+          records: [
+            {
+              id: record2.id,
+              charge: record2.charge,
+              category_name: record2.category.name,
+              breakdown_name: record2.breakdown.try(:name),
+              place_name: record2.place.try(:name),
+              memo: record2.memo
+            },
+            {
+              id: record1.id,
+              charge: record1.charge,
+              category_name: record1.category.name,
+              breakdown_name: record1.breakdown.try(:name),
+              place_name: record1.place.try(:name),
+              memo: record1.memo
+            },
+            {
+              id: record3.id,
+              charge: record3.charge,
+              category_name: record3.category.name,
+              breakdown_name: record3.breakdown.try(:name),
+              place_name: record3.place.try(:name),
+              memo: record3.memo
+            }
+          ],
+          total_count: 3
+        }
+        expect(response.body).to be_json_as(json)
+      end
     end
   end
 end
