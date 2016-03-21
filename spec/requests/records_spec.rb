@@ -39,7 +39,8 @@ describe 'GET /records', autodoc: true do
             place_name: record1.place.try(:name),
             memo: record1.memo
           }
-        ]
+        ],
+        total_count: 2
       }
       expect(response.body).to be_json_as(json)
     end

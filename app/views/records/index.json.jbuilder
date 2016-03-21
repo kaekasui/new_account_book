@@ -8,3 +8,5 @@ json.records do
     json.memo record.memo
   end
 end
+
+json.total_count @total_count

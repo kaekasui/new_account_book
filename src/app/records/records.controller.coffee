@@ -1,4 +1,4 @@
-RecordsController = ($filter) ->
+RecordsController = ($filter, IndexService , RecordsFactory) ->
   'ngInject'
   vm = this
   vm.offset = 0
@@ -11,23 +11,51 @@ RecordsController = ($filter) ->
   vm.year = Number($filter('date')(vm.day, 'yyyy'))
   vm.month = Number($filter('date')(vm.day, 'MM'))
 
-  vm.selectYearList = () ->
-    vm.selected_list = 'year'
+  # 登録情報を取得する関数
+  getRecordsWithDate = () ->
+    IndexService.loading = true
+    params =
+      published_at: vm.day
+      offset: vm.offset
+    RecordsFactory.getRecords(params).then((res) ->
+      vm.records = res.records
+      vm.total_count = res.total_count
+      total_array = []
+      for i in [0..vm.total_count]
+        total_array.push(i)
+      vm.offset_numbers = total_array.filter (x) ->
+        return x % 20 == 0
+      IndexService.loading = false
+    ).catch (res) ->
+      IndexService.loading = false
 
+  # 日
+  if vm.selected_list == 'day'
+    getRecordsWithDate()
+
+  vm.selectDayList = () ->
+    vm.selected_list = 'day'
+    vm.offset = 0
+    getRecordsWithDate()
+
+  vm.changeDate = () ->
+    vm.offset = 0
+    getRecordsWithDate()
+
+  # 月
   vm.selectMonthList = () ->
     vm.selected_list = 'month'
  
-  vm.selectDayList = () ->
-    vm.selected_list = 'day'
-
-  vm.changeList = () ->
-    console.log 'change'
+  # 年
+  vm.selectYearList = () ->
+    vm.selected_list = 'year'
 
   vm.selectMonth = (month) ->
     vm.month = month
 
   vm.clickPaginate = (offset) ->
-    console.log 'offset'
+    vm.offset = offset
+    getRecordsWithDate()
 
   return
  

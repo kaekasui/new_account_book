@@ -24,7 +24,7 @@ RecordsFactory = ($location, $q, $http, localStorageService, toastr, $translate)
       login_headers = {
         headers: { Authorization: 'Token token=' + token }
       }
-      $http.get host + 'records?date=' + params.published_at, login_headers
+      $http.get host + 'records?date=' + params.published_at + '&offset=' + params.offset, login_headers
         .success((data) ->
           defer.resolve data
           return

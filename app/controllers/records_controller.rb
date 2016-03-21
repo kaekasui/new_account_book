@@ -2,7 +2,9 @@ class RecordsController < ApplicationController
   before_action :authenticate
 
   def index
-    @records = Record::Fetcher.all(user: current_user, params: params)
+    fetcher = Record::Fetcher.new(user: current_user, params: params)
+    @records = fetcher.all
+    @total_count = fetcher.total_count
   end
 
   def new

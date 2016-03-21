@@ -33,8 +33,19 @@ form.form.form-inline
     span(translate='LABELS.ADD_RECORDS')
   .panel-body#with-background
     loading-directive
-    nav
+    table.table(ng-show='list.records')
+      tr(ng-repeat='record in list.records')
+        td
+          label.label.label-warning {{ record.category_name }}
+        td
+          label.label.label-info {{ record.breakdown_name }}
+        td
+          label.label.label-primary {{ record.place_name }}
+        td ¥ {{ record.charge }}
+        td
+          a(href='')
+            span.glyphicon.glyphicon-info-sign
+    nav(ng-show='list.offset_numbers.length >= 2')
       ul.pagination
         li(ng-click='list.clickPaginate(number)' ng-repeat='number in list.offset_numbers' ng-class='{active: number == list.offset}')
           a {{$index + 1}}
-    table.table(ng-show='list.records')
