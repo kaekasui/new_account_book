@@ -7,9 +7,10 @@ class Record::Fetcher
   end
 
   def all
-    records = @user.records.order(created_at: :desc)
-    if @params[:date].present?
-      records = records.where(published_at: @params[:date].to_date)
+    records = @user.records.order(published_at: :desc, created_at: :desc)
+    records = records.the_day(@params[:date]) if @params[:date].present?
+    if @params[:year].present? || @params[:month].present?
+      records = records.the_year_and_month(@params[:year], @params[:month])
     end
     @total_count = records.count
     records.offset!(@params[:offset]) if @params[:offset].present?

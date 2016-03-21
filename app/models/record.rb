@@ -10,4 +10,21 @@ class Record < ActiveRecord::Base
                                      greater_than_or_equal_to: 0,
                                      allow_blank: true }
   validates :category, presence: true
+
+  scope :the_day, ->(target_day) { where(published_at: target_day.to_date) }
+  scope :the_year_and_month, lambda { |year, month|
+    start_day = 10.years.ago
+    end_day = 10.years.since
+    if year.present? && month.present?
+      start_day = Date.new(year.to_i, month.to_i, 1)
+      end_day = start_day.end_of_month
+    elsif year.present? && month.blank?
+      start_day = Date.new(year.to_i, 1, 1)
+      end_day = start_day.end_of_year
+    elsif year.blank? && month.present?
+      start_day = Date.new(Time.zone.today.year, month.to_i, 1)
+      end_day = start_day.end_of_month
+    end
+    where(published_at: start_day..end_day)
+  }
 end
