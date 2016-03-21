@@ -11,7 +11,7 @@ class Record < ActiveRecord::Base
                                      allow_blank: true }
   validates :category, presence: true
 
-  scope :the_day, ->(target_day) { where(published_at: target_day.to_date) }
+  scope :the_day, -> (target_day) { where(published_at: target_day.to_date) }
   scope :the_year_and_month, lambda { |year, month|
     start_day = 10.years.ago
     end_day = 10.years.since

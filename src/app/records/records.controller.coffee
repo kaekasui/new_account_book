@@ -5,7 +5,7 @@ RecordsController = ($filter, IndexService , RecordsFactory) ->
   vm.years = [2012..2017]
   vm.months = [1..12]
   # TODO: 年、月、日の設定を取得
-  vm.selected_list = 'day'
+  vm.selected_list = 'month'
 
   vm.day = new Date()
   vm.year = Number($filter('date')(vm.day, 'yyyy'))
@@ -14,8 +14,15 @@ RecordsController = ($filter, IndexService , RecordsFactory) ->
   # 登録情報を取得する関数
   getRecordsWithDate = () ->
     IndexService.loading = true
-    params =
-      published_at: vm.day
+    params = if vm.selected_list == 'day'
+      date: vm.day
+      offset: vm.offset
+    else if vm.selected_list == 'month'
+      year: vm.year
+      month: vm.month
+      offset: vm.offset
+    else if vm.selected_list == 'year'
+      year: vm.year
       offset: vm.offset
     RecordsFactory.getRecords(params).then((res) ->
       vm.records = res.records
@@ -43,16 +50,36 @@ RecordsController = ($filter, IndexService , RecordsFactory) ->
     getRecordsWithDate()
 
   # 月
+  if vm.selected_list == 'month'
+    getRecordsWithDate()
+
   vm.selectMonthList = () ->
     vm.selected_list = 'month'
- 
-  # 年
-  vm.selectYearList = () ->
-    vm.selected_list = 'year'
+    vm.offset = 0
+    getRecordsWithDate()
 
   vm.selectMonth = (month) ->
     vm.month = month
+    vm.offset = 0
+    getRecordsWithDate()
 
+  vm.selectYearMonth = (year) ->
+    vm.year = year
+    vm.offset = 0
+    getRecordsWithDate()
+
+  # 年
+  vm.selectYearList = () ->
+    vm.selected_list = 'year'
+    vm.offset = 0
+    getRecordsWithDate()
+
+  vm.selectYear = (year) ->
+    vm.year = year
+    vm.offset = 0
+    getRecordsWithDate()
+
+  # ページング
   vm.clickPaginate = (offset) ->
     vm.offset = offset
     getRecordsWithDate()

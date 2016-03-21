@@ -12,10 +12,10 @@ form.form.form-inline
       b(translate='TITLES.DAY' ng-show="list.selected_list == 'day'")
 
   // 年
-  select.form-control(ng-model='list.year' ng-show="list.selected_list == 'year'" ng-options="year as year + ' 年' for year in list.years" ng-value="list.year")
+  select.form-control(ng-model='list.year' ng-show="list.selected_list == 'year'" ng-options="year as year + ' 年' for year in list.years" ng-value="list.year" ng-change='list.selectYear(list.year)')
 
   // 月
-  select.form-control(ng-model='list.year' ng-show="list.selected_list == 'month'" ng-options="year as year + ' 年' for year in list.years" ng-value='list.year')
+  select.form-control(ng-model='list.year' ng-show="list.selected_list == 'month'" ng-options="year as year + ' 年' for year in list.years" ng-value='list.year' ng-change='list.selectYearMonth(list.year)')
   ol.breadcrumb.inline-block(ng-show="list.selected_list == 'month'")
     li(ng-repeat='month in list.months')
       a(href='' ng-click='list.selectMonth(month)' ng-style="{'font-weight': list.month == month ? 'bold' : 'normal'}") {{ month }} 月
@@ -35,6 +35,7 @@ form.form.form-inline
     loading-directive
     table.table(ng-show='list.records')
       tr(ng-repeat='record in list.records')
+        td {{ record.published_at }}
         td
           label.label.label-warning {{ record.category_name }}
         td
