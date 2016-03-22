@@ -3,6 +3,7 @@ AccountMenuController = () ->
   vm = this
 
   vm.menu_image = 'assets/images/pig_footprints.gif'
+  vm.active_menu_image = 'assets/images/pig_footprints_both.gif'
   vm.isSelected = (index) ->
     return vm.selected == index
 
