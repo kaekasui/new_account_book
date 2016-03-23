@@ -1,9 +1,10 @@
-AccountMenuController = () ->
+AccountMenuController = ($scope, $location) ->
   'ngInject'
   vm = this
 
   vm.menu_image = 'assets/images/pig_footprints.gif'
   vm.active_menu_image = 'assets/images/pig_footprints_both.gif'
+
   vm.isSelected = (index) ->
     return vm.selected == index
 
@@ -12,6 +13,12 @@ AccountMenuController = () ->
 
   vm.mouseLeave = () ->
     vm.selected = undefined
+
+  $scope.$watch ( ->
+    $location.path()
+  ), ->
+    vm.active_url = $location.url()
+    console.log vm.active_url
 
   return
 
