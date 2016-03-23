@@ -82,8 +82,8 @@ script#breakdowns(type='text/ng-template')
         button.btn.btn-default(translate='BUTTONS.CANCEL' ng-click='breakdown.edit_field = false')
         button.btn.btn-info.pull-right(href='' translate='LINKS.DELETE' ng-click='breakdowns.destroyBreakdown($index)')
     a(href='' ng-click='breakdowns.new_breakdown_field = true' translate='BUTTONS.ADD' ng-show='!breakdowns.new_breakdown_field && breakdowns.breakdowns')
-    form(novalidate=true name='newBreakdownForm' ng-submit='breakdowns.submit()' ng-show='breakdowns.new_breakdown_field')
-      .form-group
+    form(novalidate=true name='newBreakdownForm' ng-submit='breakdowns.submit()')
+      .form-group(ng-if='breakdowns.new_breakdown_field')
         input.form-control(type='text' autofocus=true name='breakdowns.new-breakdown' ng-model='breakdowns.new_breakdown' required=true ng-maxlength='100' ng-keydown='breakdowns.createBreakdown($event)')
 
 script#modal-places(type='text/ng-template')
