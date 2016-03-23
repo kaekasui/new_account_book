@@ -20,7 +20,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
     IndexService.loading = false
 
   params =
-    published_at: vm.published_at
+    date: vm.published_at
   RecordsFactory.getRecords(params).then((res) ->
     vm.day_records = res.records
     IndexService.records_loading = false
@@ -47,7 +47,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
       $scope.newRecordForm.$setPristine()
       # TODO: コピーのリンクと編集のリンクを表示する
       params =
-        published_at: vm.published_at
+        date: vm.published_at
       RecordsFactory.getRecords(params).then((res) ->
         vm.day_records = res.records
         IndexService.records_loading = false
@@ -74,7 +74,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
 
   vm.changeDate = () ->
     params =
-      published_at: vm.published_at
+      date: vm.published_at
     RecordsFactory.getRecords(params).then((res) ->
       vm.day_records = res.records
       IndexService.records_loading = false

@@ -1,13 +1,19 @@
 ul.list-group
+  // マイページトップ
   li.list-group-item(ng-mouseenter='menu.mouseEnter(1)' ng-mouseleave='menu.mouseLeave()')
     a(ui-sref='mypage')
       span.glyphicon(class='glyphicon-piggy-bank')
       span(translate='TITLES.MYPAGE_TOP')
-    span(ng-show='menu.isSelected(1)')
+    span(ng-show="menu.isSelected(1) && menu.active_url != '/mypage'")
       img.pull-right(ng-src='{{menu.menu_image}}')
+    span(ng-show="menu.active_url == '/mypage'")
+      img.pull-right(ng-src='{{menu.active_menu_image}}')
+  // プロフィール
   li.list-group-item(ng-mouseenter='menu.mouseEnter(2)' ng-mouseleave='menu.mouseLeave()')
     a(ui-sref='profile')
       span.glyphicon(class='glyphicon-user')
       span(translate='TITLES.PROFILE')
-    span(ng-show='menu.isSelected(2)')
+    span(ng-show="menu.isSelected(2) && menu.active_url != '/profile'")
       img.pull-right(ng-src='{{menu.menu_image}}')
+    span(ng-show="menu.active_url == '/profile'")
+      img.pull-right(ng-src='{{menu.active_menu_image}}')
