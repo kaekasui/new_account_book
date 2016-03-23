@@ -18,7 +18,6 @@ AccountMenuController = ($scope, $location) ->
     $location.path()
   ), ->
     vm.active_url = $location.url()
-    console.log vm.active_url
 
   return
 
