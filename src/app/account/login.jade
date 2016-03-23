@@ -15,7 +15,7 @@
         .form-group
           label(for='email')
             span(translate='LABELS.EMAIL')
-            span *
+            span.red *
           input.form-control#email(type='email' autofocus=true name='email' ng-model='login.email' required=true ng-maxlength='100')
           span.errors(ng-messages='loginForm.email.$error' ng-show='loginForm.email.$dirty || loginForm.$submitted')
             div(ng-message='required')
@@ -30,7 +30,7 @@
         .form-group
           label(for='password')
             span(translate='LABELS.PASSWORD')
-            span *
+            span.red *
           input.form-control#password(type='password' name='password' ng-model='login.password' required=true ng-maxlength='72' ng-minlength='4')
           span.errors(ng-messages='loginForm.password.$error' ng-show='loginForm.password.$dirty || loginForm.$submitted')
             div(ng-message='required')
@@ -42,7 +42,7 @@
             div(ng-message='minlength')
               span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.MINLENGTH.PASSWORD')
-        button.btn.btn-success(type='submit' ng-disabled='(loginForm.$submitted || loginForm.$dirty) && loginForm.$invalid || login.sending')
+        button.btn.btn-success(type='submit' ng-disabled='loginForm.$submitted && loginForm.$invalid || login.sending')
           span(translate='BUTTONS.LOGIN')
       hr
       p
