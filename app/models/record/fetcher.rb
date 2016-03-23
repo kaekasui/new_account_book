@@ -8,7 +8,7 @@ class Record::Fetcher
 
   def all
     records = @user.records.order(published_at: :desc, created_at: :desc)
-    records = records.the_day(@params[:published_at]) if @params[:published_at].present?
+    records = records.the_day(@params[:date]) if @params[:date].present?
     if @params[:year].present? || @params[:month].present?
       records = records.the_year_and_month(@params[:year], @params[:month])
     end

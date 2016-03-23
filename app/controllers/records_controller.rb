@@ -4,7 +4,6 @@ class RecordsController < ApplicationController
   def index
     fetcher = Record::Fetcher.new(user: current_user, params: params)
     @records = fetcher.all
-p @records.count
     @total_count = fetcher.total_count
   end
 
