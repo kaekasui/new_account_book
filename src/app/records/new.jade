@@ -115,7 +115,7 @@
                 label.label.label-info {{ record.breakdown_name }}
               td
                 label.label.label-primary {{ record.place_name }}
-              td ¥ {{ record.charge }}
+              td ¥ {{ record.charge | number }}
               td
                 a(href='')
                   span.glyphicon.glyphicon-info-sign
