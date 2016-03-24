@@ -5,6 +5,7 @@ class RecordsController < ApplicationController
     fetcher = Record::Fetcher.new(user: current_user, params: params)
     @records = fetcher.all
     @total_count = fetcher.total_count
+    @date_setting = current_user.date_setting
   end
 
   def new

@@ -1,11 +1,14 @@
-RecordsController = ($filter, IndexService , RecordsFactory) ->
+RecordsController = ($filter, IndexService, IndexFactory, RecordsFactory) ->
   'ngInject'
   vm = this
   vm.offset = 0
   vm.years = [2012..2017]
   vm.months = [1..12]
-  # TODO: 年、月、日の設定を取得
-  vm.selected_list = 'month'
+  IndexFactory.getCurrentUser().then((res) ->
+    vm.current_user = res
+    vm.selected_list = vm.current_user.date_setting || 'month'
+    getRecordsWithDate()
+  )
 
   vm.day = new Date()
   vm.year = Number($filter('date')(vm.day, 'yyyy'))
