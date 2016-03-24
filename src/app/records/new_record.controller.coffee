@@ -56,9 +56,12 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
 
     return
 
-  vm.selectCategory = (category_index_id) ->
-    vm.breakdowns = vm.categories[category_index_id].breakdowns
-    vm.places = vm.categories[category_index_id].places
+  vm.selectCategory = () ->
+    vm.categories.forEach (item, i) ->
+      if item.id == vm.category_id
+        vm.breakdowns = item.breakdowns
+        console.log vm.breakdowns
+        vm.places = item.places
     return
 
   vm.checkSetting = () ->
@@ -81,6 +84,9 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
     ).catch (res) ->
       IndexService.records_loading = false
     return
+
+  vm.copyRecord = (index) ->
+    console.log 'copy'
 
   return
  

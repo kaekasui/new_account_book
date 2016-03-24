@@ -3,6 +3,7 @@ json.categories do
     json.id category.id
     json.name category.name
     json.barance_of_payments category.barance_of_payments
+    json._payments_name category._payments_name
     json.breakdowns do
       json.array! category.breakdowns do |breakdown|
         json.id breakdown.id
