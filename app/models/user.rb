@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :records
 
-  enum status: { registered: 2, inactive: 1 }
+  enum status: { inactive: 1, registered: 2 }
+  enum date_setting: { year: 1, month: 2, day: 3 }
 
   validates :categories,
             length: { maximum: Settings.user.categories.maximum_length,

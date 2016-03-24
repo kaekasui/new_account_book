@@ -26,5 +26,10 @@ FactoryGirl.define do
     trait :admin_user do
       admin true
     end
+
+    date_setting :month
+    trait :set_day do
+      date_setting :day
+    end
   end
 end
