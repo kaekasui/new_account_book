@@ -127,6 +127,8 @@
     "UPDATE_PASSWORD": "Your Password has been changed",
     "NOT_FOUND_EMAIL": "Email already registered or Not yet signed up for registration",
     "REGISTED": "Account has been registered",
+    "RESEND_EMAIL": "Input your Email if not found a mail for registration.",
+    "RESET_PASSWORD": "Input your Email. We will send you a Mail with URL.",
     "FEEDBACK": "Please feel free to ask me any questions!:)",
     "REMOVE_CATEGORY": "Remove '{{category_name}}' from the Place '{{place_name}}'"
   },

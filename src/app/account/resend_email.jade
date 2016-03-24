@@ -11,6 +11,7 @@
         button.close(data-dismiss='alert' type='button' ng-click='resend_email.clearErrors()') ×
         ul(ng-repeat='error in resend_email.errors')
           li {{error}}
+      p(translate='MESSAGES.RESEND_EMAIL')
       form(novalidate=true name='resendEmailForm' ng-submit='resend_email.submit()')
         .form-group
           label(for='email')
@@ -27,7 +28,7 @@
             div(ng-message='maxlength')
               span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.MAXLENGTH.EMAIL')
-        button.btn.btn-success(type='submit' ng-disabled='(resendEmailForm.$submitted || resendEmailForm.$dirty) && resendEmailForm.$invalid || resend_email.sending')
+        button.btn.btn-success(type='submit' ng-disabled='resendEmailForm.$submitted && resendEmailForm.$invalid || resend_email.sending')
           span(translate='BUTTONS.SEND')
       hr
       p
