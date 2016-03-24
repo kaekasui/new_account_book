@@ -6,7 +6,9 @@ RecordsController = ($filter, IndexService, IndexFactory, RecordsFactory) ->
   vm.months = [1..12]
   IndexFactory.getCurrentUser().then((res) ->
     vm.current_user = res
-    vm.selected_list = 'month'
+    vm.selected_list = vm.current_user.date_setting || 'month'
+    getRecordsWithDate()
+  )
 
   vm.day = new Date()
   vm.year = Number($filter('date')(vm.day, 'yyyy'))
@@ -28,7 +30,6 @@ RecordsController = ($filter, IndexService, IndexFactory, RecordsFactory) ->
     RecordsFactory.getRecords(params).then((res) ->
       vm.records = res.records
       vm.total_count = res.total_count
-      vm.selected_list = res.date_setting
       total_array = []
       for i in [0..vm.total_count]
         total_array.push(i)
