@@ -60,7 +60,6 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
     vm.categories.forEach (item, i) ->
       if item.id == vm.category_id
         vm.breakdowns = item.breakdowns
-        console.log vm.breakdowns
         vm.places = item.places
     return
 
@@ -86,10 +85,12 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
     return
 
   vm.copyRecord = (record) ->
-    console.log vm.categories
     vm.categories.forEach (item, i) ->
       if item.name == record.category_name
         vm.category_id = item.id
+        console.log item
+        vm.breakdowns = item.breakdowns
+        vm.places = item.places
 
   return
  

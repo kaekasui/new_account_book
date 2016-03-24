@@ -58,7 +58,7 @@
           label.control-label.col-sm-2(for='breakdown')
             span(translate='COLUMNS.BREAKDOWN')
           .col-sm-10
-            select.form-control(ng-model='new_record.breakdown_id' name='breakdown_id' ng-disabled='!new_record.breakdowns')
+            select.form-control(ng-model='new_record.breakdown_id' name='breakdown_id' ng-disabled='!new_record.category_id')
               option(ng-value='breakdown.id' ng-repeat='breakdown in new_record.breakdowns')
                 | {{ breakdown.name }}
         // お店・施設
@@ -66,7 +66,7 @@
           label.control-label.col-sm-2(for='place')
             span(translate='COLUMNS.PLACE')
           .col-sm-10
-            select.form-control(ng-model='new_record.place_id' name='place_id' ng-disabled='!new_record.places')
+            select.form-control(ng-model='new_record.place_id' name='place_id' ng-disabled='!new_record.category_id')
               option(ng-value='place.id' ng-repeat='place in new_record.places')
                 | {{ place.name }}
         // 金額
