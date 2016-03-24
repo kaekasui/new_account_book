@@ -15,7 +15,7 @@
         .form-group
           label(for='email')
             span(translate='LABELS.EMAIL')
-            span *
+            span.red *
           input.form-control#email(type='email' autofocus=true name='email' ng-model='sign_up.email' required=true ng-maxlength='100')
           span.errors(ng-messages='signUpForm.email.$error' ng-show='signUpForm.$submitted || signUpForm.email.$dirty')
             div(ng-message='required')
@@ -30,7 +30,7 @@
         .form-group
           label(for='password')
             span(translate='LABELS.PASSWORD')
-            span *
+            span.red *
           input.form-control#password(type='password' name='password' ng-model='sign_up.password' required=true ng-maxlength='72' ng-minlength='4')
           span.errors(ng-messages='signUpForm.password.$error' ng-show='signUpForm.$submitted || signUpForm.password.$dirty')
             div(ng-message='required')
@@ -45,7 +45,7 @@
         .form-group
           label(for='password_confirmation')
             span(translate='LABELS.PASSWORD_CONFIRMATION')
-            span *
+            span.red *
           input.form-control#password_confirmation(type='password' name='password_confirmation' ng-model='sign_up.password_confirmation' required=true ng-maxlength='72' ng-minlength='4')
           span.errors(ng-messages='signUpForm.password_confirmation.$error' ng-show='signUpForm.$submitted || signUpForm.password_confirmation.$dirty')
             div(ng-message='required')
@@ -57,7 +57,7 @@
             div(ng-message='minlength')
               span.glyphicon.glyphicon-alert
               span(translate='ERRORS.MINLENGTH.PASSWORD')
-        button.btn.btn-success(type='submit' ng-disabled='(signUpForm.$submitted || signUpForm.$dirty) && signUpForm.$invalid || sign_up.sending')
+        button.btn.btn-success(type='submit' ng-disabled='signUpForm.$submitted && signUpForm.$invalid || sign_up.sending')
           span(translate='BUTTONS.SIGN_UP')
       hr
       p
