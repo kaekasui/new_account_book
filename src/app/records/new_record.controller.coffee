@@ -85,12 +85,23 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
     return
 
   vm.copyRecord = (record) ->
-    vm.categories.forEach (item, i) ->
-      if item.name == record.category_name
-        vm.category_id = item.id
-        console.log item
-        vm.breakdowns = item.breakdowns
-        vm.places = item.places
+    vm.categories.forEach (c, i) ->
+      if c.name == record.category_name
+        vm.category_id = c.id
+        vm.breakdowns = c.breakdowns
+        vm.breakdowns.forEach (b, j) ->
+          if b.name == record.breakdown_name
+            vm.breakdown_id = b.id
+        vm.places = c.places
+        vm.places.forEach (p, k) ->
+          if p.name == record.place_name
+            vm.place_id = p.id
+      if record.breakdown_name == null
+        vm.breakdown_id = ''
+      if record.place_name == null
+        vm.place_id = ''
+    vm.charge = record.charge
+    vm.memo = record.memo
 
   return
  

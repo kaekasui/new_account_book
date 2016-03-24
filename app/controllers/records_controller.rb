@@ -26,7 +26,7 @@ class RecordsController < ApplicationController
   private
 
   def record_params
-    params.permit(:published_at, :charge,
+    params.permit(:published_at, :charge, :memo,
                   :category_id, :breakdown_id, :place_id)
   end
 end
