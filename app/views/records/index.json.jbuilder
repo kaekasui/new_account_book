@@ -11,4 +11,3 @@ json.records do
 end
 
 json.total_count @total_count
-json.date_setting @date_setting

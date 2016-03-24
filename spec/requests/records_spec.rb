@@ -44,8 +44,7 @@ describe 'GET /records', autodoc: true do
               memo: record1.memo
             }
           ],
-          total_count: 2,
-          date_setting: 'month'
+          total_count: 2
         }
         expect(response.body).to be_json_as(json)
       end
@@ -70,8 +69,7 @@ describe 'GET /records', autodoc: true do
               memo: record3.memo
             }
           ],
-          total_count: 1,
-          date_setting: 'month'
+          total_count: 1
         }
         expect(response.body).to be_json_as(json)
       end
@@ -114,8 +112,7 @@ describe 'GET /records', autodoc: true do
               memo: record3.memo
             }
           ],
-          total_count: 3,
-          date_setting: 'month'
+          total_count: 3
         }
         expect(response.body).to be_json_as(json)
       end
