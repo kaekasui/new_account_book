@@ -107,7 +107,7 @@
           table.table.table-condensed
             tr(ng-repeat='record in new_record.day_records')
               td
-                a(href='' ng-click='new_record.copyRecord($index)')
+                a(href='' ng-click='new_record.copyRecord(record)')
                   span.glyphicon.glyphicon-arrow-left
               td
                 label.label.label-warning {{ record.category_name }}

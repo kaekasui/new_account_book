@@ -85,8 +85,11 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
       IndexService.records_loading = false
     return
 
-  vm.copyRecord = (index) ->
-    console.log 'copy'
+  vm.copyRecord = (record) ->
+    console.log vm.categories
+    vm.categories.forEach (item, i) ->
+      if item.name == record.category_name
+        vm.category_id = item.id
 
   return
  
