@@ -5,7 +5,6 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
   vm.published_at = new Date()
   vm.settings = false
 
-  IndexService.records_loading = true
   IndexService.loading = true
   RecordsFactory.getNewRecord().then((res) ->
     vm.categories = res.categories
@@ -19,13 +18,19 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
   ).catch (res) ->
     IndexService.loading = false
 
-  params =
-    date: vm.published_at
-  RecordsFactory.getRecords(params).then((res) ->
-    vm.day_records = res.records
-    IndexService.records_loading = false
-  ).catch (res) ->
-    IndexService.records_loading = false
+  # 対象の登録一覧を取得する関数
+  getRecordsWithDate = () ->
+    IndexService.records_loading = true
+    params =
+      date: vm.published_at
+    RecordsFactory.getRecords(params).then((res) ->
+      vm.day_records = res.records
+      IndexService.records_loading = false
+    ).catch (res) ->
+      IndexService.records_loading = false
+    return
+ 
+  getRecordsWithDate()
 
   vm.submit = () ->
     category = vm.categories[vm.category_index_id]
@@ -45,15 +50,8 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
       vm.charge = ''
       vm.memo = ''
       $scope.newRecordForm.$setPristine()
-      # TODO: コピーのリンクと編集のリンクを表示する
-      params =
-        date: vm.published_at
-      RecordsFactory.getRecords(params).then((res) ->
-        vm.day_records = res.records
-        IndexService.records_loading = false
-      ).catch (res) ->
-        IndexService.records_loading = false
-
+      # TODO: 編集のリンクを表示する
+      getRecordsWithDate()
     return
 
   vm.selectCategory = () ->
@@ -61,7 +59,6 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
       if item.id == vm.category_id
         vm.breakdowns = item.breakdowns
         vm.places = item.places
-    return
 
   vm.checkSetting = () ->
     params =
@@ -75,14 +72,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
     return
 
   vm.changeDate = () ->
-    params =
-      date: vm.published_at
-    RecordsFactory.getRecords(params).then((res) ->
-      vm.day_records = res.records
-      IndexService.records_loading = false
-    ).catch (res) ->
-      IndexService.records_loading = false
-    return
+    getRecordsWithDate()
 
   vm.copyRecord = (record) ->
     vm.categories.forEach (c, i) ->
@@ -102,6 +92,10 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
         vm.place_id = ''
     vm.charge = record.charge
     vm.memo = record.memo
+
+  vm.setToday = () ->
+    vm.published_at = new Date()
+    getRecordsWithDate()
 
   return
  

@@ -36,6 +36,8 @@
               div(ng-message='date')
                 span.glyphicon.glyphicon-alert#left-icon
                 span(translate='ERRORS.DATE')
+            label
+              a.btn.btn-info.btn-sm(translate='BUTTONS.TODAY' ng-click='new_record.setToday()')
         // カテゴリ
         .form-group
           label.control-label.col-sm-2(for='category')
