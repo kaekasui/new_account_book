@@ -43,4 +43,5 @@ Rails.application.routes.draw do
     patch :set_display
   end
   resource :feedback, only: %i(create)
+  resource :mypage, only: %i(show), on: :collection
 end

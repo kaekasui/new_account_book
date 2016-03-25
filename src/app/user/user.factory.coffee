@@ -18,6 +18,21 @@ UserFactory = ($location, $q, $http, localStorageService, toastr, $translate, In
           return
       return defer.promise
 
+    getMypage: (offset) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.get host + 'mypage', login_headers
+        .success((data) ->
+          defer.resolve data
+          return
+        ).error (data) ->
+          defer.reject data
+          return
+      return defer.promise
+
     getNotices: (offset) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')

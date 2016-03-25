@@ -28,4 +28,11 @@ class Record < ActiveRecord::Base
     end
     where(published_at: start_day..end_day)
   }
+  scope :order_type, lambda { |sort_type|
+    if sort_type == 'lately'
+      order(created_at: :desc)
+    else
+      order(published_at: :desc, created_at: :desc)
+    end
+  }
 end
