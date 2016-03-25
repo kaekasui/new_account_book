@@ -6,6 +6,7 @@ MypageController = (UserFactory, IndexService) ->
   UserFactory.getMypage().then((res) ->
     vm.notices = res.notices
     vm.messages = res.messages
+    vm.records = res.records
     IndexService.loading = false
   ).catch (res) ->
     IndexService.loading = false
