@@ -18,6 +18,9 @@ ja:
       email_user: メール登録
       twitter_user: Twitter経由
       facebook_user: Facebook経由
+    barance_of_payments:
+      income: 収入
+      outgo: 支出
   user_mailer:
     registration:
       subject: 【PIG BOOK β】アカウント登録のご案内

@@ -42,13 +42,13 @@
             span(translate='COLUMNS.CATEGORY')
             span.red *
           .col-sm-10
-            select.form-control(ng-model='new_record.category_index_id' name='category_id' required='true' ng-change='new_record.selectCategory(new_record.category_index_id)')
-              optgroup(label="{{ 'LABELS.INCOME' | translate }}" ng-show='income_categories.length != 0')
-                option(ng-value='$index' ng-repeat='category in income_categories = (new_record.categories | filter: { barance_of_payments:true })')
-                  | {{ category.name }}
-              optgroup(label="{{ 'LABELS.OUTGO' | translate }}" ng-show='outgo_categories.length != 0')
-                option(ng-value='$index' ng-repeat='category in outgo_categories = (new_record.categories | filter: { barance_of_payments:false })')
-                  | {{ category.name }}
+            select.form-control(
+              name='category_id'
+              ng-model='new_record.category_id'
+              required='true'
+              ng-change='new_record.selectCategory()'
+              ng-options='category.id as category.name group by category._payments_name for category in new_record.categories'
+            )
             span.errors(ng-messages='newRecordForm.category_id.$error' ng-show='newRecordForm.$submitted && newRecordForm.category_id.$error')
               div(ng-message='required')
                 span.glyphicon.glyphicon-alert#left-icon
@@ -58,17 +58,23 @@
           label.control-label.col-sm-2(for='breakdown')
             span(translate='COLUMNS.BREAKDOWN')
           .col-sm-10
-            select.form-control(ng-model='new_record.breakdown_id' name='breakdown_id' ng-disabled='!new_record.category_index_id')
-              option(ng-value='breakdown.id' ng-repeat='breakdown in new_record.breakdowns')
-                | {{ breakdown.name }}
+            select.form-control(
+              name='breakdown_id'
+              ng-model='new_record.breakdown_id'
+              ng-disabled='!new_record.category_id'
+              ng-options='breakdown.id as breakdown.name for breakdown in new_record.breakdowns'
+            )
         // お店・施設
         .form-group(ng-show='new_record.form_group_place')
           label.control-label.col-sm-2(for='place')
             span(translate='COLUMNS.PLACE')
           .col-sm-10
-            select.form-control(ng-model='new_record.place_id' name='place_id' ng-disabled='!new_record.category_index_id')
-              option(ng-value='place.id' ng-repeat='place in new_record.places')
-                | {{ place.name }}
+            select.form-control(
+              name='place_id'
+              ng-model='new_record.place_id'
+              ng-disabled='!new_record.category_id'
+              ng-options='place.id as place.name for place in new_record.places'
+             )
         // 金額
         .form-group
           label.control-label.col-sm-2(for='charge')
@@ -107,7 +113,7 @@
           table.table.table-condensed
             tr(ng-repeat='record in new_record.day_records')
               td
-                a(href='')
+                a(href='' ng-click='new_record.copyRecord(record)')
                   span.glyphicon.glyphicon-arrow-left
               td
                 label.label.label-warning {{ record.category_name }}
