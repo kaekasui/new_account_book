@@ -2,6 +2,28 @@
   user-menu-directive
 
 .col-md-9
+  .col-md-12
+    // 最近の入力
+    .panel.panel-default
+      .panel-heading
+        span.glyphicon.glyphicon-list#left-icon
+        span(translate='TITLES.RECENTLY_RECORDS_LIST')
+      .panel-body
+        loading-directive
+        table.table.table-condensed
+          tr(ng-repeat='record in mypage.records | limitTo:5')
+            td {{ record.published_at }}
+            td
+              label.label.label-warning {{ record.category_name }}
+            td
+              label.label.label-info {{ record.breakdown_name }}
+            td
+              label.label.label-primary {{ record.place_name }}
+            td ¥ {{ record.charge | number }}
+            td
+              a(href='')
+                span.glyphicon.glyphicon-info-sign
+
   // お知らせ
   .col-md-6
     .panel.panel-default

@@ -17,6 +17,11 @@ describe 'GET /mypage', autodoc: true do
     let!(:message1) { create(:message, user: user, read: true) }
     let!(:message2) { create(:message, user: user2) }
     let!(:message3) { create(:message, user: user) }
+    let!(:record1) { create(:record, user: user) }
+    let!(:record2) { create(:record, user: user) }
+    let!(:record3) do
+      create(:record, user: user, published_at: 1.month.ago)
+    end
 
     it '200とお知らせ情報、メッセージ情報を返すこと' do
       get '/mypage', '', login_headers(user)
@@ -49,6 +54,35 @@ describe 'GET /mypage', autodoc: true do
             content: message1.content,
             read: true,
             created_at: I18n.l(message1.created_at)
+          }
+        ],
+        records: [
+          {
+            id: record3.id,
+            published_at: record3.published_at.strftime('%Y-%m-%d'),
+            charge: record3.charge,
+            category_name: record3.category.name,
+            breakdown_name: record3.breakdown.try(:name),
+            place_name: record3.place.try(:name),
+            memo: record3.memo
+          },
+          {
+            id: record2.id,
+            published_at: record2.published_at.strftime('%Y-%m-%d'),
+            charge: record2.charge,
+            category_name: record2.category.name,
+            breakdown_name: record2.breakdown.try(:name),
+            place_name: record2.place.try(:name),
+            memo: record2.memo
+          },
+          {
+            id: record1.id,
+            published_at: record1.published_at.strftime('%Y-%m-%d'),
+            charge: record1.charge,
+            category_name: record1.category.name,
+            breakdown_name: record1.breakdown.try(:name),
+            place_name: record1.place.try(:name),
+            memo: record1.memo
           }
         ]
       }
