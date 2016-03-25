@@ -99,6 +99,9 @@
       "CHARGE": "Input a charge",
       "PUBLISHED_AT": "Input Date"
     },
+    "MAX": {
+      "CHARGE": "Enter Charge has an integer less than or equal to 9,999,999."
+    },
     "MAXLENGTH": {
       "EMAIL": "Enter your E-mail has a length of at most 100",
       "PASSWORD": "Enter your Password has a length of at most 72",
@@ -106,6 +109,9 @@
       "CONTENT": "Enter your Comment has a length of at most 10000",
       "CATEGORY_NAME": "Enter your Category Name has a length of at most 100",
       "MEMO": "Enter your Memo has a length of at most 10000"
+    },
+    "MIN": {
+      "CHARGE": "Enter Charge has an integer greater than or equal to 0."
     },
     "MINLENGTH": {
       "PASSWORD": "Enter your Password has a length of at least 4"
