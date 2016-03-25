@@ -31,6 +31,10 @@ class Category < ActiveRecord::Base
   end
 
   def _payments_name
-    barance_of_payments ? I18n.t('labels.barance_of_payments.income') : I18n.t('labels.barance_of_payments.outgo')
+    if barance_of_payments
+      I18n.t('labels.barance_of_payments.income')
+    else
+      I18n.t('labels.barance_of_payments.outgo')
+    end
   end
 end

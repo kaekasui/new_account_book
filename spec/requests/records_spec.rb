@@ -148,6 +148,7 @@ describe 'GET /records/new', autodoc: true do
             id: category.id,
             name: category.name,
             barance_of_payments: category.barance_of_payments,
+            _payments_name: category._payments_name,
             breakdowns: [
               id: breakdown.id,
               name: breakdown.name
@@ -161,6 +162,7 @@ describe 'GET /records/new', autodoc: true do
             id: category2.id,
             name: category2.name,
             barance_of_payments: category2.barance_of_payments,
+            _payments_name: category2._payments_name,
             breakdowns: [],
             places: []
           }
