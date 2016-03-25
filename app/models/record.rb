@@ -8,6 +8,7 @@ class Record < ActiveRecord::Base
   validates :charge, presence: true,
                      numericality: { only_integer: true,
                                      greater_than_or_equal_to: 0,
+                                     less_than_or_equal_to: 9_999_999,
                                      allow_blank: true }
   validates :category, presence: true
 
