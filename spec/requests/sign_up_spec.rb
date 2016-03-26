@@ -57,7 +57,7 @@ describe 'POST /email_user/registrations?email=email\
   end
 
   context 'パスワード（確認）が空の場合' do
-    let(:password_confirmation) { nil }
+    let(:password_confirmation) { '' }
 
     it '422とエラーメッセージが返ってくること' do
       post '/email_user/registrations', params
