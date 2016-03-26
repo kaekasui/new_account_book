@@ -55,6 +55,20 @@ describe 'POST /email_user/registrations?email=email\
       expect(response.body).to be_json_as(json)
     end
   end
+
+  context 'パスワード（確認）が空の場合' do
+    let(:password_confirmation) { nil }
+
+    it '422とエラーメッセージが返ってくること' do
+      post '/email_user/registrations', params
+
+      expect(response.status).to eq 422
+      json = {
+        error_messages: ['パスワード（確認）とパスワードの入力が一致しません']
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
 end
 
 describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
