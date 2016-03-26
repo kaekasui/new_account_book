@@ -153,6 +153,7 @@
     "PLACE": "Place",
     "POST_AT": "post time",
     "PUBLISHED_AT": "Date",
+    "SENT_AT": "Sent Time",
     "TITLE": "Title",
     "USER": "User",
     "NICKNAME": "Nickname"
