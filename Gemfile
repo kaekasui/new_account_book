@@ -30,6 +30,7 @@ gem 'slack-notifier'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'rb-readline'
 
 group :development, :test do
   gem 'rspec-rails'
