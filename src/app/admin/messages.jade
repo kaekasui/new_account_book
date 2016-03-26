@@ -13,6 +13,7 @@ admin-menu-directive
       tr
         th(translate='COLUMNS.USER')
         th(translate='LABELS.FEEDBACK')
+        th(translate='COLUMNS.SENT_AT')
         th
         th(translate='COLUMNS.CONTENT')
         th(translate='COLUMNS.CREATED_AT')
@@ -20,6 +21,7 @@ admin-menu-directive
       tr(ng-repeat='message in admin_messages.messages')
         td {{ message.user_name }}
         td {{ message.feedback_content | truncate:true:10 }}
+        td {{ message.sent_at }}
         td
           label.label.label-warning(translate='LABELS.UNREAD' ng-show='!message.read' ng-click='admin_messages.send_mail(message.id)')
         td

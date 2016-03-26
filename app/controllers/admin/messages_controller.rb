@@ -29,7 +29,7 @@ class Admin::MessagesController < ApplicationController
       render :error404, status: 404, formats: :json
     else
       UserMailer.confirm_message(message.user.try(:email), origin).deliver_later
-      head 200
+      message.update(sent_at: Time.zone.now) ? head(:ok) : render_error(message)
     end
   end
 end

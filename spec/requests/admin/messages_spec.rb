@@ -34,6 +34,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
             {
               id: message2.id,
               read: false,
+              sent_at: '',
               user_name: message2.user._name,
               feedback_content: message2.feedback.try(:content),
               content: message2.content,
@@ -42,6 +43,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
             {
               id: message1.id,
               read: false,
+              sent_at: '',
               user_name: message1.user._name,
               feedback_content: message1.feedback.try(:content),
               content: message1.content,
@@ -64,6 +66,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
             {
               id: message1.id,
               read: false,
+              sent_at: '',
               user_name: message1.user._name,
               feedback_content: message1.feedback.try(:content),
               content: message1.content,
@@ -205,6 +208,8 @@ describe 'POST /admin/messages/:message_id/send_mail', autodoc: true do
 
         open_email(user.email)
         expect(current_email.subject).to eq '【PIG BOOK β】新しいメッセージが届いています'
+        message.reload
+        expect(message.sent_at).not_to be_nil
       end
     end
 
