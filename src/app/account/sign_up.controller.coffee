@@ -1,6 +1,8 @@
 SignUpController = (AccountFactory) ->
   'ngInject'
   vm = this
+  vm.password = ''
+  vm.password_confirmation = ''
 
   vm.clearErrors = () ->
     vm.errors = ''
