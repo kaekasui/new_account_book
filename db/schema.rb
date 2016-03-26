@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318120205) do
+ActiveRecord::Schema.define(version: 20160326114450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20160318120205) do
     t.datetime "deleted_at"
     t.string   "type"
     t.boolean  "read",        default: false
+    t.datetime "sent_at"
   end
 
   create_table "monthly_counts", force: :cascade do |t|
@@ -207,6 +208,7 @@ ActiveRecord::Schema.define(version: 20160318120205) do
     t.boolean  "breakdown_field",        default: true
     t.boolean  "place_field",            default: true
     t.boolean  "memo_field",             default: true
+    t.integer  "date_setting"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
