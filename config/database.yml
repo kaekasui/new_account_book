@@ -14,5 +14,3 @@ test:
 production:
   <<: *default
   database: account-book-pig_production
-  username: account-book-pig
-  password: <%= ENV['ACCOUNT-BOOK-PIG_DATABASE_PASSWORD'] %>
