@@ -16,10 +16,10 @@ RUN apt-get update
 
 RUN apt-get install -y nodejs
 RUN npm install -g bower
-#RUN bower install --allow-root
-#RUN npm install
-#RUN node_modules/.bin/gulp build
-#RUN NODE_ENV=production node gulp/server.js
+RUN bower install --allow-root
+RUN npm install
+RUN node_modules/.bin/gulp build
+RUN NODE_ENV=production node gulp/server.js
 
 ENV RAILS_ENV production
 
