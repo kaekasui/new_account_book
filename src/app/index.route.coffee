@@ -2,6 +2,11 @@ angular.module 'newAccountBook'
   .config ($stateProvider, $urlRouterProvider) ->
     'ngInject'
     $stateProvider
+      .state 'error',
+        url: '/errors/{id:400|403|404}'
+        templateUrl: 'app/components/errors/error.html'
+        controllerAs: 'error'
+        controller: 'InputErrorsController'
       .state 'home',
         url: '/'
         templateUrl: 'app/main/main.html'

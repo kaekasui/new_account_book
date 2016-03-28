@@ -16,6 +16,10 @@ AuthInterceptor = ($q, $location) ->
   vm.responseError = (res) ->
     if res.status == 401
       $location.path 'login'
+    if res.status == 404
+      $location.path '/errors/404'
+    if res.status == 403
+      $location.path '/errors/403'
     $q.reject(res)
 
   return

@@ -123,6 +123,7 @@
     "DATE": "日付を正しい形式で入力してください"
   },
   "MESSAGES": {
+    "CANNOT_ACCESS_PAGE": "ページにアクセスできませんでした。",
     "CREATE_NOTICE": "お知らせを投稿しました",
     "CREATE_RECORD": "登録しました",
     "CONFIRM_TO_SEND_MAIL": "メールを送信しますか？",
@@ -135,6 +136,7 @@
     "SEND_MESSAGE_TO_ADMIN": "管理者にメッセージを送信しました",
     "UPDATE_PASSWORD": "パスワードを変更しました",
     "NOT_FOUND_EMAIL": "メールアドレスがすでに本登録されているか、登録されていないメールアドレスです",
+    "NOT_FOUND_PAGE": "お探しのページは見つかりません。URLをご確認ください。",
     "REGISTED": "アカウント登録が完了しました",
     "RESEND_EMAIL": "本登録完了のためのURLが記述されたメールが見つからない場合、メールの再送ができます。",
     "RESET_PASSWORD": "登録済みのメールアドレスを入力してください。\nパスワード再設定のためのURLをメールにて送ります。",

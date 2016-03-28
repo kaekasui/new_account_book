@@ -1,0 +1,12 @@
+span.error
+  span#status_code {{ error.code }}
+span.error
+  span#str Error
+span.error
+  span.red.glyphicon.glyphicon-piggy-bank
+  span.red.glyphicon.glyphicon-piggy-bank
+  span.red.glyphicon.glyphicon-piggy-bank
+blockquote(ng-show='error.code == 404')
+  span(translate='MESSAGES.NOT_FOUND_PAGE')
+blockquote(ng-show='error.code == 403')
+  span(translate='MESSAGES.CANNOT_ACCESS_PAGE')
