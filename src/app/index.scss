@@ -70,7 +70,7 @@ $label-success-bg: lighten(#5E7535, 10%);
 body {
   span {
     outline: none;
-  }
+    }
   .inline-block {
     display: inline-block;
   }
@@ -129,6 +129,18 @@ body {
     color: #ac5e9f;
     div {
       margin-left: 10px;
+    }
+  }
+  span.error {
+    font-family: 'Lucida Grande', Meiryo, sans-serif;
+    font-weight: bold;
+    color: rgba($link-color, 0.5);
+    margin-left: 20px;
+    #status_code {
+      font-size: 150px;
+    }
+    #str {
+      font-size: 50px;
     }
   }
   .close {
