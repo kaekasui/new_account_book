@@ -9,5 +9,9 @@ div(ng-class="{'col-md-9': notice.current_user, 'col-md-12': !notice.current_use
       span.pull-right {{ notice.notice.post_at }}
     .panel-body
       loading-directive
-      tweet-button-directive(title='{{notice.notice.title}}')
+      .sns-buttons
+        span
+          tweet-button-directive(title='{{notice.notice.title}}')
+        span
+          like-button-directive
       div(marked='notice.notice.content')

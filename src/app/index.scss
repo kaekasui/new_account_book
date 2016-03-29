@@ -140,6 +140,12 @@ body {
       text-align: right;
     }
   }
+  .sns-buttons {
+    text-align: right;
+  }
+  .fb_iframe_widget > span {
+    vertical-align: baseline !important;
+  }
   span.red {
     color: $red;
   }
