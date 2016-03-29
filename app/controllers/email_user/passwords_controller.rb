@@ -15,7 +15,7 @@ class EmailUser::PasswordsController < ApplicationController
   end
 
   def edit
-    fail ActiveRecord::RecordNotFound if @user != @token_user
+    raise ActiveRecord::RecordNotFound if @user != @token_user
     host = Rails.env.production? ? '' : 'http://localhost:3000'
     form_params = {
       user_id: params[:id],
@@ -26,7 +26,7 @@ class EmailUser::PasswordsController < ApplicationController
   end
 
   def update
-    fail ActiveRecord::RecordNotFound if @user != @token_user
+    raise ActiveRecord::RecordNotFound if @user != @token_user
     password_form = EmailUser::Password.new(@user, password_reset_params)
     return render_error password_form if password_form.invalid?
     return render_error password_form unless password_form.update
