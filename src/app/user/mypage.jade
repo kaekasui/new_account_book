@@ -33,6 +33,8 @@
       .panel-body
         loading-directive
         ul.list
+          li(ng-show='mypage.messages.length == 0')
+            span#post_at(translate='MESSAGES.NOT_FOUND_NOTICE')
           li(ng-repeat='notice in mypage.notices | limitTo:5')
             span#post_at {{ notice.post_at }}
             a(ui-sref='notice({id: notice.id})') {{ notice.title }}
@@ -46,7 +48,7 @@
         loading-directive
         ul.list
           li(ng-show='mypage.messages.length == 0')
-            span#post_at メッセージはありません
+            span#post_at(translate='MESSAGES.NOT_FOUND_MESSAGE')
           li(ng-repeat='message in mypage.messages | limitTo:5')
             span#post_at {{ message.created_at | date:'yyyy-MM-dd' }}
-            a(ui-sref='message({id: message.id})' ng-style="{'font-weight': message.read ? 'normal' : 'bold'}") {{ message.content | truncate:true:20 }}
+            a(ui-sref='message({id: message.id})' ng-style="{'font-weight': message.read ? 'normal' : 'bold'}") {{ message.content | truncate:true:15 }}
