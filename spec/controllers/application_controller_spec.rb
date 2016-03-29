@@ -3,19 +3,19 @@ require 'rails_helper'
 describe ApplicationController do
   controller do
     def runtime_error
-      fail
+      raise
     end
 
     def not_found_error
-      fail ActiveRecord::RecordNotFound
+      raise ActiveRecord::RecordNotFound
     end
 
     def routing_error
-      fail ActionController::RoutingError, 'routing error'
+      raise ActionController::RoutingError, 'routing error'
     end
 
     def bad_request_error
-      fail ApplicationController::BadRequestError, 'bad request error'
+      raise ApplicationController::BadRequestError, 'bad request error'
     end
   end
 

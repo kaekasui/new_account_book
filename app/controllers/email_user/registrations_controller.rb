@@ -25,7 +25,7 @@ class EmailUser::RegistrationsController < ApplicationController
 
   def recreate
     @user = EmailUser.inactive.find_by(email: params[:email])
-    fail ActiveRecord::RecordNotFound if params[:email].present? && @user.nil?
+    raise ActiveRecord::RecordNotFound if params[:email].present? && @user.nil?
     @registration = EmailUser::RegistrationToken.new(@user, params[:email])
     origin = "#{request.protocol}#{request.host_with_port}"
     if @registration.recreate(origin)
