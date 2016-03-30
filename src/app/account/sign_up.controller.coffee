@@ -19,6 +19,8 @@ SignUpController = (AccountFactory) ->
     ).catch (res) ->
       vm.errors = res.error_messages
       vm.sending = false
+      vm.password = ''
+      vm.password_confirmation = ''
       return
 
   return
