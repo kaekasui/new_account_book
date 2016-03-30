@@ -1,4 +1,4 @@
-NoticeController = ($stateParams, UserFactory, IndexFactory) ->
+NoticeController = ($stateParams, UserFactory, IndexFactory, $location) ->
   'ngInject'
   vm = this
 
@@ -9,6 +9,8 @@ NoticeController = ($stateParams, UserFactory, IndexFactory) ->
 
   UserFactory.getNotice($stateParams.id).then (res) ->
     vm.notice = res
+
+  vm.current_url = "http://localhost:3000/" ##" + $location.url() #'http://localhost:3000/#' + $location.url()
 
   return
 

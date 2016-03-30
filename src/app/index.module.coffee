@@ -9,6 +9,7 @@ angular.module(
                      'ngTagsInput',
                      'angulartics', 'angulartics.google.analytics',
                      'color.picker',
+                     'angulike',
                      'mp.autoFocus',
                      'ui.router',
                      'ui.bootstrap',
