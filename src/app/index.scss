@@ -131,6 +131,18 @@ body {
       margin-left: 10px;
     }
   }
+  span.error {
+    font-family: 'Lucida Grande', Meiryo, sans-serif;
+    font-weight: bold;
+    color: rgba($link-color, 0.5);
+    margin-left: 20px;
+    #status_code {
+      font-size: 150px;
+    }
+    #str {
+      font-size: 50px;
+    }
+  }
   .close {
     line-height: 0.8;
   }

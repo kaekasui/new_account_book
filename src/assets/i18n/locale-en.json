@@ -46,6 +46,7 @@
     "OUTGO": "Outgo",
     "INCOME": "Income",
     "TWITTER_LOGIN": "Login via Twitter",
+    "TWEET": "Tweet",
     "TODAY": "Today",
     "UPDATE": "Update",
     "CANCEL": "Cancel",
@@ -122,6 +123,7 @@
     "DATE": "Enter your Date has a valid date format"
   },
   "MESSAGES": {
+    "CANNOT_ACCESS_PAGE": "Can't access the page",
     "CREATE_NOTICE": "Created a notice",
     "CREATE_RECORD": "Created a record",
     "DISPLAY_ITEMS": "Check your checkboxes if you want to display them",
@@ -134,6 +136,9 @@
     "SEND_MESSAGE_TO_ADMIN": "Send your message",
     "UPDATE_PASSWORD": "Your Password has been changed",
     "NOT_FOUND_EMAIL": "Email already registered or Not yet signed up for registration",
+    "NOT_FOUND_PAGE": "Not Found the Page",
+    "NOT_FOUND_NOTICE": "Not Found a Notice",
+    "NOT_FOUND_MESSAGE": "Not Found a Message",
     "REGISTED": "Account has been registered",
     "RESEND_EMAIL": "Input your Email if not found a mail for registration.",
     "RESET_PASSWORD": "Input your Email. We will send you a Mail with URL.",
