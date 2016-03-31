@@ -33,7 +33,7 @@
       .panel-body
         loading-directive
         ul.list
-          li(ng-show='mypage.messages.length == 0')
+          li(ng-show='mypage.notices.length == 0')
             span#post_at(translate='MESSAGES.NOT_FOUND_NOTICE')
           li(ng-repeat='notice in mypage.notices | limitTo:5')
             span#post_at {{ notice.post_at }}
