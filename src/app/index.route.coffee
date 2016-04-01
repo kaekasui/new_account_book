@@ -67,6 +67,11 @@ angular.module 'newAccountBook'
         templateUrl: 'app/components/footer/terms.html'
         controllerAs: 'terms'
         controller: 'TermsController'
+      .state 'base_setting',
+        url: '/setting'
+        templateUrl: 'app/settings/base_settings.html'
+        controllerAs: 'base_settings'
+        controller: 'BaseSettingsController'
       .state 'categories',
         url: '/categories'
         templateUrl: 'app/settings/categories.html'
