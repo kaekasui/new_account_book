@@ -1,6 +1,6 @@
 {
   "name": "newAccountBook",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {},
   "scripts": {
     "postinstall": "node_modules/.bin/bower install && node_modules/.bin/gulp build",
