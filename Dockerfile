@@ -16,13 +16,14 @@ RUN rm -rf bower_components
 RUN curl -sL https://deb.nodesource.com/setup | bash -
 
 RUN apt-get install -y nodejs
+RUN npm -v
 RUN npm -g install npm@latest
+RUN npm -v
 RUN npm install -g n
 RUN n latest
 
 RUN apt-get install -y nodejs
 RUN aptitude install -y npm
-RUN npm update -g npm
 RUN npm install -g bower
 RUN bower install --allow-root
 RUN npm install
