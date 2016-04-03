@@ -32,5 +32,5 @@ RUN NODE_ENV=production node gulp/server.js
 
 ENV RAILS_ENV production
 
-EXPOSE 8080
+EXPOSE 5000
 ENTRYPOINT bin/start_server.sh
