@@ -15,6 +15,7 @@
 .env.development
 .env.production
 .env.test
+.env
 
 # Ignore the front app's plugin directories.
 /front/node_modules/
