@@ -31,6 +31,8 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'rb-readline'
+gem 'dotenv', github: 'bkeepers/dotenv'
+gem 'dotenv-rails', github: 'bkeepers/dotenv'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -38,8 +40,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'pry-byebug'
-  gem 'dotenv', github: 'bkeepers/dotenv'
-  gem 'dotenv-rails', github: 'bkeepers/dotenv'
   gem 'factory_girl_rails'
   gem 'faker', group: :developmen
   gem 'gimei'
