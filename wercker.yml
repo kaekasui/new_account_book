@@ -27,4 +27,4 @@ deploy:
         key-name: HEROKU_SSH_KEY
         install-toolbelt: true
         run: |-
-          rake db:migrate --app account-book-pig-test
+          rake db:migrate --app $APP_NAME
