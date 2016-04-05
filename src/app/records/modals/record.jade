@@ -1,0 +1,98 @@
+.modal-body
+  loading-directive(target='modal')
+  form.form-horizontal(novalidate=true name='editRecordForm' ng-submit='edit_record.submit()')
+    // 日付
+    .form-group
+      label.control-label.col-sm-2(for='published_at')
+        span(translate='COLUMNS.PUBLISHED_AT')
+        span.red *
+      .modal-label.col-sm-10(ng-show='!edit_record.editing')
+        span {{ edit_record.record.published_at }}
+      .col-sm-10(ng-show='edit_record.editing')
+        input.btn.btn-default(type='date' name='published_at' ng-model='edit_record.published_at' datepicker-popup=true required='true')
+        span.errors(ng-messages='editRecordForm.published_at.$error' ng-show='editRecordForm.$submitted && editRecordForm.published_at.$error')
+          div(ng-message='required')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.REQUIRED.PUBLISHED_AT')
+          div(ng-message='date')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.DATE')
+        label
+          a.btn.btn-info.btn-sm(translate='BUTTONS.TODAY' ng-click='edit_record.setToday()')
+    // カテゴリ
+    .form-group
+      label.control-label.col-sm-2(for='category')
+        span(translate='COLUMNS.CATEGORY')
+        span.red *
+      .modal-label.col-sm-10(ng-show='!edit_record.editing')
+        span {{ edit_record.record.category_name }}
+      .col-sm-10(ng-show='edit_record.editing')
+        select.form-control(
+          name='category_id'
+          ng-model='edit_record.category_id'
+          required='true'
+          ng-change='edit_record.selectCategory()'
+          ng-options='category.id as category.name group by category._payments_name for category in edit_record.categories'
+        )
+        span.errors(ng-messages='editRecordForm.category_id.$error' ng-show='editRecordForm.$submitted && editRecordForm.category_id.$error')
+          div(ng-message='required')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.REQUIRED.CATEGORY')
+    // 内訳
+    .form-group(ng-show='edit_record.form_group_breakdown')
+      label.control-label.col-sm-2(for='breakdown')
+        span(translate='COLUMNS.BREAKDOWN')
+      .modal-label.col-sm-10(ng-show='!edit_record.editing')
+        span {{ edit_record.record.breakdown_name }}
+      .col-sm-10(ng-show='edit_record.editing')
+        select.form-control(
+          name='breakdown_id'
+          ng-model='edit_record.breakdown_id'
+          ng-disabled='!edit_record.category_id'
+          ng-options='breakdown.id as breakdown.name for breakdown in edit_record.breakdowns'
+        )
+    // お店・施設
+    .form-group(ng-show='edit_record.form_group_place')
+      label.control-label.col-sm-2(for='place')
+        span(translate='COLUMNS.PLACE')
+      .modal-label.col-sm-10(ng-show='!edit_record.editing')
+        span {{ edit_record.record.place_name }}
+      .col-sm-10(ng-show='edit_record.editing')
+        select.form-control(
+          name='place_id'
+          ng-model='edit_record.place_id'
+          ng-disabled='!edit_record.category_id'
+          ng-options='place.id as place.name for place in edit_record.places'
+         )
+    // 金額
+    .form-group
+      label.control-label.col-sm-2(for='charge')
+        span(translate='COLUMNS.CHARGE')
+        span.red *
+      .modal-label.col-sm-10(ng-show='!edit_record.editing')
+        span {{ edit_record.record.charge }}
+      .col-sm-10(ng-show='edit_record.editing')
+        input.form-control(type='number' name='charge' ng-model='edit_record.charge' required='true' max=9999999 min=0)
+        span.errors(ng-messages='newRecordForm.charge.$error' ng-show='newRecordForm.$submitted && newRecordForm.charge.$error')
+          div(ng-message='required')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.REQUIRED.CHARGE')
+          div(ng-message='max')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.MAX.CHARGE')
+          div(ng-message='min')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.MIN.CHARGE')
+    // 備考
+    .form-group(ng-show='edit_record.form_group_memo')
+      label.control-label.col-sm-2(for='memo')
+        span(translate='COLUMNS.MEMO')
+      .modal-label.col-sm-10(ng-show='!edit_record.editing')
+        span {{ edit_record.record.memo }}
+      .col-sm-10(ng-show='edit_record.editing')
+        textarea.form-control(name='memo' ng-model='edit_record.memo' ng-maxlength='10000')
+        span.errors(ng-messages='newRecordForm.memo.$error' ng-show='newRecordForm.$submitted && newRecordForm.memo.$error')
+          div(ng-message='maxlength')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.MAXLENGTH.MEMO')
+

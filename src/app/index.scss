@@ -74,6 +74,11 @@ body {
   .inline-block {
     display: inline-block;
   }
+  .form-horizontal .modal-label {
+    text-align: left;
+    margin-bottom: 0;
+    padding-top: 7px;
+  }
 
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     color: $link-color;

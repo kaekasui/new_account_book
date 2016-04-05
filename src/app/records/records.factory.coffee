@@ -18,6 +18,21 @@ RecordsFactory = ($location, $q, $http, localStorageService, toastr, $translate)
           return
       return defer.promise
 
+    getEditRecord: (record_id) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.get host + 'records/' + record_id + '/edit', login_headers
+        .success((data) ->
+          defer.resolve data
+          return
+        ).error (data) ->
+          defer.reject data
+          return
+      return defer.promise
+
     getRecords: (params) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
@@ -32,6 +47,21 @@ RecordsFactory = ($location, $q, $http, localStorageService, toastr, $translate)
       ).error (data) ->
         defer.reject data
         return
+      return defer.promise
+
+    getRecord: (record_id) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.get host + 'records/' + record_id, login_headers
+        .success((data) ->
+          defer.resolve data
+          return
+        ).error (data) ->
+          defer.reject data
+          return
       return defer.promise
 
     postRecord: (params) ->
@@ -49,6 +79,7 @@ RecordsFactory = ($location, $q, $http, localStorageService, toastr, $translate)
           defer.reject data
           return
       return defer.promise
+
     patchSettings: (params) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
