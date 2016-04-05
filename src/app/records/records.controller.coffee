@@ -1,4 +1,4 @@
-RecordsController = ($filter, IndexService , RecordsFactory, localStorageService) ->
+RecordsController = ($filter, IndexService , RecordsFactory, localStorageService, $modal) ->
   'ngInject'
   vm = this
   vm.offset = 0
@@ -80,9 +80,32 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
     vm.offset = offset
     getRecordsWithDate()
 
+  # モーダル
+  vm.showRecord = (index) ->
+    record = vm.records[index]
+    modalInstance = $modal.open(
+      templateUrl: 'app/records/modals/record.html'
+      controller: 'EditRecordController'
+      controllerAs: 'edit_record'
+      resolve: { record_id: record.id }
+    )
+    modalInstance.result.then () ->
+      getRecordsWithDate() # TODO: 対象のレコードのみ更新
+
+    return
+
+  # リスト表示
   getRecordsWithDate()
 
   return
+
+#EditRecordController = ($modalInstance) ->
+#  'ngInject'
+#  vm = this
+#  vm.editing = true
+#  vm.aa = 'AAAA'
+#  return
+#  .controller('EditRecordController', EditRecordController)
  
 angular.module 'newAccountBook'
   .controller('RecordsController', RecordsController)

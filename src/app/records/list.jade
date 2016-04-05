@@ -42,9 +42,11 @@ form.form.form-inline
           label.label.label-info {{ record.breakdown_name }}
         td
           label.label.label-primary {{ record.place_name }}
+        td
+          label.label.label-default {{ record.memo }}
         td ¥ {{ record.charge | number }}
         td
-          a(href='')
+          a(href='' ng-click='list.showRecord($index)')
             span.glyphicon.glyphicon-info-sign
     nav(ng-show='list.offset_numbers.length >= 2')
       ul.pagination

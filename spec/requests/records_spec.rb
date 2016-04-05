@@ -309,6 +309,15 @@ describe 'GET /records/:id/edit', autodoc: true do
           breakdown_field: true,
           place_field: true,
           memo_field: true
+        },
+        record: {
+          id: record.id,
+          published_at: record.published_at.strftime('%Y-%m-%d'),
+          charge: record.charge,
+          category_name: record.category.name,
+          breakdown_name: record.breakdown.try(:name),
+          place_name: record.place.try(:name),
+          memo: record.memo
         }
       }
       expect(response.body).to be_json_as(json)

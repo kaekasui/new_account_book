@@ -31,6 +31,7 @@ class RecordsController < ApplicationController
     @user = current_user
     @categories = current_user.categories
                               .order(:position)
+    @record = current_user.records.find(params[:id])
   end
 
   def update
