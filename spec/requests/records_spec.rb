@@ -226,3 +226,48 @@ describe 'POST /records', autodoc: true do
     end
   end
 end
+
+describe 'PATCH /records/:id', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:record) { create(:record, user: user) }
+  let!(:charge) { '900' }
+  let!(:params) do
+    {
+      charge: charge, published_at: Time.zone.today,
+      category: Category.last, breakdown: Breakdown.last, place: Place.last
+    }
+  end
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      post '/records', ''
+
+      expect(response.status).to eq 401
+    end
+  end
+
+  context '正しい値に更新された場合' do
+    it '200が返ってくること' do
+      patch "/records/#{record.id}", params, login_headers(user)
+
+      expect(response.status).to eq 200
+
+      record = Record.last
+      expect(record.charge).to eq 900
+    end
+  end
+
+  context '金額が空の場合' do
+    let(:charge) { '' }
+
+    it '422とエラーメッセージが返ってくること' do
+      patch "/records/#{record.id}", params, login_headers(user)
+
+      expect(response.status).to eq 422
+      json = {
+        error_messages: ['金額を入力してください']
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+end
