@@ -99,13 +99,5 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
 
   return
 
-#EditRecordController = ($modalInstance) ->
-#  'ngInject'
-#  vm = this
-#  vm.editing = true
-#  vm.aa = 'AAAA'
-#  return
-#  .controller('EditRecordController', EditRecordController)
- 
 angular.module 'newAccountBook'
   .controller('RecordsController', RecordsController)
