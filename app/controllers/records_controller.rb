@@ -7,6 +7,10 @@ class RecordsController < ApplicationController
     @total_count = fetcher.total_count
   end
 
+  def show
+    @record = current_user.records.find(params[:id])
+  end
+
   def new
     @user = current_user
     @categories = current_user.categories
@@ -21,6 +25,12 @@ class RecordsController < ApplicationController
     else
       render_error @record
     end
+  end
+
+  def edit
+    @user = current_user
+    @categories = current_user.categories
+                              .order(:position)
   end
 
   def update

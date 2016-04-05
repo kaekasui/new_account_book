@@ -120,6 +120,36 @@ describe 'GET /records', autodoc: true do
   end
 end
 
+describe 'GET /records/:id', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:record) { create(:record, user: user) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      get "/records/#{record.id}"
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'メールアドレスのユーザーがログインしている場合' do
+    it '200と登録データが返ってくること' do
+      get "/records/#{record.id}", nil, login_headers(user)
+      expect(response.status).to eq 200
+
+      json = {
+        id: record.id,
+        published_at: record.published_at.strftime('%Y-%m-%d'),
+        charge: record.charge,
+        category_name: record.category.name,
+        breakdown_name: record.breakdown.try(:name),
+        place_name: record.place.try(:name),
+        memo: record.memo
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+end
+
 describe 'GET /records/new', autodoc: true do
   context 'ログインしていない場合' do
     it '401が返ってくること' do
@@ -221,6 +251,65 @@ describe 'POST /records', autodoc: true do
       expect(response.status).to eq 422
       json = {
         error_messages: ['金額を入力してください']
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+end
+
+describe 'GET /records/:id/edit', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:category) { create(:category, user: user, position: 1) }
+  let!(:category2) { create(:category, user: user, position: 2) }
+  let!(:breakdown) { create(:breakdown, category: category) }
+  let!(:place) { create(:place, user: user) }
+  let!(:record) { create(:record, user: user, category: category) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      get "/records/#{record.id}/edit"
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'メールアドレスのユーザーがログインしている場合' do
+    it '200とカテゴリ一覧を返すこと' do
+      category.places << place
+      category.save
+
+      get "/records/#{record.id}/edit", '', login_headers(user)
+      expect(response.status).to eq 200
+
+      json = {
+        categories: [
+          {
+            id: category.id,
+            name: category.name,
+            barance_of_payments: category.barance_of_payments,
+            _payments_name: category._payments_name,
+            breakdowns: [
+              id: breakdown.id,
+              name: breakdown.name
+            ],
+            places: [
+              id: place.id,
+              name: place.name
+            ]
+          },
+          {
+            id: category2.id,
+            name: category2.name,
+            barance_of_payments: category2.barance_of_payments,
+            _payments_name: category2._payments_name,
+            breakdowns: [],
+            places: []
+          }
+        ],
+        user: {
+          breakdown_field: true,
+          place_field: true,
+          memo_field: true
+        }
       }
       expect(response.body).to be_json_as(json)
     end
