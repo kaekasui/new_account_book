@@ -23,6 +23,15 @@ class RecordsController < ApplicationController
     end
   end
 
+  def update
+    @record = current_user.records.find(params[:id])
+    if @record.update(record_params)
+      head 200
+    else
+      render_error @record
+    end
+  end
+
   private
 
   def record_params
