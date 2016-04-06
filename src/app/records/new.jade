@@ -128,5 +128,5 @@
                 label.label.label-primary {{ record.place_name }}
               td ¥ {{ record.charge | number }}
               td
-                a(href='')
+                a(href='' ng-click='new_record.showRecord($index)')
                   span.glyphicon.glyphicon-info-sign
