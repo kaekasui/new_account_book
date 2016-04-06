@@ -56,6 +56,12 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance)
     RecordsFactory.patchRecord(record_id, params).then (res) ->
       $modalInstance.close()
 
+  vm.selectCategory = () ->
+    vm.categories.forEach (item, i) ->
+      if item.id == vm.category_id
+        vm.breakdowns = item.breakdowns
+        vm.places = item.places
+
   return
  
 angular.module 'newAccountBook'
