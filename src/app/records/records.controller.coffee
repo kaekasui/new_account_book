@@ -91,7 +91,8 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
       backdrop: 'static'
     )
     modalInstance.result.then () ->
-      getRecordsWithDate() # TODO: 対象のレコードのみ更新
+      RecordsFactory.getRecord(record.id).then (res) ->
+        vm.records[index] = res
 
     return
 
