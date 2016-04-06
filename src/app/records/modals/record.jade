@@ -1,6 +1,17 @@
-.modal-body
-  loading-directive(target='modal')
-  form.form-horizontal(novalidate=true name='editRecordForm' ng-submit='edit_record.submit()')
+form.form-horizontal(novalidate=true name='editRecordForm' ng-submit='edit_record.submit()')
+  .modal-header
+    .btn.btn-info(translate='BUTTONS.EDIT'
+                  ng-click='edit_record.editing = true'
+                  ng-show='!edit_record.editing')
+    button.btn.btn-success(translate='BUTTONS.UPDATE'
+                           ng-click='edit_record.updateRecord()'
+                           ng-disabled='editRecordForm.$submitted && editRecordForm.$invalid'
+                           ng-show='edit_record.editing')
+    a.btn.btn-default.pull-right(ng-click='edit_record.cancel()'
+                                 translate='BUTTONS.CLOSE')
+
+  .modal-body
+    loading-directive(target='modal')
     // 日付
     .form-group
       label.control-label.col-sm-2(for='published_at')

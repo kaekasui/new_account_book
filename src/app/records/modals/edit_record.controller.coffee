@@ -1,4 +1,4 @@
-EditRecordController = (IndexService, RecordsFactory, record_id) ->
+EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance) ->
   'ngInject'
   vm = this
   vm.editing = false
@@ -16,6 +16,9 @@ EditRecordController = (IndexService, RecordsFactory, record_id) ->
     IndexService.modal_loading = false
   ).catch (res) ->
     IndexService.modal_loading = false
+
+  vm.cancel = () ->
+    $modalInstance.dismiss()
 
   return
  

@@ -88,6 +88,7 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
       controller: 'EditRecordController'
       controllerAs: 'edit_record'
       resolve: { record_id: record.id }
+      backdrop: 'static'
     )
     modalInstance.result.then () ->
       getRecordsWithDate() # TODO: 対象のレコードのみ更新
