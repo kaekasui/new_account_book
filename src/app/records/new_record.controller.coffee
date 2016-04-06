@@ -1,4 +1,4 @@
-NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
+NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal) ->
   'ngInject'
   vm = this
 
@@ -96,6 +96,20 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
   vm.setToday = () ->
     vm.published_at = new Date()
     getRecordsWithDate()
+
+  # モーダル
+  vm.showRecord = (index) ->
+    record = vm.day_records[index]
+    modalInstance = $modal.open(
+      templateUrl: 'app/records/modals/record.html'
+      controller: 'EditRecordController'
+      controllerAs: 'edit_record'
+      resolve: { record_id: record.id }
+      backdrop: 'static'
+    )
+    modalInstance.result.then () ->
+      RecordsFactory.getRecord(record.id).then (res) ->
+        vm.day_records[index] = res
 
   return
  
