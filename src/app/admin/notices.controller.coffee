@@ -44,15 +44,14 @@ NoticesController = (AdminFactory, $modal, $translate, toastr) ->
   vm.destroyNotice = (index) ->
     notice = vm.notices[index]
     modalInstance = $modal.open(
-      templateUrl: 'confirm-destroy'
-      controller: 'ConfirmDestroyNoticeController'
+      templateUrl: 'app/components/modals/destroy.html'
+      controller: 'DestroyNoticeController'
       controllerAs: 'confirm_destroy'
       resolve: { notice_id: notice.id }
     )
     modalInstance.result.then () ->
       AdminFactory.getNotices().then (res) ->
         vm.notices = res.notices
-      return
 
     return
 
@@ -121,21 +120,7 @@ AdminShowNoticeController = ($modalInstance, AdminFactory, notice) ->
 
   return
 
-ConfirmDestroyNoticeController = (notice_id, AdminFactory, $modalInstance) ->
-  'ngInject'
-  vm = this
-
-  vm.ok = () ->
-    AdminFactory.deleteNotice(notice_id).then ->
-      $modalInstance.close()
-
-  vm.cancel = () ->
-    $modalInstance.dismiss()
-
-  return
-
 angular.module 'newAccountBook'
   .controller('AdminNoticeController', AdminNoticeController)
   .controller('AdminShowNoticeController', AdminShowNoticeController)
-  .controller('ConfirmDestroyNoticeController', ConfirmDestroyNoticeController)
   .controller('NoticesController', NoticesController)

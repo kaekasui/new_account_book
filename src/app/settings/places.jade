@@ -48,13 +48,6 @@
             a.pull-right
               span.glyphicon.glyphicon-trash#right-icon(ng-click='places.destroyPlace($index)' ng-show='place.categories.length == 0')
 
-// お店・施設の削除確認モーダル
-script#confirm-destroy(type='text/ng-template')
-  .modal-body
-    p(translate='MESSAGES.DELETE')
-    button.btn.btn-success(type='submit' translate='BUTTONS.YES' ng-click='confirm_destroy.ok()')
-    a.btn.btn-default(ng-click='confirm_destroy.cancel()' translate='BUTTONS.CLOSE')
-
 // カテゴリの追加モーダル
 script#adding-category(type='text/ng-template')
   .modal-header
