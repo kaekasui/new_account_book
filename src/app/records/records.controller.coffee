@@ -95,6 +95,17 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
 
     return
 
+  vm.destroyRecord = (index) ->
+    record = vm.records[index]
+    modalInstance = $modal.open(
+      templateUrl: 'app/components/modals/destroy.html'
+      controller: 'DestroyRecordController'
+      controllerAs: 'confirm_destroy'
+      resolve: { record_id: record.id }
+    )
+    modalInstance.result.then () ->
+      getRecordsWithDate()
+
   # リスト表示
   getRecordsWithDate()
 
