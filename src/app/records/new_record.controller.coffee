@@ -108,7 +108,8 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal) ->
       backdrop: 'static'
     )
     modalInstance.result.then () ->
-      getRecordsWithDate() # TODO: 対象のレコードのみ更新
+      RecordsFactory.getRecord(record.id).then (res) ->
+        vm.day_records[index] = res
 
   return
  
