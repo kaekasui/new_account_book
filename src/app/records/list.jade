@@ -48,6 +48,9 @@ form.form.form-inline
         td
           a(href='' ng-click='list.showRecord($index)')
             span.glyphicon.glyphicon-info-sign
+        td
+          a(href='' ng-click='list.destroyRecord($index)')
+            span.glyphicon.glyphicon-trash
     nav(ng-show='list.offset_numbers.length >= 2')
       ul.pagination
         li(ng-click='list.clickPaginate(number)' ng-repeat='number in list.offset_numbers' ng-class='{active: number == list.offset}')

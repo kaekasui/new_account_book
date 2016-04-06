@@ -43,6 +43,12 @@ class RecordsController < ApplicationController
     end
   end
 
+  def destroy
+    record = current_user.records.find(params[:id])
+    record.destroy
+    head record.destroyed? ? :ok : :forbidden
+  end
+
   private
 
   def record_params
