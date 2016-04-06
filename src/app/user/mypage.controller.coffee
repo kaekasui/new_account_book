@@ -25,7 +25,23 @@ MypageController = (UserFactory, IndexService, $modal, RecordsFactory) ->
       RecordsFactory.getRecord(record.id).then (res) ->
         vm.records[index] = res
       
-    return
+  vm.destroyRecord = (index) ->
+    record = vm.records[index]
+    modalInstance = $modal.open(
+      templateUrl: 'app/components/modals/destroy.html'
+      controller: 'DestroyRecordController'
+      controllerAs: 'confirm_destroy'
+      resolve: { record_id: record.id }
+    )
+    modalInstance.result.then () ->
+      IndexService.loading = true
+      UserFactory.getMypage().then((res) ->
+        vm.notices = res.notices
+        vm.messages = res.messages
+        vm.records = res.records
+        IndexService.loading = false
+      ).catch (res) ->
+        IndexService.loading = false
 
   return
 
