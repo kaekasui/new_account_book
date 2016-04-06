@@ -111,6 +111,17 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal) ->
       RecordsFactory.getRecord(record.id).then (res) ->
         vm.day_records[index] = res
 
+  vm.destroyRecord = (index) ->
+    record = vm.day_records[index]
+    modalInstance = $modal.open(
+      templateUrl: 'app/components/modals/destroy.html'
+      controller: 'DestroyRecordController'
+      controllerAs: 'confirm_destroy'
+      resolve: { record_id: record.id }
+    )
+    modalInstance.result.then () ->
+      getRecordsWithDate()
+
   return
  
 angular.module 'newAccountBook'
