@@ -21,10 +21,12 @@ describe 'GET /tags', autodoc: true do
         tags: [
           {
             id: tag1.id,
+            color_code: tag1.color_code,
             name: tag1.name
           },
           {
             id: tag2.id,
+            color_code: tag2.color_code,
             name: tag2.name
           }
         ]
