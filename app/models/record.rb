@@ -3,6 +3,8 @@ class Record < ActiveRecord::Base
   belongs_to :category
   belongs_to :breakdown
   belongs_to :place
+  has_many :tagged_records
+  has_many :tags, through: :tagged_records
 
   validates :published_at, presence: true
   validates :charge, presence: true,

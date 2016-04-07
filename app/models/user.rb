@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :places
   has_many :messages
   has_many :records
+  has_many :tags
 
   enum status: { registered: 2, inactive: 1 }
 
