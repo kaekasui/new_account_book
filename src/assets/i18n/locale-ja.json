@@ -79,6 +79,7 @@
   },
   "TOOLTIPS": {
     "SET_CATEGORY": "カテゴリを設定",
+    "TAGS_QUESTION": "escキーで候補を非表示にできます。候補から選択しない場合にご利用ください",
     "BREAKDOWNS": "内訳",
     "PLACES": "お店・施設"
   },
@@ -161,6 +162,7 @@
     "POST_AT": "投稿日時",
     "PUBLISHED_AT": "日付",
     "SENT_AT": "送信日時",
+    "TAG": "ラベル",
     "TITLE": "タイトル",
     "USER": "ユーザー",
     "NICKNAME": "ニックネーム"

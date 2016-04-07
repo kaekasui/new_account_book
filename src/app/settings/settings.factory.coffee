@@ -266,6 +266,21 @@ SettingsFactory = ($location, $q, $http, localStorageService, toastr, $translate
           defer.reject data
           return
       return defer.promise
+
+    getTags: () ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.get host + 'tags', login_headers
+        .success((data) ->
+          defer.resolve data
+          return
+        ).error (data) ->
+          defer.reject data
+          return
+      return defer.promise
   }
 
 angular.module 'newAccountBook'
