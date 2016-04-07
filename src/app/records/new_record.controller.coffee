@@ -1,4 +1,4 @@
-NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal) ->
+NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, SettingsFactory) ->
   'ngInject'
   vm = this
 
@@ -121,6 +121,12 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal) ->
     )
     modalInstance.result.then () ->
       getRecordsWithDate()
+
+  vm.loadTags = ($query) ->
+    SettingsFactory.getTags().then (res) ->
+      tags = res.tags
+      tags.filter (tag) ->
+        return tag.name.indexOf($query) != -1
 
   return
  

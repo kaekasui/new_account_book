@@ -78,6 +78,7 @@
   },
   "TOOLTIPS": {
     "SET_CATEGORY": "Add a Category to the Shop",
+    "TAGS_QUESTION": "You can use 'esc' key when don't select",
     "BREAKDOWNS": "Breakdowns",
     "PLACES": "Shops & Locations"
   },
@@ -159,6 +160,7 @@
     "POST_AT": "post time",
     "PUBLISHED_AT": "Date",
     "SENT_AT": "Sent Time",
+    "TAG": "Tags",
     "TITLE": "Title",
     "USER": "User",
     "NICKNAME": "Nickname"
