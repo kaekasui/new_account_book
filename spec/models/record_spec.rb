@@ -9,4 +9,7 @@ RSpec.describe Record, type: :model do
   it { is_expected.to validate_presence_of(:published_at) }
   it { is_expected.to validate_presence_of(:charge) }
   it { is_expected.to validate_presence_of(:category) }
+
+  it { is_expected.to have_many(:tagged_records) }
+  it { is_expected.to have_many(:tags).through(:tagged_records) }
 end
