@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :categories, only: %i(index update destroy), module: :place
   end
   resources :records, only: %i(index show new create edit update destroy)
+  resources :tags, only: %i(index)
 
   resource :user, only: %i(show update) do
     patch :set_display
