@@ -200,6 +200,7 @@ describe 'GET /records/new', autodoc: true do
         user: {
           breakdown_field: true,
           place_field: true,
+          tag_field: true,
           memo_field: true
         }
       }
@@ -308,6 +309,7 @@ describe 'GET /records/:id/edit', autodoc: true do
         user: {
           breakdown_field: true,
           place_field: true,
+          tag_field: true,
           memo_field: true
         },
         record: {

@@ -136,6 +136,7 @@
     "SEND_MAIL": "メールを送信しました",
     "SEND_MESSAGE": "メッセージを送信しました",
     "SEND_MESSAGE_TO_ADMIN": "管理者にメッセージを送信しました",
+    "TAG_PLACEHOLDER": "ラベルを追加・選択",
     "UPDATE_PASSWORD": "パスワードを変更しました",
     "NOT_FOUND_EMAIL": "メールアドレスがすでに本登録されているか、登録されていないメールアドレスです",
     "NOT_FOUND_PAGE": "お探しのページは見つかりません。URLをご確認ください。",

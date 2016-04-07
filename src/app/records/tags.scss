@@ -1,0 +1,58 @@
+tags-input .tags {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+tags-input .tags .tag-item.selected {
+  border-color: $red;
+  background: #fff;
+  color: $red;
+}
+
+tags-input .tags .tag-item.selected .remove-button {
+  color: lighten($red, 20%);
+}
+
+tags-input .tags .tag-item .remove-button:active {
+  color: lighten($red, 20%);
+}
+
+tags-input .tags .tag-item {
+  border-color: $green;
+  border-radius: 4px;
+  color: #fff;
+}
+
+tags-input .tags .tag-item {
+  background: #fff;
+  color: $green;
+}
+
+tags-input .tags .tag-item .remove-button {
+  color: lighten($green, 20%);
+}
+
+auto-complete .autocomplete {
+  border-radius: 4px;
+}
+
+auto-complete .autocomplete .suggestion-item.selected {
+  color: #262626;
+  background-color: #f6f6f6;
+}
+
+auto-complete .autocomplete .suggestion-item {
+  font-size: 12px;
+}
+
+auto-complete .autocomplete-template .right-panel span {
+  vertical-align: middle;
+}
+
+auto-complete .autocomplete-template .left-panel {
+  margin-left: 5px;
+  float: left;
+}

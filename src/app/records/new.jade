@@ -17,6 +17,9 @@
           input(type='checkbox' ng-model='new_record.place_field' ng-change='new_record.checkSetting()')
           span {{ 'COLUMNS.PLACE' | translate }}
         label.checkbox-inline
+          input(type='checkbox' ng-model='new_record.tag_field' ng-change='new_record.checkSetting()')
+          span {{ 'COLUMNS.TAG' | translate }}
+        label.checkbox-inline
           input(type='checkbox' ng-model='new_record.memo_field' ng-change='new_record.checkSetting()')
           span {{ 'COLUMNS.MEMO' | translate }}
       hr(ng-show='new_record.settings')
@@ -78,19 +81,22 @@
               ng-options='place.id as place.name for place in new_record.places'
              )
         // ラベル
-        .form-group(ng-show='new_record.form_group_place')
+        .form-group(ng-show='new_record.form_group_tag')
           label.control-label.col-sm-2(for='tag')
             span(translate='COLUMNS.TAG')
           .col-sm-10
             tags-input(ng-model='new_record.tags'
                        display-property='name'
-                       placeholder=''
+                       placeholder="{{ 'MESSAGES.TAG_PLACEHOLDER' | translate }}"
                        replace-spaces-with-dashes='false'
-                       min-length='1')
+                       min-length='1'
+                       template='tag-template')
               auto-complete(source='new_record.loadTags($query)'
                             min-length='0'
+                            max-results-to-show='32'
                             load-on-focus='true'
-                            load-on-empty='true')
+                            load-on-empty='true'
+                            template='autocomplete-template')
             span.glyphicon.glyphicon-question-sign.blue(tooltip="{{ 'TOOLTIPS.TAGS_QUESTION' | translate }}")
         // 金額
         .form-group
@@ -148,3 +154,16 @@
               td
                 a(href='' ng-click='new_record.destroyRecord($index)')
                   span.glyphicon.glyphicon-trash
+
+script#tag-template(type='text/ng-template')
+  .tag-template
+    span.glyphicon.glyphicon-bookmark#left-icon(ng-if='data.color_code' ng-style="{color:data.color_code}")
+    span.ng-binding.ng-scope {{ data.name }}
+    a.remove-button.ng-binding.ng-scope(ng-click='$removeTag()') ×
+
+script#autocomplete-template(type='text/ng-template')
+  .autocomplete-template
+    .left-panel
+      span.glyphicon.glyphicon-bookmark#left-icon(ng-style="{color:data.color_code}")
+    .right-panel
+      span {{ data.name }}
