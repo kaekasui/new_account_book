@@ -47,3 +47,12 @@ auto-complete .autocomplete .suggestion-item.selected {
 auto-complete .autocomplete .suggestion-item {
   font-size: 12px;
 }
+
+auto-complete .autocomplete-template .right-panel span {
+  vertical-align: middle;
+}
+
+auto-complete .autocomplete-template .left-panel {
+  margin-left: 5px;
+  float: left;
+}

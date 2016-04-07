@@ -94,7 +94,8 @@
                             min-length='0'
                             max-results-to-show='32'
                             load-on-focus='true'
-                            load-on-empty='true')
+                            load-on-empty='true'
+                            template='autocomplete-template')
             span.glyphicon.glyphicon-question-sign.blue(tooltip="{{ 'TOOLTIPS.TAGS_QUESTION' | translate }}")
         // 金額
         .form-group
@@ -152,3 +153,10 @@
               td
                 a(href='' ng-click='new_record.destroyRecord($index)')
                   span.glyphicon.glyphicon-trash
+
+script#autocomplete-template(type='text/ng-template')
+  .autocomplete-template
+    .left-panel
+      span.glyphicon.glyphicon-bookmark#left-icon(ng-style="{color:data.color_code}")
+    .right-panel
+      span {{ data.name }}
