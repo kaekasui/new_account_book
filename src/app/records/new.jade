@@ -89,7 +89,8 @@
                        display-property='name'
                        placeholder="{{ 'MESSAGES.TAG_PLACEHOLDER' | translate }}"
                        replace-spaces-with-dashes='false'
-                       min-length='1')
+                       min-length='1'
+                       template='tag-template')
               auto-complete(source='new_record.loadTags($query)'
                             min-length='0'
                             max-results-to-show='32'
@@ -153,6 +154,12 @@
               td
                 a(href='' ng-click='new_record.destroyRecord($index)')
                   span.glyphicon.glyphicon-trash
+
+script#tag-template(type='text/ng-template')
+  .tag-template
+    span.glyphicon.glyphicon-bookmark#left-icon(ng-if='data.color_code' ng-style="{color:data.color_code}")
+    span.ng-binding.ng-scope {{ data.name }}
+    a.remove-button.ng-binding.ng-scope(ng-click='$removeTag()') ×
 
 script#autocomplete-template(type='text/ng-template')
   .autocomplete-template
