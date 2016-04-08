@@ -80,6 +80,7 @@
     "UNREAD": "未読"
   },
   "TOOLTIPS": {
+    "EDIT": "編集する",
     "SET_CATEGORY": "カテゴリを設定",
     "TAGS_QUESTION": "escキーで候補を非表示にできます。候補から選択しない場合にご利用ください",
     "BREAKDOWNS": "内訳",

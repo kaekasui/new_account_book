@@ -79,6 +79,7 @@
     "UNREAD": "Unread"
   },
   "TOOLTIPS": {
+    "EDIT": "Edit",
     "SET_CATEGORY": "Add a Category to the Shop",
     "TAGS_QUESTION": "You can use 'esc' key when don't select",
     "BREAKDOWNS": "Breakdowns",
