@@ -45,6 +45,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       place_id: vm.place_id
       charge: vm.charge
       memo: vm.memo
+      tags: vm.tags
     RecordsFactory.postRecord(params).then (res) ->
       vm.category_index_id = ''
       vm.breakdown_id = ''
