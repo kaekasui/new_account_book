@@ -52,6 +52,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       vm.place_id = ''
       vm.charge = ''
       vm.memo = ''
+      vm.tags = ''
       $scope.newRecordForm.$setPristine()
       # TODO: 編集のリンクを表示する
       getRecordsWithDate()
@@ -97,6 +98,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
         vm.place_id = ''
     vm.charge = record.charge
     vm.memo = record.memo
+    # TODO: ラベルをコピーする
 
   vm.setToday = () ->
     vm.published_at = new Date()
