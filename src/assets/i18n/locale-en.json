@@ -115,7 +115,8 @@
       "TITLE": "Enter your Title has a length of at most 100",
       "CONTENT": "Enter your Comment has a length of at most 10000",
       "CATEGORY_NAME": "Enter your Category Name has a length of at most 100",
-      "MEMO": "Enter your Memo has a length of at most 10000"
+      "MEMO": "Enter your Memo has a length of at most 10000",
+      "NICKNAME": "Enter your Nickname has a lenght of at most 100"
     },
     "MIN": {
       "CHARGE": "Enter Charge has an integer greater than or equal to 0."
