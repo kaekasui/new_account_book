@@ -140,7 +140,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       resolve: { tag: $tag }
     )
     modalInstance.result.then () ->
-      # TODO: 対象のタグを更新
+      return
 
   return
  
