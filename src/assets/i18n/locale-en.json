@@ -138,6 +138,8 @@
     "SEND_MESSAGE": "Send a Message",
     "SEND_MESSAGE_TO_ADMIN": "Send your message",
     "TAG_PLACEHOLDER": "Add a tag",
+    "THERE_IS_NO_RECORD": "There is not record.",
+    "THERE_IS_NO_RECORD2": "Input your data :)",
     "UPDATE_PASSWORD": "Your Password has been changed",
     "NOT_FOUND_EMAIL": "Email already registered or Not yet signed up for registration",
     "NOT_FOUND_PAGE": "Not Found the Page",
