@@ -33,6 +33,7 @@ gem 'omniauth-facebook'
 gem 'rb-readline'
 gem 'dotenv', github: 'bkeepers/dotenv'
 gem 'dotenv-rails', github: 'bkeepers/dotenv'
+gem 'activerecord-import'
 
 group :development, :test do
   gem 'rspec-rails'
