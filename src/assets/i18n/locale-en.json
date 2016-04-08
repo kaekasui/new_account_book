@@ -37,10 +37,12 @@
   "BUTTONS": {
     "ADD": "Add",
     "CREATE": "Create",
+    "CLEAR": "Clear",
     "FACEBOOK_LOGIN": "Login via Facebook",
     "LOGIN": "Log in",
     "SIGN_UP": "Sign up",
     "SEND": "Send Email",
+    "SET": "Set",
     "EDIT": "Edit",
     "YES": "Yes",
     "OUTGO": "Outgo",

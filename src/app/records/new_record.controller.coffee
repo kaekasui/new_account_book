@@ -132,6 +132,16 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       tags.filter (tag) ->
         return tag.name.indexOf($query) != -1
 
+  vm.setColor = ($tag) ->
+    modalInstance = $modal.open(
+      templateUrl: 'app/records/modals/color_code.html'
+      controller: 'ColorCodeController'
+      controllerAs: 'color_code'
+      resolve: { tag: $tag }
+    )
+    modalInstance.result.then () ->
+      return
+
   return
  
 angular.module 'newAccountBook'

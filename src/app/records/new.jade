@@ -90,6 +90,7 @@
                        placeholder="{{ 'MESSAGES.TAG_PLACEHOLDER' | translate }}"
                        replace-spaces-with-dashes='false'
                        min-length='1'
+                       on-tag-clicked='new_record.setColor($tag)'
                        template='tag-template')
               auto-complete(source='new_record.loadTags($query)'
                             min-length='0'
