@@ -38,10 +38,12 @@
   "BUTTONS": {
     "ADD": "追加する",
     "CREATE": "登録",
+    "CLEAR": "クリア",
     "FACEBOOK_LOGIN": "Facebookでログイン",
     "LOGIN": "ログインする",
     "SIGN_UP": "登録する",
     "SEND": "送信する",
+    "SET": "設定する",
     "EDIT": "編集",
     "YES": "はい",
     "OUTGO": "支出",
