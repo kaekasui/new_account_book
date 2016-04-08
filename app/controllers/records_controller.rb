@@ -19,7 +19,10 @@ class RecordsController < ApplicationController
   end
 
   def create
-    @record = current_user.records.new(record_params)
+    @record = Record::Generator.new(
+      user: current_user,
+      record_params: record_params,
+      tags_params: tags_params)
     if @record.save
       head 201
     else
@@ -54,5 +57,9 @@ class RecordsController < ApplicationController
   def record_params
     params.permit(:published_at, :charge, :memo,
                   :category_id, :breakdown_id, :place_id)
+  end
+
+  def tags_params
+    params.permit(tags: [:id, :name, :color_code])[:tags]
   end
 end

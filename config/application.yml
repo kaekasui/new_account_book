@@ -17,6 +17,9 @@ defaults: &defaults
   place:
     name:
       maximum_length: 100
+  tag:
+    name:
+      maximum_length: 20
   user:
     categories:
       maximum_length: 20

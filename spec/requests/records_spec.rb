@@ -214,11 +214,16 @@ describe 'POST /records', autodoc: true do
   let!(:category) { create(:category, user: user) }
   let!(:breakdown) { create(:breakdown, category: category) }
   let!(:place) { create(:place, user: user) }
+  let!(:tag1) { create(:tag, user: user) }
+  let!(:tag2) { create(:tag, user: user) }
   let!(:charge) { '8000' }
   let!(:params) do
     {
       charge: charge, published_at: Time.zone.today,
-      category_id: category.id, breakdown_id: breakdown.id, place_id: place.id
+      category_id: category.id, breakdown_id: breakdown.id, place_id: place.id,
+      tags: [{ id: tag1.id, name: '既存タグ', color_code: '#ffffff' },
+             { id: tag2.id, name: '既存タグ2' },
+             { name: '新規タグ' }]
     }
   end
 
@@ -240,6 +245,7 @@ describe 'POST /records', autodoc: true do
       expect(record.category).to eq category
       expect(record.breakdown).to eq breakdown
       expect(record.place).to eq place
+      expect(record.tags.count).to eq 3
     end
   end
 
