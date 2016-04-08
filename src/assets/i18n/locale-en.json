@@ -79,6 +79,7 @@
     "UNREAD": "Unread"
   },
   "TOOLTIPS": {
+    "EDIT": "Edit",
     "SET_CATEGORY": "Add a Category to the Shop",
     "TAGS_QUESTION": "You can use 'esc' key when don't select",
     "BREAKDOWNS": "Breakdowns",
@@ -114,7 +115,8 @@
       "TITLE": "Enter your Title has a length of at most 100",
       "CONTENT": "Enter your Comment has a length of at most 10000",
       "CATEGORY_NAME": "Enter your Category Name has a length of at most 100",
-      "MEMO": "Enter your Memo has a length of at most 10000"
+      "MEMO": "Enter your Memo has a length of at most 10000",
+      "NICKNAME": "Enter your Nickname has a lenght of at most 100"
     },
     "MIN": {
       "CHARGE": "Enter Charge has an integer greater than or equal to 0."
@@ -139,7 +141,7 @@
     "SEND_MESSAGE_TO_ADMIN": "Send your message",
     "TAG_PLACEHOLDER": "Add a tag",
     "THERE_IS_NO_RECORD": "There is not record.",
-    "THERE_IS_NO_RECORD2": "Input your data :)",
+    "THERE_IS_NO_RECORD2": " : Input your data :)",
     "UPDATE_PASSWORD": "Your Password has been changed",
     "NOT_FOUND_EMAIL": "Email already registered or Not yet signed up for registration",
     "NOT_FOUND_PAGE": "Not Found the Page",

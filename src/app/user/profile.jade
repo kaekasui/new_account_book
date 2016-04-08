@@ -10,17 +10,34 @@
       loading-directive
       blockquote(ng-show="profile.current_user.type == 'EmailUser'")
         footer(translate='LABELS.EMAIL_LOGIN')
-      .form.form-horizontal(ng-show='profile.current_user')
-        .form-group(ng-show='profile.current_user.email')
-          .col-sm-2(translate='LABELS.EMAIL')
-          .col-sm-10 {{ profile.current_user.email }}
+      // メールアドレス
+      form.form.form-horizontal(ng-show='profile.current_user')
         .form-group
-          .col-sm-2(translate='LABELS.NICKNAME')
+          label.col-sm-2.control-label(for='email' translate='LABELS.EMAIL')
           .col-sm-10
-            form(novalidate=true name='nicknameForm')
-              input.form-control#new_nickname(ng-if='profile.nickname_edit_field' ng-value='profile.current_user.nickname' ng-init='profile.new_nickname = profile.current_user.nickname' ng-model='profile.new_nickname' auto-focus=true type='text' ng-keydown='profile.updateNickname($event)' name='new_nickname' ng-maxlength='100')
-              span.errors(ng-show='nicknameForm.new_nickname.$error.maxlength')
-                span.glyphicon.glyphicon-alert
-                span(translate='ERRORS.MAXLENGTH.EMAIL')
-            span(ng-show='!profile.nickname_edit_field') {{ profile.current_user.nickname || ('LABELS.NO_SETTINGS' | translate) }}
-            button.btn.btn-default(translate='BUTTONS.EDIT' ng-show='!profile.nickname_edit_field' ng-click='profile.nickname_edit_field = true')
+            span {{ profile.current_user.email }}
+      // ニックネーム
+      form.form.form-horizontal(novalidate=true name='nicknameForm' ng-submit='profile.updateNickname()')
+        .form-group
+          label.col-sm-2.control-label(for='new_nickname' translate='LABELS.NICKNAME')
+          .col-sm-5
+            input.form-control#new_nickname(
+              type='text'
+              name='new_nickname'
+              auto-focus=true
+              ng-if='profile.nickname_edit_field'
+              ng-value='profile.current_user.nickname'
+              ng-init='profile.new_nickname = profile.current_user.nickname'
+              ng-model='profile.new_nickname'
+              ng-maxlength='100')
+            label.modal-label(ng-show='!profile.nickname_edit_field') {{ profile.current_user.nickname || ('LABELS.NO_SETTINGS' | translate) }}
+            span.glyphicon.glyphicon-pencil#right-icon(
+              tooltip="{{ 'TOOLTIPS.EDIT' | translate }}"
+              ng-click='profile.nickname_edit_field = true'
+              ng-show='!profile.nickname_edit_field')
+            span.errors(ng-show='nicknameForm.new_nickname.$error.maxlength')
+              span.glyphicon.glyphicon-alert
+              span(translate='ERRORS.MAXLENGTH.NICKNAME')
+          .col-sm-5
+            button.btn.btn-success(type='submit' ng-show='profile.nickname_edit_field')
+              span(translate='BUTTONS.UPDATE')

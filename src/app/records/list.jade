@@ -15,10 +15,10 @@ form.form.form-inline
   select.form-control(ng-model='list.year' ng-show="list.selected_list == 'year'" ng-options="year as year + ' 年' for year in list.years" ng-value="list.year" ng-change='list.selectYear(list.year)')
 
   // 月
-  select.form-control(ng-model='list.year' ng-show="list.selected_list == 'month'" ng-options="year as year + ' 年' for year in list.years" ng-value='list.year' ng-change='list.selectYearMonth(list.year)')
   ol.breadcrumb.inline-block(ng-show="list.selected_list == 'month'")
     li(ng-repeat='month in list.months')
       a(href='' ng-click='list.selectMonth(month)' ng-style="{'font-weight': list.month == month ? 'bold' : 'normal'}") {{ month }} 月
+  select.form-control(ng-model='list.year' ng-show="list.selected_list == 'month'" ng-options="year as year + ' 年' for year in list.years" ng-value='list.year' ng-change='list.selectYearMonth(list.year)')
 
   // 日
   input.btn.btn-default(type='date' ng-model='list.day' datepicker-popup=true required='true' ng-change='list.changeDate()' ng-show="list.selected_list == 'day'")
