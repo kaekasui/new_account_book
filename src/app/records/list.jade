@@ -44,6 +44,8 @@ form.form.form-inline
           label.label.label-primary {{ record.place_name }}
         td
           label.label.label-default {{ record.memo }}
+        td
+          span.glyphicon.glyphicon-bookmark#left-icon(ng-repeat='tag in record.tags' ng-style="{color:tag.color_code}" tooltip='{{tag.name}}')
         td ¥ {{ record.charge | number }}
         td
           a(href='' ng-click='list.showRecord($index)')
