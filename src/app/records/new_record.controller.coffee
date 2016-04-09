@@ -129,12 +129,6 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
     modalInstance.result.then () ->
       getRecordsWithDate()
 
-  vm.loadTags = ($query) ->
-    SettingsFactory.getTags().then (res) ->
-      tags = res.tags
-      tags.filter (tag) ->
-        return tag.name.indexOf($query) != -1
-
   vm.setColor = ($tag) ->
     modalInstance = $modal.open(
       templateUrl: 'app/records/modals/color_code.html'
@@ -144,6 +138,13 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
     )
     modalInstance.result.then () ->
       return
+
+  # ドロップダウンリスト
+  vm.loadTags = ($query) ->
+    SettingsFactory.getTags().then (res) ->
+      tags = res.tags
+      tags.filter (tag) ->
+        return tag.name.indexOf($query) != -1
 
   return
  
