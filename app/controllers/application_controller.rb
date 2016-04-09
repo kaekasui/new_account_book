@@ -22,7 +22,8 @@ class ApplicationController < ActionController::Base
   def error500(e)
     origin = "#{request.protocol}#{request.host_with_port}"
     ExceptionNotifier.notify_exception(
-      e, env: request.env,
+      e,
+      env: request.env,
       data: { url: origin, user_id: current_user.try(:id) })
     logger.error e.inspect
     logger.error [e, *e.backtrace].join("\n")
