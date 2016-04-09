@@ -1,4 +1,4 @@
-EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance, SettingsFactory) ->
+EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance, SettingsFactory, $modal) ->
   'ngInject'
   vm = this
   vm.editing = false
@@ -69,6 +69,17 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance,
       tags = res.tags
       tags.filter (tag) ->
         return tag.name.indexOf($query) != -1
+
+  # モーダル
+  vm.setColor = ($tag) ->
+    modalInstance = $modal.open(
+      templateUrl: 'app/records/modals/color_code.html'
+      controller: 'ColorCodeController'
+      controllerAs: 'color_code'
+      resolve: { tag: $tag }
+    )
+    modalInstance.result.then () ->
+      return
 
   return
  
