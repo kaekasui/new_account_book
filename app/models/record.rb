@@ -50,10 +50,7 @@ class Record < ActiveRecord::Base
     tag_ids = tags_params.map { |n| n['id'].nil? ? nil : n['id'] }.compact
     registered_tags = tags_params.select { |n| !n['id'].nil? }
     unregistered_tags = tags_params.select { |n| n['id'].nil? }
-
-    if registered_tags.present?
-      user.tags.update(tag_ids, registered_tags)
-    end
+    user.tags.update(tag_ids, registered_tags) if registered_tags.present?
 
     if unregistered_tags.present?
       created_tags = user.tags.create(unregistered_tags)
