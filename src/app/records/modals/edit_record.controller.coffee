@@ -1,4 +1,4 @@
-EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance) ->
+EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance, SettingsFactory) ->
   'ngInject'
   vm = this
   vm.editing = false
@@ -22,6 +22,7 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance)
         vm.place_id = ''
     vm.charge = vm.record.charge
     vm.memo = vm.record.memo
+    console.log vm.record.tags
     return
 
   IndexService.modal_loading = true
@@ -53,6 +54,7 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance)
       place_id: vm.place_id
       charge: vm.charge
       memo: vm.memo
+      tags: vm.tags
     RecordsFactory.patchRecord(record_id, params).then (res) ->
       $modalInstance.close()
 
@@ -61,6 +63,12 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance)
       if item.id == vm.category_id
         vm.breakdowns = item.breakdowns
         vm.places = item.places
+
+  vm.loadTags = ($query) ->
+    SettingsFactory.getTags().then (res) ->
+      tags = res.tags
+      tags.filter (tag) ->
+        return tag.name.indexOf($query) != -1
 
   return
  

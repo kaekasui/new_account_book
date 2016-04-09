@@ -81,6 +81,23 @@ form.form-horizontal(novalidate=true name='editRecordForm' ng-submit='edit_recor
     .form-group
       label.control-label.col-sm-2(for='tags')
         span(translate='COLUMNS.TAG')
+      .modal-label.col-sm-10(ng-show='!edit_record.editing')
+         span.glyphicon.glyphicon-bookmark#left-icon(ng-repeat='tag in edit_record.record.tags' ng-style="{color:tag.color_code}" tooltip='{{tag.name}}')
+      .col-sm-10(ng-show='edit_record.editing')
+        tags-input(ng-model='edit_record.tags'
+                   display-property='name'
+                   placeholder="{{ 'MESSAGES.TAG_PLACEHOLDER' | translate }}"
+                   replace-spaces-with-dashes='false'
+                   min-length='1'
+                   max-length='20'
+                   on-tag-clicked='edit_record.setColor($tag)'
+                   template='app/records/tag_template.html')
+          auto-complete(source='edit_record.loadTags($query)'
+                        min-length='0'
+                        max-results-to-show='32'
+                        load-on-focus='true'
+                        load-on-empty='true'
+                        template='app/records/autocomplete_template.html')
     // 金額
     .form-group
       label.control-label.col-sm-2(for='charge')

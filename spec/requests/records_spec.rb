@@ -336,7 +336,8 @@ describe 'GET /records/:id/edit', autodoc: true do
           category_name: record.category.name,
           breakdown_name: record.breakdown.try(:name),
           place_name: record.place.try(:name),
-          memo: record.memo
+          memo: record.memo,
+          tags: record.tags
         }
       }
       expect(response.body).to be_json_as(json)

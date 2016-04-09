@@ -34,4 +34,5 @@ json.record do
   json.breakdown_name @record.breakdown.try(:name)
   json.place_name @record.place.try(:name)
   json.memo @record.memo
+  json.tags @record.tags
 end
