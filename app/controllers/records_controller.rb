@@ -39,7 +39,7 @@ class RecordsController < ApplicationController
 
   def update
     @record = current_user.records.find(params[:id])
-    if @record.update(record_params)
+    if @record.update_with_tags(record_params, tags_params)
       head 200
     else
       render_error @record
