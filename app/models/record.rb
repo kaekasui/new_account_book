@@ -38,6 +38,14 @@ class Record < ActiveRecord::Base
     end
   }
 
+  def update_with_tags(record_params, tags_params)
+    if update(record_params)
+      tags_params.present? ? create_or_update_tags(tags_params) : true
+    else
+      false
+    end
+  end
+
   def create_or_update_tags(tags_params)
     tag_ids = tags_params.map { |n| n['id'].nil? ? nil : n['id'] }.compact
     unregistered_tags = tags_params.select { |n| n['id'].nil? }
@@ -55,6 +63,6 @@ class Record < ActiveRecord::Base
     tag_ids.each do |tag_id|
       tagged << TaggedRecord.new(record_id: id, tag_id: tag_id)
     end
-    TaggedRecord.import tagged
+    tagged_records.destroy_all ? TaggedRecord.import(tagged) : false
   end
 end

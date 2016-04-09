@@ -22,7 +22,7 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance,
         vm.place_id = ''
     vm.charge = vm.record.charge
     vm.memo = vm.record.memo
-    console.log vm.record.tags
+    vm.tags = vm.record.tags
     return
 
   IndexService.modal_loading = true
