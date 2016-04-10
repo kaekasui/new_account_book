@@ -3,6 +3,8 @@ class Record < ActiveRecord::Base
   belongs_to :category
   belongs_to :breakdown
   belongs_to :place
+  has_many :tagged_records
+  has_many :tags, through: :tagged_records
 
   validates :published_at, presence: true
   validates :charge, presence: true,
@@ -35,4 +37,34 @@ class Record < ActiveRecord::Base
       order(published_at: :desc, created_at: :desc)
     end
   }
+
+  def update_with_tags(record_params, tags_params)
+    if update(record_params)
+      tags_params.present? ? create_or_update_tags(tags_params) : true
+    else
+      false
+    end
+  end
+
+  def create_or_update_tags(tags_params)
+    tag_ids = tags_params.map { |n| n['id'].nil? ? nil : n['id'] }.compact
+    registered_tags = tags_params.select { |n| !n['id'].nil? }
+    unregistered_tags = tags_params.select { |n| n['id'].nil? }
+    user.tags.update(tag_ids, registered_tags) if registered_tags.present?
+
+    if unregistered_tags.present?
+      created_tags = user.tags.create(unregistered_tags)
+      tag_ids.concat(created_tags.map(&:id))
+    end
+    create_tagged(tag_ids)
+  end
+
+  # TODO: TaggedRecordのuser_idを削除する
+  def create_tagged(tag_ids)
+    tagged = []
+    tag_ids.each do |tag_id|
+      tagged << TaggedRecord.new(record_id: id, tag_id: tag_id)
+    end
+    tagged_records.destroy_all ? TaggedRecord.import(tagged) : false
+  end
 end

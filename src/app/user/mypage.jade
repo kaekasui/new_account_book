@@ -10,7 +10,13 @@
         span(translate='TITLES.RECENTLY_RECORDS_LIST')
       .panel-body
         loading-directive
-        table.table.table-condensed
+        span(ng-show='mypage.records.length == 0')
+          span(translate='MESSAGES.THERE_IS_NO_RECORD')
+          a(ui-sref='new_record')
+            span.red.glyphicon.glyphicon-piggy-bank
+            span.red(translate='TITLES.NEW_RECORD')
+          span(translate='MESSAGES.THERE_IS_NO_RECORD2')
+        table.table.table-condensed(ng-show='mypage.records.length >= 1')
           tr(ng-repeat='record in mypage.records | limitTo:5')
             td {{ record.published_at }}
             td
@@ -21,8 +27,11 @@
               label.label.label-primary {{ record.place_name }}
             td ¥ {{ record.charge | number }}
             td
-              a(href='')
+              a(href='' ng-click='mypage.showRecord($index)')
                 span.glyphicon.glyphicon-info-sign
+            td
+              a(href='' ng-click='mypage.destroyRecord($index)')
+                span.glyphicon.glyphicon-trash
 
   // お知らせ
   .col-md-6

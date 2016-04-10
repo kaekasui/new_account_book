@@ -5,15 +5,18 @@ class User < ActiveRecord::Base
   has_many :places
   has_many :messages
   has_many :records
+  has_many :tags
 
   enum status: { registered: 2, inactive: 1 }
 
   validates :categories,
             length: { maximum: Settings.user.categories.maximum_length,
-                      too_long: I18n.t('errors.messages.too_long') }
+                      too_long: I18n.t('errors.messages.too_long') },
+            unless: :admin
   validates :places,
             length: { maximum: Settings.user.places.maximum_length,
-                      too_long: I18n.t('errors.messages.too_long') }
+                      too_long: I18n.t('errors.messages.too_long') },
+            unless: :admin
 
   def active?
     registered? # TODO: 有効期限を確認する

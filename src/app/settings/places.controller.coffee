@@ -23,15 +23,15 @@ PlacesController = (SettingsFactory, $scope, IndexService, $modal, toastr, $tran
   vm.destroyPlace = (index) ->
     place = vm.places[index]
     modalInstance = $modal.open(
-      templateUrl: 'confirm-destroy'
-      controller: 'ConfirmDestroyPlaceController'
+      templateUrl: 'app/components/modals/destroy.html'
+      controller: 'DestroyPlaceController'
       controllerAs: 'confirm_destroy'
       resolve: { place_id: place.id }
     )
     modalInstance.result.then () ->
       SettingsFactory.getPlaces().then (res) ->
         vm.places = res.places
-      return
+
     return
 
   vm.addCategory = (index) ->
@@ -76,19 +76,6 @@ PlacesController = (SettingsFactory, $scope, IndexService, $modal, toastr, $tran
 
   return
 
-ConfirmDestroyPlaceController = (SettingsFactory, place_id, $modalInstance) ->
-  'ngInject'
-  vm = this
-
-  vm.ok = () ->
-    SettingsFactory.deletePlace(place_id).then (res) ->
-      $modalInstance.close()
-
-  vm.cancel = () ->
-    $modalInstance.dismiss()
-
-  return
-
 AddCategoryController = ($modalInstance, SettingsFactory, place_id, IndexService) ->
   'ngInject'
   vm = this
@@ -115,6 +102,5 @@ AddCategoryController = ($modalInstance, SettingsFactory, place_id, IndexService
   return
 
 angular.module 'newAccountBook'
-  .controller('ConfirmDestroyPlaceController', ConfirmDestroyPlaceController)
   .controller('AddCategoryController', AddCategoryController)
   .controller('PlacesController', PlacesController)

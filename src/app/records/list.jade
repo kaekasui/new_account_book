@@ -15,10 +15,10 @@ form.form.form-inline
   select.form-control(ng-model='list.year' ng-show="list.selected_list == 'year'" ng-options="year as year + ' 年' for year in list.years" ng-value="list.year" ng-change='list.selectYear(list.year)')
 
   // 月
-  select.form-control(ng-model='list.year' ng-show="list.selected_list == 'month'" ng-options="year as year + ' 年' for year in list.years" ng-value='list.year' ng-change='list.selectYearMonth(list.year)')
   ol.breadcrumb.inline-block(ng-show="list.selected_list == 'month'")
     li(ng-repeat='month in list.months')
       a(href='' ng-click='list.selectMonth(month)' ng-style="{'font-weight': list.month == month ? 'bold' : 'normal'}") {{ month }} 月
+  select.form-control(ng-model='list.year' ng-show="list.selected_list == 'month'" ng-options="year as year + ' 年' for year in list.years" ng-value='list.year' ng-change='list.selectYearMonth(list.year)')
 
   // 日
   input.btn.btn-default(type='date' ng-model='list.day' datepicker-popup=true required='true' ng-change='list.changeDate()' ng-show="list.selected_list == 'day'")
@@ -42,10 +42,17 @@ form.form.form-inline
           label.label.label-info {{ record.breakdown_name }}
         td
           label.label.label-primary {{ record.place_name }}
+        td
+          label.label.label-default {{ record.memo }}
+        td
+          span.glyphicon.glyphicon-bookmark#left-icon(ng-repeat='tag in record.tags' ng-style="{color:tag.color_code}" tooltip='{{tag.name}}')
         td ¥ {{ record.charge | number }}
         td
-          a(href='')
+          a(href='' ng-click='list.showRecord($index)')
             span.glyphicon.glyphicon-info-sign
+        td
+          a(href='' ng-click='list.destroyRecord($index)')
+            span.glyphicon.glyphicon-trash
     nav(ng-show='list.offset_numbers.length >= 2')
       ul.pagination
         li(ng-click='list.clickPaginate(number)' ng-repeat='number in list.offset_numbers' ng-class='{active: number == list.offset}')

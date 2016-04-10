@@ -7,6 +7,10 @@ class RecordsController < ApplicationController
     @total_count = fetcher.total_count
   end
 
+  def show
+    @record = current_user.records.find(params[:id])
+  end
+
   def new
     @user = current_user
     @categories = current_user.categories
@@ -15,7 +19,10 @@ class RecordsController < ApplicationController
   end
 
   def create
-    @record = current_user.records.new(record_params)
+    @record = Record::Generator.new(
+      user: current_user,
+      record_params: record_params,
+      tags_params: tags_params)
     if @record.save
       head 201
     else
@@ -23,10 +30,36 @@ class RecordsController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+    @categories = current_user.categories
+                              .order(:position)
+    @record = current_user.records.find(params[:id])
+  end
+
+  def update
+    @record = current_user.records.find(params[:id])
+    if @record.update_with_tags(record_params, tags_params)
+      head 200
+    else
+      render_error @record
+    end
+  end
+
+  def destroy
+    record = current_user.records.find(params[:id])
+    record.destroy
+    head record.destroyed? ? :ok : :forbidden
+  end
+
   private
 
   def record_params
     params.permit(:published_at, :charge, :memo,
                   :category_id, :breakdown_id, :place_id)
+  end
+
+  def tags_params
+    params.permit(tags: [:id, :name, :color_code])[:tags]
   end
 end

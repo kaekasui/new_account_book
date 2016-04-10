@@ -39,11 +39,13 @@
   "BUTTONS": {
     "ADD": "追加する",
     "CREATE": "登録",
+    "CLEAR": "クリア",
     "FACEBOOK_LOGIN": "Facebookでログイン",
     "LOGIN": "ログインする",
     "SIGN_UP": "登録する",
     "SEND": "送信する",
-    "EDIT": "変更",
+    "SET": "設定する",
+    "EDIT": "編集",
     "YES": "はい",
     "OUTGO": "支出",
     "INCOME": "収入",
@@ -79,7 +81,9 @@
     "UNREAD": "未読"
   },
   "TOOLTIPS": {
+    "EDIT": "編集する",
     "SET_CATEGORY": "カテゴリを設定",
+    "TAGS_QUESTION": "escキーで候補を非表示にできます。候補から選択しない場合にご利用ください",
     "BREAKDOWNS": "内訳",
     "PLACES": "お店・施設"
   },
@@ -113,7 +117,8 @@
       "TITLE": "タイトルは100文字以内で入力してください",
       "CONTENT": "内容は10000文字以内で入力してください",
       "CATEGORY_NAME": "カテゴリ名は100文字以内で入力してください",
-      "MEMO": "備考は10000文字以内で入力してください"
+      "MEMO": "備考は10000文字以内で入力してください",
+      "NICKNAME": "ニックネームは100文字以内で入力してください"
     },
     "MIN": {
       "CHARGE": "金額は0以上で入力してください"
@@ -136,6 +141,9 @@
     "SEND_MAIL": "メールを送信しました",
     "SEND_MESSAGE": "メッセージを送信しました",
     "SEND_MESSAGE_TO_ADMIN": "管理者にメッセージを送信しました",
+    "TAG_PLACEHOLDER": "ラベルを追加・選択",
+    "THERE_IS_NO_RECORD": "登録されているデータはありません。",
+    "THERE_IS_NO_RECORD2": " からデータを登録してみてください♪",
     "UPDATE_PASSWORD": "パスワードを変更しました",
     "NOT_FOUND_EMAIL": "メールアドレスがすでに本登録されているか、登録されていないメールアドレスです",
     "NOT_FOUND_PAGE": "お探しのページは見つかりません。URLをご確認ください。",
@@ -162,6 +170,7 @@
     "POST_AT": "投稿日時",
     "PUBLISHED_AT": "日付",
     "SENT_AT": "送信日時",
+    "TAG": "ラベル",
     "TITLE": "タイトル",
     "USER": "ユーザー",
     "NICKNAME": "ニックネーム"

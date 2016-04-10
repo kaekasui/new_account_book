@@ -1,4 +1,4 @@
-NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
+NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, SettingsFactory) ->
   'ngInject'
   vm = this
 
@@ -10,9 +10,11 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
     vm.categories = res.categories
     vm.breakdown_field = res.user.breakdown_field
     vm.place_field = res.user.place_field
+    vm.tag_field = res.user.tag_field
     vm.memo_field = res.user.memo_field
     vm.form_group_breakdown = vm.breakdown_field
     vm.form_group_place = vm.place_field
+    vm.form_group_tag = vm.tag_field
     vm.form_group_memo = vm.memo_field
     IndexService.loading = false
   ).catch (res) ->
@@ -43,12 +45,14 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
       place_id: vm.place_id
       charge: vm.charge
       memo: vm.memo
+      tags: vm.tags
     RecordsFactory.postRecord(params).then (res) ->
       vm.category_index_id = ''
       vm.breakdown_id = ''
       vm.place_id = ''
       vm.charge = ''
       vm.memo = ''
+      vm.tags = ''
       $scope.newRecordForm.$setPristine()
       # TODO: 編集のリンクを表示する
       getRecordsWithDate()
@@ -64,10 +68,12 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
     params =
       breakdown_field: vm.breakdown_field
       place_field: vm.place_field
+      tag_field: vm.tag_field
       memo_field: vm.memo_field
     RecordsFactory.patchSettings(params).then (res) ->
       vm.form_group_breakdown = vm.breakdown_field
       vm.form_group_place = vm.place_field
+      vm.form_group_tag = vm.tag_field
       vm.form_group_memo = vm.memo_field
     return
 
@@ -92,10 +98,53 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope) ->
         vm.place_id = ''
     vm.charge = record.charge
     vm.memo = record.memo
+    # TODO: ラベルをコピーする
 
   vm.setToday = () ->
     vm.published_at = new Date()
     getRecordsWithDate()
+
+  # モーダル
+  vm.showRecord = (index) ->
+    record = vm.day_records[index]
+    modalInstance = $modal.open(
+      templateUrl: 'app/records/modals/record.html'
+      controller: 'EditRecordController'
+      controllerAs: 'edit_record'
+      resolve: { record_id: record.id }
+      backdrop: 'static'
+    )
+    modalInstance.result.then () ->
+      RecordsFactory.getRecord(record.id).then (res) ->
+        vm.day_records[index] = res
+
+  vm.destroyRecord = (index) ->
+    record = vm.day_records[index]
+    modalInstance = $modal.open(
+      templateUrl: 'app/components/modals/destroy.html'
+      controller: 'DestroyRecordController'
+      controllerAs: 'confirm_destroy'
+      resolve: { record_id: record.id }
+    )
+    modalInstance.result.then () ->
+      getRecordsWithDate()
+
+  vm.setColor = ($tag) ->
+    modalInstance = $modal.open(
+      templateUrl: 'app/records/modals/color_code.html'
+      controller: 'ColorCodeController'
+      controllerAs: 'color_code'
+      resolve: { tag: $tag }
+    )
+    modalInstance.result.then () ->
+      return
+
+  # ドロップダウンリスト
+  vm.loadTags = ($query) ->
+    SettingsFactory.getTags().then (res) ->
+      tags = res.tags
+      tags.filter (tag) ->
+        return tag.name.indexOf($query) != -1
 
   return
  

@@ -28,6 +28,6 @@ class UsersController < ApplicationController
   end
 
   def setting_params
-    params.permit(:breakdown_field, :place_field, :memo_field)
+    params.permit(:breakdown_field, :place_field, :tag_field, :memo_field)
   end
 end

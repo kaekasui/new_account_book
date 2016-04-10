@@ -6,6 +6,8 @@ angular.module(
                      'ngMessages',
                      'ngAria',
                      'ngResource',
+                     'ngTagsInput',
+                     'color.picker',
                      'mp.autoFocus',
                      'ui.router',
                      'ui.bootstrap',

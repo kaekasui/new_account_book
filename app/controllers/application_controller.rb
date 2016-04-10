@@ -20,8 +20,11 @@ class ApplicationController < ActionController::Base
   end
 
   def error500(e)
+    origin = "#{request.protocol}#{request.host_with_port}"
     ExceptionNotifier.notify_exception(
-      e, env: request.env, data: { user_id: current_user.try(:id) })
+      e,
+      env: request.env,
+      data: { url: origin, user_id: current_user.try(:id) })
     logger.error e.inspect
     logger.error [e, *e.backtrace].join("\n")
     render :error500, status: 500, formats: :json
