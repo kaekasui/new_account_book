@@ -34,6 +34,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
  
   getRecordsWithDate()
 
+  # 「登録」ボタン
   vm.submit = () ->
     category = vm.categories[vm.category_index_id]
     if category
@@ -58,12 +59,14 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       getRecordsWithDate()
     return
 
+  # 「カテゴリ」選択
   vm.selectCategory = () ->
     vm.categories.forEach (item, i) ->
       if item.id == vm.category_id
         vm.breakdowns = item.breakdowns
         vm.places = item.places
 
+  # 表示設定のチェック
   vm.checkSetting = () ->
     params =
       breakdown_field: vm.breakdown_field
@@ -77,9 +80,11 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       vm.form_group_memo = vm.memo_field
     return
 
+  # 日付変更
   vm.changeDate = () ->
     getRecordsWithDate()
 
+  # コピーアイコン
   vm.copyRecord = (record) ->
     vm.categories.forEach (c, i) ->
       if c.name == record.category_name
@@ -100,11 +105,19 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
     vm.memo = record.memo
     # TODO: ラベルをコピーする
 
+  # 「今日」ボタン
   vm.setToday = () ->
     vm.published_at = new Date()
     getRecordsWithDate()
 
-  # モーダル
+  # ドロップダウンリスト
+  vm.loadTags = ($query) ->
+    SettingsFactory.getTags().then (res) ->
+      tags = res.tags
+      tags.filter (tag) ->
+        return tag.name.indexOf($query) != -1
+
+  # 情報アイコン -> モーダル
   vm.showRecord = (index) ->
     record = vm.day_records[index]
     modalInstance = $modal.open(
@@ -118,6 +131,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       RecordsFactory.getRecord(record.id).then (res) ->
         vm.day_records[index] = res
 
+  # 削除アイコン -> モーダル
   vm.destroyRecord = (index) ->
     record = vm.day_records[index]
     modalInstance = $modal.open(
@@ -129,6 +143,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
     modalInstance.result.then () ->
       getRecordsWithDate()
 
+  # ラベル名 -> モーダル
   vm.setColor = ($tag) ->
     modalInstance = $modal.open(
       templateUrl: 'app/records/modals/color_code.html'
@@ -139,12 +154,13 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
     modalInstance.result.then () ->
       return
 
-  # ドロップダウンリスト
-  vm.loadTags = ($query) ->
-    SettingsFactory.getTags().then (res) ->
-      tags = res.tags
-      tags.filter (tag) ->
-        return tag.name.indexOf($query) != -1
+  # ラベル：ヘルプ -> モーダル
+  vm.helpTags = () ->
+    modalInstance = $modal.open(
+      templateUrl: 'app/records/modals/help_tags.html'
+    )
+    modalInstance.result.then () ->
+      return
 
   return
  
