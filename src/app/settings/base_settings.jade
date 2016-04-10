@@ -4,17 +4,20 @@
     span(translate='TITLES.BASE_SETTING')
 
   .panel-body#with-background
+    loading-directive
     blockquote
       span {{ 'SETTINGS.DISPLAY' | translate }}
     .checkbox
       p(translate='MESSAGES.DISPLAY_ITEMS')
       label.checkbox-inline
-        input(type='checkbox' ng-model='new_record.breakdown_field' ng-change='new_record.checkSetting()')
+        input(type='checkbox' ng-model='base_settings.breakdown_field' ng-change='base_settings.checkSetting()')
         span {{ 'COLUMNS.BREAKDOWN' | translate }}
       label.checkbox-inline
-        input(type='checkbox' ng-model='new_record.place_field' ng-change='new_record.checkSetting()')
+        input(type='checkbox' ng-model='base_settings.place_field' ng-change='base_settings.checkSetting()')
         span {{ 'COLUMNS.PLACE' | translate }}
       label.checkbox-inline
-        input(type='checkbox' ng-model='new_record.memo_field' ng-change='new_record.checkSetting()')
+        input(type='checkbox' ng-model='base_settings.tag_field' ng-change='base_settings.checkSetting()')
+        span {{ 'COLUMNS.TAG' | translate }}
+      label.checkbox-inline
+        input(type='checkbox' ng-model='base_settings.memo_field' ng-change='base_settings.checkSetting()')
         span {{ 'COLUMNS.MEMO' | translate }}
- 

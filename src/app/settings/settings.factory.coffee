@@ -281,6 +281,9 @@ SettingsFactory = ($location, $q, $http, localStorageService, toastr, $translate
           defer.reject data
           return
       return defer.promise
+
+    getBaseSettings: () ->
+
   }
 
 angular.module 'newAccountBook'
