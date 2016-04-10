@@ -84,10 +84,10 @@
         .form-group(ng-show='new_record.form_group_tag')
           label.control-label.col-sm-2(for='tag')
             span(translate='COLUMNS.TAG')
+            span.glyphicon.glyphicon-question-sign.blue#right-icon(ng-click='new_record.helpTags()')
           .col-sm-10
             tags-input(ng-model='new_record.tags'
                        display-property='name'
-                       placeholder="{{ 'MESSAGES.TAG_PLACEHOLDER' | translate }}"
                        replace-spaces-with-dashes='false'
                        min-length='1'
                        max-length='20'
@@ -99,7 +99,6 @@
                             load-on-focus='true'
                             load-on-empty='true'
                             template='app/records/autocomplete_template.html')
-            span.glyphicon.glyphicon-question-sign.blue(tooltip="{{ 'TOOLTIPS.TAGS_QUESTION' | translate }}")
         // 金額
         .form-group
           label.control-label.col-sm-2(for='charge')

@@ -1,5 +1,5 @@
 angular.module 'newAccountBook'
-  .config ($logProvider, toastrConfig, $translateProvider, markedProvider, $httpProvider) ->
+  .config ($logProvider, toastrConfig, $translateProvider, markedProvider, $httpProvider, tagsInputConfigProvider) ->
     'ngInject'
     # Enable log
     $logProvider.debugEnabled true
@@ -23,3 +23,6 @@ angular.module 'newAccountBook'
     markedProvider.setOptions { gfm: true }
 
     $httpProvider.interceptors.push('AuthInterceptor')
+
+    # ngTagsInput Setting
+    tagsInputConfigProvider.setDefaults 'tagsInput', placeholder: ''
