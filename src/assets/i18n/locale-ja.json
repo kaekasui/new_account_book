@@ -184,5 +184,8 @@
     "ENVIRONMENT": "推奨環境について",
     "LINKS": "本サイトへのリンクについて",
     "PROPER_LAW": "準拠法"
+  },
+  "SETTINGS": {
+    "DISPLAY": "各項目の表示設定"
   }
 }
