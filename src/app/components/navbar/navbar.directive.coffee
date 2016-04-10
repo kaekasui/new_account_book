@@ -21,50 +21,13 @@ NavbarController = (IndexFactory, $location, $scope, $translate, toastr, localSt
 
   vm.feedback = () ->
     modalInstance = $modal.open(
-      templateUrl: 'feedback'
+      templateUrl: 'app/components/navbar/modals/feedback.html'
       controller: 'FeedbackController'
       controllerAs: 'feedback'
       backdrop: 'static'
     )
     modalInstance.result.then () ->
       return
-
-  return
-
-FeedbackController = (IndexFactory, $translate, $modalInstance, toastr) ->
-  'ngInject'
-  vm = this
-  vm.placeholder = $translate.instant('MESSAGES.FEEDBACK')
-
-  IndexFactory.getCurrentUser().then((res) ->
-    vm.current_user = res
-    return
-  ).catch (res) ->
-    return
-
-  vm.submit = () ->
-    vm.sending = true
-    params = {}
-    if vm.current_user != undefined
-      params =
-        user_id: vm.current_user.id,
-        content: vm.content
-    else
-      params =
-        email: if vm.email == undefined then '' else vm.email,
-        content: vm.content
-
-    IndexFactory.postFeedback(params).then( ->
-      $modalInstance.close()
-      vm.sending = false
-      return
-    ).catch (res) ->
-      vm.errors = res.error_messages
-      vm.sending = false
-      return
-
-  vm.cancel = () ->
-    $modalInstance.close()
 
   return
 
@@ -78,5 +41,4 @@ navbarDirective = () ->
 
 angular.module 'newAccountBook'
   .controller('NavbarController', NavbarController)
-  .controller('FeedbackController', FeedbackController)
   .directive('navbarDirective', navbarDirective)
