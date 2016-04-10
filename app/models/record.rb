@@ -47,6 +47,7 @@ class Record < ActiveRecord::Base
   end
 
   def create_or_update_tags(tags_params)
+    return true if tags_params.blank?
     tag_ids = tags_params.map { |n| n['id'].nil? ? nil : n['id'] }.compact
     registered_tags = tags_params.select { |n| !n['id'].nil? }
     unregistered_tags = tags_params.select { |n| n['id'].nil? }
