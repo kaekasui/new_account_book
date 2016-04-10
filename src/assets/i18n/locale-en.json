@@ -3,6 +3,7 @@
   "TITLES": {
     "NEW_RECORD": "New DATA",
     "ADMIN": "Admin",
+    "BASE_SETTING": "Base Settings",
     "HOME": "Home",
     "CATEGORY": "Category",
     "DASHBOARD": "Dashboard",
@@ -181,5 +182,8 @@
     "ENVIRONMENT": "ENVIRONMENT",
     "LINKS": "LINKS",
     "PROPER_LAW": "PROPER LAW"
+  },
+  "SETTINGS": {
+    "DISPLAY": "Display Setting"
   }
 }

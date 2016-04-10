@@ -3,6 +3,7 @@
   "TITLES": {
     "NEW_RECORD": "入力する",
     "ADMIN": "管理",
+    "BASE_SETTING": "基本設定",
     "HOME": "HOME",
     "CATEGORY": "カテゴリ",
     "CATEGORIES": "カテゴリの管理",
@@ -133,7 +134,7 @@
     "CREATE_NOTICE": "お知らせを投稿しました",
     "CREATE_RECORD": "登録しました",
     "CONFIRM_TO_SEND_MAIL": "メールを送信しますか？",
-    "DISPLAY_ITEMS": "収支の登録で表示する項目にチェックを入れてください",
+    "DISPLAY_ITEMS": "収支の登録、編集で表示する項目にチェックを入れてください",
     "UPDATE_NOTICE": "お知らせを編集しました",
     "LOGIN": "ログインしました",
     "LOGOUT": "ログアウトしました",
@@ -183,5 +184,8 @@
     "ENVIRONMENT": "推奨環境について",
     "LINKS": "本サイトへのリンクについて",
     "PROPER_LAW": "準拠法"
+  },
+  "SETTINGS": {
+    "DISPLAY": "各項目の表示設定"
   }
 }
