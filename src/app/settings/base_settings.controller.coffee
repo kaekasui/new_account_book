@@ -1,11 +1,10 @@
-BaseSettingsController = (RecordsFactory, IndexService, IndexFactory) ->
+BaseSettingsController = (RecordsFactory, IndexService, SettingsFactory) ->
   # TODO: RecordsFactory.patchSettingsをSettingsに移動する
   'ngInject'
   vm = this
 
   IndexService.loading = true
-  IndexFactory.getCurrentUser().then((res) ->
-    console.log res
+  SettingsFactory.getCurrentUserSettings().then((res) ->
     vm.breakdown_field = res.breakdown_field
     vm.place_field = res.place_field
     vm.tag_field = res.tag_field

@@ -4,7 +4,3 @@ json.email @user.email
 json.nickname @user.nickname
 json.user_name @user._name
 json.admin @user.admin
-json.breakdown_field @user.breakdown_field
-json.place_field @user.place_field
-json.tag_field @user.tag_field
-json.memo_field @user.memo_field

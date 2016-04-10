@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def settings
+    @user = current_user
+  end
+
   def update
     if current_user.update(user_params)
       head 200

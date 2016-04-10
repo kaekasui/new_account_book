@@ -3,6 +3,22 @@ SettingsFactory = ($location, $q, $http, localStorageService, toastr, $translate
   host = if $location.host() == 'localhost' then 'http://localhost:3001/' else ''
 
   return {
+    getCurrentUserSettings: () ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      if token != null
+        login_headers = {
+          headers: { Authorization: 'Token token=' + token }
+        }
+        $http.get host + 'user/settings', login_headers
+          .success((data) ->
+            defer.resolve data
+            return
+          ).error (data) ->
+            defer.reject data
+            return
+      return defer.promise
+
     postCategoryRange: (params) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
