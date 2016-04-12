@@ -102,8 +102,8 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       if record.place_name == null
         vm.place_id = ''
     vm.charge = record.charge
+    vm.tags = record.tags
     vm.memo = record.memo
-    # TODO: ラベルをコピーする
 
   # 「今日」ボタン
   vm.setToday = () ->

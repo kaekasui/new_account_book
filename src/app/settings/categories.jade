@@ -15,11 +15,11 @@
             span.glyphicon.glyphicon-minus-sign.red#left-icon(ng-hide='category.barance_of_payments')
             span {{ category.name | truncate:true:12 }}
           hr
-          a.label.label-info.label-list(href='' ng-click='categories.showBreakdowns($index)' tooltip="{{ 'TOOLTIPS.BREAKDOWNS' | translate }}")
+          a.label.label-info.label-list.blue(href='' ng-click='categories.showBreakdowns($index)' tooltip="{{ 'TOOLTIPS.BREAKDOWNS' | translate }}")
             span.glyphicon.glyphicon-th-list#left-icon
             span {{ category.breakdowns_count }}
 
-          a.label.label-info.label-list(href='' ng-click='categories.showPlaces($index)' tooltip="{{ 'TOOLTIPS.PLACES' | translate }}")
+          a.label.label-info.label-list.blue(href='' ng-click='categories.showPlaces($index)' tooltip="{{ 'TOOLTIPS.PLACES' | translate }}")
 
             span.glyphicon.glyphicon-map-marker#left-icon
             span {{ category.places_count }}

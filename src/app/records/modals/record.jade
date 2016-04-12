@@ -86,7 +86,6 @@ form.form-horizontal(novalidate=true name='editRecordForm' ng-submit='edit_recor
       .col-sm-10(ng-show='edit_record.editing')
         tags-input(ng-model='edit_record.tags'
                    display-property='name'
-                   placeholder="{{ 'MESSAGES.TAG_PLACEHOLDER' | translate }}"
                    replace-spaces-with-dashes='false'
                    min-length='1'
                    max-length='20'

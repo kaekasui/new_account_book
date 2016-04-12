@@ -8,6 +8,27 @@ $link-color: #76891a;
 $hr-border: #76891a;
 $navbar-default-bg: rgba(#fff, 0);
 
+.blue + .tooltip > .tooltip-inner {
+  background-color: $blue;
+}
+.blue + .tooltip.top > .tooltip-arrow {
+  border-top-color: $blue;
+}
+
+.green + .tooltip > .tooltip-inner {
+  background-color: $green;
+}
+.green + .tooltip.top > .tooltip-arrow {
+  border-top-color: $green;
+}
+
+.red + .tooltip > .tooltip-inner {
+  background-color: $red;
+}
+.red + .tooltip.top > .tooltip-arrow {
+  border-top-color: $red;
+}
+
 $navbar-default-link-color: #76891a;
 $navbar-default-link-hover-color: #515e12;
 
@@ -50,8 +71,6 @@ $nav-tabs-active-link-hover-color: #76891a;
 
 $nav-pills-active-link-hover-bg: rgba(#fff, 0.5);
 $nav-pills-active-link-hover-color: #76891a;
-
-$tooltip-bg: #61abbb;
 
 $blockquote-border-color: #76891a;
 $blockquote-small-color: #76891a;
@@ -124,14 +143,14 @@ body {
   span.red {
     color: $red;
   }
-  span.dotted {
-    border-bottom: dotted 2px #ac5e9f;
-  }
   span.green {
     color: $green;
   }
   span.blue {
     color: $blue;
+  }
+  span.dotted {
+    border-bottom: dotted 2px #ac5e9f;
   }
   a.label-list {
     margin-right: 30px;
