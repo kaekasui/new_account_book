@@ -141,7 +141,7 @@
             tr(ng-repeat='record in new_record.day_records')
               td
                 a(href='' ng-click='new_record.copyRecord(record)')
-                  span.glyphicon.glyphicon-arrow-left(tooltip="{{'TOOLTIPS.COPY' | translate}}")
+                  span.glyphicon.glyphicon-arrow-left.green(tooltip="{{'TOOLTIPS.COPY' | translate}}")
               td
                 label.label.label-warning {{ record.category_name }}
               td
@@ -151,7 +151,7 @@
               td ¥ {{ record.charge | number }}
               td
                 a(href='' ng-click='new_record.showRecord($index)')
-                  span.glyphicon.glyphicon-info-sign(tooltip="{{'TOOLTIPS.DETAIL' | translate}}")
+                  span.glyphicon.glyphicon-info-sign.green(tooltip="{{'TOOLTIPS.DETAIL' | translate}}")
               td
                 a(href='' ng-click='new_record.destroyRecord($index)')
-                  span.glyphicon.glyphicon-trash(tooltip="{{'TOOLTIPS.DELETE' | translate}}")
+                  span.glyphicon.glyphicon-trash.green(tooltip="{{'TOOLTIPS.DELETE' | translate}}")
