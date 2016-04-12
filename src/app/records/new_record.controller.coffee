@@ -128,8 +128,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       backdrop: 'static'
     )
     modalInstance.result.then () ->
-      RecordsFactory.getRecord(record.id).then (res) ->
-        vm.day_records[index] = res
+      getRecordsWithDate()
 
   # 削除アイコン -> モーダル
   vm.destroyRecord = (index) ->
