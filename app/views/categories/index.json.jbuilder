@@ -3,7 +3,7 @@ json.categories do
     json.id category.id
     json.name category.name
     json.barance_of_payments category.barance_of_payments
-    json.breakdowns_count category.breakdowns.count
+    json.breakdowns_count category.breakdowns_count
     json.places_count category.places.count
   end
 end

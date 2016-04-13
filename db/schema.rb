@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160407070734) do
+ActiveRecord::Schema.define(version: 20160413024233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160407070734) do
     t.datetime "deleted_at"
     t.integer  "user_id"
     t.integer  "position"
+    t.integer  "breakdowns_count",    default: 0, null: false
   end
 
   add_index "categories", ["user_id"], name: "index_categories_on_user_id", using: :btree
