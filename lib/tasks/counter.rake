@@ -3,6 +3,7 @@ namespace :counter do
   task init: :environment do
     begin
       Breakdown.counter_culture_fix_counts
+      CategorizePlace.counter_culture_fix_counts
     rescue => ex
       puts ex.message
     end
