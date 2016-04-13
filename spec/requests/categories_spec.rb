@@ -12,6 +12,7 @@ describe 'GET /categories', autodoc: true do
     let!(:user) { create(:email_user, :registered) }
     let!(:category) { create(:category, user: user) }
     let!(:category2) { create(:category, user: user) }
+    #let!(:breakdown) { create(:breakdown, category: category2) }
     let!(:place) { create(:place, user: user) }
 
     it '200とカテゴリ一覧を返すこと' do
