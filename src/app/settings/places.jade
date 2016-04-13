@@ -38,7 +38,7 @@
         //- カテゴリ
         .col-sm-8
           ul.nav.nav-pills#category-list
-            li(tooltip="{{ 'TOOLTIPS.SET_CATEGORY' | translate }}")
+            li.blue(tooltip="{{ 'TOOLTIPS.SET_CATEGORY' | translate }}")
               span.label.label-info#category-list(ng-click='places.addCategory($index)')
                 .glyphicon.glyphicon-plus
             li(ng-repeat='category in place.categories')

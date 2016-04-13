@@ -84,6 +84,7 @@
     "DELETE": "Delete",
     "DETAIL": "Detail",
     "EDIT": "Edit",
+    "MESSAGE": "Message",
     "SET_CATEGORY": "Add a Category to the Shop",
     "TAGS_QUESTION": "You can use 'esc' key when don't select",
     "BREAKDOWNS": "Breakdowns",

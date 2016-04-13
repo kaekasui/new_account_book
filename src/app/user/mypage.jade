@@ -28,10 +28,10 @@
             td ¥ {{ record.charge | number }}
             td
               a(href='' ng-click='mypage.showRecord($index)')
-                span.glyphicon.glyphicon-info-sign
+                span.glyphicon.glyphicon-info-sign.green(tooltip="{{'TOOLTIPS.DETAIL' | translate}}")
             td
               a(href='' ng-click='mypage.destroyRecord($index)')
-                span.glyphicon.glyphicon-trash
+                span.glyphicon.glyphicon-trash.green(tooltip="{{'TOOLTIPS.DELETE' | translate}}")
 
   // お知らせ
   .col-md-6

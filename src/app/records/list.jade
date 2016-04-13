@@ -49,10 +49,10 @@ form.form.form-inline
         td ¥ {{ record.charge | number }}
         td
           a(href='' ng-click='list.showRecord($index)')
-            span.glyphicon.glyphicon-info-sign
+            span.glyphicon.glyphicon-info-sign.green(tooltip="{{'TOOLTIPS.DETAIL' | translate}}")
         td
           a(href='' ng-click='list.destroyRecord($index)')
-            span.glyphicon.glyphicon-trash
+            span.glyphicon.glyphicon-trash.green(tooltip="{{'TOOLTIPS.DELETE' | translate}}")
     nav(ng-show='list.offset_numbers.length >= 2')
       ul.pagination
         li(ng-click='list.clickPaginate(number)' ng-repeat='number in list.offset_numbers' ng-class='{active: number == list.offset}')
