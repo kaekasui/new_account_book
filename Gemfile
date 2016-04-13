@@ -34,6 +34,7 @@ gem 'rb-readline'
 gem 'dotenv', github: 'bkeepers/dotenv'
 gem 'dotenv-rails', github: 'bkeepers/dotenv'
 gem 'activerecord-import'
+gem 'counter_culture'
 
 group :development, :test do
   gem 'rspec-rails'
