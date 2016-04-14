@@ -28,7 +28,7 @@ BreakdownsController = (SettingsFactory, category_id, $modalInstance, $modal) ->
     breakdown = vm.breakdowns[index]
     modalInstance = $modal.open(
       templateUrl: 'app/components/modals/destroy.html'
-      controller: 'ConfirmDestroyBreakdownController'
+      controller: 'DestroyBreakdownController'
       controllerAs: 'confirm_destroy'
       resolve:
         category_id: category_id

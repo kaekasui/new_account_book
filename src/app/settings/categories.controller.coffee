@@ -66,7 +66,7 @@ CategoriesController = (SettingsFactory, $modal, IndexService) ->
   vm.showPlaces = (index) ->
     category = vm.categories[index]
     modalInstance = $modal.open(
-      templateUrl: 'modal-places'
+      templateUrl: 'app/settings/modals/modal_places.html'
       controller: 'ModalPlacesController'
       controllerAs: 'modal_places'
       resolve: { category_id: category.id }
@@ -91,43 +91,5 @@ CategoriesController = (SettingsFactory, $modal, IndexService) ->
 
   return
 
-ModalPlacesController = (SettingsFactory, category_id, $modal) ->
-  'ngInject'
-  vm = this
-
-  SettingsFactory.getCategoryPlaces(category_id).then (res) ->
-    vm.places = res.places
-
-  return
-
-ConfirmDestroyController = (SettingsFactory, category_id, $modalInstance) ->
-  'ngInject'
-  vm = this
-
-  vm.ok = () ->
-    SettingsFactory.deleteCategory(category_id).then ->
-      $modalInstance.close()
-
-  vm.cancel = () ->
-    $modalInstance.dismiss()
-
-  return
-
-ConfirmDestroyBreakdownController = (SettingsFactory, $modalInstance, category_id, breakdown_id) ->
-  'ngInject'
-  vm = this
-
-  vm.ok = () ->
-    SettingsFactory.deleteBreakdown(category_id, breakdown_id).then ->
-      $modalInstance.close()
-
-  vm.cancel = () ->
-    $modalInstance.dismiss()
-
-  return
-
 angular.module 'newAccountBook'
-  .controller('ModalPlacesController', ModalPlacesController)
-  .controller('ConfirmDestroyController', ConfirmDestroyController)
-  .controller('ConfirmDestroyBreakdownController', ConfirmDestroyBreakdownController)
   .controller('CategoriesController', CategoriesController)
