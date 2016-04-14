@@ -175,6 +175,21 @@ describe 'DELETE /categories/:id', autodoc: true do
     end
   end
 
+  context '削除対象のカテゴリが複数の収支を登録していた場合' do
+    before do
+      create(:record, category: category)
+    end
+
+    it '422とエラーメッセージが返ってくること' do
+      delete "/categories/#{category.id}", '', login_headers(user)
+      expect(response.status).to eq 422
+      json = {
+        error_messages: ['登録した収支を削除してから削除してください']
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+
   context '削除対象のカテゴリが複数の場所を登録していた場合' do
     let!(:place) { create(:place, user: user) }
     before do
