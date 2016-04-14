@@ -24,6 +24,10 @@ class Category < ActiveRecord::Base
       errors[:base] << I18n.t('errors.messages.categories.destroy_breakdowns')
       false
     end
+    if records.any?
+      errors[:base] << I18n.t('errors.messages.categories.destroy_records')
+      false
+    end
   end
 
   def selected_place?(place_id)
