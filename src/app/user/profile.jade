@@ -31,7 +31,7 @@
               ng-model='profile.new_nickname'
               ng-maxlength='100')
             label.modal-label(ng-show='!profile.nickname_edit_field') {{ profile.current_user.nickname || ('LABELS.NO_SETTINGS' | translate) }}
-            span.glyphicon.glyphicon-pencil#right-icon(
+            span.glyphicon.glyphicon-pencil.green#right-icon(
               tooltip="{{ 'TOOLTIPS.EDIT' | translate }}"
               ng-click='profile.nickname_edit_field = true'
               ng-show='!profile.nickname_edit_field')
