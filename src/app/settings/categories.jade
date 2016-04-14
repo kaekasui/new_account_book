@@ -17,6 +17,7 @@
             span.glyphicon.glyphicon-plus-sign.green#left-icon(ng-show='category.barance_of_payments')
             span.glyphicon.glyphicon-minus-sign.red#left-icon(ng-hide='category.barance_of_payments')
             span {{ category.name | truncate:true:12 }}
+            span.glyphicon.glyphicon-pencil.green#right-icon(tooltip="{{'TOOLTIPS.EDIT' | translate}}")
           hr
           a.label.label-info.label-list.blue(href='' ng-click='categories.showBreakdowns($index)' tooltip="{{ 'TOOLTIPS.BREAKDOWNS' | translate }}")
             span.glyphicon.glyphicon-th-list#left-icon
