@@ -77,9 +77,3 @@
               input.category-form(name='name' ng-model='categories.new_category_name' auto-focus=true type='text' required=true ng-maxlength='100')
             button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='newCategoryForm.$dirty && newCategoryForm.$invalid')
             a.btn.btn-default.pull-right(translate='BUTTONS.CANCEL' ng-click='categories.add_field = false')
- 
-script#modal-places(type='text/ng-template')
-  .modal-body
-    loading-directive(target='modal')
-    div(id='place.id' ng-repeat='place in modal_places.places')
-      p {{ place.name }}
