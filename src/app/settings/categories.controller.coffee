@@ -80,7 +80,7 @@ CategoriesController = (SettingsFactory, $modal, IndexService) ->
     category = vm.categories[index]
     modalInstance = $modal.open(
       templateUrl: 'app/components/modals/destroy.html'
-      controller: 'ConfirmDestroyController'
+      controller: 'DestroyCategoryController'
       controllerAs: 'confirm_destroy'
       resolve: { category_id: category.id }
     )
