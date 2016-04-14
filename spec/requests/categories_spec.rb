@@ -28,14 +28,16 @@ describe 'GET /categories', autodoc: true do
             name: category.name,
             barance_of_payments: category.barance_of_payments,
             breakdowns_count: category.breakdowns.count,
-            places_count: 1
+            places_count: 1,
+            records_count: 0
           },
           {
             id: category2.id,
             name: category2.name,
             barance_of_payments: category2.barance_of_payments,
             breakdowns_count: category2.breakdowns.count,
-            places_count: 0
+            places_count: 0,
+            records_count: 0
           }
         ]
       }
@@ -168,6 +170,21 @@ describe 'DELETE /categories/:id', autodoc: true do
       expect(response.status).to eq 422
       json = {
         error_messages: ['登録した内訳を削除してから削除してください']
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+
+  context '削除対象のカテゴリが複数の収支を登録していた場合' do
+    before do
+      create(:record, category: category)
+    end
+
+    it '422とエラーメッセージが返ってくること' do
+      delete "/categories/#{category.id}", '', login_headers(user)
+      expect(response.status).to eq 422
+      json = {
+        error_messages: ['登録した収支を削除してから削除してください']
       }
       expect(response.body).to be_json_as(json)
     end

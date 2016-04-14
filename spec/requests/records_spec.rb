@@ -176,11 +176,11 @@ describe 'GET /records/new', autodoc: true do
     let!(:category2) { create(:category, user: user) }
     let!(:breakdown) { create(:breakdown, category: category) }
     let!(:place) { create(:place, user: user) }
+    let!(:categorize_place) do
+      create(:categorize_place, category: category, place: place)
+    end
 
     it '200とカテゴリ一覧を返すこと' do
-      category.places << place
-      category.save
-
       get '/records/new', '', login_headers(user)
       expect(response.status).to eq 200
 
@@ -283,6 +283,9 @@ describe 'GET /records/:id/edit', autodoc: true do
   let!(:breakdown) { create(:breakdown, category: category) }
   let!(:place) { create(:place, user: user) }
   let!(:record) { create(:record, user: user, category: category) }
+  let!(:categorize_place) do
+    create(:categorize_place, category: category, place: place)
+  end
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
@@ -293,9 +296,6 @@ describe 'GET /records/:id/edit', autodoc: true do
 
   context 'メールアドレスのユーザーがログインしている場合' do
     it '200とカテゴリ一覧を返すこと' do
-      category.places << place
-      category.save
-
       get "/records/#{record.id}/edit", '', login_headers(user)
       expect(response.status).to eq 200
 
