@@ -28,14 +28,16 @@ describe 'GET /categories', autodoc: true do
             name: category.name,
             barance_of_payments: category.barance_of_payments,
             breakdowns_count: category.breakdowns.count,
-            places_count: 1
+            places_count: 1,
+            records_count: 0
           },
           {
             id: category2.id,
             name: category2.name,
             barance_of_payments: category2.barance_of_payments,
             breakdowns_count: category2.breakdowns.count,
-            places_count: 0
+            places_count: 0,
+            records_count: 0
           }
         ]
       }

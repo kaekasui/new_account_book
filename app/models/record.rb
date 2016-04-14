@@ -1,4 +1,6 @@
 class Record < ActiveRecord::Base
+  counter_culture :category
+
   belongs_to :user
   belongs_to :category
   belongs_to :breakdown
