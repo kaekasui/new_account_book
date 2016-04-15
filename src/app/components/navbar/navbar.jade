@@ -24,7 +24,7 @@ nav.navbar.navbar-default(role='navigation')
           span.red.glyphicon.glyphicon-piggy-bank#left-icon
           span.red.dotted(translate='TITLES.NEW_RECORD')
       li
-        a(ng-click='navbar.feedback()', href='')
+        a(ng-click='navbar.feedback()' href='' analytics-on='クリック' analytics-category='フィードバック' analytics-event='モーダル表示')
           span.glyphicon.glyphicon-comment#left-icon
           span(translate='TITLES.FEEDBACK')
     // 右側メニュー

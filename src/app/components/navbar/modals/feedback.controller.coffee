@@ -2,7 +2,6 @@ FeedbackController = (IndexFactory, $translate, $modalInstance, toastr) ->
   'ngInject'
   vm = this
   vm.placeholder = $translate.instant('MESSAGES.FEEDBACK')
-  ga('send', 'event', 'フィードバック', 'クリック', 'モーダル表示', true)
 
   IndexFactory.getCurrentUser().then((res) ->
     vm.current_user = res
