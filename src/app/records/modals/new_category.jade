@@ -1,0 +1,24 @@
+.modal-header
+.modal-body
+  form.form-inline(novalidate=true name='newCategoryForm' ng-submit='categories.createCategory()')
+    // エラーメッセージ
+    span.errors(ng-messages='newCategoryForm.name.$error' ng-show='newCategoryForm.$dirty || newCategoryForm.$submitted')
+      div(ng-message='required')
+        span.glyphicon.glyphicon-alert#left-icon
+        span(translate='ERRORS.REQUIRED.CATEGORY_NAME')
+      div(ng-message='maxlength')
+        span.glyphicon.glyphicon-alert#left-icon
+        span(translate='ERRORS.MAXLENGTH.CATEGORY_NAME')
+    // 収入・支出
+    p
+      label.radio-inline
+        input(type='radio' name='barance_of_payments' ng-model='categories.new_payments' ng-value='false')
+        span(translate='BUTTONS.OUTGO')
+      label.radio-inline
+        input(type='radio' name='barance_of_payments' ng-model='categories.new_payments' ng-value='true')
+        span(translate='BUTTONS.INCOME')
+    // 入力フォーム
+    p
+      input.category-form(name='name' ng-model='categories.new_category_name' auto-focus=true type='text' required=true ng-maxlength='100')
+    button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='newCategoryForm.$dirty && newCategoryForm.$invalid')
+            a.btn.btn-default.pull-right(translate='BUTTONS.CANCEL' ng-click='categories.add_field = false')

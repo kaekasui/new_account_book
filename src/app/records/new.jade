@@ -46,7 +46,7 @@
           label.control-label.col-sm-2(for='category')
             span(translate='COLUMNS.CATEGORY')
             span.red *
-          .col-sm-10
+          .col-sm-8
             select.form-control(
               name='category_id'
               ng-model='new_record.category_id'
@@ -58,6 +58,9 @@
               div(ng-message='required')
                 span.glyphicon.glyphicon-alert#left-icon
                 span(translate='ERRORS.REQUIRED.CATEGORY')
+          label.control-label(ng-click='new_record.newCategory()')
+            .btn.btn-info.btn-xs
+              span.glyphicon.glyphicon-plus
         // 内訳
         .form-group(ng-show='new_record.form_group_breakdown')
           label.control-label.col-sm-2(for='breakdown')
