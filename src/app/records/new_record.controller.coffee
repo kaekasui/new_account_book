@@ -117,6 +117,22 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       tags.filter (tag) ->
         return tag.name.indexOf($query) != -1
 
+  # カテゴリ「追加」ボタン -> モーダル
+  vm.newCategory = () ->
+    modalInstance = $modal.open(
+      templateUrl: 'app/records/modals/new_category.html'
+      controller: 'NewCategoryController'
+      controllerAs: 'new_category'
+      backdrop: 'static'
+    )
+    modalInstance.result.then (category_name) ->
+      RecordsFactory.getNewRecord().then((res) ->
+        vm.categories = res.categories
+        vm.categories.forEach (c, i) ->
+          if c.name == category_name
+            vm.category_id = c.id
+      )
+
   # 情報アイコン -> モーダル
   vm.showRecord = (index) ->
     record = vm.day_records[index]
