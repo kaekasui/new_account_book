@@ -11,7 +11,7 @@ NewCategoryController = ($modalInstance, SettingsFactory) ->
     SettingsFactory.postCategory(params).then () ->
       SettingsFactory.getCategories().then (res) ->
         # TODO: カテゴリ一覧を取得
-      $modalInstance.close()
+      $modalInstance.close(vm.new_category_name)
 
   vm.cancel = () ->
     $modalInstance.dismiss()
