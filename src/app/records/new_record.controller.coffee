@@ -126,10 +126,8 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       backdrop: 'static'
     )
     modalInstance.result.then (category_name) ->
-      console.log category_name
       RecordsFactory.getNewRecord().then((res) ->
         vm.categories = res.categories
-        console.log vm.categories
         vm.categories.forEach (c, i) ->
           if c.name == category_name
             vm.category_id = c.id
