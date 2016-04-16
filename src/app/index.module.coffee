@@ -7,6 +7,7 @@ angular.module(
                      'ngAria',
                      'ngResource',
                      'ngTagsInput',
+                     'angulartics', 'angulartics.google.analytics',
                      'color.picker',
                      'mp.autoFocus',
                      'ui.router',
