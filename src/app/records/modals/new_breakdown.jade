@@ -1,0 +1,27 @@
+form.form-horizontal(novalidate=true name='newBreakdownForm' ng-submit='new_breakdown.createBreakdown()')
+  .modal-header
+    button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='newBreakdownForm.name.$dirty && newBreakdownForm.$invalid')
+    a.btn.btn-default.pull-right(translate='BUTTONS.CANCEL' ng-click='new_breakdown.cancel()')
+  .modal-body
+    // カテゴリ
+    .form-group
+      label.control-label.col-sm-2
+        span(translate='COLUMNS.CATEGORY')
+      .modal-label.col-sm-10(ng-show='!edit_record.editing')
+        span.glyphicon.glyphicon-plus-sign.green#left-icon(ng-show='new_breakdown.category.barance_of_payments')
+        span.glyphicon.glyphicon-minus-sign.red#left-icon(ng-show='!new_breakdown.category.barance_of_payments')
+        span {{ new_breakdown.category.name }}
+    // 内訳
+    .form-group
+      label.control-label.col-sm-2(for='name')
+        span(translate='COLUMNS.BREAKDOWN')
+      .col-sm-10
+        input.form-control(name='name' ng-model='new_breakdown.new_breakdown_name' auto-focus=true type='text' required=true ng-maxlength='100')
+        // エラーメッセージ
+        span.errors(ng-messages='newBreakdownForm.name.$error' ng-show='newBreakdownForm.name.$dirty || newBreakdownForm.$submitted')
+          div(ng-message='required')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.REQUIRED.BREAKDOWN_NAME')
+          div(ng-message='maxlength')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.MAXLENGTH.BREAKDOWN_NAME')

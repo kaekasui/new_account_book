@@ -133,7 +133,26 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
             vm.category_id = c.id
       )
 
-  # 情報アイコン -> モーダル
+  # 内訳「追加」ボタン モーダル
+  vm.newBreakdown = () ->
+    console.log vm.breakdowns
+    modalInstance = $modal.open(
+      templateUrl: 'app/records/modals/new_breakdown.html'
+      controller: 'NewBreakdownController'
+      controllerAs: 'new_breakdown'
+      backdrop: 'static'
+      resolve: { category_id: vm.category_id }
+    )
+    modalInstance.result.then (breakdowns) ->
+      #console.log vm.breakdowns
+      #vm.breakdowns = breakdowns[1]
+      #console.log breakdowns[1]
+      #console.log vm.breakdowns
+      #vm.breakdowns.forEach (b, j) ->
+      #  if b.name == vm.breakdowns[0]
+      #    vm.breakdown_id = b.id
+
+  # 情報アイコン モーダル
   vm.showRecord = (index) ->
     record = vm.day_records[index]
     modalInstance = $modal.open(
@@ -146,7 +165,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
     modalInstance.result.then () ->
       getRecordsWithDate()
 
-  # 削除アイコン -> モーダル
+  # 削除アイコン モーダル
   vm.destroyRecord = (index) ->
     record = vm.day_records[index]
     modalInstance = $modal.open(
@@ -158,7 +177,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
     modalInstance.result.then () ->
       getRecordsWithDate()
 
-  # ラベル名 -> モーダル
+  # ラベル名 モーダル
   vm.setColor = ($tag) ->
     modalInstance = $modal.open(
       templateUrl: 'app/records/modals/color_code.html'
@@ -169,7 +188,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
     modalInstance.result.then () ->
       return
 
-  # ラベル：ヘルプ -> モーダル
+  # ラベル：ヘルプ モーダル
   vm.helpTags = () ->
     modalInstance = $modal.open(
       templateUrl: 'app/records/modals/help_tags.html'

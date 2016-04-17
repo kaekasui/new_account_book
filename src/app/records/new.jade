@@ -65,13 +65,16 @@
         .form-group(ng-show='new_record.form_group_breakdown')
           label.control-label.col-sm-2(for='breakdown')
             span(translate='COLUMNS.BREAKDOWN')
-          .col-sm-10
+          .col-sm-8
             select.form-control(
               name='breakdown_id'
               ng-model='new_record.breakdown_id'
               ng-disabled='!new_record.category_id'
               ng-options='breakdown.id as breakdown.name for breakdown in new_record.breakdowns'
             )
+          label.control-label(ng-show='new_record.category_id' ng-click='new_record.newBreakdown()')
+            .btn.btn-info.btn-xs
+              span.glyphicon.glyphicon-plus
         // お店・施設
         .form-group(ng-show='new_record.form_group_place')
           label.control-label.col-sm-2(for='place')
