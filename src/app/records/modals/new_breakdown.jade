@@ -7,7 +7,7 @@ form.form-horizontal(novalidate=true name='newBreakdownForm' ng-submit='new_brea
     .form-group
       label.control-label.col-sm-2
         span(translate='COLUMNS.CATEGORY')
-      .modal-label.col-sm-10(ng-show='!edit_record.editing')
+      .modal-label.col-sm-10
         span.glyphicon.glyphicon-plus-sign.green#left-icon(ng-show='new_breakdown.category.barance_of_payments')
         span.glyphicon.glyphicon-minus-sign.red#left-icon(ng-show='!new_breakdown.category.barance_of_payments')
         span {{ new_breakdown.category.name }}

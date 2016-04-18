@@ -149,6 +149,20 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
           if b.name == breakdown_name
             vm.breakdown_id = b.id
 
+  # お店・施設「追加」ボタン モーダル
+  vm.newPlace = () ->
+    modalInstance = $modal.open(
+      templateUrl: 'app/records/modals/new_place.html'
+      controller: 'NewPlaceController'
+      controllerAs: 'new_place'
+      backdrop: 'static'
+      resolve: { category_id: vm.category_id }
+    )
+    modalInstance.result.then (place_id) ->
+      SettingsFactory.getCategoryPlaces(vm.category_id).then (res) ->
+        vm.places = res.places
+        vm.place_id = place_id
+
   # 情報アイコン モーダル
   vm.showRecord = (index) ->
     record = vm.day_records[index]

@@ -79,13 +79,16 @@
         .form-group(ng-show='new_record.form_group_place')
           label.control-label.col-sm-2(for='place')
             span(translate='COLUMNS.PLACE')
-          .col-sm-10
+          .col-sm-8
             select.form-control(
               name='place_id'
               ng-model='new_record.place_id'
               ng-disabled='!new_record.category_id'
               ng-options='place.id as place.name for place in new_record.places'
              )
+          label.control-label(ng-show='new_record.category_id' ng-click='new_record.newPlace()')
+            .btn.btn-info.btn-xs
+              span.glyphicon.glyphicon-plus
         // ラベル
         .form-group(ng-show='new_record.form_group_tag')
           label.control-label.col-sm-2(for='tag')
