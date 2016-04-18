@@ -7,7 +7,9 @@ form.form-inline(novalidate=true name='setColorForm' ng-submit='color_code.submi
       span.glyphicon.glyphicon-remove#left-icon
       span {{ 'BUTTONS.CLOSE' | translate }}
   .modal-body
-    span.glyphicon.glyphicon-bookmark#left-icon(ng-if='color_code.tag.color_code'
-                                                ng-style="{color:color_code.tag.color_code}")
-    span {{ color_code.new_tag.name }}
-    color-picker(ng-model='color_code.new_color_code' color-picker-format='hex')
+    p
+      span.glyphicon.glyphicon-bookmark#left-icon(ng-if='color_code.tag.color_code'
+                                                  ng-style="{color:color_code.tag.color_code}")
+      span {{ color_code.tag.name }}
+    p
+      color-picker(ng-model='color_code.new_color_code' color-picker-format='hex')
