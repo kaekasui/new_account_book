@@ -98,6 +98,7 @@
   },
   "ERRORS": {
     "REQUIRED": {
+      "BREAKDOWN_NAME": "Enter this Category's Breakdown Name",
       "EMAIL": "Enter your E-mail",
       "PASSWORD": "Enter your Password",
       "CURRENT_PASSWORD": "Enter your current Password",
@@ -115,6 +116,7 @@
       "CHARGE": "Enter Charge has an integer less than or equal to 9,999,999."
     },
     "MAXLENGTH": {
+      "BREAKDOWN_NAME": "Enter the Breakdown Name has a length of at most 100",
       "EMAIL": "Enter your E-mail has a length of at most 100",
       "PASSWORD": "Enter your Password has a length of at most 72",
       "TITLE": "Enter your Title has a length of at most 100",

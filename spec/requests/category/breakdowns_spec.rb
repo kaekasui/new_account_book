@@ -19,6 +19,10 @@ describe 'GET /categories/:category_id/breakdowns', autodoc: true do
       expect(response.status).to eq 200
 
       json = {
+        category: {
+          name: category.name,
+          barance_of_payments: category.barance_of_payments
+        },
         breakdowns: [
           {
             id: breakdown.id,
