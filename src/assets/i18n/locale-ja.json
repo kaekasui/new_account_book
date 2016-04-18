@@ -76,7 +76,9 @@
     "NEW_PASSWORD_CONFIRMATION": "新しいパスワード（確認）",
     "NICKNAME": "ニックネーム",
     "NO_SETTINGS": "（未設定）",
-    "EMAIL_LOGIN": "メールアドレスでログイン",
+    "FACEBOOK_LOGIN": "Facebookでログインしています",
+    "TWITTER_LOGIN": "Twitterでログインしています",
+    "EMAIL_LOGIN": "メールアドレスでログインしています",
     "SELECTED": "登録済",
     "UNREAD": "未読"
   },
@@ -177,7 +179,9 @@
     "SENT_AT": "送信日時",
     "TAG": "ラベル",
     "TITLE": "タイトル",
+    "TWITTER_ID": "Twitter ID",
     "USER": "ユーザー",
+    "USER_NAME": "ユーザー名",
     "NICKNAME": "ニックネーム"
   },
   "TERMS": {
