@@ -17,6 +17,7 @@ FactoryGirl.define do
 
     factory :twitter_user, class: TwitterUser do
       type 'TwitterUser'
+      auth
     end
 
     factory :facebook_user, class: FacebookUser do

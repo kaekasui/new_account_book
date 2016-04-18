@@ -177,7 +177,9 @@
     "SENT_AT": "Sent Time",
     "TAG": "Tags",
     "TITLE": "Title",
+    "TWITTER_ID": "Twitter ID",
     "USER": "User",
+    "USER_NAME": "User Name",
     "NICKNAME": "Nickname"
   },
   "TERMS": {

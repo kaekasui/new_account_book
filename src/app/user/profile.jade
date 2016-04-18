@@ -9,21 +9,28 @@
     .panel-body#with-background
       loading-directive
       // ユーザータイプ
-      blockquote(ng-show="profile.current_user.type == 'EmailUser'")
-        footer(translate='LABELS.EMAIL_LOGIN')
-      blockquote(ng-show="profile.current_user.type == 'TwitterUser'")
-        footer(translate='LABELS.TWITTER_LOGIN')
-      blockquote(ng-show="profile.current_user.type == 'FacebookUser'")
-        footer(translate='LABELS.FACEBOOK_LOGIN')
-      // メールアドレス
-      form.form.form-horizontal(ng-show='profile.current_user')
-        .form-group
+      blockquote
+        footer(translate='LABELS.EMAIL_LOGIN' ng-show="profile.current_user.type == 'EmailUser'")
+        footer(translate='LABELS.TWITTER_LOGIN' ng-show="profile.current_user.type == 'TwitterUser'")
+        footer(translate='LABELS.FACEBOOK_LOGIN' ng-show="profile.current_user.type == 'FacebookUser'")
+      form.form.form-horizontal
+        // ユーザー名
+        .form-group(ng-show="profile.current_user.type == 'TwitterUser'")
+          label.col-sm-2.control-label(for='auth.name' translate='COLUMNS.USER_NAME')
+          .col-sm-10
+            span {{ profile.current_user.auth.name }}
+        // TwitterID
+        .form-group(ng-show="profile.current_user.type == 'TwitterUser'")
+          label.col-sm-2.control-label(for='auth.screen_name' translate='COLUMNS.TWITTER_ID')
+          .col-sm-10
+            span {{ profile.current_user.auth.screen_name }} 
+        // メールアドレス
+        .form-group(ng-show='profile.current_user')
           label.col-sm-2.control-label(for='email' translate='LABELS.EMAIL')
           .col-sm-10
             span {{ profile.current_user.email }}
-      // ニックネーム
-      form.form.form-horizontal(novalidate=true name='nicknameForm' ng-submit='profile.updateNickname()')
-        .form-group
+        // ニックネーム
+        .form-group(novalidate=true name='nicknameForm' ng-submit='profile.updateNickname()')
           label.col-sm-2.control-label(for='new_nickname' translate='LABELS.NICKNAME')
           .col-sm-5
             input.form-control#new_nickname(
