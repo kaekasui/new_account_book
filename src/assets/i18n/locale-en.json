@@ -75,6 +75,8 @@
     "NEW_PASSWORD_CONFIRMATION": "New Password Confirmation",
     "NICKNAME": "Nickname",
     "NO_SETTINGS": "(No Settings)",
+    "FACEBOOK_LOGIN": "login via Facebook",
+    "TWITTER_LOGIN": "Login via Twitter",
     "EMAIL_LOGIN": "Login via Email",
     "SELECTED": "Selected",
     "UNREAD": "Unread"

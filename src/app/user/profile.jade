@@ -8,8 +8,13 @@
       span(translate='TITLES.PROFILE')
     .panel-body#with-background
       loading-directive
+      // ユーザータイプ
       blockquote(ng-show="profile.current_user.type == 'EmailUser'")
         footer(translate='LABELS.EMAIL_LOGIN')
+      blockquote(ng-show="profile.current_user.type == 'TwitterUser'")
+        footer(translate='LABELS.TWITTER_LOGIN')
+      blockquote(ng-show="profile.current_user.type == 'FacebookUser'")
+        footer(translate='LABELS.FACEBOOK_LOGIN')
       // メールアドレス
       form.form.form-horizontal(ng-show='profile.current_user')
         .form-group

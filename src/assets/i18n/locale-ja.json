@@ -76,6 +76,8 @@
     "NEW_PASSWORD_CONFIRMATION": "新しいパスワード（確認）",
     "NICKNAME": "ニックネーム",
     "NO_SETTINGS": "（未設定）",
+    "FACEBOOK_LOGIN": "Facebookでログイン",
+    "TWITTER_LOGIN": "Twitterでログイン",
     "EMAIL_LOGIN": "メールアドレスでログイン",
     "SELECTED": "登録済",
     "UNREAD": "未読"
