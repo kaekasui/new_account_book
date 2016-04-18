@@ -17,11 +17,12 @@ FactoryGirl.define do
 
     factory :twitter_user, class: TwitterUser do
       type 'TwitterUser'
-      auth
+      association :auth, provider: 'twitter'
     end
 
     factory :facebook_user, class: FacebookUser do
       type 'FacebookUser'
+      association :auth, provider: 'facebook'
     end
 
     trait :admin_user do

@@ -51,6 +51,29 @@ describe 'GET /user', autodoc: true do
       expect(response.body).to be_json_as(json)
     end
   end
+
+  context 'Facebookユーザーがログインしている場合' do
+    let!(:user) { create(:facebook_user, :registered) }
+
+    it '200とユーザー情報を返すこと' do
+      get '/user', '', login_headers(user)
+      expect(response.status).to eq 200
+
+      json = {
+        id: user.id,
+        type: user.type,
+        email: user.email,
+        nickname: user.nickname,
+        user_name: user._name,
+        admin: user.admin,
+        auth: {
+          name: user.auth.name,
+          screen_name: user.auth.screen_name
+        }
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
 end
 
 describe 'GET /user/settings', autodoc: true do
