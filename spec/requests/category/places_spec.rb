@@ -23,6 +23,10 @@ describe 'GET /categories/:category_id/places', autodoc: true do
       expect(response.status).to eq 200
 
       json = {
+        category: {
+          name: category.name,
+          barance_of_payments: category.barance_of_payments
+        },
         places: [
           {
             id: place.id,

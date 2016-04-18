@@ -1,0 +1,27 @@
+form.form-horizontal(novalidate=true name='newPlaceForm' ng-submit='new_place.createPlace()')
+  .modal-header
+    button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='newPlaceForm.name.$dirty && newPlaceForm.$invalid')
+    a.btn.btn-default.pull-right(translate='BUTTONS.CANCEL' ng-click='new_place.cancel()')
+  .modal-body
+    // カテゴリ
+    .form-group
+      label.control-label.col-sm-2
+        span(translate='COLUMNS.CATEGORY')
+      .modal-label.col-sm-10
+        span.glyphicon.glyphicon-plus-sign.green#left-icon(ng-show='new_place.category.barance_of_payments')
+        span.glyphicon.glyphicon-minus-sign.red#left-icon(ng-show='!new_place.category.barance_of_payments')
+        span {{ new_place.category.name }}
+    // 内訳
+    .form-group
+      label.control-label.col-sm-2(for='name')
+        span(translate='COLUMNS.BREAKDOWN')
+      .col-sm-10
+        input.form-control(name='name' ng-model='new_place.new_place_name' auto-focus=true type='text' required=true ng-maxlength='100')
+        // エラーメッセージ
+        span.errors(ng-messages='newPlaceForm.name.$error' ng-show='newPlaceForm.name.$dirty || newPlaceForm.$submitted')
+          div(ng-message='required')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.REQUIRED.BREAKDOWN_NAME')
+          div(ng-message='maxlength')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.MAXLENGTH.BREAKDOWN_NAME')
