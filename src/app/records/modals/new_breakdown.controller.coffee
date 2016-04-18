@@ -10,7 +10,7 @@ NewBreakdownController = ($modalInstance, category_id, SettingsFactory) ->
     params =
       name: vm.new_breakdown_name
     SettingsFactory.postBreakdown(category_id, params).then (res) ->
-      $modalInstance.close([vm.new_breakdown_name, vm.breakdowns])
+      $modalInstance.close(vm.new_breakdown_name)
 
   vm.cancel = () ->
     $modalInstance.dismiss()

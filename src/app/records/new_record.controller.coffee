@@ -135,7 +135,6 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
 
   # 内訳「追加」ボタン モーダル
   vm.newBreakdown = () ->
-    console.log vm.breakdowns
     modalInstance = $modal.open(
       templateUrl: 'app/records/modals/new_breakdown.html'
       controller: 'NewBreakdownController'
@@ -143,14 +142,12 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       backdrop: 'static'
       resolve: { category_id: vm.category_id }
     )
-    modalInstance.result.then (breakdowns) ->
-      #console.log vm.breakdowns
-      #vm.breakdowns = breakdowns[1]
-      #console.log breakdowns[1]
-      #console.log vm.breakdowns
-      #vm.breakdowns.forEach (b, j) ->
-      #  if b.name == vm.breakdowns[0]
-      #    vm.breakdown_id = b.id
+    modalInstance.result.then (breakdown_name) ->
+      SettingsFactory.getBreakdowns(vm.category_id).then (res) ->
+        vm.breakdowns = res.breakdowns
+        vm.breakdowns.forEach (b, j) ->
+          if b.name == breakdown_name
+            vm.breakdown_id = b.id
 
   # 情報アイコン モーダル
   vm.showRecord = (index) ->
