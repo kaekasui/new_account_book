@@ -159,7 +159,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       resolve: { category_id: vm.category_id }
     )
     modalInstance.result.then (place_id) ->
-      SettingsFactory.getPlaces(vm.category_id).then (res) ->
+      SettingsFactory.getCategoryPlaces(vm.category_id).then (res) ->
         vm.places = res.places
         vm.place_id = place_id
 
