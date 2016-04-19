@@ -3,6 +3,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
   vm = this
 
   vm.published_at = new Date()
+  vm.records_published_at = new Date()
   vm.settings = false
 
   IndexService.loading = true
@@ -21,10 +22,10 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
     IndexService.loading = false
 
   # 対象の登録一覧を取得する関数
-  getRecordsWithDate = () ->
+  getRecordsWithDate = (target_date) ->
     IndexService.records_loading = true
     params =
-      date: String(vm.published_at)
+      date: String(target_date)
     RecordsFactory.getRecords(params).then((res) ->
       vm.day_records = res.records
       IndexService.records_loading = false
@@ -32,7 +33,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       IndexService.records_loading = false
     return
  
-  getRecordsWithDate()
+  getRecordsWithDate(vm.published_at)
 
   # 「登録」ボタン
   vm.submit = () ->
@@ -56,8 +57,18 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       vm.tags = ''
       $scope.newRecordForm.$setPristine()
       # TODO: 編集のリンクを表示する
-      getRecordsWithDate()
+      getRecordsWithDate(vm.published_at)
     return
+
+  # 「<」ボタン
+  vm.getYesterdayRecords = () ->
+    vm.records_published_at.setDate(vm.records_published_at.getDate() - 1)
+    getRecordsWithDate(vm.records_published_at)
+
+  # 「>」ボタン
+  vm.getTomorrowRecords = () ->
+    vm.records_published_at.setDate(vm.records_published_at.getDate() + 1)
+    getRecordsWithDate(vm.records_published_at)
 
   # 「カテゴリ」選択
   vm.selectCategory = () ->
@@ -82,7 +93,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
 
   # 日付変更
   vm.changeDate = () ->
-    getRecordsWithDate()
+    getRecordsWithDate(vm.published_at)
 
   # コピーアイコン
   vm.copyRecord = (record) ->
@@ -108,7 +119,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
   # 「今日」ボタン
   vm.setToday = () ->
     vm.published_at = new Date()
-    getRecordsWithDate()
+    getRecordsWithDate(vm.published_at)
 
   # ドロップダウンリスト
   vm.loadTags = ($query) ->
@@ -174,7 +185,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       backdrop: 'static'
     )
     modalInstance.result.then () ->
-      getRecordsWithDate()
+      getRecordsWithDate(vm.published_at)
 
   # 削除アイコン モーダル
   vm.destroyRecord = (index) ->
@@ -186,7 +197,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       resolve: { record_id: record.id }
     )
     modalInstance.result.then () ->
-      getRecordsWithDate()
+      getRecordsWithDate(vm.published_at)
 
   # ラベル名 モーダル
   vm.setColor = ($tag) ->
