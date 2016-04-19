@@ -141,11 +141,16 @@
             button.btn.btn-success(type='submit' ng-disabled='(newRecordForm.$submitted && newRecordForm.$invalid) || new_record.sending' translate='BUTTONS.CREATE')
     // 日付の登録一覧
     .col-sm-6
-      loading-directive(target='records')
       .panel.panel-default(ng-show='new_record.day_records')
         .panel-body
-          | {{ new_record.published_at | date:'yyyy年MM月dd日' }}
-          span(translate='LABELS.ADD_20')
+          .btn.btn-info.btn-xs.pull-left(ng-click='new_record.getYesterdayRecords()')
+            .glyphicon.glyphicon-chevron-left
+          .btn.btn-info.btn-xs.pull-right(ng-click='new_record.getTomorrowRecords()')
+            .glyphicon.glyphicon-chevron-right
+          .text-center
+            | {{ new_record.records_published_at | date:'yyyy年MM月dd日' }}
+            span(translate='LABELS.ADD_20')
+          loading-directive(target='records')
           table.table.table-condensed
             tr(ng-repeat='record in new_record.day_records')
               td
