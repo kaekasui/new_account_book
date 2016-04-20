@@ -7,6 +7,13 @@ MainController = ($timeout, toastr, $location, $translate, localStorageService, 
     { id: 2, image: 'assets/images/plant.jpg'}
   ]
 
+  IndexService.loading = true
+  IndexFactory.getNotices().then((res) ->
+    vm.notices = res.notices
+    IndexService.loading = false
+  ).catch (res) ->
+    IndexService.loading = false
+
   if $location.search()['registed'] == 'ok'
     $location.url '/login'
     toastr.success $translate.instant('MESSAGES.REGISTED')

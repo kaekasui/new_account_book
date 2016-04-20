@@ -30,6 +30,17 @@ IndexFactory = ($location, $q, localStorageService, $http, toastr, $translate, I
           defer.reject data
           return
       return defer.promise
+
+    getTop: (offset) ->
+      defer = $q.defer()
+      $http.get host + 'top' + offset
+        .success((data) ->
+          defer.resolve data
+          return
+        ).error (data) ->
+          defer.reject data
+          return
+      return defer.promise
   }
 
 angular.module 'newAccountBook'

@@ -1,5 +1,5 @@
 class TopController < ApplicationController
   def index
-    @notices = Notice::Fetcher.all(params: params).published
+    @notices = Notice::Fetcher.all.published
   end
 end
