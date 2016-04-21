@@ -1,10 +1,10 @@
 class Message::Fetcher
-  def initialize(params: nil, user: nil)
+  def initialize(params: {}, user: nil)
     @params = params
     @user = user
   end
 
-  def self.all(params: nil, user: nil)
+  def self.all(params: {}, user: nil)
     new(params: params, user: user).all
   end
 

@@ -1,9 +1,9 @@
 class Notice::Fetcher
-  def initialize(params: nil)
+  def initialize(params: {})
     @params = params
   end
 
-  def self.all(params: nil)
+  def self.all(params: {})
     new(params: params).all
   end
 
