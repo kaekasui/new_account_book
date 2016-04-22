@@ -10,8 +10,9 @@ NoticeController = ($stateParams, UserFactory, IndexFactory, $location) ->
   UserFactory.getNotice($stateParams.id).then (res) ->
     vm.notice = res
 
-  vm.current_url = "http://account-book-pig.herokuapp.com/" ##" + $location.url() #'http://localhost:3000/#' + $location.url()
+  vm.current_url = "http://account-book-pig.herokuapp.com/#" + $location.url() #'http://localhost:3000/#' + $location.url()
 
+  console.log vm.current_url
   return
 
 angular.module 'newAccountBook'

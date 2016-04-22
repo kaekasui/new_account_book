@@ -13,5 +13,6 @@ div(ng-class="{'col-md-9': notice.current_user, 'col-md-12': !notice.current_use
         span
           tweet-button-directive(title='{{notice.notice.title}}')
         span(fb-like=true)
+        span(fb-like='notice.current_url')
         //div(fb-like='notice.current_url')
       div(marked='notice.notice.content')
