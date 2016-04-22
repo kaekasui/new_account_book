@@ -13,7 +13,7 @@
         footer(translate='LABELS.EMAIL_LOGIN' ng-show="profile.current_user.type == 'EmailUser'")
         footer(translate='LABELS.TWITTER_LOGIN' ng-show="profile.current_user.type == 'TwitterUser'")
         footer(translate='LABELS.FACEBOOK_LOGIN' ng-show="profile.current_user.type == 'FacebookUser'")
-      form.form.form-horizontal
+      form.form.form-horizontal(novalidate=true name='nicknameForm' ng-submit='profile.updateNickname()')
         // ユーザー名
         .form-group(ng-show="profile.current_user.type == 'TwitterUser'")
           label.col-sm-2.control-label(for='auth.name' translate='COLUMNS.USER_NAME')
@@ -30,7 +30,7 @@
           .col-sm-10
             span {{ profile.current_user.email }}
         // ニックネーム
-        .form-group(novalidate=true name='nicknameForm' ng-submit='profile.updateNickname()')
+        .form-group
           label.col-sm-2.control-label(for='new_nickname' translate='LABELS.NICKNAME')
           .col-sm-5
             input.form-control#new_nickname(

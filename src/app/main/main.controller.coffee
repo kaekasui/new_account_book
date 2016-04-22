@@ -8,8 +8,8 @@ MainController = ($timeout, toastr, $location, $translate, localStorageService, 
   ]
 
   IndexService.loading = true
-  IndexFactory.getNotices().then((res) ->
-    vm.notices = res.notices
+  IndexFactory.getTop().then((res) ->
+    #vm.notices = res.notices
     IndexService.loading = false
   ).catch (res) ->
     IndexService.loading = false

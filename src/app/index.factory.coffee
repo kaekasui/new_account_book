@@ -31,9 +31,9 @@ IndexFactory = ($location, $q, localStorageService, $http, toastr, $translate, I
           return
       return defer.promise
 
-    getTop: (offset) ->
+    getTop: ->
       defer = $q.defer()
-      $http.get host + 'top' + offset
+      $http.get host + '/'
         .success((data) ->
           defer.resolve data
           return
