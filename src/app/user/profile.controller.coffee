@@ -10,7 +10,7 @@ ProfileController = (IndexFactory, UserFactory, IndexService) ->
   ).catch (res) ->
     IndexService.loading = false
 
-  vm.updateNickname = (e) ->
+  vm.updateProfile = () ->
     UserFactory.patchNickname({ nickname: vm.new_nickname }).then ->
       vm.current_user.nickname = vm.new_nickname
       vm.nickname_edit_field = false
