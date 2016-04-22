@@ -2,9 +2,9 @@ flex-slider(flex-slide='slide in main.slides track by slide.id' animation='slide
   li
     img(ng-src="{{slide.image}}" style="margin:auto;")
 
-//.row
+.row
   // お知らせ
-  .col-md-12
+  .col-md-6
     .panel.panel-default
       .panel-heading
         span.glyphicon.glyphicon-film#left-icon
@@ -12,8 +12,8 @@ flex-slider(flex-slide='slide in main.slides track by slide.id' animation='slide
       .panel-body
         loading-directive
         ul.list
-          //li(ng-show='main.notices.length == 0')
+          li(ng-show='main.notices.length == 0')
             span#post_at(translate='MESSAGES.NOT_FOUND_NOTICE')
-          //li(ng-repeat='notice in main.notices | limitTo:5')
+          li(ng-repeat='notice in main.notices | limitTo:5')
             span#post_at {{ notice.post_at }}
             a(ui-sref='notice({id: notice.id})') {{ notice.title }}
