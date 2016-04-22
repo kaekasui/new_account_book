@@ -52,8 +52,6 @@ PlacesController = (SettingsFactory, $scope, IndexService, $modal, toastr, $tran
     place = vm.places[place_index]
     category = vm.places[place_index].categories[category_index]
     SettingsFactory.deletePlaceCategory(place.id, category.id).then (res) ->
-      console.log place.name
-      console.log category.name
       SettingsFactory.getPlaceCategories(place.id).then (res) ->
         vm.places[place_index].categories = res.categories.filter (value, index, array) ->
           value.selected_place
