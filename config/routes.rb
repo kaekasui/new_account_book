@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'top#index'
+
   resource :session, only: %i(create)
   get '/auth/:provider/callback', to: 'sessions#callback'
 
