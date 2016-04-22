@@ -12,8 +12,6 @@ div(ng-class="{'col-md-9': notice.current_user, 'col-md-12': !notice.current_use
       .sns-buttons
         span
           tweet-button-directive(title='{{notice.notice.title}}')
-        span
-          div(fb-like=true)
-          //like-button-directive
-          //div(fb-like='notice.current_url')
+        span(fb-like=true)
+        //div(fb-like='notice.current_url')
       div(marked='notice.notice.content')
