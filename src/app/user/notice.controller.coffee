@@ -1,4 +1,4 @@
-NoticeController = ($stateParams, UserFactory, IndexFactory) ->
+NoticeController = ($stateParams, UserFactory, IndexFactory, $location) ->
   'ngInject'
   vm = this
 
@@ -9,6 +9,9 @@ NoticeController = ($stateParams, UserFactory, IndexFactory) ->
 
   UserFactory.getNotice($stateParams.id).then (res) ->
     vm.notice = res
+
+  vm.current_url = "http://account-book-pig.herokuapp.com/#" + $location.url()
+  # TODO: 環境変数で設定する
 
   return
 
