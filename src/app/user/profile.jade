@@ -27,8 +27,8 @@
         // メールアドレス
         .form-group(ng-show='profile.current_user')
           label.col-sm-2.control-label(for='email' translate='LABELS.EMAIL')
-          .col-sm-10
-            span {{ profile.current_user.email }}
+          .col-sm-5
+            label.modal-label(ng-show='!profile.nickname_edit_field') {{ profile.current_user.email || ('LABELS.NO_SETTINGS' | translate) }}
         // ニックネーム
         .form-group
           label.col-sm-2.control-label(for='new_nickname' translate='LABELS.NICKNAME')
