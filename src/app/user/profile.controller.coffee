@@ -2,6 +2,7 @@ ProfileController = (IndexFactory, UserFactory, IndexService) ->
   'ngInject'
   vm = this
   vm.nickname_edit_field = false
+  vm.email_edit_field = false
 
   IndexService.loading = true
   IndexFactory.getCurrentUser().then((res) ->
