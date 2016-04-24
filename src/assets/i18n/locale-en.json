@@ -37,6 +37,7 @@
   },
   "BUTTONS": {
     "ADD": "Add",
+    "AUTH_EMAIL": "Send Email",
     "CREATE": "Create",
     "CLEAR": "Clear",
     "FACEBOOK_LOGIN": "Login via Facebook",
