@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   enum status: { registered: 2, inactive: 1 }
 
+  validates :nickname, presence: true
   validates :categories,
             length: { maximum: Settings.user.categories.maximum_length,
                       too_long: I18n.t('errors.messages.too_long') },

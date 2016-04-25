@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(user_params)
+    user_updator = User::Updator.new(user: current_user, params: user_params)
+    if user_updator.save
       head 200
     else
       render_error current_user
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:nickname)
+    params.permit(:new_email, :nickname)
   end
 
   def setting_params
