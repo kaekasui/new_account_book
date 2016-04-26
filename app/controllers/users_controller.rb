@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if user_updator.save
       head 200
     else
-      render_error current_user
+      render_error user_updator
     end
   end
 

@@ -9,14 +9,15 @@ class User < ActiveRecord::Base
 
   enum status: { registered: 2, inactive: 1 }
 
-  validates :nickname, presence: true
+  validates :nickname,
+            length: { maximum: Settings.user.nickname.maximum_length }
   validates :categories,
             length: { maximum: Settings.user.categories.maximum_length,
-                      too_long: I18n.t('errors.messages.too_long') },
+                      too_long: I18n.t('errors.messages.too_many') },
             unless: :admin
   validates :places,
             length: { maximum: Settings.user.places.maximum_length,
-                      too_long: I18n.t('errors.messages.too_long') },
+                      too_long: I18n.t('errors.messages.too_many') },
             unless: :admin
 
   def active?

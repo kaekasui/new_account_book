@@ -116,6 +116,20 @@ describe 'PATCH /user', autodoc: true do
   context 'メールアドレスのユーザーがログインしている場合' do
     let!(:user) { create(:email_user, :registered) }
 
+    context '上限値以上の文字列のニックネームを設定した場合' do
+      let!(:params) { { nickname: 'ニックネーム' * 50 } }
+
+      it '422が返りデータが更新されないこと' do
+        patch '/user', params, login_headers(user)
+        expect(response.status).to eq 422
+
+        json = {
+          error_messages: ['ニックネームは100文字以内で入力してください']
+        }
+        expect(response.body).to be_json_as(json)
+      end
+    end
+
     context 'ニックネームを設定した場合' do
       let!(:params) { { nickname: 'ニックネーム' } }
 
@@ -125,6 +139,19 @@ describe 'PATCH /user', autodoc: true do
 
         user.reload
         expect(user.nickname).to eq 'ニックネーム'
+      end
+    end
+
+    context 'メールアドレスを設定した場合' do
+      let!(:params) { { new_email: 'new_email@example.com' } }
+
+      it '200が返りデータが更新されること' do
+        patch '/user', params, login_headers(user)
+        expect(response.status).to eq 200
+
+        user.reload
+        expect(user.new_email).to eq params[:new_email]
+        expect(user.email).not_to eq params[:new_email]
       end
     end
   end
