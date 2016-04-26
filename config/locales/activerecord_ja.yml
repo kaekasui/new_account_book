@@ -3,6 +3,7 @@ ja:
     attributes:
       user:
         email: メールアドレス
+        new_email: メールアドレス
         nickname: ニックネーム
         password: パスワード
         password_confirmation: パスワード（確認）
@@ -33,4 +34,6 @@ ja:
           attributes:
             email:
               uniqueness: ですでに登録されています
+              invalid_email_address: の正しい形式で入力してください
+            new_email:
               invalid_email_address: の正しい形式で入力してください

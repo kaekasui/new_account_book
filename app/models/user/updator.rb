@@ -8,7 +8,8 @@ class User::Updator
 
   def save
     return false if invalid?
-    # TODO: メール送信 if @params[:new_email]
+    p "メール送信" if @params[:new_email]
+    p "パラメータを変更" if @params[:new_email].blank?
     if @user.update(@params)
       true
     else
