@@ -12,9 +12,15 @@ ProfileController = (IndexFactory, UserFactory, IndexService) ->
     IndexService.loading = false
 
   vm.updateNickname = () ->
-    UserFactory.patchNickname({ nickname: vm.new_nickname }).then ->
+    UserFactory.patchProfile({ nickname: vm.new_nickname }).then ->
       vm.current_user.nickname = vm.new_nickname
       vm.nickname_edit_field = false
+      IndexService.current_user = vm.current_user
+
+  vm.updateNewEmail = () ->
+    UserFactory.patchProfile({ new_email: vm.new_email }).then ->
+      vm.current_user.new_email = vm.new_email
+      vm.email_edit_field = false
       IndexService.current_user = vm.current_user
 
   return

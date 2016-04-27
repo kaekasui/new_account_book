@@ -3,7 +3,7 @@ UserFactory = ($location, $q, $http, localStorageService, toastr, $translate, In
   host = if $location.host() == 'localhost' then 'http://localhost:3001/' else ''
 
   return {
-    patchNickname: (params) ->
+    patchProfile: (params) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
       login_headers = {
