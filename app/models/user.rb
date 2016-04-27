@@ -11,8 +11,6 @@ class User < ActiveRecord::Base
 
   validates :nickname,
             length: { maximum: Settings.user.nickname.maximum_length }
-  validates :new_email, email_format: { allow_blank: true },
-                        length: { maximum: Settings.user.email.maximum_length }
   validates :categories,
             length: { maximum: Settings.user.categories.maximum_length,
                       too_long: I18n.t('errors.messages.too_many') },

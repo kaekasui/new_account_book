@@ -5,3 +5,11 @@ ja:
         current_password: 現在のパスワード
       email_user/registration_token:
         email: メールアドレス
+      user/updator:
+        new_email: 新しいメールアドレス
+    errors:
+      models:
+        user/updator:
+          attributes:
+            new_email:
+              invalid_email_address: を正しい形式で入力してください

@@ -137,7 +137,7 @@ describe 'PATCH /user', autodoc: true do
         expect(response.status).to eq 200
 
         user.reload
-        expect(user.new_email).to be_nil
+        expect(user.new_email).to be_blank
         expect(user.email).to be_blank
       end
     end
@@ -193,7 +193,7 @@ describe 'PATCH /user', autodoc: true do
         expect(response.status).to eq 422
 
         json = {
-          error_messages: ['メールアドレスの正しい形式で入力してください']
+          error_messages: ['新しいメールアドレスを正しい形式で入力してください']
         }
         expect(response.body).to be_json_as(json)
       end
@@ -207,7 +207,7 @@ describe 'PATCH /user', autodoc: true do
         expect(response.status).to eq 422
 
         json = {
-          error_messages: ['メールアドレスの正しい形式で入力してください']
+          error_messages: ['メールアドレスを入力してください']
         }
         expect(response.body).to be_json_as(json)
       end
