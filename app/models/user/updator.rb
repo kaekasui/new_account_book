@@ -38,7 +38,7 @@ class User::Updator
       end
     else
       if @user.update(new_email: @new_email)
-        puts "メール送信"
+        # TODO: メール送信
         true
       else
         errors[:base] << @user.errors.full_messages.join(',')
