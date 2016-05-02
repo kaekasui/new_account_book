@@ -136,6 +136,29 @@ describe 'PATCH /user', autodoc: true do
         expect(current_email).to have_content new_email
         expect(current_email).not_to have_content '/user/authorize_email/'
       end
+
+      it 'URLクリックでメールアドレスが更新されること' do
+        patch '/user', params, login_headers(user)
+        expect(response.status).to eq 200
+
+        user.reload
+        expect(user.new_email).to eq params[:new_email]
+        expect(user.email).not_to eq params[:new_email]
+
+        open_email(new_email)
+        expect(current_email.subject).to eq '【PIG BOOK β】メールアドレス変更のご案内'
+        current_email.body =~
+          %r{\/user\/authorize_email\?user_id=(.*)&token=(.*)}
+        user_id = Regexp.last_match(1)
+        token = Regexp.last_match(2)
+
+        params = { user_id: user_id, token: token }
+        get '/user/authorize_email', params
+        expect(response.status).to eq 302
+        user.reload
+        expect(user.email).to eq new_email
+        expect(user.new_email).to be_blank
+      end
     end
 
     context '空のメールアドレスを設定した場合' do

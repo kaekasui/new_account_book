@@ -18,6 +18,10 @@ MainController = ($timeout, toastr, $location, $translate, localStorageService, 
     $location.url '/login'
     toastr.success $translate.instant('MESSAGES.REGISTED')
 
+  if $location.search()['updated_email'] == 'ok'
+    $location.url '/profile'
+    toastr.success $translate.instant('MESSAGES.UPDATE_EMAIL')
+
   if $location.search()['token']
     localStorageService.set 'access_token', $location.search()['token']
     IndexFactory.getCurrentUser().then (res) ->

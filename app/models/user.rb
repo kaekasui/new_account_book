@@ -75,11 +75,21 @@ class User < ActiveRecord::Base
 
   def new_email_url(origin)
     token = new_email_token.token
-    "#{origin}/user/authorize_email?token=#{token}"
+    "#{origin}/user/authorize_email?user_id=#{id}&token=#{token}"
   end
 
   def new_email_token
     @new_email_token ||= add_new_email_token
+  end
+
+  def update_email_by(token)
+    token_user = User.find_by_valid_token(:new_email, token)
+    if self == token_user
+      update(email: new_email, new_email: '') && remove_token(:new_email)
+    else
+      errors[:base] << I18n.t('errors.messages.users.invalid_token')
+      false
+    end
   end
 
   private
