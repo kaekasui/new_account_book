@@ -12,6 +12,10 @@ class UsersController < ApplicationController
   def update
     user_updator = User::Updator.new(user: current_user, params: user_params)
     if user_updator.save
+      if current_user.new_email.present?
+        origin = "#{request.protocol}#{request.host_with_port}"
+        user_updator.send_mail(origin)
+      end
       head 200
     else
       render_error user_updator
@@ -24,6 +28,10 @@ class UsersController < ApplicationController
     else
       render_error current_user
     end
+  end
+
+  # GET /user/authorize_email
+  def authorize_email
   end
 
   private

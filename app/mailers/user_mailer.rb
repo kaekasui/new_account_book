@@ -21,6 +21,13 @@ class UserMailer < ApplicationMailer
     mail to: email
   end
 
+  # メールアドレス変更のご案内
+  def set_new_email(email, new_email_url)
+    @email = email
+    @new_email_url = new_email_url
+    mail to: email
+  end
+
   # アカウントのご確認と登録のご案内
   def confirm_account(email, origin)
     @email = email

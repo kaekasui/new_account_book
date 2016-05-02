@@ -3,6 +3,9 @@ defaults: &defaults
   access_token:
     length: 32
     expire_after: <%= 90.days.to_i %>
+  new_email_token:
+    length: 32
+    expire_after: <%= 24.hours.to_i %>
   registration_token:
     length: 32
     expire_after: <%= 24.hours.to_i %>

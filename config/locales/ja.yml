@@ -35,6 +35,8 @@ ja:
       subject: 【PIG BOOK β】アカウント登録状況のご確認と登録のご案内
     confirm_message:
       subject: 【PIG BOOK β】新しいメッセージが届いています
+    set_new_email:
+      subject: 【PIG BOOK β】メールアドレス変更のご案内
   admin_mailer:
     notice_feedback:
       subject: フィードバックが届きました
