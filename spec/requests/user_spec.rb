@@ -147,13 +147,13 @@ describe 'PATCH /user', autodoc: true do
 
         open_email(new_email)
         expect(current_email.subject).to eq '【PIG BOOK β】メールアドレス変更のご案内'
-        expect(current_email).to have_content new_email
-        expect(current_email).not_to have_content '/user/authorize_email/'
-        current_email.body =~ %r{\/user\/authorize_email\?token=(.*)}
-        token = Regexp.last_match(1)
+        current_email.body =~
+          %r{\/user\/authorize_email\?user_id=(.*)&token=(.*)}
+        user_id = Regexp.last_match(1)
+        token = Regexp.last_match(2)
 
-        params = { token: token }
-        get '/user/authorize_email', params, login_headers(user)
+        params = { user_id: user_id, token: token }
+        get '/user/authorize_email', params
         expect(response.status).to eq 302
         user.reload
         expect(user.email).to eq new_email

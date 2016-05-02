@@ -144,6 +144,7 @@
     "CREATE_RECORD": "Created a record",
     "DISPLAY_ITEMS": "Check your checkboxes if you want to display them",
     "CONFIRM_TO_SEND_MAIL": "Do You Send a Mail?",
+    "UPDATE_EMAIL": "Updated the email",
     "UPDATE_NOTICE": "Updated the notice",
     "LOGIN": "Logged in",
     "LOGOUT": "Logged out",

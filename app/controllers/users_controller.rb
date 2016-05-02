@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate, except: %i(authorize_email)
 
   def show
     @user = current_user
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def update
     user_updator = User::Updator.new(user: current_user, params: user_params)
     if user_updator.save
-      if current_user.new_email.present?
+      if user_updator.new_email.present?
         origin = "#{request.protocol}#{request.host_with_port}"
         user_updator.send_mail(origin)
       end
@@ -32,11 +32,12 @@ class UsersController < ApplicationController
 
   # GET /user/authorize_email
   def authorize_email
-    if current_user.update_email_by(params[:token])
+    user = User.find(params[:user_id])
+    if user.update_email_by(params[:token])
       host = Rails.env.production? ? '' : 'http://localhost:3000'
-      redirect_to "#{host}/#/?registed=ok"
+      redirect_to "#{host}/#/?updated_email=ok"
     else
-      render_error current_user, 401
+      render_error user, 401
     end
   end
 

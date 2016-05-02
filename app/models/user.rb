@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
 
   def new_email_url(origin)
     token = new_email_token.token
-    "#{origin}/user/authorize_email?token=#{token}"
+    "#{origin}/user/authorize_email?user_id=#{id}&token=#{token}"
   end
 
   def new_email_token
