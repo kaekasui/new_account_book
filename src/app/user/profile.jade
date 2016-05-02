@@ -33,7 +33,7 @@
               tooltip="{{ 'TOOLTIPS.EDIT' | translate }}"
               ng-click='profile.email_edit_field = true'
               ng-show='!profile.email_edit_field')
-            input.form-control#new_nickname(
+            input.form-control#new_email(
               type='email'
               name='new_email'
               auto-focus=true
@@ -54,6 +54,11 @@
               ng-click='profile.updateNewEmail()'
               ng-show='profile.email_edit_field')
               span(translate='BUTTONS.AUTH_EMAIL')
+        .form-group(ng-show='profile.current_user.new_email && !profile.email_edit_field')
+          .col-sm-2
+          .col-sm-5
+            label.modal-label#left-icon(for='new_email' translate='LABELS.PRE_AUTH')
+            span {{ profile.current_user.new_email }}
         // ニックネーム
         .form-group
           label.col-sm-2.control-label(for='new_nickname' translate='LABELS.NICKNAME')
