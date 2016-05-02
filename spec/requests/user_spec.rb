@@ -120,7 +120,8 @@ describe 'PATCH /user', autodoc: true do
     let!(:user) { create(:twitter_user, :registered) }
 
     context 'メールアドレスを設定した場合' do
-      let!(:params) { { new_email: 'new_email@example.com' } }
+      let!(:new_email) { 'new_email@example.com' }
+      let!(:params) { { new_email: new_email } }
 
       it '200が返りデータが更新されること' do
         patch '/user', params, login_headers(user)
@@ -129,6 +130,11 @@ describe 'PATCH /user', autodoc: true do
         user.reload
         expect(user.new_email).to eq params[:new_email]
         expect(user.email).not_to eq params[:new_email]
+
+        open_email(new_email)
+        expect(current_email.subject).to eq '【PIG BOOK β】メールアドレス変更のご案内'
+        expect(current_email).to have_content new_email
+        expect(current_email).not_to have_content '/user/authorize_email/'
       end
     end
 
@@ -176,7 +182,8 @@ describe 'PATCH /user', autodoc: true do
     end
 
     context 'メールアドレスを設定した場合' do
-      let!(:params) { { new_email: 'new_email@example.com' } }
+      let!(:new_email) { 'new_email@example.com' }
+      let!(:params) { { new_email: new_email } }
 
       it '200が返りデータが更新されること' do
         patch '/user', params, login_headers(user)
@@ -185,6 +192,11 @@ describe 'PATCH /user', autodoc: true do
         user.reload
         expect(user.new_email).to eq params[:new_email]
         expect(user.email).not_to eq params[:new_email]
+
+        open_email(new_email)
+        expect(current_email.subject).to eq '【PIG BOOK β】メールアドレス変更のご案内'
+        expect(current_email).to have_content new_email
+        expect(current_email).not_to have_content '/user/authorize_email/'
       end
     end
 

@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   resources :tags, only: %i(index)
 
   resource :user, only: %i(show update) do
+    get :authorize_email
     get :settings
     patch :set_display
   end

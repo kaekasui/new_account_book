@@ -72,4 +72,23 @@ class User < ActiveRecord::Base
     Auth.find_by_uid(auth['uid']).try(auth['provider'] + '_user') ||
       klass.create_with(auth)
   end
+
+  def new_email_url(origin)
+    token = new_email_token.token
+    "#{origin}/user/authorize_email?token=#{token}"
+  end
+
+  def new_email_token
+    @new_email_token ||= add_new_email_token
+  end
+
+  private
+
+  def add_new_email_token
+    add_token(
+      :new_email,
+      size: Settings.password_token.length,
+      expires_at: Settings.new_email_token.expire_after.seconds.from_now
+    )
+  end
 end

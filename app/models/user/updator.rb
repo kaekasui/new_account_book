@@ -17,6 +17,12 @@ class User::Updator
     return save_new_email if @new_email
   end
 
+  def send_mail(origin)
+    @user.remove_token(:new_email)
+    UserMailer.set_new_email(@user.new_email, @user.new_email_url(origin))
+              .deliver_now
+  end
+
   private
 
   def save_nickname
@@ -29,10 +35,8 @@ class User::Updator
   end
 
   def save_new_email
-    if @new_email.blank? && @user.update(email: @new_email)
-      true
-    elsif @user.update(new_email: @new_email)
-      # TODO: メール送信
+    if (@new_email.blank? && @user.update(email: @new_email)) ||
+       @user.update(new_email: @new_email)
       true
     else
       errors[:base] << @user.errors.full_messages.join(',')
