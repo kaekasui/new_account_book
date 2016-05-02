@@ -1,10 +1,8 @@
 class EmailUser < User
   has_secure_password
 
-  validates :email, presence: true, email_format: true,
+  validates :email, presence: true, email_format: { allow_blank: true },
                     length: { maximum: Settings.user.email.maximum_length }
-  validates :nickname,
-            length: { maximum: Settings.user.nickname.maximum_length }
   validates :password,
             length: { minimum: Settings.user.password.minimum_length },
             on: :create

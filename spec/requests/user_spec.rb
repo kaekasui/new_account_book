@@ -21,6 +21,7 @@ describe 'GET /user', autodoc: true do
         id: user.id,
         type: user.type,
         email: user.email,
+        new_email: user.new_email,
         nickname: user.nickname,
         user_name: user._name,
         admin: user.admin
@@ -40,6 +41,7 @@ describe 'GET /user', autodoc: true do
         id: user.id,
         type: user.type,
         email: user.email,
+        new_email: user.new_email,
         nickname: user.nickname,
         user_name: user._name,
         admin: user.admin,
@@ -63,6 +65,7 @@ describe 'GET /user', autodoc: true do
         id: user.id,
         type: user.type,
         email: user.email,
+        new_email: user.new_email,
         nickname: user.nickname,
         user_name: user._name,
         admin: user.admin,
@@ -113,8 +116,52 @@ describe 'PATCH /user', autodoc: true do
     end
   end
 
+  context 'Twitterユーザーがログインしている場合' do
+    let!(:user) { create(:twitter_user, :registered) }
+
+    context 'メールアドレスを設定した場合' do
+      let!(:params) { { new_email: 'new_email@example.com' } }
+
+      it '200が返りデータが更新されること' do
+        patch '/user', params, login_headers(user)
+        expect(response.status).to eq 200
+
+        user.reload
+        expect(user.new_email).to eq params[:new_email]
+        expect(user.email).not_to eq params[:new_email]
+      end
+    end
+
+    context '空のメールアドレスを設定した場合' do
+      let!(:params) { { new_email: '' } }
+
+      it '200が返りデータが更新されること' do
+        patch '/user', params, login_headers(user)
+        expect(response.status).to eq 200
+
+        user.reload
+        expect(user.new_email).to be_blank
+        expect(user.email).to be_blank
+      end
+    end
+  end
+
   context 'メールアドレスのユーザーがログインしている場合' do
     let!(:user) { create(:email_user, :registered) }
+
+    context '上限値以上の文字列のニックネームを設定した場合' do
+      let!(:params) { { nickname: 'ニックネーム' * 50 } }
+
+      it '422が返りデータが更新されないこと' do
+        patch '/user', params, login_headers(user)
+        expect(response.status).to eq 422
+
+        json = {
+          error_messages: ['ニックネームは100文字以内で入力してください']
+        }
+        expect(response.body).to be_json_as(json)
+      end
+    end
 
     context 'ニックネームを設定した場合' do
       let!(:params) { { nickname: 'ニックネーム' } }
@@ -125,6 +172,47 @@ describe 'PATCH /user', autodoc: true do
 
         user.reload
         expect(user.nickname).to eq 'ニックネーム'
+      end
+    end
+
+    context 'メールアドレスを設定した場合' do
+      let!(:params) { { new_email: 'new_email@example.com' } }
+
+      it '200が返りデータが更新されること' do
+        patch '/user', params, login_headers(user)
+        expect(response.status).to eq 200
+
+        user.reload
+        expect(user.new_email).to eq params[:new_email]
+        expect(user.email).not_to eq params[:new_email]
+      end
+    end
+
+    context '不正な形式のメールアドレスを設定した場合' do
+      let!(:params) { { new_email: 'aaaaa' } }
+
+      it '422が返りデータが更新されないこと' do
+        patch '/user', params, login_headers(user)
+        expect(response.status).to eq 422
+
+        json = {
+          error_messages: ['新しいメールアドレスを正しい形式で入力してください']
+        }
+        expect(response.body).to be_json_as(json)
+      end
+    end
+
+    context '空のメールアドレスを設定した場合' do
+      let!(:params) { { new_email: '' } }
+
+      it '422が返りデータが更新されないこと' do
+        patch '/user', params, login_headers(user)
+        expect(response.status).to eq 422
+
+        json = {
+          error_messages: ['メールアドレスを入力してください']
+        }
+        expect(response.body).to be_json_as(json)
       end
     end
   end

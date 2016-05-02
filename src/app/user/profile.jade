@@ -13,7 +13,7 @@
         footer(translate='LABELS.EMAIL_LOGIN' ng-show="profile.current_user.type == 'EmailUser'")
         footer(translate='LABELS.TWITTER_LOGIN' ng-show="profile.current_user.type == 'TwitterUser'")
         footer(translate='LABELS.FACEBOOK_LOGIN' ng-show="profile.current_user.type == 'FacebookUser'")
-      form.form.form-horizontal(novalidate=true name='nicknameForm' ng-submit='profile.updateProfile()')
+      form.form.form-horizontal(novalidate=true name='profileForm')
         // ユーザー名
         .form-group(ng-show="profile.current_user.type == 'TwitterUser'")
           label.col-sm-2.control-label(for='auth.name' translate='COLUMNS.USER_NAME')
@@ -26,13 +26,48 @@
             span {{ profile.current_user.auth.screen_name }} 
         // メールアドレス
         .form-group(ng-show='profile.current_user')
-          label.col-sm-2.control-label(for='email' translate='LABELS.EMAIL')
-          .col-sm-10
-            span {{ profile.current_user.email }}
+          label.col-sm-2.control-label(for='new_email' translate='LABELS.EMAIL')
+          .col-sm-5
+            label.modal-label(ng-show='!profile.email_edit_field') {{ profile.current_user.email || ('LABELS.NO_SETTINGS' | translate) }}
+            span.glyphicon.glyphicon-pencil.green#right-icon(
+              tooltip="{{ 'TOOLTIPS.EDIT' | translate }}"
+              ng-click='profile.email_edit_field = true'
+              ng-show='!profile.email_edit_field')
+            input.form-control#new_email(
+              type='email'
+              name='new_email'
+              auto-focus=true
+              ng-if='profile.email_edit_field'
+              ng-value='profile.current_user.email'
+              ng-init='profile.new_email = profile.current_user.email'
+              ng-model='profile.new_email'
+              ng-maxlength='100')
+            span.errors(ng-show='profileForm.new_email.$error.maxlength')
+              span.glyphicon.glyphicon-alert#left-icon
+              span(translate='ERRORS.MAXLENGTH.EMAIL')
+            span.errors(ng-show='profileForm.new_email.$error.email')
+              span.glyphicon.glyphicon-alert#left-icon
+              span(translate='ERRORS.EMAIL')
+          .col-sm-5
+            button.btn.btn-success(
+              type='submit'
+              ng-click='profile.updateNewEmail()'
+              ng-show='profile.email_edit_field')
+              span(translate='BUTTONS.AUTH_EMAIL')
+        .form-group(ng-show='profile.current_user.new_email && !profile.email_edit_field')
+          .col-sm-2
+          .col-sm-5
+            label.modal-label#left-icon(for='new_email' translate='LABELS.PRE_AUTH')
+            span {{ profile.current_user.new_email }}
         // ニックネーム
         .form-group
           label.col-sm-2.control-label(for='new_nickname' translate='LABELS.NICKNAME')
           .col-sm-5
+            label.modal-label(ng-show='!profile.nickname_edit_field') {{ profile.current_user.nickname || ('LABELS.NO_SETTINGS' | translate) }}
+            span.glyphicon.glyphicon-pencil.green#right-icon(
+              tooltip="{{ 'TOOLTIPS.EDIT' | translate }}"
+              ng-click='profile.nickname_edit_field = true'
+              ng-show='!profile.nickname_edit_field')
             input.form-control#new_nickname(
               type='text'
               name='new_nickname'
@@ -42,14 +77,12 @@
               ng-init='profile.new_nickname = profile.current_user.nickname'
               ng-model='profile.new_nickname'
               ng-maxlength='100')
-            label.modal-label(ng-show='!profile.nickname_edit_field') {{ profile.current_user.nickname || ('LABELS.NO_SETTINGS' | translate) }}
-            span.glyphicon.glyphicon-pencil.green#right-icon(
-              tooltip="{{ 'TOOLTIPS.EDIT' | translate }}"
-              ng-click='profile.nickname_edit_field = true'
-              ng-show='!profile.nickname_edit_field')
-            span.errors(ng-show='nicknameForm.new_nickname.$error.maxlength')
+            span.errors(ng-show='profileForm.new_nickname.$error.maxlength')
               span.glyphicon.glyphicon-alert
               span(translate='ERRORS.MAXLENGTH.NICKNAME')
           .col-sm-5
-            button.btn.btn-success(type='submit' ng-show='profile.nickname_edit_field')
+            button.btn.btn-success(
+              type='submit'
+              ng-click='profile.updateNickname()'
+              ng-show='profile.nickname_edit_field')
               span(translate='BUTTONS.UPDATE')

@@ -38,6 +38,7 @@
   },
   "BUTTONS": {
     "ADD": "追加する",
+    "AUTH_EMAIL": "メール認証",
     "CREATE": "登録",
     "CLEAR": "クリア",
     "FACEBOOK_LOGIN": "Facebookでログイン",
@@ -79,6 +80,7 @@
     "FACEBOOK_LOGIN": "Facebookでログインしています",
     "TWITTER_LOGIN": "Twitterでログインしています",
     "EMAIL_LOGIN": "メールアドレスでログインしています",
+    "PRE_AUTH": "認証前",
     "SELECTED": "登録済",
     "UNREAD": "未読"
   },

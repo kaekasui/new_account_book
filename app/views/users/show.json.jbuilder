@@ -1,6 +1,7 @@
 json.id @user.id
 json.type @user.type
 json.email @user.email
+json.new_email @user.new_email
 json.nickname @user.nickname
 json.user_name @user._name
 json.admin @user.admin

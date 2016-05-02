@@ -37,6 +37,7 @@
   },
   "BUTTONS": {
     "ADD": "Add",
+    "AUTH_EMAIL": "Send Email",
     "CREATE": "Create",
     "CLEAR": "Clear",
     "FACEBOOK_LOGIN": "Login via Facebook",
@@ -78,6 +79,7 @@
     "FACEBOOK_LOGIN": "login via Facebook",
     "TWITTER_LOGIN": "Login via Twitter",
     "EMAIL_LOGIN": "Login via Email",
+    "PRE_AUTH": "Pre-authentication",
     "SELECTED": "Selected",
     "UNREAD": "Unread"
   },
