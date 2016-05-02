@@ -48,7 +48,7 @@ RSpec.describe UserMailer do
       expect(mail.subject).to eq '【PIG BOOK β】メールアドレス変更のご案内'
       expect(mail.to).to eq [email]
       expect(mail.from).to eq [Settings.mail_from]
-      expect(mail.body).not_to have_content(new_email_url)
+      expect(mail.body).to have_content(new_email_url)
     end
   end
 
