@@ -29,21 +29,14 @@ class User::Updator
   end
 
   def save_new_email
-    if @new_email.blank? # && !(@user.type == 'EmailUser')
-      if @user.update(email: @new_email)
-        true
-      else
-        errors[:base] << @user.errors.full_messages.join(',')
-        false
-      end
+    if @new_email.blank? && @user.update(email: @new_email)
+      true
+    elsif @user.update(new_email: @new_email)
+      # TODO: メール送信
+      true
     else
-      if @user.update(new_email: @new_email)
-        # TODO: メール送信
-        true
-      else
-        errors[:base] << @user.errors.full_messages.join(',')
-        false
-      end
+      errors[:base] << @user.errors.full_messages.join(',')
+      false
     end
   end
 end
