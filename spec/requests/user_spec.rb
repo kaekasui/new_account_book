@@ -21,6 +21,7 @@ describe 'GET /user', autodoc: true do
         id: user.id,
         type: user.type,
         email: user.email,
+        new_email: user.new_email,
         nickname: user.nickname,
         user_name: user._name,
         admin: user.admin
@@ -40,6 +41,7 @@ describe 'GET /user', autodoc: true do
         id: user.id,
         type: user.type,
         email: user.email,
+        new_email: user.new_email,
         nickname: user.nickname,
         user_name: user._name,
         admin: user.admin,
@@ -63,6 +65,7 @@ describe 'GET /user', autodoc: true do
         id: user.id,
         type: user.type,
         email: user.email,
+        new_email: user.new_email,
         nickname: user.nickname,
         user_name: user._name,
         admin: user.admin,
