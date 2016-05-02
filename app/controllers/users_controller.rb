@@ -32,6 +32,12 @@ class UsersController < ApplicationController
 
   # GET /user/authorize_email
   def authorize_email
+    if current_user.update_email_by(params[:token])
+      host = Rails.env.production? ? '' : 'http://localhost:3000'
+      redirect_to "#{host}/#/?registed=ok"
+    else
+      render_error current_user, 401
+    end
   end
 
   private
