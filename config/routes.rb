@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   resource :user, only: %i(show update) do
     get :authorize_email
     get :settings
-    patch :set_display
+    patch :setting
   end
   resource :feedback, only: %i(create)
   resource :mypage, only: %i(show), on: :collection

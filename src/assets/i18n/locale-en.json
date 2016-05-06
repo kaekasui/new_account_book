@@ -151,6 +151,7 @@
     "SEND_MAIL": "Send a Mail",
     "SEND_MESSAGE": "Send a Message",
     "SEND_MESSAGE_TO_ADMIN": "Send your message",
+    "SET_CURRENCY_UNIT": "Set your Currency unit. Incidentally, It will affect all of the data",
     "THERE_IS_NO_RECORD": "There is not record.",
     "THERE_IS_NO_RECORD2": " : Input your data :)",
     "UPDATE_PASSWORD": "Your Password has been changed",
@@ -197,6 +198,7 @@
     "PROPER_LAW": "PROPER LAW"
   },
   "SETTINGS": {
+    "CURRENCY": "Currency Unit Setting",
     "DISPLAY": "Display Setting"
   }
 }

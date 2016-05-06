@@ -84,7 +84,10 @@ describe 'GET /mypage', autodoc: true do
             place_name: record1.place.try(:name),
             memo: record1.memo
           }
-        ]
+        ],
+        user: {
+          currency: user.currency
+        }
       }
       expect(response.body).to be_json_as(json)
     end

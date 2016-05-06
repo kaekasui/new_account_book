@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :records
   has_many :tags
 
-  enum status: { registered: 2, inactive: 1 }
+  enum status: { inactive: 1, registered: 2 }
 
   validates :nickname,
             length: { maximum: Settings.user.nickname.maximum_length }
@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
             length: { maximum: Settings.user.places.maximum_length,
                       too_long: I18n.t('errors.messages.too_many') },
             unless: :admin
+
+  before_create :set_currency
 
   def active?
     registered? # TODO: 有効期限を確認する
@@ -100,5 +102,10 @@ class User < ActiveRecord::Base
       size: Settings.password_token.length,
       expires_at: Settings.new_email_token.expire_after.seconds.from_now
     )
+  end
+
+  def set_currency
+    self.currency = '¥'
+    # TODO: ロケールによりデフォルトを変更する
   end
 end

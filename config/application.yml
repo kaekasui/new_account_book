@@ -1,4 +1,7 @@
 defaults: &defaults
+  currencies:
+    yen: ¥
+    dollar: $
   mail_from: <%= ENV['PIG_BOOK_MAIL_FROM'] %>
   access_token:
     length: 32

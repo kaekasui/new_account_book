@@ -16,3 +16,7 @@ json.records do
 end
 
 json.total_count @total_count
+
+json.user do
+  json.currency @user.currency
+end
