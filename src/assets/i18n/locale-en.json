@@ -159,6 +159,7 @@
     "NOT_FOUND_NOTICE": "Not Found a Notice",
     "NOT_FOUND_MESSAGE": "Not Found a Message",
     "REGISTED": "Account has been registered",
+    "REQUIRED_LOGIN": "Please Login",
     "RESEND_EMAIL": "Input your Email if not found a mail for registration.",
     "RESET_PASSWORD": "Input your Email. We will send you a Mail with URL.",
     "FEEDBACK": "Please feel free to ask me any questions!:)",
