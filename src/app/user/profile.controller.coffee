@@ -11,6 +11,9 @@ ProfileController = (IndexFactory, UserFactory, IndexService) ->
   ).catch (res) ->
     IndexService.loading = false
 
+  vm.cancelNewEmail = () ->
+    vm.email_edit_field = false
+
   vm.updateNickname = () ->
     UserFactory.patchProfile({ nickname: vm.new_nickname }).then ->
       vm.current_user.nickname = vm.new_nickname
@@ -18,10 +21,18 @@ ProfileController = (IndexFactory, UserFactory, IndexService) ->
       IndexService.current_user = vm.current_user
 
   vm.updateNewEmail = () ->
-    UserFactory.patchProfile({ new_email: vm.new_email }).then ->
-      vm.current_user.new_email = vm.new_email
+    if vm.new_email == vm.current_user.email
       vm.email_edit_field = false
-      IndexService.current_user = vm.current_user
+    else
+      UserFactory.patchProfile({ new_email: vm.new_email }).then ->
+        vm.current_user.new_email = vm.new_email
+        vm.current_user.email = vm.new_email
+        vm.email_edit_field = false
+        IndexService.current_user = vm.current_user
+
+  # モーダル
+  vm.sendNewEmail = () ->
+    return
 
   return
 
