@@ -24,6 +24,7 @@ describe 'GET /user', autodoc: true do
         new_email: user.new_email,
         nickname: user.nickname,
         user_name: user._name,
+        currency: user.currency,
         admin: user.admin
       }
       expect(response.body).to be_json_as(json)
@@ -44,6 +45,7 @@ describe 'GET /user', autodoc: true do
         new_email: user.new_email,
         nickname: user.nickname,
         user_name: user._name,
+        currency: user.currency,
         admin: user.admin,
         auth: {
           name: user.auth.name,
@@ -68,6 +70,7 @@ describe 'GET /user', autodoc: true do
         new_email: user.new_email,
         nickname: user.nickname,
         user_name: user._name,
+        currency: user.currency,
         admin: user.admin,
         auth: {
           name: user.auth.name,
@@ -255,10 +258,10 @@ describe 'PATCH /user', autodoc: true do
   end
 end
 
-describe 'PATCH /user/set_display', autodoc: true do
+describe 'PATCH /user/setting', autodoc: true do
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      patch '/user/set_display'
+      patch '/user/setting'
       expect(response.status).to eq 401
     end
   end
@@ -271,7 +274,7 @@ describe 'PATCH /user/set_display', autodoc: true do
 
       it '200が返ってくること' do
         expect(user.breakdown_field).to be_truthy
-        patch '/user/set_display', params, login_headers(user)
+        patch '/user/setting', params, login_headers(user)
         expect(response.status).to eq 200
 
         user.reload
@@ -284,7 +287,7 @@ describe 'PATCH /user/set_display', autodoc: true do
 
       it '200が返ってくること' do
         expect(user.place_field).to be_truthy
-        patch '/user/set_display', params, login_headers(user)
+        patch '/user/setting', params, login_headers(user)
         expect(response.status).to eq 200
 
         user.reload

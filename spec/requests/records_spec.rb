@@ -51,7 +51,10 @@ describe 'GET /records', autodoc: true do
               tags: []
             }
           ],
-          total_count: 2
+          total_count: 2,
+          user: {
+            currency: user.currency
+          }
         }
         expect(response.body).to be_json_as(json)
       end
@@ -77,7 +80,10 @@ describe 'GET /records', autodoc: true do
               tags: []
             }
           ],
-          total_count: 1
+          total_count: 1,
+          user: {
+            currency: user.currency
+          }
         }
         expect(response.body).to be_json_as(json)
       end
@@ -123,7 +129,10 @@ describe 'GET /records', autodoc: true do
               tags: []
             }
           ],
-          total_count: 3
+          total_count: 3,
+          user: {
+            currency: user.currency
+          }
         }
         expect(response.body).to be_json_as(json)
       end
@@ -213,7 +222,8 @@ describe 'GET /records/new', autodoc: true do
           breakdown_field: true,
           place_field: true,
           tag_field: true,
-          memo_field: true
+          memo_field: true,
+          currency: user.currency
         }
       }
       expect(response.body).to be_json_as(json)

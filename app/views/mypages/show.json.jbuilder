@@ -27,3 +27,7 @@ json.records do
     json.memo record.memo
   end
 end
+
+json.user do
+  json.currency @user.currency
+end

@@ -4,6 +4,7 @@ json.email @user.email
 json.new_email @user.new_email
 json.nickname @user.nickname
 json.user_name @user._name
+json.currency @user.currency
 json.admin @user.admin
 
 if @user.try(:auth)

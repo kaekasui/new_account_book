@@ -8,6 +8,7 @@ FactoryGirl.define do
     end
     sequence(:nickname) { |n| "ニックネーム#{n}" }
     last_sign_in_at { 2.days.ago }
+    currency { %w(¥ $).sample }
 
     factory :email_user, class: EmailUser do
       sequence(:email) { |n| "email#{n}@example.com" }

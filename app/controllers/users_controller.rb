@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def set_display
+  def setting
     if current_user.update(setting_params)
       head 200
     else
@@ -49,6 +49,7 @@ class UsersController < ApplicationController
   end
 
   def setting_params
-    params.permit(:breakdown_field, :place_field, :tag_field, :memo_field)
+    params.permit(:breakdown_field, :place_field, :tag_field, :memo_field,
+                  :currency)
   end
 end
