@@ -46,7 +46,7 @@ form.form.form-inline
           label.label.label-default {{ record.memo }}
         td
           span.glyphicon.glyphicon-bookmark#left-icon(ng-repeat='tag in record.tags' ng-style="{color:tag.color_code}" tooltip='{{tag.name}}')
-        td ¥ {{ record.charge | number }}
+        td {{ record.charge | currency:list.user.currency + ' ' }}
         td
           a(href='' ng-click='list.showRecord($index)')
             span.glyphicon.glyphicon-info-sign.green(tooltip="{{'TOOLTIPS.DETAIL' | translate}}")

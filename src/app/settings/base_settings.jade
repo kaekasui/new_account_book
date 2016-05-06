@@ -12,16 +12,16 @@
     p(translate='MESSAGES.DISPLAY_ITEMS')
     .checkbox
       label.checkbox-inline
-        input(type='checkbox' ng-model='base_settings.breakdown_field' ng-change='base_settings.checkSetting()')
+        input(type='checkbox' ng-model='base_settings.breakdown_field' ng-change='base_settings.changeSetting()')
         span {{ 'COLUMNS.BREAKDOWN' | translate }}
       label.checkbox-inline
-        input(type='checkbox' ng-model='base_settings.place_field' ng-change='base_settings.checkSetting()')
+        input(type='checkbox' ng-model='base_settings.place_field' ng-change='base_settings.changeSetting()')
         span {{ 'COLUMNS.PLACE' | translate }}
       label.checkbox-inline
-        input(type='checkbox' ng-model='base_settings.tag_field' ng-change='base_settings.checkSetting()')
+        input(type='checkbox' ng-model='base_settings.tag_field' ng-change='base_settings.changeSetting()')
         span {{ 'COLUMNS.TAG' | translate }}
       label.checkbox-inline
-        input(type='checkbox' ng-model='base_settings.memo_field' ng-change='base_settings.checkSetting()')
+        input(type='checkbox' ng-model='base_settings.memo_field' ng-change='base_settings.changeSetting()')
         span {{ 'COLUMNS.MEMO' | translate }}
     br
 
@@ -33,4 +33,4 @@
       form.form-horizontal
         .form-group
           .col-sm-2
-            select.form-control(ng-model='base_settings.currency_unit' ng-options='unit.id as unit.name for unit in base_settings.currencies')
+            select.form-control(ng-model='base_settings.currency' ng-options='unit for unit in base_settings.currencies' ng-change='base_settings.changeCurrency()')

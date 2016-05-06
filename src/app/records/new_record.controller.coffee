@@ -13,6 +13,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
     vm.place_field = res.user.place_field
     vm.tag_field = res.user.tag_field
     vm.memo_field = res.user.memo_field
+    vm.user = res.user
     vm.form_group_breakdown = vm.breakdown_field
     vm.form_group_place = vm.place_field
     vm.form_group_tag = vm.tag_field

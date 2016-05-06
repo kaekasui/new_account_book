@@ -7,6 +7,7 @@ MypageController = (UserFactory, IndexService, $modal, RecordsFactory) ->
     vm.notices = res.notices
     vm.messages = res.messages
     vm.records = res.records
+    vm.user = res.user
     IndexService.loading = false
   ).catch (res) ->
     IndexService.loading = false
