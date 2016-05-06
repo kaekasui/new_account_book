@@ -11,10 +11,10 @@ form.form-horizontal(novalidate=true name='newPlaceForm' ng-submit='new_place.cr
         span.glyphicon.glyphicon-plus-sign.green#left-icon(ng-show='new_place.category.barance_of_payments')
         span.glyphicon.glyphicon-minus-sign.red#left-icon(ng-show='!new_place.category.barance_of_payments')
         span {{ new_place.category.name }}
-    // 内訳
+    // お店・施設
     .form-group
       label.control-label.col-sm-2(for='name')
-        span(translate='COLUMNS.BREAKDOWN')
+        span(translate='COLUMNS.PLACE')
       .col-sm-10
         input.form-control(name='name' ng-model='new_place.new_place_name' auto-focus=true type='text' required=true ng-maxlength='100')
         // エラーメッセージ
