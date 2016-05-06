@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def settings
     @user = current_user
+    @currencies = Settings.currencies
   end
 
   def update

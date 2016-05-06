@@ -101,7 +101,9 @@ describe 'GET /user/settings', autodoc: true do
         breakdown_field: user.breakdown_field,
         place_field: user.place_field,
         tag_field: user.tag_field,
-        memo_field: user.memo_field
+        memo_field: user.memo_field,
+        currency: user.currency,
+        currencies: { yen: '¥', dollar: '$' }
       }
       expect(response.body).to be_json_as(json)
     end
