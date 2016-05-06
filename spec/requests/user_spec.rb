@@ -296,3 +296,54 @@ describe 'PATCH /user/setting', autodoc: true do
     end
   end
 end
+
+describe 'POST /user/send_mail', autodoc: true do
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      post '/user/send_mail'
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'メールアドレスのユーザーがログインしている場合' do
+    let!(:user) { create(:email_user, :registered) }
+    let!(:new_email) { 'new_email@example.com' }
+    let!(:params) { { new_email: new_email } }
+
+    context '認証待ちのメールアドレスがある場合' do
+      it 'メールが送信されること' do
+        patch '/user', params, login_headers(user)
+        expect(response.status).to eq 200
+        user.reload
+
+        open_email(new_email)
+        expect(current_email.subject).to eq '【PIG BOOK β】メールアドレス変更のご案内'
+        expect(current_email).to have_content new_email
+        expect(current_email).not_to have_content '/user/authorize_email/'
+        clear_emails
+
+        open_email(new_email)
+        expect(current_email).to be_nil
+
+        post '/user/send_mail', nil, login_headers(user)
+        expect(response.status).to eq 200
+        open_email(new_email)
+        expect(current_email.subject).to eq '【PIG BOOK β】メールアドレス変更のご案内'
+        expect(current_email).to have_content new_email
+        expect(current_email).not_to have_content '/user/authorize_email/'
+      end
+    end
+
+    context '認証待ちのメールアドレスがある場合' do
+      it 'メールが送信されないこと' do
+        clear_emails
+
+        open_email(new_email)
+        expect(current_email).to be_nil
+
+        post '/user/send_mail', nil, login_headers(user)
+        expect(response.status).to eq 422
+      end
+    end
+  end
+end

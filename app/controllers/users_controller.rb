@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # PATCH /user/setting
   def setting
     if current_user.update(setting_params)
       head 200
@@ -39,6 +40,19 @@ class UsersController < ApplicationController
       redirect_to "#{host}/#/?updated_email=ok"
     else
       render_error user, 401
+    end
+  end
+
+  # POST /user/send_mail
+  def send_mail
+    user_updator = User::Updator
+                   .new(user: current_user,
+                        params: { new_email: current_user.new_email })
+    origin = "#{request.protocol}#{request.host_with_port}"
+    if user_updator.send_mail(origin)
+      head 200
+    else
+      render_error user_updator
     end
   end
 
