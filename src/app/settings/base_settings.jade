@@ -5,10 +5,12 @@
 
   .panel-body#with-background
     loading-directive
+
+    // 各項目の表示設定
     blockquote
       span {{ 'SETTINGS.DISPLAY' | translate }}
+    p(translate='MESSAGES.DISPLAY_ITEMS')
     .checkbox
-      p(translate='MESSAGES.DISPLAY_ITEMS')
       label.checkbox-inline
         input(type='checkbox' ng-model='base_settings.breakdown_field' ng-change='base_settings.checkSetting()')
         span {{ 'COLUMNS.BREAKDOWN' | translate }}
@@ -21,3 +23,14 @@
       label.checkbox-inline
         input(type='checkbox' ng-model='base_settings.memo_field' ng-change='base_settings.checkSetting()')
         span {{ 'COLUMNS.MEMO' | translate }}
+    br
+
+    // 通貨単位の設定
+    div(ng-show='base_settings.currencies')
+      blockquote
+        span {{ 'SETTINGS.CURRENCY' | translate }}
+      p(translate='MESSAGES.SET_CURRENCY_UNIT')
+      form.form-horizontal
+        .form-group
+          .col-sm-2
+            select.form-control(ng-model='base_settings.currency_unit' ng-options='unit.id as unit.name for unit in base_settings.currencies')

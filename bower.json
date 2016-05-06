@@ -31,7 +31,8 @@
     "ng-tags-input": "~3.0.0",
     "angular-color-picker": "angularjs-color-picker#~1.0.2",
     "angulartics-google-analytics": "~0.1.4",
-    "angulike": "~1.2.0"
+    "angulike": "~1.2.0",
+    "angular-i18n": "^1.5.5"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.2"
@@ -46,6 +47,9 @@
         "assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
         "assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
       ]
+    },
+    "angular-i18n": {
+      "main": "angular-locale_ja-jp.js"
     }
   },
   "resolutions": {
