@@ -26,6 +26,7 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
     RecordsFactory.getRecords(params).then((res) ->
       vm.records = res.records
       vm.total_count = res.total_count
+      vm.user = res.user
       total_array = []
       for i in [0..vm.total_count]
         total_array.push(i)

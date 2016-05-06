@@ -101,7 +101,7 @@ RecordsFactory = ($location, $q, $http, localStorageService, toastr, $translate)
       login_headers = {
         headers: { Authorization: 'Token token=' + token }
       }
-      $http.patch host + 'user/set_display', params, login_headers
+      $http.patch host + 'user/setting', params, login_headers
         .success((data) ->
           defer.resolve data
           return
