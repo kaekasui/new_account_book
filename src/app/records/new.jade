@@ -114,17 +114,19 @@
             span(translate='COLUMNS.CHARGE')
             span.red *
           .col-sm-10
-            input.form-control(type='number' name='charge' ng-model='new_record.charge' required='true' max=9999999 min=0)
-            span.errors(ng-messages='newRecordForm.charge.$error' ng-show='newRecordForm.$submitted && newRecordForm.charge.$error')
-              div(ng-message='required')
-                span.glyphicon.glyphicon-alert#left-icon
-                span(translate='ERRORS.REQUIRED.CHARGE')
-              div(ng-message='max')
-                span.glyphicon.glyphicon-alert#left-icon
-                span(translate='ERRORS.MAX.CHARGE')
-              div(ng-message='min')
-                span.glyphicon.glyphicon-alert#left-icon
-                span(translate='ERRORS.MIN.CHARGE')
+            .input-group
+              span.input-group-addon {{ new_record.user.currency }}
+              input.form-control(type='number' name='charge' ng-model='new_record.charge' required='true' max=9999999 min=0)
+              span.errors(ng-messages='newRecordForm.charge.$error' ng-show='newRecordForm.$submitted && newRecordForm.charge.$error')
+                div(ng-message='required')
+                  span.glyphicon.glyphicon-alert#left-icon
+                  span(translate='ERRORS.REQUIRED.CHARGE')
+                div(ng-message='max')
+                  span.glyphicon.glyphicon-alert#left-icon
+                  span(translate='ERRORS.MAX.CHARGE')
+                div(ng-message='min')
+                  span.glyphicon.glyphicon-alert#left-icon
+                  span(translate='ERRORS.MIN.CHARGE')
         // 備考
         .form-group(ng-show='new_record.form_group_memo')
           label.control-label.col-sm-2(for='memo')
