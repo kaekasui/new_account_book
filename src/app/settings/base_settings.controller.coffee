@@ -3,10 +3,6 @@ BaseSettingsController = (RecordsFactory, IndexService, SettingsFactory) ->
   'ngInject'
   vm = this
 
-  vm.setCurrencyUnit = () ->
-    params = { currency: vm.currency_unit }
-    
-
   IndexService.loading = true
   SettingsFactory.getCurrentUserSettings().then((res) ->
     vm.breakdown_field = res.breakdown_field
