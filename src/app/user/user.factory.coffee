@@ -83,6 +83,22 @@ UserFactory = ($location, $q, $http, localStorageService, toastr, $translate, In
           IndexService.loading = false
           return
       return defer.promise
+
+    postNewMail: () ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.post host + 'user/send_mail', '', login_headers
+        .success((data) ->
+          defer.resolve data
+          toastr.success $translate.instant('MESSAGES.SEND_MAIL')
+          return
+        ).error (data) ->
+          defer.reject data
+          return
+      return defer.promise
   }
 
 

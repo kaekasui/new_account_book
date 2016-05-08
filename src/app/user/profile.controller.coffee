@@ -1,4 +1,4 @@
-ProfileController = (IndexFactory, UserFactory, IndexService) ->
+ProfileController = (IndexFactory, UserFactory, IndexService, $modal) ->
   'ngInject'
   vm = this
   vm.nickname_edit_field = false
@@ -32,6 +32,11 @@ ProfileController = (IndexFactory, UserFactory, IndexService) ->
 
   # モーダル
   vm.sendNewEmail = () ->
+    modalInstance = $modal.open(
+      templateUrl: 'app/components/modals/send_mail.html'
+      controller: 'ConfirmSendNewMailController'
+      controllerAs: 'send_mail'
+    )
     return
 
   return
