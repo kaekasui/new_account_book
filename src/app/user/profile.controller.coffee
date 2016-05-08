@@ -22,8 +22,6 @@ ProfileController = (IndexFactory, UserFactory, IndexService, $modal) ->
         IndexService.current_user = vm.current_user
 
   vm.updateNewEmail = () ->
-    console.log 'adf'
-
     if vm.new_email == vm.current_user.email
       vm.email_edit_field = false
     else
