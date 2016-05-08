@@ -14,11 +14,12 @@ ProfileController = (IndexFactory, UserFactory, IndexService, $modal) ->
   vm.cancelNewEmail = () ->
     vm.email_edit_field = false
 
-  vm.updateNickname = () ->
-    UserFactory.patchProfile({ nickname: vm.new_nickname }).then ->
-      vm.current_user.nickname = vm.new_nickname
-      vm.nickname_edit_field = false
-      IndexService.current_user = vm.current_user
+  vm.updateNickname = (e = undefined) ->
+    if e == undefined or e.which == 13
+      UserFactory.patchProfile({ nickname: vm.new_nickname }).then ->
+        vm.current_user.nickname = vm.new_nickname
+        vm.nickname_edit_field = false
+        IndexService.current_user = vm.current_user
 
   vm.updateNewEmail = () ->
     if vm.new_email == vm.current_user.email
