@@ -50,15 +50,19 @@
               span(translate='ERRORS.EMAIL')
           .col-sm-5
             button.btn.btn-success(
-              type='submit'
               ng-click='profile.updateNewEmail()'
               ng-show='profile.email_edit_field')
               span(translate='BUTTONS.AUTH_EMAIL')
+            button.btn.btn-default(
+              ng-click='profile.cancelNewEmail()'
+              ng-show='profile.email_edit_field')
+              span(translate='BUTTONS.CANCEL')
         .form-group(ng-show='profile.current_user.new_email && !profile.email_edit_field')
           .col-sm-2
           .col-sm-5
             label.modal-label#left-icon(for='new_email' translate='LABELS.PRE_AUTH')
             span {{ profile.current_user.new_email }}
+            span.green.glyphicon.glyphicon-envelope#right-icon(ng-click='profile.sendNewEmail()')
         // ニックネーム
         .form-group
           label.col-sm-2.control-label(for='new_nickname' translate='LABELS.NICKNAME')
@@ -82,7 +86,6 @@
               span(translate='ERRORS.MAXLENGTH.NICKNAME')
           .col-sm-5
             button.btn.btn-success(
-              type='submit'
               ng-click='profile.updateNickname()'
               ng-show='profile.nickname_edit_field')
               span(translate='BUTTONS.UPDATE')

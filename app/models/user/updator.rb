@@ -18,6 +18,7 @@ class User::Updator
   end
 
   def send_mail(origin)
+    return false unless @new_email.present?
     @user.remove_token(:new_email)
     UserMailer.set_new_email(@user.new_email, @user.new_email_url(origin))
               .deliver_now

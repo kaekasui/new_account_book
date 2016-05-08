@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     get :authorize_email
     get :settings
     patch :setting
+    post :send_mail, on: :collection
   end
   resource :feedback, only: %i(create)
   resource :mypage, only: %i(show), on: :collection
