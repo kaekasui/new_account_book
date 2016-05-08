@@ -13,7 +13,7 @@
         footer(translate='LABELS.EMAIL_LOGIN' ng-show="profile.current_user.type == 'EmailUser'")
         footer(translate='LABELS.TWITTER_LOGIN' ng-show="profile.current_user.type == 'TwitterUser'")
         footer(translate='LABELS.FACEBOOK_LOGIN' ng-show="profile.current_user.type == 'FacebookUser'")
-      form.form.form-horizontal(novalidate=true name='profileForm')
+      .form.form-horizontal(novalidate=true name='profileForm')
         // ユーザー名
         .form-group(ng-show="profile.current_user.type == 'TwitterUser'")
           label.col-sm-2.control-label(for='auth.name' translate='COLUMNS.USER_NAME')
@@ -80,6 +80,7 @@
               ng-value='profile.current_user.nickname'
               ng-init='profile.new_nickname = profile.current_user.nickname'
               ng-model='profile.new_nickname'
+              ng-keydown='profile.updateNickname($event)'
               ng-maxlength='100')
             span.errors(ng-show='profileForm.new_nickname.$error.maxlength')
               span.glyphicon.glyphicon-alert
