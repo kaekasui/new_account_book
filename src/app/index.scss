@@ -158,6 +158,9 @@ body {
   span.dotted {
     border-bottom: dotted 2px #ac5e9f;
   }
+  span.green_dotted {
+    border-bottom: dotted 2px $green;
+  }
   a.label-list {
     margin-right: 30px;
   }

@@ -200,5 +200,8 @@
   "SETTINGS": {
     "CURRENCY": "Currency Unit Setting",
     "DISPLAY": "Display Setting"
+  },
+  "GRAPH": {
+    "MONTHLY_PAYMENTS": "Barance of Payments"
   }
 }

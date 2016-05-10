@@ -107,5 +107,10 @@ angular.module 'newAccountBook'
         templateUrl: 'app/admin/messages.html'
         controllerAs: 'admin_messages'
         controller: 'MessagesController'
+      .state 'dashboard',
+        url: '/dashboard'
+        templateUrl: 'app/dashboard/index.html'
+        controllerAs: 'dashboard'
+        controller: 'DashboardController'
 
     $urlRouterProvider.otherwise '/'

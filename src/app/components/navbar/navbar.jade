@@ -12,7 +12,7 @@ nav.navbar.navbar-default(role='navigation')
           span.glyphicon.glyphicon-home#left-icon
           span(translate='TITLES.HOME')
       li(ng-show='navbar.current_user')
-        a
+        a(ui-sref='dashboard')
           span.glyphicon.glyphicon-stats#left-icon
           span(translate='TITLES.DASHBOARD')
       li(ng-show='navbar.current_user')

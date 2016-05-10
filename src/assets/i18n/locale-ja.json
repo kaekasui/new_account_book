@@ -202,5 +202,8 @@
   "SETTINGS": {
     "CURRENCY": "通貨単位の設定",
     "DISPLAY": "各項目の表示設定"
+  },
+  "GRAPH": {
+    "MONTHLY_PAYMENTS": "月の収支"
   }
 }
