@@ -2,7 +2,22 @@ DashboardController = () ->
   'ngInject'
   vm = this
 
-  vm.dailyData = [40, 88, 10]
+  today = new Date()
+  vm.target_year = today.getFullYear()
+  vm.target_month = today.getMonth()
+
+  vm.dailyData = [
+    {
+      date: new Date(2016, vm.target_month, 1)
+      plus: 120
+      minus: 800
+    },
+    {
+      date: new Date(2016, vm.target_month, 15)
+      plus: 10
+      minus: 434
+    }
+  ]
   return
 
 angular.module 'newAccountBook'

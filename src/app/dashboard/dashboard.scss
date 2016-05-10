@@ -1,7 +1,15 @@
 .axis path, .axis line {
   fill: none;
-  stroke: black;
+  stroke: $green;
 }
 .axis text {
   font-size: 11px;
+}
+
+.daily-graph {
+  background-color: rgba(#fff, 0.5);
+  box-shadow:5px 5px 10px 5px rgba(#000, 0.2);
+  p {
+    padding: 20px 0px 5px 20px;
+  }
 }
