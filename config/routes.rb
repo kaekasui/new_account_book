@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   resources :records, only: %i(index show new create edit update destroy)
   resources :tags, only: %i(index)
 
+  resource :dashboard, only: %i(show)
   resource :user, only: %i(show update) do
     get :authorize_email
     get :settings

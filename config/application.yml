@@ -15,6 +15,8 @@ defaults: &defaults
   password_token:
     length: 32
     expire_after: <%= 24.hours.to_i %>
+  tally:
+    interval: <%= 5.hours.to_i %>
   category:
     breakdowns:
       maximum_length: 20
