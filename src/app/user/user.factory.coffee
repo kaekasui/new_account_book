@@ -101,6 +101,5 @@ UserFactory = ($location, $q, $http, localStorageService, toastr, $translate, In
       return defer.promise
   }
 
-
 angular.module 'newAccountBook'
   .factory 'UserFactory', UserFactory
