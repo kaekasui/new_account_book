@@ -3,10 +3,10 @@ class Tally::Updator
 
   attr_accessor :tally
 
-  def initialize(user: nil, year: Time.zone.today.year, month: Time.zone.today.month)
+  def initialize(user: nil, params: {})
     @user = user
-    @year = year || Time.zone.today.year
-    @month = month || Time.zone.today.month
+    @year = params[:year] || Time.zone.today.year
+    @month = params[:month] || Time.zone.today.month
   end
 
   def save
