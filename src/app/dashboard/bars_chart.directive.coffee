@@ -42,17 +42,25 @@ barsChartDirective = (D3Factory, $parse, DashboardFactory) ->
         svg.append('g').attr({ class: 'axis', transform: 'translate(0, ' + h + ')' }).call(xAxis)
         svg.append('g').attr({ class: 'axis', transform: 'translate(' + margin.left + ', 0)'}).call(yAxis)
 
-        svg.selectAll('rect')
-          .data(dataSet)
-          .enter()
-          .append('rect')
+        svg.selectAll('.plus-bar')
+          .data(dataSet).enter().append('rect')
           .attr(
-            x: (d, i) ->
-              xScale(new Date(d.date))
+            class: 'plus-bar'
+            x: (d) -> xScale(new Date(d.date)) - 13
             y: (d) -> yScale(d.plus)
             width: 10
             height: (d) -> h - yScale(d.plus)
-            fill: 'green'
+            fill: '#5e7535'
+          )
+        svg.selectAll('.minus-bar')
+          .data(dataSet).enter().append('rect')
+          .attr(
+            class: 'minus-bar'
+            x: (d) -> xScale(new Date(d.date)) - 1
+            y: (d) -> yScale(d.minus)
+            width: 10
+            height: (d) -> h - yScale(d.minus)
+            fill: '#ac5e9f'
           )
       return
 
