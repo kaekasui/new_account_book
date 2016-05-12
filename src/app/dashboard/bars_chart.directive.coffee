@@ -48,6 +48,7 @@ barsChartDirective = (D3Factory, $parse, DashboardFactory) ->
           .append('rect')
           .attr(
             x: (d, i) ->
+              console.log d.date
               xScale(new Date(d.date))
             y: (d) -> yScale(d.plus)
             width: 10
