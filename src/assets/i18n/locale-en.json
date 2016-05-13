@@ -202,6 +202,7 @@
     "DISPLAY": "Display Setting"
   },
   "GRAPH": {
-    "MONTHLY_PAYMENTS": "Barance of Payments"
+    "MONTHLY_PAYMENTS": "Barance of Payments",
+    "UPDATED_TIME": "Updated Time"
   }
 }
