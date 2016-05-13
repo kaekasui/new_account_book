@@ -1,8 +1,9 @@
-BarsChartController = (DashboardFactory, D3Factory) ->
+BarsChartController = (DashboardFactory, D3Factory, IndexService) ->
   'ngInject'
   vm = this
 
   d3 = D3Factory.d3
+  IndexService.loading = true
   DashboardFactory.getDashboard({year: 2015, month: 5}).then (res) ->
     vm.updated_at = res.updated_at
     dataSet = res.data
@@ -58,6 +59,7 @@ BarsChartController = (DashboardFactory, D3Factory) ->
         height: (d) -> h - yScale(d.minus)
         fill: '#ac5e9f'
       )
+    IndexService.loading = false
   return
 
 angular.module 'newAccountBook'
