@@ -3,13 +3,13 @@ DashboardFactory = ($location, $q, $http, localStorageService) ->
   host = if $location.host() == 'localhost' then 'http://localhost:3001/' else ''
 
   return {
-    getDashboard: (params) ->
+    getDashboard: (year, month) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
       login_headers = {
         headers: { Authorization: 'Token token=' + token }
       }
-      $http.get host + 'dashboard', login_headers
+      $http.get host + 'dashboard?month=' + month, login_headers
         .success((data) ->
           defer.resolve data
           return
