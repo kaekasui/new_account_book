@@ -1,4 +1,5 @@
-bars-chart-directive(data='dashboard.dailyData' year='dashboard.target_year' month='dashboard.target_month')
+| {{ dashboard.daily_data }}
+bars-chart-directive(year='dashboard.target_year' month='dashboard.target_month')
 .daily-graph
   p
     span.glyphicon.glyphicon-blackboard.green#left-icon
