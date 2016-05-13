@@ -11,7 +11,7 @@ class Tally < ActiveRecord::Base
       .map { |i|
         { date: i[0],
           plus: i[1].map { |n| n[1] if n[2] }.compact.inject(0, :+),
-          minus: i[1].map { |n| n[1] unless n[2]}.compact.inject(0, :+) }
+          minus: i[1].map { |n| n[1] unless n[2] }.compact.inject(0, :+) }
       }
     save
   end
