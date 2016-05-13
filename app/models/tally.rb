@@ -22,7 +22,7 @@ class Tally < ActiveRecord::Base
     from = Date.new(year, month, 1)
     to = from.end_of_month
 
-    Record.joins(:category)
+    user.records.joins(:category)
           .where('published_at > ? and published_at < ?', from, to)
           .pluck("date_trunc('day', published_at) as published",
                  :charge, :barance_of_payments)
