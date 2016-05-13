@@ -1,15 +1,12 @@
 barsChartDirective = (D3Factory, $parse, DashboardFactory) ->
+  'ngInject'
   d3 = D3Factory.d3
   directive =
     restrict: 'E'
-    replace: true
     scope:
       dailyData: '@'
       year: '='
       month: '='
-      key: '@'
-      valueProp: '@'
-      label: '@'
     link: (scope, element) ->
       DashboardFactory.getDashboard({year: 2015, month: 5}).then (res) ->
         updated_at = res.updated_at
@@ -62,7 +59,6 @@ barsChartDirective = (D3Factory, $parse, DashboardFactory) ->
             height: (d) -> h - yScale(d.minus)
             fill: '#ac5e9f'
           )
-      return
 
 angular.module 'newAccountBook'
   .directive('barsChartDirective', barsChartDirective)
