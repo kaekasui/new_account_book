@@ -204,6 +204,7 @@
     "DISPLAY": "各項目の表示設定"
   },
   "GRAPH": {
-    "MONTHLY_PAYMENTS": "月の収支"
+    "MONTHLY_PAYMENTS": "月の収支",
+    "UPDATED_TIME": "最終更新日時"
   }
 }
