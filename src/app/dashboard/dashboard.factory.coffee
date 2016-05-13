@@ -1,4 +1,4 @@
-DashboardFactory = ($location, $q, $http, localStorageService, toastr, $translate, IndexService) ->
+DashboardFactory = ($location, $q, $http, localStorageService) ->
   'ngInject'
   host = if $location.host() == 'localhost' then 'http://localhost:3001/' else ''
 

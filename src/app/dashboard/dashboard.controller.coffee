@@ -1,4 +1,4 @@
-DashboardController = (DashboardFactory) ->
+DashboardController = () ->
   'ngInject'
   vm = this
 
