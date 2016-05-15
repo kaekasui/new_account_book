@@ -54,21 +54,36 @@ BarsChartController = (DashboardFactory, D3Factory, IndexService, $scope) ->
         .attr(
           class: 'plus-bar'
           x: (d) -> xScale(new Date(d.date)) - 13
-          y: (d) -> yScale(d.plus)
+          y: h
           width: 10
-          height: (d) -> h - yScale(d.plus)
+          height: 0
           fill: '#5e7535'
         )
+        .transition()
+        .duration(1000)
+        .attr({
+          y: (d) -> yScale(d.plus)
+          height: (d) -> h - yScale(d.plus)
+        })
+
       svg.selectAll('.minus-bar')
         .data(dataSet).enter().append('rect')
         .attr(
           class: 'minus-bar'
           x: (d) -> xScale(new Date(d.date)) - 1
-          y: (d) -> yScale(d.minus)
+          y: h
           width: 10
-          height: (d) -> h - yScale(d.minus)
+          height: 0
           fill: '#ac5e9f'
         )
+        .transition()
+        .duration(1000)
+        .attr({
+          y: (d) -> yScale(d.minus)
+          height: (d) -> h - yScale(d.minus)
+        })
+
+
       IndexService.loading = false
   return
 
