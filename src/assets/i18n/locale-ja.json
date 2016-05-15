@@ -57,7 +57,8 @@
     "CANCEL": "キャンセル",
     "CLOSE": "閉じる",
     "YET": "未対応",
-    "FINISHED": "対応済"
+    "FINISHED": "対応済",
+    "PAYMENTS": "収支"
   },
   "LABELS": {
     "ADD_20": "の登録（20件まで）",

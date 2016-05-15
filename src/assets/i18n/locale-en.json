@@ -56,7 +56,8 @@
     "CANCEL": "Cancel",
     "CLOSE": "Close",
     "YET": "Not Yet",
-    "FINISHED": "Finished"
+    "FINISHED": "Finished",
+    "PAYMENTS": "Income & Outgo"
   },
   "LABELS": {
     "ADD_20": "(maximum: 20)",
