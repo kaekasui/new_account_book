@@ -1,6 +1,12 @@
 .daily-graph
   p
-    button.btn.btn-default(ng-click='bars.displayPaymentsBars()') {{ 'BUTTONS.PAYMENTS' | translate }}
-    button.btn.btn-default(ng-click='bars.displayIncomeBars()') {{ 'BUTTONS.INCOME' | translate }}
-    button.btn.btn-default(ng-click='bars.displayOutgoBars()') {{ 'BUTTONS.OUTGO' | translate }}
+    button.btn.btn-default(ng-click='bars.displayPaymentsBars()'
+                           ng-class="{'active': bars.income && bars.outgo}")
+      span {{ 'BUTTONS.PAYMENTS' | translate }}
+    button.btn.btn-default(ng-click='bars.displayIncomeBars()'
+                           ng-class="{'active': bars.income && !bars.outgo}")
+      span {{ 'BUTTONS.INCOME' | translate }}
+    button.btn.btn-default(ng-click='bars.displayOutgoBars()'
+                           ng-class="{'active': !bars.income && bars.outgo}")
+      span {{ 'BUTTONS.OUTGO' | translate }}
     span.pull-right {{ 'GRAPH.UPDATED_TIME' | translate }} : {{ bars.updated_at }}
