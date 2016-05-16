@@ -92,16 +92,12 @@ BarsChartController = (DashboardFactory, D3Factory, IndexService, $scope) ->
           fill: '#5e7535'
         )
         .on('mouseover', (d) ->
-          d3.select(this)
-            .attr('style', 'fill:#9ebc6b')
-          tip.html(d.plus)
-             .show()
+          d3.select(this).attr('style', 'fill:#9ebc6b')
+          tip.html(d.plus).show()
         )
         .on('mouseout', (d) ->
-          d3.select(this)
-            .attr('style', 'fill:#5e7535')
-          tip.html(d.plus)
-             .hide()
+          d3.select(this).attr('style', 'fill:#5e7535')
+          tip.html(d.plus).hide()
         )
         .transition()
         .duration(500)
@@ -122,16 +118,12 @@ BarsChartController = (DashboardFactory, D3Factory, IndexService, $scope) ->
           fill: '#ac5e9f'
         )
         .on('mouseover', (d) ->
-          d3.select(this)
-            .attr('style', 'fill:#d7b1d0')
-          tip.html(d.minus)
-             .show()
+          d3.select(this).attr('style', 'fill:#d7b1d0')
+          tip.html(d.minus).show()
         )
         .on('mouseout', (d) ->
-          d3.select(this)
-            .attr('style', 'fill:#ac5e9f')
-          tip.html(d.minus)
-             .hide()
+          d3.select(this).attr('style', 'fill:#ac5e9f')
+          tip.html(d.minus).hide()
         )
         .transition()
         .duration(500)

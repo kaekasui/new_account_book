@@ -56,7 +56,8 @@
   },
   "resolutions": {
     "jquery": "~2.1.4",
-    "angular": "~1.4.2"
+    "angular": "~1.4.2",
+    "d3": "^3.5.17"
   },
   "ignore": [
     "**/.*",
