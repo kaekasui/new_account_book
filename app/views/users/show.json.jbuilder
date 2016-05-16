@@ -13,3 +13,4 @@ if @user.try(:auth)
     json.screen_name @user.auth.try(:screen_name)
   end
 end
+
