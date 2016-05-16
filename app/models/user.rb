@@ -98,7 +98,7 @@ class User < ActiveRecord::Base
 
   def each_maximum_values
     if admin?
-      user = self.becomes(AdminUser)
+      user = becomes(AdminUser)
       user.maximum_values
     else
       maximum_values
