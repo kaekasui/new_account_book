@@ -12,4 +12,8 @@ class TwitterUser < User
     twitter_user.auth = auth_data
     twitter_user
   end
+
+  def _name
+    nickname || auth.try(:name) || auth.try(:screen_name)
+  end
 end

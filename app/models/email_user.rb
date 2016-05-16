@@ -8,6 +8,10 @@ class EmailUser < User
             on: :create
   validate :uniqueness_email, if: 'email.present?'
 
+  def _name
+    nickname || email
+  end
+
   def registration_url(origin)
     token = registration_token.token
     "#{origin}/email_user/registrations/#{id}/regist?token=#{token}"

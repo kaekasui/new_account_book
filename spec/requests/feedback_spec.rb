@@ -5,7 +5,7 @@ describe 'POST /feedback?user_id=user_id&email=email&content=content',
   let!(:content) { '問い合わせ内容' }
 
   context 'ログインしている場合' do
-    let!(:user) { create(:user, :registered) }
+    let!(:user) { create(:email_user, :registered) }
     let!(:params) { { user_id: user.id, content: content } }
 
     context '各値が正しい場合' do

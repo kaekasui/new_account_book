@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # TODO: label_nameとして各classに移動させる
   def type_label_name
     case type
     when 'EmailUser' then 'label-warning'
@@ -61,14 +62,6 @@ class User < ActiveRecord::Base
 
   def last_login_time
     I18n.l(last_sign_in_at) if last_sign_in_at
-  end
-
-  def _name
-    if type == 'EmailUser'
-      nickname || email
-    else
-      nickname || auth.try(:name) || auth.try(:screen_name)
-    end
   end
 
   def self.find_or_create(auth)
