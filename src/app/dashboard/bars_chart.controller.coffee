@@ -58,7 +58,6 @@ BarsChartController = (DashboardFactory, D3Factory, IndexService, $scope) ->
     tip = d3.tip()
       .attr('class', 'd3-tip')
       .offset([-10, 0])
-    #  .html 'OOOOOO'
 
     d3.select('svg').remove()
     svg = d3.select('.daily-graph')
@@ -76,33 +75,18 @@ BarsChartController = (DashboardFactory, D3Factory, IndexService, $scope) ->
       .attr({ class: 'axis', transform: 'translate(0, ' + h + ')' }).call(xAxis)
       .append('text')
       .attr({ x: w + 17, y: 17 })
-      .text('(日)')
+      .text('(日)') # TODO: 英語ではday
 
     svg.append('g').attr({ class: 'axis', transform: 'translate(' + margin.left + ', 0)'}).call(yAxis)
 
     if vm.income
-     # svg.selectAll('.plus-bar')
-     #   .data(vm.dataSet).enter()
-     #   .append('text')
-     #   .attr(
-     #     x: (d) -> xScale(new Date(d.date)) - 13
-     #     y: h
-     #     dy: '30em'
-     #   )
-     #   .text('aaa')
-
-      #tip = d3.tip()
-      #  .attr('class', 'd3-tip')
-      #  .offset([-10, 0])
-      #  .html 'OOOOOO'
-
       svg.selectAll('.plus-bar')
         .data(vm.dataSet).enter()
         .append('rect')
         .attr(
           class: 'plus-bar'
           x: (d) -> xScale(new Date(d.date)) - 13
-          y: 0
+          y: h
           width: 10
           height: 0
           fill: '#5e7535'
