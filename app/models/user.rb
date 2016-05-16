@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 
   validates :nickname,
             length: { maximum: Settings.user.nickname.maximum_length }
+  # TODO: ユーザーのランクによって制限数を変更する
   validates :categories,
             length: { maximum: Settings.user.categories.maximum_length,
                       too_long: I18n.t('errors.messages.too_many') },
@@ -95,7 +96,25 @@ class User < ActiveRecord::Base
     end
   end
 
+  def get_maximum_values
+    if admin?
+      user = self.becomes(AdminUser)
+      user.maximum_values
+    else
+      maximum_values
+    end
+  end
+
   private
+
+  def maximum_values
+    {
+      category: Settings.user.categories.maximum_length,
+      breakdown: Settings.category.breakdowns.maximum_length,
+      place: Settings.user.places.maximum_length,
+      record: Settings.user.records.maximum_length
+    }
+  end
 
   def add_new_email_token
     add_token(
