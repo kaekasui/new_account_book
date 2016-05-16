@@ -14,3 +14,4 @@ if @user.try(:auth)
   end
 end
 
+json.max_values @user.each_maximum_values

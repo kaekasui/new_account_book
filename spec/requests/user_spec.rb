@@ -10,6 +10,28 @@ describe 'GET /user', autodoc: true do
     end
   end
 
+  context '管理者ユーザーがログインしている場合' do
+    let!(:user) { create(:email_user, :registered, :admin_user, email: email) }
+
+    it '200とユーザー情報を返すこと' do
+      get '/user', '', login_headers(user)
+      expect(response.status).to eq 200
+
+      json = {
+        id: user.id,
+        type: user.type,
+        email: user.email,
+        new_email: user.new_email,
+        nickname: user.nickname,
+        user_name: user._name,
+        currency: user.currency,
+        admin: user.admin,
+        max_values: user.each_maximum_values
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+
   context 'メールアドレスのユーザーがログインしている場合' do
     let!(:user) { create(:email_user, :registered, email: email) }
 
@@ -25,7 +47,8 @@ describe 'GET /user', autodoc: true do
         nickname: user.nickname,
         user_name: user._name,
         currency: user.currency,
-        admin: user.admin
+        admin: user.admin,
+        max_values: user.each_maximum_values
       }
       expect(response.body).to be_json_as(json)
     end
@@ -50,7 +73,8 @@ describe 'GET /user', autodoc: true do
         auth: {
           name: user.auth.name,
           screen_name: user.auth.screen_name
-        }
+        },
+        max_values: user.each_maximum_values
       }
       expect(response.body).to be_json_as(json)
     end
@@ -75,7 +99,8 @@ describe 'GET /user', autodoc: true do
         auth: {
           name: user.auth.name,
           screen_name: user.auth.screen_name
-        }
+        },
+        max_values: user.each_maximum_values
       }
       expect(response.body).to be_json_as(json)
     end

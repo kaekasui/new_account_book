@@ -98,8 +98,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  private
-
   def maximum_values
     {
       category: Settings.user.categories.maximum_length,
@@ -108,6 +106,8 @@ class User < ActiveRecord::Base
       record: Settings.user.records.maximum_length
     }
   end
+
+  private
 
   def add_new_email_token
     add_token(

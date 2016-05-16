@@ -77,13 +77,19 @@ test:
   <<: *defaults
   category:
     breakdowns:
+      admin_maximum_length: 5
       maximum_length: 3
     name:
       maximum_length: 100
   user:
     categories:
+      admin_maximum_length: 5
       maximum_length: 3
     places:
+      admin_maximum_length: 5
+      maximum_length: 3
+    records:
+      admin_maximum_length: 5
       maximum_length: 3
     nickname:
       maximum_length: 100
