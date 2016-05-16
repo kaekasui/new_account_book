@@ -33,8 +33,7 @@
     "angulartics-google-analytics": "~0.1.4",
     "angulike": "~1.2.0",
     "angular-i18n": "^1.5.5",
-    "d3": "^3.5.17",
-    "d3-tip": "^0.6.7"
+    "d3": "^3.5.17"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.2"
@@ -56,8 +55,7 @@
   },
   "resolutions": {
     "jquery": "~2.1.4",
-    "angular": "~1.4.2",
-    "d3-tip": "^0.6.7"
+    "angular": "~1.4.2"
   },
   "ignore": [
     "**/.*",
