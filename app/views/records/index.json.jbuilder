@@ -16,6 +16,7 @@ json.records do
 end
 
 json.total_count @total_count
+json.max_record_count @user.each_maximum_values[:record]
 
 json.user do
   json.currency @user.currency

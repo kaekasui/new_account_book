@@ -52,6 +52,7 @@ describe 'GET /records', autodoc: true do
             }
           ],
           total_count: 2,
+          max_record_count: Settings.user.records.maximum_length,
           user: {
             currency: user.currency
           }
@@ -81,6 +82,7 @@ describe 'GET /records', autodoc: true do
             }
           ],
           total_count: 1,
+          max_record_count: Settings.user.records.maximum_length,
           user: {
             currency: user.currency
           }
@@ -130,6 +132,7 @@ describe 'GET /records', autodoc: true do
             }
           ],
           total_count: 3,
+          max_record_count: Settings.user.records.maximum_length,
           user: {
             currency: user.currency
           }
