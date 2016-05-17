@@ -40,6 +40,14 @@ ProfileController = (IndexFactory, UserFactory, IndexService, $modal) ->
     )
     return
 
+  vm.modalNewPassword = () ->
+    modalInstance = $modal.open(
+      templateUrl: 'app/user/modals/new_password.html'
+      controller: 'NewPasswordController'
+      controllerAs: 'new_password'
+    )
+    return
+
   return
 
 angular.module 'newAccountBook'

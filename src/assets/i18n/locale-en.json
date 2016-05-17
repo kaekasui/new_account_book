@@ -40,6 +40,7 @@
     "AUTH_EMAIL": "Send Email",
     "CREATE": "Create",
     "CLEAR": "Clear",
+    "EDIT_PASSWORD": "Edit Password",
     "FACEBOOK_LOGIN": "Login via Facebook",
     "LOGIN": "Log in",
     "SIGN_UP": "Sign up",

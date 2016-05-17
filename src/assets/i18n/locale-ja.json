@@ -41,6 +41,7 @@
     "AUTH_EMAIL": "メール認証",
     "CREATE": "登録",
     "CLEAR": "クリア",
+    "EDIT_PASSWORD": "パスワードの変更",
     "FACEBOOK_LOGIN": "Facebookでログイン",
     "LOGIN": "ログインする",
     "SIGN_UP": "登録する",
