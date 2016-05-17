@@ -90,6 +90,9 @@
               ng-click='profile.updateNickname()'
               ng-show='profile.nickname_edit_field')
               span(translate='BUTTONS.UPDATE')
-      .btn.btn-info(ng-click='profile.modalNewPassword()' ng-show="profile.current_user.type == 'EmailUser'")
-        span {{ 'BUTTONS.EDIT_PASSWORD' | translate }}
-
+        // パスワード
+        .form-group(ng-show="profile.current_user.type == 'EmailUser'")
+          label.col-sm-2.control-label(for='password' translate='LABELS.PASSWORD')
+          .col-sm-10
+            .btn.btn-info(ng-click='profile.modalNewPassword()')
+              span {{ 'BUTTONS.EDIT' | translate }}
