@@ -90,6 +90,11 @@
               ng-click='profile.updateNickname()'
               ng-show='profile.nickname_edit_field')
               span(translate='BUTTONS.UPDATE')
+            button.btn.btn-default(
+              ng-click='profile.nickname_edit_field = false'
+              ng-show='profile.nickname_edit_field')
+              span(translate='BUTTONS.CANCEL')
+ 
         // パスワード
         .form-group(ng-show="profile.current_user.type == 'EmailUser'")
           label.col-sm-2.control-label(for='password' translate='LABELS.PASSWORD')
