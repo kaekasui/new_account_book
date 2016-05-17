@@ -37,7 +37,7 @@ defaults: &defaults
       maximum_length: 20
       admin_maximum_length: 99
     records:
-      maximum_length: 10
+      maximum_length: 200
       admin_maximum_length: 999
     nickname:
       maximum_length: 100
