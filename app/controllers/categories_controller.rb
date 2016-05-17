@@ -2,7 +2,8 @@ class CategoriesController < ApplicationController
   before_action :authenticate
 
   def index
-    @categories = current_user.categories.order(:position)
+    @user = current_user
+    @categories = @user.categories.order(:position)
   end
 
   def create

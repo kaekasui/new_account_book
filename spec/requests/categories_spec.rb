@@ -39,7 +39,8 @@ describe 'GET /categories', autodoc: true do
             places_count: 0,
             records_count: 0
           }
-        ]
+        ],
+        max_category_count: Settings.user.categories.maximum_length
       }
       expect(response.body).to be_json_as(json)
     end
