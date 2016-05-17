@@ -9,3 +9,5 @@ json.breakdowns do
     json.name breakdown.name
   end
 end
+
+json.max_breakdown_count @user.each_maximum_values[:breakdown]

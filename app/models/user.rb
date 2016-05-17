@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 
   validates :nickname,
             length: { maximum: Settings.user.nickname.maximum_length }
+  # TODO: ユーザーのランクによって制限数を変更する
   validates :categories,
             length: { maximum: Settings.user.categories.maximum_length,
                       too_long: I18n.t('errors.messages.too_many') },
@@ -42,6 +43,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # TODO: label_nameとして各classに移動させる
   def type_label_name
     case type
     when 'EmailUser' then 'label-warning'
@@ -60,14 +62,6 @@ class User < ActiveRecord::Base
 
   def last_login_time
     I18n.l(last_sign_in_at) if last_sign_in_at
-  end
-
-  def _name
-    if type == 'EmailUser'
-      nickname || email
-    else
-      nickname || auth.try(:name) || auth.try(:screen_name)
-    end
   end
 
   def self.find_or_create(auth)
@@ -93,6 +87,24 @@ class User < ActiveRecord::Base
       errors[:base] << I18n.t('errors.messages.users.invalid_token')
       false
     end
+  end
+
+  def each_maximum_values
+    if admin?
+      user = becomes(AdminUser)
+      user.maximum_values
+    else
+      maximum_values
+    end
+  end
+
+  def maximum_values
+    {
+      category: Settings.user.categories.maximum_length,
+      breakdown: Settings.category.breakdowns.maximum_length,
+      place: Settings.user.places.maximum_length,
+      record: Settings.user.records.maximum_length
+    }
   end
 
   private

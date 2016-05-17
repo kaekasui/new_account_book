@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :feedback do
     trait :login_user do
-      user
+      association :user, factory: :email_user
       email nil
     end
     email { Faker::Internet.email }

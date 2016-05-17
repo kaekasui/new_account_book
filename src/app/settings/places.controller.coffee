@@ -6,6 +6,7 @@ PlacesController = (SettingsFactory, $scope, IndexService, $modal, toastr, $tran
   IndexService.loading = true
   SettingsFactory.getPlaces().then((res) ->
     vm.places = res.places
+    vm.max_place_count = res.max_place_count
     IndexService.loading = false
   ).catch (res) ->
     IndexService.loading = false

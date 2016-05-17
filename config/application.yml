@@ -20,6 +20,7 @@ defaults: &defaults
   category:
     breakdowns:
       maximum_length: 20
+      admin_maximum_length: 99
     name:
       maximum_length: 100
   place:
@@ -31,8 +32,13 @@ defaults: &defaults
   user:
     categories:
       maximum_length: 20
+      admin_maximum_length: 99
     places:
-      maximum_length: 100
+      maximum_length: 20
+      admin_maximum_length: 99
+    records:
+      maximum_length: 200
+      admin_maximum_length: 999
     nickname:
       maximum_length: 100
     email:
@@ -71,13 +77,19 @@ test:
   <<: *defaults
   category:
     breakdowns:
+      admin_maximum_length: 5
       maximum_length: 3
     name:
       maximum_length: 100
   user:
     categories:
+      admin_maximum_length: 5
       maximum_length: 3
     places:
+      admin_maximum_length: 5
+      maximum_length: 3
+    records:
+      admin_maximum_length: 5
       maximum_length: 3
     nickname:
       maximum_length: 100

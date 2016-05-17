@@ -7,6 +7,7 @@ CategoriesController = (SettingsFactory, $modal, IndexService) ->
   IndexService.loading = true
   SettingsFactory.getCategories().then((res) ->
     vm.categories = res.categories
+    vm.max_category_count = res.max_category_count
     IndexService.loading = false
   ).catch (res) ->
     IndexService.loading = false

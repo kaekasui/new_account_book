@@ -8,3 +8,5 @@ json.categories do
     json.records_count category.records_count
   end
 end
+
+json.max_category_count @user.each_maximum_values[:category]
