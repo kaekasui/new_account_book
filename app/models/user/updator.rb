@@ -1,5 +1,6 @@
 class User::Updator
   include ActiveModel::Model
+  # TODO: ニックネームとメールアドレスを分離する
 
   attr_accessor :new_email
   validates :new_email, email_format: { allow_blank: true },
@@ -15,6 +16,12 @@ class User::Updator
     return false if invalid?
     return save_nickname if @nickname
     return save_new_email if @new_email
+    if @user.update(@update_params)
+      true
+    else
+      errors[:base] << @user.errors.full_messages.join(',')
+      false
+    end
   end
 
   def send_mail(origin)
