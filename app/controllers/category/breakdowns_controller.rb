@@ -3,6 +3,7 @@ class Category::BreakdownsController < ApplicationController
   before_action :set_category
 
   def index
+    @user = current_user
     @breakdowns = @category.breakdowns.order(:id)
   end
 
