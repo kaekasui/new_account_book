@@ -18,6 +18,22 @@ UserFactory = ($location, $q, $http, localStorageService, toastr, $translate, In
           return
       return defer.promise
 
+    patchPassword: (params) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.patch host + 'user/password', params, login_headers
+        .success((data) ->
+          defer.resolve data
+          toastr.success $translate.instant('MESSAGES.UPDATE_PASSWORD')
+          return
+        ).error (data) ->
+          defer.reject data
+          return
+      return defer.promise
+
     getMypage: (offset) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
