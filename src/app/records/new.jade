@@ -6,7 +6,7 @@
     .col-sm-6
       loading-directive
       // 表示設定のリンク
-      .text-right
+      p.text-right
         a(href='' translate='LINKS.DISPLAY_SETTING' ng-click='new_record.settings = !new_record.settings')
       .checkbox(ng-show='new_record.settings')
         p(translate='MESSAGES.DISPLAY_ITEMS')
@@ -23,6 +23,8 @@
           input(type='checkbox' ng-model='new_record.memo_field' ng-change='new_record.checkSetting()')
           span {{ 'COLUMNS.MEMO' | translate }}
       hr(ng-show='new_record.settings')
+      .alert.alert-danger(role='alert' ng-show='new_record.total_record_count >= new_record.user.max_record_count')
+        span {{ 'MESSAGES.MAX_LENGTH_RECORDS' | translate:{ count:new_record.total_record_count } }}
       // フォーム
       form.form-horizontal(novalidate=true name='newRecordForm' ng-submit='new_record.submit()')
         // 日付
@@ -140,7 +142,10 @@
         // ボタン
         .form-group
           .control-label.col-sm-2
-            button.btn.btn-success(type='submit' ng-disabled='(newRecordForm.$submitted && newRecordForm.$invalid) || new_record.sending' translate='BUTTONS.CREATE')
+            button.btn.btn-success(
+              type='submit'
+              ng-disabled='(newRecordForm.$submitted && newRecordForm.$invalid) || new_record.sending || new_record.total_record_count >= new_record.user.max_record_count'
+              translate='BUTTONS.CREATE')
     // 日付の登録一覧
     .col-sm-6
       .panel.panel-default(ng-show='new_record.day_records')

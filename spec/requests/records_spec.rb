@@ -218,12 +218,14 @@ describe 'GET /records/new', autodoc: true do
             places: []
           }
         ],
+        total_record_count: 0,
         user: {
           breakdown_field: true,
           place_field: true,
           tag_field: true,
           memo_field: true,
-          currency: user.currency
+          currency: user.currency,
+          max_record_count: Settings.user.records.maximum_length
         }
       }
       expect(response.body).to be_json_as(json)

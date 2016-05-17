@@ -149,6 +149,7 @@
     "UPDATE_NOTICE": "Updated the notice",
     "LOGIN": "Logged in",
     "LOGOUT": "Logged out",
+    "MAX_LENGTH_RECORDS": "Can't regist new record because your Account has the number of at most {{ count }}",
     "SEND_MAIL": "Send a Mail",
     "SEND_MESSAGE": "Send a Message",
     "SEND_MESSAGE_TO_ADMIN": "Send your message",

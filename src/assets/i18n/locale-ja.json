@@ -150,6 +150,7 @@
     "UPDATE_NOTICE": "お知らせを編集しました",
     "LOGIN": "ログインしました",
     "LOGOUT": "ログアウトしました",
+    "MAX_LENGTH_RECORDS": "データの入力は {{ count }} 件までです。",
     "SEND_MAIL": "メールを送信しました",
     "SEND_MESSAGE": "メッセージを送信しました",
     "SEND_MESSAGE_TO_ADMIN": "管理者にメッセージを送信しました",

@@ -18,6 +18,7 @@ json.categories do
     end
   end
 end
+json.total_record_count @total_count
 
 json.user do
   json.breakdown_field @user.breakdown_field
@@ -25,4 +26,5 @@ json.user do
   json.tag_field @user.tag_field
   json.memo_field @user.memo_field
   json.currency @user.currency
+  json.max_record_count @user.each_maximum_values[:record]
 end
