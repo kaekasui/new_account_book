@@ -9,6 +9,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
   IndexService.loading = true
   RecordsFactory.getNewRecord().then((res) ->
     vm.categories = res.categories
+    vm.total_record_count = res.total_record_count
     vm.breakdown_field = res.user.breakdown_field
     vm.place_field = res.user.place_field
     vm.tag_field = res.user.tag_field
