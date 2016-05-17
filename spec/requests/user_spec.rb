@@ -286,6 +286,7 @@ describe 'PATCH /user', autodoc: true do
   end
 end
 
+# パスワードの更新
 describe 'PATCH /user/password', autodoc: true do
   let!(:new_password) { 'new_password' }
   let!(:new_password_confirmation) { 'new_password' }
@@ -378,6 +379,7 @@ describe 'PATCH /user/password', autodoc: true do
   end
 end
 
+# 基本設定の更新
 describe 'PATCH /user/setting', autodoc: true do
   context 'ログインしていない場合' do
     it '401が返ってくること' do
@@ -417,6 +419,7 @@ describe 'PATCH /user/setting', autodoc: true do
   end
 end
 
+# メールの送信
 describe 'POST /user/send_mail', autodoc: true do
   context 'ログインしていない場合' do
     it '401が返ってくること' do

@@ -28,7 +28,6 @@ class UsersController < ApplicationController
     updator = User::PasswordUpdator
               .new(user: current_user, params: password_params)
     if updator.valid_parameter? && updator.authorize && updator.save
-      # updator.save ? head(:ok) : render_error(updator)
       head 200
     else
       render_error updator

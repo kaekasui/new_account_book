@@ -33,8 +33,4 @@ class User::PasswordUpdator < User::Updator
       false
     end
   end
-
-  def save
-    super
-  end
 end
