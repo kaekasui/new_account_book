@@ -4,6 +4,7 @@ BreakdownsController = (SettingsFactory, category_id, $modalInstance, $modal) ->
 
   SettingsFactory.getBreakdowns(category_id).then (res) ->
     vm.breakdowns = res.breakdowns
+    vm.max_breakdown_count = res.max_breakdown_count
 
   vm.createBreakdown = (e) ->
     if e == undefined || e.which == 13
