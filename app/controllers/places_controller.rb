@@ -3,7 +3,8 @@ class PlacesController < ApplicationController
   before_action :set_place, only: [:update, :destroy]
 
   def index
-    @places = current_user.places.includes(:categories).order(created_at: :desc)
+    @user = current_user
+    @places = @user.places.includes(:categories).order(created_at: :desc)
   end
 
   def create

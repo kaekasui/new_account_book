@@ -37,7 +37,8 @@ describe 'GET /places', autodoc: true do
               barance_of_payments: category.barance_of_payments
             ]
           }
-        ]
+        ],
+        max_place_count: Settings.user.places.maximum_length
       }
       expect(response.body).to be_json_as(json)
     end
