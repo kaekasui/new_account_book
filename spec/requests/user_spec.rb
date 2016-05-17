@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# プロフィール画面
 describe 'GET /user', autodoc: true do
   let!(:email) { 'login@example.com' }
 
@@ -107,6 +108,7 @@ describe 'GET /user', autodoc: true do
   end
 end
 
+# 基本設定画面
 describe 'GET /user/settings', autodoc: true do
   let!(:email) { 'login@example.com' }
 
@@ -138,6 +140,7 @@ describe 'GET /user/settings', autodoc: true do
   end
 end
 
+# ユーザー情報の更新
 describe 'PATCH /user', autodoc: true do
   context 'ログインしていない場合' do
     it '401が返ってくること' do
@@ -278,6 +281,98 @@ describe 'PATCH /user', autodoc: true do
           error_messages: ['メールアドレスを入力してください']
         }
         expect(response.body).to be_json_as(json)
+      end
+    end
+  end
+end
+
+describe 'PATCH /user/password', autodoc: true do
+  let!(:new_password) { 'new_password' }
+  let!(:new_password_confirmation) { 'new_password' }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      patch '/user/password'
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'Twitterユーザーでログインしている場合' do
+    let!(:user) { create(:twitter_user, :registered) }
+    let!(:params) do
+      { password: new_password, password_confirmation: new_password }
+    end
+
+    it '422が返ってくること' do
+      patch '/user/password', params, login_headers(user)
+      expect(response.status).to eq 422
+
+      json = {
+        error_messages: ['パスワードを設定できるアカウントでログインしてください']
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+
+  context 'Emailユーザーでログインしている場合' do
+    let!(:user) { create(:email_user, :registered) }
+    let!(:current_password) { user.password }
+    let!(:params) do
+      { current_password: current_password,
+        password: new_password,
+        password_confirmation: new_password_confirmation }
+    end
+
+    context '現在のパスワードが空の場合' do
+      let(:current_password) { '' }
+
+      it '422が返ってくること' do
+        patch '/user/password', params, login_headers(user)
+        expect(response.status).to eq 422
+
+        json = {
+          error_messages: ['現在のパスワードを入力してください']
+        }
+        expect(response.body).to be_json_as(json)
+      end
+    end
+
+    context '現在のパスワードが間違っていた場合' do
+      let(:current_password) { user.password + 'dummy' }
+
+      it '422が返ってくること' do
+        patch '/user/password', params, login_headers(user)
+        expect(response.status).to eq 422
+
+        json = {
+          error_messages: ['現在のパスワードは不正な値です']
+        }
+        expect(response.body).to be_json_as(json)
+      end
+    end
+
+    context 'パスワードが不一致の場合' do
+      let(:new_password_confirmation) { 'new_password_confirmation' }
+
+      it '422が返ってくること' do
+        patch '/user/password', params, login_headers(user)
+        expect(response.status).to eq 422
+
+        json = {
+          error_messages: ['パスワード（確認）とパスワードの入力が一致しません']
+        }
+        expect(response.body).to be_json_as(json)
+      end
+    end
+
+    context '正しい値でパスワードを設定していた場合' do
+      it '200が返り、更新されること' do
+        expect(user.authenticate(new_password)).to be_falsey
+        patch '/user/password', params, login_headers(user)
+        expect(response.status).to eq 200
+
+        user.reload
+        expect(user.authenticate(new_password)).to be_truthy
       end
     end
   end

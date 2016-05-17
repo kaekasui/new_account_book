@@ -7,9 +7,17 @@ ja:
         email: メールアドレス
       user/updator:
         new_email: 新しいメールアドレス
+      user/password_updator:
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: パスワード（確認）
     errors:
       models:
         user/updator:
           attributes:
             new_email:
               invalid_email_address: を正しい形式で入力してください
+        user/password_updator:
+          attributes:
+            password:
+              invalid_account: を設定できるアカウントでログインしてください

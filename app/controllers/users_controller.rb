@@ -23,6 +23,18 @@ class UsersController < ApplicationController
     end
   end
 
+  # PATCH /user/password
+  def password
+    updator = User::PasswordUpdator
+              .new(user: current_user, params: password_params)
+    if updator.valid_parameter? && updator.authorize && updator.save
+      # updator.save ? head(:ok) : render_error(updator)
+      head 200
+    else
+      render_error updator
+    end
+  end
+
   # PATCH /user/setting
   def setting
     if current_user.update(setting_params)
@@ -60,6 +72,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(:new_email, :nickname)
+  end
+
+  def password_params
+    params.permit(:current_password, :password, :password_confirmation)
   end
 
   def setting_params
