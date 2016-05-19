@@ -28,6 +28,7 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance,
   IndexService.modal_loading = true
   RecordsFactory.getEditRecord(record_id).then((res) ->
     vm.categories = res.categories
+    vm.user = res.user # TODO: 以下の_fieldを指定しないようにする
     vm.breakdown_field = res.user.breakdown_field
     vm.place_field = res.user.place_field
     vm.memo_field = res.user.memo_field

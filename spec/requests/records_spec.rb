@@ -340,7 +340,8 @@ describe 'GET /records/:id/edit', autodoc: true do
           breakdown_field: true,
           place_field: true,
           tag_field: true,
-          memo_field: true
+          memo_field: true,
+          currency: user.currency
         },
         record: {
           id: record.id,

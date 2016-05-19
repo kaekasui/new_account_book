@@ -25,7 +25,7 @@
               label.label.label-info {{ record.breakdown_name }}
             td
               label.label.label-primary {{ record.place_name }}
-            td {{ mypage.user.currency }} {{ record.charge }}
+            td {{ mypage.user.currency }} {{ record.charge | currency:'':0 }}
             td
               a(href='' ng-click='mypage.showRecord($index)')
                 span.glyphicon.glyphicon-info-sign.green(tooltip="{{'TOOLTIPS.DETAIL' | translate}}")
