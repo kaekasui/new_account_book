@@ -29,6 +29,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
     params =
       date: String(target_date)
     RecordsFactory.getRecords(params).then((res) ->
+      vm.records_published_at = target_date
       vm.day_records = res.records
       IndexService.records_loading = false
     ).catch (res) ->
