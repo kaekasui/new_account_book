@@ -402,6 +402,20 @@ describe 'PATCH /records/:id', autodoc: true do
       expect(response.body).to be_json_as(json)
     end
   end
+
+  context '金額が負の値の場合' do
+    let(:charge) { '-20' }
+
+    it '422とエラーメッセージが返ってくること' do
+      patch "/records/#{record.id}", params, login_headers(user)
+
+      expect(response.status).to eq 422
+      json = {
+        error_messages: ['金額は0以上の値にしてください']
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
 end
 
 describe 'DELETE /records/:id', autodoc: true do

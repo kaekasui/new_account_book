@@ -6,7 +6,7 @@ form.form-horizontal(novalidate=true name='editRecordForm' ng-submit='edit_recor
       span {{ 'BUTTONS.EDIT' | translate }}
     button.btn.btn-success(translate='BUTTONS.UPDATE'
                            ng-click='edit_record.updateRecord()'
-                           ng-disabled='editRecordForm.$submitted && editRecordForm.$invalid'
+                           ng-disabled='editRecordForm.$invalid'
                            ng-show='edit_record.editing')
     a.btn.btn-default.pull-right(ng-click='edit_record.cancel()')
       span.glyphicon.glyphicon-remove#left-icon
@@ -107,17 +107,17 @@ form.form-horizontal(novalidate=true name='editRecordForm' ng-submit='edit_recor
       .col-sm-10(ng-show='edit_record.editing')
         .input-group
           span.input-group-addon {{ edit_record.user.currency }}
-          input.form-control(type='number' name='charge' ng-model='edit_record.charge' required='true' max=9999999 min=0)
-          span.errors(ng-messages='newRecordForm.charge.$error' ng-show='newRecordForm.$submitted && newRecordForm.charge.$error')
-            div(ng-message='required')
-              span.glyphicon.glyphicon-alert#left-icon
-              span(translate='ERRORS.REQUIRED.CHARGE')
-            div(ng-message='max')
-              span.glyphicon.glyphicon-alert#left-icon
-              span(translate='ERRORS.MAX.CHARGE')
-            div(ng-message='min')
-              span.glyphicon.glyphicon-alert#left-icon
-              span(translate='ERRORS.MIN.CHARGE')
+          input.form-control(type='number' name='charge' ng-model='edit_record.charge' required=true max=9999999 min=0)
+        span.errors(ng-messages='editRecordForm.charge.$error' ng-show='editRecordForm.$submitted && editRecordForm.charge.$error')
+          div(ng-message='required')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.REQUIRED.CHARGE')
+          div(ng-message='max')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.MAX.CHARGE')
+          div(ng-message='min')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.MIN.CHARGE')
     // 備考
     .form-group(ng-show='edit_record.form_group_memo')
       label.control-label.col-sm-2(for='memo')
@@ -126,7 +126,7 @@ form.form-horizontal(novalidate=true name='editRecordForm' ng-submit='edit_recor
         span {{ edit_record.record.memo }}
       .col-sm-10(ng-show='edit_record.editing')
         textarea.form-control(name='memo' ng-model='edit_record.memo' ng-maxlength='10000')
-        span.errors(ng-messages='newRecordForm.memo.$error' ng-show='newRecordForm.$submitted && newRecordForm.memo.$error')
+        span.errors(ng-messages='editRecordForm.memo.$error' ng-show='editRecordForm.$submitted && editRecordForm.memo.$error')
           div(ng-message='maxlength')
             span.glyphicon.glyphicon-alert#left-icon
             span(translate='ERRORS.MAXLENGTH.MEMO')
