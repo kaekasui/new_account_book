@@ -169,7 +169,7 @@
                 label.label.label-info {{ record.breakdown_name }}
               td
                 label.label.label-primary {{ record.place_name }}
-              td {{ new_record.user.currency }} {{ record.charge }}
+              td {{ new_record.user.currency }} {{ record.charge | currency:'':0 }}
               // TODO: $に対応する
               td
                 a(href='' ng-click='new_record.showRecord($index)')
