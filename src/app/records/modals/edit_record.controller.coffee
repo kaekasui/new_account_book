@@ -56,8 +56,10 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance,
       charge: vm.charge
       memo: vm.memo
       tags: vm.tags
-    RecordsFactory.patchRecord(record_id, params).then (res) ->
+    RecordsFactory.patchRecord(record_id, params).then((res) ->
       $modalInstance.close()
+    ).catch (res) ->
+      vm.errors = res.error_messages
 
   vm.selectCategory = () ->
     vm.categories.forEach (item, i) ->
