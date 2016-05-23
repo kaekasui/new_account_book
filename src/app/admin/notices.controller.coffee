@@ -25,8 +25,8 @@ NoticesController = (AdminFactory, $modal, $translate, toastr) ->
 
   vm.newNotice = () ->
     modalInstance = $modal.open(
-      templateUrl: 'new-notice'
-      controller: 'AdminNoticeController'
+      templateUrl: 'app/admin/modals/new_notice.html'
+      controller: 'NewNoticeController'
       controllerAs: 'new_notice'
       backdrop: 'static'
     )
@@ -58,8 +58,8 @@ NoticesController = (AdminFactory, $modal, $translate, toastr) ->
   vm.showNotice = (index) ->
     notice = vm.notices[index]
     modalInstance = $modal.open(
-      templateUrl: 'notice'
-      controller: 'AdminShowNoticeController'
+      templateUrl: 'app/admin/modals/notice.html'
+      controller: 'AdminNoticeController'
       controllerAs: 'notice'
       resolve: { notice: notice },
       backdrop: 'static'
@@ -74,53 +74,7 @@ NoticesController = (AdminFactory, $modal, $translate, toastr) ->
           total_array.push(i)
         vm.offset_numbers = total_array.filter (x) ->
           return x % 20 == 0
-    return
-
-  return
-
-AdminNoticeController = ($modalInstance, AdminFactory) ->
-  'ngInject'
-  vm = this
-  vm.date_picker_open = true
-  vm.post_at = new Date()
-
-  vm.cancel = () ->
-    $modalInstance.dismiss()
-
-  vm.submit = () ->
-    params =
-      post_at: vm.post_at
-      title: vm.title
-      content: vm.content
-    AdminFactory.postNotice(params).then (res) ->
-      $modalInstance.close()
-
-  return
-
-AdminShowNoticeController = ($modalInstance, AdminFactory, notice) ->
-  'ngInject'
-  vm = this
-  vm.notice = notice
-  vm.edit_field = false
-
-  vm.post_at = new Date(notice.post_at)
-  vm.title = notice.title
-  vm.content = notice.content
-
-  vm.cancel = () ->
-    $modalInstance.dismiss()
-
-  vm.submit = () ->
-    params =
-      post_at: vm.post_at
-      title: vm.title
-      content: vm.content
-    AdminFactory.patchNotice(vm.notice.id, params).then (res) ->
-      $modalInstance.close()
-
   return
 
 angular.module 'newAccountBook'
-  .controller('AdminNoticeController', AdminNoticeController)
-  .controller('AdminShowNoticeController', AdminShowNoticeController)
   .controller('NoticesController', NoticesController)
