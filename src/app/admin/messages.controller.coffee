@@ -80,19 +80,24 @@ AdminShowMessageController = ($modalInstance, AdminFactory, message, IndexServic
   vm.submit = () ->
     params =
       content: vm.content
-    AdminFactory.patchMessage(message.id, params).then ->
+    AdminFactory.patchMessage(message.id, params).then((res) ->
       vm.message.content = vm.content
       vm.edit_field = false
+    ).catch (res) ->
 
   return
 
-ConfirmSendMailController = (message_id, AdminFactory, $modalInstance) ->
+ConfirmSendMailController = (message_id, AdminFactory, $modalInstance, IndexService) ->
   'ngInject'
   vm = this
 
-  vm.ok = () ->
-    AdminFactory.postMessageSendMail(message_id).then ->
+  vm.submit = () ->
+    IndexService.sending = true
+    AdminFactory.postMessageSendMail(message_id).then((res) ->
       $modalInstance.close()
+      IndexService.sending = false
+    ).catch (res) ->
+      IndexService.sending = false
 
   vm.cancel = () ->
     $modalInstance.dismiss()

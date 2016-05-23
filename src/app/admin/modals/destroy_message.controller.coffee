@@ -1,10 +1,12 @@
-DestroyMessageController = (message_id, AdminFactory, $modalInstance) ->
+DestroyMessageController = (message_id, AdminFactory, $modalInstance, IndexService) ->
   'ngInject'
   vm = this
 
-  vm.ok = () ->
+  vm.submit = () ->
+    IndexService.sending = true
     AdminFactory.deleteMessage(message_id).then ->
       $modalInstance.close()
+      IndexService.sending = false
 
   vm.cancel = () ->
     $modalInstance.dismiss()

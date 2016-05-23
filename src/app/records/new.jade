@@ -141,12 +141,10 @@
                 span.glyphicon.glyphicon-alert#left-icon
                 span(translate='ERRORS.MAXLENGTH.MEMO')
         // ボタン
-        .form-group
+        .form-group(ng-hide='new_record.total_record_count >= new_record.user.max_record_count')
           .control-label.col-sm-2
-            button.btn.btn-success(
-              type='submit'
-              ng-disabled='(newRecordForm.$submitted && newRecordForm.$invalid) || new_record.sending || new_record.total_record_count >= new_record.user.max_record_count'
-              translate='BUTTONS.CREATE')
+            submit-button-directive(form='newRecordForm')
+              span {{ 'BUTTONS.CREATE' | translate }}
     // 日付の登録一覧
     .col-sm-6
       .panel.panel-default(ng-show='new_record.day_records')
