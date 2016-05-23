@@ -12,8 +12,23 @@ describe 'POST /session?email=email&password=password', autodoc: true do
   context 'ユーザーの本登録が完了している場合' do
     it '200が返ってくること' do
       post '/session', params
-
       expect(response.status).to eq 200
+
+      json = {
+        access_token: user.find_token_by_name(:access).token,
+        user: {
+          id: user.id,
+          type: user.type,
+          email: user.email,
+          new_email: user.new_email,
+          nickname: user.nickname,
+          user_name: user._name,
+          currency: user.currency,
+          admin: user.admin,
+          max_values: user.each_maximum_values
+        }
+      }
+      expect(response.body).to be_json_as(json)
     end
   end
 

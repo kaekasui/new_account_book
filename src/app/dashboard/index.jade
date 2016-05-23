@@ -6,8 +6,8 @@ loading-directive
       span.glyphicon.glyphicon-chevron-left
     span.glyphicon.glyphicon-blackboard.green#left-icon
     span.green
-      {{ dashboard.target_year }} {{ 'TITLES.YEAR' | translate }}
-      {{ dashboard.target_month + 1 }} {{ 'GRAPH.MONTHLY_PAYMENTS' | translate }}
+      | {{ dashboard.target_year }} {{ 'TITLES.YEAR' | translate }}
+      | {{ dashboard.target_month + 1 }} {{ 'GRAPH.MONTHLY_PAYMENTS' | translate }}
     .btn.btn-info.btn-xs.pull-right(ng-click='dashboard.getNextMonthData()' ng-disabled='dashboard.today <= dashboard.new_date')
       span.glyphicon.glyphicon-chevron-right
 

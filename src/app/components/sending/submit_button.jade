@@ -1,0 +1,6 @@
+.submit-button
+  button.btn.btn-success(
+    type='submit'
+    ng-disabled='btn.form.$invalid || btn.sending'
+    ng-transclude)
+  span#loader(ng-show='btn.sending')

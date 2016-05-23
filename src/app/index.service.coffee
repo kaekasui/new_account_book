@@ -6,6 +6,7 @@ IndexService = () ->
   vm.loading = false
   vm.modal_loading = false
   vm.records_loading = false
+  vm.sending = false
 
   return
 
@@ -14,8 +15,6 @@ AuthInterceptor = ($q, $location) ->
   vm = this
 
   vm.responseError = (res) ->
-    if res.status == 401
-      $location.path '/errors/401'
     if res.status == 404
       $location.path '/errors/404'
     if res.status == 403

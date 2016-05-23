@@ -7,10 +7,7 @@
       span.glyphicon.glyphicon-heart#left-icon
       span(translate='TITLES.SIGN_UP')
     .panel-body#with-background
-      .alert.alert-danger(role='alert' ng-show='sign_up.errors')
-        button.close(data-dismiss='alert' type='button' ng-click='sign_up.clearErrors()') ×
-        ul(ng-repeat='error in sign_up.errors')
-          li {{error}}
+      error-messages-directive(errors='sign_up.errors')
       form(novalidate=true name='signUpForm' ng-submit='sign_up.submit()')
         .form-group
           label(for='email')
@@ -57,7 +54,7 @@
             div(ng-message='minlength')
               span.glyphicon.glyphicon-alert
               span(translate='ERRORS.MINLENGTH.PASSWORD')
-        button.btn.btn-success(type='submit' ng-disabled='signUpForm.$submitted && signUpForm.$invalid || sign_up.sending')
+        submit-button-directive(form='signUpForm')
           span(translate='BUTTONS.SIGN_UP')
       hr
       p

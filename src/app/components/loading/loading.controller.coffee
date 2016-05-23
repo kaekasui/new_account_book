@@ -29,16 +29,5 @@ LoadingController = (IndexService, $scope) ->
 
   return
 
-loadingDirective = () ->
-  directive =
-    restrict: 'E'
-    scope:
-      target: '@'
-    templateUrl: 'app/components/loading.html'
-    controller: 'LoadingController'
-    controllerAs: 'loading'
-    bindToController: true
-
 angular.module 'newAccountBook'
   .controller('LoadingController', LoadingController)
-  .directive('loadingDirective', loadingDirective)
