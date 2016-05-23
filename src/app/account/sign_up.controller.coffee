@@ -14,10 +14,10 @@ SignUpController = (AccountFactory, IndexService) ->
     AccountFactory.postEmailUserRegistration(params).then((res) ->
       IndexService.sending = false
     ).catch (res) ->
+      IndexService.sending = false
       vm.errors = res.error_messages
       vm.password = ''
       vm.password_confirmation = ''
-      IndexService.sending = false
 
   return
 

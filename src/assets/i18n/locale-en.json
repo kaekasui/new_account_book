@@ -145,6 +145,7 @@
     "CREATE_NOTICE": "Created a notice",
     "CREATE_RECORD": "Created a record",
     "DISPLAY_ITEMS": "Check your checkboxes if you want to display them",
+    "CONNECTION_REFUSED": "Connection to server failed",
     "CONFIRM_TO_SEND_MAIL": "Do You Send a Mail?",
     "UPDATE_EMAIL": "Updated the email",
     "UPDATE_NOTICE": "Updated the notice",

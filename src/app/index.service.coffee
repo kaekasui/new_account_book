@@ -19,6 +19,8 @@ AuthInterceptor = ($q, $location) ->
       $location.path '/errors/404'
     if res.status == 403
       $location.path '/errors/403'
+    if res.status == -1
+      $location.path '/errors/503'
     $q.reject(res)
 
   return

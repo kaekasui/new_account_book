@@ -10,8 +10,8 @@ ResendEmailController = (AccountFactory, $translate, IndexService) ->
     AccountFactory.patchResendEmail(params).then((res) ->
       IndexService.sending = false
     ).catch (res) ->
-      vm.errors = res.error_messages
       IndexService.sending = false
+      vm.errors = res.error_messages
 
   return
 
