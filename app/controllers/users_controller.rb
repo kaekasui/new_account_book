@@ -24,7 +24,6 @@ class UsersController < ApplicationController
   end
 
   # PATCH /user/password
-  # TODO: /email_user/passwords/があるので統一する
   def password
     updator = User::PasswordUpdator
               .new(user: current_user, params: password_params)

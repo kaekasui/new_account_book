@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     get :authorize_email
     get :settings
     patch :setting
-    patch :password #TODO: 削除する
+    patch :password
     post :send_mail, on: :collection
   end
   resource :feedback, only: %i(create)

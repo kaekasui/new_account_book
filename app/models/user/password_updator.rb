@@ -27,10 +27,9 @@ class User::PasswordUpdator < User::Updator
   def authorize
     if @user.authenticate(@current_password)
       @update_params = { password: @password }
-      true
     else
       errors.add(:current_password, :invalid)
-      false
     end
+    errors.blank?
   end
 end
