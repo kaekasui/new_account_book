@@ -10,6 +10,8 @@ ja:
         destroy_breakdowns: 登録した内訳を削除してから削除してください
         destroy_records: 登録した収支を削除してから削除してください
       too_many: の作成上限は%{count}件です
+      registrations:
+        not_found_email: メールアドレスがすでに本登録されているか、登録されていないメールアドレスです
   labels:
     administrator: 管理者
     status:

@@ -1,0 +1,4 @@
+.alert.alert-danger(role='alert' ng-show='msg.errors')
+  button.close(data-dismiss='alert' type='button' ng-click='msg.clearErrors()') ×
+  ul(ng-repeat='error in msg.errors')
+    li {{error}}

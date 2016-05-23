@@ -145,6 +145,7 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
   end
 end
 
+# メールの再送信
 describe 'POST /email_user/registrations/recreate?email=email', autodoc: true do
   let!(:email) { 'login@example.com' }
   let!(:user) { create(:email_user, :inactive, email: 'login@example.com') }
@@ -166,16 +167,26 @@ describe 'POST /email_user/registrations/recreate?email=email', autodoc: true do
       user.save
     end
 
-    it '404が返ってくること' do
+    it '422が返ってくること' do
       patch '/email_user/registrations/recreate', email: email
-      expect(response.status).to eq 404
+      expect(response.status).to eq 422
+
+      json = {
+        error_messages: ['メールアドレスがすでに本登録されているか、登録されていないメールアドレスです']
+      }
+      expect(response.body).to be_json_as(json)
     end
   end
 
   context 'メールアドレスが登録されていない場合' do
-    it '404が返ってくること' do
+    it '422が返ってくること' do
       patch '/email_user/registrations/recreate', email: "dummy#{email}"
-      expect(response.status).to eq 404
+      expect(response.status).to eq 422
+
+      json = {
+        error_messages: ['メールアドレスがすでに本登録されているか、登録されていないメールアドレスです']
+      }
+      expect(response.body).to be_json_as(json)
     end
   end
 
