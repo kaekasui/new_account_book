@@ -25,7 +25,7 @@
             div(ng-message='maxlength')
               span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.MAXLENGTH.EMAIL')
-        button.btn.btn-success(type='submit' ng-disabled='resendEmailForm.$invalid || resend_email.sending')
+        submit-button-directive(form='resendEmailForm')
           span(translate='BUTTONS.SEND')
       hr
       p

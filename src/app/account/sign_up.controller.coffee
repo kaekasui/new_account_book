@@ -4,9 +4,6 @@ SignUpController = (AccountFactory, IndexService) ->
   vm.password = ''
   vm.password_confirmation = ''
 
-  vm.clearErrors = () ->
-    vm.errors = ''
-
   vm.submit = () ->
     IndexService.sending = true
     params = {
@@ -18,11 +15,9 @@ SignUpController = (AccountFactory, IndexService) ->
       IndexService.sending = false
     ).catch (res) ->
       vm.errors = res.error_messages
-      vm.sending = false
       vm.password = ''
       vm.password_confirmation = ''
       IndexService.sending = false
-      return
 
   return
 
