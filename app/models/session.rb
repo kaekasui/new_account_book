@@ -1,6 +1,8 @@
 class Session
   include ActiveModel::Model
 
+  attr_accessor :user
+
   def initialize(params)
     @params = params
   end
@@ -19,14 +21,14 @@ class Session
     @token ||= user.add_access_token
   end
 
+  def user
+    @user ||= find_user
+  end
+
   private
 
   def authenticate
     user && user.active? && user.authenticate(@params[:password])
-  end
-
-  def user
-    @user ||= find_user
   end
 
   def find_user
