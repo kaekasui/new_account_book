@@ -48,6 +48,7 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance,
     vm.published_at = new Date()
 
   vm.submit = () ->
+    IndexService.sending = true
     params =
       published_at: String(vm.published_at)
       category_id: vm.category_id
@@ -58,8 +59,10 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance,
       tags: vm.tags
     RecordsFactory.patchRecord(record_id, params).then((res) ->
       $modalInstance.close()
+      IndexService.sending = false
     ).catch (res) ->
       vm.errors = res.error_messages
+      IndexService.sending = false
 
   vm.selectCategory = () ->
     vm.categories.forEach (item, i) ->
