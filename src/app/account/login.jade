@@ -42,7 +42,7 @@
             div(ng-message='minlength')
               span.glyphicon.glyphicon-alert#left-icon
               span(translate='ERRORS.MINLENGTH.PASSWORD')
-        button.btn.btn-success(type='submit' ng-disabled='loginForm.$submitted && loginForm.$invalid || login.sending')
+        submit-button-directive(form='loginForm')
           span(translate='BUTTONS.LOGIN')
       hr
       p

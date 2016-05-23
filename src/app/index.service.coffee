@@ -6,6 +6,7 @@ IndexService = () ->
   vm.loading = false
   vm.modal_loading = false
   vm.records_loading = false
+  vm.sending = false
 
   return
 

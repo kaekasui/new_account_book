@@ -9,7 +9,7 @@ LoginController = (AccountFactory, IndexFactory, IndexService, $location, toastr
     vm.errors = ''
 
   vm.submit = () ->
-    vm.sending = true
+    IndexService.sending = true
     params = {
       email: vm.email
       password: vm.password
@@ -22,7 +22,7 @@ LoginController = (AccountFactory, IndexFactory, IndexService, $location, toastr
         return
     ).catch (res) ->
       vm.errors = res.error_messages
-      vm.sending = false
+      IndexService.sending = false
       vm.password = ''
       return
 
