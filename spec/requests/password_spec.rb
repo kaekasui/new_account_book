@@ -36,7 +36,7 @@ describe 'POST /email_user/password/send_mail?email=email', autodoc: true do
       open_email(email)
       expect(current_email.subject).to eq '【PIG BOOK β】アカウント登録状況のご確認と登録のご案内'
       expect(current_email).to have_content email
-      expect(current_email).not_to have_content '/email_user/password/'
+      expect(current_email).not_to have_content '/email_user/password/edit?'
     end
   end
 
@@ -50,7 +50,7 @@ describe 'POST /email_user/password/send_mail?email=email', autodoc: true do
       open_email(email)
       expect(current_email.subject).to eq '【PIG BOOK β】パスワードリセットのご案内'
       expect(current_email).to have_content email
-      expect(current_email).to have_content '/email_user/password/'
+      expect(current_email).to have_content '/email_user/password/edit?'
     end
   end
 end
@@ -64,6 +64,8 @@ describe 'GET /email_user/password/edit?email=email&token=token',
   let!(:params) { { email: email, token: token } }
 
   context 'ユーザーが見つからない場合' do
+    let(:email) { '' }
+
     it '302が返ってくること' do
       get '/email_user/password/edit', params
       expect(response.status).to eq 302
@@ -100,6 +102,7 @@ describe 'GET /email_user/password/edit?email=email&token=token',
   end
 end
 
+# ログインなしでパスワードを変更
 describe 'PATCH /email_user/password
   ?password=password&\password_confirmation=password_confirmation\
   &token=token', autodoc: true do

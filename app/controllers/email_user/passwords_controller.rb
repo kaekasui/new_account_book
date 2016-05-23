@@ -37,6 +37,6 @@ class EmailUser::PasswordsController < ApplicationController
   end
 
   def password_reset_params
-    params.permit(:current_password, :password, :password_confirmation, :token)
+    params.permit(:password, :password_confirmation, :token)
   end
 end
