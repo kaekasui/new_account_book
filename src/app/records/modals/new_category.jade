@@ -1,8 +1,10 @@
 form.form-inline(novalidate=true name='newCategoryForm' ng-submit='new_category.createCategory()')
   .modal-header
-    button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='newCategoryForm.name.$dirty && newCategoryForm.$invalid')
+    submit-button-directive(form='newCategoryForm')
+      span {{ 'BUTTONS.ADD' | translate }}
     a.btn.btn-default.pull-right(translate='BUTTONS.CANCEL' ng-click='new_category.cancel()')
   .modal-body
+    error-messages-directive(errors='new_category.errors')
     // 収入・支出
     p
       label.radio-inline

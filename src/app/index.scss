@@ -331,3 +331,7 @@ body {
 .color-picker-wrapper .input-group { 
   width: 40%;
 }
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}

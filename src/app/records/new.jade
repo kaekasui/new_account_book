@@ -120,7 +120,7 @@
             .input-group
               span.input-group-addon {{ new_record.user.currency }}
               input.form-control(type='number' name='charge' ng-model='new_record.charge' required='true' max=9999999 min=0)
-            span.errors(ng-messages='newRecordForm.charge.$error' ng-show='newRecordForm.$submitted && newRecordForm.charge.$error')
+            span.errors(ng-messages='newRecordForm.charge.$error' ng-if='newRecordForm.$submitted && newRecordForm.charge.$error')
               div(ng-message='required')
                 span.glyphicon.glyphicon-alert#left-icon
                 span(translate='ERRORS.REQUIRED.CHARGE')

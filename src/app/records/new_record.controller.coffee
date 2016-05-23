@@ -53,13 +53,15 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       memo: vm.memo
       tags: vm.tags
     RecordsFactory.postRecord(params).then((res) ->
-      IndexService.sending = false
+      $scope.newRecordForm.$submitted = false
       vm.category_index_id = ''
       vm.breakdown_id = ''
       vm.place_id = ''
       vm.charge = ''
       vm.memo = ''
       vm.tags = ''
+      console.log $scope.newRecordForm.$submitted
+      IndexService.sending = false
       $scope.newRecordForm.$setPristine()
       getRecordsWithDate(vm.published_at)
     ).catch (res) ->
