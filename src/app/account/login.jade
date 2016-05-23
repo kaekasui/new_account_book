@@ -7,10 +7,7 @@
       span.glyphicon.glyphicon-leaf#left-icon
       span(translate='TITLES.LOGIN')
     .panel-body#with-background
-      .alert.alert-danger(role='alert' ng-show='login.errors')
-        button.close(data-dismiss='alert' type='button' ng-click='login.clearErrors()') ×
-        ul(ng-repeat='error in login.errors')
-          li {{error}}
+      error-messages-directive(errors='login.errors')
       form(novalidate=true name='loginForm' ng-submit='login.submit()')
         .form-group
           label(for='email')

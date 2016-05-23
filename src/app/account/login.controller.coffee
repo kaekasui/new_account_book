@@ -5,9 +5,6 @@ LoginController = (AccountFactory, IndexFactory, IndexService, $location, toastr
   vm.twitter_link = host + 'auth/twitter'
   vm.facebook_link = host + 'auth/facebook'
 
-  vm.clearErrors = () ->
-    vm.errors = ''
-
   vm.submit = () ->
     IndexService.sending = true
     params = {
@@ -18,12 +15,12 @@ LoginController = (AccountFactory, IndexFactory, IndexService, $location, toastr
       IndexFactory.getCurrentUser().then (res) ->
         IndexService.current_user = res
         $location.path '/mypage'
-        vm.sending = false
+        IndexService.sending = false
         return
     ).catch (res) ->
       vm.errors = res.error_messages
-      IndexService.sending = false
       vm.password = ''
+      IndexService.sending = false
       return
 
   return
