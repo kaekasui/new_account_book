@@ -130,49 +130,6 @@ describe 'PATCH /email_user/password
     end
   end
 
-  context '現在のパスワードが空の場合' do
-    let(:password) { '' }
-
-    it '422が返ってくること' do
-      pending 'プロフィール変更時に設定'
-      post '/email_user/password/send_mail?', email_param
-      expect(response.status).to eq 200
-
-      open_email(user.email)
-      current_email.body =~ %r{\/password\/edit\?token=(.*)}
-      token = Regexp.last_match(1)
-
-      get '/email_user/password/edit', token: token
-      expect(response.status).to eq 302
-
-      patch '/email_user/password', params.merge(token: token)
-      expect(response.status).to eq 422
-      json = {
-        error_messages: ['現在のパスワードを入力してください']
-      }
-      expect(response.body).to be_json_as(json)
-    end
-  end
-
-  context '現在のパスワードが一致しない場合' do
-    it '401が返ってくること' do
-      pending 'プロフィール変更時に設定'
-      post '/email_user/password/send_mail?', email_param
-      expect(response.status).to eq 200
-
-      open_email(user.email)
-      current_email.body =~ %r{\/password\/edit\?token=(.*)}
-      token = Regexp.last_match(1)
-
-      get '/email_user/password/edit', token: token
-      expect(response.status).to eq 302
-      params[:current_password] = 'invalid_password'
-
-      patch '/email_user/password', params.merge(token: token)
-      expect(response.status).to eq 401
-    end
-  end
-
   context '新しいパスワードが確認と一致しない場合' do
     it '422が返ってくること' do
       post '/email_user/password/send_mail?', email_param
