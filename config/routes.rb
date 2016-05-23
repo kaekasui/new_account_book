@@ -23,9 +23,10 @@ Rails.application.routes.draw do
       get :regist
       patch :recreate, on: :collection
     end
+    # TODO: resource :registrationに変更する
 
-    resources :passwords, only: %i(edit update) do
-      post :send_mail, on: :collection
+    resource :password, only: %i(edit update) do
+      post :send_mail
     end
   end
 

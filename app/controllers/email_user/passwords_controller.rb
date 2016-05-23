@@ -15,19 +15,16 @@ class EmailUser::PasswordsController < ApplicationController
   end
 
   def edit
-    raise ActiveRecord::RecordNotFound if @user != @token_user
     host = Rails.env.production? ? '' : 'http://localhost:3000'
     form_params = {
-      user_id: params[:id],
-      email: @user.email,
+      email: @token_user.try(:email),
       token: params[:token]
     }
     redirect_to "#{host}/#/edit_password?#{URI.encode_www_form(form_params)}"
   end
 
   def update
-    raise ActiveRecord::RecordNotFound if @user != @token_user
-    password_form = EmailUser::Password.new(@user, password_reset_params)
+    password_form = EmailUser::Password.new(@token_user, password_reset_params)
     return render_error password_form if password_form.invalid?
     return render_error password_form unless password_form.update
     head 200
@@ -36,11 +33,10 @@ class EmailUser::PasswordsController < ApplicationController
   private
 
   def set_user
-    @user = EmailUser.find(params[:id])
     @token_user = User.find_by_valid_token(:password, params[:token])
   end
 
   def password_reset_params
-    params.permit(:current_password, :password, :password_confirmation)
+    params.permit(:password, :password_confirmation, :token)
   end
 end

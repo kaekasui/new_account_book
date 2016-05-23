@@ -1,17 +1,12 @@
 class EmailUser::Password
   include ActiveModel::Model
 
-  attr_accessor :current_password
-  # validates :current_password,
-  #           presence: true,
-  #           length: { maximum: Settings.user.password.maximum_length }
-  # TODO: プロフィール変更時、current_passwordが存在する場合に設定する
+  attr_accessor :user, :current_password
+  validates :user,
+            presence: { message: I18n.t('errors.messages.users.invalid_url') }
 
   def initialize(user, params)
     @user = user
-    if params[:current_password]
-      self.current_password = params[:current_password]
-    end
     @params = params
   end
 
@@ -25,10 +20,5 @@ class EmailUser::Password
       errors[:base] << @user.errors.full_messages.join(',')
       false
     end
-  end
-
-  def authenticate
-    return false if invalid?
-    @user.authenticate(@params[:current_password])
   end
 end
