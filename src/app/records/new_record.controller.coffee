@@ -40,6 +40,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
 
   # 「登録」ボタン
   vm.submit = () ->
+    IndexService.sending = true
     category = vm.categories[vm.category_index_id]
     if category
       vm.category_id = category.id
@@ -51,7 +52,8 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       charge: vm.charge
       memo: vm.memo
       tags: vm.tags
-    RecordsFactory.postRecord(params).then (res) ->
+    RecordsFactory.postRecord(params).then((res) ->
+      IndexService.sending = false
       vm.category_index_id = ''
       vm.breakdown_id = ''
       vm.place_id = ''
@@ -59,9 +61,9 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       vm.memo = ''
       vm.tags = ''
       $scope.newRecordForm.$setPristine()
-      # TODO: 編集のリンクを表示する
       getRecordsWithDate(vm.published_at)
-    return
+    ).catch (res) ->
+      IndexService.sending = false
 
   # 「<」ボタン
   vm.getYesterdayRecords = () ->
