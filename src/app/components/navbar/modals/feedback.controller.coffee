@@ -1,16 +1,14 @@
-FeedbackController = (IndexFactory, $translate, $modalInstance, toastr) ->
+FeedbackController = (IndexFactory, $translate, $modalInstance, toastr, IndexService) ->
   'ngInject'
   vm = this
   vm.placeholder = $translate.instant('MESSAGES.FEEDBACK')
 
   IndexFactory.getCurrentUser().then((res) ->
     vm.current_user = res
-    return
   ).catch (res) ->
-    return
 
   vm.submit = () ->
-    vm.sending = true
+    IndexService.sending = true
     params = {}
     if vm.current_user != undefined
       params =
@@ -23,12 +21,10 @@ FeedbackController = (IndexFactory, $translate, $modalInstance, toastr) ->
 
     IndexFactory.postFeedback(params).then( ->
       $modalInstance.close()
-      vm.sending = false
-      return
+      IndexService.sending = false
     ).catch (res) ->
       vm.errors = res.error_messages
-      vm.sending = false
-      return
+      IndexService.sending = false
 
   vm.cancel = () ->
     $modalInstance.close()

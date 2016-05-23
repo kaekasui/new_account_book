@@ -1,6 +1,8 @@
 form(novalidate=true name='feedbackForm' ng-submit='feedback.submit()')
   .modal-header
     button.btn.btn-success(type='submit' ng-disabled='(feedbackForm.$submitted && feedbackForm.$invalid) || feedback.sending' translate='BUTTONS.SEND')
+    submit-button-directive(form='feedbackForm')
+      span {{ 'BUTTONS.SEND' | translate }}
     a.btn.btn-default.pull-right(ng-click='feedback.cancel()')
       span.glyphicon.glyphicon-remove#left-icon
       span {{ 'BUTTONS.CLOSE' | translate }}

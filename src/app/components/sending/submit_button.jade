@@ -3,4 +3,4 @@
     type='submit'
     ng-disabled='btn.form.$invalid || btn.sending'
     ng-transclude)
-  span#loader(ng-show='btn.sending')
+  span#loader(ng-if='btn.sending')
