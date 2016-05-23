@@ -45,7 +45,7 @@ AccountFactory = ($location, $q, $http, localStorageService, toastr, $translate)
 
     postResetPassword: (params) ->
       defer = $q.defer()
-      $http.post(host + 'email_user/passwords/send_mail', params)
+      $http.post(host + 'email_user/password/send_mail', params)
         .success((data) ->
           toastr.success $translate.instant('MESSAGES.SEND_MAIL')
           $location.path 'login'
@@ -58,7 +58,7 @@ AccountFactory = ($location, $q, $http, localStorageService, toastr, $translate)
 
     patchNewPassword: (user_id, params) ->
       defer = $q.defer()
-      $http.patch(host + 'email_user/passwords/' + user_id, params)
+      $http.patch(host + 'email_user/password', params)
         .success((data) ->
           toastr.success $translate.instant('MESSAGES.UPDATE_PASSWORD')
           $location.path 'login'

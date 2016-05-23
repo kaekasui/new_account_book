@@ -5,6 +5,7 @@ ja:
         invalid_parameters: メールアドレスまたはパスワードが正しくありません
       users:
         invalid_token: すでに登録が完了しているか有効期限が切れたURLに接続しました。
+        invalid_url: が無効、または有効期限が切れたURLからの接続です。
       categories:
         failed_to_sort: 並び替えに失敗しました。
         destroy_breakdowns: 登録した内訳を削除してから削除してください

@@ -13,11 +13,7 @@ EditPasswordController = (AccountFactory, $location, $translate) ->
       token: vm.token
     }
     AccountFactory.patchNewPassword(vm.user_id, params).catch (res) ->
-      if res.error_messages == 'Not Found'
-        vm.errors = [$translate.instant('MESSAGES.NOT_FOUND_EMAIL')]
-      else
-        vm.errors = res.error_messages
-      return
+      vm.errors = res.error_messages
 
   return
 
