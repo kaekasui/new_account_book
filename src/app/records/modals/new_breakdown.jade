@@ -1,8 +1,10 @@
 form.form-horizontal(novalidate=true name='newBreakdownForm' ng-submit='new_breakdown.createBreakdown()')
   .modal-header
-    button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='newBreakdownForm.name.$dirty && newBreakdownForm.$invalid')
+    submit-button-directive(form='newBreakdownForm')
+      span {{ 'BUTTONS.ADD' | translate }}
     a.btn.btn-default.pull-right(translate='BUTTONS.CANCEL' ng-click='new_breakdown.cancel()')
   .modal-body
+    error-messages-directive(errors='new_breakdown.errors')
     // カテゴリ
     .form-group
       label.control-label.col-sm-2
