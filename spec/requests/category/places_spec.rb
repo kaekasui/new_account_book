@@ -35,14 +35,14 @@ describe 'GET /categories/:category_id/places', autodoc: true do
         ],
         user_places: [
           {
-            id: place.id,
-            name: place.name,
-            categorize: true
-          },
-          {
             id: place2.id,
             name: place2.name,
             categorize: false
+          },
+          {
+            id: place.id,
+            name: place.name,
+            categorize: true
           }
         ]
       }
