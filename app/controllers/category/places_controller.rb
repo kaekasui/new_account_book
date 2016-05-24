@@ -4,7 +4,8 @@ class Category::PlacesController < ApplicationController
 
   def index
     @places = @category.places
-    @user_places = current_user.places.includes(:categories).order(created_at: :desc)
+    @user_places = current_user.places
+                               .includes(:categories).order(created_at: :desc)
   end
 
   def create
