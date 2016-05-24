@@ -145,7 +145,7 @@
     "CANNOT_ACCESS_PAGE": "ページにアクセスできませんでした。",
     "CREATE_NOTICE": "お知らせを投稿しました",
     "CREATE_RECORD": "登録しました",
-    "CONNECTION_REFUSED": "サーバーへのアクセスに失敗しました",
+    "CONNECTION_REFUSED": "サーバーへのアクセスに失敗しました。しばらくしてから再度お試しください。<br />解決しない場合は、お手数ですがご利用規約記載のメールアドレスまでお問い合わせください。",
     "CONFIRM_TO_SEND_MAIL": "メールを送信しますか？",
     "DISPLAY_ITEMS": "収支の登録、編集で表示する項目にチェックを入れてください",
     "UPDATE_EMAIL": "メールアドレスを更新しました",
