@@ -1,4 +1,4 @@
-EditPasswordController = (AccountFactory, $location, $translate) ->
+EditPasswordController = (AccountFactory, $location, $translate, IndexService) ->
   'ngInject'
   vm = this
 
@@ -7,12 +7,15 @@ EditPasswordController = (AccountFactory, $location, $translate) ->
   vm.token = $location.search()['token']
 
   vm.submit = () ->
+    IndexService.sending = true
     params = {
       password: vm.password
       password_confirmation: vm.password_confirmation
       token: vm.token
     }
-    AccountFactory.patchNewPassword(vm.user_id, params).catch (res) ->
+    AccountFactory.patchNewPassword(vm.user_id, params).then((res) ->
+    ).catch (res) ->
+      IndexService.sending = false
       vm.errors = res.error_messages
 
   return

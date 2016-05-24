@@ -1,7 +1,7 @@
 ul.list-group
   // ログイン
-  li.list-group-item(ng-mouseenter='menu.mouseEnter(1)' ng-mouseleave='menu.mouseLeave()')
-    a(ui-sref='login')
+  li.list-group-item(ui-sref='login' ng-mouseenter='menu.mouseEnter(1)' ng-mouseleave='menu.mouseLeave()')
+    a
       span.glyphicon(class='glyphicon-leaf')
       span(translate='TITLES.LOGIN')
     span(ng-show="menu.isSelected(1) && menu.active_url != '/login'")
@@ -9,8 +9,8 @@ ul.list-group
     span(ng-show="menu.active_url == '/login'")
       img.pull-right(ng-src='{{menu.active_menu_image}}')
   // 新規登録
-  li.list-group-item(ng-mouseenter='menu.mouseEnter(2)' ng-mouseleave='menu.mouseLeave()')
-    a(ui-sref='sign_up')
+  li.list-group-item(ui-sref='sign_up' ng-mouseenter='menu.mouseEnter(2)' ng-mouseleave='menu.mouseLeave()')
+    a
       span.glyphicon(class='glyphicon-heart')
       span(translate='TITLES.SIGN_UP')
     span(ng-show="menu.isSelected(2) && menu.active_url != '/sign_up'")
@@ -18,8 +18,8 @@ ul.list-group
     span(ng-show="menu.active_url == '/sign_up'")
       img.pull-right(ng-src='{{menu.active_menu_image}}')
   // パスワード再設定
-  li.list-group-item(ng-mouseenter='menu.mouseEnter(3)' ng-mouseleave='menu.mouseLeave()')
-    a(ui-sref='reset_password')
+  li.list-group-item(ui-sref='reset_password' ng-mouseenter='menu.mouseEnter(3)' ng-mouseleave='menu.mouseLeave()')
+    a
       span.glyphicon(class='glyphicon-leaf')
       span(translate='TITLES.RESET_PASSWORD')
     span(ng-show="menu.isSelected(3) && menu.active_url != '/reset_password'")
@@ -27,8 +27,8 @@ ul.list-group
     span(ng-show="menu.active_url == '/reset_password'")
       img.pull-right(ng-src='{{menu.active_menu_image}}')
   // 確認メール再送信
-  li.list-group-item(ng-mouseenter='menu.mouseEnter(4)' ng-mouseleave='menu.mouseLeave()')
-    a(ui-sref='resend_email')
+  li.list-group-item(ui-sref='resend_email' ng-mouseenter='menu.mouseEnter(4)' ng-mouseleave='menu.mouseLeave()')
+    a
       span.glyphicon(class='glyphicon-heart')
       span(translate='TITLES.RESEND_EMAIL')
     span(ng-show="menu.isSelected(4) && menu.active_url != '/resend_email'")

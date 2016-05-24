@@ -1,7 +1,7 @@
 ul.list-group
   // マイページトップ
-  li.list-group-item(ng-mouseenter='menu.mouseEnter(1)' ng-mouseleave='menu.mouseLeave()')
-    a(ui-sref='mypage')
+  li.list-group-item(ui-sref='mypage' ng-mouseenter='menu.mouseEnter(1)' ng-mouseleave='menu.mouseLeave()')
+    a
       span.glyphicon(class='glyphicon-piggy-bank')
       span(translate='TITLES.MYPAGE_TOP')
     span(ng-show="menu.isSelected(1) && menu.active_url != '/mypage'")
@@ -9,8 +9,8 @@ ul.list-group
     span(ng-show="menu.active_url == '/mypage'")
       img.pull-right(ng-src='{{menu.active_menu_image}}')
   // プロフィール
-  li.list-group-item(ng-mouseenter='menu.mouseEnter(2)' ng-mouseleave='menu.mouseLeave()')
-    a(ui-sref='profile')
+  li.list-group-item(ui-sref='profile' ng-mouseenter='menu.mouseEnter(2)' ng-mouseleave='menu.mouseLeave()')
+    a
       span.glyphicon(class='glyphicon-user')
       span(translate='TITLES.PROFILE')
     span(ng-show="menu.isSelected(2) && menu.active_url != '/profile'")

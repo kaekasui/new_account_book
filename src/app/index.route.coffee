@@ -3,7 +3,7 @@ angular.module 'newAccountBook'
     'ngInject'
     $stateProvider
       .state 'error',
-        url: '/errors/{id:400|401|403|404}'
+        url: '/errors/{id:400|401|403|404|503}'
         templateUrl: 'app/components/errors/error.html'
         controllerAs: 'error'
         controller: 'InputErrorsController'

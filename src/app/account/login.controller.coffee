@@ -17,9 +17,9 @@ LoginController = (AccountFactory, IndexFactory, IndexService, $location, toastr
       IndexService.sending = false
       return
     ).catch (res) ->
+      IndexService.sending = false
       vm.errors = res.error_messages
       vm.password = ''
-      IndexService.sending = false
       return
 
   return
