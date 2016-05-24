@@ -4,6 +4,7 @@ class Place::CategoriesController < ApplicationController
 
   def index
     @categories = current_user.categories.order(:position)
+    # TODO: N+1になってないか確認する
   end
 
   def update
