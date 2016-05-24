@@ -1,4 +1,4 @@
-form.form-horizontal(novalidate=true name='newPlaceForm' ng-submit='new_place.createPlace()')
+form.form-horizontal(novalidate=true name='newPlaceForm' ng-submit='new_place.submit()')
   .modal-header
     submit-button-directive(form='newPlaceForm')
       span {{ 'BUTTONS.ADD' | translate }}

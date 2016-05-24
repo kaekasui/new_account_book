@@ -173,7 +173,8 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
       controller: 'NewPlaceController'
       controllerAs: 'new_place'
       backdrop: 'static'
-      resolve: { category_id: vm.category_id }
+      resolve:
+        category_id: vm.category_id
     )
     modalInstance.result.then (place_id) ->
       SettingsFactory.getCategoryPlaces(vm.category_id).then (res) ->
