@@ -38,12 +38,12 @@ nav.navbar.navbar-default(role='navigation')
         a(ui-sref='admin_users')
           span.glyphicon.glyphicon-king#left-icon
           span(translate='TITLES.ADMIN')
-      li.dropdown.open(ng-init='isCollapsed = true' ng-click='isCollapsed = !isCollapsed' role='presentation' ng-show='navbar.current_user != undefined')
-        a.dropdown-toggle(data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' role: 'button' href='')
+      li.dropdown(ng-click='isCollapsed = !isCollapsed' role='presentation' ng-show='navbar.current_user != undefined' dropdown='true')
+        a.dropdown-toggle(dropdown-toggle='true' href='')
           span.glyphicon.glyphicon-cog#left-icon
           span#left-icon(translate='TITLES.SETTINGS')
           span.caret
-        ul.dropdown-menu(ng-hide='isCollapsed')
+        ul.dropdown-menu(dropdown-menu='true')
           li
             a(ui-sref='base_setting' translate='TITLES.BASE_SETTING')
           li
