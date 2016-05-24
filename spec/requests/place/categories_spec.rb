@@ -80,7 +80,7 @@ describe 'PATCH /places/:place_id/categories/:id', autodoc: true do
         expect(response.status).to eq 422
 
         json = {
-          error_messages: ['カテゴリはすでに存在します']
+          error_messages: ['カテゴリとの関係はすでに存在します']
         }
         expect(response.body).to be_json_as(json)
       end

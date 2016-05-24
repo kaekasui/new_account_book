@@ -24,7 +24,7 @@ ja:
       breakdown:
         name: 内訳
       categorize_place:
-        category_id: カテゴリ
+        category_id: カテゴリとの関係
       record:
         charge: 金額
     errors:
