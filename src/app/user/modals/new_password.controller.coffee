@@ -12,8 +12,8 @@ NewPasswordController = ($modalInstance, UserFactory, IndexService) ->
       IndexService.sending = false
       $modalInstance.close()
     ).catch (res) ->
-      vm.errors = res.error_messages
       IndexService.sending = false
+      vm.errors = res.error_messages
 
   vm.cancel = () ->
     $modalInstance.dismiss()
