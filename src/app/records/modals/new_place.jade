@@ -1,8 +1,10 @@
 form.form-horizontal(novalidate=true name='newPlaceForm' ng-submit='new_place.createPlace()')
   .modal-header
-    button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='newPlaceForm.name.$dirty && newPlaceForm.$invalid')
+    submit-button-directive(form='newPlaceForm')
+      span {{ 'BUTTONS.ADD' | translate }}
     a.btn.btn-default.pull-right(translate='BUTTONS.CANCEL' ng-click='new_place.cancel()')
   .modal-body
+    error-messages-directive(errors='new_place.errors')
     // カテゴリ
     .form-group
       label.control-label.col-sm-2
