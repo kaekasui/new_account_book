@@ -149,6 +149,7 @@
     "CONFIRM_TO_SEND_MAIL": "Do You Send a Mail?",
     "UPDATE_EMAIL": "Updated the email",
     "UPDATE_NOTICE": "Updated the notice",
+    "INPUT_OR_SELECT": "Input or Select a Place",
     "LOGIN": "Logged in",
     "LOGOUT": "Logged out",
     "MAX_LENGTH_RECORDS": "Can't regist new record because your Account has the number of at most {{ count }}",

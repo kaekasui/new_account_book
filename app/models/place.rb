@@ -7,4 +7,13 @@ class Place < ActiveRecord::Base
   validates :name,
             presence: true,
             length: { maximum: Settings.place.name.maximum_length }
+
+
+  #def selected_place?(place_id)
+  #  places.map(&:id).include?(place_id)
+  #end
+
+  def categorize?(category_id)
+    categories.map(&:id).include?(category_id)
+  end
 end

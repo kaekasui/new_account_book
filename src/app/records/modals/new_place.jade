@@ -5,6 +5,7 @@ form.form-horizontal(novalidate=true name='newPlaceForm' ng-submit='new_place.su
     a.btn.btn-default.pull-right(translate='BUTTONS.CANCEL' ng-click='new_place.cancel()')
   .modal-body
     error-messages-directive(errors='new_place.errors')
+    | {{ 'MESSAGES.INPUT_OR_SELECT' | translate }}
     // カテゴリ
     .form-group
       label.control-label.col-sm-2
@@ -13,7 +14,15 @@ form.form-horizontal(novalidate=true name='newPlaceForm' ng-submit='new_place.su
         span.glyphicon.glyphicon-plus-sign.green#left-icon(ng-show='new_place.category.barance_of_payments')
         span.glyphicon.glyphicon-minus-sign.red#left-icon(ng-show='!new_place.category.barance_of_payments')
         span {{ new_place.category.name }}
-    // お店・施設
+    // お店・施設（選択）
+    .form-group
+      label.control-label.col-sm-2(for='name')
+        span(translate='COLUMNS.PLACE')
+      .col-sm-10
+        select.form-control(ng-model='new_place.new_place_name' ng-show='new_place.places')
+          option(ng-value='place.name' ng-repeat='place in new_place.places | filter: {categorize:false}')
+            | {{ place.name }}
+    // お店・施設（入力）
     .form-group
       label.control-label.col-sm-2(for='name')
         span(translate='COLUMNS.PLACE')
@@ -23,7 +32,7 @@ form.form-horizontal(novalidate=true name='newPlaceForm' ng-submit='new_place.su
         span.errors(ng-messages='newPlaceForm.name.$error' ng-show='newPlaceForm.name.$dirty || newPlaceForm.$submitted')
           div(ng-message='required')
             span.glyphicon.glyphicon-alert#left-icon
-            span(translate='ERRORS.REQUIRED.BREAKDOWN_NAME')
+            span(translate='ERRORS.REQUIRED.PLACE_NAME')
           div(ng-message='maxlength')
             span.glyphicon.glyphicon-alert#left-icon
-            span(translate='ERRORS.MAXLENGTH.BREAKDOWN_NAME')
+            span(translate='ERRORS.MAXLENGTH.PLACE_NAME')

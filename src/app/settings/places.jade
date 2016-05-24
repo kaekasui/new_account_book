@@ -53,18 +53,4 @@
             a.pull-right
               span.glyphicon.glyphicon-trash#right-icon(ng-click='places.destroyPlace($index)' ng-show='place.categories.length == 0')
 
-// カテゴリの追加モーダル
-script#adding-category(type='text/ng-template')
-  .modal-header
-    form.form-inline(novalidate=true name='addCategoryForm' ng-submit='adding_category.submit()')
-      button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='adding_category.sending')
-      a.btn.btn-default(type='submit' translate='BUTTONS.CANCEL' ng-click='adding_category.cancel()')
-  .modal-body
-    loading-directive(target='modal')
-    select.form-control(ng-model='adding_category.category_id' ng-show='adding_category.categories')
-      optgroup(label="{{ 'LABELS.INCOME' | translate }}" ng-show='income_categories.length != 0')
-        option(ng-value='category.id' ng-repeat='category in income_categories = (adding_category.categories | filter: { selected_place:false, barance_of_payments:true })')
-          | {{ category.name }}
-      optgroup(label="{{ 'LABELS.OUTGO' | translate }}" ng-show='outgo_categories.length != 0')
-        option(ng-value='category.id' ng-repeat='category in outgo_categories = (adding_category.categories | filter: { selected_place:false, barance_of_payments:false })')
-          | {{ category.name }}
+
