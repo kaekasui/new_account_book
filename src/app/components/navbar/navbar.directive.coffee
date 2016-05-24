@@ -2,6 +2,8 @@ NavbarController = (IndexFactory, $location, $scope, $translate, toastr, localSt
   'ngInject'
   vm = this
 
+  vm.menuCollapse = false
+
   $scope.$watch ( ->
     IndexService.current_user
   ), ->
