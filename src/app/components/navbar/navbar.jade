@@ -38,7 +38,7 @@ nav.navbar.navbar-default(role='navigation')
         a(ui-sref='admin_users')
           span.glyphicon.glyphicon-king#left-icon
           span(translate='TITLES.ADMIN')
-      li.dropdown(ng-click='isCollapsed = !isCollapsed' role='presentation' ng-show='navbar.current_user != undefined' dropdown='true')
+      li.dropdown(role='presentation' ng-show='navbar.current_user != undefined' dropdown='true')
         a.dropdown-toggle(dropdown-toggle='true' href='' ng-click='isCollapsed = !isCollapsed')
           span.glyphicon.glyphicon-cog#left-icon
           span#left-icon(translate='TITLES.SETTINGS')
