@@ -109,6 +109,16 @@ body {
     color: $link-color;
   }
   background-image: url('../assets/images/wood.png');
+  // スマホ用画面のメニュー
+  .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: rgba($link-color, 0.2);
+  }
+  .navbar-default .navbar-toggle {
+    border-color: $green;
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: $green;
+  }
 
   label {
     font-family: 'Lucida Grande', Meiryo, sans-serif;
