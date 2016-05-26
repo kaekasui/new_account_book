@@ -39,11 +39,11 @@ nav.navbar.navbar-default(role='navigation')
           span.glyphicon.glyphicon-king#left-icon
           span(translate='TITLES.ADMIN')
       li.dropdown(ng-click='isCollapsed = !isCollapsed' role='presentation' ng-show='navbar.current_user != undefined' dropdown='true')
-        a.dropdown-toggle(dropdown-toggle='true' href='')
+        a.dropdown-toggle.collapsed(dropdown-toggle='true' href='')
           span.glyphicon.glyphicon-cog#left-icon
           span#left-icon(translate='TITLES.SETTINGS')
           span.caret
-        ul.dropdown-menu(dropdown-menu='true')
+        ul.dropdown-menu.collapse(dropdown-menu='true' collapse='!isCollapsed')
           li
             a(ui-sref='base_setting' translate='TITLES.BASE_SETTING')
           li
