@@ -44,12 +44,12 @@ nav.navbar.navbar-default(role='navigation')
           span#left-icon(translate='TITLES.SETTINGS')
           span.caret
         ul.dropdown-menu(dropdown-menu='true')
-          li
-            a(ui-sref='base_setting' translate='TITLES.BASE_SETTING')
-          li
-            a(ui-sref='categories' translate='TITLES.CATEGORY')
-          li
-            a(ui-sref='places' translate='TITLES.PLACE')
+          li(ui-sref='base_setting')
+            a(href='') {{ 'TITLES.BASE_SETTING' | translate }}
+          li(ui-sref='categories')
+            a(href='') {{ 'TITLES.CATEGORY' | translate }}
+          li(ui-sref='places')
+            a(href='') {{ 'TITLES.PLACE' | translate }}
       li(ng-hide='navbar.current_user != undefined')
         a(ui-sref='login')
           span.glyphicon.glyphicon-leaf#left-icon
