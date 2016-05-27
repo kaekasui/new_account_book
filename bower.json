@@ -4,7 +4,7 @@
   "dependencies": {
     "angular-animate": "~1.4.2",
     "angular-cookies": "~1.4.2",
-    "angular-touch": "~1.4.2",
+    "angular-touch": "^1.5.5",
     "angular-sanitize": "~1.4.2",
     "angular-messages": "~1.4.2",
     "angular-aria": "~1.4.2",
