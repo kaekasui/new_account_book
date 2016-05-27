@@ -5,6 +5,11 @@ NewMessageController = (IndexService, AdminFactory, $modalInstance, user_id) ->
   vm.cancel = () ->
     $modalInstance.dismiss()
 
+  vm.focusOn = ($event) ->
+    setTimeout ( ->
+      $event.currentTarget.focus()
+    ), 200
+
   IndexService.modal_loading = true
   AdminFactory.getUserFeedbacks(user_id).then((res) ->
     vm.feedbacks = res.feedbacks
