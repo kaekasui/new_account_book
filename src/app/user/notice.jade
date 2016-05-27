@@ -5,7 +5,7 @@ div(ng-class="{'col-md-9': notice.current_user, 'col-md-12': !notice.current_use
   .panel.panel-default
     .panel-heading
       span.glyphicon.glyphicon-film#left-icon
-      span {{ notice.notice.title }}
+      h1 {{ notice.notice.title }}
       span.pull-right {{ notice.notice.post_at }}
     .panel-body
       loading-directive

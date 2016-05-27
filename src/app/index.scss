@@ -93,6 +93,10 @@ $label-danger-bg: lighten(#ac5e9f, 10%);
 $label-success-bg: lighten(#5E7535, 10%);
 
 body {
+  h1 {
+    font-size: 14px;
+    display: inline;
+  }
   span {
     outline: none;
   }
