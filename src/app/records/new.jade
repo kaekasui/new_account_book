@@ -104,12 +104,14 @@
                        min-length='1'
                        max-length='20'
                        on-tag-clicked='new_record.setColor($tag)'
+                       placeholder='↓ down arrow key' 
                        template='app/records/tag_template.html')
               auto-complete(source='new_record.loadTags($query)'
                             min-length='0'
                             max-results-to-show='32'
-                            load-on-focus='true'
-                            load-on-empty='true'
+                            load-on-down-arrow='true'
+                            load-on-focus='false'
+                            load-on-empty='false'
                             template='app/records/autocomplete_template.html')
         // 金額
         .form-group
