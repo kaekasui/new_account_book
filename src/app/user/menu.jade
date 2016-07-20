@@ -17,3 +17,14 @@ ul.list-group
       img.pull-right(ng-src='{{menu.menu_image}}')
     span(ng-show="menu.active_url == '/profile'")
       img.pull-right(ng-src='{{menu.active_menu_image}}')
+
+ul.list-group
+  // インポート
+  li.list-group-item(ui-sref='import' ng-mouseenter='menu.mouseEnter(3)' ng-mouseleave='menu.mouseLeave()')
+    a
+      span.glyphicon(class='glyphicon-user')
+      span(translate='TITLES.IMPORT')
+    span(ng-show="menu.isSelected(3) && menu.active_url != '/import'")
+      img.pull-right(ng-src='{{menu.menu_image}}')
+    span(ng-show="menu.active_url == '/import'")
+      img.pull-right(ng-src='{{menu.active_menu_image}}')
