@@ -14,7 +14,7 @@ class Record::Fetcher
       records = records.the_year_and_month(@params[:year], @params[:month])
     end
     @total_count = records.count
-    records.offset!(@params[:offset]) if @params[:offset].present?
+    records = records.offset(@params[:offset]) if @params[:offset].present?
     records = records.limit(Settings.records.per)
     records
   end

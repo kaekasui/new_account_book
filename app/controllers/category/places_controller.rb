@@ -5,7 +5,8 @@ class Category::PlacesController < ApplicationController
   def index
     @places = @category.places
     @user_places = current_user.places
-                               .includes(:categories).order(created_at: :desc)
+                               .order(created_at: :desc)
+    # TODO: N+1を解消する
   end
 
   def create
