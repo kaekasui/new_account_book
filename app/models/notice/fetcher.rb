@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Notice::Fetcher
   def initialize(params: {})
     @params = params

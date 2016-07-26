@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Category < ActiveRecord::Base
   belongs_to :user
   has_many :breakdowns
@@ -22,11 +23,11 @@ class Category < ActiveRecord::Base
   def confirm_contents
     if breakdowns.any?
       errors[:base] << I18n.t('errors.messages.categories.destroy_breakdowns')
-      return false
+      throw :abort
     end
     if records.any?
       errors[:base] << I18n.t('errors.messages.categories.destroy_records')
-      return false
+      throw :abort
     end
   end
 

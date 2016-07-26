@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Tally < ActiveRecord::Base
   belongs_to :user
   serialize :list, JSON

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 # プロフィール画面
@@ -15,7 +16,7 @@ describe 'GET /user', autodoc: true do
     let!(:user) { create(:email_user, :registered, :admin_user, email: email) }
 
     it '200とユーザー情報を返すこと' do
-      get '/user', '', login_headers(user)
+      get '/user', params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -37,7 +38,7 @@ describe 'GET /user', autodoc: true do
     let!(:user) { create(:email_user, :registered, email: email) }
 
     it '200とユーザー情報を返すこと' do
-      get '/user', '', login_headers(user)
+      get '/user', params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -59,7 +60,7 @@ describe 'GET /user', autodoc: true do
     let!(:user) { create(:twitter_user, :registered) }
 
     it '200とユーザー情報を返すこと' do
-      get '/user', '', login_headers(user)
+      get '/user', params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -85,7 +86,7 @@ describe 'GET /user', autodoc: true do
     let!(:user) { create(:facebook_user, :registered) }
 
     it '200とユーザー情報を返すこと' do
-      get '/user', '', login_headers(user)
+      get '/user', params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -123,7 +124,7 @@ describe 'GET /user/settings', autodoc: true do
     let!(:user) { create(:email_user, :registered, email: email) }
 
     it '200とユーザー情報を返すこと' do
-      get '/user/settings', '', login_headers(user)
+      get '/user/settings', params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -157,7 +158,7 @@ describe 'PATCH /user', autodoc: true do
       let!(:params) { { new_email: new_email } }
 
       it '200が返りデータが更新されること' do
-        patch '/user', params, login_headers(user)
+        patch '/user', params: params, headers: login_headers(user)
         expect(response.status).to eq 200
 
         user.reload
@@ -171,7 +172,7 @@ describe 'PATCH /user', autodoc: true do
       end
 
       it 'URLクリックでメールアドレスが更新されること' do
-        patch '/user', params, login_headers(user)
+        patch '/user', params: params, headers: login_headers(user)
         expect(response.status).to eq 200
 
         user.reload
@@ -186,7 +187,7 @@ describe 'PATCH /user', autodoc: true do
         token = Regexp.last_match(2)
 
         params = { user_id: user_id, token: token }
-        get '/user/authorize_email', params
+        get '/user/authorize_email', params: params
         expect(response.status).to eq 302
         user.reload
         expect(user.email).to eq new_email
@@ -198,7 +199,7 @@ describe 'PATCH /user', autodoc: true do
       let!(:params) { { new_email: '' } }
 
       it '200が返りデータが更新されること' do
-        patch '/user', params, login_headers(user)
+        patch '/user', params: params, headers: login_headers(user)
         expect(response.status).to eq 200
 
         user.reload
@@ -215,7 +216,7 @@ describe 'PATCH /user', autodoc: true do
       let!(:params) { { nickname: 'ニックネーム' * 50 } }
 
       it '422が返りデータが更新されないこと' do
-        patch '/user', params, login_headers(user)
+        patch '/user', params: params, headers: login_headers(user)
         expect(response.status).to eq 422
 
         json = {
@@ -229,7 +230,7 @@ describe 'PATCH /user', autodoc: true do
       let!(:params) { { nickname: 'ニックネーム' } }
 
       it '200が返りデータが更新されること' do
-        patch '/user', params, login_headers(user)
+        patch '/user', params: params, headers: login_headers(user)
         expect(response.status).to eq 200
 
         user.reload
@@ -242,7 +243,7 @@ describe 'PATCH /user', autodoc: true do
       let!(:params) { { new_email: new_email } }
 
       it '200が返りデータが更新されること' do
-        patch '/user', params, login_headers(user)
+        patch '/user', params: params, headers: login_headers(user)
         expect(response.status).to eq 200
 
         user.reload
@@ -260,7 +261,7 @@ describe 'PATCH /user', autodoc: true do
       let!(:params) { { new_email: 'aaaaa' } }
 
       it '422が返りデータが更新されないこと' do
-        patch '/user', params, login_headers(user)
+        patch '/user', params: params, headers: login_headers(user)
         expect(response.status).to eq 422
 
         json = {
@@ -274,7 +275,7 @@ describe 'PATCH /user', autodoc: true do
       let!(:params) { { new_email: '' } }
 
       it '422が返りデータが更新されないこと' do
-        patch '/user', params, login_headers(user)
+        patch '/user', params: params, headers: login_headers(user)
         expect(response.status).to eq 422
 
         json = {
@@ -305,7 +306,7 @@ describe 'PATCH /user/password', autodoc: true do
     end
 
     it '422が返ってくること' do
-      patch '/user/password', params, login_headers(user)
+      patch '/user/password', params: params, headers: login_headers(user)
       expect(response.status).to eq 422
 
       json = {
@@ -328,7 +329,7 @@ describe 'PATCH /user/password', autodoc: true do
       let(:current_password) { '' }
 
       it '422が返ってくること' do
-        patch '/user/password', params, login_headers(user)
+        patch '/user/password', params: params, headers: login_headers(user)
         expect(response.status).to eq 422
 
         json = {
@@ -342,7 +343,7 @@ describe 'PATCH /user/password', autodoc: true do
       let(:current_password) { user.password + 'dummy' }
 
       it '422が返ってくること' do
-        patch '/user/password', params, login_headers(user)
+        patch '/user/password', params: params, headers: login_headers(user)
         expect(response.status).to eq 422
 
         json = {
@@ -356,7 +357,7 @@ describe 'PATCH /user/password', autodoc: true do
       let(:new_password_confirmation) { 'new_password_confirmation' }
 
       it '422が返ってくること' do
-        patch '/user/password', params, login_headers(user)
+        patch '/user/password', params: params, headers: login_headers(user)
         expect(response.status).to eq 422
 
         json = {
@@ -369,7 +370,7 @@ describe 'PATCH /user/password', autodoc: true do
     context '正しい値でパスワードを設定していた場合' do
       it '200が返り、更新されること' do
         expect(user.authenticate(new_password)).to be_falsey
-        patch '/user/password', params, login_headers(user)
+        patch '/user/password', params: params, headers: login_headers(user)
         expect(response.status).to eq 200
 
         user.reload
@@ -396,7 +397,7 @@ describe 'PATCH /user/setting', autodoc: true do
 
       it '200が返ってくること' do
         expect(user.breakdown_field).to be_truthy
-        patch '/user/setting', params, login_headers(user)
+        patch '/user/setting', params: params, headers: login_headers(user)
         expect(response.status).to eq 200
 
         user.reload
@@ -409,7 +410,7 @@ describe 'PATCH /user/setting', autodoc: true do
 
       it '200が返ってくること' do
         expect(user.place_field).to be_truthy
-        patch '/user/setting', params, login_headers(user)
+        patch '/user/setting', params: params, headers: login_headers(user)
         expect(response.status).to eq 200
 
         user.reload
@@ -435,7 +436,7 @@ describe 'POST /user/send_mail', autodoc: true do
 
     context '認証待ちのメールアドレスがある場合' do
       it 'メールが送信されること' do
-        patch '/user', params, login_headers(user)
+        patch '/user', params: params, headers: login_headers(user)
         expect(response.status).to eq 200
         user.reload
 
@@ -448,7 +449,7 @@ describe 'POST /user/send_mail', autodoc: true do
         open_email(new_email)
         expect(current_email).to be_nil
 
-        post '/user/send_mail', nil, login_headers(user)
+        post '/user/send_mail', params: nil, headers: login_headers(user)
         expect(response.status).to eq 200
         open_email(new_email)
         expect(current_email.subject).to eq '【PIG BOOK β】メールアドレス変更のご案内'
@@ -464,7 +465,7 @@ describe 'POST /user/send_mail', autodoc: true do
         open_email(new_email)
         expect(current_email).to be_nil
 
-        post '/user/send_mail', nil, login_headers(user)
+        post '/user/send_mail', params: nil, headers: login_headers(user)
         expect(response.status).to eq 422
       end
     end

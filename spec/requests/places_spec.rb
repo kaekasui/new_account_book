@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe 'GET /places', autodoc: true do
@@ -18,7 +19,7 @@ describe 'GET /places', autodoc: true do
       place.categories << category
       place.save
 
-      get '/places', '', login_headers(user)
+      get '/places', params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -52,7 +53,7 @@ describe 'POST /places?name=name', autodoc: true do
   context 'ログインしていない場合' do
     context '各値が正しい場合' do
       it '401が返ってくること' do
-        post '/places', params
+        post '/places', params: params
         expect(response.status).to eq 401
       end
     end
@@ -63,7 +64,7 @@ describe 'POST /places?name=name', autodoc: true do
 
     context '各値が正しい場合' do
       it '201が返ってくること' do
-        post '/places', params, login_headers(user)
+        post '/places', params: params, headers: login_headers(user)
         expect(response.status).to eq 201
       end
     end
@@ -72,7 +73,7 @@ describe 'POST /places?name=name', autodoc: true do
       let(:place_name) { '' }
 
       it '422とエラーメッセージが返ってくること' do
-        post '/places', params, login_headers(user)
+        post '/places', params: params, headers: login_headers(user)
         expect(response.status).to eq 422
         json = {
           error_messages: ['お店・施設は不正な値です']
@@ -85,7 +86,7 @@ describe 'POST /places?name=name', autodoc: true do
       it '422とエラーメッセージが返ってくること' do
         3.times { create(:place, user: user) }
 
-        post '/places', params, login_headers(user)
+        post '/places', params: params, headers: login_headers(user)
         expect(response.status).to eq 422
         json = {
           error_messages: ['お店・施設の作成上限は3件です']
@@ -112,7 +113,8 @@ describe 'PATCH /places/:id', autodoc: true do
       let!(:params) { { name: '名前' } }
 
       it '200を返し、お店・施設が登録できること' do
-        patch "/places/#{place.id}", params, login_headers(user)
+        patch "/places/#{place.id}", params: params,
+                                     headers: login_headers(user)
         expect(response.status).to eq 200
 
         place.reload
@@ -124,7 +126,8 @@ describe 'PATCH /places/:id', autodoc: true do
       let!(:params) { { name: '' } }
 
       it '422を返し、お店・施設が登録できないこと' do
-        patch "/places/#{place.id}", params, login_headers(user)
+        patch "/places/#{place.id}", params: params,
+                                     headers: login_headers(user)
         expect(response.status).to eq 422
 
         json = {
@@ -150,7 +153,7 @@ describe 'DELETE /places/:id', autodoc: true do
 
   context 'メールアドレスのユーザーがログインしている場合' do
     it '200を返し、お店・施設が削除できること' do
-      delete "/places/#{place.id}", '', login_headers(user)
+      delete "/places/#{place.id}", params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       expect(Place.count).to eq 0
@@ -166,7 +169,7 @@ describe 'DELETE /places/:id', autodoc: true do
     it '200を返し、お店・施設が削除できること' do
       expect(category.places).to eq [place]
 
-      delete "/places/#{place.id}", '', login_headers(user)
+      delete "/places/#{place.id}", params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       category.reload

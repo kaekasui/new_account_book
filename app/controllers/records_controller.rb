@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class RecordsController < ApplicationController
   before_action :authenticate
 
@@ -23,7 +24,8 @@ class RecordsController < ApplicationController
     @record = Record::Generator.new(
       user: current_user,
       record_params: record_params,
-      tags_params: tags_params)
+      tags_params: tags_params
+    )
     if @record.save
       head 201
     else

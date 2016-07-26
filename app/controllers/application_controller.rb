@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ApplicationController < ActionController::Base
   helper_method :current_user
 
@@ -24,7 +25,8 @@ class ApplicationController < ActionController::Base
     ExceptionNotifier.notify_exception(
       e,
       env: request.env,
-      data: { url: origin, user_id: current_user.try(:id) })
+      data: { url: origin, user_id: current_user.try(:id) }
+    )
     logger.error e.inspect
     logger.error [e, *e.backtrace].join("\n")
     render :error500, status: 500, formats: :json

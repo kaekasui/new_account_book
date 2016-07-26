@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class FeedbacksController < ApplicationController
   def create
     @feedback = Feedback.new(feedback_params)

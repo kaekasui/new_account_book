@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
@@ -10,7 +11,7 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      get '/admin/feedbacks/', ''
+      get '/admin/feedbacks/', params: ''
 
       expect(response.status).to eq 401
     end
@@ -18,7 +19,7 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
 
   context '一般ユーザーとしてログインしている場合' do
     it '401が返ってくること' do
-      get '/admin/feedbacks/', '', login_headers(user)
+      get '/admin/feedbacks/', params: '', headers: login_headers(user)
 
       expect(response.status).to eq 401
     end
@@ -28,7 +29,7 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
     context '1ページ以内のフィードバック数の場合' do
       it '200が返り、フィードバック一覧が返ってくること' do
         # TODO: Twitterユーザーのフィードバックを表示する
-        get '/admin/feedbacks/', '', login_headers(admin_user)
+        get '/admin/feedbacks/', params: '', headers: login_headers(admin_user)
 
         expect(response.status).to eq 200
         json = {
@@ -60,7 +61,8 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
 
     context '2ページ以上のフィードバック数の場合' do
       it '200が返り、フィードバック一覧が返ってくること' do
-        get '/admin/feedbacks/', { offset: 1 }, login_headers(admin_user)
+        get '/admin/feedbacks/', params: { offset: 1 },
+                                 headers: login_headers(admin_user)
 
         expect(response.status).to eq 200
         json = {
@@ -90,7 +92,7 @@ describe 'PATCH /admin/feedbacks/:feedback_id/check', autodoc: true do
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      patch "/admin/feedbacks/#{feedback.id}/check", ''
+      patch "/admin/feedbacks/#{feedback.id}/check", params: ''
 
       expect(response.status).to eq 401
     end
@@ -100,7 +102,7 @@ describe 'PATCH /admin/feedbacks/:feedback_id/check', autodoc: true do
     context '管理ユーザーで対応済みにする場合' do
       it '200とチェックのフラグが返ってくること' do
         patch "/admin/feedbacks/#{feedback.id}/check",
-              '', login_headers(admin_user)
+              params: '', headers: login_headers(admin_user)
         expect(response.status).to eq 200
         json = { checked: true }
         expect(response.body).to be_json_as(json)
@@ -111,7 +113,7 @@ describe 'PATCH /admin/feedbacks/:feedback_id/check', autodoc: true do
       it '200とチェックのフラグが返ってくること' do
         feedback.update(checked: true)
         patch "/admin/feedbacks/#{feedback.id}/check",
-              '', login_headers(admin_user)
+              params: '', headers: login_headers(admin_user)
         expect(response.status).to eq 200
         json = { checked: false }
         expect(response.body).to be_json_as(json)
