@@ -4,7 +4,8 @@ class PlacesController < ApplicationController
 
   def index
     @user = current_user
-    @places = @user.places.includes(:categories).order(created_at: :desc)
+    # TODO: N+1を解消する
+    @places = @user.places.order(created_at: :desc)
   end
 
   def create
