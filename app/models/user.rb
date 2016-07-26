@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   before_create :set_currency
 
   def _name
-    becomes(type.classify.constantize)._name if type
+    becomes(type.classify.constantize)._name
   end
 
   def active?
