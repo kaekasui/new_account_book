@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :records
   has_many :tags
   has_many :tallies
+  has_many :captures
 
   enum status: { inactive: 1, registered: 2 }
 

@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511121513) do
+ActiveRecord::Schema.define(version: 20160726215758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,19 +32,31 @@ ActiveRecord::Schema.define(version: 20160511121513) do
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["category_id"], name: "index_breakdowns_on_category_id", using: :btree
+    t.index ["user_id"], name: "index_breakdowns_on_user_id", using: :btree
   end
-
-  add_index "breakdowns", ["category_id"], name: "index_breakdowns_on_category_id", using: :btree
-  add_index "breakdowns", ["user_id"], name: "index_breakdowns_on_user_id", using: :btree
 
   create_table "cancels", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["user_id"], name: "index_cancels_on_user_id", using: :btree
   end
 
-  add_index "cancels", ["user_id"], name: "index_cancels_on_user_id", using: :btree
+  create_table "captures", force: :cascade do |t|
+    t.date     "published_at"
+    t.integer  "charge"
+    t.string   "category_name"
+    t.string   "breakdown_name"
+    t.string   "place_name"
+    t.text     "memo"
+    t.integer  "user_id"
+    t.text     "tags"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_captures_on_user_id", using: :btree
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -58,9 +69,8 @@ ActiveRecord::Schema.define(version: 20160511121513) do
     t.integer  "breakdowns_count",    default: 0, null: false
     t.integer  "places_count",        default: 0, null: false
     t.integer  "records_count",       default: 0, null: false
+    t.index ["user_id"], name: "index_categories_on_user_id", using: :btree
   end
-
-  add_index "categories", ["user_id"], name: "index_categories_on_user_id", using: :btree
 
   create_table "categorize_places", force: :cascade do |t|
     t.integer  "category_id"
@@ -77,9 +87,8 @@ ActiveRecord::Schema.define(version: 20160511121513) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
   end
-
-  add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.integer  "user_id"
@@ -101,9 +110,8 @@ ActiveRecord::Schema.define(version: 20160511121513) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "amount"
+    t.index ["user_id"], name: "index_monthly_counts_on_user_id", using: :btree
   end
-
-  add_index "monthly_counts", ["user_id"], name: "index_monthly_counts_on_user_id", using: :btree
 
   create_table "notices", force: :cascade do |t|
     t.string   "title"
@@ -120,9 +128,8 @@ ActiveRecord::Schema.define(version: 20160511121513) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.index ["user_id"], name: "index_places_on_user_id", using: :btree
   end
-
-  add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree
 
   create_table "records", force: :cascade do |t|
     t.date     "published_at"
@@ -135,12 +142,11 @@ ActiveRecord::Schema.define(version: 20160511121513) do
     t.integer  "user_id"
     t.integer  "place_id"
     t.integer  "category_id"
+    t.index ["breakdown_id"], name: "index_records_on_breakdown_id", using: :btree
+    t.index ["category_id"], name: "index_records_on_category_id", using: :btree
+    t.index ["place_id"], name: "index_records_on_place_id", using: :btree
+    t.index ["user_id"], name: "index_records_on_user_id", using: :btree
   end
-
-  add_index "records", ["breakdown_id"], name: "index_records_on_breakdown_id", using: :btree
-  add_index "records", ["category_id"], name: "index_records_on_category_id", using: :btree
-  add_index "records", ["place_id"], name: "index_records_on_place_id", using: :btree
-  add_index "records", ["user_id"], name: "index_records_on_user_id", using: :btree
 
   create_table "tagged_records", force: :cascade do |t|
     t.integer  "record_id"
@@ -148,11 +154,10 @@ ActiveRecord::Schema.define(version: 20160511121513) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["record_id"], name: "index_tagged_records_on_record_id", using: :btree
+    t.index ["tag_id"], name: "index_tagged_records_on_tag_id", using: :btree
+    t.index ["user_id"], name: "index_tagged_records_on_user_id", using: :btree
   end
-
-  add_index "tagged_records", ["record_id"], name: "index_tagged_records_on_record_id", using: :btree
-  add_index "tagged_records", ["tag_id"], name: "index_tagged_records_on_tag_id", using: :btree
-  add_index "tagged_records", ["user_id"], name: "index_tagged_records_on_user_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
@@ -161,9 +166,8 @@ ActiveRecord::Schema.define(version: 20160511121513) do
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["user_id"], name: "index_tags_on_user_id", using: :btree
   end
-
-  add_index "tags", ["user_id"], name: "index_tags_on_user_id", using: :btree
 
   create_table "tallies", force: :cascade do |t|
     t.integer  "user_id"
@@ -182,12 +186,11 @@ ActiveRecord::Schema.define(version: 20160511121513) do
     t.text     "data"
     t.datetime "expires_at"
     t.datetime "created_at",       null: false
+    t.index ["expires_at"], name: "index_tokens_on_expires_at", using: :btree
+    t.index ["token"], name: "index_tokens_on_token", using: :btree
+    t.index ["tokenizable_id", "tokenizable_type", "name"], name: "index_tokens_on_tokenizable_id_and_tokenizable_type_and_name", unique: true, using: :btree
+    t.index ["tokenizable_type", "tokenizable_id"], name: "index_tokens_on_tokenizable_type_and_tokenizable_id", using: :btree
   end
-
-  add_index "tokens", ["expires_at"], name: "index_tokens_on_expires_at", using: :btree
-  add_index "tokens", ["token"], name: "index_tokens_on_token", using: :btree
-  add_index "tokens", ["tokenizable_id", "tokenizable_type", "name"], name: "index_tokens_on_tokenizable_id_and_tokenizable_type_and_name", unique: true, using: :btree
-  add_index "tokens", ["tokenizable_type", "tokenizable_id"], name: "index_tokens_on_tokenizable_type_and_tokenizable_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: ""
@@ -223,9 +226,8 @@ ActiveRecord::Schema.define(version: 20160511121513) do
     t.boolean  "tag_field",              default: true
     t.string   "new_email"
     t.string   "currency"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
