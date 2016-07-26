@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Record::Fetcher
   attr_accessor :total_count
 

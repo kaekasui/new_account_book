@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Category::BreakdownsController < ApplicationController
   before_action :authenticate
   before_action :set_category

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PlacesController < ApplicationController
   before_action :authenticate
   before_action :set_place, only: [:update, :destroy]

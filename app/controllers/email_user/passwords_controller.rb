@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class EmailUser::PasswordsController < ApplicationController
   before_action :set_user, only: %i(edit update)
 
