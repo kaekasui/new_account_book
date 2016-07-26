@@ -21,7 +21,7 @@ describe 'GET /places/:place_id/categories', autodoc: true do
     it '200とカテゴリ一覧を返すこと' do
       place.categories << category
 
-      get "/places/#{place.id}/categories", '', login_headers(user)
+      get "/places/#{place.id}/categories", params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -77,7 +77,7 @@ describe 'PATCH /places/:place_id/categories/:id', autodoc: true do
 
       it '422とエラーメッセージが返ってくること' do
         patch "/places/#{place.id}/categories/#{category.id}",
-              '', login_headers(user)
+              params: '', headers: login_headers(user)
         expect(response.status).to eq 422
 
         json = {
@@ -90,7 +90,7 @@ describe 'PATCH /places/:place_id/categories/:id', autodoc: true do
     context 'まだ設定されていないカテゴリの場合' do
       it '200を返し、お店・施設にカテゴリが登録できること' do
         patch "/places/#{place.id}/categories/#{category.id}",
-              '', login_headers(user)
+              params: '', headers: login_headers(user)
         expect(response.status).to eq 201
 
         place.reload
@@ -121,7 +121,7 @@ describe 'DELETE /places/:place_id/categories/:id', autodoc: true do
 
       it '200が返ってくること' do
         delete "/places/#{place.id}/categories/#{category.id}",
-               '', login_headers(user)
+               params: '', headers: login_headers(user)
         expect(response.status).to eq 200
       end
     end
@@ -129,7 +129,7 @@ describe 'DELETE /places/:place_id/categories/:id', autodoc: true do
     context 'まだ設定されていないカテゴリの場合' do
       it '404が返ってくること' do
         delete "/places/#{place.id}/categories/#{category.id}",
-               '', login_headers(user)
+               params: '', headers: login_headers(user)
         expect(response.status).to eq 404
       end
     end

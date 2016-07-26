@@ -15,7 +15,7 @@ describe 'GET /tags', autodoc: true do
     let!(:tag2) { create(:tag, user: user) }
 
     it '200とラベル一覧を返すこと' do
-      get '/tags', '', login_headers(user)
+      get '/tags', params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {

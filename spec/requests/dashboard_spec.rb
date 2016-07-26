@@ -14,7 +14,7 @@ describe 'GET /dashboard', autodoc: true do
   context 'ログインしている場合' do
     context 'データが空の場合' do
       it '200とからの集計結果を返すこと' do
-        get '/dashboard', '', login_headers(user)
+        get '/dashboard', params: '', headers: login_headers(user)
         expect(response.status).to eq 200
 
         tally = Tally.find_by(user_id: user.id,
@@ -41,7 +41,7 @@ describe 'GET /dashboard', autodoc: true do
 
       context 'パラメータがなかった場合' do
         it '200と今月の集計結果を返すこと' do
-          get '/dashboard', '', login_headers(user)
+          get '/dashboard', params: '', headers: login_headers(user)
           expect(response.status).to eq 200
 
           tally = Tally.find_by(user_id: user.id,
@@ -65,7 +65,7 @@ describe 'GET /dashboard', autodoc: true do
         end
 
         it '200と今月の集計結果を返すこと' do
-          get '/dashboard', params, login_headers(user)
+          get '/dashboard', params: params, headers: login_headers(user)
           expect(response.status).to eq 200
 
           tally = Tally.find_by(user_id: user.id,

@@ -25,7 +25,7 @@ describe 'GET /mypage', autodoc: true do
     end
 
     it '200とお知らせ情報、メッセージ情報を返すこと' do
-      get '/mypage', '', login_headers(user)
+      get '/mypage', params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -110,7 +110,7 @@ describe 'GET /notices', autodoc: true do
     let!(:notice3) { create(:notice, post_at: Time.zone.tomorrow) }
 
     it '200とお知らせ情報を返すこと' do
-      get '/notices', '', login_headers(user)
+      get '/notices', params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -150,7 +150,7 @@ describe 'GET /messages', autodoc: true do
     let!(:message3) { create(:message, user: user) }
 
     it '200とメッセージ情報を返すこと' do
-      get '/messages', '', login_headers(user)
+      get '/messages', params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {

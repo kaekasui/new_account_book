@@ -16,7 +16,7 @@ describe 'GET /categories/:category_id/breakdowns', autodoc: true do
     let!(:breakdown) { create(:breakdown, category: category) }
 
     it '200とカテゴリ一覧を返すこと' do
-      get "/categories/#{category.id}/breakdowns", '', login_headers(user)
+      get "/categories/#{category.id}/breakdowns", params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -52,7 +52,7 @@ describe 'POST /categories/:category_id/breakdowns', autodoc: true do
 
   context 'ログインしてる場合' do
     it '201が返ってくること' do
-      post "/categories/#{category.id}/breakdowns", params, login_headers(user)
+      post "/categories/#{category.id}/breakdowns", params: params, headers: login_headers(user)
       expect(response.status).to eq 201
     end
   end
@@ -61,7 +61,7 @@ describe 'POST /categories/:category_id/breakdowns', autodoc: true do
     it '422とエラーメッセージが返ってくること' do
       3.times { create(:breakdown, category: category) }
 
-      post "/categories/#{category.id}/breakdowns", params, login_headers(user)
+      post "/categories/#{category.id}/breakdowns", params: params, headers: login_headers(user)
       expect(response.status).to eq 422
 
       json = {
@@ -75,7 +75,7 @@ describe 'POST /categories/:category_id/breakdowns', autodoc: true do
     let(:name) { '' }
 
     it '422とエラーメッセージが返ってくること' do
-      post "/categories/#{category.id}/breakdowns", params, login_headers(user)
+      post "/categories/#{category.id}/breakdowns", params: params, headers: login_headers(user)
       expect(response.status).to eq 422
 
       json = {
@@ -102,7 +102,7 @@ describe 'PATCH /categories/:category_id/breakdowns/:id', autodoc: true do
     context '内訳の値が正しい場合' do
       it '200が返ってくること' do
         patch "/categories/#{category.id}/breakdowns/#{breakdown.id}",
-              { name: '内訳' }, login_headers(user)
+              params: { name: '内訳' }, headers: login_headers(user)
         expect(response.status).to eq 200
         breakdown.reload
         expect(breakdown.name).to eq '内訳'
@@ -112,7 +112,7 @@ describe 'PATCH /categories/:category_id/breakdowns/:id', autodoc: true do
     context '内訳の値が空の場合' do
       it '200が返ってくること' do
         patch "/categories/#{category.id}/breakdowns/#{breakdown.id}",
-              { name: '' }, login_headers(user)
+              params: { name: '' }, headers: login_headers(user)
         expect(response.status).to eq 422
         json = {
           error_messages: ['内訳を入力してください']
@@ -138,7 +138,7 @@ describe 'DELETE /categories/:category_id/breakdowns/:id', autodoc: true do
   context 'ログインしている場合' do
     it '200が返ってくること' do
       delete "/categories/#{category.id}/breakdowns/#{breakdown.id}",
-             '', login_headers(user)
+             params: '', headers: login_headers(user)
       expect(response.status).to eq 200
     end
   end

@@ -7,7 +7,7 @@ describe 'GET /admin/users', autodoc: true do
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      get '/admin/users/', ''
+      get '/admin/users/', params: ''
 
       expect(response.status).to eq 401
     end
@@ -15,7 +15,7 @@ describe 'GET /admin/users', autodoc: true do
 
   context '一般ユーザーとしてログインしている場合' do
     it '401が返ってくること' do
-      get '/admin/users/', '', login_headers(user)
+      get '/admin/users/', params: '', headers: login_headers(user)
 
       expect(response.status).to eq 401
     end
@@ -24,7 +24,7 @@ describe 'GET /admin/users', autodoc: true do
   context '管理ユーザーとしてログインしている場合' do
     context '1ページ以内のユーザー数の場合' do
       it '200が返り、ユーザー一覧が返ってくること' do
-        get '/admin/users/', '', login_headers(admin_user)
+        get '/admin/users/', params: '', headers: login_headers(admin_user)
 
         expect(response.status).to eq 200
         json = {
@@ -60,7 +60,7 @@ describe 'GET /admin/users', autodoc: true do
 
     context '2ページ以上のユーザー数の場合' do
       it '200が返り、ユーザー一覧が返ってくること' do
-        get '/admin/users/', { offset: 1 }, login_headers(admin_user)
+        get '/admin/users/', params: { offset: 1 }, headers: login_headers(admin_user)
 
         expect(response.status).to eq 200
         json = {
@@ -91,7 +91,7 @@ describe 'GET /users/:id', autodoc: true do
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      get "/admin/users/#{user.id}", ''
+      get "/admin/users/#{user.id}", params: ''
 
       expect(response.status).to eq 401
     end
@@ -99,7 +99,7 @@ describe 'GET /users/:id', autodoc: true do
 
   context '一般ユーザーとしてログインしている場合' do
     it '401が返ってくること' do
-      get "/admin/users/#{user.id}", '', login_headers(user)
+      get "/admin/users/#{user.id}", params: '', headers: login_headers(user)
 
       expect(response.status).to eq 401
     end
@@ -107,7 +107,7 @@ describe 'GET /users/:id', autodoc: true do
 
   context '管理ユーザーとしてログインしている場合' do
     it '200が返り、ユーザー一覧が返ってくること' do
-      get "/admin/users/#{user.id}", '', login_headers(admin_user)
+      get "/admin/users/#{user.id}", params: '', headers: login_headers(admin_user)
 
       expect(response.status).to eq 200
       json = {

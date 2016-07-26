@@ -9,7 +9,7 @@ describe 'GET /admin/notices?offset=offset', autodoc: true do
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      get '/admin/notices/', ''
+      get '/admin/notices/', params: ''
 
       expect(response.status).to eq 401
     end
@@ -17,7 +17,7 @@ describe 'GET /admin/notices?offset=offset', autodoc: true do
 
   context '一般ユーザーとしてログインしている場合' do
     it '401が返ってくること' do
-      get '/admin/notices/', '', login_headers(user)
+      get '/admin/notices/', params: '', headers: login_headers(user)
 
       expect(response.status).to eq 401
     end
@@ -26,7 +26,7 @@ describe 'GET /admin/notices?offset=offset', autodoc: true do
   context '管理ユーザーとしてログインしている場合' do
     context '1ページ以内のお知らせ数の場合' do
       it '200が返り、お知らせ一覧が返ってくること' do
-        get '/admin/notices/', '', login_headers(admin_user)
+        get '/admin/notices/', params: '', headers: login_headers(admin_user)
 
         expect(response.status).to eq 200
         json = {
@@ -52,7 +52,7 @@ describe 'GET /admin/notices?offset=offset', autodoc: true do
 
     context '2ページ以上のお知らせ数の場合' do
       it '200が返り、お知らせ一覧が返ってくること' do
-        get '/admin/notices/', { offset: 1 }, login_headers(admin_user)
+        get '/admin/notices/', params: { offset: 1 }, headers: login_headers(admin_user)
 
         expect(response.status).to eq 200
         json = {
@@ -81,7 +81,7 @@ describe 'POST /admin/notices', autodoc: true do
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      post '/admin/notices/', ''
+      post '/admin/notices/', params: ''
 
       expect(response.status).to eq 401
     end
@@ -89,7 +89,7 @@ describe 'POST /admin/notices', autodoc: true do
 
   context '正しい値が登録された場合' do
     it '201が返ってくること' do
-      post '/admin/notices/', params, login_headers(admin_user)
+      post '/admin/notices/', params: params, headers: login_headers(admin_user)
 
       expect(response.status).to eq 201
     end
@@ -99,7 +99,7 @@ describe 'POST /admin/notices', autodoc: true do
     let(:title) { '' }
 
     it '422とエラーメッセージが返ってくること' do
-      post '/admin/notices/', params, login_headers(admin_user)
+      post '/admin/notices/', params: params, headers: login_headers(admin_user)
 
       expect(response.status).to eq 422
       json = {
@@ -120,7 +120,7 @@ describe 'PATCH /admin/notices/:id', autodoc: true do
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      patch "/admin/notices/#{notice.id}", ''
+      patch "/admin/notices/#{notice.id}", params: ''
 
       expect(response.status).to eq 401
     end
@@ -128,7 +128,7 @@ describe 'PATCH /admin/notices/:id', autodoc: true do
 
   context 'タイトルが変更された場合' do
     it '200が返ってくること' do
-      patch "/admin/notices/#{notice.id}", params, login_headers(admin_user)
+      patch "/admin/notices/#{notice.id}", params: params, headers: login_headers(admin_user)
       expect(response.status).to eq 200
       expect(Notice.last.title).to eq 'タイトル'
     end
@@ -138,7 +138,7 @@ describe 'PATCH /admin/notices/:id', autodoc: true do
     let(:title) { '' }
 
     it '422とエラーメッセージが返ってくること' do
-      patch "/admin/notices/#{notice.id}", params, login_headers(admin_user)
+      patch "/admin/notices/#{notice.id}", params: params, headers: login_headers(admin_user)
 
       expect(response.status).to eq 422
       json = {
@@ -163,7 +163,7 @@ describe 'DELETE /admin/notices/:id', autodoc: true do
 
   context 'ログインしている場合' do
     it '200が返ってくること' do
-      delete "/admin/notices/#{notice.id}", '', login_headers(admin_user)
+      delete "/admin/notices/#{notice.id}", params: '', headers: login_headers(admin_user)
       expect(response.status).to eq 200
     end
   end

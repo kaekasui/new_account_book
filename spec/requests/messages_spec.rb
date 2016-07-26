@@ -19,7 +19,7 @@ describe 'GET /messages/:id', autodoc: true do
     it '200とメッセージを返すこと' do
       expect(message.read).to be_falsey
 
-      get "/messages/#{message.id}", '', login_headers(user)
+      get "/messages/#{message.id}", params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -38,7 +38,7 @@ describe 'GET /messages/:id', autodoc: true do
     let!(:message) { create(:message, user: user) }
 
     it '404を返すこと' do
-      get "/messages/#{message.id}", '', login_headers(another_user)
+      get "/messages/#{message.id}", params: '', headers: login_headers(another_user)
       expect(response.status).to eq 404
     end
   end

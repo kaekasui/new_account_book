@@ -12,7 +12,7 @@ describe 'POST /session?email=email&password=password', autodoc: true do
 
   context 'ユーザーの本登録が完了している場合' do
     it '200が返ってくること' do
-      post '/session', params
+      post '/session', params: params
       expect(response.status).to eq 200
 
       json = {
@@ -40,7 +40,7 @@ describe 'POST /session?email=email&password=password', autodoc: true do
     end
 
     it '401とエラーメッセージが返ってくること' do
-      post '/session', params
+      post '/session', params: params
 
       expect(response.status).to eq 401
       json = {
@@ -54,7 +54,7 @@ describe 'POST /session?email=email&password=password', autodoc: true do
     let(:email) { 'dummy@example.com' }
 
     it '401とエラーメッセージが返ってくること' do
-      post '/session', params
+      post '/session', params: params
 
       expect(response.status).to eq 401
       json = {
@@ -68,7 +68,7 @@ describe 'POST /session?email=email&password=password', autodoc: true do
     let(:password) { 'dummy_password' }
 
     it '401とエラーメッセージが返ってくること' do
-      post '/session', params
+      post '/session', params: params
 
       expect(response.status).to eq 401
       json = {
