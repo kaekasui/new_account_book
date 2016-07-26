@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe 'GET /records', autodoc: true do
@@ -23,7 +24,7 @@ describe 'GET /records', autodoc: true do
       it '200と当日の収支一覧を返すこと' do
         record2.tags << tag
 
-        get '/records', params, login_headers(user)
+        get '/records', params: params, headers: login_headers(user)
         expect(response.status).to eq 200
 
         json = {
@@ -64,7 +65,7 @@ describe 'GET /records', autodoc: true do
       let!(:params) { { year: 2016, month: 1.month.ago.month } }
 
       it '200とその年の収支一覧を返すこと' do
-        get '/records', params, login_headers(user)
+        get '/records', params: params, headers: login_headers(user)
         expect(response.status).to eq 200
 
         json = {
@@ -93,7 +94,7 @@ describe 'GET /records', autodoc: true do
       let!(:params) { { year: 2016 } }
 
       it '200とその年の収支一覧を返すこと' do
-        get '/records', params, login_headers(user)
+        get '/records', params: params, headers: login_headers(user)
         expect(response.status).to eq 200
 
         json = {
@@ -153,7 +154,7 @@ describe 'GET /records/:id', autodoc: true do
 
   context 'メールアドレスのユーザーがログインしている場合' do
     it '200と登録データが返ってくること' do
-      get "/records/#{record.id}", nil, login_headers(user)
+      get "/records/#{record.id}", params: nil, headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -190,7 +191,7 @@ describe 'GET /records/new', autodoc: true do
     end
 
     it '200とカテゴリ一覧を返すこと' do
-      get '/records/new', '', login_headers(user)
+      get '/records/new', params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -253,7 +254,7 @@ describe 'POST /records', autodoc: true do
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      post '/records', ''
+      post '/records', params: ''
 
       expect(response.status).to eq 401
     end
@@ -261,7 +262,7 @@ describe 'POST /records', autodoc: true do
 
   context '正しい値が登録された場合' do
     it '201が返ってくること' do
-      post '/records', params, login_headers(user)
+      post '/records', params: params, headers: login_headers(user)
 
       expect(response.status).to eq 201
 
@@ -277,7 +278,7 @@ describe 'POST /records', autodoc: true do
     let(:charge) { '' }
 
     it '422とエラーメッセージが返ってくること' do
-      post '/records', params, login_headers(user)
+      post '/records', params: params, headers: login_headers(user)
 
       expect(response.status).to eq 422
       json = {
@@ -308,7 +309,7 @@ describe 'GET /records/:id/edit', autodoc: true do
 
   context 'メールアドレスのユーザーがログインしている場合' do
     it '200とカテゴリ一覧を返すこと' do
-      get "/records/#{record.id}/edit", '', login_headers(user)
+      get "/records/#{record.id}/edit", params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -372,7 +373,7 @@ describe 'PATCH /records/:id', autodoc: true do
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      post '/records', ''
+      post '/records', params: ''
 
       expect(response.status).to eq 401
     end
@@ -380,7 +381,8 @@ describe 'PATCH /records/:id', autodoc: true do
 
   context '正しい値に更新された場合' do
     it '200が返ってくること' do
-      patch "/records/#{record.id}", params, login_headers(user)
+      patch "/records/#{record.id}", params: params,
+                                     headers: login_headers(user)
 
       expect(response.status).to eq 200
 
@@ -393,7 +395,8 @@ describe 'PATCH /records/:id', autodoc: true do
     let(:charge) { '' }
 
     it '422とエラーメッセージが返ってくること' do
-      patch "/records/#{record.id}", params, login_headers(user)
+      patch "/records/#{record.id}", params: params,
+                                     headers: login_headers(user)
 
       expect(response.status).to eq 422
       json = {
@@ -407,7 +410,8 @@ describe 'PATCH /records/:id', autodoc: true do
     let(:charge) { '-20' }
 
     it '422とエラーメッセージが返ってくること' do
-      patch "/records/#{record.id}", params, login_headers(user)
+      patch "/records/#{record.id}", params: params,
+                                     headers: login_headers(user)
 
       expect(response.status).to eq 422
       json = {
@@ -432,7 +436,7 @@ describe 'DELETE /records/:id', autodoc: true do
 
   context 'ログインしている場合' do
     it '200が返ってくること' do
-      delete "/records/#{record.id}", '', login_headers(user)
+      delete "/records/#{record.id}", params: '', headers: login_headers(user)
       expect(response.status).to eq 200
       expect(Record.count).to eq 0
     end

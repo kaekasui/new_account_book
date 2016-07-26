@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class EmailUser < User
   has_secure_password
 

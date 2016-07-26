@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe 'GET /notices/:id', autodoc: true do
@@ -22,7 +23,7 @@ describe 'GET /notices/:id', autodoc: true do
     let!(:notice) { create(:notice) }
 
     it '200とお知らせを返すこと' do
-      get "/notices/#{notice.id}", '', login_headers(user)
+      get "/notices/#{notice.id}", params: '', headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {

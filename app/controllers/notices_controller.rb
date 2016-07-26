@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class NoticesController < ApplicationController
   before_action :authenticate, only: %i(index)
 

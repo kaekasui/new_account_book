@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Record < ActiveRecord::Base
   counter_culture :category
 

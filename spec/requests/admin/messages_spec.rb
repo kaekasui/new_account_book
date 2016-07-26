@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe 'GET /admin/messages?offset=offset', autodoc: true do
@@ -9,7 +10,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      get '/admin/messages/', ''
+      get '/admin/messages/', params: ''
 
       expect(response.status).to eq 401
     end
@@ -17,7 +18,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
 
   context '一般ユーザーとしてログインしている場合' do
     it '401が返ってくること' do
-      get '/admin/messages/', '', login_headers(user)
+      get '/admin/messages/', params: '', headers: login_headers(user)
 
       expect(response.status).to eq 401
     end
@@ -26,7 +27,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
   context '管理ユーザーとしてログインしている場合' do
     context '1ページ以内のメッセージ数の場合' do
       it '200が返り、メッセージ一覧が返ってくること' do
-        get '/admin/messages/', '', login_headers(admin_user)
+        get '/admin/messages/', params: '', headers: login_headers(admin_user)
 
         expect(response.status).to eq 200
         json = {
@@ -58,7 +59,8 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
 
     context '2ページ以上のメッセージ数の場合' do
       it '200が返り、メッセージ一覧が返ってくること' do
-        get '/admin/messages/', { offset: 1 }, login_headers(admin_user)
+        get '/admin/messages/', params: { offset: 1 },
+                                headers: login_headers(admin_user)
 
         expect(response.status).to eq 200
         json = {
@@ -88,7 +90,7 @@ describe 'POST /admin/users/:user_id/messages', autodoc: true do
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      post "/admin/users/#{user.id}/messages/", ''
+      post "/admin/users/#{user.id}/messages/", params: ''
 
       expect(response.status).to eq 401
     end
@@ -103,7 +105,7 @@ describe 'POST /admin/users/:user_id/messages', autodoc: true do
     context '正しい値が登録された場合' do
       it '201が返ってくること' do
         post "/admin/users/#{user.id}/messages/",
-             params, login_headers(admin_user)
+             params: params, headers: login_headers(admin_user)
 
         expect(response.status).to eq 201
       end
@@ -114,7 +116,7 @@ describe 'POST /admin/users/:user_id/messages', autodoc: true do
 
       it '422とエラーメッセージが返ってくること' do
         post "/admin/users/#{user.id}/messages/",
-             params, login_headers(admin_user)
+             params: params, headers: login_headers(admin_user)
 
         expect(response.status).to eq 422
         json = {
@@ -135,7 +137,7 @@ describe 'PATCH /admin/messages/:id', autodoc: true do
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      patch "/admin/messages/#{message.id}", ''
+      patch "/admin/messages/#{message.id}", params: ''
 
       expect(response.status).to eq 401
     end
@@ -143,7 +145,8 @@ describe 'PATCH /admin/messages/:id', autodoc: true do
 
   context '内容が変更された場合' do
     it '200が返ってくること' do
-      patch "/admin/messages/#{message.id}", params, login_headers(admin_user)
+      patch "/admin/messages/#{message.id}", params: params,
+                                             headers: login_headers(admin_user)
       expect(response.status).to eq 200
       expect(Message.last.content).to eq 'メッセージ内容'
     end
@@ -153,7 +156,8 @@ describe 'PATCH /admin/messages/:id', autodoc: true do
     let(:content) { '' }
 
     it '422とエラーメッセージが返ってくること' do
-      patch "/admin/messages/#{message.id}", params, login_headers(admin_user)
+      patch "/admin/messages/#{message.id}", params: params,
+                                             headers: login_headers(admin_user)
 
       expect(response.status).to eq 422
       json = {
@@ -179,7 +183,8 @@ describe 'DELETE /admin/messages/:id', autodoc: true do
 
   context 'ログインしている場合' do
     it '200が返ってくること' do
-      delete "/admin/messages/#{message.id}", '', login_headers(admin_user)
+      delete "/admin/messages/#{message.id}", params: '',
+                                              headers: login_headers(admin_user)
       expect(response.status).to eq 200
       expect(Message.count).to eq 0
     end
@@ -203,7 +208,7 @@ describe 'POST /admin/messages/:message_id/send_mail', autodoc: true do
     context 'Emailユーザーへのメッセージの場合' do
       it '200が返ってくること' do
         post "/admin/messages/#{message.id}/send_mail",
-             '', login_headers(admin_user)
+             params: '', headers: login_headers(admin_user)
         expect(response.status).to eq 200
 
         open_email(user.email)
@@ -221,7 +226,7 @@ describe 'POST /admin/messages/:message_id/send_mail', autodoc: true do
 
       it '200が返ってくること' do
         post "/admin/messages/#{message2.id}/send_mail",
-             '', login_headers(admin_user)
+             params: '', headers: login_headers(admin_user)
         expect(response.status).to eq 200
 
         open_email(twitter_user.email)
@@ -234,7 +239,7 @@ describe 'POST /admin/messages/:message_id/send_mail', autodoc: true do
 
         it '404が返ってくること' do
           post "/admin/messages/#{message2.id}/send_mail",
-               '', login_headers(admin_user)
+               params: '', headers: login_headers(admin_user)
           expect(response.status).to eq 404
         end
       end

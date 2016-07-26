@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 # パスワードを変更するためにメール送信
@@ -9,14 +10,14 @@ describe 'POST /email_user/password/send_mail?email=email', autodoc: true do
     let(:email) { '' }
 
     it '422が返ってくること' do
-      post '/email_user/password/send_mail', email_param
+      post '/email_user/password/send_mail', params: email_param
       expect(response.status).to eq 422
     end
   end
 
   context 'ユーザーが見つからない場合' do
     it '200が返り、メールが送信されること' do
-      post '/email_user/password/send_mail', email_param
+      post '/email_user/password/send_mail', params: email_param
       expect(response.status).to eq 200
 
       open_email(email)
@@ -30,7 +31,7 @@ describe 'POST /email_user/password/send_mail?email=email', autodoc: true do
     let!(:user) { create(:email_user, :inactive, email: email) }
 
     it '200が返り、メールが送信されること' do
-      post '/email_user/password/send_mail', email_param
+      post '/email_user/password/send_mail', params: email_param
       expect(response.status).to eq 200
 
       open_email(email)
@@ -44,7 +45,7 @@ describe 'POST /email_user/password/send_mail?email=email', autodoc: true do
     let!(:user) { create(:email_user, :registered, email: email) }
 
     it '200が返り、メールが送信されること' do
-      post '/email_user/password/send_mail', email_param
+      post '/email_user/password/send_mail', params: email_param
       expect(response.status).to eq 200
 
       open_email(email)
@@ -67,7 +68,7 @@ describe 'GET /email_user/password/edit?email=email&token=token',
     let(:email) { '' }
 
     it '302が返ってくること' do
-      get '/email_user/password/edit', params
+      get '/email_user/password/edit', params: params
       expect(response.status).to eq 302
     end
   end
@@ -76,10 +77,10 @@ describe 'GET /email_user/password/edit?email=email&token=token',
     let!(:user) { create(:email_user, :registered, email: email) }
 
     it '302が返ってくること' do
-      post '/email_user/password/send_mail', email_param
+      post '/email_user/password/send_mail', params: email_param
       expect(response.status).to eq 200
 
-      get '/email_user/password/edit', params
+      get '/email_user/password/edit', params: params
       expect(response.status).to eq 302
     end
   end
@@ -88,7 +89,7 @@ describe 'GET /email_user/password/edit?email=email&token=token',
     let!(:user) { create(:email_user, :registered, email: email) }
 
     it '302が返ってくること' do
-      post '/email_user/password/send_mail?', email_param
+      post '/email_user/password/send_mail?', params: email_param
       expect(response.status).to eq 200
 
       open_email(user.email)
@@ -96,7 +97,7 @@ describe 'GET /email_user/password/edit?email=email&token=token',
       token = Regexp.last_match(1)
 
       params = { email: user.email, token: token }
-      get '/email_user/password/edit', params
+      get '/email_user/password/edit', params: params
       expect(response.status).to eq 302
     end
   end
@@ -120,7 +121,7 @@ describe 'PATCH /email_user/password
 
   context 'ユーザーが見つからない場合' do
     it '422が返ってくること' do
-      patch '/email_user/password', params
+      patch '/email_user/password', params: params
       expect(response.status).to eq 422
 
       json = {
@@ -132,18 +133,18 @@ describe 'PATCH /email_user/password
 
   context '新しいパスワードが確認と一致しない場合' do
     it '422が返ってくること' do
-      post '/email_user/password/send_mail?', email_param
+      post '/email_user/password/send_mail?', params: email_param
       expect(response.status).to eq 200
 
       open_email(user.email)
       current_email.body =~ %r{\/password\/edit\?token=(.*)}
       token = Regexp.last_match(1)
 
-      get '/email_user/password/edit', token: token
+      get '/email_user/password/edit', params: { token: token }
       expect(response.status).to eq 302
       params[:password] = 'invalid_password'
 
-      patch '/email_user/password', params.merge(token: token)
+      patch '/email_user/password', params: params.merge(token: token)
       expect(response.status).to eq 422
 
       json = {
@@ -155,17 +156,17 @@ describe 'PATCH /email_user/password
 
   context 'トークンが正しくない場合' do
     it '422が返ってくること' do
-      post '/email_user/password/send_mail?', email_param
+      post '/email_user/password/send_mail?', params: email_param
       expect(response.status).to eq 200
 
       open_email(user.email)
       current_email.body =~ %r{\/password\/edit\?token=(.*)}
       token = Regexp.last_match(1)
 
-      get '/email_user/password/edit', token: token
+      get '/email_user/password/edit', params: { token: token }
       expect(response.status).to eq 302
 
-      patch '/email_user/password', params.merge(token: 'dummy')
+      patch '/email_user/password', params: params.merge(token: 'dummy')
       expect(response.status).to eq 422
 
       json = {
@@ -181,20 +182,20 @@ describe 'PATCH /email_user/password
     end
 
     it '200が返り、ログインできること' do
-      post '/email_user/password/send_mail?', email_param
+      post '/email_user/password/send_mail?', params: email_param
       expect(response.status).to eq 200
 
       open_email(user.email)
       current_email.body =~ %r{\/password\/edit\?token=(.*)}
       token = Regexp.last_match(1)
 
-      get '/email_user/password/edit', token: token
+      get '/email_user/password/edit', params: { token: token }
       expect(response.status).to eq 302
 
-      patch '/email_user/password', params.merge(token: token)
+      patch '/email_user/password', params: params.merge(token: token)
       expect(response.status).to eq 200
 
-      post '/session', login_params
+      post '/session', params: login_params
       expect(response.status).to eq 200
     end
   end

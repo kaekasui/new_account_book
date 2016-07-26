@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe 'POST /feedback?user_id=user_id&email=email&content=content',
@@ -10,7 +11,7 @@ describe 'POST /feedback?user_id=user_id&email=email&content=content',
 
     context '各値が正しい場合' do
       it '201が返ってくること' do
-        post '/feedback', params
+        post '/feedback', params: params
         expect(response.status).to eq 201
 
         open_email(Settings.mail_from)
@@ -22,7 +23,7 @@ describe 'POST /feedback?user_id=user_id&email=email&content=content',
       let(:content) { '' }
 
       it '422とエラーメッセージが返ってくること' do
-        post '/feedback', params
+        post '/feedback', params: params
         expect(response.status).to eq 422
         json = {
           error_messages: ['内容を入力してください']
@@ -38,7 +39,7 @@ describe 'POST /feedback?user_id=user_id&email=email&content=content',
 
     context '各値が正しい場合' do
       it '201が返ってくること' do
-        post '/feedback', params
+        post '/feedback', params: params
         expect(response.status).to eq 201
         expect(Feedback.last.content).to eq content
 
@@ -51,7 +52,7 @@ describe 'POST /feedback?user_id=user_id&email=email&content=content',
       let(:email) { '' }
 
       it '422とエラーメッセージが返ってくること' do
-        post '/feedback', params
+        post '/feedback', params: params
         expect(response.status).to eq 422
         json = {
           error_messages: ['メールアドレスを入力してください']
@@ -64,7 +65,7 @@ describe 'POST /feedback?user_id=user_id&email=email&content=content',
       let(:content) { '' }
 
       it '422とエラーメッセージが返ってくること' do
-        post '/feedback', params
+        post '/feedback', params: params
         expect(response.status).to eq 422
         json = {
           error_messages: ['内容を入力してください']

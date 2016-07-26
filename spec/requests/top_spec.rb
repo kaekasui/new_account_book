@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe 'GET /', autodoc: true do
@@ -14,7 +15,7 @@ describe 'GET /', autodoc: true do
   end
 
   it '200とお知らせを返すこと' do
-    get '/', '', login_headers(user)
+    get '/', params: '', headers: login_headers(user)
     expect(response.status).to eq 200
 
     json = {

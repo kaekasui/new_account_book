@@ -28,3 +28,7 @@ ClassAndModuleChildren:
 Metrics/AbcSize:
   Enabled: true
   Max: 30
+
+# TODO: Configuration parameters: CountComments.
+Metrics/ClassLength:
+  Max: 103

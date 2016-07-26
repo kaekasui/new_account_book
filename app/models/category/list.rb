@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Category::List
   include ActiveModel::Model
 

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class User < ActiveRecord::Base
   tokenizable
   has_many :feedbacks
@@ -23,6 +24,10 @@ class User < ActiveRecord::Base
             unless: :admin
 
   before_create :set_currency
+
+  def _name
+    becomes(type.classify.constantize)._name
+  end
 
   def active?
     registered? # TODO: 有効期限を確認する
