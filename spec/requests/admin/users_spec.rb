@@ -60,7 +60,8 @@ describe 'GET /admin/users', autodoc: true do
 
     context '2ページ以上のユーザー数の場合' do
       it '200が返り、ユーザー一覧が返ってくること' do
-        get '/admin/users/', params: { offset: 1 }, headers: login_headers(admin_user)
+        get '/admin/users/', params: { offset: 1 },
+                             headers: login_headers(admin_user)
 
         expect(response.status).to eq 200
         json = {
@@ -107,7 +108,8 @@ describe 'GET /users/:id', autodoc: true do
 
   context '管理ユーザーとしてログインしている場合' do
     it '200が返り、ユーザー一覧が返ってくること' do
-      get "/admin/users/#{user.id}", params: '', headers: login_headers(admin_user)
+      get "/admin/users/#{user.id}", params: '',
+                                     headers: login_headers(admin_user)
 
       expect(response.status).to eq 200
       json = {

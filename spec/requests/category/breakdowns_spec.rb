@@ -16,7 +16,8 @@ describe 'GET /categories/:category_id/breakdowns', autodoc: true do
     let!(:breakdown) { create(:breakdown, category: category) }
 
     it '200とカテゴリ一覧を返すこと' do
-      get "/categories/#{category.id}/breakdowns", params: '', headers: login_headers(user)
+      get "/categories/#{category.id}/breakdowns", params: '',
+                                                   headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -52,7 +53,8 @@ describe 'POST /categories/:category_id/breakdowns', autodoc: true do
 
   context 'ログインしてる場合' do
     it '201が返ってくること' do
-      post "/categories/#{category.id}/breakdowns", params: params, headers: login_headers(user)
+      post "/categories/#{category.id}/breakdowns", params: params,
+                                                    headers: login_headers(user)
       expect(response.status).to eq 201
     end
   end
@@ -61,7 +63,8 @@ describe 'POST /categories/:category_id/breakdowns', autodoc: true do
     it '422とエラーメッセージが返ってくること' do
       3.times { create(:breakdown, category: category) }
 
-      post "/categories/#{category.id}/breakdowns", params: params, headers: login_headers(user)
+      post "/categories/#{category.id}/breakdowns", params: params,
+                                                    headers: login_headers(user)
       expect(response.status).to eq 422
 
       json = {
@@ -75,7 +78,8 @@ describe 'POST /categories/:category_id/breakdowns', autodoc: true do
     let(:name) { '' }
 
     it '422とエラーメッセージが返ってくること' do
-      post "/categories/#{category.id}/breakdowns", params: params, headers: login_headers(user)
+      post "/categories/#{category.id}/breakdowns", params: params,
+                                                    headers: login_headers(user)
       expect(response.status).to eq 422
 
       json = {

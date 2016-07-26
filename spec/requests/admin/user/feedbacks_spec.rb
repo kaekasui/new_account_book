@@ -16,7 +16,9 @@ describe 'GET /admin/users/:user_id/feedbacks', autodoc: true do
 
   context '管理ユーザーとしてログインしている場合' do
     it '200が返り、フィードバック一覧が返ってくること' do
-      get "/admin/users/#{user.id}/feedbacks/", params: '', headers: login_headers(admin_user)
+      get "/admin/users/#{user.id}/feedbacks/",
+          params: '',
+          headers: login_headers(admin_user)
 
       expect(response.status).to eq 200
       json = {

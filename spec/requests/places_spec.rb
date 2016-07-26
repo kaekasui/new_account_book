@@ -113,7 +113,8 @@ describe 'PATCH /places/:id', autodoc: true do
       let!(:params) { { name: '名前' } }
 
       it '200を返し、お店・施設が登録できること' do
-        patch "/places/#{place.id}", params: params, headers: login_headers(user)
+        patch "/places/#{place.id}", params: params,
+                                     headers: login_headers(user)
         expect(response.status).to eq 200
 
         place.reload
@@ -125,7 +126,8 @@ describe 'PATCH /places/:id', autodoc: true do
       let!(:params) { { name: '' } }
 
       it '422を返し、お店・施設が登録できないこと' do
-        patch "/places/#{place.id}", params: params, headers: login_headers(user)
+        patch "/places/#{place.id}", params: params,
+                                     headers: login_headers(user)
         expect(response.status).to eq 422
 
         json = {

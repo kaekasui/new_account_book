@@ -117,7 +117,8 @@ describe 'PATCH /categories/:id', autodoc: true do
       let!(:params) { { name: '名前', barance_of_payments: true } }
 
       it '201を返し、カテゴリが登録できること' do
-        patch "/categories/#{category.id}", params: params, headers: login_headers(user)
+        patch "/categories/#{category.id}", params: params,
+                                            headers: login_headers(user)
         expect(response.status).to eq 200
 
         category.reload
@@ -130,7 +131,8 @@ describe 'PATCH /categories/:id', autodoc: true do
       let!(:params) { { name: '', barance_of_payments: true } }
 
       it '201を返し、カテゴリが登録できること' do
-        patch "/categories/#{category.id}", params: params, headers: login_headers(user)
+        patch "/categories/#{category.id}", params: params,
+                                            headers: login_headers(user)
         expect(response.status).to eq 422
 
         json = {
@@ -155,7 +157,8 @@ describe 'DELETE /categories/:id', autodoc: true do
 
   context 'メールアドレスのユーザーがログインしている場合' do
     it '200を返し、カテゴリが削除できること' do
-      delete "/categories/#{category.id}", params: '', headers: login_headers(user)
+      delete "/categories/#{category.id}", params: '',
+                                           headers: login_headers(user)
       expect(response.status).to eq 200
 
       expect(Category.count).to eq 0
@@ -168,7 +171,8 @@ describe 'DELETE /categories/:id', autodoc: true do
     end
 
     it '422とエラーメッセージが返ってくること' do
-      delete "/categories/#{category.id}", params: '', headers: login_headers(user)
+      delete "/categories/#{category.id}", params: '',
+                                           headers: login_headers(user)
       expect(response.status).to eq 422
       json = {
         error_messages: ['登録した内訳を削除してから削除してください']
@@ -183,7 +187,8 @@ describe 'DELETE /categories/:id', autodoc: true do
     end
 
     it '422とエラーメッセージが返ってくること' do
-      delete "/categories/#{category.id}", params: '', headers: login_headers(user)
+      delete "/categories/#{category.id}", params: '',
+                                           headers: login_headers(user)
       expect(response.status).to eq 422
       json = {
         error_messages: ['登録した収支を削除してから削除してください']
@@ -199,7 +204,8 @@ describe 'DELETE /categories/:id', autodoc: true do
     end
 
     it '200を返し、カテゴリと関連が削除できること' do
-      delete "/categories/#{category.id}", params: '', headers: login_headers(user)
+      delete "/categories/#{category.id}", params: '',
+                                           headers: login_headers(user)
       expect(response.status).to eq 200
 
       expect(Category.count).to eq 0

@@ -61,7 +61,8 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
 
     context '2ページ以上のフィードバック数の場合' do
       it '200が返り、フィードバック一覧が返ってくること' do
-        get '/admin/feedbacks/', params: { offset: 1 }, headers: login_headers(admin_user)
+        get '/admin/feedbacks/', params: { offset: 1 },
+                                 headers: login_headers(admin_user)
 
         expect(response.status).to eq 200
         json = {

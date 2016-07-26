@@ -381,7 +381,8 @@ describe 'PATCH /records/:id', autodoc: true do
 
   context '正しい値に更新された場合' do
     it '200が返ってくること' do
-      patch "/records/#{record.id}", params: params, headers: login_headers(user)
+      patch "/records/#{record.id}", params: params,
+                                     headers: login_headers(user)
 
       expect(response.status).to eq 200
 
@@ -394,7 +395,8 @@ describe 'PATCH /records/:id', autodoc: true do
     let(:charge) { '' }
 
     it '422とエラーメッセージが返ってくること' do
-      patch "/records/#{record.id}", params: params, headers: login_headers(user)
+      patch "/records/#{record.id}", params: params,
+                                     headers: login_headers(user)
 
       expect(response.status).to eq 422
       json = {
@@ -408,7 +410,8 @@ describe 'PATCH /records/:id', autodoc: true do
     let(:charge) { '-20' }
 
     it '422とエラーメッセージが返ってくること' do
-      patch "/records/#{record.id}", params: params, headers: login_headers(user)
+      patch "/records/#{record.id}", params: params,
+                                     headers: login_headers(user)
 
       expect(response.status).to eq 422
       json = {

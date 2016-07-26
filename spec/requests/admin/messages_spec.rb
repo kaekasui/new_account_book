@@ -59,7 +59,8 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
 
     context '2ページ以上のメッセージ数の場合' do
       it '200が返り、メッセージ一覧が返ってくること' do
-        get '/admin/messages/', params: { offset: 1 }, headers: login_headers(admin_user)
+        get '/admin/messages/', params: { offset: 1 },
+                                headers: login_headers(admin_user)
 
         expect(response.status).to eq 200
         json = {
@@ -144,7 +145,8 @@ describe 'PATCH /admin/messages/:id', autodoc: true do
 
   context '内容が変更された場合' do
     it '200が返ってくること' do
-      patch "/admin/messages/#{message.id}", params: params, headers: login_headers(admin_user)
+      patch "/admin/messages/#{message.id}", params: params,
+                                             headers: login_headers(admin_user)
       expect(response.status).to eq 200
       expect(Message.last.content).to eq 'メッセージ内容'
     end
@@ -154,7 +156,8 @@ describe 'PATCH /admin/messages/:id', autodoc: true do
     let(:content) { '' }
 
     it '422とエラーメッセージが返ってくること' do
-      patch "/admin/messages/#{message.id}", params: params, headers: login_headers(admin_user)
+      patch "/admin/messages/#{message.id}", params: params,
+                                             headers: login_headers(admin_user)
 
       expect(response.status).to eq 422
       json = {
@@ -180,7 +183,8 @@ describe 'DELETE /admin/messages/:id', autodoc: true do
 
   context 'ログインしている場合' do
     it '200が返ってくること' do
-      delete "/admin/messages/#{message.id}", params: '', headers: login_headers(admin_user)
+      delete "/admin/messages/#{message.id}", params: '',
+                                              headers: login_headers(admin_user)
       expect(response.status).to eq 200
       expect(Message.count).to eq 0
     end

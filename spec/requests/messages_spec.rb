@@ -38,7 +38,8 @@ describe 'GET /messages/:id', autodoc: true do
     let!(:message) { create(:message, user: user) }
 
     it '404を返すこと' do
-      get "/messages/#{message.id}", params: '', headers: login_headers(another_user)
+      get "/messages/#{message.id}", params: '',
+                                     headers: login_headers(another_user)
       expect(response.status).to eq 404
     end
   end

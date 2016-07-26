@@ -92,7 +92,8 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
   context 'リンクが有効な場合' do
     it '302が返り、メールが送信されること' do
       clear_emails
-      get "/email_user/registrations/#{@user_id}/regist", params: { token: @token }
+      get "/email_user/registrations/#{@user_id}/regist",
+          params: { token: @token }
       expect(response.status).to eq 302
 
       user = User.last
@@ -104,7 +105,8 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
     end
 
     it 'ログインできるようになっていること' do
-      get "/email_user/registrations/#{@user_id}/regist", params: { token: @token }
+      get "/email_user/registrations/#{@user_id}/regist",
+          params: { token: @token }
       expect(response.status).to eq 302
 
       post '/session', params: params
@@ -122,7 +124,8 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
   context 'トークンの有効期限が切れていた場合' do
     it '401が返ってくること' do
       Timecop.travel(2.days.since)
-      get "/email_user/registrations/#{@user_id}/regist", params: { token: @token }
+      get "/email_user/registrations/#{@user_id}/regist",
+          params: { token: @token }
       expect(response.status).to eq 401
       Timecop.return
     end
@@ -130,17 +133,20 @@ describe 'PATCH /email_user/registrations/:id?token=token', autodoc: true do
 
   context 'トークンが不正だった場合' do
     it '401が返ってくること' do
-      get "/email_user/registrations/#{@user_id}/regist", params: { token: "_#{@token}" }
+      get "/email_user/registrations/#{@user_id}/regist",
+          params: { token: "_#{@token}" }
       expect(response.status).to eq 401
     end
   end
 
   context 'すでに登録が完了していた場合' do
     it '401が返ってくること' do
-      get "/email_user/registrations/#{@user_id}/regist", params: { token: @token }
+      get "/email_user/registrations/#{@user_id}/regist",
+          params: { token: @token }
       expect(response.status).to eq 302
 
-      get "/email_user/registrations/#{@user_id}/regist", params: { token: @token }
+      get "/email_user/registrations/#{@user_id}/regist",
+          params: { token: @token }
       expect(response.status).to eq 401
     end
   end
@@ -181,7 +187,8 @@ describe 'POST /email_user/registrations/recreate?email=email', autodoc: true do
 
   context 'メールアドレスが登録されていない場合' do
     it '422が返ってくること' do
-      patch '/email_user/registrations/recreate', params: { email: "dummy#{email}" }
+      patch '/email_user/registrations/recreate',
+            params: { email: "dummy#{email}" }
       expect(response.status).to eq 422
 
       json = {

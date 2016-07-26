@@ -20,7 +20,8 @@ describe 'GET /categories/:category_id/places', autodoc: true do
       place.categories << category
       place.save
 
-      get "/categories/#{category.id}/places", params: '', headers: login_headers(user)
+      get "/categories/#{category.id}/places", params: '',
+                                               headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
@@ -70,7 +71,8 @@ describe 'POST /categories/:category_id/places', autodoc: true do
 
     context 'すでに登録されている施設名の場合' do
       it '200が返り、施設情報が返ってくること' do
-        post "/categories/#{category.id}/places", params: params, headers: login_headers(user)
+        post "/categories/#{category.id}/places", params: params,
+                                                  headers: login_headers(user)
         expect(response.status).to eq 200
 
         json = {
@@ -86,7 +88,8 @@ describe 'POST /categories/:category_id/places', autodoc: true do
       end
 
       it '422とエラーメッセージが返ってくること' do
-        post "/categories/#{category.id}/places", params: params, headers: login_headers(user)
+        post "/categories/#{category.id}/places", params: params,
+                                                  headers: login_headers(user)
         expect(response.status).to eq 422
 
         json = {
@@ -100,7 +103,8 @@ describe 'POST /categories/:category_id/places', autodoc: true do
       let!(:params) { { name: '新規' } }
 
       it '200が返り、施設情報が返ってくること' do
-        post "/categories/#{category.id}/places", params: params, headers: login_headers(user)
+        post "/categories/#{category.id}/places", params: params,
+                                                  headers: login_headers(user)
         expect(response.status).to eq 200
 
         place = Place.find_by(name: '新規')

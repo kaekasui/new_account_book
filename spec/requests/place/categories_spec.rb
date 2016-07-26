@@ -21,7 +21,8 @@ describe 'GET /places/:place_id/categories', autodoc: true do
     it '200とカテゴリ一覧を返すこと' do
       place.categories << category
 
-      get "/places/#{place.id}/categories", params: '', headers: login_headers(user)
+      get "/places/#{place.id}/categories", params: '',
+                                            headers: login_headers(user)
       expect(response.status).to eq 200
 
       json = {
