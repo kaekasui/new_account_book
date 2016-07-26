@@ -54,7 +54,7 @@ GEM
     after_commit_action (1.0.1)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-    arel (7.0.0)
+    arel (7.1.0)
     ast (2.3.0)
     autodoc (0.6.0)
       actionpack
