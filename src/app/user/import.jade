@@ -1,0 +1,26 @@
+.col-md-3
+  user-menu-directive
+
+.col-md-9
+  .panel.panel-default
+    .panel-heading
+      span.glyphicon.glyphicon-import#left-icon
+      span(translate='TITLES.IMPORT')
+    .panel-body#with-background
+      loading-directive
+      hr
+      p(translate='MESSAGES.DOWNLOAD_SAMPLE_CSV')
+      p
+        | {{ 'LABELS.DOWNLOAD' | translate }}
+        a(href='' ng-csv='import.sample_data' filename='sample.csv') {{ 'LABELS.CSV_FILE' | translate }} (UTF-8)
+      table.table.table-bordered
+        tr
+          td(translate='COLUMNS.PUBLISHED_AT')
+          td(translate='COLUMNS.CATEGORY')
+          td(translate='COLUMNS.BREAKDOWN')
+          td(translate='COLUMNS.PLACE')
+          td(translate='COLUMNS.CHARGE')
+          td(translate='COLUMNS.MEMO')
+          td(translate='COLUMNS.TAG')
+        tr(ng-repeat='tr in import.sample_data')
+          td(ng-repeat='td in tr track by $index') {{ td }}

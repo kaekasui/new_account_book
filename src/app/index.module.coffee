@@ -3,6 +3,7 @@ angular.module(
                      'ngCookies',
                      'ngTouch',
                      'ngSanitize',
+                     'ngCsv',
                      'ngMessages',
                      'ngAria',
                      'ngResource',

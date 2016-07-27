@@ -57,6 +57,11 @@ angular.module 'newAccountBook'
         templateUrl: 'app/user/profile.html'
         controllerAs: 'profile'
         controller: 'ProfileController'
+      .state 'import',
+        url: '/import'
+        templateUrl: 'app/user/import.html'
+        controllerAs: 'import'
+        controller: 'ImportController'
       .state 'list',
         url: '/list'
         templateUrl: 'app/records/list.html'
