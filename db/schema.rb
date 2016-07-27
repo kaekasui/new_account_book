@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726215758) do
+ActiveRecord::Schema.define(version: 20160727164312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160726215758) do
     t.text     "tags"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.text     "comment"
     t.index ["user_id"], name: "index_captures_on_user_id", using: :btree
   end
 
