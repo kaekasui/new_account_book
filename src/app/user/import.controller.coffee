@@ -1,7 +1,8 @@
-ImportController = () ->
+ImportController = ($scope) ->
   'ngInject'
   vm = this
 
+  # TODO: 英語対応
   vm.sample_data = [
     ['2016-08-01', '水道光熱費', '電気代', '東京電力', '4500', '7月分', 'クレジットカード'],
     ['2016-08-03', '消耗品費', '雑貨', '', '800', '', ''],
@@ -10,6 +11,14 @@ ImportController = () ->
   ]
 
   vm.sendData = (flow) ->
+    flow.files.forEach (val) ->
+      Papa.parse val.file,
+        complete: (results) ->
+
+          val.completed = true
+          $scope.$apply()
+        error: ->
+          val.error = true
     return
 
   return

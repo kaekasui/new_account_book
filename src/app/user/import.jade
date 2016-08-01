@@ -11,12 +11,12 @@
       div(flow-init="{target: '/upload'}" flow-files-submitted='$flow.upload()' flow-transfers='true')
         span.btn.btn-default(flow-btn='true' flow-attrs="{accept:'text/csv'}") {{ 'BUTTONS.SELECT_FILE' | translate }}
         span#loader(ng-show='$flow.isUploading()')
-        a.btn.btn-success.pull-right(ng-disabled='transfers.length == 0' ng-click='import.sendData($flow)')
+        a.btn.btn-success.pull-right(ng-disabled='transfers.length == 0 || $flow.isUploading()' ng-click='import.sendData($flow)')
           | {{ 'BUTTONS.IMPORT' | translate }}
         div.well
           ul
             li(ng-repeat='file in transfers')
-              span.glyphicon.glyphicon-ok.green#left-icon(ng-hide='file.error')
+              span.glyphicon.glyphicon-ok.green#left-icon(ng-show='file.completed')
               span.glyphicon.glyphicon-remove.red#left-icon(ng-show='file.error')
               span {{ file.name }}
       hr
