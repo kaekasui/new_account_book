@@ -17,20 +17,20 @@ ImportController = ($scope, UserFactory) ->
 
   vm.sendData = (flow) ->
     flow.files.forEach (val) ->
-      vm.sending = true
-      Papa.parse val.file,
-        complete: (results) ->
-          UserFactory.postCsvFile(results).then( ->
-            val.completed = true
-            vm.sending = false
-          ).catch () ->
+      if val.completed != true && val.error != true
+        vm.sending = true
+        Papa.parse val.file,
+          complete: (results) ->
+            UserFactory.postCsvFile(results).then( ->
+              val.completed = true
+              vm.sending = false
+            ).catch () ->
+              val.error = true
+              vm.sending = false
+            $scope.$apply()
+          error: ->
             val.error = true
             vm.sending = false
-          $scope.$apply()
-        error: ->
-          val.error = true
-          vm.sending = false
-    return
 
   return
 
