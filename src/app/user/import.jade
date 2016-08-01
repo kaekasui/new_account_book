@@ -8,8 +8,17 @@
       span(translate='TITLES.IMPORT')
     .panel-body#with-background
       loading-directive
-      div(flow-init="{target: '/upload'}" flow-files-submitted='import.readFile()')
-        input(type='file' flow-btn='true')
+      div(flow-init="{target: '/upload'}" flow-files-submitted='import.readFile()' flow-transfers='true')
+        span.btn.btn-default(flow-btn='true') {{ 'BUTTONS.SELECT_FILE' | translate }}
+        span#loader(ng-show='$flow.isUploading()')
+        a.btn.btn-success.pull-right(ng-disabled='transfers.length == 0')
+          | {{ 'BUTTONS.IMPORT' | translate }}
+        div.well
+          ul
+            li(ng-repeat='file in transfers')
+              span.glyphicon.glyphicon-ok.green#left-icon(ng-hide='file.error')
+              span.glyphicon.glyphicon-remove.red#left-icon(ng-show='file.error')
+              span {{ file.name }}
       hr
       p(translate='MESSAGES.DOWNLOAD_SAMPLE_CSV')
       p

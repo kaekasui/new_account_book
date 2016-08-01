@@ -10,6 +10,7 @@ ImportController = () ->
   ]
 
   vm.readFile = () ->
+    return
 
   return
 

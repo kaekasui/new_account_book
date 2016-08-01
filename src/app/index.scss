@@ -124,6 +124,10 @@ body {
     background-color: $green;
   }
 
+  .well {
+    box-shadow: none;
+  }
+
   label {
     font-family: 'Lucida Grande', Meiryo, sans-serif;
     font-size: 12px;
