@@ -157,6 +157,8 @@
     "UPDATE_EMAIL": "メールアドレスを更新しました",
     "UPDATE_NOTICE": "お知らせを編集しました",
     "INPUT_OR_SELECT": "お店・施設を選択または入力してください",
+    "IMPORT_DATA": "全てのファイルを読み込みました。",
+    "IMPORT_DATA_2": "からデータの登録を完了させてください。",
     "LOGIN": "ログインしました",
     "LOGOUT": "ログアウトしました",
     "MAX_LENGTH_RECORDS": "データの入力は {{ count }} 件までです。",

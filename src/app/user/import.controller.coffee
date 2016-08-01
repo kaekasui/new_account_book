@@ -1,4 +1,4 @@
-ImportController = ($scope) ->
+ImportController = ($scope, UserFactory) ->
   'ngInject'
   vm = this
 
@@ -10,15 +10,26 @@ ImportController = ($scope) ->
     ['2016-08-06', '交際費', 'プレゼント', '', '6000', '山田さん誕生日', 'クレジットカード']
   ]
 
+  vm.filter_files = (files) ->
+    files.filter((element) ->
+      element.completed == true || element.error == true
+    )
+
   vm.sendData = (flow) ->
     flow.files.forEach (val) ->
+      vm.sending = true
       Papa.parse val.file,
         complete: (results) ->
-
-          val.completed = true
+          UserFactory.postCsvFile(results).then( ->
+            val.completed = true
+            vm.sending = false
+          ).catch () ->
+            val.error = true
+            vm.sending = false
           $scope.$apply()
         error: ->
           val.error = true
+          vm.sending = false
     return
 
   return

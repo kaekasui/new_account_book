@@ -156,6 +156,8 @@
     "UPDATE_EMAIL": "Updated the email",
     "UPDATE_NOTICE": "Updated the notice",
     "INPUT_OR_SELECT": "Input or Select a Place",
+    "IMPORT_DATA": "Read some files. Add data on the import history page",
+    "IMPORT_DATA_2": "Add these data",
     "LOGIN": "Logged in",
     "LOGOUT": "Logged out",
     "MAX_LENGTH_RECORDS": "Can't regist new record because your Account has the number of at most {{ count }}",

@@ -10,8 +10,8 @@
       loading-directive
       div(flow-init="{target: '/upload'}" flow-files-submitted='$flow.upload()' flow-transfers='true')
         span.btn.btn-default(flow-btn='true' flow-attrs="{accept:'text/csv'}") {{ 'BUTTONS.SELECT_FILE' | translate }}
-        span#loader(ng-show='$flow.isUploading()')
-        a.btn.btn-success.pull-right(ng-disabled='transfers.length == 0 || $flow.isUploading()' ng-click='import.sendData($flow)')
+        span#loader(ng-show='$flow.isUploading() || import.sending')
+        a.btn.btn-success.pull-right(ng-disabled='transfers.length == 0 || import.sending' ng-click='import.sendData($flow)')
           | {{ 'BUTTONS.IMPORT' | translate }}
         div.well
           ul
@@ -19,6 +19,10 @@
               span.glyphicon.glyphicon-ok.green#left-icon(ng-show='file.completed')
               span.glyphicon.glyphicon-remove.red#left-icon(ng-show='file.error')
               span {{ file.name }}
+          p(ng-show='$flow.files.length != 0 && import.filter_files(transfers).length == $flow.files.length')
+            | {{ 'MESSAGES.IMPORT_DATA' | translate }}
+            a(href='' ui-sref='import_history') インポート履歴
+            | {{ 'MESSAGES.IMPORT_DATA_2' | translate }}
       hr
       p(translate='MESSAGES.DOWNLOAD_SAMPLE_CSV')
       p

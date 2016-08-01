@@ -115,6 +115,21 @@ UserFactory = ($location, $q, $http, localStorageService, toastr, $translate, In
           defer.reject data
           return
       return defer.promise
+
+    postCsvFile: (json) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.post host + 'captures/import', json, login_headers
+        .success((data) ->
+          defer.resolve data
+          return
+        ).error (data) ->
+          defer.reject data
+          return
+      return defer.promise
   }
 
 angular.module 'newAccountBook'
