@@ -8,6 +8,8 @@
       span(translate='TITLES.IMPORT')
     .panel-body#with-background
       loading-directive
+      div(flow-init="{target: '/upload'}" flow-files-submitted='import.readFile()')
+        input(type='file' flow-btn='true')
       hr
       p(translate='MESSAGES.DOWNLOAD_SAMPLE_CSV')
       p

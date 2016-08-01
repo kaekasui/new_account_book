@@ -35,7 +35,8 @@
     "angular-i18n": "^1.5.5",
     "d3": "^3.5.17",
     "d3-tip": "^0.6.7",
-    "ng-csv": "^0.3.6"
+    "ng-csv": "^0.3.6",
+    "ng-flow": "~2"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.2"
