@@ -5,5 +5,5 @@ class Breakdown < ActiveRecord::Base
   has_many :records
 
   validates :name, presence: true,
-            length: { maximum: Settings.breakdown.name.maximum_length }
+                   length: { maximum: Settings.breakdown.name.maximum_length }
 end

@@ -8,13 +8,14 @@ class Capture::Updator
   end
 
   def import
-    @lines.each do |published_at, category_name, breakdown_name, place_name, charge, memo, *tags|
-      capture = @user.captures.new(validate_check: true, published_at: published_at, category_name: category_name,
-                                   breakdown_name: breakdown_name, place_name: place_name, charge: charge, memo: memo, tags: tags.join(','))
-      capture.valid?
-      capture.comment = capture.errors.full_messages if capture.errors.any?
+    @lines.each do |line|
+      capture = @user.captures.new(validate_check: true, published_at: line[0],
+                                   category_name: line[1], place_name: line[3],
+                                   breakdown_name: line[2], charge: line[4],
+                                   memo: line[5], tags: line[6..-1])
+      capture.comment = capture.errors.full_messages unless capture.valid?
       capture.validate_check = false
-      capture.save
+      return false unless capture.save
     end
     true
   end

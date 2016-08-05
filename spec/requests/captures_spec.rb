@@ -22,9 +22,12 @@ describe 'POST /captures/import', autodoc: true do
         ]
       }
     end
+    let!(:content_type) { { 'Content-Type': 'application/json' } }
 
     it '201が返ってくること' do
-      post '/captures/import', params: params.to_json, headers: login_headers(user).merge('Content-Type': 'application/json')
+      post '/captures/import',
+           params: params.to_json,
+           headers: login_headers(user).merge(content_type)
       expect(response.status).to eq 201
 
       expect(user.captures.count).to eq 5
