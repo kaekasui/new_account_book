@@ -2,7 +2,7 @@
 class Capture::Updator
   include ActiveModel::Model
 
-  def initialize(user: nil, lines: {})
+  def initialize(user: nil, lines: [])
     @user = user
     @lines = lines
   end

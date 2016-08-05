@@ -31,6 +31,14 @@ describe 'POST /captures/import', autodoc: true do
       expect(response.status).to eq 201
 
       expect(user.captures.count).to eq 5
+      capture1 = user.captures.first
+      expect(capture1.published_at).to eq '2016-08-01'.to_date
+      expect(capture1.category_name).to eq '水道光熱費'
+      expect(capture1.breakdown_name).to eq '電気代'
+      expect(capture1.place_name).to eq '東京電力'
+      expect(capture1.charge).to eq 4500
+      expect(capture1.memo).to eq '7月分'
+      expect(capture1.tags).to eq 'クレジットカード'
     end
   end
 end

@@ -7,7 +7,10 @@ class CapturesController < ApplicationController
 
   def import
     updator = Capture::Updator.new(user: current_user, lines: params['data'])
-    updator.import
-    head 201
+    if updator.import
+      head 201
+    else
+      render_error updator
+    end
   end
 end
