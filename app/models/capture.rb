@@ -7,6 +7,7 @@ class Capture < ApplicationRecord
   with_options if: :validate_check do |cap|
     cap.validates :published_at, presence: true
     cap.validates :category_name,
+                  presence: true,
                   length: { maximum: Settings.category.name.maximum_length }
     cap.validates :breakdown_name,
                   length: { maximum: Settings.breakdown.name.maximum_length }

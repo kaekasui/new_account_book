@@ -3,6 +3,7 @@ class CapturesController < ApplicationController
   before_action :authenticate
 
   def index
+    @captures = current_user.captures
   end
 
   def import

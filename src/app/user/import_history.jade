@@ -1,0 +1,39 @@
+.panel.panel-default
+  .panel-heading
+    span.glyphicon.glyphicon-list-alt#left-icon
+    span {{ 'TITLES.IMPORT_HISTORY' | translate }}
+  .panel-body#with-background
+    loading-directive
+    table.table
+      tr
+        th {{ 'COLUMNS.IMPORT_AT' | translate }}
+        th {{ 'COLUMNS.PUBLISHED_AT' | translate }}
+        th {{ 'COLUMNS.CATEGORY' | translate }}
+        th {{ 'COLUMNS.BREAKDOWN' | translate }}
+        th {{ 'COLUMNS.PLACE' | translate }}
+        th {{ 'COLUMNS.CHARGE' | translate }}
+        th {{ 'COLUMNS.TAG' | translate }}
+        th {{ 'COLUMNS.MEMO' | translate }}
+        th
+        th(width='15%') {{ 'COLUMNS.MESSAGE' | translate }}
+        th
+        th
+      tr(ng-repeat='capture in import_history.captures')
+        td {{ capture.created_at | date:'yyyy-MM-dd hh:mm:ss' }}
+        td {{ capture.published_at | date:'yyyy-MM-dd' }}
+        td {{ capture.category_name }}
+        td {{ capture.breakdown_name }}
+        td {{ capture.place_name }}
+        td {{ capture.charge || 0 }}
+        td {{ capture.tags }}
+        td {{ capture.memo | truncate:true:20 }}
+        td
+          a.btn.btn-success.btn-sm(ng-disabled='capture.comment')
+            | {{ 'BUTTONS.CREATE' | translate }}
+        td
+          span.glyphicon.glyphicon-repeat.red#left-icon
+          span.red {{ capture.comment }}
+        td
+          span.glyphicon.glyphicon-info-sign.green
+        td
+          span.glyphicon.glyphicon-trash.green(tooltip="{{'TOOLTIPS.DELETE' | translate}}")

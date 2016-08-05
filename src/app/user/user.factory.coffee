@@ -130,6 +130,21 @@ UserFactory = ($location, $q, $http, localStorageService, toastr, $translate, In
           defer.reject data
           return
       return defer.promise
+
+    getCaptures: () ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      $http(
+        method: 'GET'
+        url: host + 'captures'
+        headers: { Authorization: 'Token token=' + token }
+      ).success((data) ->
+        defer.resolve data
+        return
+      ).error (data) ->
+        defer.reject data
+        return
+      return defer.promise
   }
 
 angular.module 'newAccountBook'
