@@ -12,5 +12,3 @@ json.captures do
     json.comment capture.comment
   end
 end
-
-

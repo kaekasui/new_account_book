@@ -2,8 +2,6 @@
 class Capture < ApplicationRecord
   belongs_to :user
 
-  attr_accessor :validate_check
-
   validates :published_at, presence: true
   validates :category_name,
             presence: true,
