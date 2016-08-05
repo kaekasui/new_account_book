@@ -1,0 +1,42 @@
+.col-md-3
+  user-menu-directive
+
+.col-md-9
+  .panel.panel-default
+    .panel-heading
+      span.glyphicon.glyphicon-import#left-icon
+      span(translate='TITLES.IMPORT')
+    .panel-body#with-background
+      loading-directive
+      div(flow-init="{target: '/upload'}" flow-files-submitted='$flow.upload()' flow-transfers='true')
+        span.btn.btn-default(flow-btn='true' flow-attrs="{accept:'text/csv'}") {{ 'BUTTONS.SELECT_FILE' | translate }}
+        span#loader(ng-show='$flow.isUploading() || import.sending')
+        a.btn.btn-success.pull-right(ng-disabled='transfers.length == 0 || import.sending || import.filter_files(transfers).length == $flow.files.length'
+                                     ng-click='import.sendData($flow)')
+          | {{ 'BUTTONS.IMPORT' | translate }}
+        div.well
+          ul
+            li(ng-repeat='file in transfers')
+              span.glyphicon.glyphicon-ok.green#left-icon(ng-show='file.completed')
+              span.glyphicon.glyphicon-remove.red#left-icon(ng-show='file.error')
+              span {{ file.name }}
+          p(ng-show='$flow.files.length != 0 && import.filter_files(transfers).length == $flow.files.length')
+            | {{ 'MESSAGES.IMPORT_DATA' | translate }}
+            a(href='' ui-sref='import_history') インポート履歴
+            | {{ 'MESSAGES.IMPORT_DATA_2' | translate }}
+      hr
+      p(translate='MESSAGES.DOWNLOAD_SAMPLE_CSV')
+      p
+        | {{ 'LABELS.DOWNLOAD' | translate }}
+        a(href='' ng-csv='import.sample_data' filename='sample.csv') {{ 'LABELS.CSV_FILE' | translate }} (UTF-8)
+      table.table.table-bordered
+        tr
+          td(translate='COLUMNS.PUBLISHED_AT')
+          td(translate='COLUMNS.CATEGORY')
+          td(translate='COLUMNS.BREAKDOWN')
+          td(translate='COLUMNS.PLACE')
+          td(translate='COLUMNS.CHARGE')
+          td(translate='COLUMNS.MEMO')
+          td(translate='COLUMNS.TAG')
+        tr(ng-repeat='tr in import.sample_data')
+          td(ng-repeat='td in tr track by $index') {{ td }}

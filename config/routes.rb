@@ -42,7 +42,9 @@ Rails.application.routes.draw do
   end
   resources :records, only: %i(index show new create edit update destroy)
   resources :tags, only: %i(index)
-
+  resources :captures, only: %i(index) do
+    post :import, on: :collection
+  end
   resource :dashboard, only: %i(show)
   resource :user, only: %i(show update) do
     get :authorize_email

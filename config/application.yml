@@ -17,6 +17,9 @@ defaults: &defaults
     expire_after: <%= 24.hours.to_i %>
   tally:
     interval: <%= 5.hours.to_i %>
+  breakdown:
+    name:
+      maximum_length: 100
   category:
     breakdowns:
       maximum_length: 20
@@ -26,6 +29,9 @@ defaults: &defaults
   place:
     name:
       maximum_length: 100
+  record:
+    memo:
+      maximum_length: 10000
   tag:
     name:
       maximum_length: 20

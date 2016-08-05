@@ -3,6 +3,7 @@ angular.module(
                      'ngCookies',
                      'ngTouch',
                      'ngSanitize',
+                     'ngCsv',
                      'ngMessages',
                      'ngAria',
                      'ngResource',
@@ -17,6 +18,7 @@ angular.module(
                      'pascalprecht.translate',
                      'LocalStorageModule',
                      'angular-flexslider',
+                     'flow',
                      'hc.marked',
                      'toastr']
 )
