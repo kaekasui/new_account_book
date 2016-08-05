@@ -38,7 +38,7 @@ describe 'POST /captures/import', autodoc: true do
       expect(capture1.place_name).to eq '東京電力'
       expect(capture1.charge).to eq 4500
       expect(capture1.memo).to eq '7月分'
-      expect(capture1.tags).to eq 'クレジットカード'
+      expect(capture1.tags).to eq ['クレジットカード'].to_s
     end
   end
 end
