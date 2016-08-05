@@ -1,6 +1,13 @@
 ja:
   activerecord:
     attributes:
+      capture:
+        published_at: 日付
+        category_name: カテゴリ名
+        breakdown_name: 内訳
+        place_name: お店・施設名
+        memo: 備考
+        charge: 金額
       user:
         email: メールアドレス
         nickname: ニックネーム
@@ -29,6 +36,8 @@ ja:
         charge: 金額
     errors:
       models:
+        capture:
+          blank: は必須です
         user:
           attributes:
             email:

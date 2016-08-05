@@ -16,6 +16,7 @@ class Record < ActiveRecord::Base
                                      less_than_or_equal_to: 9_999_999,
                                      allow_blank: true }
   validates :category, presence: true
+  validates :memo, length: { maximum: Settings.record.memo.maximum_length }
 
   scope :the_day, -> (target_day) { where(published_at: target_day.to_date) }
   scope :the_year_and_month, lambda { |year, month|

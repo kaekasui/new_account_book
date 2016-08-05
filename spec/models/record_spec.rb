@@ -13,4 +13,5 @@ RSpec.describe Record, type: :model do
 
   it { is_expected.to have_many(:tagged_records) }
   it { is_expected.to have_many(:tags).through(:tagged_records) }
+  it { is_expected.to validate_length_of(:memo).is_at_most(10000) }
 end

@@ -6,6 +6,8 @@ class CapturesController < ApplicationController
   end
 
   def import
+    updator = Capture::Updator.new(user: current_user, lines: params['data'])
+    updator.import
     head 201
   end
 end
