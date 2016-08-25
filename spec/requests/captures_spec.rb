@@ -97,7 +97,8 @@ describe 'GET /captures', autodoc: true do
             tags: nil,
             comment: '日付は必須です,カテゴリ名は必須です'
           }
-        ]
+        ],
+        user_currency: '¥'
       }
       expect(response.body).to be_json_as(json)
     end
