@@ -18,7 +18,9 @@ describe 'GET /captures', autodoc: true do
           ['2016-08-03', '消耗品費', '雑貨', '', '-800', '', ''],
           ['2016-08-03', '飲食費', '飲み物', 'コーヒーショップ', '450', '', 'ICカード,経費,コーヒー'],
           ['2016-08-06', '', 'プレゼント', '', '6000', '山田さん誕生日', 'クレジットカード'],
-          ['']
+          ['不正な日付', 'カテゴリ' * 30, 'プレゼント', '', '6000', '山田さん誕生日', 'クレジットカード'],
+          [''],
+          ['2016-08-01', '水道光熱費', '電気代', '東京電力', '4500', '', '', '余分なデータ']
         ]
       }
     end
@@ -30,7 +32,7 @@ describe 'GET /captures', autodoc: true do
            headers: login_headers(user).merge(content_type)
       expect(response.status).to eq 201
 
-      expect(user.captures.count).to eq 5
+      expect(user.captures.count).to eq 7
       captures = user.captures.to_a
 
       get '/captures', params: '', headers: login_headers(user)
@@ -89,6 +91,19 @@ describe 'GET /captures', autodoc: true do
             id: captures[4].id,
             created_at: I18n.l(captures[4].created_at),
             published_at: nil,
+            category_name: 'カテゴリ' * 30,
+            breakdown_name: 'プレゼント',
+            place_name: '',
+            charge: 6000,
+            memo: '山田さん誕生日',
+            tags: 'クレジットカード',
+            comment: '日付は必須です,カテゴリ名は100文字以内で入力してください'
+
+          },
+          {
+            id: captures[5].id,
+            created_at: I18n.l(captures[5].created_at),
+            published_at: nil,
             category_name: nil,
             breakdown_name: nil,
             place_name: nil,
@@ -96,6 +111,18 @@ describe 'GET /captures', autodoc: true do
             memo: nil,
             tags: nil,
             comment: '日付は必須です,カテゴリ名は必須です'
+          },
+          {
+            id: captures[6].id,
+            created_at: I18n.l(captures[6].created_at),
+            published_at: '2016-08-01',
+            category_name: '水道光熱費',
+            breakdown_name: '電気代',
+            place_name: '東京電力',
+            charge: 4500,
+            memo: '',
+            tags: ',余分なデータ',
+            comment: nil
           }
         ],
         user_currency: '¥'
