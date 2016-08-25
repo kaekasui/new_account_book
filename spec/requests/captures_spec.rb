@@ -173,3 +173,44 @@ describe 'POST /captures/import', autodoc: true do
     end
   end
 end
+
+describe 'PATCH /captures/:id', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:capture) { create(:capture, user: user) }
+  let!(:params) do
+    {
+      published_at: '2016-08-08',
+      category_name: 'カテゴリ名',
+      breakdown_name: '内訳',
+      place_name: '場所',
+      charge: '2000',
+      tags: 'ラベル1,ラベル2,ラベル3',
+      memo: '備考'
+    }
+  end
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      patch "/captures/#{capture.id}", params: params
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'ログインしている場合' do
+    it '200が返ってくること' do
+      patch "/captures/#{capture.id}",
+            params: params,
+            headers: login_headers(user)
+      expect(response.status).to eq 200
+
+      capture.reload
+      expect(capture.published_at).to eq '2016-08-08'.to_date
+      expect(capture.category_name).to eq 'カテゴリ名'
+      expect(capture.breakdown_name).to eq '内訳'
+      expect(capture.place_name).to eq '場所'
+      expect(capture.charge).to eq 2000
+      expect(capture.tags).to eq 'ラベル1,ラベル2,ラベル3'
+      expect(capture.memo).to eq '備考'
+    end
+  end
+end

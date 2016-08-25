@@ -12,14 +12,13 @@ EditCaptureController = (IndexService, RecordsFactory, capture, $modalInstance, 
     IndexService.sending = true
     params =
       published_at: String(vm.published_at)
-      category_id: vm.category_id
-      breakdown_id: vm.breakdown_id
-      place_id: vm.place_id
-      charge: vm.charge
-      memo: vm.memo
-      tags: vm.tags
-    # TODO: 更新できるようにする
-    RecordsFactory.patchRecord(record_id, params).then((res) ->
+      category_id: vm.capture.category_id
+      breakdown_id: vm.capture.breakdown_id
+      place_id: vm.capture.place_id
+      charge: vm.capture.charge
+      memo: vm.capture.memo
+      tags: vm.capture.tags
+    UserFactory.patchCapture(capture_id, params).then((res) ->
       $modalInstance.close()
       IndexService.sending = false
     ).catch (res) ->
