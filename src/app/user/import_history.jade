@@ -4,28 +4,30 @@
     span {{ 'TITLES.IMPORT_HISTORY' | translate }}
   .panel-body#with-background
     loading-directive
-    table.table
-      tr
-        th {{ 'COLUMNS.IMPORT_AT' | translate }}
+    table.table(ng-mouseleave='import_history.selectLineNumber = undefined')
+      tr(ng-mouseover='import_history.selectLineNumber = undefined')
+        th
         th {{ 'COLUMNS.PUBLISHED_AT' | translate }}
         th {{ 'COLUMNS.CATEGORY' | translate }}
         th {{ 'COLUMNS.BREAKDOWN' | translate }}
         th {{ 'COLUMNS.PLACE' | translate }}
-        th {{ 'COLUMNS.CHARGE' | translate }}
         th {{ 'COLUMNS.TAG' | translate }}
+        th {{ 'COLUMNS.CHARGE' | translate }}
         th {{ 'COLUMNS.MEMO' | translate }}
         th
         th(width='15%') {{ 'COLUMNS.MESSAGE' | translate }}
         th
-        th
-      tr(ng-repeat='capture in import_history.captures')
-        td {{ capture.created_at | date:'yyyy-MM-dd hh:mm:ss' }}
+      tr(ng-repeat='capture in import_history.captures'
+         ng-click='import_history.showCapture($index)'
+         ng-mouseover='import_history.selectLine($index)'
+         ng-class="{ mouseover: import_history.selectLineNumber == $index }")
+        td
         td {{ capture.published_at | date:'yyyy-MM-dd' }}
         td {{ capture.category_name }}
         td {{ capture.breakdown_name }}
         td {{ capture.place_name }}
-        td {{ capture.charge || 0 }}
         td {{ capture.tags }}
+        td {{ import_history.user_currency }} {{ capture.charge || 0 }}
         td {{ capture.memo | truncate:true:20 }}
         td
           a.btn.btn-success.btn-sm(ng-disabled='capture.comment')
@@ -33,7 +35,5 @@
         td
           span.glyphicon.glyphicon-repeat.red#left-icon
           span.red {{ capture.comment }}
-        td
-          span.glyphicon.glyphicon-info-sign.green
         td
           span.glyphicon.glyphicon-trash.green(tooltip="{{'TOOLTIPS.DELETE' | translate}}")

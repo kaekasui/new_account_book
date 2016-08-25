@@ -12,3 +12,5 @@ json.captures do
     json.comment capture.comment
   end
 end
+
+json.user_currency @user.currency
