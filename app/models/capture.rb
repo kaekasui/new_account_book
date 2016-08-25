@@ -15,6 +15,8 @@ class Capture < ApplicationRecord
                             greater_than_or_equal_to: 0,
                             less_than_or_equal_to: 9_999_999,
                             allow_blank: true }
+  validates :tags,
+            length: { maximum: Settings.capture.tags.maximum_length }
   validates :memo,
             length: { maximum: Settings.record.memo.maximum_length }
 end

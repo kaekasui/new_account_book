@@ -28,7 +28,7 @@
         td {{ capture.place_name }}
         td {{ capture.tags }}
         td {{ import_history.user_currency }} {{ capture.charge || 0 }}
-        td {{ capture.memo | truncate:true:20 }}
+        td {{ capture.memo | truncate:true:15 }}
         td
           a.btn.btn-success.btn-sm(ng-disabled='capture.comment')
             | {{ 'BUTTONS.CREATE' | translate }}
