@@ -147,6 +147,21 @@ UserFactory = ($location, $q, $http, localStorageService, toastr, $translate, In
         return
       return defer.promise
 
+    getCapture: (capture_id) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      $http(
+        method: 'GET'
+        url: host + 'captures/' + capture_id
+        headers: { Authorization: 'Token token=' + token }
+      ).success((data) ->
+        defer.resolve data
+        return
+      ).error (data) ->
+        defer.reject data
+        return
+      return defer.promise
+
     patchCapture: (capture_id, params) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')

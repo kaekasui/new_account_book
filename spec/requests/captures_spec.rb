@@ -132,6 +132,41 @@ describe 'GET /captures', autodoc: true do
   end
 end
 
+describe 'GET /capture/:id', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:capture) { create(:capture, user: user) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      get "/captures/#{capture.id}"
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'ログインしている場合' do
+    it '200とインポート履歴が返ってくること' do
+      get "/captures/#{capture.id}",
+          params: '',
+          headers: login_headers(user)
+      expect(response.status).to eq 200
+
+      json = {
+        id: capture.id,
+        created_at: capture.created_at.strftime('%Y/%m/%d %H:%M:%S'),
+        published_at: capture.published_at.strftime('%Y-%m-%d'),
+        category_name: capture.category_name,
+        breakdown_name: capture.breakdown_name,
+        place_name: capture.place_name,
+        charge: capture.charge,
+        memo: capture.memo,
+        tags: capture.tags,
+        comment: capture.comment
+      }
+      expect(response.body).to be_json_as(json)
+    end
+  end
+end
+
 describe 'POST /captures/import', autodoc: true do
   context 'ログインしていない場合' do
     it '401が返ってくること' do

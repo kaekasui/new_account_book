@@ -7,6 +7,10 @@ class CapturesController < ApplicationController
     @captures = @user.captures
   end
 
+  def show
+    @capture = current_user.captures.find(params[:id])
+  end
+
   def update
     @capture = current_user.captures.find(params[:id])
     if @capture.update(capture_params)
@@ -31,6 +35,4 @@ class CapturesController < ApplicationController
     params.permit(:published_at, :category_name, :breakdown_name, :place_name,
                   :charge, :memo, :tags)
   end
-
-
 end
