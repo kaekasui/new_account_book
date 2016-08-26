@@ -30,7 +30,7 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
         span {{ modal.capture.published_at }}
       .col-sm-9(ng-show='modal.editing')
         input.btn.btn-default(type='date' name='published_at' ng-model='modal.published_at' datepicker-popup=true required='true')
-        span.errors(ng-messages='form.published_at.$error' ng-show='form.$submitted && form.published_at.$error')
+        span.errors(ng-messages='form.published_at.$error' ng-show='form.published_at.$error')
           div(ng-message='required')
             span.glyphicon.glyphicon-alert#left-icon
             span(translate='ERRORS.REQUIRED.PUBLISHED_AT')
@@ -45,12 +45,15 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
       .modal-label.col-sm-9(ng-show='!modal.editing')
         span {{ modal.capture.category_name }}
       .col-sm-9(ng-show='modal.editing')
-        input.form-control(type='text' name='category_name' ng-model='modal.capture.category_name' required=true ng-maxlength='100')
+        input.form-control(type='text' name='category_name' ng-model='modal.category_name' required=true ng-maxlength='100')
  
-        span.errors(ng-messages='form.category_id.$error' ng-show='form.$submitted && form.category_name.$error')
+        span.errors(ng-messages='form.category_name.$error' ng-show='form.category_name.$error')
           div(ng-message='required')
             span.glyphicon.glyphicon-alert#left-icon
-            span(translate='ERRORS.REQUIRED.CATEGORY')
+            span(translate='ERRORS.REQUIRED.CATEGORY_NAME')
+          div(ng-message='maxlength')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.MAXLENGTH.CATEGORY_NAME')
     // 内訳
     .form-group
       label.control-label.col-sm-3(for='breakdown_name')
@@ -58,8 +61,11 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
       .modal-label.col-sm-9(ng-show='!modal.editing')
         span {{ modal.capture.breakdown_name }}
       .col-sm-9(ng-show='modal.editing')
-        input.form-control(type='text' name='breakdown_name' ng-model='modal.capture.breakdown_name' required=true ng-maxlength='100')
-        // max-lengthのエラーメッセージ追加
+        input.form-control(type='text' name='breakdown_name' ng-model='modal.breakdown_name' ng-maxlength='100')
+        span.errors(ng-messages='form.breakdown_name.$error' ng-show='form.breakdown_name.$error')
+          div(ng-message='maxlength')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.MAXLENGTH.BREAKDOWN_NAME')
     // お店・施設
     .form-group
       label.control-label.col-sm-3(for='place_name')
@@ -67,8 +73,11 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
       .modal-label.col-sm-9(ng-show='!modal.editing')
         span {{ modal.capture.place_name }}
       .col-sm-9(ng-show='modal.editing')
-        input.form-control(type='text' name='place_name' ng-model='modal.capture.place_name' required=true max-length='100')
-        // max-lengthのエラーメッセージ追加
+        input.form-control(type='text' name='place_name' ng-model='modal.place_name' ng-maxlength='100')
+        span.errors(ng-messages='form.place_name.$error' ng-show='form.place_name.$error')
+          div(ng-message='maxlength')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.MAXLENGTH.PLACE_NAME')
     // ラベル
     .form-group
       label.control-label.col-sm-3(for='tags')
@@ -76,7 +85,11 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
       .modal-label.col-sm-9(ng-show='!modal.editing')
          span {{ modal.capture.tags }}
       .col-sm-9(ng-show='modal.editing')
-        input.form-control(type='text' name='tags' ng-model='modal.capture.tags' required=true max-length='100')
+        input.form-control(type='text' name='tags' ng-model='modal.tags' ng-maxlength='1000')
+        span.errors(ng-messages='form.tags.$error' ng-show='form.tags.$error')
+          div(ng-message='maxlength')
+            span.glyphicon.glyphicon-alert#left-icon
+            span(translate='ERRORS.MAXLENGTH.TAGS_NAME')
     // 金額
     .form-group
       label.control-label.col-sm-3(for='charge')
@@ -87,11 +100,8 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
       .col-sm-9(ng-show='modal.editing')
         .input-group
           span.input-group-addon {{ modal.user_currency }}
-          input.form-control(type='number' name='charge' ng-model='modal.capture.charge' required=true max=9999999 min=0)
-        span.errors(ng-messages='form.charge.$error' ng-show='form.$submitted && form.charge.$error')
-          div(ng-message='required')
-            span.glyphicon.glyphicon-alert#left-icon
-            span(translate='ERRORS.REQUIRED.CHARGE')
+          input.form-control(type='number' name='charge' ng-model='modal.charge' max=9999999 min=0)
+        span.errors(ng-messages='form.charge.$error' ng-show='form.charge.$error')
           div(ng-message='max')
             span.glyphicon.glyphicon-alert#left-icon
             span(translate='ERRORS.MAX.CHARGE')
@@ -105,8 +115,8 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
       .modal-label.col-sm-9(ng-show='!modal.editing')
         span {{ modal.capture.memo }}
       .col-sm-9(ng-show='modal.editing')
-        textarea.form-control(name='memo' ng-model='modal.capture.memo' ng-maxlength='10000')
-        span.errors(ng-messages='form.memo.$error' ng-show='form.$submitted && form.memo.$error')
+        textarea.form-control(name='memo' ng-model='modal.memo' ng-maxlength='10000')
+        span.errors(ng-messages='form.memo.$error' ng-show='form.memo.$error')
           div(ng-message='maxlength')
             span.glyphicon.glyphicon-alert#left-icon
             span(translate='ERRORS.MAXLENGTH.MEMO')

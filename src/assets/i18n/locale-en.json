@@ -130,12 +130,14 @@
     "MAXLENGTH": {
       "BREAKDOWN_NAME": "Enter the Breakdown Name has a length of at most 100",
       "EMAIL": "Enter your E-mail has a length of at most 100",
+      "TAGS_NAME": "Enter your Tags Name has a length of at most 1000",
       "PASSWORD": "Enter your Password has a length of at most 72",
       "TITLE": "Enter your Title has a length of at most 100",
       "CONTENT": "Enter your Comment has a length of at most 10000",
       "CATEGORY_NAME": "Enter your Category Name has a length of at most 100",
       "MEMO": "Enter your Memo has a length of at most 10000",
-      "NICKNAME": "Enter your Nickname has a lenght of at most 100"
+      "NICKNAME": "Enter your Nickname has a lenght of at most 100",
+      "PLACE_NAME": "Enter your Place Name has a lenght of at most 100"
     },
     "MIN": {
       "CHARGE": "Enter Charge has an integer greater than or equal to 0."

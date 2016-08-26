@@ -25,6 +25,7 @@ ImportHistoryController = (IndexService, UserFactory, $modal) ->
       backdrop: 'static'
     )
     modalInstance.result.then () ->
+      # TODO: 一覧のデータを更新する
 
   vm.selectLine = (index) ->
     vm.selectLineNumber = index

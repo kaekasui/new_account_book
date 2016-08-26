@@ -147,7 +147,7 @@ UserFactory = ($location, $q, $http, localStorageService, toastr, $translate, In
         return
       return defer.promise
 
-    patchCapture: (params) ->
+    patchCapture: (capture_id, params) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')
       login_headers = {
