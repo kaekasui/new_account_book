@@ -12,6 +12,16 @@ EditCaptureController = (IndexService, UserFactory, capture, $modalInstance, $mo
   vm.memo = vm.capture.memo
   capture_id = vm.capture.id
 
+  UserFactory.getCapture(capture_id).then (res) ->
+    vm.capture = res
+    vm.published_at = new Date(vm.capture.published_at)
+    vm.category_name = vm.capture.category_name
+    vm.breakdown_name = vm.capture.breakdown_name
+    vm.place_name = vm.capture.place_name
+    vm.tags = vm.capture.tags
+    vm.charge = vm.capture.charge
+    vm.memo = vm.capture.memo
+
   vm.cancel = () ->
     $modalInstance.dismiss()
 
@@ -20,8 +30,8 @@ EditCaptureController = (IndexService, UserFactory, capture, $modalInstance, $mo
     params =
       published_at: String(vm.published_at)
       category_name: vm.category_name
-      breakdown_name: vm.breakdown_id
-      place_name: vm.place_id
+      breakdown_name: vm.breakdown_name
+      place_name: vm.place_name
       charge: vm.charge
       memo: vm.memo
       tags: vm.tags

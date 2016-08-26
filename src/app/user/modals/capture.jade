@@ -15,6 +15,7 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
 
   .modal-body
     loading-directive(target='modal')
+    .alert.alert-danger(role='alert' ng-show='modal.capture.comment') {{ modal.capture.comment }}
     // インポート日時
     .form-group
       label.control-label.col-sm-3
