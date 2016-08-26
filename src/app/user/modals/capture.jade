@@ -97,7 +97,7 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
         span(translate='COLUMNS.CHARGE')
         span.red *
       .modal-label.col-sm-9(ng-show='!modal.editing')
-        span {{ modal.user_currency }} {{ modal.capture.charge | currency:'':0 }}
+        span {{ modal.user_currency }} {{ modal.capture.charge || 0 | currency:'':0 }}
       .col-sm-9(ng-show='modal.editing')
         .input-group
           span.input-group-addon {{ modal.user_currency }}

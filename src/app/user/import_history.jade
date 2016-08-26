@@ -16,7 +16,6 @@
         th {{ 'COLUMNS.MEMO' | translate }}
         th
         th(width='15%') {{ 'COLUMNS.MESSAGE' | translate }}
-        th
       tr(ng-repeat='capture in import_history.captures'
          ng-click='import_history.showCapture($index)'
          ng-mouseover='import_history.selectLine($index)'
@@ -33,7 +32,4 @@
           a.btn.btn-success.btn-sm(ng-disabled='capture.comment')
             | {{ 'BUTTONS.CREATE' | translate }}
         td
-          span.glyphicon.glyphicon-repeat.red#left-icon
           span.red {{ capture.comment }}
-        td
-          span.glyphicon.glyphicon-trash.green(tooltip="{{'TOOLTIPS.DELETE' | translate}}")

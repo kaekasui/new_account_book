@@ -13,7 +13,7 @@ class CapturesController < ApplicationController
 
   def update
     @capture = current_user.captures.find(params[:id])
-    if @capture.update(capture_params)
+    if @capture.update(capture_params.merge(comment: nil))
       head 200
     else
       render_error @capture
