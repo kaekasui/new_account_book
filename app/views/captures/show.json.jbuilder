@@ -6,6 +6,7 @@ json.category_existence @capture.category_existence
 json.breakdown_name @capture.breakdown_name
 json.breakdown_existence @capture.breakdown_existence
 json.place_name @capture.place_name
+json.place_existence @capture.place_existence
 json.charge @capture.charge
 json.memo @capture.memo
 json.tags @capture.tags

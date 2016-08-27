@@ -308,7 +308,7 @@ describe 'POST /records/import', autodoc: true do
   context 'ログインしている場合' do
     it '201が返ってくること' do
       place.categories << category
-      post '/records/import', params: { user: user, capture_id: capture.id },
+      post '/records/import', params: { capture_id: capture.id },
                               headers: login_headers(user)
       expect(response.status).to eq 201
       record = user.records.last
@@ -319,6 +319,7 @@ describe 'POST /records/import', autodoc: true do
       expect(record.place.try(:name)).to eq capture.place_name
       expect(record.memo).to eq capture.memo
       expect(record.tags.count).to eq 2
+      expect(user.captures.count).to eq 0
     end
   end
 end

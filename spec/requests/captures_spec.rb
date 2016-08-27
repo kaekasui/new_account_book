@@ -50,10 +50,11 @@ describe 'GET /captures', autodoc: true do
             breakdown_name: '電気代',
             breakdown_existence: true,
             place_name: '東京電力',
+            place_existence: false,
             charge: 4500,
             memo: '',
             tags: ',余分なデータ',
-            comment: ''
+            comment: 'お店・施設名が未登録です'
           },
           {
             id: captures[5].id,
@@ -64,6 +65,7 @@ describe 'GET /captures', autodoc: true do
             breakdown_name: nil,
             breakdown_existence: false,
             place_name: nil,
+            place_existence: false,
             charge: nil,
             memo: nil,
             tags: nil,
@@ -78,6 +80,7 @@ describe 'GET /captures', autodoc: true do
             breakdown_name: 'プレゼント',
             breakdown_existence: false,
             place_name: '',
+            place_existence: false,
             charge: 6000,
             memo: '山田さん誕生日',
             tags: 'クレジットカード',
@@ -92,6 +95,7 @@ describe 'GET /captures', autodoc: true do
             breakdown_name: 'プレゼント',
             breakdown_existence: false,
             place_name: '',
+            place_existence: false,
             charge: 6000,
             memo: '山田さん誕生日',
             tags: 'クレジットカード',
@@ -106,10 +110,11 @@ describe 'GET /captures', autodoc: true do
             breakdown_name: '飲み物',
             breakdown_existence: false,
             place_name: 'コーヒーショップ',
+            place_existence: false,
             charge: 450,
             memo: '',
             tags: 'ICカード,経費,コーヒー',
-            comment: 'カテゴリ名が未登録です,内訳が未登録です'
+            comment: 'カテゴリ名が未登録です,内訳が未登録です,お店・施設名が未登録です'
           },
           {
             id: captures[1].id,
@@ -120,6 +125,7 @@ describe 'GET /captures', autodoc: true do
             breakdown_name: '雑貨',
             breakdown_existence: false,
             place_name: '',
+            place_existence: false,
             charge: -800,
             memo: '',
             tags: '',
@@ -134,10 +140,11 @@ describe 'GET /captures', autodoc: true do
             breakdown_name: '水道代',
             breakdown_existence: false,
             place_name: '東京電力',
+            place_existence: false,
             charge: 4500,
             memo: '7月分',
             tags: 'クレジットカード',
-            comment: '内訳が未登録です'
+            comment: '内訳が未登録です,お店・施設名が未登録です'
           }
         ],
         user_currency: '¥'
@@ -174,6 +181,7 @@ describe 'GET /capture/:id', autodoc: true do
         breakdown_name: capture.breakdown_name,
         breakdown_existence: false,
         place_name: capture.place_name,
+        place_existence: false,
         charge: capture.charge,
         memo: capture.memo,
         tags: capture.tags,
