@@ -13,8 +13,7 @@ class Capture::Updator
                                    category_name: line[1], place_name: line[3],
                                    breakdown_name: line[2], charge: line[4],
                                    tags: line[6..-1].try(:join, ','))
-      capture.comment =
-        capture.errors.full_messages.join(',') unless capture.valid?
+      capture.build_comments
       return false unless capture.save(validate: false)
     end
     true

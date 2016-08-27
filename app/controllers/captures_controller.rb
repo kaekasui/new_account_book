@@ -4,7 +4,7 @@ class CapturesController < ApplicationController
 
   def index
     @user = current_user
-    @captures = @user.captures
+    @captures = @user.captures.order(created_at: :desc)
   end
 
   def show

@@ -14,7 +14,7 @@ describe 'GET /captures', autodoc: true do
     let!(:params) do
       {
         'data': [
-          ['2016-08-01', '水道光熱費', '電気代', '東京電力', '4500', '7月分', 'クレジットカード'],
+          ['2016-08-01', '水道光熱費', '水道代', '東京電力', '4500', '7月分', 'クレジットカード'],
           ['2016-08-03', '消耗品費', '雑貨', '', '-800', '', ''],
           ['2016-08-03', '飲食費', '飲み物', 'コーヒーショップ', '450', '', 'ICカード,経費,コーヒー'],
           ['2016-08-06', '', 'プレゼント', '', '6000', '山田さん誕生日', 'クレジットカード'],
@@ -24,6 +24,8 @@ describe 'GET /captures', autodoc: true do
         ]
       }
     end
+    let!(:category) { create(:category, user: user, name: '水道光熱費') }
+    let!(:breakdown) { create(:breakdown, category: category, name: '電気代') }
     let!(:content_type) { { 'Content-Type': 'application/json' } }
 
     it '201が返ってくること' do
@@ -40,72 +42,27 @@ describe 'GET /captures', autodoc: true do
       json = {
         captures: [
           {
-            id: captures[0].id,
-            created_at: I18n.l(captures[0].created_at),
+            id: captures[6].id,
+            created_at: I18n.l(captures[6].created_at),
             published_at: '2016-08-01',
             category_name: '水道光熱費',
+            category_existence: true,
             breakdown_name: '電気代',
+            breakdown_existence: true,
             place_name: '東京電力',
             charge: 4500,
-            memo: '7月分',
-            tags: 'クレジットカード',
-            comment: nil
-          },
-          {
-            id: captures[1].id,
-            created_at: I18n.l(captures[1].created_at),
-            published_at: '2016-08-03',
-            category_name: '消耗品費',
-            breakdown_name: '雑貨',
-            place_name: '',
-            charge: -800,
             memo: '',
-            tags: '',
-            comment: '金額は0以上の値にしてください'
-          },
-          {
-            id: captures[2].id,
-            created_at: I18n.l(captures[2].created_at),
-            published_at: '2016-08-03',
-            category_name: '飲食費',
-            breakdown_name: '飲み物',
-            place_name: 'コーヒーショップ',
-            charge: 450,
-            memo: '',
-            tags: 'ICカード,経費,コーヒー',
-            comment: nil
-          },
-          {
-            id: captures[3].id,
-            created_at: I18n.l(captures[3].created_at),
-            published_at: '2016-08-06',
-            category_name: '',
-            breakdown_name: 'プレゼント',
-            place_name: '',
-            charge: 6000,
-            memo: '山田さん誕生日',
-            tags: 'クレジットカード',
-            comment: 'カテゴリ名は必須です'
-          },
-          {
-            id: captures[4].id,
-            created_at: I18n.l(captures[4].created_at),
-            published_at: nil,
-            category_name: 'カテゴリ' * 30,
-            breakdown_name: 'プレゼント',
-            place_name: '',
-            charge: 6000,
-            memo: '山田さん誕生日',
-            tags: 'クレジットカード',
-            comment: '日付は必須です,カテゴリ名は100文字以内で入力してください'
-
+            tags: ',余分なデータ',
+            comment: ''
           },
           {
             id: captures[5].id,
             created_at: I18n.l(captures[5].created_at),
             published_at: nil,
             category_name: nil,
+            category_existence: false,
             breakdown_name: nil,
+            breakdown_existence: false,
             place_name: nil,
             charge: nil,
             memo: nil,
@@ -113,16 +70,74 @@ describe 'GET /captures', autodoc: true do
             comment: '日付は必須です,カテゴリ名は必須です'
           },
           {
-            id: captures[6].id,
-            created_at: I18n.l(captures[6].created_at),
+            id: captures[4].id,
+            created_at: I18n.l(captures[4].created_at),
+            published_at: nil,
+            category_name: 'カテゴリ' * 30,
+            category_existence: false,
+            breakdown_name: 'プレゼント',
+            breakdown_existence: false,
+            place_name: '',
+            charge: 6000,
+            memo: '山田さん誕生日',
+            tags: 'クレジットカード',
+            comment: '日付は必須です,カテゴリ名は100文字以内で入力してください,カテゴリ名が未登録です,内訳が未登録です'
+          },
+          {
+            id: captures[3].id,
+            created_at: I18n.l(captures[3].created_at),
+            published_at: '2016-08-06',
+            category_name: '',
+            category_existence: false,
+            breakdown_name: 'プレゼント',
+            breakdown_existence: false,
+            place_name: '',
+            charge: 6000,
+            memo: '山田さん誕生日',
+            tags: 'クレジットカード',
+            comment: 'カテゴリ名は必須です,内訳が未登録です'
+          },
+          {
+            id: captures[2].id,
+            created_at: I18n.l(captures[2].created_at),
+            published_at: '2016-08-03',
+            category_name: '飲食費',
+            category_existence: false,
+            breakdown_name: '飲み物',
+            breakdown_existence: false,
+            place_name: 'コーヒーショップ',
+            charge: 450,
+            memo: '',
+            tags: 'ICカード,経費,コーヒー',
+            comment: 'カテゴリ名が未登録です,内訳が未登録です'
+          },
+          {
+            id: captures[1].id,
+            created_at: I18n.l(captures[1].created_at),
+            published_at: '2016-08-03',
+            category_name: '消耗品費',
+            category_existence: false,
+            breakdown_name: '雑貨',
+            breakdown_existence: false,
+            place_name: '',
+            charge: -800,
+            memo: '',
+            tags: '',
+            comment: '金額は0以上の値にしてください,カテゴリ名が未登録です,内訳が未登録です'
+          },
+          {
+            id: captures[0].id,
+            created_at: I18n.l(captures[0].created_at),
             published_at: '2016-08-01',
             category_name: '水道光熱費',
-            breakdown_name: '電気代',
+            category_existence: true,
+            breakdown_name: '水道代',
+            breakdown_existence: false,
             place_name: '東京電力',
             charge: 4500,
-            memo: '',
-            tags: ',余分なデータ',
-            comment: nil
+            memo: '7月分',
+            tags: 'クレジットカード',
+            comment: '内訳が未登録です'
           }
         ],
         user_currency: '¥'
@@ -155,7 +170,9 @@ describe 'GET /capture/:id', autodoc: true do
         created_at: capture.created_at.strftime('%Y/%m/%d %H:%M:%S'),
         published_at: capture.published_at.strftime('%Y-%m-%d'),
         category_name: capture.category_name,
+        category_existence: false,
         breakdown_name: capture.breakdown_name,
+        breakdown_existence: false,
         place_name: capture.place_name,
         charge: capture.charge,
         memo: capture.memo,
