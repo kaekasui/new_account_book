@@ -16,8 +16,8 @@
         th {{ 'COLUMNS.MEMO' | translate }}
         th
         th(width='15%') {{ 'COLUMNS.MESSAGE' | translate }}
+        th
       tr(ng-repeat='capture in import_history.captures'
-         ng-click='import_history.showCapture($index)'
          ng-mouseover='import_history.selectLine($index)'
          ng-class="{ mouseover: import_history.selectLineNumber == $index }")
         td
@@ -29,7 +29,16 @@
         td {{ import_history.user_currency }} {{ capture.charge || 0 }}
         td {{ capture.memo | truncate:true:15 }}
         td
-          a.btn.btn-success.btn-sm(ng-disabled='capture.comment')
+          button.btn.btn-success.btn-sm(ng-disabled='capture.comment'
+                                  ng-show='!capture.registered'
+                                  ng-click='import_history.import($index)')
             | {{ 'BUTTONS.CREATE' | translate }}
+          button.btn.btn-default.btn-sm(ng-disabled='capture.registered'
+                                  ng-show='capture.registered'
+                                  ng-click='import_history.import($index)')
+            | {{ 'BUTTONS.CREATED' | translate }}
         td
           span.red {{ capture.comment }}
+        td
+          .btn.btn-info.btn-sm(ng-click='import_history.showCapture($index)')
+            span.glyphicon.glyphicon-info-sign

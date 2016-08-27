@@ -31,6 +31,11 @@ ImportHistoryController = (IndexService, UserFactory, $modal) ->
   vm.selectLine = (index) ->
     vm.selectLineNumber = index
 
+  vm.import = (index) ->
+    capture = vm.captures[index]
+    UserFactory.postCaptureId(capture.id).then () ->
+      vm.captures[index].registered = true
+
   return
 
 angular.module 'newAccountBook'

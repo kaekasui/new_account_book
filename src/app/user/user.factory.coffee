@@ -176,6 +176,21 @@ UserFactory = ($location, $q, $http, localStorageService, toastr, $translate, In
           defer.reject data
           return
       return defer.promise
+
+    postCaptureId: (capture_id) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      login_headers = {
+        headers: { Authorization: 'Token token=' + token }
+      }
+      $http.post host + 'records/import', { capture_id: capture_id }, login_headers
+        .success((data) ->
+          defer.resolve data
+          return
+        ).error (data) ->
+          defer.reject data
+          return
+      return defer.promise
   }
 
 angular.module 'newAccountBook'
