@@ -33,6 +33,18 @@ class RecordsController < ApplicationController
     end
   end
 
+  def import
+    @record = Record::Generator.new(
+      user: current_user, capture_id: params[:capture_id]
+    )
+    @record.build
+    if @record.save
+      head 201
+    else
+      render_error @record
+    end
+  end
+
   def edit
     @user = current_user
     @categories = current_user.categories

@@ -23,13 +23,9 @@ class Capture < ApplicationRecord
   def build_comments
     valid?
     self.category_existence = category.present?
-    if category_name.present? && category.nil?
-      errors.add(:category_name, :unregistered)
-    end
+    errors.add(:category_name, :unregistered) if unregistered_category?
     self.breakdown_existence = breakdown.present?
-    if breakdown_name.present? && breakdown.nil?
-      errors.add(:breakdown_name, :unregistered)
-    end
+    errors.add(:breakdown_name, :unregistered) if unregistered_breakdown?
     self.comment = errors.full_messages.join(',')
   end
 
@@ -37,7 +33,23 @@ class Capture < ApplicationRecord
     user.categories.find_by(name: category_name)
   end
 
+  def unregistered_category?
+    category_name.present? && category.nil?
+  end
+
   def breakdown
     category.breakdowns.find_by(name: breakdown_name) if category
+  end
+
+  def unregistered_breakdown?
+    breakdown_name.present? && breakdown.nil?
+  end
+
+  def place
+    category.places.find_by(name: place_name) if category
+  end
+
+  def unregistered_place?
+    place_name.present? && place.nil?
   end
 end

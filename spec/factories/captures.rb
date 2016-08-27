@@ -8,6 +8,6 @@ FactoryGirl.define do
     sequence(:breakdown_name) { |i| "内訳#{i}" }
     sequence(:place_name) { |i| "場所#{i}" }
     sequence(:memo) { |i| "めも#{i}" }
-    sequence(:tags) { |i| "タグ#{i}" }
+    sequence(:tags) { |i| "タグ#{i},タグ#{i}#{i}" }
   end
 end
