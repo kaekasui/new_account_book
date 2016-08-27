@@ -38,6 +38,7 @@ ja:
       models:
         capture:
           blank: は必須です
+          unregistered: が未登録です
         user:
           attributes:
             email:

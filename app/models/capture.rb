@@ -22,12 +22,15 @@ class Capture < ApplicationRecord
 
   def build_comments
     valid?
-    messages = errors.full_messages
     self.category_existence = category.present?
-    messages << 'カテゴリ名が未登録です' if category_name.present? && category.nil?
+    if category_name.present? && category.nil?
+      errors.add(:category_name, :unregistered)
+    end
     self.breakdown_existence = breakdown.present?
-    messages << '内訳が未登録です' if breakdown_name.present? && breakdown.nil?
-    self.comment = messages.join(',')
+    if breakdown_name.present? && breakdown.nil?
+      errors.add(:breakdown_name, :unregistered)
+    end
+    self.comment = errors.full_messages.join(',')
   end
 
   def category
