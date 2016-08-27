@@ -15,10 +15,11 @@ class Record::Generator
       category_id: @capture.category.try(:id),
       breakdown_id: @capture.breakdown.try(:id),
       place_id: @capture.place.try(:id),
-      charge: @capture.charge,
-      memo: @capture.memo
+      charge: @capture.charge, memo: @capture.memo
     }
-    @tags_params = @capture.tags.split(',').map { |n| { name: n } }
+    @tags_params = @capture.tags.split(',').map do |n|
+      { id: @user.tags.find_by(name: n).try(:id), name: n }
+    end
   end
 
   def save
