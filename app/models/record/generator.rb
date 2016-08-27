@@ -2,11 +2,11 @@
 class Record::Generator
   include ActiveModel::Model
 
-  def initialize(user: nil, record_params: nil, tags_params: nil, capture_id:)
+  def initialize(user: nil, record_params: nil, tags_params: nil, capture: nil)
     @user = user
     @record_params = record_params
     @tags_params = tags_params
-    @capture = @user.captures.find(capture_id) if capture_id
+    @capture = capture
   end
 
   def build
