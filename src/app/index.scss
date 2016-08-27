@@ -100,6 +100,12 @@ body {
   span {
     outline: none;
   }
+  table tr {
+    outline: none;
+  }
+  table tr.mouseover {
+    border-left: medium solid $red;
+  }
   .inline-block {
     display: inline-block;
   }

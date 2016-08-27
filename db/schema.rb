@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727164312) do
+ActiveRecord::Schema.define(version: 20160826022444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,9 +53,12 @@ ActiveRecord::Schema.define(version: 20160727164312) do
     t.text     "memo"
     t.integer  "user_id"
     t.text     "tags"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.text     "comment"
+    t.boolean  "category_existence",  default: false
+    t.boolean  "breakdown_existence", default: false
+    t.boolean  "place_existence",     default: false
     t.index ["user_id"], name: "index_captures_on_user_id", using: :btree
   end
 
@@ -89,6 +92,14 @@ ActiveRecord::Schema.define(version: 20160727164312) do
     t.datetime "updated_at"
     t.string   "email"
     t.index ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.integer  "price"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "messages", force: :cascade do |t|

@@ -32,6 +32,9 @@ defaults: &defaults
   record:
     memo:
       maximum_length: 10000
+  capture:
+    tags:
+      maximum_length: 1000
   tag:
     name:
       maximum_length: 20

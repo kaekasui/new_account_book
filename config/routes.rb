@@ -40,9 +40,11 @@ Rails.application.routes.draw do
   resources :places, only: %i(index create update destroy) do
     resources :categories, only: %i(index update destroy), module: :place
   end
-  resources :records, only: %i(index show new create edit update destroy)
+  resources :records, only: %i(index show new create edit update destroy) do
+    post :import, on: :collection
+  end
   resources :tags, only: %i(index)
-  resources :captures, only: %i(index) do
+  resources :captures, only: %i(index show update) do
     post :import, on: :collection
   end
   resource :dashboard, only: %i(show)

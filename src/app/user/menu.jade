@@ -22,9 +22,18 @@ ul.list-group
   // インポート
   li.list-group-item(ui-sref='import' ng-mouseenter='menu.mouseEnter(3)' ng-mouseleave='menu.mouseLeave()')
     a
-      span.glyphicon(class='glyphicon-import')
+      span.glyphicon.glyphicon-import
       span(translate='TITLES.IMPORT')
     span(ng-show="menu.isSelected(3) && menu.active_url != '/import'")
       img.pull-right(ng-src='{{menu.menu_image}}')
     span(ng-show="menu.active_url == '/import'")
+      img.pull-right(ng-src='{{menu.active_menu_image}}')
+  // インポート履歴
+  li.list-group-item(ui-sref='import_history' ng-mouseenter='menu.mouseEnter(4)' ng-mouseleave='menu.mouseLeave()')
+    a
+      span.glyphicon(class='glyphicon-list-alt')
+      span(translate='TITLES.IMPORT_HISTORY')
+    span(ng-show="menu.isSelected(4) && menu.active_url != '/import_history'")
+      img.pull-right(ng-src='{{menu.menu_image}}')
+    span(ng-show="menu.active_url == '/import_history'")
       img.pull-right(ng-src='{{menu.active_menu_image}}')

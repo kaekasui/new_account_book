@@ -33,6 +33,17 @@ class RecordsController < ApplicationController
     end
   end
 
+  def import
+    @capture = current_user.captures.find(params[:capture_id])
+    @record = Record::Generator.new(user: current_user, capture: @capture)
+    @record.build
+    if @record.save && @capture.destroy
+      head 201
+    else
+      render_error @record
+    end
+  end
+
   def edit
     @user = current_user
     @categories = current_user.categories

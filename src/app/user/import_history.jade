@@ -1,0 +1,44 @@
+.panel.panel-default
+  .panel-heading
+    span.glyphicon.glyphicon-list-alt#left-icon
+    span {{ 'TITLES.IMPORT_HISTORY' | translate }}
+  .panel-body#with-background
+    loading-directive
+    table.table(ng-mouseleave='import_history.selectLineNumber = undefined')
+      tr(ng-mouseover='import_history.selectLineNumber = undefined')
+        th
+        th {{ 'COLUMNS.PUBLISHED_AT' | translate }}
+        th {{ 'COLUMNS.CATEGORY' | translate }}
+        th {{ 'COLUMNS.BREAKDOWN' | translate }}
+        th {{ 'COLUMNS.PLACE' | translate }}
+        th {{ 'COLUMNS.TAG' | translate }}
+        th {{ 'COLUMNS.CHARGE' | translate }}
+        th {{ 'COLUMNS.MEMO' | translate }}
+        th
+        th(width='15%') {{ 'COLUMNS.MESSAGE' | translate }}
+        th
+      tr(ng-repeat='capture in import_history.captures'
+         ng-mouseover='import_history.selectLine($index)'
+         ng-class="{ mouseover: import_history.selectLineNumber == $index }")
+        td
+        td {{ capture.published_at | date:'yyyy-MM-dd' }}
+        td {{ capture.category_name }}
+        td {{ capture.breakdown_name }}
+        td {{ capture.place_name }}
+        td {{ capture.tags }}
+        td {{ import_history.user_currency }} {{ capture.charge || 0 }}
+        td {{ capture.memo | truncate:true:15 }}
+        td
+          button.btn.btn-success.btn-sm(ng-disabled='capture.comment'
+                                  ng-show='!capture.registered'
+                                  ng-click='import_history.import($index)')
+            | {{ 'BUTTONS.CREATE' | translate }}
+          button.btn.btn-default.btn-sm(ng-disabled='capture.registered'
+                                  ng-show='capture.registered'
+                                  ng-click='import_history.import($index)')
+            | {{ 'BUTTONS.CREATED' | translate }}
+        td
+          span.red {{ capture.comment }}
+        td
+          button.btn.btn-info.btn-sm(ng-disabled='capture.registered' ng-click='import_history.showCapture($index)')
+            span.glyphicon.glyphicon-info-sign

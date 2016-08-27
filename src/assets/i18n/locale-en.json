@@ -12,6 +12,7 @@
     "FEEDBACK": "Feedback",
     "FEEDBACKS": "Feedbacks",
     "IMPORT": "Import DATA",
+    "IMPORT_HISTORY": "Import List",
     "SETTINGS": "Settings",
     "LIST": "List",
     "LOGIN": "Log in",
@@ -41,6 +42,7 @@
     "ADD": "Add",
     "AUTH_EMAIL": "Send Email",
     "CREATE": "Create",
+    "CREATED": "Created",
     "CLEAR": "Clear",
     "FACEBOOK_LOGIN": "Login via Facebook",
     "IMPORT": "Import Files",
@@ -129,12 +131,14 @@
     "MAXLENGTH": {
       "BREAKDOWN_NAME": "Enter the Breakdown Name has a length of at most 100",
       "EMAIL": "Enter your E-mail has a length of at most 100",
+      "TAGS_NAME": "Enter your Tags Name has a length of at most 1000",
       "PASSWORD": "Enter your Password has a length of at most 72",
       "TITLE": "Enter your Title has a length of at most 100",
       "CONTENT": "Enter your Comment has a length of at most 10000",
       "CATEGORY_NAME": "Enter your Category Name has a length of at most 100",
       "MEMO": "Enter your Memo has a length of at most 10000",
-      "NICKNAME": "Enter your Nickname has a lenght of at most 100"
+      "NICKNAME": "Enter your Nickname has a lenght of at most 100",
+      "PLACE_NAME": "Enter your Place Name has a lenght of at most 100"
     },
     "MIN": {
       "CHARGE": "Enter Charge has an integer greater than or equal to 0."
@@ -183,6 +187,7 @@
     "BREAKDOWN": "Breakdown",
     "CONTENT": "Content",
     "CREATED_AT": "Creation Time",
+    "IMPORT_AT": "Import Time",
     "CATEGORY": "Category",
     "CHARGE": "Charge",
     "EMAIL": "Email",
