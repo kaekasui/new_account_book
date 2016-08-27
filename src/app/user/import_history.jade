@@ -40,5 +40,5 @@
         td
           span.red {{ capture.comment }}
         td
-          .btn.btn-info.btn-sm(ng-click='import_history.showCapture($index)')
+          button.btn.btn-info.btn-sm(ng-disabled='capture.registered' ng-click='import_history.showCapture($index)')
             span.glyphicon.glyphicon-info-sign
