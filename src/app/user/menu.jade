@@ -2,7 +2,7 @@ ul.list-group
   // マイページトップ
   li.list-group-item(ui-sref='mypage' ng-mouseenter='menu.mouseEnter(1)' ng-mouseleave='menu.mouseLeave()')
     a
-      span.glyphicon(class='glyphicon-piggy-bank')
+      span.glyphicon.glyphicon-piggy-bank
       span(translate='TITLES.MYPAGE_TOP')
     span(ng-show="menu.isSelected(1) && menu.active_url != '/mypage'")
       img.pull-right(ng-src='{{menu.menu_image}}')
@@ -11,7 +11,7 @@ ul.list-group
   // プロフィール
   li.list-group-item(ui-sref='profile' ng-mouseenter='menu.mouseEnter(2)' ng-mouseleave='menu.mouseLeave()')
     a
-      span.glyphicon(class='glyphicon-user')
+      span.glyphicon.glyphicon-user
       span(translate='TITLES.PROFILE')
     span(ng-show="menu.isSelected(2) && menu.active_url != '/profile'")
       img.pull-right(ng-src='{{menu.menu_image}}')
@@ -31,7 +31,7 @@ ul.list-group
   // インポート履歴
   li.list-group-item(ui-sref='import_history' ng-mouseenter='menu.mouseEnter(4)' ng-mouseleave='menu.mouseLeave()')
     a
-      span.glyphicon(class='glyphicon-list-alt')
+      span.glyphicon.glyphicon-list-alt
       span(translate='TITLES.IMPORT_HISTORY')
     span(ng-show="menu.isSelected(4) && menu.active_url != '/import_history'")
       img.pull-right(ng-src='{{menu.menu_image}}')
