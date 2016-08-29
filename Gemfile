@@ -43,7 +43,7 @@ group :development, :test do
   gem 'pry-rescue'
   gem 'pry-byebug'
   gem 'factory_girl_rails'
-  gem 'faker', group: :developmen
+  gem 'faker'
   gem 'gimei'
   gem 'bullet'
   gem 'html2haml'
@@ -61,7 +61,6 @@ group :development do
   gem 'letter_opener'
   gem 'letter_opener_web'
   gem 'lol_dba'
-  gem 'ridgepole'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
