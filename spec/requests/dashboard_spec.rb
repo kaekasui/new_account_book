@@ -33,7 +33,7 @@ describe 'GET /dashboard', autodoc: true do
         create(:record, published_at: 1.month.ago, user: user)
       end
       let!(:last_month_record2) do
-        create(:record, published_at: 1.month.ago + 1.day, user: user)
+        create(:record, published_at: 1.month.ago, user: user)
       end
       let!(:today_record1) { create(:record, user: user) }
       let!(:today_record2) { create(:record, user: user) }
@@ -76,12 +76,7 @@ describe 'GET /dashboard', autodoc: true do
             data: [
               {
                 date: 1.month.ago.strftime('%Y-%m-%d'),
-                plus: last_month_record1.charge,
-                minus: 0
-              },
-              {
-                date: (1.month.ago + 1.day).strftime('%Y-%m-%d'),
-                plus: last_month_record2.charge,
+                plus: last_month_record1.charge + last_month_record2.charge,
                 minus: 0
               }
             ]
