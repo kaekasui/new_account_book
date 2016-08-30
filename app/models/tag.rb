@@ -7,7 +7,7 @@ class Tag < ActiveRecord::Base
 
   validates :name,
             presence: true,
-            uniqueness: true,
+            uniqueness: { scope: :user_id },
             length: { maximum: Settings.tag.name.maximum_length }
 
   before_save :set_color_code
