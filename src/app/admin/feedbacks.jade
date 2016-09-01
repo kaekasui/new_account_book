@@ -2,7 +2,8 @@ admin-menu-directive
 
 .panel.panel-default
   .panel-heading
-    span.glyphicon.glyphicon-leaf(translate='TITLES.FEEDBACKS')
+    span.glyphicon.glyphicon-leaf#left-icon
+    span {{ 'TITLES.FEEDBACKS' | translate }}
   .panel-body#with-background
     loading-directive
     nav
