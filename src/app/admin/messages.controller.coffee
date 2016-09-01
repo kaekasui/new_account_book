@@ -1,4 +1,4 @@
-MessagesController = (AdminFactory, $modal, $translate, toastr) ->
+MessagesController = (AdminFactory, $uibModal, $translate, toastr) ->
   'ngInject'
   vm = this
 
@@ -25,7 +25,7 @@ MessagesController = (AdminFactory, $modal, $translate, toastr) ->
 
   vm.destroyMessage = (index) ->
     message = vm.messages[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/components/modals/destroy.html'
       controller: 'DestroyMessageController'
       controllerAs: 'confirm_destroy'
@@ -38,7 +38,7 @@ MessagesController = (AdminFactory, $modal, $translate, toastr) ->
     return
 
   vm.send_mail = (message_id) ->
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/components/modals/send_mail.html'
       controller: 'ConfirmSendMailController'
       controllerAs: 'send_mail'
@@ -49,7 +49,7 @@ MessagesController = (AdminFactory, $modal, $translate, toastr) ->
 
   vm.showMessage = (index) ->
     message = vm.messages[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/admin/modals/message.html'
       controller: 'AdminShowMessageController'
       controllerAs: 'message'
@@ -67,7 +67,7 @@ MessagesController = (AdminFactory, $modal, $translate, toastr) ->
           return x % 20 == 0
   return
 
-AdminShowMessageController = ($modalInstance, AdminFactory, message, IndexService) ->
+AdminShowMessageController = ($uibModalInstance, AdminFactory, message, IndexService) ->
   'ngInject'
   vm = this
   vm.message = message
@@ -75,7 +75,7 @@ AdminShowMessageController = ($modalInstance, AdminFactory, message, IndexServic
   vm.content = message.content
 
   vm.cancel = () ->
-    $modalInstance.dismiss()
+    $uibModalInstance.dismiss()
 
   vm.submit = () ->
     params =
@@ -87,20 +87,20 @@ AdminShowMessageController = ($modalInstance, AdminFactory, message, IndexServic
 
   return
 
-ConfirmSendMailController = (message_id, AdminFactory, $modalInstance, IndexService) ->
+ConfirmSendMailController = (message_id, AdminFactory, $uibModalInstance, IndexService) ->
   'ngInject'
   vm = this
 
   vm.submit = () ->
     IndexService.sending = true
     AdminFactory.postMessageSendMail(message_id).then((res) ->
-      $modalInstance.close()
+      $uibModalInstance.close()
       IndexService.sending = false
     ).catch (res) ->
       IndexService.sending = false
 
   vm.cancel = () ->
-    $modalInstance.dismiss()
+    $uibModalInstance.dismiss()
 
   return
 

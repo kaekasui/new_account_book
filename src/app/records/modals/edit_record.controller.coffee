@@ -1,4 +1,4 @@
-EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance, SettingsFactory, $modal) ->
+EditRecordController = (IndexService, RecordsFactory, record_id, $uibModalInstance, SettingsFactory, $uibModal) ->
   'ngInject'
   vm = this
   vm.editing = false
@@ -42,7 +42,7 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance,
     IndexService.modal_loading = false
 
   vm.cancel = () ->
-    $modalInstance.dismiss()
+    $uibModalInstance.dismiss()
 
   vm.setToday = () ->
     vm.published_at = new Date()
@@ -58,7 +58,7 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance,
       memo: vm.memo
       tags: vm.tags
     RecordsFactory.patchRecord(record_id, params).then((res) ->
-      $modalInstance.close()
+      $uibModalInstance.close()
       IndexService.sending = false
     ).catch (res) ->
       IndexService.sending = false
@@ -78,7 +78,7 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $modalInstance,
 
   # モーダル
   vm.setColor = ($tag) ->
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/records/modals/color_code.html'
       controller: 'ColorCodeController'
       controllerAs: 'color_code'

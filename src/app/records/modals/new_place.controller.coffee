@@ -1,4 +1,4 @@
-NewPlaceController = ($modalInstance, category_id, SettingsFactory, IndexService) ->
+NewPlaceController = ($uibModalInstance, category_id, SettingsFactory, IndexService) ->
   'ngInject'
   vm = this
 
@@ -11,14 +11,14 @@ NewPlaceController = ($modalInstance, category_id, SettingsFactory, IndexService
     params =
       name: vm.new_place_name
     SettingsFactory.postCategoryPlace(category_id, params).then((res) ->
-      $modalInstance.close(res.id)
+      $uibModalInstance.close(res.id)
       IndexService.sending = false
     ).catch (res) ->
       IndexService.sending = false
       vm.errors = res.error_messages
 
   vm.cancel = () ->
-    $modalInstance.dismiss()
+    $uibModalInstance.dismiss()
 
   return
 

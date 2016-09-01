@@ -1,4 +1,4 @@
-ColorCodeController = (tag, $modalInstance) ->
+ColorCodeController = (tag, $uibModalInstance) ->
   'ngInject'
   vm = this
   vm.tag = tag
@@ -6,10 +6,10 @@ ColorCodeController = (tag, $modalInstance) ->
 
   vm.submit = () ->
     vm.tag.color_code = vm.new_color_code
-    $modalInstance.close()
+    $uibModalInstance.close()
 
   vm.cancel = () ->
-    $modalInstance.dismiss()
+    $uibModalInstance.dismiss()
 
   return
 

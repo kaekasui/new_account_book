@@ -1,4 +1,4 @@
-NewCategoryController = ($modalInstance, SettingsFactory, IndexService) ->
+NewCategoryController = ($uibModalInstance, SettingsFactory, IndexService) ->
   'ngInject'
   vm = this
 
@@ -10,14 +10,14 @@ NewCategoryController = ($modalInstance, SettingsFactory, IndexService) ->
       name: vm.new_category_name
       barance_of_payments: vm.new_payments
     SettingsFactory.postCategory(params).then(() ->
-      $modalInstance.close(vm.new_category_name)
+      $uibModalInstance.close(vm.new_category_name)
       IndexService.sending = false
     ).catch (res) ->
       IndexService.sending = false
       vm.errors = res.error_messages
 
   vm.cancel = () ->
-    $modalInstance.dismiss()
+    $uibModalInstance.dismiss()
 
   return
 

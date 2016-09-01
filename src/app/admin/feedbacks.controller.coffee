@@ -1,4 +1,4 @@
-FeedbacksController = (AdminFactory, $modal) ->
+FeedbacksController = (AdminFactory, $uibModal) ->
   'ngInject'
   vm = this
 
@@ -24,7 +24,7 @@ FeedbacksController = (AdminFactory, $modal) ->
       return x % 20 == 0
 
   vm.user = (user_id) ->
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'user'
       controller: 'UserController'
       controllerAs: 'user'

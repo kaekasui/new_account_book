@@ -1,4 +1,4 @@
-ProfileController = (IndexFactory, UserFactory, IndexService, $modal) ->
+ProfileController = (IndexFactory, UserFactory, IndexService, $uibModal) ->
   'ngInject'
   vm = this
   vm.nickname_edit_field = false
@@ -33,7 +33,7 @@ ProfileController = (IndexFactory, UserFactory, IndexService, $modal) ->
 
   # モーダル
   vm.sendNewEmail = () ->
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/components/modals/send_mail.html'
       controller: 'ConfirmSendNewMailController'
       controllerAs: 'send_mail'
@@ -41,7 +41,7 @@ ProfileController = (IndexFactory, UserFactory, IndexService, $modal) ->
     return
 
   vm.modalNewPassword = () ->
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/user/modals/new_password.html'
       controller: 'NewPasswordController'
       controllerAs: 'new_password'

@@ -1,4 +1,4 @@
-RecordsController = ($filter, IndexService , RecordsFactory, localStorageService, $modal) ->
+RecordsController = ($filter, IndexService , RecordsFactory, localStorageService, $uibModal) ->
   'ngInject'
   vm = this
   vm.offset = 0
@@ -84,7 +84,7 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
   # モーダル
   vm.showRecord = (index) ->
     record = vm.records[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/records/modals/record.html'
       controller: 'EditRecordController'
       controllerAs: 'edit_record'
@@ -99,7 +99,7 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
 
   vm.destroyRecord = (index) ->
     record = vm.records[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/components/modals/destroy.html'
       controller: 'DestroyRecordController'
       controllerAs: 'confirm_destroy'

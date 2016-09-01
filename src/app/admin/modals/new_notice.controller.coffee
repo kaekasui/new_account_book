@@ -1,11 +1,11 @@
-NewNoticeController = ($modalInstance, AdminFactory, IndexService) ->
+NewNoticeController = ($uibModalInstance, AdminFactory, IndexService) ->
   'ngInject'
   vm = this
   vm.date_picker_open = true
   vm.post_at = new Date()
 
   vm.cancel = () ->
-    $modalInstance.dismiss()
+    $uibModalInstance.dismiss()
 
   vm.submit = () ->
     IndexService.sending = true
@@ -14,7 +14,7 @@ NewNoticeController = ($modalInstance, AdminFactory, IndexService) ->
       title: vm.title
       content: vm.content
     AdminFactory.postNotice(params).then((res) ->
-      $modalInstance.close()
+      $uibModalInstance.close()
       IndexService.sending = false
     ).catch (res) ->
       IndexService.sending = false

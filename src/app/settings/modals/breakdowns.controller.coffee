@@ -1,4 +1,4 @@
-BreakdownsController = (SettingsFactory, category_id, $modalInstance, $modal) ->
+BreakdownsController = (SettingsFactory, category_id, $uibModal) ->
   'ngInject'
   vm = this
 
@@ -27,7 +27,7 @@ BreakdownsController = (SettingsFactory, category_id, $modalInstance, $modal) ->
 
   vm.destroyBreakdown = (index) ->
     breakdown = vm.breakdowns[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/components/modals/destroy.html'
       controller: 'DestroyBreakdownController'
       controllerAs: 'confirm_destroy'

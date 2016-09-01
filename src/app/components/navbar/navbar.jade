@@ -5,11 +5,11 @@ nav.navbar.navbar-default(role='navigation')
       span.brand-name(translate='BRAND_NAME')
       span.glyphicon.glyphicon-paperclip
     // スマホ用メニュー
-    button.navbar-toggle.collapsed(type='button' ng-click='navbar.menuCollapsed = !navbar.menuCollapsed')
+    button.navbar-toggle(ng-click='isCollapsed = !isCollapsed')
       span.icon-bar
       span.icon-bar
       span.icon-bar
-  .navbar-collapse.collapse(collapse='!navbar.menuCollapsed')
+  .navbar-collapse(uib-collapse='!isCollapsed')
     // 左側メニュー
     ul.nav.navbar-nav
       li
@@ -34,30 +34,35 @@ nav.navbar.navbar-default(role='navigation')
           span(translate='TITLES.FEEDBACK')
     // 右側メニュー
     ul.nav.navbar-nav.navbar-right
+      // 管理
       li(ng-show='navbar.current_user != undefined && navbar.current_user.admin')
         a(ui-sref='admin_users')
           span.glyphicon.glyphicon-king#left-icon
           span(translate='TITLES.ADMIN')
-      li.dropdown(role='presentation' ng-show='navbar.current_user != undefined' dropdown='true')
-        a.dropdown-toggle(dropdown-toggle='true' href='' ng-click='isCollapsed = !isCollapsed')
+      // 各種設定
+      li(uib-dropdown='true' ng-show='navbar.current_user != undefined')
+        a#setting-dropdown(uib-dropdown-toggle='true' href='')
           span.glyphicon.glyphicon-cog#left-icon
-          span#left-icon(translate='TITLES.SETTINGS')
+          span#left-icon {{ 'TITLES.SETTINGS' | translate }}
           span.caret
-        ul.dropdown-menu(dropdown-menu='true')
+        ul.dropdown-menu(uib-dropdown-menu='true' aria=labelledby='setting-dropdown')
           li(ui-sref='base_setting')
             a(href='') {{ 'TITLES.BASE_SETTING' | translate }}
           li(ui-sref='categories')
             a(href='') {{ 'TITLES.CATEGORY' | translate }}
           li(ui-sref='places')
             a(href='') {{ 'TITLES.PLACE' | translate }}
+      // ログイン
       li(ng-hide='navbar.current_user != undefined')
         a(ui-sref='login')
           span.glyphicon.glyphicon-leaf#left-icon
           span(translate='TITLES.LOGIN')
+      // マイページ
       li(ng-show='navbar.current_user != undefined')
         a(ui-sref='mypage')
           span.glyphicon.glyphicon-user#left-icon
           span {{ navbar.current_user.user_name }}
+      // ログアウト
       li(ng-show='navbar.current_user != undefined')
         a(href='' ng-click='navbar.logout()')
           span.glyphicon.glyphicon-leaf#left-icon
