@@ -18,9 +18,8 @@
         th(width='15%') {{ 'COLUMNS.MESSAGE' | translate }}
         th
       tr(ng-repeat='capture in import_history.captures'
-         ng-mouseover='import_history.selectLine($index)'
-         ng-class="{ mouseover: import_history.selectLineNumber == $index }")
-        td
+         ng-mouseover='import_history.selectLine($index)')
+        td.line-color(ng-class="{ 'line-color-red': import_history.selectLineNumber == $index}")
         td {{ capture.published_at | date:'yyyy-MM-dd' }}
         td {{ capture.category_name }}
         td {{ capture.breakdown_name }}

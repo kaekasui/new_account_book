@@ -109,7 +109,10 @@ body {
   .nav > li > a:hover, .nav > li > a:focus {
     outline: none;
   }
-  table tr.mouseover {
+  td.line-color {
+    border-left: medium solid transparent;
+  }
+  td.line-color-red {
     border-left: medium solid $red;
   }
   .inline-block {
