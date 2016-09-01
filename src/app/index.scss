@@ -100,10 +100,19 @@ body {
   span {
     outline: none;
   }
-  table tr {
+  label.control-label {
     outline: none;
   }
-  table tr.mouseover {
+  button.btn.btn-info.btn-sm {
+    outline: none;
+  }
+  .nav > li > a:hover, .nav > li > a:focus {
+    outline: none;
+  }
+  td.line-color {
+    border-left: medium solid transparent;
+  }
+  td.line-color-red {
     border-left: medium solid $red;
   }
   .inline-block {

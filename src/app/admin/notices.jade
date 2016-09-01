@@ -2,7 +2,8 @@ admin-menu-directive
 
 .panel.panel-default
   .panel-heading
-    span.glyphicon.glyphicon-leaf(translate='TITLES.NOTICES')
+    span.glyphicon.glyphicon-leaf#left-icon
+    span {{ 'TITLES.NOTICES' | translate }}
   .panel-body#with-background
     loading-directive
     .btn.btn-info(translate='BUTTONS.ADD' ng-click='admin_notices.newNotice()' ng-show='admin_notices.notices')

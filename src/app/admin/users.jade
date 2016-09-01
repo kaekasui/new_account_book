@@ -2,7 +2,8 @@ admin-menu-directive
 
 .panel.panel-default
   .panel-heading
-    span.glyphicon.glyphicon-leaf(translate='TITLES.USERS')
+    span.glyphicon.glyphicon-leaf#left-icon
+    span {{ 'TITLES.USERS' | translate }}
   .panel-body#with-background
     loading-directive
     nav
