@@ -1,4 +1,4 @@
-FeedbackController = (IndexFactory, $translate, $modalInstance, toastr, IndexService) ->
+FeedbackController = (IndexFactory, $translate, $uibModalInstance, toastr, IndexService) ->
   'ngInject'
   vm = this
   vm.placeholder = $translate.instant('MESSAGES.FEEDBACK')
@@ -20,14 +20,14 @@ FeedbackController = (IndexFactory, $translate, $modalInstance, toastr, IndexSer
         content: vm.content
 
     IndexFactory.postFeedback(params).then( ->
-      $modalInstance.close()
+      $uibModalInstance.close()
       IndexService.sending = false
     ).catch (res) ->
       IndexService.sending = false
       vm.errors = res.error_messages
 
   vm.cancel = () ->
-    $modalInstance.close()
+    $uibModalInstance.close()
 
   return
 

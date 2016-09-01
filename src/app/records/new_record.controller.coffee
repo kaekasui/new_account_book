@@ -1,4 +1,4 @@
-NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, SettingsFactory) ->
+NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $uibModal, SettingsFactory) ->
   'ngInject'
   vm = this
 
@@ -136,7 +136,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
 
   # カテゴリ「追加」ボタン -> モーダル
   vm.newCategory = () ->
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/records/modals/new_category.html'
       controller: 'NewCategoryController'
       controllerAs: 'new_category'
@@ -152,7 +152,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
 
   # 内訳「追加」ボタン モーダル
   vm.newBreakdown = () ->
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/records/modals/new_breakdown.html'
       controller: 'NewBreakdownController'
       controllerAs: 'new_breakdown'
@@ -168,7 +168,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
 
   # お店・施設「追加」ボタン モーダル
   vm.newPlace = () ->
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/records/modals/new_place.html'
       controller: 'NewPlaceController'
       controllerAs: 'new_place'
@@ -184,7 +184,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
   # 情報アイコン モーダル
   vm.showRecord = (index) ->
     record = vm.day_records[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/records/modals/record.html'
       controller: 'EditRecordController'
       controllerAs: 'edit_record'
@@ -197,7 +197,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
   # 削除アイコン モーダル
   vm.destroyRecord = (index) ->
     record = vm.day_records[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/components/modals/destroy.html'
       controller: 'DestroyRecordController'
       controllerAs: 'confirm_destroy'
@@ -208,7 +208,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
 
   # ラベル名 モーダル
   vm.setColor = ($tag) ->
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/records/modals/color_code.html'
       controller: 'ColorCodeController'
       controllerAs: 'color_code'
@@ -219,7 +219,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $modal, Set
 
   # ラベル：ヘルプ モーダル
   vm.helpTags = () ->
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/records/modals/help_tags.html'
     )
     modalInstance.result.then () ->

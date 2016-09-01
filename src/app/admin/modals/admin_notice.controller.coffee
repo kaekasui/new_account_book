@@ -1,4 +1,4 @@
-AdminNoticeController = ($modalInstance, AdminFactory, notice, IndexService) ->
+AdminNoticeController = ($uibModalInstance, AdminFactory, notice, IndexService) ->
   'ngInject'
   vm = this
   vm.notice = notice
@@ -9,7 +9,7 @@ AdminNoticeController = ($modalInstance, AdminFactory, notice, IndexService) ->
   vm.content = notice.content
 
   vm.cancel = () ->
-    $modalInstance.dismiss()
+    $uibModalInstance.dismiss()
 
   vm.submit = () ->
     IndexService.sending = true
@@ -18,7 +18,7 @@ AdminNoticeController = ($modalInstance, AdminFactory, notice, IndexService) ->
       title: vm.title
       content: vm.content
     AdminFactory.patchNotice(vm.notice.id, params).then((res) ->
-      $modalInstance.close()
+      $uibModalInstance.close()
       IndexService.sending = false
     ).catch (res) ->
       IndexService.sending = false

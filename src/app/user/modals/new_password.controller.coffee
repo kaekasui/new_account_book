@@ -1,4 +1,4 @@
-NewPasswordController = ($modalInstance, UserFactory, IndexService) ->
+NewPasswordController = ($uibModalInstance, UserFactory, IndexService) ->
   'ngInject'
   vm = this
 
@@ -10,13 +10,13 @@ NewPasswordController = ($modalInstance, UserFactory, IndexService) ->
       password_confirmation: vm.password_confirmation
     UserFactory.patchPassword(params).then((res) ->
       IndexService.sending = false
-      $modalInstance.close()
+      $uibModalInstance.close()
     ).catch (res) ->
       IndexService.sending = false
       vm.errors = res.error_messages
 
   vm.cancel = () ->
-    $modalInstance.dismiss()
+    $uibModalInstance.dismiss()
 
   vm.clearErrors = () ->
     vm.errors = ''

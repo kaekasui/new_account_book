@@ -1,4 +1,4 @@
-NewCategorizeController = ($modalInstance, SettingsFactory, place_id, IndexService) ->
+NewCategorizeController = ($uibModalInstance, SettingsFactory, place_id, IndexService) ->
   'ngInject'
   vm = this
 
@@ -10,13 +10,13 @@ NewCategorizeController = ($modalInstance, SettingsFactory, place_id, IndexServi
     IndexService.modal_loading = false
 
   vm.cancel = () ->
-    $modalInstance.dismiss()
+    $uibModalInstance.dismiss()
 
   vm.submit = () ->
     vm.sending = true
     SettingsFactory.patchPlaceCategory(place_id, vm.category_id).then((res) ->
       vm.sending = false
-      $modalInstance.close()
+      $uibModalInstance.close()
     ).catch (res) ->
       vm.sending = false
 

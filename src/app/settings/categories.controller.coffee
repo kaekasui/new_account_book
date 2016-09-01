@@ -1,4 +1,4 @@
-CategoriesController = (SettingsFactory, $modal, IndexService) ->
+CategoriesController = (SettingsFactory, $uibModal, IndexService) ->
   'ngInject'
   vm = this
   vm.add_field = false
@@ -53,7 +53,7 @@ CategoriesController = (SettingsFactory, $modal, IndexService) ->
 
   vm.showBreakdowns = (index) ->
     category = vm.categories[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/settings/modals/breakdowns.html'
       controller: 'BreakdownsController'
       controllerAs: 'breakdowns'
@@ -66,7 +66,7 @@ CategoriesController = (SettingsFactory, $modal, IndexService) ->
 
   vm.showPlaces = (index) ->
     category = vm.categories[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/settings/modals/modal_places.html'
       controller: 'ModalPlacesController'
       controllerAs: 'modal_places'
@@ -79,7 +79,7 @@ CategoriesController = (SettingsFactory, $modal, IndexService) ->
 
   vm.destroyCategory = (index) ->
     category = vm.categories[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/components/modals/destroy.html'
       controller: 'DestroyCategoryController'
       controllerAs: 'confirm_destroy'

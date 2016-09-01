@@ -1,4 +1,4 @@
-MypageController = (UserFactory, IndexService, $modal, RecordsFactory) ->
+MypageController = (UserFactory, IndexService, $uibModal, RecordsFactory) ->
   'ngInject'
   vm = this
 
@@ -15,7 +15,7 @@ MypageController = (UserFactory, IndexService, $modal, RecordsFactory) ->
   # モーダル
   vm.showRecord = (index) ->
     record = vm.records[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/records/modals/record.html'
       controller: 'EditRecordController'
       controllerAs: 'edit_record'
@@ -28,7 +28,7 @@ MypageController = (UserFactory, IndexService, $modal, RecordsFactory) ->
       
   vm.destroyRecord = (index) ->
     record = vm.records[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/components/modals/destroy.html'
       controller: 'DestroyRecordController'
       controllerAs: 'confirm_destroy'

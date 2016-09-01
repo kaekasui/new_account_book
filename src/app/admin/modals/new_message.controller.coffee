@@ -1,9 +1,9 @@
-NewMessageController = (IndexService, AdminFactory, $modalInstance, user_id) ->
+NewMessageController = (IndexService, AdminFactory, $uibModalInstance, user_id) ->
   'ngInject'
   vm = this
 
   vm.cancel = () ->
-    $modalInstance.dismiss()
+    $uibModalInstance.dismiss()
 
   IndexService.modal_loading = true
   AdminFactory.getUserFeedbacks(user_id).then((res) ->
@@ -22,7 +22,7 @@ NewMessageController = (IndexService, AdminFactory, $modalInstance, user_id) ->
       content: vm.content
     AdminFactory.postMessage(user_id, params).then((res) ->
       IndexService.sending = false
-      $modalInstance.close()
+      $uibModalInstance.close()
     ).catch (res) ->
       IndexService.sending = false
 

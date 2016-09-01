@@ -1,15 +1,15 @@
-ConfirmSendNewMailController = ($modalInstance, UserFactory, IndexService) ->
+ConfirmSendNewMailController = ($uibModalInstance, UserFactory, IndexService) ->
   'ngInject'
   vm = this
 
   vm.submit = () ->
     IndexService.sending = true
     UserFactory.postNewMail().then ->
-      $modalInstance.close()
+      $uibModalInstance.close()
       IndexService.sending = false
 
   vm.cancel = () ->
-    $modalInstance.dismiss()
+    $uibModalInstance.dismiss()
 
   return
 

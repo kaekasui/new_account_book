@@ -1,4 +1,4 @@
-PlacesController = (SettingsFactory, $scope, IndexService, $modal, toastr, $translate) ->
+PlacesController = (SettingsFactory, $scope, IndexService, $uibModal, toastr, $translate) ->
   'ngInject'
   vm = this
   vm.add_field = false
@@ -23,7 +23,7 @@ PlacesController = (SettingsFactory, $scope, IndexService, $modal, toastr, $tran
 
   vm.destroyPlace = (index) ->
     place = vm.places[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/components/modals/destroy.html'
       controller: 'DestroyPlaceController'
       controllerAs: 'confirm_destroy'
@@ -37,7 +37,7 @@ PlacesController = (SettingsFactory, $scope, IndexService, $modal, toastr, $tran
 
   vm.addCategory = (index) ->
     place = vm.places[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/settings/modals/new_categorize.html'
       controller: 'NewCategorizeController'
       controllerAs: 'adding_category'

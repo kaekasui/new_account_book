@@ -1,4 +1,4 @@
-ModalPlacesController = (SettingsFactory, category_id, $modal) ->
+ModalPlacesController = (SettingsFactory, category_id) ->
   'ngInject'
   vm = this
 

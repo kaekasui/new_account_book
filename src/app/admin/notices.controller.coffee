@@ -1,4 +1,4 @@
-NoticesController = (AdminFactory, $modal, $translate, toastr) ->
+NoticesController = (AdminFactory, $uibModal, $translate, toastr) ->
   'ngInject'
   vm = this
 
@@ -24,7 +24,7 @@ NoticesController = (AdminFactory, $modal, $translate, toastr) ->
       return x % 20 == 0
 
   vm.newNotice = () ->
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/admin/modals/new_notice.html'
       controller: 'NewNoticeController'
       controllerAs: 'new_notice'
@@ -43,7 +43,7 @@ NoticesController = (AdminFactory, $modal, $translate, toastr) ->
 
   vm.destroyNotice = (index) ->
     notice = vm.notices[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/components/modals/destroy.html'
       controller: 'DestroyNoticeController'
       controllerAs: 'confirm_destroy'
@@ -57,7 +57,7 @@ NoticesController = (AdminFactory, $modal, $translate, toastr) ->
 
   vm.showNotice = (index) ->
     notice = vm.notices[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/admin/modals/notice.html'
       controller: 'AdminNoticeController'
       controllerAs: 'notice'

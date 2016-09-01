@@ -1,4 +1,4 @@
-UsersController = (AdminFactory, $modal) ->
+UsersController = (AdminFactory, $uibModal) ->
   'ngInject'
   vm = this
 
@@ -24,7 +24,7 @@ UsersController = (AdminFactory, $modal) ->
       return x % 20 == 0
 
   vm.message = (user_id) ->
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/admin/modals/new_message.html'
       controller: 'NewMessageController'
       controllerAs: 'message'

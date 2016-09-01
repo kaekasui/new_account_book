@@ -1,4 +1,4 @@
-EditCaptureController = (IndexService, UserFactory, capture, $modalInstance, $modal) ->
+EditCaptureController = (IndexService, UserFactory, capture, $uibModalInstance, $uibModal) ->
   'ngInject'
   vm = this
   vm.capture = capture.capture
@@ -23,7 +23,7 @@ EditCaptureController = (IndexService, UserFactory, capture, $modalInstance, $mo
     vm.memo = vm.capture.memo
 
   vm.cancel = () ->
-    $modalInstance.dismiss()
+    $uibModalInstance.dismiss()
 
   vm.submit = () ->
     IndexService.sending = true
@@ -36,7 +36,7 @@ EditCaptureController = (IndexService, UserFactory, capture, $modalInstance, $mo
       memo: vm.memo
       tags: vm.tags
     UserFactory.patchCapture(capture_id, params).then((res) ->
-      $modalInstance.close()
+      $uibModalInstance.close()
       IndexService.sending = false
     ).catch (res) ->
       IndexService.sending = false

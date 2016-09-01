@@ -1,4 +1,4 @@
-NavbarController = (IndexFactory, $location, $scope, $translate, toastr, localStorageService, $modal, IndexService) ->
+NavbarController = (IndexFactory, $location, $scope, $translate, toastr, localStorageService, $uibModal, IndexService) ->
   'ngInject'
   vm = this
 
@@ -22,7 +22,7 @@ NavbarController = (IndexFactory, $location, $scope, $translate, toastr, localSt
     $location.path('/login')
 
   vm.feedback = () ->
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/components/navbar/modals/feedback.html'
       controller: 'FeedbackController'
       controllerAs: 'feedback'

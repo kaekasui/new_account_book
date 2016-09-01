@@ -1,4 +1,4 @@
-ImportHistoryController = (IndexService, UserFactory, $modal) ->
+ImportHistoryController = (IndexService, UserFactory, $uibModal) ->
   'ngInject'
   vm = this
 
@@ -14,7 +14,7 @@ ImportHistoryController = (IndexService, UserFactory, $modal) ->
 
   vm.showCapture = (index) ->
     capture = vm.captures[index]
-    modalInstance = $modal.open(
+    modalInstance = $uibModal.open(
       templateUrl: 'app/user/modals/capture.html'
       controller: 'EditCaptureController'
       controllerAs: 'modal'
