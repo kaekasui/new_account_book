@@ -1,4 +1,4 @@
-BreakdownsController = (SettingsFactory, category_id, $uibModalInstance, $uibModal) ->
+BreakdownsController = (SettingsFactory, category_id, $uibModal) ->
   'ngInject'
   vm = this
 

@@ -1,4 +1,4 @@
-EditCaptureController = (IndexService, UserFactory, capture, $uibModalInstance, $uibModal) ->
+EditCaptureController = (IndexService, UserFactory, capture, $uibModalInstance) ->
   'ngInject'
   vm = this
   vm.capture = capture.capture
