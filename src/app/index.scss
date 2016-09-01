@@ -100,7 +100,13 @@ body {
   span {
     outline: none;
   }
-  table tr {
+  label.control-label {
+    outline: none;
+  }
+  button.btn.btn-info.btn-sm {
+    outline: none;
+  }
+  .nav > li > a:hover, .nav > li > a:focus {
     outline: none;
   }
   table tr.mouseover {
