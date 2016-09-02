@@ -171,6 +171,7 @@ describe 'GET /capture/:id', autodoc: true do
           params: '',
           headers: login_headers(user)
       expect(response.status).to eq 200
+      capture.reload
 
       json = {
         id: capture.id,
