@@ -45,14 +45,17 @@ form.form.form-inline
         td
           label.label.label-default {{ record.memo }}
         td
-          span.glyphicon.glyphicon-bookmark#left-icon(ng-repeat='tag in record.tags' ng-style="{color:tag.color_code}" tooltip='{{tag.name}}')
+          span.glyphicon.glyphicon-bookmark#left-icon(ng-repeat='tag in record.tags' ng-style="{color:tag.color_code}" uib-tooltip='{{tag.name}}')
+        td
+          span.glyphicon.glyphicon-arrow-up.green(ng-show='record.payments' uib-tooltip="{{ 'TOOLTIPS.INCOME' | translate }}")
+          span.glyphicon.glyphicon-arrow-down.red(ng-show='!record.payments' uib-tooltip="{{ 'TOOLTIPS.OUTGO' | translate }}")
         td {{ list.user.currency }} {{ record.charge | currency:'':0 }}
         td
           a(href='' ng-click='list.showRecord($index)')
-            span.glyphicon.glyphicon-info-sign.green(tooltip="{{'TOOLTIPS.DETAIL' | translate}}")
+            span.glyphicon.glyphicon-info-sign.green(uib-tooltip="{{'TOOLTIPS.DETAIL' | translate}}")
         td
           a(href='' ng-click='list.destroyRecord($index)')
-            span.glyphicon.glyphicon-trash.green(tooltip="{{'TOOLTIPS.DELETE' | translate}}")
+            span.glyphicon.glyphicon-trash.green(uib-tooltip="{{'TOOLTIPS.DELETE' | translate}}")
     nav(ng-show='list.offset_numbers.length >= 2')
       ul.pagination
         li(ng-click='list.clickPaginate(number)' ng-repeat='number in list.offset_numbers' ng-class='{active: number == list.offset}')

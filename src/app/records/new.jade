@@ -163,18 +163,21 @@
             tr(ng-repeat='record in new_record.day_records')
               td
                 a(href='' ng-click='new_record.copyRecord(record)')
-                  span.glyphicon.glyphicon-arrow-left.green(tooltip="{{'TOOLTIPS.COPY' | translate}}")
+                  span.glyphicon.glyphicon-arrow-left.green(uib-tooltip="{{'TOOLTIPS.COPY' | translate}}")
               td
                 label.label.label-warning {{ record.category_name }}
               td
                 label.label.label-info {{ record.breakdown_name }}
               td
                 label.label.label-primary {{ record.place_name }}
+              td
+                span.glyphicon.glyphicon-arrow-up.green(ng-show='record.payments' uib-tooltip="{{ 'TOOLTIPS.INCOME' | translate }}")
+                span.glyphicon.glyphicon-arrow-down.red(ng-show='!record.payments' uib-tooltip="{{ 'TOOLTIPS.OUTGO' | translate }}")
               td {{ new_record.user.currency }} {{ record.charge | currency:'':0 }}
               // TODO: $に対応する
               td
                 a(href='' ng-click='new_record.showRecord($index)')
-                  span.glyphicon.glyphicon-info-sign.green(tooltip="{{'TOOLTIPS.DETAIL' | translate}}")
+                  span.glyphicon.glyphicon-info-sign.green(uib-tooltip="{{'TOOLTIPS.DETAIL' | translate}}")
               td
                 a(href='' ng-click='new_record.destroyRecord($index)')
-                  span.glyphicon.glyphicon-trash.green(tooltip="{{'TOOLTIPS.DELETE' | translate}}")
+                  span.glyphicon.glyphicon-trash.green(uib-tooltip="{{'TOOLTIPS.DELETE' | translate}}")
