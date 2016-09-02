@@ -17,6 +17,7 @@
         th
         th(width='15%') {{ 'COLUMNS.MESSAGE' | translate }}
         th
+        th
       tr(ng-repeat='capture in import_history.captures'
          ng-mouseover='import_history.selectLine($index)')
         td.line-color(ng-class="{ 'line-color-red': import_history.selectLineNumber == $index}")
@@ -44,6 +45,9 @@
             | {{ 'BUTTONS.CREATED' | translate }}
         td
           span.red {{ capture.comment }}
+        td
+          button.btn.btn-success.btn-sm(ng-click='import_history.reloadCapture($index)')
+            span.glyphicon.glyphicon-repeat
         td
           button.btn.btn-info.btn-sm(ng-disabled='capture.registered' ng-click='import_history.showCapture($index)')
             span.glyphicon.glyphicon-info-sign
