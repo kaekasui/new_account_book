@@ -389,6 +389,7 @@ describe 'GET /records/:id/edit', autodoc: true do
         record: {
           id: record.id,
           published_at: record.published_at.strftime('%Y-%m-%d'),
+          payments: record.category.barance_of_payments,
           charge: record.charge,
           category_name: record.category.name,
           breakdown_name: record.breakdown.try(:name),
