@@ -1,10 +1,11 @@
-EditCaptureController = (IndexService, UserFactory, capture, $uibModalInstance) ->
+EditCaptureController = (IndexService, UserFactory, capture, $uibModalInstance, SettingsFactory) ->
   'ngInject'
   vm = this
   vm.capture = capture.capture
   vm.user_currency = capture.user_currency
   vm.published_at = new Date(vm.capture.published_at)
   vm.category_name = vm.capture.category_name
+  vm.category = { name: vm.category_name, payments: false }
   vm.breakdown_name = vm.capture.breakdown_name
   vm.place_name = vm.capture.place_name
   vm.tags = vm.capture.tags
@@ -12,19 +13,35 @@ EditCaptureController = (IndexService, UserFactory, capture, $uibModalInstance) 
   vm.memo = vm.capture.memo
   capture_id = vm.capture.id
 
-  UserFactory.getCapture(capture_id).then (res) ->
-    vm.capture = res
-    vm.published_at = new Date(vm.capture.published_at)
-    vm.category_name = vm.capture.category_name
-    vm.breakdown_name = vm.capture.breakdown_name
-    vm.place_name = vm.capture.place_name
-    vm.tags = vm.capture.tags
-    vm.charge = vm.capture.charge
-    vm.memo = vm.capture.memo
+  # 履歴を取得する関数
+  setCapture = () ->
+    UserFactory.getCapture(capture_id).then (res) ->
+      vm.capture = res
+      vm.published_at = new Date(vm.capture.published_at)
+      vm.category_name = vm.capture.category_name
+      vm.breakdown_name = vm.capture.breakdown_name
+      vm.place_name = vm.capture.place_name
+      vm.tags = vm.capture.tags
+      vm.charge = vm.capture.charge
+      vm.memo = vm.capture.memo
 
+  setCapture()
+
+  # キャンセル
   vm.cancel = () ->
     $uibModalInstance.dismiss()
 
+  # カテゴリの追加ボタン
+  vm.addCategory = () ->
+    IndexService.sending = true
+    params =
+      barance_of_payments: vm.category.payments
+      name: vm.category.name
+    SettingsFactory.postCategory(params).then () ->
+      setCapture()
+      IndexService.sending = false
+
+  # 履歴情報の編集
   vm.submit = () ->
     IndexService.sending = true
     params =

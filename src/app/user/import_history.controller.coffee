@@ -24,17 +24,27 @@ ImportHistoryController = (IndexService, UserFactory, $uibModal) ->
           user_currency: vm.user_currency
       backdrop: 'static'
     )
-    modalInstance.result.then () ->
+    modalInstance.result.then (() ->
+      UserFactory.getCapture(capture.id).then (res) ->
+        vm.captures[index] = res
+    ), ->
       UserFactory.getCapture(capture.id).then (res) ->
         vm.captures[index] = res
 
   vm.selectLine = (index) ->
     vm.selectLineNumber = index
 
+  # 「登録」ボタン
   vm.import = (index) ->
     capture = vm.captures[index]
     UserFactory.postCaptureId(capture.id).then () ->
       vm.captures[index].registered = true
+
+  # 「glyphicon-repeat」ボタン
+  vm.reloadCapture = (index) ->
+    capture = vm.captures[index]
+    UserFactory.getCapture(capture.id).then (res) ->
+      vm.captures[index] = res
 
   return
 
