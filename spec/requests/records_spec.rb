@@ -313,20 +313,42 @@ describe 'POST /records/import', autodoc: true do
   end
 
   context 'ログインしている場合' do
-    it '201が返ってくること' do
-      place.categories << category
-      post '/records/import', params: { capture_id: capture.id },
-                              headers: login_headers(user)
-      expect(response.status).to eq 201
-      record = user.records.last
-      expect(record.published_at).to eq capture.published_at
-      expect(record.charge).to eq capture.charge
-      expect(record.category.name).to eq capture.category_name
-      expect(record.breakdown.try(:name)).to eq capture.breakdown_name
-      expect(record.place.try(:name)).to eq capture.place_name
-      expect(record.memo).to eq capture.memo
-      expect(record.tags.count).to eq 2
-      expect(user.captures.count).to eq 0
+    context 'データが全て存在している場合' do
+      it '201が返ってくること' do
+        place.categories << category
+        post '/records/import', params: { capture_id: capture.id },
+                                headers: login_headers(user)
+        expect(response.status).to eq 201
+        record = user.records.last
+        expect(record.published_at).to eq capture.published_at
+        expect(record.charge).to eq capture.charge
+        expect(record.category.name).to eq capture.category_name
+        expect(record.breakdown.try(:name)).to eq capture.breakdown_name
+        expect(record.place.try(:name)).to eq capture.place_name
+        expect(record.memo).to eq capture.memo
+        expect(record.tags.count).to eq 2
+        expect(user.captures.count).to eq 0
+      end
+    end
+
+    context 'ラベルが空の場合' do
+      it '201が返ってくること' do
+        capture.tags = nil
+        capture.save
+        place.categories << category
+        post '/records/import', params: { capture_id: capture.id },
+                                headers: login_headers(user)
+        expect(response.status).to eq 201
+        record = user.records.last
+        expect(record.published_at).to eq capture.published_at
+        expect(record.charge).to eq capture.charge
+        expect(record.category.name).to eq capture.category_name
+        expect(record.breakdown.try(:name)).to eq capture.breakdown_name
+        expect(record.place.try(:name)).to eq capture.place_name
+        expect(record.memo).to eq capture.memo
+        expect(record.tags.count).to eq 0
+        expect(user.captures.count).to eq 0
+      end
     end
   end
 end
