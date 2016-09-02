@@ -39,6 +39,8 @@ form.form-horizontal(novalidate=true name='editRecordForm' ng-submit='edit_recor
         span(translate='COLUMNS.CATEGORY')
         span.red *
       .modal-label.col-sm-10(ng-show='!edit_record.editing')
+        span.glyphicon.glyphicon-arrow-up.green#left-icon(ng-show='edit_record.record.payments' uib-tooltip="{{ 'TOOLTIPS.INCOME' | translate }}")
+        span.glyphicon.glyphicon-arrow-down.red#left-icon(ng-show='!edit_record.record.payments' uib-tooltip="{{ 'TOOLTIPS.OUTGO' | translate }}")
         span {{ edit_record.record.category_name }}
       .col-sm-10(ng-show='edit_record.editing')
         select.form-control(

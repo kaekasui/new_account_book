@@ -170,6 +170,9 @@
                 label.label.label-info {{ record.breakdown_name }}
               td
                 label.label.label-primary {{ record.place_name }}
+              td
+                span.glyphicon.glyphicon-arrow-up.green(ng-show='record.payments' uib-tooltip="{{ 'TOOLTIPS.INCOME' | translate }}")
+                span.glyphicon.glyphicon-arrow-down.red(ng-show='!record.payments' uib-tooltip="{{ 'TOOLTIPS.OUTGO' | translate }}")
               td {{ new_record.user.currency }} {{ record.charge | currency:'':0 }}
               // TODO: $に対応する
               td
