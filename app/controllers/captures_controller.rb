@@ -9,6 +9,8 @@ class CapturesController < ApplicationController
 
   def show
     @capture = current_user.captures.find(params[:id])
+    @capture.build_comments
+    @capture.save(validate: false)
   end
 
   def update

@@ -24,7 +24,10 @@ ImportHistoryController = (IndexService, UserFactory, $uibModal) ->
           user_currency: vm.user_currency
       backdrop: 'static'
     )
-    modalInstance.result.then () ->
+    modalInstance.result.then (() ->
+      UserFactory.getCapture(capture.id).then (res) ->
+        vm.captures[index] = res
+    ), ->
       UserFactory.getCapture(capture.id).then (res) ->
         vm.captures[index] = res
 

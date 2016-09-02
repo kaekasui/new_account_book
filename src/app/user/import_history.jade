@@ -21,9 +21,15 @@
          ng-mouseover='import_history.selectLine($index)')
         td.line-color(ng-class="{ 'line-color-red': import_history.selectLineNumber == $index}")
         td {{ capture.published_at | date:'yyyy-MM-dd' }}
-        td {{ capture.category_name }}
-        td {{ capture.breakdown_name }}
-        td {{ capture.place_name }}
+        td
+          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.category_name && !capture.category_existence')
+          span {{ capture.category_name }}
+        td
+          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.breakdown_name && !capture.breakdown_existence')
+          span {{ capture.breakdown_name }}
+        td
+          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.place_name && !capture.place_existence')
+          span {{ capture.place_name }}
         td {{ capture.tags }}
         td {{ import_history.user_currency }} {{ capture.charge || 0 }}
         td {{ capture.memo | truncate:true:15 }}
