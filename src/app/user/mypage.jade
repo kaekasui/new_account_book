@@ -3,11 +3,11 @@
 
 .col-md-9
   .col-md-12
-    // 最近の入力
+    // 最近の入力一覧
     .panel.panel-default
       .panel-heading
         span.glyphicon.glyphicon-list#left-icon
-        span(translate='TITLES.RECENTLY_RECORDS_LIST')
+        span {{ 'TITLES.RECENTLY_RECORDS_LIST' | translate }}
       .panel-body
         loading-directive
         span(ng-show='mypage.records.length == 0')
@@ -25,13 +25,16 @@
               label.label.label-info {{ record.breakdown_name }}
             td
               label.label.label-primary {{ record.place_name }}
+            td
+              span.glyphicon.glyphicon-arrow-up.green(ng-show='record.payments' uib-tooltip="{{ 'TOOLTIPS.INCOME' | translate }}")
+              span.glyphicon.glyphicon-arrow-down.red(ng-show='!record.payments' uib-tooltip="{{ 'TOOLTIPS.OUTGO' | translate }}")
             td {{ mypage.user.currency }} {{ record.charge | currency:'':0 }}
             td
               a(href='' ng-click='mypage.showRecord($index)')
-                span.glyphicon.glyphicon-info-sign.green(tooltip="{{'TOOLTIPS.DETAIL' | translate}}")
+                span.glyphicon.glyphicon-info-sign.green(uib-tooltip="{{'TOOLTIPS.DETAIL' | translate}}")
             td
               a(href='' ng-click='mypage.destroyRecord($index)')
-                span.glyphicon.glyphicon-trash.green(tooltip="{{'TOOLTIPS.DELETE' | translate}}")
+                span.glyphicon.glyphicon-trash.green(uib-tooltip="{{'TOOLTIPS.DELETE' | translate}}")
 
   // お知らせ
   .col-md-6

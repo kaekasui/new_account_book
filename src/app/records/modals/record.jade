@@ -83,7 +83,7 @@ form.form-horizontal(novalidate=true name='editRecordForm' ng-submit='edit_recor
       label.control-label.col-sm-2(for='tags')
         span(translate='COLUMNS.TAG')
       .modal-label.col-sm-10(ng-show='!edit_record.editing')
-         span.glyphicon.glyphicon-bookmark#left-icon(ng-repeat='tag in edit_record.record.tags' ng-style="{color:tag.color_code}" tooltip='{{tag.name}}')
+         span.glyphicon.glyphicon-bookmark#left-icon(ng-repeat='tag in edit_record.record.tags' ng-style="{color:tag.color_code}" uib-tooltip='{{tag.name}}')
       .col-sm-10(ng-show='edit_record.editing')
         tags-input(ng-model='edit_record.tags'
                    display-property='name'

@@ -30,7 +30,7 @@ admin-menu-directive
           span.label(ng-class='user.type_label_name') {{ user.type }}
         td
           a(href='' ng-click='admin_users.message(user.id)')
-            span.glyphicon.glyphicon-envelope.green(tooltip="{{'TOOLTIPS.MESSAGE' | translate}}")
+            span.glyphicon.glyphicon-envelope.green(uib-tooltip="{{'TOOLTIPS.MESSAGE' | translate}}")
         td
           span {{ user.nickname }}
         td {{ user.email }}

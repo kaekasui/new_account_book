@@ -32,6 +32,7 @@ describe 'GET /records', autodoc: true do
             {
               id: record2.id,
               published_at: record2.published_at.strftime('%Y-%m-%d'),
+              payments: record2.category.barance_of_payments,
               charge: record2.charge,
               category_name: record2.category.name,
               breakdown_name: record2.breakdown.try(:name),
@@ -44,6 +45,7 @@ describe 'GET /records', autodoc: true do
             {
               id: record1.id,
               published_at: record1.published_at.strftime('%Y-%m-%d'),
+              payments: record1.category.barance_of_payments,
               charge: record1.charge,
               category_name: record1.category.name,
               breakdown_name: record1.breakdown.try(:name),
@@ -73,6 +75,7 @@ describe 'GET /records', autodoc: true do
             {
               id: record3.id,
               published_at: record3.published_at.strftime('%Y-%m-%d'),
+              payments: record3.category.barance_of_payments,
               charge: record3.charge,
               category_name: record3.category.name,
               breakdown_name: record3.breakdown.try(:name),
@@ -102,6 +105,7 @@ describe 'GET /records', autodoc: true do
             {
               id: record2.id,
               published_at: record2.published_at.strftime('%Y-%m-%d'),
+              payments: record2.category.barance_of_payments,
               charge: record2.charge,
               category_name: record2.category.name,
               breakdown_name: record2.breakdown.try(:name),
@@ -112,6 +116,7 @@ describe 'GET /records', autodoc: true do
             {
               id: record1.id,
               published_at: record1.published_at.strftime('%Y-%m-%d'),
+              payments: record1.category.barance_of_payments,
               charge: record1.charge,
               category_name: record1.category.name,
               breakdown_name: record1.breakdown.try(:name),
@@ -122,6 +127,7 @@ describe 'GET /records', autodoc: true do
             {
               id: record3.id,
               published_at: record3.published_at.strftime('%Y-%m-%d'),
+              payments: record3.category.barance_of_payments,
               charge: record3.charge,
               category_name: record3.category.name,
               breakdown_name: record3.breakdown.try(:name),
@@ -160,6 +166,7 @@ describe 'GET /records/:id', autodoc: true do
       json = {
         id: record.id,
         published_at: record.published_at.strftime('%Y-%m-%d'),
+        payments: record.category.barance_of_payments,
         charge: record.charge,
         category_name: record.category.name,
         breakdown_name: record.breakdown.try(:name),

@@ -30,7 +30,7 @@
           .col-sm-5
             label.modal-label(ng-show='!profile.email_edit_field') {{ profile.current_user.email || ('LABELS.NO_SETTINGS' | translate) }}
             span.glyphicon.glyphicon-pencil.green#right-icon(
-              tooltip="{{ 'TOOLTIPS.EDIT' | translate }}"
+              uib-tooltip="{{ 'TOOLTIPS.EDIT' | translate }}"
               ng-click='profile.email_edit_field = true'
               ng-show='!profile.email_edit_field')
             input.form-control#new_email(
@@ -69,7 +69,7 @@
           .col-sm-5
             label.modal-label(ng-show='!profile.nickname_edit_field') {{ profile.current_user.nickname || ('LABELS.NO_SETTINGS' | translate) }}
             span.glyphicon.glyphicon-pencil.green#right-icon(
-              tooltip="{{ 'TOOLTIPS.EDIT' | translate }}"
+              uib-tooltip="{{ 'TOOLTIPS.EDIT' | translate }}"
               ng-click='profile.nickname_edit_field = true'
               ng-show='!profile.nickname_edit_field')
             input.form-control#new_nickname(

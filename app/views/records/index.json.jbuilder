@@ -2,6 +2,7 @@ json.records do
   json.array! @records do |record|
     json.id record.id
     json.published_at record.published_at
+    json.payments record.category.barance_of_payments
     json.charge record.charge
     json.category_name record.category.name
     json.breakdown_name record.breakdown.try(:name)
