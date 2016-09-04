@@ -1,5 +1,14 @@
 # frozen_string_literal: true
 class User < ActiveRecord::Base
+  STATUS_LABEL_NAME = {
+    inactive: 'label-default', registered: 'label-success'
+  }.freeze
+  TYPE_LABEL_NAME = {
+    EmailUser: 'label-warning',
+    TwitterUser: 'label-info',
+    FacebookUser: 'label-primary'
+  }.freeze
+
   tokenizable
   has_many :feedbacks
   has_many :categories
@@ -36,26 +45,17 @@ class User < ActiveRecord::Base
 
   def add_access_token
     add_token(
-      :access,
-      size: Settings.access_token.length,
-      expires_at: Settings.access_token.expire_after.seconds.from_now
+      :access, size: Settings.access_token.length,
+               expires_at: Settings.access_token.expire_after.seconds.from_now
     )
   end
 
   def status_label_name
-    case status
-    when 'inactive' then 'label-default'
-    when 'registered' then 'label-success'
-    end
+    STATUS_LABEL_NAME[status.to_sym]
   end
 
-  # TODO: label_nameとして各classに移動させる
   def type_label_name
-    case type
-    when 'EmailUser' then 'label-warning'
-    when 'TwitterUser' then 'label-info'
-    when 'FacebookUser' then 'label-primary'
-    end
+    TYPE_LABEL_NAME[type.to_sym]
   end
 
   def _status
@@ -96,12 +96,8 @@ class User < ActiveRecord::Base
   end
 
   def each_maximum_values
-    if admin?
-      user = becomes(AdminUser)
-      user.maximum_values
-    else
-      maximum_values
-    end
+    user = admin? ? becomes(AdminUser) : self
+    user.maximum_values
   end
 
   def maximum_values
@@ -124,7 +120,6 @@ class User < ActiveRecord::Base
   end
 
   def set_currency
-    self.currency = '¥'
-    # TODO: ロケールによりデフォルトを変更する
+    self.currency = '¥' # TODO: ロケールによりデフォルトを変更する
   end
 end
