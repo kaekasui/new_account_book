@@ -127,12 +127,13 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $uibModal, 
     vm.published_at = new Date()
     getRecordsWithDate(vm.published_at)
 
+  SettingsFactory.getTags().then (res) ->
+    vm.list_tags = res.tags
+
   # ドロップダウンリスト
   vm.loadTags = ($query) ->
-    SettingsFactory.getTags().then (res) ->
-      tags = res.tags
-      tags.filter (tag) ->
-        return tag.name.indexOf($query) != -1
+    vm.list_tags.filter (tag) ->
+      return tag.name.indexOf($query) != -1
 
   # カテゴリ「追加」ボタン -> モーダル
   vm.newCategory = () ->
