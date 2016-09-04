@@ -27,4 +27,4 @@ ClassAndModuleChildren:
 # ABCサイズをMAX20に緩和
 Metrics/AbcSize:
   Enabled: true
-  Max: 30
+  Max: 20
