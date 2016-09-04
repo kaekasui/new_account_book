@@ -64,9 +64,20 @@ describe 'GET /records', autodoc: true do
     end
 
     context '年、月のパラメータが不正な場合' do
-      it '422が返ってくること' do
-        pending
-        expect(true).to be_falsey
+      let!(:params) { { year: 'abcde', month: 'abcde' } }
+
+      it '200と空のデータを返すこと' do
+        get '/records', params: params, headers: login_headers(user)
+        expect(response.status).to eq 200
+
+        json = {
+          records: [],
+          total_count: 0,
+          user: {
+            currency: user.currency
+          }
+        }
+        expect(response.body).to be_json_as(json)
       end
     end
 
