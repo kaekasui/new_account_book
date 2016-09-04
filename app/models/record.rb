@@ -20,8 +20,6 @@ class Record < ActiveRecord::Base
 
   scope :the_day, -> (target_day) { where(published_at: target_day.to_date) }
   scope :the_year_and_month, lambda { |year, month|
-    start_day = 10.years.ago
-    end_day = 10.years.since
     target_year = year.to_i.zero? ? Time.zone.today.year : year.to_i
     target_month = month.to_i.zero? ? 1 : month.to_i
     start_day = Date.new(target_year, target_month, 1)
@@ -46,16 +44,21 @@ class Record < ActiveRecord::Base
 
   def create_or_update_tags(tags_params)
     return true if tags_params.blank?
+    tag_ids = create_and_update_tags(tags_params)
+    create_tagged(tag_ids)
+  end
+
+  def create_and_update_tags(tags_params)
     tag_ids = tags_params.map { |n| n['id'].nil? ? nil : n['id'] }.compact
     registered_tags = tags_params.select { |n| !n['id'].nil? }
-    unregistered_tags = tags_params.select { |n| n['id'].nil? }
     user.tags.update(tag_ids, registered_tags) if registered_tags.present?
 
-    if unregistered_tags.present?
-      created_tags = user.tags.create(unregistered_tags)
-      tag_ids.concat(created_tags.map(&:id))
-    end
-    create_tagged(tag_ids)
+    unregistered_tags = tags_params.select { |n| n['id'].nil? }
+    tag_ids.concat(create_tags(unregistered_tags))
+  end
+
+  def create_tags(unregistered_tags)
+    user.tags.create(unregistered_tags).map(&:id)
   end
 
   def create_tagged(tag_ids)

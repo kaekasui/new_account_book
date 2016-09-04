@@ -24,7 +24,7 @@ Documentation:
 ClassAndModuleChildren:
   EnforcedStyle: compact
 
-# ABCサイズをMAX20に緩和
+# ABCサイズをMAX23に緩和
 Metrics/AbcSize:
   Enabled: true
-  Max: 30
+  Max: 23

@@ -63,6 +63,13 @@ describe 'GET /records', autodoc: true do
       end
     end
 
+    context '年、月のパラメータが不正な場合' do
+      it '422が返ってくること' do
+        pending
+        expect(true).to be_falsey
+      end
+    end
+
     context '年、月のパラメータがある場合' do
       let!(:params) { { year: 2016, month: 1.month.ago.month } }
 
