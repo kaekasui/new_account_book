@@ -22,16 +22,10 @@ class Record < ActiveRecord::Base
   scope :the_year_and_month, lambda { |year, month|
     start_day = 10.years.ago
     end_day = 10.years.since
-    if year.present? && month.present?
-      start_day = Date.new(year.to_i, month.to_i, 1)
-      end_day = start_day.end_of_month
-    elsif year.present? && month.blank?
-      start_day = Date.new(year.to_i, 1, 1)
-      end_day = start_day.end_of_year
-    elsif year.blank? && month.present?
-      start_day = Date.new(Time.zone.today.year, month.to_i, 1)
-      end_day = start_day.end_of_month
-    end
+    target_year = year.to_i.zero? ? Time.zone.today.year : year.to_i
+    target_month = month.to_i.zero? ? 1 : month.to_i
+    start_day = Date.new(target_year, target_month, 1)
+    end_day = month ? start_day.end_of_month : start_day.end_of_year
     where(published_at: start_day..end_day)
   }
   scope :order_type, lambda { |sort_type|
