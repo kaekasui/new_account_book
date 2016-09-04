@@ -40,7 +40,6 @@ class RecordsController < ApplicationController
     if @record.save && @capture.destroy
       head 201
     else
-      p @record.errors
       render_error @record
     end
   end
