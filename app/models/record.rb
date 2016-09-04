@@ -64,7 +64,6 @@ class Record < ActiveRecord::Base
     create_tagged(tag_ids)
   end
 
-  # TODO: TaggedRecordのuser_idを削除する
   def create_tagged(tag_ids)
     tagged = []
     tag_ids.each do |tag_id|
