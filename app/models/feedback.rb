@@ -10,4 +10,12 @@ class Feedback < ActiveRecord::Base
             presence: true,
             length: { maximum: Settings.feedback.email.maximum_length },
             unless: 'email.nil?'
+
+  def notice_to_slack
+    Slack.chat_postMessage(
+      text: "```#{content}```",
+      username: "#{user.try(:id)}. #{user.try(:_name)}#{email}",
+      channel: '#feedbacks'
+    )
+  end
 end
