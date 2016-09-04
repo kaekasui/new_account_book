@@ -35,6 +35,7 @@ gem 'dotenv', github: 'bkeepers/dotenv'
 gem 'dotenv-rails', github: 'bkeepers/dotenv'
 gem 'activerecord-import'
 gem 'counter_culture'
+gem 'slack-api'
 
 group :development, :test do
   gem 'rspec-rails'
