@@ -93,10 +93,12 @@ form.form-horizontal(novalidate=true name='editRecordForm' ng-submit='edit_recor
                    min-length='1'
                    max-length='20'
                    on-tag-clicked='edit_record.setColor($tag)'
+                   ng-click='tags_list = !tags_list'
                    template='app/records/tag_template.html')
           auto-complete(source='edit_record.loadTags($query)'
                         min-length='0'
                         max-results-to-show='32'
+                        ng-show='tags_list'
                         load-on-focus='true'
                         load-on-empty='true'
                         template='app/records/autocomplete_template.html')
