@@ -2,125 +2,149 @@ angular.module 'newAccountBook'
   .config ($stateProvider, $urlRouterProvider) ->
     'ngInject'
     $stateProvider
+      # エラー画面
       .state 'error',
         url: '/errors/{id:400|401|403|404|503}'
         templateUrl: 'app/components/errors/error.html'
         controllerAs: 'error'
         controller: 'InputErrorsController'
-      .state 'home',
-        url: '/'
-        templateUrl: 'app/main/main.html'
-        controllerAs: 'main'
-        controller: 'MainController'
-      .state 'login',
-        url: '/login'
-        templateUrl: 'app/account/login.html'
-        controllerAs: 'login'
-        controller: 'LoginController'
-      .state 'sign_up',
-        url: '/sign_up'
-        templateUrl: 'app/account/sign_up.html'
-        controllerAs: 'sign_up'
-        controller: 'SignUpController'
-      .state 'resend_email',
-        url: '/resend_email'
-        templateUrl: 'app/account/resend_email.html'
-        controllerAs: 'resend_email'
-        controller: 'ResendEmailController'
-      .state 'reset_password',
-        url: '/reset_password'
-        templateUrl: 'app/account/reset_password.html'
-        controllerAs: 'reset_password'
-        controller: 'ResetPasswordController'
-      .state 'edit_password',
-        url: '/edit_password'
-        templateUrl: 'app/account/edit_password.html'
-        controllerAs: 'edit_password'
-        controller: 'EditPasswordController'
-      .state 'mypage',
-        url: '/mypage'
-        templateUrl: 'app/user/mypage.html'
-        controllerAs: 'mypage'
-        controller: 'MypageController'
-      .state 'notice',
-        url: '/notices/:id',
-        templateUrl: 'app/user/notice.html'
-        controllerAs: 'notice'
-        controller: 'NoticeController'
-      .state 'message',
-        url: '/messages/:id',
-        templateUrl: 'app/user/message.html'
-        controllerAs: 'message'
-        controller: 'MessageController'
-      .state 'profile',
-        url: '/profile'
-        templateUrl: 'app/user/profile.html'
-        controllerAs: 'profile'
-        controller: 'ProfileController'
-      .state 'import',
-        url: '/import'
-        templateUrl: 'app/user/import.html'
-        controllerAs: 'import'
-        controller: 'ImportController'
-      .state 'import_history',
-        url: '/import_history'
-        templateUrl: 'app/user/import_history.html'
-        controllerAs: 'import_history'
-        controller: 'ImportHistoryController'
-      .state 'list',
-        url: '/list'
-        templateUrl: 'app/records/list.html'
-        controllerAs: 'list'
-        controller: 'RecordsController'
+      # 利用規約画面
       .state 'terms',
         url: '/terms'
         templateUrl: 'app/components/footer/terms.html'
         controllerAs: 'terms'
         controller: 'TermsController'
+      # HOME画面
+      .state 'home',
+        url: '/'
+        templateUrl: 'app/main/main.html'
+        controllerAs: 'main'
+        controller: 'MainController'
+      # ログイン画面
+      .state 'login',
+        url: '/login'
+        templateUrl: 'app/account/login.html'
+        controllerAs: 'login'
+        controller: 'LoginController'
+      # 新規登録画面
+      .state 'sign_up',
+        url: '/sign_up'
+        templateUrl: 'app/account/sign_up.html'
+        controllerAs: 'sign_up'
+        controller: 'SignUpController'
+      # パスワード再設定画面
+      .state 'reset_password',
+        url: '/reset_password'
+        templateUrl: 'app/account/reset_password.html'
+        controllerAs: 'reset_password'
+        controller: 'ResetPasswordController'
+      # パスワード変更画面
+      .state 'edit_password',
+        url: '/edit_password'
+        templateUrl: 'app/account/edit_password.html'
+        controllerAs: 'edit_password'
+        controller: 'EditPasswordController'
+      # 確認メール再送信画面
+      .state 'resend_email',
+        url: '/resend_email'
+        templateUrl: 'app/account/resend_email.html'
+        controllerAs: 'resend_email'
+        controller: 'ResendEmailController'
+      # マイページ画面
+      .state 'mypage',
+        url: '/mypage'
+        templateUrl: 'app/user/mypage.html'
+        controllerAs: 'mypage'
+        controller: 'MypageController'
+      # お知らせ画面
+      .state 'notice',
+        url: '/notices/:id',
+        templateUrl: 'app/user/notice.html'
+        controllerAs: 'notice'
+        controller: 'NoticeController'
+      # メッセージ画面
+      .state 'message',
+        url: '/messages/:id',
+        templateUrl: 'app/user/message.html'
+        controllerAs: 'message'
+        controller: 'MessageController'
+      # プロフィール画面
+      .state 'profile',
+        url: '/profile'
+        templateUrl: 'app/user/profile.html'
+        controllerAs: 'profile'
+        controller: 'ProfileController'
+      # インポート画面
+      .state 'import',
+        url: '/import'
+        templateUrl: 'app/user/import.html'
+        controllerAs: 'import'
+        controller: 'ImportController'
+      # インポート履歴画面
+      .state 'import_history',
+        url: '/import_history'
+        templateUrl: 'app/user/import_history.html'
+        controllerAs: 'import_history'
+        controller: 'ImportHistoryController'
+      # 基本設定画面
       .state 'base_setting',
         url: '/setting'
         templateUrl: 'app/settings/base_settings.html'
         controllerAs: 'base_settings'
         controller: 'BaseSettingsController'
+      # カテゴリ一覧画面
       .state 'categories',
         url: '/categories'
         templateUrl: 'app/settings/categories.html'
         controllerAs: 'categories'
         controller: 'CategoriesController'
+      # お店・施設一覧画面
       .state 'places',
         url: '/places'
         templateUrl: 'app/settings/places.html'
         controllerAs: 'places'
         controller: 'PlacesController'
+      # 入力する画面
       .state 'new_record',
         url: '/records/new'
         templateUrl: 'app/records/new.html'
         controllerAs: 'new_record'
         controller: 'NewRecordController'
-      .state 'admin_users',
-        url: '/admin/users'
-        templateUrl: 'app/admin/users.html'
-        controllerAs: 'admin_users'
-        controller: 'UsersController'
-      .state 'admin_feedbacks',
-        url: '/admin/feedbacks'
-        templateUrl: 'app/admin/feedbacks.html'
-        controllerAs: 'admin_feedbacks'
-        controller: 'FeedbacksController'
-      .state 'admin_notices',
-        url: '/admin/notices'
-        templateUrl: 'app/admin/notices.html'
-        controllerAs: 'admin_notices'
-        controller: 'NoticesController'
-      .state 'admin_messages',
-        url: '/admin/messages'
-        templateUrl: 'app/admin/messages.html'
-        controllerAs: 'admin_messages'
-        controller: 'MessagesController'
+      # リスト画面
+      .state 'list',
+        url: '/list'
+        templateUrl: 'app/records/list.html'
+        controllerAs: 'list'
+        controller: 'RecordsController'
+      # ダッシュボード画面
       .state 'dashboard',
         url: '/dashboard'
         templateUrl: 'app/dashboard/index.html'
         controllerAs: 'dashboard'
         controller: 'DashboardController'
+      # 管理：ユーザー一覧画面
+      .state 'admin_users',
+        url: '/admin/users'
+        templateUrl: 'app/admin/users.html'
+        controllerAs: 'admin_users'
+        controller: 'UsersController'
+      # 管理：フィードバック一覧画面
+      .state 'admin_feedbacks',
+        url: '/admin/feedbacks'
+        templateUrl: 'app/admin/feedbacks.html'
+        controllerAs: 'admin_feedbacks'
+        controller: 'FeedbacksController'
+      # 管理：メッセージ一覧画面
+      .state 'admin_messages',
+        url: '/admin/messages'
+        templateUrl: 'app/admin/messages.html'
+        controllerAs: 'admin_messages'
+        controller: 'MessagesController'
+      # 管理：お知らせ一覧画面
+      .state 'admin_notices',
+        url: '/admin/notices'
+        templateUrl: 'app/admin/notices.html'
+        controllerAs: 'admin_notices'
+        controller: 'NoticesController'
 
     $urlRouterProvider.otherwise '/'
