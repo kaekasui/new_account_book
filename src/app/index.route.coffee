@@ -11,7 +11,7 @@ angular.module 'newAccountBook'
       # 利用規約画面
       .state 'terms',
         url: '/terms'
-        templateUrl: 'app/components/footer/terms.html'
+        templateUrl: 'app/footer/terms.html'
         controllerAs: 'terms'
         controller: 'TermsController'
       # HOME画面
