@@ -17,9 +17,9 @@ angular.module 'newAccountBook'
       # HOME画面
       .state 'home',
         url: '/'
-        templateUrl: 'app/main/main.html'
-        controllerAs: 'main'
-        controller: 'MainController'
+        templateUrl: 'app/home/home.html'
+        controllerAs: 'home'
+        controller: 'HomeController'
       # ログイン画面
       .state 'login',
         url: '/login'
