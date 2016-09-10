@@ -16,7 +16,7 @@ MypageController = (UserFactory, IndexService, $uibModal, RecordsFactory) ->
   vm.showRecord = (index) ->
     record = vm.records[index]
     modalInstance = $uibModal.open(
-      templateUrl: 'app/records/modals/record.html'
+      templateUrl: 'app/components/records/modals/record.html'
       controller: 'EditRecordController'
       controllerAs: 'edit_record'
       resolve: { record_id: record.id }
