@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     post :import, on: :collection
   end
   resources :tags, only: %i(index)
-  resources :captures, only: %i(index show update) do
+  resources :captures, only: %i(index show update destroy) do
     post :import, on: :collection
   end
   resource :dashboard, only: %i(show)

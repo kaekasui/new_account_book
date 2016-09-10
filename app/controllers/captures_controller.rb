@@ -24,6 +24,12 @@ class CapturesController < ApplicationController
     end
   end
 
+  def destroy
+    capture = current_user.captures.find(params[:id])
+    capture.destroy
+    head capture.destroyed? ? :ok : :forbidden
+  end
+
   def import
     updator = Capture::Updator.new(user: current_user, lines: params['data'])
     if updator.import
