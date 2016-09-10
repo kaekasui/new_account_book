@@ -275,3 +275,24 @@ describe 'PATCH /captures/:id', autodoc: true do
     end
   end
 end
+
+describe 'DELETE /captures/:id', autodoc: true do
+  let!(:user) { create(:email_user, :registered) }
+  let!(:capture) { create(:capture, user: user) }
+
+  context 'ログインしていない場合' do
+    it '401が返ってくること' do
+      delete "/captures/#{capture.id}"
+
+      expect(response.status).to eq 401
+    end
+  end
+
+  context 'ログインしている場合' do
+    it '200が返ってくること' do
+      delete "/captures/#{capture.id}", params: '', headers: login_headers(user)
+      expect(response.status).to eq 200
+      expect(Capture.count).to eq 0
+    end
+  end
+end

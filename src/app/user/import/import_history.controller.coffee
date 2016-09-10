@@ -1,21 +1,22 @@
-ImportHistoryController = (IndexService, UserFactory, $uibModal) ->
+ImportHistoryController = (IndexService, ImportFactory, $uibModal) ->
   'ngInject'
   vm = this
 
   vm.selectLineNumber = undefined
 
-  IndexService.loading = true
-  UserFactory.getCaptures().then((res) ->
-    vm.captures = res.captures
-    vm.user_currency = res.user_currency
-    IndexService.loading = false
-  ).catch (res) ->
-    IndexService.loading = false
+  getCaptures = () ->
+    IndexService.loading = true
+    ImportFactory.getCaptures().then((res) ->
+      vm.captures = res.captures
+      vm.user_currency = res.user_currency
+      IndexService.loading = false
+    ).catch (res) ->
+      IndexService.loading = false
 
   vm.showCapture = (index) ->
     capture = vm.captures[index]
     modalInstance = $uibModal.open(
-      templateUrl: 'app/user/modals/capture.html'
+      templateUrl: 'app/user/import/modals/capture.html'
       controller: 'EditCaptureController'
       controllerAs: 'modal'
       resolve:
@@ -25,10 +26,10 @@ ImportHistoryController = (IndexService, UserFactory, $uibModal) ->
       backdrop: 'static'
     )
     modalInstance.result.then (() ->
-      UserFactory.getCapture(capture.id).then (res) ->
+      ImportFactory.getCapture(capture.id).then (res) ->
         vm.captures[index] = res
     ), ->
-      UserFactory.getCapture(capture.id).then (res) ->
+      ImportFactory.getCapture(capture.id).then (res) ->
         vm.captures[index] = res
 
   vm.selectLine = (index) ->
@@ -37,14 +38,28 @@ ImportHistoryController = (IndexService, UserFactory, $uibModal) ->
   # 「登録」ボタン
   vm.import = (index) ->
     capture = vm.captures[index]
-    UserFactory.postCaptureId(capture.id).then () ->
+    ImportFactory.postCaptureId(capture.id).then () ->
       vm.captures[index].registered = true
 
   # 「glyphicon-repeat」ボタン
   vm.reloadCapture = (index) ->
     capture = vm.captures[index]
-    UserFactory.getCapture(capture.id).then (res) ->
+    ImportFactory.getCapture(capture.id).then (res) ->
       vm.captures[index] = res
+
+  # 「glyphicon-trash」リンク
+  vm.destroyCapture = (index) ->
+    capture = vm.captures[index]
+    modalInstance = $uibModal.open(
+      templateUrl: 'app/components/modals/destroy.html'
+      controller: 'DestroyCaptureController'
+      controllerAs: 'confirm_destroy'
+      resolve: { capture_id: capture.id }
+    )
+    modalInstance.result.then () ->
+      getCaptures()
+
+  getCaptures()
 
   return
 
