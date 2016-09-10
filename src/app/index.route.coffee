@@ -89,19 +89,19 @@ angular.module 'newAccountBook'
       # 基本設定画面
       .state 'base_setting',
         url: '/setting'
-        templateUrl: 'app/settings/base_settings.html'
+        templateUrl: 'app/settings/base/base_settings.html'
         controllerAs: 'base_settings'
         controller: 'BaseSettingsController'
       # カテゴリ一覧画面
       .state 'categories',
         url: '/categories'
-        templateUrl: 'app/settings/categories.html'
+        templateUrl: 'app/settings/category/categories.html'
         controllerAs: 'categories'
         controller: 'CategoriesController'
       # お店・施設一覧画面
       .state 'places',
         url: '/places'
-        templateUrl: 'app/settings/places.html'
+        templateUrl: 'app/settings/place/places.html'
         controllerAs: 'places'
         controller: 'PlacesController'
       # 入力する画面
