@@ -53,5 +53,5 @@
           button.btn.btn-info.btn-sm(ng-disabled='capture.registered' ng-click='import_history.showCapture($index)')
             span.glyphicon.glyphicon-info-sign
         td
-          a(href='' ng-click='import_history.destroyCapture($index)')
+          a(href='' ng-click='import_history.destroyCapture($index)' ng-hide='capture.registered')
             span.glyphicon.glyphicon-trash.green(uib-tooltip="{{'TOOLTIPS.DELETE' | translate}}")
