@@ -14,6 +14,7 @@ NavbarController = (IndexFactory, $location, $scope, $translate, toastr, localSt
       return
     return
 
+  # メニュー「ログアウト」
   vm.logout = () ->
     localStorageService.remove('access_token')
     IndexService.current_user = undefined
@@ -21,9 +22,10 @@ NavbarController = (IndexFactory, $location, $scope, $translate, toastr, localSt
     toastr.success($translate.instant('MESSAGES.LOGOUT'))
     $location.path('/login')
 
+  # メニュー「フィードバック」
   vm.feedback = () ->
     modalInstance = $uibModal.open(
-      templateUrl: 'app/components/navbar/modals/feedback.html'
+      templateUrl: 'app/header/feedback/feedback.html'
       controller: 'FeedbackController'
       controllerAs: 'feedback'
       backdrop: 'static'
@@ -33,14 +35,5 @@ NavbarController = (IndexFactory, $location, $scope, $translate, toastr, localSt
 
   return
 
-navbarDirective = () ->
-  directive =
-    restrict: 'E'
-    templateUrl: 'app/components/navbar/navbar.html'
-    controller: 'NavbarController'
-    controllerAs: 'navbar'
-    bindToController: true
-
 angular.module 'newAccountBook'
   .controller('NavbarController', NavbarController)
-  .directive('navbarDirective', navbarDirective)

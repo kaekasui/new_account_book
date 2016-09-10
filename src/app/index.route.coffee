@@ -113,7 +113,7 @@ angular.module 'newAccountBook'
       # リスト画面
       .state 'list',
         url: '/list'
-        templateUrl: 'app/records/list.html'
+        templateUrl: 'app/records/list/list.html'
         controllerAs: 'list'
         controller: 'RecordsController'
       # ダッシュボード画面

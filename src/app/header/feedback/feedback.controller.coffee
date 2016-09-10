@@ -6,7 +6,9 @@ FeedbackController = (IndexFactory, $translate, $uibModalInstance, toastr, Index
   IndexFactory.getCurrentUser().then((res) ->
     vm.current_user = res
   ).catch (res) ->
+    vm.current_user = undefined
 
+  # 「送信する」ボタン
   vm.submit = () ->
     IndexService.sending = true
     params = {}
@@ -26,6 +28,7 @@ FeedbackController = (IndexFactory, $translate, $uibModalInstance, toastr, Index
       IndexService.sending = false
       vm.errors = res.error_messages
 
+  # 「閉じる」ボタン
   vm.cancel = () ->
     $uibModalInstance.close()
 
