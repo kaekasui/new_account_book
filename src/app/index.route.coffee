@@ -71,7 +71,7 @@ angular.module 'newAccountBook'
       # プロフィール画面
       .state 'profile',
         url: '/profile'
-        templateUrl: 'app/user/profile.html'
+        templateUrl: 'app/user/profile/profile.html'
         controllerAs: 'profile'
         controller: 'ProfileController'
       # インポート画面
