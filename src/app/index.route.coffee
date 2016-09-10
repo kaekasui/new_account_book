@@ -125,25 +125,25 @@ angular.module 'newAccountBook'
       # 管理：ユーザー一覧画面
       .state 'admin_users',
         url: '/admin/users'
-        templateUrl: 'app/admin/users.html'
+        templateUrl: 'app/admin/users/users.html'
         controllerAs: 'admin_users'
         controller: 'UsersController'
       # 管理：フィードバック一覧画面
       .state 'admin_feedbacks',
         url: '/admin/feedbacks'
-        templateUrl: 'app/admin/feedbacks.html'
+        templateUrl: 'app/admin/feedbacks/feedbacks.html'
         controllerAs: 'admin_feedbacks'
         controller: 'FeedbacksController'
       # 管理：メッセージ一覧画面
       .state 'admin_messages',
         url: '/admin/messages'
-        templateUrl: 'app/admin/messages.html'
+        templateUrl: 'app/admin/messages/messages.html'
         controllerAs: 'admin_messages'
         controller: 'MessagesController'
       # 管理：お知らせ一覧画面
       .state 'admin_notices',
         url: '/admin/notices'
-        templateUrl: 'app/admin/notices.html'
+        templateUrl: 'app/admin/notices/notices.html'
         controllerAs: 'admin_notices'
         controller: 'NoticesController'
 
