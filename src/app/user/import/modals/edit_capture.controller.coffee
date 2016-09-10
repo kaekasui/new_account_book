@@ -1,4 +1,4 @@
-EditCaptureController = (IndexService, UserFactory, capture, $uibModalInstance, SettingsFactory) ->
+EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance, SettingsFactory) ->
   'ngInject'
   vm = this
   vm.capture = capture.capture
@@ -15,7 +15,7 @@ EditCaptureController = (IndexService, UserFactory, capture, $uibModalInstance, 
 
   # 履歴を取得する関数
   setCapture = () ->
-    UserFactory.getCapture(capture_id).then (res) ->
+    ImportFactory.getCapture(capture_id).then (res) ->
       vm.capture = res
       vm.published_at = new Date(vm.capture.published_at)
       vm.category_name = vm.capture.category_name
@@ -52,7 +52,7 @@ EditCaptureController = (IndexService, UserFactory, capture, $uibModalInstance, 
       charge: vm.charge
       memo: vm.memo
       tags: vm.tags
-    UserFactory.patchCapture(capture_id, params).then((res) ->
+    ImportFactory.patchCapture(capture_id, params).then((res) ->
       $uibModalInstance.close()
       IndexService.sending = false
     ).catch (res) ->

@@ -1,4 +1,4 @@
-ImportController = ($scope, UserFactory) ->
+ImportController = ($scope, ImportFactory) ->
   'ngInject'
   vm = this
 
@@ -21,7 +21,7 @@ ImportController = ($scope, UserFactory) ->
         vm.sending = true
         Papa.parse val.file,
           complete: (results) ->
-            UserFactory.postCsvFile(results).then( ->
+            ImportFactory.postCsvFile(results).then( ->
               val.completed = true
               vm.sending = false
             ).catch () ->
