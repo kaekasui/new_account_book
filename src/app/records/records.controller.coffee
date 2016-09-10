@@ -95,8 +95,6 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
       RecordsFactory.getRecord(record.id).then (res) ->
         vm.records[index] = res
 
-    return
-
   vm.destroyRecord = (index) ->
     record = vm.records[index]
     modalInstance = $uibModal.open(
