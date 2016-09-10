@@ -36,7 +36,7 @@ ProfileController = (IndexFactory, UserFactory, IndexService, $uibModal) ->
     modalInstance = $uibModal.open(
       templateUrl: 'app/components/modals/send_mail.html'
       controller: 'ConfirmSendNewMailController'
-      controllerAs: 'send_mail'
+      controllerAs: 'modal'
     )
     return
 

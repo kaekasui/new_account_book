@@ -85,7 +85,7 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
   vm.showRecord = (index) ->
     record = vm.records[index]
     modalInstance = $uibModal.open(
-      templateUrl: 'app/records/modals/record.html'
+      templateUrl: 'app/components/records/modals/record.html'
       controller: 'EditRecordController'
       controllerAs: 'edit_record'
       resolve: { record_id: record.id }
@@ -94,8 +94,6 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
     modalInstance.result.then () ->
       RecordsFactory.getRecord(record.id).then (res) ->
         vm.records[index] = res
-
-    return
 
   vm.destroyRecord = (index) ->
     record = vm.records[index]

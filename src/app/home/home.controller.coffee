@@ -1,4 +1,4 @@
-MainController = ($timeout, toastr, $location, $translate, localStorageService, IndexFactory, IndexService) ->
+HomeController = (toastr, $location, $translate, localStorageService, HomeFactory, IndexFactory, IndexService) ->
   'ngInject'
   vm = this
 
@@ -8,7 +8,7 @@ MainController = ($timeout, toastr, $location, $translate, localStorageService, 
   ]
 
   IndexService.loading = true
-  IndexFactory.getTop().then((res) ->
+  HomeFactory.getHome().then((res) ->
     vm.notices = res.notices
     IndexService.loading = false
   ).catch (res) ->
@@ -34,4 +34,4 @@ MainController = ($timeout, toastr, $location, $translate, localStorageService, 
   return
 
 angular.module 'newAccountBook'
-  .controller('MainController', MainController)
+  .controller('HomeController', HomeController)

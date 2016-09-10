@@ -79,7 +79,7 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $uibModalInstan
   # モーダル
   vm.setColor = ($tag) ->
     modalInstance = $uibModal.open(
-      templateUrl: 'app/records/modals/color_code.html'
+      templateUrl: 'app/components/records/tags/modals/color_code.html'
       controller: 'ColorCodeController'
       controllerAs: 'color_code'
       resolve: { tag: $tag }

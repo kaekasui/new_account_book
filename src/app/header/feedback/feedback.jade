@@ -10,7 +10,7 @@ form(novalidate=true name='feedbackForm' ng-submit='feedback.submit()')
     .form-group(ng-if='feedback.current_user == undefined')
       label(for='email')
         span(translate='LABELS.FEEDBACK_EMAIL')
-        span *
+        span.red *
       input.form-control#email(type='email' name='email' ng-model='feedback.email' required=true ng-maxlength='100')
       span.errors(ng-messages='feedbackForm.email.$error' ng-show='feedbackForm.$submitted')
         div(ng-message='required')
@@ -26,7 +26,7 @@ form(novalidate=true name='feedbackForm' ng-submit='feedback.submit()')
     .form-group
       label(for='content')
         span(translate='LABELS.MESSAGE')
-        span *
+        span.red *
       textarea.form-control(rows='5' name='content' ng-model='feedback.content' required=true ng-maxlength='1000' placeholder='{{feedback.placeholder}}')
       span.errors(ng-messages='feedbackForm.content.$error' ng-show='feedbackForm.$submitted')
         div(ng-message='required')

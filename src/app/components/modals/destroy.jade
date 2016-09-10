@@ -1,6 +1,6 @@
 .modal-header
-  form.form(name='destroyForm' ng-submit='confirm_destroy.submit()')
-    submit-button-directive(form='destroyForm')
+  form.form(name='form' ng-submit='confirm_destroy.submit()')
+    submit-button-directive(form='form')
       span.glyphicon.glyphicon-fire#left-icon
       span {{ 'BUTTONS.YES' | translate }}
     a.btn.btn-default.pull-right(ng-click='confirm_destroy.cancel()')
@@ -8,4 +8,4 @@
       span {{ 'BUTTONS.CLOSE' | translate }}
 
 .modal-body
-  p(translate='MESSAGES.DELETE')
+  p {{ 'MESSAGES.DELETE' | translate }}

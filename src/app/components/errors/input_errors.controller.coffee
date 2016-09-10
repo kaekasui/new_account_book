@@ -1,7 +1,6 @@
 InputErrorsController = ($stateParams, $location, toastr, $translate) ->
   'ngInject'
   vm = this
-
   vm.code = $stateParams.id
 
   if vm.code == '401'

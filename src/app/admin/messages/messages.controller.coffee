@@ -41,7 +41,7 @@ MessagesController = (AdminFactory, $uibModal, $translate, toastr) ->
     modalInstance = $uibModal.open(
       templateUrl: 'app/components/modals/send_mail.html'
       controller: 'ConfirmSendMailController'
-      controllerAs: 'send_mail'
+      controllerAs: 'modal'
       resolve: { message_id: message_id }
     )
     modalInstance.result.then () ->
