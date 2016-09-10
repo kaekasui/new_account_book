@@ -53,19 +53,19 @@ angular.module 'newAccountBook'
       # マイページ画面
       .state 'mypage',
         url: '/mypage'
-        templateUrl: 'app/user/mypage.html'
+        templateUrl: 'app/user/mypage/mypage.html'
         controllerAs: 'mypage'
         controller: 'MypageController'
       # お知らせ画面
       .state 'notice',
         url: '/notices/:id',
-        templateUrl: 'app/user/notice.html'
+        templateUrl: 'app/user/mypage/notice.html'
         controllerAs: 'notice'
         controller: 'NoticeController'
       # メッセージ画面
       .state 'message',
         url: '/messages/:id',
-        templateUrl: 'app/user/message.html'
+        templateUrl: 'app/user/mypage/message.html'
         controllerAs: 'message'
         controller: 'MessageController'
       # プロフィール画面
@@ -77,13 +77,13 @@ angular.module 'newAccountBook'
       # インポート画面
       .state 'import',
         url: '/import'
-        templateUrl: 'app/user/import.html'
+        templateUrl: 'app/user/import/import.html'
         controllerAs: 'import'
         controller: 'ImportController'
       # インポート履歴画面
       .state 'import_history',
         url: '/import_history'
-        templateUrl: 'app/user/import_history.html'
+        templateUrl: 'app/user/import/import_history.html'
         controllerAs: 'import_history'
         controller: 'ImportHistoryController'
       # 基本設定画面
