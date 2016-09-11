@@ -7,6 +7,7 @@ EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance
   vm.category_name = vm.capture.category_name
   vm.category = { name: vm.category_name, payments: false }
   vm.breakdown_name = vm.capture.breakdown_name
+  vm.breakdown = { name: vm.breakdown_name }
   vm.place_name = vm.capture.place_name
   vm.tags = vm.capture.tags
   vm.charge = vm.capture.charge
@@ -40,6 +41,8 @@ EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance
     SettingsFactory.postCategory(params).then () ->
       setCapture()
       IndexService.sending = false
+
+  # 内訳の追加ボタン
 
   # 履歴情報の編集
   vm.submit = () ->

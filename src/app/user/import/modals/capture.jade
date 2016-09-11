@@ -76,13 +76,21 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
       label.control-label.col-sm-3(for='breakdown_name')
         span(translate='COLUMNS.BREAKDOWN')
       .modal-label.col-sm-9(ng-show='!modal.editing')
-        span {{ modal.capture.breakdown_name }}
+        .panel.panel-default(ng-show='modal.capture.category_name && modal.capture.category_existence && modal.capture.breakdown_name && !modal.capture.breakdown_existence')
+          .panel-body
+            // 入力フォーム
+            p
+              input.form-control(type='text' ng-model='modal.breakdown.name' ng-readonly='true')
+            // ボタン
+            .pull-right.btn.btn-success(ng-click='modal.addBreakdown()')
+              span {{ 'BUTTONS.ADD' | translate }}
+        span(ng-hide='modal.capture.breakdown_name && !modal.capture.breakdown_existence') {{ modal.capture.breakdown_name }}
       .col-sm-9(ng-show='modal.editing')
         input.form-control(type='text' name='breakdown_name' ng-model='modal.breakdown_name' ng-maxlength='100')
         span.errors(ng-messages='form.breakdown_name.$error' ng-show='form.breakdown_name.$error')
           div(ng-message='maxlength')
             span.glyphicon.glyphicon-alert#left-icon
-            span(translate='ERRORS.MAXLENGTH.BREAKDOWN_NAME')
+            span {{ 'ERRORS.MAXLENGTH.BREAKDOWN_NAME' | translate }}
     // お店・施設
     .form-group
       label.control-label.col-sm-3(for='place_name')
