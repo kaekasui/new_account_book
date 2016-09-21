@@ -52,7 +52,7 @@ EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance
       setCapture()
       IndexService.sending = false
 
-  # 内訳の追加ボタン
+  # お店・施設の追加ボタン
   vm.addPlace = () ->
     IndexService.sending = true
     params =
