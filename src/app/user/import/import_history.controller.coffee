@@ -34,7 +34,6 @@ ImportHistoryController = (IndexService, ImportFactory, $uibModal, toastr, $tran
 
   vm.showRecord = (index) ->
     record_id = vm.captures[index].record_id
-    console.log record_id
     modalInstance = $uibModal.open(
       templateUrl: 'app/components/records/modals/record.html'
       controller: 'EditRecordController'
@@ -55,7 +54,6 @@ ImportHistoryController = (IndexService, ImportFactory, $uibModal, toastr, $tran
     ImportFactory.postCaptureId(capture.id).then (res) ->
       vm.captures[index].registered = true
       vm.captures[index].record_id = res.record_id
-      console.log res
       toastr.success $translate.instant('MESSAGES.IMPORT_RECORD')
 
   # 「glyphicon-repeat」ボタン

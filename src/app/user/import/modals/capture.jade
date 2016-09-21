@@ -94,7 +94,13 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
       label.control-label.col-sm-3(for='place_name')
         span(translate='COLUMNS.PLACE')
       .modal-label.col-sm-9(ng-show='!modal.editing')
-        span {{ modal.capture.place_name }}
+        .panel.panel-default(ng-show='modal.capture.category_name && modal.capture.category_id && modal.capture.place_name && !modal.capture.place_id')
+          .panel-body
+            p
+              input.form-control(type='text' ng-model='modal.place.name' ng-readonly='true')
+            .pull-right.btn.btn-success(ng-click='modal.addPlace()')
+              span {{ 'BUTTONS.ADD' | translate }}
+        span(ng-hide='modal.capture.category_name && modal.capture.category_id && modal.capture.place_name && !modal.capture.place_id') {{ modal.capture.place_name }}
       .col-sm-9(ng-show='modal.editing')
         input.form-control(type='text' name='place_name' ng-model='modal.place_name' ng-maxlength='100')
         span.errors(ng-messages='form.place_name.$error' ng-show='form.place_name.$error')

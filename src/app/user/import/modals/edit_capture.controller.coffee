@@ -9,6 +9,7 @@ EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance
   vm.breakdown_name = vm.capture.breakdown_name
   vm.breakdown = { name: vm.breakdown_name }
   vm.place_name = vm.capture.place_name
+  vm.place = { name: vm.place_name }
   vm.tags = vm.capture.tags
   vm.charge = vm.capture.charge
   vm.memo = vm.capture.memo
@@ -48,6 +49,15 @@ EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance
     params =
       name: vm.breakdown.name
     SettingsFactory.postBreakdown(vm.capture.category_id, params).then () ->
+      setCapture()
+      IndexService.sending = false
+
+  # 内訳の追加ボタン
+  vm.addPlace = () ->
+    IndexService.sending = true
+    params =
+      name: vm.place.name
+    SettingsFactory.postCategoryPlace(vm.capture.category_id, params).then () ->
       setCapture()
       IndexService.sending = false
 
