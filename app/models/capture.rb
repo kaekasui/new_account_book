@@ -22,11 +22,11 @@ class Capture < ApplicationRecord
 
   def build_comments
     valid?
-    self.category_existence = category.present?
+    # self.category_existence = category.present?
     errors.add(:category_name, :unregistered) if unregistered_category?
-    self.breakdown_existence = breakdown.present?
+    # self.breakdown_existence = breakdown.present?
     errors.add(:breakdown_name, :unregistered) if unregistered_breakdown?
-    self.place_existence = place.present?
+    # self.place_existence = place.present?
     errors.add(:place_name, :unregistered) if unregistered_place?
     self.comment = errors.full_messages.join(',')
   end
