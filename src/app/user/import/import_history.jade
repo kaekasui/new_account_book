@@ -24,13 +24,13 @@
         td.line-color(ng-class="{ 'line-color-red': import_history.selectLineNumber == $index}")
         td {{ capture.published_at | date:'yyyy-MM-dd' }}
         td
-          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.category_name && !capture.category_existence')
+          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.category_name && !capture.category_id')
           span {{ capture.category_name }}
         td
-          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.breakdown_name && !capture.breakdown_existence')
+          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.breakdown_name && !capture.breakdown_id')
           span {{ capture.breakdown_name }}
         td
-          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.place_name && !capture.place_existence')
+          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.place_name && !capture.place_id')
           span {{ capture.place_name }}
         td {{ capture.tags }}
         td {{ import_history.user_currency }} {{ capture.charge || 0 }}
