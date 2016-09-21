@@ -38,11 +38,7 @@ class RecordsController < ApplicationController
       user: current_user, capture_id: params[:capture_id]
     )
     @record.build
-    if @record.save
-      head 201
-    else
-      render_error @record
-    end
+    render_error @record unless @record.save
   end
 
   def edit

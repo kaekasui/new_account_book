@@ -1,4 +1,4 @@
-ImportHistoryController = (IndexService, ImportFactory, $uibModal) ->
+ImportHistoryController = (IndexService, ImportFactory, $uibModal, toastr, $translate, RecordsFactory) ->
   'ngInject'
   vm = this
 
@@ -32,14 +32,31 @@ ImportHistoryController = (IndexService, ImportFactory, $uibModal) ->
       ImportFactory.getCapture(capture.id).then (res) ->
         vm.captures[index] = res
 
+  vm.showRecord = (index) ->
+    record_id = vm.captures[index].record_id
+    console.log record_id
+    modalInstance = $uibModal.open(
+      templateUrl: 'app/components/records/modals/record.html'
+      controller: 'EditRecordController'
+      controllerAs: 'edit_record'
+      resolve: { record_id: record_id }
+      backdrop: 'static'
+    )
+    modalInstance.result.then () ->
+      RecordsFactory.getRecord(record_id).then (res) ->
+        vm.records[index] = res
+
   vm.selectLine = (index) ->
     vm.selectLineNumber = index
 
   # 「登録」ボタン
   vm.import = (index) ->
     capture = vm.captures[index]
-    ImportFactory.postCaptureId(capture.id).then () ->
+    ImportFactory.postCaptureId(capture.id).then (res) ->
       vm.captures[index].registered = true
+      vm.captures[index].record_id = res.record_id
+      console.log res
+      toastr.success $translate.instant('MESSAGES.IMPORT_RECORD')
 
   # 「glyphicon-repeat」ボタン
   vm.reloadCapture = (index) ->

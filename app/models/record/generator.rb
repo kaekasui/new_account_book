@@ -2,6 +2,8 @@
 class Record::Generator
   include ActiveModel::Model
 
+  attr_accessor :id
+
   def initialize(user: nil, record_params: nil,
                  tags_params: nil, capture_id: nil)
     @user = user
@@ -27,6 +29,7 @@ class Record::Generator
     if record.save
       @capture.destroy if @capture
       record.create_or_update_tags(@tags_params)
+      @id = record.id
     else
       errors[:base] << record.errors.full_messages.join(',')
       false

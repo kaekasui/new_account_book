@@ -1,4 +1,4 @@
-EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance, SettingsFactory) ->
+EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance, SettingsFactory, toastr, $translate) ->
   'ngInject'
   vm = this
   vm.capture = capture.capture
@@ -64,6 +64,7 @@ EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance
       tags: vm.tags
     ImportFactory.patchCapture(capture_id, params).then((res) ->
       $uibModalInstance.close()
+      toastr.success $translate.instant('MESSAGES.UPDATE_CAPTURE')
       IndexService.sending = false
     ).catch (res) ->
       IndexService.sending = false
