@@ -4,6 +4,7 @@ class Place < ActiveRecord::Base
   has_many :categorize_places, dependent: :destroy
   has_many :categories, through: :categorize_places
   has_many :records
+  has_many :captures
 
   validates :name,
             presence: true,
