@@ -62,7 +62,6 @@ describe 'GET /captures', autodoc: true do
             published_at: nil,
             category_name: nil,
             category_id: nil,
-            category_id: nil,
             breakdown_name: nil,
             breakdown_id: nil,
             place_name: nil,

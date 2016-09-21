@@ -334,6 +334,7 @@ describe 'POST /records/import', autodoc: true do
     context 'データが全て存在している場合' do
       it '201が返ってくること' do
         place.categories << category
+        get "/captures/#{capture.id}", params: nil, headers: login_headers(user)
         post '/records/import', params: { capture_id: capture.id },
                                 headers: login_headers(user)
         expect(response.status).to eq 201
@@ -354,6 +355,7 @@ describe 'POST /records/import', autodoc: true do
         capture.tags = nil
         capture.save
         place.categories << category
+        get "/captures/#{capture.id}", params: nil, headers: login_headers(user)
         post '/records/import', params: { capture_id: capture.id },
                                 headers: login_headers(user)
         expect(response.status).to eq 201
