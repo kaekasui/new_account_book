@@ -55,6 +55,7 @@
     "YES": "Yes",
     "OUTGO": "Outgo",
     "INCOME": "Income",
+    "RELOAD_ALL": "Reload All",
     "TWITTER_LOGIN": "Login via Twitter",
     "TWEET": "Tweet",
     "TODAY": "Today",
@@ -186,6 +187,9 @@
     "RESET_PASSWORD": "Input your Email. We will send you a Mail with URL.",
     "FEEDBACK": "Please feel free to ask me any questions!:)",
     "REMOVE_CATEGORY": "Remove '{{category_name}}' from the Place '{{place_name}}'"
+  },
+  "COMMENTS": {
+    "RELOAD_CAPTURES": "Reload all import data."
   },
   "COLUMNS": {
     "BREAKDOWN": "Breakdown",
