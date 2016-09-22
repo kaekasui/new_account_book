@@ -34,7 +34,7 @@ describe 'GET /captures', autodoc: true do
            headers: login_headers(user).merge(content_type)
       expect(response.status).to eq 201
 
-      expect(user.captures.count).to eq 7
+      expect(user.captures.count).to eq 6
       captures = user.captures.to_a
 
       get '/captures', params: '', headers: login_headers(user)
@@ -222,7 +222,7 @@ describe 'POST /captures/import', autodoc: true do
            headers: login_headers(user).merge(content_type)
       expect(response.status).to eq 201
 
-      expect(user.captures.count).to eq 5
+      expect(user.captures.count).to eq 4
       capture1 = user.captures.first
       expect(capture1.published_at).to eq '2016-08-01'.to_date
       expect(capture1.category_name).to eq '水道光熱費'
