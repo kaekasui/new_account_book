@@ -355,7 +355,7 @@ describe 'POST /records/import', autodoc: true do
     end
 
     context 'ラベルが空の場合' do
-      it '201が返ってくること' do
+      it '200が返ってくること' do
         capture.tags = nil
         capture.save
         place.categories << category
