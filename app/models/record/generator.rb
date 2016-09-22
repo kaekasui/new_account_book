@@ -17,7 +17,7 @@ class Record::Generator
     @record_params = {
       published_at: @capture.published_at, memo: @capture.memo,
       category_id: @capture.category_id, breakdown_id: @capture.breakdown_id,
-      place_id: @capture.place_id, charge: @capture.charge
+      place_id: @capture.place_id, charge: @capture.charge || 0
     }
     @tags_params = @capture.tags.split(',').map do |n|
       { id: @user.tags.find_by(name: n).try(:id), name: n }
