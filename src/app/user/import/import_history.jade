@@ -24,19 +24,19 @@
         td.line-color(ng-class="{ 'line-color-red': import_history.selectLineNumber == $index}")
         td {{ capture.published_at | date:'yyyy-MM-dd' }}
         td
-          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.category_name && !capture.category_existence')
+          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.category_name && !capture.category_id')
           span {{ capture.category_name }}
         td
-          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.breakdown_name && !capture.breakdown_existence')
+          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.breakdown_name && !capture.breakdown_id')
           span {{ capture.breakdown_name }}
         td
-          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.place_name && !capture.place_existence')
+          span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.place_name && !capture.place_id')
           span {{ capture.place_name }}
         td {{ capture.tags }}
         td {{ import_history.user_currency }} {{ capture.charge || 0 }}
         td {{ capture.memo | truncate:true:15 }}
         td
-          button.btn.btn-success.btn-sm(ng-disabled='capture.comment'
+          button.btn.btn-success.btn-sm(ng-disabled='capture.comment || capture.loading'
                                   ng-show='!capture.registered'
                                   ng-click='import_history.import($index)')
             | {{ 'BUTTONS.CREATE' | translate }}
@@ -47,10 +47,12 @@
         td
           span.red {{ capture.comment }}
         td
-          button.btn.btn-success.btn-sm(ng-click='import_history.reloadCapture($index)')
+          button.btn.btn-success.btn-sm(ng-disabled='capture.registered || capture.loading' ng-click='import_history.reloadCapture($index)')
             span.glyphicon.glyphicon-repeat
         td
-          button.btn.btn-info.btn-sm(ng-disabled='capture.registered' ng-click='import_history.showCapture($index)')
+          button.btn.btn-info.btn-sm(ng-hide='capture.registered' ng-click='import_history.showCapture($index)')
+            span.glyphicon.glyphicon-info-sign
+          button.btn.btn-info.btn-sm(ng-show='capture.registered' ng-click='import_history.showRecord($index)')
             span.glyphicon.glyphicon-info-sign
         td
           a(href='' ng-click='import_history.destroyCapture($index)' ng-hide='capture.registered')

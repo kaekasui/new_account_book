@@ -44,7 +44,7 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
         span(translate='COLUMNS.CATEGORY')
         span.red *
       .modal-label.col-sm-9(ng-show='!modal.editing')
-        .panel.panel-default(ng-show='modal.capture.category_name && !modal.capture.category_existence')
+        .panel.panel-default(ng-show='modal.capture.category_name && !modal.capture.category_id')
           .panel-body
             // 収入・支出
             p
@@ -60,7 +60,7 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
             // ボタン
             .pull-right.btn.btn-success(ng-click='modal.addCategory()')
               span {{ 'BUTTONS.ADD' | translate }}
-        span(ng-hide='modal.capture.category_name && !modal.capture.category_existence') {{ modal.capture.category_name }}
+        span(ng-hide='modal.capture.category_name && !modal.capture.category_id') {{ modal.capture.category_name }}
       .col-sm-9(ng-show='modal.editing')
         input.form-control(type='text' name='category_name' ng-model='modal.category_name' required=true ng-maxlength='100')
  
@@ -76,7 +76,13 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
       label.control-label.col-sm-3(for='breakdown_name')
         span(translate='COLUMNS.BREAKDOWN')
       .modal-label.col-sm-9(ng-show='!modal.editing')
-        span {{ modal.capture.breakdown_name }}
+        .panel.panel-default(ng-show='modal.capture.category_name && modal.capture.category_id && modal.capture.breakdown_name && !modal.capture.breakdown_id')
+          .panel-body
+            p
+              input.form-control(type='text' ng-model='modal.breakdown.name' ng-readonly='true')
+            .pull-right.btn.btn-success(ng-click='modal.addBreakdown()')
+              span {{ 'BUTTONS.ADD' | translate }}
+        span(ng-hide='modal.capture.category_name && modal.capture.category_id && modal.capture.breakdown_name && !modal.capture.breakdown_id') {{ modal.capture.breakdown_name }}
       .col-sm-9(ng-show='modal.editing')
         input.form-control(type='text' name='breakdown_name' ng-model='modal.breakdown_name' ng-maxlength='100')
         span.errors(ng-messages='form.breakdown_name.$error' ng-show='form.breakdown_name.$error')
@@ -88,7 +94,13 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
       label.control-label.col-sm-3(for='place_name')
         span(translate='COLUMNS.PLACE')
       .modal-label.col-sm-9(ng-show='!modal.editing')
-        span {{ modal.capture.place_name }}
+        .panel.panel-default(ng-show='modal.capture.category_name && modal.capture.category_id && modal.capture.place_name && !modal.capture.place_id')
+          .panel-body
+            p
+              input.form-control(type='text' ng-model='modal.place.name' ng-readonly='true')
+            .pull-right.btn.btn-success(ng-click='modal.addPlace()')
+              span {{ 'BUTTONS.ADD' | translate }}
+        span(ng-hide='modal.capture.category_name && modal.capture.category_id && modal.capture.place_name && !modal.capture.place_id') {{ modal.capture.place_name }}
       .col-sm-9(ng-show='modal.editing')
         input.form-control(type='text' name='place_name' ng-model='modal.place_name' ng-maxlength='100')
         span.errors(ng-messages='form.place_name.$error' ng-show='form.place_name.$error')

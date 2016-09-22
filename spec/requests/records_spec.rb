@@ -332,12 +332,17 @@ describe 'POST /records/import', autodoc: true do
 
   context 'ログインしている場合' do
     context 'データが全て存在している場合' do
-      it '201が返ってくること' do
+      it '200と登録データのidが返ってくること' do
         place.categories << category
+        get "/captures/#{capture.id}", params: nil, headers: login_headers(user)
         post '/records/import', params: { capture_id: capture.id },
                                 headers: login_headers(user)
-        expect(response.status).to eq 201
+        expect(response.status).to eq 200
         record = user.records.last
+        json = {
+          record_id: record.id
+        }
+        expect(response.body).to be_json_as(json)
         expect(record.published_at).to eq capture.published_at
         expect(record.charge).to eq capture.charge
         expect(record.category.name).to eq capture.category_name
@@ -350,13 +355,15 @@ describe 'POST /records/import', autodoc: true do
     end
 
     context 'ラベルが空の場合' do
-      it '201が返ってくること' do
+      it '200が返ってくること' do
         capture.tags = nil
         capture.save
         place.categories << category
+        get "/captures/#{capture.id}", params: nil, headers: login_headers(user)
         post '/records/import', params: { capture_id: capture.id },
                                 headers: login_headers(user)
-        expect(response.status).to eq 201
+        expect(response.status).to eq 200
+
         record = user.records.last
         expect(record.published_at).to eq capture.published_at
         expect(record.charge).to eq capture.charge

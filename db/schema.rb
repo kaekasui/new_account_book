@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160904040023) do
+ActiveRecord::Schema.define(version: 20160921120022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,12 +53,15 @@ ActiveRecord::Schema.define(version: 20160904040023) do
     t.text     "memo"
     t.integer  "user_id"
     t.text     "tags"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.text     "comment"
-    t.boolean  "category_existence",  default: false
-    t.boolean  "breakdown_existence", default: false
-    t.boolean  "place_existence",     default: false
+    t.integer  "category_id"
+    t.integer  "breakdown_id"
+    t.integer  "place_id"
+    t.index ["breakdown_id"], name: "index_captures_on_breakdown_id", using: :btree
+    t.index ["category_id"], name: "index_captures_on_category_id", using: :btree
+    t.index ["place_id"], name: "index_captures_on_place_id", using: :btree
     t.index ["user_id"], name: "index_captures_on_user_id", using: :btree
   end
 

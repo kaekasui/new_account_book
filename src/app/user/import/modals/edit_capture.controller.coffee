@@ -1,4 +1,4 @@
-EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance, SettingsFactory) ->
+EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance, SettingsFactory, toastr, $translate) ->
   'ngInject'
   vm = this
   vm.capture = capture.capture
@@ -7,7 +7,9 @@ EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance
   vm.category_name = vm.capture.category_name
   vm.category = { name: vm.category_name, payments: false }
   vm.breakdown_name = vm.capture.breakdown_name
+  vm.breakdown = { name: vm.breakdown_name }
   vm.place_name = vm.capture.place_name
+  vm.place = { name: vm.place_name }
   vm.tags = vm.capture.tags
   vm.charge = vm.capture.charge
   vm.memo = vm.capture.memo
@@ -41,6 +43,24 @@ EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance
       setCapture()
       IndexService.sending = false
 
+  # 内訳の追加ボタン
+  vm.addBreakdown = () ->
+    IndexService.sending = true
+    params =
+      name: vm.breakdown.name
+    SettingsFactory.postBreakdown(vm.capture.category_id, params).then () ->
+      setCapture()
+      IndexService.sending = false
+
+  # お店・施設の追加ボタン
+  vm.addPlace = () ->
+    IndexService.sending = true
+    params =
+      name: vm.place.name
+    SettingsFactory.postCategoryPlace(vm.capture.category_id, params).then () ->
+      setCapture()
+      IndexService.sending = false
+
   # 履歴情報の編集
   vm.submit = () ->
     IndexService.sending = true
@@ -54,6 +74,7 @@ EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance
       tags: vm.tags
     ImportFactory.patchCapture(capture_id, params).then((res) ->
       $uibModalInstance.close()
+      toastr.success $translate.instant('MESSAGES.UPDATE_CAPTURE')
       IndexService.sending = false
     ).catch (res) ->
       IndexService.sending = false

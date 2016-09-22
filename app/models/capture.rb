@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 class Capture < ApplicationRecord
   belongs_to :user
+  belongs_to :category, optional: true
+  belongs_to :breakdown, optional: true
+  belongs_to :place, optional: true
 
   validates :published_at, presence: true
   validates :category_name,
@@ -22,36 +25,26 @@ class Capture < ApplicationRecord
 
   def build_comments
     valid?
-    self.category_existence = category.present?
     errors.add(:category_name, :unregistered) if unregistered_category?
-    self.breakdown_existence = breakdown.present?
     errors.add(:breakdown_name, :unregistered) if unregistered_breakdown?
-    self.place_existence = place.present?
     errors.add(:place_name, :unregistered) if unregistered_place?
     self.comment = errors.full_messages.join(',')
   end
 
-  def category
-    user.categories.find_by(name: category_name)
-  end
-
   def unregistered_category?
+    self.category = user.categories.find_by(name: category_name)
     category_name.present? && category.nil?
   end
 
-  def breakdown
-    category.breakdowns.find_by(name: breakdown_name) if category
-  end
-
   def unregistered_breakdown?
+    if category
+      self.breakdown = category.breakdowns.find_by(name: breakdown_name)
+    end
     breakdown_name.present? && breakdown.nil?
   end
 
-  def place
-    category.places.find_by(name: place_name) if category
-  end
-
   def unregistered_place?
+    self.place = category.places.find_by(name: place_name) if category
     place_name.present? && place.nil?
   end
 end
