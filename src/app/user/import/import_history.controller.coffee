@@ -13,6 +13,11 @@ ImportHistoryController = (IndexService, ImportFactory, $uibModal, toastr, $tran
     ).catch (res) ->
       IndexService.loading = false
 
+  # 「glyphicon-repeat すべて更新」ボタン
+  vm.reloadCaptures = () ->
+    for capture, index in vm.captures
+      vm.reloadCapture(index)
+
   # 登録前の「glyphicon-info-sign」ボタン
   vm.showCapture = (index) ->
     capture = vm.captures[index]

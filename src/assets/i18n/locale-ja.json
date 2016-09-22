@@ -56,6 +56,7 @@
     "YES": "はい",
     "OUTGO": "支出",
     "INCOME": "収入",
+    "RELOAD_ALL": "すべて更新",
     "TWITTER_LOGIN": "Twitterでログイン",
     "TWEET": "ツイート",
     "TODAY": "今日",
@@ -188,6 +189,9 @@
     "FEEDBACK": "いいね！使いやすくして！なんか変！など、メッセージお待ちしてます(✿╹◡╹)",
     "DELETE": "削除します",
     "REMOVE_CATEGORY": "「{{place_name}}」から「{{category_name}}」をはずしました"
+  },
+  "COMMENTS": {
+    "RELOAD_CAPTURES": "更新可能なすべてのデータを更新します。"
   },
   "COLUMNS": {
     "BREAKDOWN": "内訳",

@@ -3,6 +3,14 @@
     span.glyphicon.glyphicon-list-alt#left-icon
     span {{ 'TITLES.IMPORT_HISTORY' | translate }}
   .panel-body#with-background
+    table.table.table-bordered
+      tr
+        td
+          span {{ 'COMMENTS.RELOAD_CAPTURES' | translate }}
+        td
+          button.btn.btn-success.btn-sm(ng-click='import_history.reloadCaptures()')
+            span.glyphicon.glyphicon-repeat#left-icon
+            span {{ 'BUTTONS.RELOAD_ALL' | translate }}
     loading-directive
     table.table(ng-mouseleave='import_history.selectLineNumber = undefined')
       tr(ng-mouseover='import_history.selectLineNumber = undefined')
