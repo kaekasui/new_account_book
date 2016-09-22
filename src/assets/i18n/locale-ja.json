@@ -42,6 +42,7 @@
     "ADD": "追加する",
     "AUTH_EMAIL": "メール認証",
     "CREATE": "登録",
+    "CREATE_ALL": "すべて登録",
     "CREATED": "登録済",
     "CLEAR": "クリア",
     "EDIT_PASSWORD": "パスワードの変更",
@@ -191,6 +192,7 @@
     "REMOVE_CATEGORY": "「{{place_name}}」から「{{category_name}}」をはずしました"
   },
   "COMMENTS": {
+    "ADD_CAPTURES": "登録可能なすべてのデータを登録します。",
     "RELOAD_CAPTURES": "更新可能なすべてのデータを更新します。"
   },
   "COLUMNS": {

@@ -189,6 +189,7 @@
     "REMOVE_CATEGORY": "Remove '{{category_name}}' from the Place '{{place_name}}'"
   },
   "COMMENTS": {
+    "ADD_CAPTURES": "Add all import data.",
     "RELOAD_CAPTURES": "Reload all import data."
   },
   "COLUMNS": {
