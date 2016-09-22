@@ -36,7 +36,7 @@
         td {{ import_history.user_currency }} {{ capture.charge || 0 }}
         td {{ capture.memo | truncate:true:15 }}
         td
-          button.btn.btn-success.btn-sm(ng-disabled='capture.comment'
+          button.btn.btn-success.btn-sm(ng-disabled='capture.comment || capture.loading'
                                   ng-show='!capture.registered'
                                   ng-click='import_history.import($index)')
             | {{ 'BUTTONS.CREATE' | translate }}
