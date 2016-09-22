@@ -43,6 +43,7 @@
     "AUTH_EMAIL": "Send Email",
     "CREATE": "Create",
     "CREATED": "Created",
+    "CREATE_ALL": "Create ALL",
     "CLEAR": "Clear",
     "FACEBOOK_LOGIN": "Login via Facebook",
     "IMPORT": "Import Files",
@@ -189,6 +190,7 @@
     "REMOVE_CATEGORY": "Remove '{{category_name}}' from the Place '{{place_name}}'"
   },
   "COMMENTS": {
+    "ADD_CAPTURES": "Add all import data.",
     "RELOAD_CAPTURES": "Reload all import data."
   },
   "COLUMNS": {

@@ -11,6 +11,13 @@
           button.btn.btn-success.btn-sm(ng-click='import_history.reloadCaptures()')
             span.glyphicon.glyphicon-repeat#left-icon
             span {{ 'BUTTONS.RELOAD_ALL' | translate }}
+      tr
+        td
+          span {{ 'COMMENTS.ADD_CAPTURES' | translate }}
+        td
+          button.btn.btn-success.btn-sm(ng-click='import_history.addCaptures()')
+            span.glyphicon.glyphicon-repeat#left-icon
+            span {{ 'BUTTONS.CREATE_ALL' | translate }}
     loading-directive
     table.table(ng-mouseleave='import_history.selectLineNumber = undefined')
       tr(ng-mouseover='import_history.selectLineNumber = undefined')
