@@ -34,7 +34,7 @@ describe 'GET /captures', autodoc: true do
            headers: login_headers(user).merge(content_type)
       expect(response.status).to eq 201
 
-      expect(user.captures.count).to eq 7
+      expect(user.captures.count).to eq 6
       captures = user.captures.to_a
 
       get '/captures', params: '', headers: login_headers(user)
@@ -42,8 +42,8 @@ describe 'GET /captures', autodoc: true do
       json = {
         captures: [
           {
-            id: captures[6].id,
-            created_at: I18n.l(captures[6].created_at),
+            id: captures[5].id,
+            created_at: I18n.l(captures[5].created_at),
             published_at: '2016-08-01',
             category_name: '水道光熱費',
             category_id: category.id,
@@ -55,21 +55,6 @@ describe 'GET /captures', autodoc: true do
             memo: '',
             tags: ',余分なデータ',
             comment: 'お店・施設名が未登録です'
-          },
-          {
-            id: captures[5].id,
-            created_at: I18n.l(captures[5].created_at),
-            published_at: nil,
-            category_name: nil,
-            category_id: nil,
-            breakdown_name: nil,
-            breakdown_id: nil,
-            place_name: nil,
-            place_id: nil,
-            charge: nil,
-            memo: nil,
-            tags: nil,
-            comment: '日付は必須です,カテゴリ名は必須です'
           },
           {
             id: captures[4].id,
@@ -222,7 +207,7 @@ describe 'POST /captures/import', autodoc: true do
            headers: login_headers(user).merge(content_type)
       expect(response.status).to eq 201
 
-      expect(user.captures.count).to eq 5
+      expect(user.captures.count).to eq 4
       capture1 = user.captures.first
       expect(capture1.published_at).to eq '2016-08-01'.to_date
       expect(capture1.category_name).to eq '水道光熱費'
