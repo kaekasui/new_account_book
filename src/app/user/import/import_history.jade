@@ -47,7 +47,7 @@
         td
           span.red {{ capture.comment }}
         td
-          button.btn.btn-success.btn-sm(ng-disabled='capture.registered' ng-click='import_history.reloadCapture($index)')
+          button.btn.btn-success.btn-sm(ng-disabled='capture.registered || capture.loading' ng-click='import_history.reloadCapture($index)')
             span.glyphicon.glyphicon-repeat
         td
           button.btn.btn-info.btn-sm(ng-hide='capture.registered' ng-click='import_history.showCapture($index)')

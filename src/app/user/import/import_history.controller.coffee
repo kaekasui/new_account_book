@@ -13,6 +13,7 @@ ImportHistoryController = (IndexService, ImportFactory, $uibModal, toastr, $tran
     ).catch (res) ->
       IndexService.loading = false
 
+  # 登録前の「glyphicon-info-sign」ボタン
   vm.showCapture = (index) ->
     capture = vm.captures[index]
     modalInstance = $uibModal.open(
@@ -32,6 +33,7 @@ ImportHistoryController = (IndexService, ImportFactory, $uibModal, toastr, $tran
       ImportFactory.getCapture(capture.id).then (res) ->
         vm.captures[index] = res
 
+  # 登録後の「glyphicon-info-sign」ボタン
   vm.showRecord = (index) ->
     record_id = vm.captures[index].record_id
     modalInstance = $uibModal.open(
@@ -45,6 +47,7 @@ ImportHistoryController = (IndexService, ImportFactory, $uibModal, toastr, $tran
       RecordsFactory.getRecord(record_id).then (res) ->
         vm.records[index] = res
 
+  # 選択中のインポートデータの列
   vm.selectLine = (index) ->
     vm.selectLineNumber = index
 
@@ -59,8 +62,10 @@ ImportHistoryController = (IndexService, ImportFactory, $uibModal, toastr, $tran
   # 「glyphicon-repeat」ボタン
   vm.reloadCapture = (index) ->
     capture = vm.captures[index]
+    capture.loading = true
     ImportFactory.getCapture(capture.id).then (res) ->
       vm.captures[index] = res
+      capture.loading = false
 
   # 「glyphicon-trash」リンク
   vm.destroyCapture = (index) ->
