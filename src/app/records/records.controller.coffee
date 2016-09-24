@@ -106,6 +106,37 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
     modalInstance.result.then () ->
       getRecordsWithDate()
 
+  # CSV形式でダウンロード
+  vm.downloadCSV = () ->
+    IndexService.loading = true
+    vm.downloading = true
+    params = if vm.selected_list == 'day'
+      date: vm.day
+      offset: vm.offset
+    else if vm.selected_list == 'month'
+      year: vm.year
+      month: vm.month
+      offset: vm.offset
+    else if vm.selected_list == 'year'
+      year: vm.year
+      offset: vm.offset
+    RecordsFactory.getCSVRecords(params).then((res) ->
+      if window.navigator.msSaveOrOpenBlob
+        blob = new Blob([ decodeURIComponent(encodeURI(result.data)) ], type: 'text/csv;charset=utf-8;')
+        navigator.msSaveBlob(blob, 'list.csv')
+      else
+        a = document.createElement('a')
+        a.href = 'data:attachment/csv;charset=utf-8,' + encodeURI(res)
+        a.target = '_blank'
+        a.download = 'list.csv'
+        document.body.appendChild(a)
+        a.click()
+      IndexService.loading = false
+      vm.downloading = false
+    ).catch (res) ->
+      IndexService.loading = false
+      vm.downloading = false
+
   # リスト表示
   getRecordsWithDate()
 
