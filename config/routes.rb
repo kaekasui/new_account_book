@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   end
   resources :records, only: %i(index show new create edit update destroy) do
     post :import, on: :collection
+    get :export, on: :collection
   end
   resources :tags, only: %i(index)
   resources :captures, only: %i(index show update destroy) do

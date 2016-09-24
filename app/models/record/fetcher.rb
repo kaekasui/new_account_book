@@ -22,4 +22,13 @@ class Record::Fetcher
     records = records.limit(Settings.records.per)
     records
   end
+
+  def all_as_csv
+    records = @user.records.order_type(@sort_type)
+    records = records.the_day(@date) if @date.present?
+    if @year.present? || @month.present?
+      records = records.the_year_and_month(@year, @month)
+    end
+    records
+  end
 end

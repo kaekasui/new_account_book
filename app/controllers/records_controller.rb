@@ -41,6 +41,13 @@ class RecordsController < ApplicationController
     render_error @record unless @record.save
   end
 
+  def export
+    fetcher = Record::Fetcher.new(user: current_user, params: params)
+    @user = current_user
+    @records = fetcher.all_as_csv
+    render formats: :csv
+  end
+
   def edit
     @user = current_user
     @categories = current_user.categories

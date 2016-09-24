@@ -45,6 +45,7 @@
     "CREATE_ALL": "すべて登録",
     "CREATED": "登録済",
     "CLEAR": "クリア",
+    "CSV_DOWNLOAD": "CSV形式でダウンロード",
     "EDIT_PASSWORD": "パスワードの変更",
     "FACEBOOK_LOGIN": "Facebookでログイン",
     "IMPORT": "インポート",

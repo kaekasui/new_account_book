@@ -49,6 +49,22 @@ RecordsFactory = ($location, $q, $http, localStorageService, toastr, $translate)
         return
       return defer.promise
 
+    getCSVRecords: (params) ->
+      defer = $q.defer()
+      token = localStorageService.get('access_token')
+      $http(
+        method: 'GET'
+        url: host + 'records/export'
+        params: params
+        headers: { Authorization: 'Token token=' + token }
+      ).success((data) ->
+        defer.resolve data
+        return
+      ).error (data) ->
+        defer.reject data
+        return
+      return defer.promise
+
     getRecord: (record_id) ->
       defer = $q.defer()
       token = localStorageService.get('access_token')

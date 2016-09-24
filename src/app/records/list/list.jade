@@ -60,3 +60,5 @@ form.form.form-inline
       ul.pagination
         li(ng-click='list.clickPaginate(number)' ng-repeat='number in list.offset_numbers' ng-class='{active: number == list.offset}')
           a {{$index + 1}}
+    button.btn.btn-default.pull-right(ng-click='list.downloadCSV()' ng-disabled='list.downloading')
+      span {{ 'BUTTONS.CSV_DOWNLOAD' | translate }}
