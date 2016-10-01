@@ -19,8 +19,12 @@ class Record < ActiveRecord::Base
   validates :memo, length: { maximum: Settings.record.memo.maximum_length }
 
   scope :the_day, -> (target_day) { where(published_at: target_day.to_date) }
-  scope :the_month, -> (first_day) { where(published_at: first_day..first_day.end_of_month) }
-  scope :the_year, -> (first_day) { where(published_at: first_day..first_day.end_of_year) }
+  scope :the_month, lambda { |first_day|
+    where(published_at: first_day..first_day.end_of_month)
+  }
+  scope :the_year, lambda { |first_day|
+    where(published_at: first_day..first_day.end_of_year)
+  }
 
   def update_with_tags(record_params, tags_params)
     if update(record_params)

@@ -33,7 +33,7 @@ class Record::Fetcher
   private
 
   def find_by_date(records)
-    records = if @day.nonzero?
+    if @day.nonzero?
       records.the_day(Date.new(@year, @month, @day))
     elsif @month.nonzero?
       records.the_month(Date.new(@year, @month, 1))
