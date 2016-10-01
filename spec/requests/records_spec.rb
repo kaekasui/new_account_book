@@ -19,7 +19,8 @@ describe 'GET /records', autodoc: true do
     let!(:tag) { create(:tag, user: user) }
 
     context '日付のパラメータがある場合' do
-      let!(:params) { { date: Time.zone.today } }
+      let!(:today) { Time.zone.today }
+      let!(:params) { { year: today.year, month: today.month, day: today.day } }
 
       it '200と当日の収支一覧を返すこと' do
         record2.tags << tag
@@ -66,13 +67,36 @@ describe 'GET /records', autodoc: true do
     context '年、月のパラメータが不正な場合' do
       let!(:params) { { year: 'abcde', month: 'abcde' } }
 
-      it '200と空のデータを返すこと' do
+      it '200と今日のデータを返すこと' do
         get '/records', params: params, headers: login_headers(user)
         expect(response.status).to eq 200
 
         json = {
-          records: [],
-          total_count: 0,
+          records: [
+            {
+              id: record2.id,
+              published_at: record2.published_at.strftime('%Y-%m-%d'),
+              payments: record2.category.barance_of_payments,
+              charge: record2.charge,
+              category_name: record2.category.name,
+              breakdown_name: record2.breakdown.try(:name),
+              place_name: record2.place.try(:name),
+              memo: record2.memo,
+              tags: []
+            },
+            {
+              id: record1.id,
+              published_at: record1.published_at.strftime('%Y-%m-%d'),
+              payments: record1.category.barance_of_payments,
+              charge: record1.charge,
+              category_name: record1.category.name,
+              breakdown_name: record1.breakdown.try(:name),
+              place_name: record1.place.try(:name),
+              memo: record1.memo,
+              tags: []
+            }
+          ],
+          total_count: 2,
           user: {
             currency: user.currency
           }

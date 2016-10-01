@@ -2,14 +2,17 @@ form.form.form-inline
   // 年、月、日
   ol.breadcrumb.inline-block
     li
-      a(translate='TITLES.YEAR' href='' ng-hide="list.selected_list == 'year'" ng-click='list.selectYearList()')
-      b(translate='TITLES.YEAR' ng-show="list.selected_list == 'year'")
+      a(ui-sref='yearly_list({year:(list.year || today_year)})'
+        ng-hide="list.selected_list == 'year'") {{ 'TITLES.YEAR' | translate }}
+      b(ng-show="list.selected_list == 'year'") {{ 'TITLES.YEAR' | translate }}
     li
-      a(translate='TITLES.MONTH' href='' ng-hide="list.selected_list == 'month'" ng-click='list.selectMonthList()')
-      b(translate='TITLES.MONTH' ng-show="list.selected_list == 'month'")
+      a(ui-sref="monthly_list({year:(list.year || today_year), month:('0'+(list.month || list.today_month)).slice(-2)})"
+        ng-hide="list.selected_list == 'month'") {{ 'TITLES.MONTH' | translate }}
+      b(ng-show="list.selected_list == 'month'") {{ 'TITLES.MONTH' | translate }}
     li
-      a(translate='TITLES.DAY' href='' ng-hide="list.selected_list == 'day'" ng-click='list.selectDayList()')
-      b(translate='TITLES.DAY' ng-show="list.selected_list == 'day'")
+      a(ui-sref="daily_list({year:(list.year || today_year), month:('0'+(list.month || list.today_month)).slice(-2), day:('0'+(list.day || list.today_day)).slice(-2)})"
+        ng-hide="list.selected_list == 'day'") {{ 'TITLES.DAY' | translate }}
+      b(ng-show="list.selected_list == 'day'") {{ 'TITLES.DAY' | translate }}
 
   // 年
   select.form-control(ng-model='list.year' ng-show="list.selected_list == 'year'" ng-options="year as year + ' 年' for year in list.years" ng-value="list.year" ng-change='list.selectYear(list.year)')
@@ -21,7 +24,7 @@ form.form.form-inline
   select.form-control(ng-model='list.year' ng-show="list.selected_list == 'month'" ng-options="year as year + ' 年' for year in list.years" ng-value='list.year' ng-change='list.selectYearMonth(list.year)')
 
   // 日
-  input.btn.btn-default(type='date' ng-model='list.day' datepicker-popup=true required='true' ng-change='list.changeDate()' ng-show="list.selected_list == 'day'")
+  input.btn.btn-default(type='date' ng-model='list.date' datepicker-popup=true required='true' ng-change='list.changeDate()' ng-show="list.selected_list == 'day'")
 
 // リスト
 .panel.panel-default
