@@ -1,8 +1,15 @@
-== おこづかいちょうβ
+おこづかいちょうβ
+=======
 
-* アプリ概要
+## 本番環境
+- http://account-book-pig.herokuapp.com/
 
-## バックエンド
+## ステージング環境
+- http://account-book-pig-test.herokuapp.com/
+
+## 開発
+
+### バックエンド
 
 - Ruby 2系
   - 詳細なバージョンは、`.ruby-version`または`Gemfile`の`ruby`を確認
@@ -10,7 +17,7 @@
   - 詳細なバージョンは、`Gemfile`を確認
 - PostgreSQL
 
-## フロントエンド
+### フロントエンド
 
 - gulp
 - jade
@@ -20,12 +27,6 @@
 
 ## コーディングルール
 - 基本的にはrubocop
-
-## 本番環境
-- http://account-book-pig.herokuapp.com/
-
-## ステージング環境
-- http://account-book-pig-test.herokuapp.com/
 
 ## CI環境
 
