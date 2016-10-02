@@ -118,19 +118,19 @@ angular.module 'newAccountBook'
         controller: 'RecordsController'
       # リスト画面（年）
       .state 'yearly_list',
-        url: '/list/{year:201[2-6]+}'
+        url: '/list/{year:201[2-6]+}?category_id'
         templateUrl: 'app/records/list/list.html'
         controllerAs: 'list'
         controller: 'RecordsController'
       # リスト画面（月）
       .state 'monthly_list',
-        url: '/list/{year:201[2-6]+}/{month:[0|1]*[0-9]+}'
+        url: '/list/{year:201[2-6]+}/{month:[0|1]*[0-9]+}?category_id'
         templateUrl: 'app/records/list/list.html'
         controllerAs: 'list'
         controller: 'RecordsController'
       # リスト画面（日）
       .state 'daily_list',
-        url: '/list/{year:201[2-6]+}/{month:[0|1]*[0-9]+}/{day:[0-9]{1,2}}'
+        url: '/list/{year:201[2-6]+}/{month:[0|1]*[0-9]+}/{day:[0-9]{1,2}}?category_id'
         templateUrl: 'app/records/list/list.html'
         controllerAs: 'list'
         controller: 'RecordsController'

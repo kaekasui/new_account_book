@@ -20,7 +20,7 @@ form.form.form-inline
   // 月
   ol.breadcrumb.inline-block(ng-show="list.selected_list == 'month'")
     li(ng-repeat='month in list.months')
-      a(ui-sref="monthly_list({year:(list.year || today_year), month:('0'+month).slice(-2)})"
+      a(ui-sref="monthly_list({year:(list.year || today_year), month:('0'+month).slice(-2), category_id:undefined})"
         ng-style="{'font-weight': list.month == month ? 'bold' : 'normal'}") {{ month }} 月
   select.form-control(ng-model='list.year'
                       ng-show="list.selected_list == 'month'"
@@ -45,7 +45,7 @@ form.form.form-inline
       tr(ng-repeat='record in list.records')
         td {{ record.published_at }}
         td
-          label.label.label-warning {{ record.category_name }}
+          label.label.label-warning(ng-click='list.clickCategory(record.category_id)') {{ record.category_name }}
         td
           label.label.label-info {{ record.breakdown_name }}
         td
