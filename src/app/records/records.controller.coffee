@@ -37,9 +37,14 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
     vm.selected_list = 'day'
     vm.offset = 0
 
+  # 日付の変更
   vm.changeDate = () ->
     vm.offset = 0
-    getRecordsWithDate()
+    $state.go('daily_list',
+      year: Number($filter('date')(vm.date, 'yyyy'))
+      month: ('0' + Number($filter('date')(vm.date, 'MM'))).slice(-2)
+      day: ('0' + Number($filter('date')(vm.date, 'dd'))).slice(-2)
+    )
 
   # 月
   vm.selectMonthList = () ->
@@ -47,13 +52,11 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
     vm.selected_list = 'month'
     vm.offset = 0
 
-  vm.selectMonth = (month) ->
-    vm.month = month
-    vm.offset = 0
-
+  # 年を切り替えるレセクトボックス
   vm.selectYearMonth = (year) ->
     vm.year = year
     vm.offset = 0
+    getRecordsWithDate()
 
   # 年
   vm.selectYearList = () ->
@@ -61,9 +64,11 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
     vm.selected_list = 'year'
     vm.offset = 0
 
+  # 年を切り替えるセレクトボックス
   vm.selectYear = (year) ->
     vm.year = year
     vm.offset = 0
+    getRecordsWithDate()
 
   if $stateParams.day
     vm.day = $stateParams.day
