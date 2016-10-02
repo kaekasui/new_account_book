@@ -9,12 +9,14 @@ class Record::Fetcher
     @year = params[:year].to_i
     @month = params[:month].to_i
     @day = params[:day].to_i
+    @category_id = params[:category_id]
     @offset = params[:offset]
   end
 
   def all
     records = @user.records.order(published_at: :desc, created_at: :desc)
     records = find_by_date(records)
+    records = records.where(category_id: @category_id) if @category_id
     @total_count = records.count
     records = records.offset(@offset) if @offset.present?
     records.limit(Settings.records.per)
