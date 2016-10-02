@@ -1,27 +1,22 @@
-RecordsController = ($filter, IndexService , RecordsFactory, localStorageService, $uibModal) ->
+RecordsController = ($filter, IndexService , RecordsFactory, localStorageService, $uibModal, $stateParams, $state) ->
   'ngInject'
   vm = this
   vm.offset = 0
   vm.years = [2012..2017]
   vm.months = [1..12]
   vm.selected_list = localStorageService.get('selected_list') || 'month'
-
-  vm.day = new Date()
-  vm.year = Number($filter('date')(vm.day, 'yyyy'))
-  vm.month = Number($filter('date')(vm.day, 'MM'))
+  vm.today = new Date()
+  vm.today_year = Number($filter('date')(vm.today, 'yyyy'))
+  vm.today_month = Number($filter('date')(vm.today, 'MM'))
+  vm.today_day = Number($filter('date')(vm.today, 'dd'))
 
   # 登録情報を取得する関数
   getRecordsWithDate = () ->
     IndexService.loading = true
-    params = if vm.selected_list == 'day'
-      date: vm.day
-      offset: vm.offset
-    else if vm.selected_list == 'month'
+    params =
       year: vm.year
       month: vm.month
-      offset: vm.offset
-    else if vm.selected_list == 'year'
-      year: vm.year
+      day: vm.day
       offset: vm.offset
     RecordsFactory.getRecords(params).then((res) ->
       vm.records = res.records
@@ -41,24 +36,23 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
     localStorageService.set 'selected_list', 'day'
     vm.selected_list = 'day'
     vm.offset = 0
-    getRecordsWithDate()
 
+  # 日付の変更
   vm.changeDate = () ->
     vm.offset = 0
-    getRecordsWithDate()
+    $state.go('daily_list',
+      year: Number($filter('date')(vm.date, 'yyyy'))
+      month: ('0' + Number($filter('date')(vm.date, 'MM'))).slice(-2)
+      day: ('0' + Number($filter('date')(vm.date, 'dd'))).slice(-2)
+    )
 
   # 月
   vm.selectMonthList = () ->
     localStorageService.set 'selected_list', 'month'
     vm.selected_list = 'month'
     vm.offset = 0
-    getRecordsWithDate()
 
-  vm.selectMonth = (month) ->
-    vm.month = month
-    vm.offset = 0
-    getRecordsWithDate()
-
+  # 年を切り替えるレセクトボックス
   vm.selectYearMonth = (year) ->
     vm.year = year
     vm.offset = 0
@@ -69,12 +63,32 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
     localStorageService.set 'selected_list', 'year'
     vm.selected_list = 'year'
     vm.offset = 0
-    getRecordsWithDate()
 
+  # 年を切り替えるセレクトボックス
   vm.selectYear = (year) ->
     vm.year = year
     vm.offset = 0
     getRecordsWithDate()
+
+  if $stateParams.day
+    vm.day = $stateParams.day
+    vm.selectDayList()
+  else if $stateParams.month
+    vm.selectMonthList()
+  else if $stateParams.year
+    vm.selectYearList()
+  else
+    if vm.selected_list == 'year'
+      $state.go('yearly_list', { year: vm.today_year })
+    else if vm.selected_list == 'month'
+      $state.go('monthly_list', { year: vm.today_year, month: vm.today_month })
+    else
+      $state.go('daily_list', { year: vm.today_year, month: vm.today_month, day: vm.today_day })
+
+  vm.year = Number($stateParams.year)
+  vm.month = Number($stateParams.month)
+  vm.day = Number($stateParams.day)
+  vm.date = new Date(vm.year, vm.month - 1, vm.day)
 
   # ページング
   vm.clickPaginate = (offset) ->
@@ -110,15 +124,10 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
   vm.downloadCSV = () ->
     IndexService.loading = true
     vm.downloading = true
-    params = if vm.selected_list == 'day'
-      date: vm.day
-      offset: vm.offset
-    else if vm.selected_list == 'month'
+    params =
       year: vm.year
       month: vm.month
-      offset: vm.offset
-    else if vm.selected_list == 'year'
-      year: vm.year
+      day: vm.day
       offset: vm.offset
     RecordsFactory.getCSVRecords(params).then((res) ->
       if window.navigator.msSaveOrOpenBlob
@@ -137,7 +146,6 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
       IndexService.loading = false
       vm.downloading = false
 
-  # リスト表示
   getRecordsWithDate()
 
   return

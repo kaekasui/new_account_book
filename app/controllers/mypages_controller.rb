@@ -7,7 +7,7 @@ class MypagesController < ApplicationController
     @messages = Message::Fetcher.all(params: params, user: current_user)
     fetcher = Record::Fetcher
               .new(user: current_user, params: params, sort_type: 'lately')
-    @records = fetcher.all
+    @records = fetcher.mypage
     @user = current_user
   end
 end

@@ -97,14 +97,6 @@ ActiveRecord::Schema.define(version: 20160921120022) do
     t.index ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.integer  "price"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "feedback_id"
@@ -193,8 +185,8 @@ ActiveRecord::Schema.define(version: 20160921120022) do
 
   create_table "tokens", force: :cascade do |t|
     t.string   "name",             null: false
-    t.integer  "tokenizable_id",   null: false
     t.string   "tokenizable_type", null: false
+    t.integer  "tokenizable_id",   null: false
     t.string   "token",            null: false
     t.text     "data"
     t.datetime "expires_at"
