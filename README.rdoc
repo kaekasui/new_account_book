@@ -1,28 +1,39 @@
-== README
+== おこづかいちょうβ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* アプリ概要
 
-Things you may want to cover:
+## バックエンド
 
-* Ruby version
+- Ruby 2系
+  - 詳細なバージョンは、`.ruby-version`または`Gemfile`の`ruby`を確認
+- Rails 5系
+  - 詳細なバージョンは、`Gemfile`を確認
+- PostgreSQL
 
-* System dependencies
+## フロントエンド
 
-* Configuration
+- gulp
+- jade
+- Coffee Script
+- AngularJS
+- sass
 
-* Database creation
+## コーディングルール
+- 基本的にはrubocop
 
-* Database initialization
+## 本番環境
+- http://account-book-pig.herokuapp.com/
 
-* How to run the test suite
+## ステージング環境
+- http://account-book-pig-test.herokuapp.com/
 
-* Services (job queues, cache servers, search engines, etc.)
+## CI環境
 
-* Deployment instructions
+## 環境構築
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### ソースコードの入手
+### PostgreSQLのインストール
+### bundle install
+### 各種パッケージのインストール
+### DBの構築
+### サーバーの起動
